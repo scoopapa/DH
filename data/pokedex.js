@@ -6250,7 +6250,7 @@ let BattlePokedex = {
 	deoxys: {
 		num: 386,
 		species: "Deoxys",
-		baseForme: "Normal"
+		baseForme: "Normal",
 		types: ["Psychic"],
 		gender: "N",
 		baseStats: {hp: 50, atk: 100, def: 120, spa: 100, spd: 120, spe: 110},
