@@ -17,7 +17,7 @@ exports.Formats = [
   		name: "[Gen 7] Super Smash Mods",
   		desc: ["None Yet!",
 		      ],
-  		ruleset: ['Gen 7 [OU]'],
+  		ruleset: ['Gen 7 [Ubers]'],
 		mod: 'smashmods',
 		//banlist: ['Illegal'],
 	},
