@@ -42,6 +42,7 @@ let BattleScripts = {
 		this.modData('Learnsets', 'trapinch').learnset.knockoff = ['5M'];
 		this.modData('Learnsets', 'trapinch').learnset.firefang = ['5M'];
 		this.modData('Learnsets', 'trapinch').learnset.punishment = ['5M'];
+		this.modData('Learnsets', 'lileep').learnset.algaeallure = ['5M'];
 	},
 };
 
