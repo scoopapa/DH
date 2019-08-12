@@ -7758,6 +7758,18 @@ let BattleFormatsData = {
 		gen: 5,
 		tier: "Illegal",
 	},
+	gengaralola: {
+		tier: 'OU',
+	},
+	gengaralolamega: {
+		tier: 'OU',
+	},
+	latiasdeltamega: {
+		tier: 'OU',
+	},
+	latiasdelta: {
+		tier: 'OU',
+	},
 };
 
 exports.BattleFormatsData = BattleFormatsData;
