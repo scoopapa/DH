@@ -7,10 +7,26 @@ exports.Formats = [
 
 	// Randomized Metas
 	///////////////////////////////////////////////////////////////////
+
+	{
+		section: "Smash Mods",
+		column: 1,
+	},
+	
+	{
+  		name: "[Gen 7] Super Smash Mods",
+  		desc: ["None Yet!",
+		      ],
+  		ruleset: ['Gen 7 [OU]'],
+		mod: 'smashmods',
+		//banlist: ['Illegal'],
+	},
+	
 	{
 		section: "Randomized Metas",
 		column: 1,
 	},
+	
 	{
 		name: "[Gen 7] BH Battle Factory",
 
@@ -4805,15 +4821,6 @@ exports.Formats = [
 		mod: 'tennysonmons',
 		searchShow: false,
 		//challengeShow: false,
-	},
-	{
-		name: "[Gen 7] The Pokedex According to Spook",
-		desc: ["&bullet; <a href=https://www.smogon.com/forums/threads/the-pokedex-according-to-spook.3645318/>The Pokedex According to Spook</a>",],
-		ruleset: ['Pokemon', 'Standard', 'Team Preview'],
-		unbanlist: ['Aegislash', 'Aegislash-Blade'. 'Shadow Tag', 'Arena Trap'],
-		banlist: ['Stance Change', 'Uber'],
-		//banlist: ['Illegal'],
-		mod: 'Spookdex',
 	},
 	{
 		name: "[Gen 7] Typing: The Mod",
