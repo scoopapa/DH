@@ -14192,7 +14192,7 @@ let BattlePokedex = {
 		species: "Baloon",
 		types: ["Fairy"],
 		baseStats: {hp: 137, atk: 124, def: 142, spa: 102, spd: 12, spe: 83},
-		abilities: {0: "Refrigerate", 0: "Contrary", H: "Symbiosis"},
+		abilities: {0: "Refrigerate", 1: "Contrary", H: "Symbiosis"},
 		heightm: 1,
 		weightkg: 35,
 		color: "Pink",
