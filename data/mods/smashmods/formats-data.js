@@ -12,6 +12,12 @@ let BattleFormatsData = {
 	gengaralolamega: {
 		tier: 'OU',
 	},
+	latiasdeltamega: {
+		tier: 'OU',
+	},
+	latiasdelta: {
+		tier: 'OU',
+	},
 };
 
 exports.BattleFormatsData = BattleFormatsData;

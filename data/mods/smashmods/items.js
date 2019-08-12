@@ -16,20 +16,6 @@ let BattleItems = {
 		gen: 6,
 		desc: "If held by an Scarix, this item allows it to Mega Evolve in battle.",
 	},
-	"scarixite": {
-		id: "scarixite",
-		name: "Scarixite",
-		spritenum: 575,
-		megaStone: "Scarix-Mega",
-		megaEvolves: "Scarix",
-		onTakeItem: function (item, source) {
-			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
-			return true;
-		},
-		num: 674,
-		gen: 6,
-		desc: "If held by an Scarix, this item allows it to Mega Evolve in battle.",
-	},
 	"abomasitex": {
 		id: "abomasitex",
 		name: "Abomasite X",
@@ -114,6 +100,20 @@ let BattleItems = {
 		num: 674,
 		gen: 6,
 		desc: "If held by an Banette, this item allows it to Mega Evolve in battle.",
+	},
+	"deltalatiasite": {
+		id: "deltalatiasite",
+		name: "Delta Latiasite",
+		spritenum: 575,
+		megaStone: "Latias-Delta-Mega",
+		megaEvolves: "Latias-Delta",
+		onTakeItem: function (item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: 674,
+		gen: 6,
+		desc: "If held by an Scarix, this item allows it to Mega Evolve in battle.",
 	},
 };
 
