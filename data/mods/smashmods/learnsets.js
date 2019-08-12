@@ -2,7 +2,7 @@
 
 /**@type {{[k: string]: {learnset: {[k: string]: MoveSource[]}}}} */
 let BattleLearnsets = {
-	latias: {learnset: {
+	latiasdelta: {learnset: {
 		aerialace: ["7M", "6M", "5M", "4M", "3M"],
 		allyswitch: ["7T"],
 		attract: ["7M", "6M", "5M", "4M", "3M"],

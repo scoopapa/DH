@@ -351,7 +351,7 @@ let BattlePokedex = {
 	latiasdeltamega: {
 		num: 1005,
 		species: "Latias-Delta-Mega",
-		baseSpecies: "Latias",
+		baseSpecies: "Latias-Delta",
 		forme: "Mega",
 		formeLetter: "M",
 		types: ["Electric", "Steel"],
