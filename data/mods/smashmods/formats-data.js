@@ -6,6 +6,12 @@ let BattleFormatsData = {
 		inherit: true,
 		tier: 'OU',
 	},
+	gengaralola: {
+		tier: 'OU',
+	},
+	gengaralolamega: {
+		tier: 'OU',
+	},
 };
 
 exports.BattleFormatsData = BattleFormatsData;

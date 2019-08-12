@@ -27,7 +27,7 @@ let BattlePokedex = {
 	gengaralolamega: {
 		num: 1025,
 		species: "Gengar-Alola-Mega",
-		baseSpecies: "Gengar-Alola",
+		baseSpecies: "Gengar",
 		forme: "Mega",
 		formeLetter: "M",
 		types: ["Dark", "Water"],
