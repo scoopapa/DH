@@ -15,6 +15,11 @@ echo "We require Node.js version 10 or later; Node.js not found"
 exit 1
 */;
 
+var http = require("http");
+setInterval(function() {
+    http.get("http://spooks-server.herokuapp.com");
+}, 300000); // every 5 minutes (300000)
+
 var child_process = require('child_process');
 var fs = require('fs');
 var path = require('path');

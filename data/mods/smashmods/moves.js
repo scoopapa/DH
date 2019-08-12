@@ -2,21 +2,21 @@
 
 /**@type {{[k: string]: ModdedMoveData}} */
 let BattleMovedex = {
-	"healbell": {
+	"healbellbattleready": {
 		num: 215,
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
 		desc: "Every Pokemon in the user's party is cured of its major status condition. Active Pokemon with the Soundproof Ability are not cured.",
 		shortDesc: "Cures the user's party of all status conditions.",
-		id: "healbell",
+		id: "healbellbattleready",
 		isViable: true,
-		name: "Heal Bell",
+		name: "Heal Bell-Battle-Ready",
 		pp: 5,
 		priority: 0,
 		flags: {snatch: 1, sound: 1, distance: 1, authentic: 1},
 		onHit: function (pokemon, source) {
-			this.add('-activate', source, 'move: Heal Bell');
+			this.add('-activate', source, 'move: Heal Bell-Battle-Ready');
 			let side = pokemon.side;
 			let success = false;
 			for (const ally of side.pokemon) {
@@ -1174,6 +1174,39 @@ let BattleMovedex = {
 		type: "Water",
 		zMovePower: 140,
 		contestType: "Clever",
+	},
+	"starspit": {
+		num: 722,
+		accuracy: 100,
+		basePower: 80,
+		basePowerCallback: function (pokemon, target, move) {
+			let damagedByTarget = pokemon.attackedBy.some(p =>
+				p.source === target && p.damage > 0 && p.thisTurn
+			);
+			if (damagedByTarget) {
+				this.debug('Boosted for getting hit by ' + target);
+				return move.basePower * 2;
+			}
+			return move.basePower;
+		},
+		category: "Special",
+		desc: "This move becomes a physical attack if the user's Attack is greater than its Special Attack, including stat stage changes. This move and its effects ignore the Abilities of other Pokemon.",
+		shortDesc: "Physical if user's Atk > Sp. Atk. 1.5x damage if user moves after target.",
+		id: "starspit",
+		isViable: true,
+		name: "Star Spit",
+		pp: 15,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onModifyMove: function (move, pokemon) {
+			if (pokemon.getStat('atk', false, true) > pokemon.getStat('spa', false, true)) move.category = 'Physical';
+		},
+		ignoreAbility: true,
+		secondary: null,
+		target: "normal",
+		type: "Flying",
+		zMovePower: 180,
+		contestType: "Cool",
 	},
 };
 
