@@ -7871,7 +7871,7 @@ exports.BattleLearnsets = {
 		boomburst: ["7L1"],
 		petaldance: ["7L1"],
 		powergem: ["7L1"],
-		sing: ["8L1"];
+		sing: ["8L1"],
 	}},
 	rapunzel: {learnset: {
 		fryingpan: ["7L1"],

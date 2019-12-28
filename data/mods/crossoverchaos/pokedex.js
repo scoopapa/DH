@@ -2592,7 +2592,7 @@ austincarter: {
 			species: "Austin Carter", /* Nitrome */
 			types: ["Fire"],
 			gender: "M",
-			baseStats: {hp: 80, atk: 125, def: 70, spa: 125, spd: 70, spe: 95,
+			baseStats: {hp: 80, atk: 125, def: 70, spa: 125, spd: 70, spe: 95,},
 			abilities: {0: "Mega Launcher"},
 			color: "Blue",
 			heightm: 1.6,
@@ -2603,19 +2603,19 @@ biolizard: {
 			species: "Biolizard", /* Sonic Adventure 2 */
 			types: ["Dragon"],
 			gender: "N",
-			baseStats: {hp: 150, atk: 50, def: 120, spa: 60, spd: 100, spe: 20,
+			baseStats: {hp: 150, atk: 50, def: 120, spa: 60, spd: 100, spe: 20,},
 			abilities: {0: "Dry Skin", H: "Filter"},
 			color: "Red",
 			heightm: 10,
 			weightkg: 500,
-			evos: ["finalhazard"]
+			evos: ["finalhazard"],
 },
 finalhazard: {
 			num: 6000136,
 			species: "Finalhazard",
 			types: ["Dragon", "Rock"],
 			gender: "N",
-			baseStats: {hp: 180, atk: 100, def: 140, spa: 120, spd: 110, spe: 30,
+			baseStats: {hp: 180, atk: 100, def: 140, spa: 120, spd: 110, spe: 30,},
 			abilities: {0: "Levitate"},
 			color: "Red",
 			heightm: 2700,
@@ -2629,7 +2629,7 @@ whambamrock: {
 			species: "Wham Bam Rock", /* Kirby Super Star */
 			types: ["Rock"],
 			gender: "M",
-			baseStats: {hp: 90, atk: 130, def: 90, spa: 60, spd: 60, spe: 50,
+			baseStats: {hp: 90, atk: 130, def: 90, spa: 60, spd: 60, spe: 50,},
 			abilities: {0: "Solid Rock", H: "Sturdy"},
 			color: "Brown",
 			heightm: 1.1,
@@ -2641,7 +2641,7 @@ whambamjewel: {
 			species: "Wham Bam Jewel",
 			types: ["Rock"],
 			gender: "M",
-			baseStats: {hp: 110, atk: 150, def: 110, spa: 80, spd: 80, spe: 70,
+			baseStats: {hp: 110, atk: 150, def: 110, spa: 80, spd: 80, spe: 70,},
 			abilities: {0: "Solid Rock", H: "Clear Body"},
 			color: "Blue",
 			heightm: 1.4,
@@ -2653,7 +2653,7 @@ radiance: {
 			species: "Radiance", /* Hollow Knight */
 			types: ["Psychic", "Fire"],
 			gender: "F",
-			baseStats: {hp: 110, atk: 120, def: 80, spa: 140, spd: 120, spe: 100,
+			baseStats: {hp: 110, atk: 120, def: 80, spa: 140, spd: 120, spe: 100,},
 			abilities: {0: "Dazzling", H: "Drought"},
 			color: "White",
 			otherFormes: ["radianceabsolute"],
@@ -2666,7 +2666,7 @@ radianceabsolute: {
 			formeLetter: "A",
 			types: ["Psychic", "Fire"],
 			gender: "F",
-			baseStats: {hp: 110, atk: 130, def: 100, spa: 170, spd: 140, spe: 120,
+			baseStats: {hp: 110, atk: 130, def: 100, spa: 170, spd: 140, spe: 120,},
 			abilities: {0: "Radiant Dreams"},
 			color: "White",
 },
@@ -2675,32 +2675,32 @@ bluebaby: {
 			species: "Blue Baby", /* Binding of Isaac */
 			types: ["Ghost", "Fairy"],
 			gender: "M",
-			baseStats: {hp: 10, atk: 78, def: 161, spa: 105, spd: 161, spe: 105,
+			baseStats: {hp: 10, atk: 78, def: 161, spa: 105, spd: 161, spe: 105,},
 			abilities: {0: "Still Heart"},
 			color: "Blue",
 			heightm: 1,
 			weightkg: 15,
-			evos: ["hush"]
+			evos: ["hush"],
 },
 hush: {
 			num: 6000141,
 			species: "Hush", /* Binding of Isaac: Afterbirth */
 			types: ["Ghost", "Ground"],
 			gender: "M",
-			baseStats: {hp: 144, atk: 78, def: 144, spa: 105, spd: 144, spe: 5,
+			baseStats: {hp: 144, atk: 78, def: 144, spa: 105, spd: 144, spe: 5,},
 			abilities: {0: "Tearworker"},
 			color: "Blue",
 			heightm: 3,
 			weightkg: 150,
 			prevo: "bluebaby",
-			evoType: "trade"
+			evoType: "trade",
 },
 promestein: {
 			num: 6000142,
 			species: "Promestein", /* Monster Girl Quest */
 			types: ["Psychic", "Grass"],
 			gender: "F",
-			baseStats: {hp: 130, atk: 95, def: 90, spa: 100, spd: 95, spe: 90,
+			baseStats: {hp: 130, atk: 95, def: 90, spa: 100, spd: 95, spe: 90},
 			abilities: {0: "Regenerator", 1: "Chlorophyll", H: "Mad Scientist Angel"},
 			otherFormes: ["promesteinultimate"],
 },
@@ -2712,7 +2712,7 @@ promesteinultimate: {
 			formeLetter: "U",
 			types: ["Psychic", "Grass"],
 			gender: "F",
-			baseStats: {hp: 180, atk: 105, def: 90, spa: 110, spd: 95, spe: 100,
+			baseStats: {hp: 180, atk: 105, def: 90, spa: 110, spd: 95, spe: 100},
 			abilities: {0: "Regenerator", 1: "Chlorophyll", H: "Mad Scientist Angel"},
 },
 walle: {
@@ -3394,15 +3394,16 @@ gokusupersaiyangod: {
 		weightkg: 700,
 	},
 	vegeta: {
-		num: 7000042
+		num: 7000042,
 		species: "Vegeta", /* Dragon Ball */
 		types: ["Fighting"],
 		gender: "M",
 		baseStats: {hp: 80, atk: 115, def: 75, spa: 115, spd: 75, spe: 110},
 		abilities: {0: "Zenkai Boost", H: "Defiant"},
-		heightm: 1.64
+		heightm: 1.64,
 		weightkg: 56,
-		otherFormes: ["vegetasupersaiyan", "vegetasupersaiyangod", "vegetasupersaiyanblue", "vegetamajin", "vegetaoozaru", "vegetasupersaiyan4"]
+		otherFormes: ["vegetasupersaiyan", "vegetasupersaiyangod", "vegetasupersaiyanblue", "vegetamajin", "vegetaoozaru", "vegetasupersaiyan4"],
+	},
 	milesmorales: {
 		num: 7000045,
 		species: "Miles Morales", /* Spider Man: Into the Spiderverse */
