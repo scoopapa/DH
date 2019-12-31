@@ -616,7 +616,7 @@ exports.Formats = [
 			`&bullet; <a href="https://docs.google.com/spreadsheets/d/1GNLvQsM1F6pw1JS7IA6IyrgME1iJ4M0UWLrieGSPQuU/edit#gid=1994258282">Spreadsheet of Changes</a>`,
 		      ],
   		ruleset: ['Obtainable', 'Sleep Clause Mod', 'Nickname Clause', 'OHKO Clause', 'Evasion Moves Clause', 
-					'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod' 'Team Preview', 'Dynamax Clause', 'Standard NatDex'],
+					'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Dynamax Clause', 'Standard NatDex'],
 		mod: 'cleanslatemicro',
 		banlist: ['Unreleased', 'Baton Pass'],
 		onSwitchIn: function (pokemon) {
