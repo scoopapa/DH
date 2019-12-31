@@ -348,7 +348,7 @@ exports.Formats = [
 		name: "[Gen 8] National Dex (beta)",
 
 		mod: 'gen8',
-		ruleset: ['Obtainable', 'Standard', 'Team Preview', '+Past', 'NatDex Rule'],
+		ruleset: ['Obtainable', 'Standard', 'Team Preview', 'Standard Natdex'],
 		banlist: [
 			'Arceus', 'Blaziken', 'Darkrai', 'Deoxys', 'Dialga', 'Eternatus', 'Genesect', 'Gengar-Mega', 'Giratina', 'Groudon',
 			'Ho-Oh', 'Kangaskhan-Mega', 'Kyogre', 'Kyurem-Black', 'Kyurem-White', 'Landorus-Base', 'Lucario-Mega', 'Lugia', 'Lunala',
@@ -364,7 +364,7 @@ exports.Formats = [
 		],
 
 		mod: 'gen8',
-		ruleset: ['Obtainable', 'Team Preview', 'HP Percentage Mod', 'Cancel Mod', '+Past', 'NatDex Rule'],
+		ruleset: ['Obtainable', 'Team Preview', 'HP Percentage Mod', 'Cancel Mod', 'Standard Natdex'],
 	},
 	// Pet Mods ///////////////////////////////////////////////////////////////////
 	{
@@ -379,7 +379,7 @@ exports.Formats = [
 		ruleset: [ 'Species Clause', 'Moody Clause', 'Baton Pass Clause', 
 					'Evasion Moves Clause', 'OHKO Clause', 'Swagger Clause', 'Endless Battle Clause', 
 					'Team Preview', 'HP Percentage Mod', 'Sleep Clause Mod', 'Cancel Mod', 'Standard GBU',
-					'+Past', 'NatDex Rule'],
+					'Standard Natdex'],
 		banlist: ['Unreleased', ],
 		mod: "benchabilities",
 		maxForcedLevel: 50,
@@ -497,7 +497,7 @@ exports.Formats = [
 		      ],
   		ruleset: [ 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 
 					'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 
-					'Baton Pass Clause', '+Past', 'NatDex Rule'],
+					'Baton Pass Clause', 'Standard Natdex'],
 		mod: 'breedingvariants',
 		banlist: ['Unreleased', ],
 		onSwitchIn: function (pokemon) {
@@ -513,7 +513,7 @@ exports.Formats = [
 		mod: 'morebalancedhackmons',
 		ruleset: [ 'OHKO Clause', 'Evasion Moves Clause', 'CFZ Clause', 
 					'Endless Battle Clause', 'Team Preview', 'HP Percentage Mod', 'Cancel Mod', 
-					'Species Clause', '+Past', 'NatDex Rule' ],
+					'Species Clause', 'Standard Natdex' ],
 		banlist: ['Groudon-Primal', 'Arena Trap', 'Huge Power', 'Illusion', 'Innards Out', 'Magnet Pull', 
 					'Moody', 'Parental Bond', 'Protean', 'Psychic Surge', 'Pure Power', 'Shadow Tag', 
 					'Stakeout', 'Water Bubble', 'Wonder Guard', 'Gengarite', 'Chatter', 'Comatose + Sleep Talk',
@@ -545,7 +545,7 @@ exports.Formats = [
 		      ],
 		ruleset: [ 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 
 					'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 
-					'Swagger Clause', 'Baton Pass Clause', 'Obtainable', '+Past', 'NatDex Rule'],
+					'Swagger Clause', 'Baton Pass Clause', 'Obtainable', 'Standard Natdex'],
 		banlist: ['Uber', 'Unreleased',],
 		mod: 'crossoverchaos',
     onValidateTeam(team, format) {
@@ -565,7 +565,7 @@ exports.Formats = [
 		      ],
 		ruleset: [ 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 
 					'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 
-					'Swagger Clause', 'Baton Pass Clause', 'Obtainable', '+Past', 'NatDex Rule'],
+					'Swagger Clause', 'Baton Pass Clause', 'Obtainable', 'Standard Natdex'],
 		banlist: ['Uber', 'Unreleased',],
 		mod: 'crossoverchaos',
     onValidateTeam(team, format) {
@@ -586,7 +586,7 @@ exports.Formats = [
 		      "&bullet; <a href=https://www.smogon.com/forums/threads/crossover-chaos-expanded-side-project.3647108/>Crossover Chaos</a>"],
 		ruleset: [ 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 
 					'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 
-					'Swagger Clause', 'Baton Pass Clause', 'Obtainable', '+Past', 'NatDex Rule'],
+					'Swagger Clause', 'Baton Pass Clause', 'Obtainable', 'Standard Natdex'],
 		banlist: [],
 		mod: 'crossoverchaos',
 	}, 
@@ -615,7 +615,7 @@ exports.Formats = [
 			`&bullet; <a href="https://www.smogon.com/forums/threads/.3652540/">Clean Slate: Micro</a>`,
 			`&bullet; <a href="https://docs.google.com/spreadsheets/d/1GNLvQsM1F6pw1JS7IA6IyrgME1iJ4M0UWLrieGSPQuU/edit#gid=1994258282">Spreadsheet of Changes</a>`,
 		      ],
-  		ruleset: ['Obtainable', 'Standard', 'Team Preview', 'Dynamax Clause'],
+  		ruleset: ['Obtainable', 'Standard', 'Team Preview', 'Dynamax Clause', 'Standard NatDex'],
 		mod: 'cleanslatemicro',
 		banlist: ['Unreleased', 'Baton Pass'],
 		onSwitchIn: function (pokemon) {

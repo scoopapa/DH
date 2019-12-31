@@ -22,12 +22,6 @@ let BattleFormats = {
 		ruleset: ['+Unreleased', 'Sleep Clause Mod', 'Species Clause', 'Nickname Clause', 'OHKO Clause', 'HP Percentage Mod', 'Cancel Mod'],
 		banlist: ['Soul Dew'],
 	},
-	standardubers: {
-		effectType: 'ValidatorRule',
-		name: 'Standard Ubers',
-		desc: "The standard ruleset for [Gen 5] Ubers",
-		ruleset: ['Sleep Clause Mod', 'Species Clause', 'Nickname Clause', 'Moody Clause', 'OHKO Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod'],
-	},
 	standardgbu: {
 		effectType: 'ValidatorRule',
 		name: 'Standard GBU',
@@ -75,12 +69,34 @@ let BattleFormats = {
 		desc: "The standard ruleset for all official Smogon doubles tiers",
 		ruleset: ['Species Clause', 'Nickname Clause', 'OHKO Clause', 'Evasion Abilities Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod'],
 	},
+	standardnatdex: {
+		effectType: 'ValidatorRule',
+		name: 'Standard NatDex',
+		desc: "The standard ruleset for all National Dex tiers",
+		ruleset: ['+Past', 'Nickname Clause', 'HP Percentage Mod', 'Cancel Mod', 'Endless Battle Clause'],
+		unbanlist: ['Melmetal', 'Meltan'],
+		onValidateSet(set) {
+			// These Pokemon are still unobtainable
+			const unobtainables = [
+				'Eevee-Starter', 'Floette-Eternal', 'Pichu-Spiky-eared', 'Pikachu-Belle', 'Pikachu-Cosplay', 'Pikachu-Libre', 'Pikachu-PhD', 'Pikachu-Pop-Star', 'Pikachu-Rock-Star', 'Pikachu-Starter', 'Magearna-Original',
+			];
+			if (unobtainables.includes(set.species)) {
+				return [`${set.name || set.species} does not exist in the National Dex.`];
+			}
+			// Items other than Z-Crystals and Pokémon-specific items should be illegal
+			if (!set.item) return;
+			let item = this.dex.getItem(set.item);
+			if (item.isNonstandard === 'Past' && !item.zMove && !item.itemUser) {
+				return [`${set.name}'s item ${item.name} does not exist in Gen ${this.dex.gen}.`];
+			}
+		},
+	},
 	obtainable: {
 		effectType: 'ValidatorRule',
 		name: 'Obtainable',
 		desc: "Makes sure the team is possible to obtain in-game.",
 		ruleset: ['Obtainable Moves', 'Obtainable Abilities', 'Obtainable Formes', 'Obtainable Misc'],
-		banlist: ['Unreleased', 'Nonexistent'],
+		banlist: ['Unreleased', 'Unobtainable', 'Nonexistent'],
 		// Mostly hardcoded in team-validator.ts
 		onValidateTeam(team, format) {
 			let kyuremCount = 0;
@@ -118,12 +134,7 @@ let BattleFormats = {
 		effectType: 'ValidatorRule',
 		name: 'Obtainable Moves',
 		desc: "Makes sure moves are learnable by the species.",
-		banlist: [
-			// Leaf Blade: Gen 6+ Nuzleaf level-up
-			// Sucker Punch: Gen 4 Shiftry tutor
-			'Shiftry + Leaf Blade + Sucker Punch',
-		],
-		// Mostly hardcoded in team-validator.ts
+		// Hardcoded in team-validator.ts
 	},
 	obtainableabilities: {
 		effectType: 'ValidatorRule',
@@ -245,7 +256,7 @@ let BattleFormats = {
 		onBegin() {
 			this.add('clearpoke');
 			for (const pokemon of this.getAllPokemon()) {
-				let details = pokemon.details.replace(/(Arceus|Gourgeist|Genesect|Pumpkaboo|Silvally)(-[a-zA-Z?]+)?/g, '$1-*').replace(', shiny', '');
+				let details = pokemon.details.replace(/(Arceus|Gourgeist|Genesect|Pumpkaboo|Silvally|Zacian|Zamazenta)(-[a-zA-Z?]+)?/g, '$1-*').replace(', shiny', '');
 				this.add('poke', pokemon.side.id, details, this.gen < 8 && pokemon.item ? 'item' : '');
 			}
 		},
@@ -429,6 +440,25 @@ let BattleFormats = {
 		banlist: ['Flash', 'Kinesis', 'Leaf Tornado', 'Mirror Shot', 'Mud Bomb', 'Mud-Slap', 'Muddy Water', 'Night Daze', 'Octazooka', 'Sand Attack', 'Smokescreen'],
 		onBegin() {
 			this.add('rule', 'Accuracy Moves Clause: Accuracy-lowering moves are banned');
+		},
+	},
+	sleepmovesclause: {
+		effectType: 'ValidatorRule',
+		name: 'Sleep Moves Clause',
+		desc: "Bans all moves that induce sleep, such as Hypnosis",
+		banlist: ['Yawn'],
+		onBegin() {
+			this.add('rule', 'Sleep Clause: Sleep-inducing moves are banned');
+		},
+		onValidateSet(set) {
+			let problems = [];
+			if (set.moves) {
+				for (const id of set.moves) {
+					let move = this.dex.getMove(id);
+					if (move.status && move.status === 'slp') problems.push(move.name + ' is banned by Sleep Clause.');
+				}
+			}
+			return problems;
 		},
 	},
 	endlessbattleclause: {
@@ -691,16 +721,31 @@ let BattleFormats = {
 			this.add('rule', 'Dynamax Clause: You cannot dynamax');
 		},
 	},
-	arceusevclause: {
+	arceusevlimit: {
 		effectType: 'ValidatorRule',
-		name: 'Arceus EV Clause',
-		desc: "Restricts Arceus to a maximum of 100 EVs in any one stat",
-		onValidateSet(set, format) {
+		name: 'Arceus EV Limit',
+		desc: "Restricts Arceus to a maximum of 100 EVs in any one stat, and only multiples of 10",
+		onValidateSet(set) {
 			let template = this.dex.getTemplate(set.species);
 			if (template.num === 493 && set.evs) {
 				for (let stat in set.evs) {
 					// @ts-ignore
-					if (set.evs[stat] > 100) return ["Arceus may not have more than 100 of any EVs."];
+					const ev = set.evs[stat];
+					if (ev > 100) {
+						return [
+							"Arceus can't have more than 100 EVs in any stat, because Arceus is only obtainable from level 100 events.",
+							"Level 100 Pokemon can only gain EVs from vitamins (Carbos etc), which are capped at 100 EVs.",
+						];
+					}
+					if (!(
+						ev % 10 === 0 ||
+						(ev % 10 === 8 && ev % 4 === 0)
+					)) {
+						return [
+							"Arceus can only have EVs that are multiples of 10, because Arceus is only obtainable from level 100 events.",
+							"Level 100 Pokemon can only gain EVs from vitamins (Carbos etc), which boost in multiples of 10.",
+						];
+					}
 				}
 			}
 		},
@@ -719,41 +764,6 @@ let BattleFormats = {
 			if (move && !this.dex.getImmunity(move, type)) return 1;
 			return -typeMod;
 		},
-	},
-	natdexrule: {
-		effectType: 'Rule',
-		name: 'NatDex Rule',
-		onValidateSet(set) {
-			// These Pokemon are still unobtainable
-			const unobtainables = [
-				'Eevee-Starter', 'Floette-Eternal', 'Magearna-Original', 'Pichu-Spiky-eared', 'Pikachu-Belle', 'Pikachu-Cosplay', 'Pikachu-Libre', 'Pikachu-PhD', 'Pikachu-Pop-Star', 'Pikachu-Rock-Star', 'Pikachu-Starter',
-			];
-			if (unobtainables.includes(set.species)) {
-				return [`${set.name || set.species} does not exist in the National Dex.`];
-			}
-			// Items other than Z-Crystals and Pokémon-specific items should be illegal
-			if (!set.item) return;
-			let item = this.dex.getItem(set.item);
-			if (item.isNonstandard === 'Past' && !item.zMove && !item.itemUser) {
-				return [`${set.name}'s item ${item.name} does not exist in Gen ${this.dex.gen}.`];
-			}
-		},
-		onBegin() {
-			// if you have a mega/primal or z, you can't dynamax
-			for (const pokemon of this.getAllPokemon()) {
-				const item = pokemon.getItem();
-				// this.canMegaEvo check is for Rayquaza.
-				if (item.megaStone || this.canMegaEvo(pokemon) || item.onPrimal || item.zMove) {
-					pokemon.canDynamax = false;
-				}
-			}
-		},
-	},
-	ignoreillegalabilities: {
-		effectType: 'ValidatorRule',
-		name: 'Ignore Illegal Abilities',
-		desc: "Allows Pok&eacute;mon to use any ability",
-		// Implemented in the 'pokemon' ruleset and in team-validator.js
 	},
 	stabmonsmovelegality: {
 		effectType: 'ValidatorRule',
