@@ -626,7 +626,7 @@ exports.Formats = [
 			for (const set of team) {
 				let template = this.dex.getTemplate(set.species);
 				if (speciesTable[template.species]) {
-					return ["You are limited to one of each Pokémon by Species Clause.", "(You have more than one " + template.baseSpecies + ")"];
+					return ["You are limited to one of each Pokémon by Species Clause (except for different Rotom formes). ", "You have more than one " + template.baseSpecies + "."];
 				}
 				speciesTable[template.species] = true;
 				if ( template.tier !== 'CSM' ) {
