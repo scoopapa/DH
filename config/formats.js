@@ -629,6 +629,9 @@ exports.Formats = [
 					return ["You are limited to one of each Pokémon by Species Clause.", "(You have more than one " + template.baseSpecies + ")"];
 				}
 				speciesTable[template.species] = true;
+				if ( template.tier !== 'CSM' ) {
+					return [template.species + ' is not useable in Clean Slate: Micro.'];
+				}
 			}
 		},
   	},
