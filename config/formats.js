@@ -614,7 +614,7 @@ exports.Formats = [
 			"&bullet; <a href=https://www.smogon.com/forums/threads/.3639262/>Clean Slate</a>",
 			"&bullet; <a href=https://www.smogon.com/forums/threads/clean-slate-resources.3643897/>Clean Slate Resources</a>",
 		      ],
-  		ruleset: ['Sleep Clause Mod', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause'],
+  		ruleset: ['Sleep Clause Mod', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause', 'Dynamax Clause'],
 		mod: 'cleanslatemicro',
 		banlist: ['Unreleased', ],
 		onSwitchIn: function (pokemon) {
