@@ -615,26 +615,26 @@ exports.Formats = [
 			`&bullet; <a href="https://www.smogon.com/forums/threads/.3652540/">Clean Slate: Micro</a>`,
 			`&bullet; <a href="https://docs.google.com/spreadsheets/d/1GNLvQsM1F6pw1JS7IA6IyrgME1iJ4M0UWLrieGSPQuU/edit#gid=1994258282">Spreadsheet of Changes</a>`,
 		      ],
-  		ruleset: ['Sleep Clause Mod', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause', 'Dynamax Clause'],
+  		ruleset: ['Obtainable', 'Standard', 'Team Preview', 'Dynamax Clause'],
 		mod: 'cleanslatemicro',
-		banlist: ['Unreleased', ],
+		banlist: ['Unreleased', 'Baton Pass'],
 		onSwitchIn: function (pokemon) {
             this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');
         },
-		// onValidateTeam(team, format) {
+		onValidateTeam(team, format) {
 			/**@type {{[k: string]: true}} */
-			// let speciesTable = {};
-			// for (const set of team) {
-				// let template = this.dex.getTemplate(set.species);
-				// if (speciesTable[template.species]) {
-					// return ["You are limited to one of each Pokémon by Species Clause (except for different Rotom formes). ", "You have more than one " + template.baseSpecies + "."];
-				// }
-				// speciesTable[template.species] = true;
-				// if ( template.tier !== 'CSM' ) {
-					// return [template.species + ' is not useable in Clean Slate: Micro.'];
-				// }
-			// }
-		// },
+			let speciesTable = {};
+			for (const set of team) {
+				let template = this.dex.getTemplate(set.species);
+				if (speciesTable[template.species]) {
+					return ["You are limited to one of each Pokémon by Species Clause (except for different Rotom formes). ", "You have more than one " + template.baseSpecies + "."];
+				}
+				speciesTable[template.species] = true;
+				if ( template.tier !== 'CSM' ) {
+					return [template.species + ' is not useable in Clean Slate: Micro.'];
+				}
+			}
+		},
   	},
 	{
   		name: "[Gen 7] Community Create a Pet Mod",
