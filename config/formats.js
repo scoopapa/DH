@@ -445,14 +445,14 @@ exports.Formats = [
 					}
 				}
 				//Precocious Pupae move change to Stored Power ----------------------------------
-				//let precociousPupae = [ 'kakuna', 'metapod', 'silcoon', 'cascoon', 'spewpa' ]
-				//for (const ally of pokemon.side.pokemon) {
-				//	 if ( precociousPupae.includes( pokemon.speciesid ) 
-				//		&& battle.benchPokemon.getPKMNInfo( 'precociouspupae', sideID ))
-				//	{
-				//		console.log( ally.set )
-				//	}
-				//}
+				let precociousPupae = [ 'kakuna', 'metapod', 'silcoon', 'cascoon', 'spewpa' ]
+				for (const ally of pokemon.side.pokemon) {
+					 if ( precociousPupae.includes( pokemon.speciesid ) 
+						&& battle.getPKMNInfo( 'precociouspupae', sideID ))
+					{
+						console.log( ally.set )
+					}
+				}
 				//-------------------------------------------------------------------------------
 			}
 			for ( var pos in allyBench ) {  

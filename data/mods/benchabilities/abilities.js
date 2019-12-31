@@ -2,7 +2,7 @@
 
 /**@type {{[k: string]: AbilityData}} */
 
-let precociousPupae = [ 'kakuna', 'metapod', 'silcoon', 'cascoon', 'spewpa' ];
+let precociousPupae = { 'kakuna', 'metapod', 'silcoon', 'cascoon', 'spewpa' };
 let BattleAbilities = {
 
 	"confidenceboost": { // Machamp line, Victini, Plusle, Florges
@@ -430,7 +430,7 @@ let BattleAbilities = {
 		onResidualOrder: 26,
 		onResidualSubOrder: 1,
 		onResidual(pokemon) {
-			if (pokemon.activeTurns && precociousPupae.includes(pokemon.speciesid)) {
+			if (pokemon.activeTurns && precociousPupae.includes(pokemon.speciesid) {
 				this.boost({
 					atk: 1,
 					def: 1,
