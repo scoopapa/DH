@@ -610,9 +610,10 @@ exports.Formats = [
   	},
 	{
   		name: "[Gen 7] Clean Slate: Micro",
-  		desc: [
-			"&bullet; <a href=https://www.smogon.com/forums/threads/.3639262/>Clean Slate</a>",
-			"&bullet; <a href=https://www.smogon.com/forums/threads/clean-slate-resources.3643897/>Clean Slate Resources</a>",
+		desc: `A brand new micrometagame from scratch, varied compact metagame existing separately from any tier.`,
+  		threads: [
+			`&bullet; <a href="https://www.smogon.com/forums/threads/.3652540/">Clean Slate: Micro</a>`,
+			`&bullet; <a href="https://docs.google.com/spreadsheets/d/1GNLvQsM1F6pw1JS7IA6IyrgME1iJ4M0UWLrieGSPQuU/edit?usp=sharing">Spreadsheet of Changes</a>`,
 		      ],
   		ruleset: ['Sleep Clause Mod', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause'],
 		mod: 'cleanslatemicro',
