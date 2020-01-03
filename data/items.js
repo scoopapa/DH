@@ -1133,12 +1133,11 @@ let BattleItems = {
 			basePower: 100,
 			type: "Ghost",
 		},
-		onModifyPriorityPriority: -1,
-		onModifyPriority(priority, pokemon) {
+		onFractionalPriorityPriority: -1,
+		onFractionalPriority(priority, pokemon) {
 			if (pokemon.hp <= pokemon.maxhp / 4 || (pokemon.hp <= pokemon.maxhp / 2 && pokemon.hasAbility('gluttony'))) {
 				if (pokemon.eatItem()) {
 					this.add('-activate', pokemon, 'item: Custap Berry', '[consumed]');
-					pokemon.removeVolatile('custapberry');
 					return Math.round(priority) + 0.1;
 				}
 			}
@@ -2198,7 +2197,7 @@ let BattleItems = {
 		fling: {
 			basePower: 10,
 		},
-		onModifyPriority(priority, pokemon) {
+		onFractionalPriority(priority, pokemon) {
 			return Math.round(priority) - 0.1;
 		},
 		num: 316,
@@ -3078,7 +3077,7 @@ let BattleItems = {
 		fling: {
 			basePower: 10,
 		},
-		onModifyPriority(priority, pokemon) {
+		onFractionalPriority(priority, pokemon) {
 			return Math.round(priority) - 0.1;
 		},
 		num: 279,
@@ -4843,8 +4842,8 @@ let BattleItems = {
 	},
 	"quickclaw": {
 		id: "quickclaw",
-		onModifyPriorityPriority: -1,
-		onModifyPriority(priority, pokemon) {
+		onFractionalPriorityPriority: -1,
+		onFractionalPriority(priority, pokemon) {
 			if (this.randomChance(1, 5)) {
 				this.add('-activate', pokemon, 'item: Quick Claw');
 				return Math.round(priority) + 0.1;
@@ -5183,7 +5182,7 @@ let BattleItems = {
 		},
 		onUpdate(pokemon) {
 			if (this.field.getPseudoWeather('trickroom') && pokemon.useItem()) {
-				this.boost({spe: -1});
+				this.boost({spe: -1}, pokemon, pokemon);
 			}
 		},
 		num: 1122,

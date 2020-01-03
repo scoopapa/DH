@@ -1,6 +1,8 @@
 'use strict';
 
 /**@type {{[k: string]: AbilityData}} */
+
+let precociousPupae = { 'kakuna', 'metapod', 'silcoon', 'cascoon', 'spewpa' };
 let BattleAbilities = {
 
 	"confidenceboost": { // Machamp line, Victini, Plusle, Florges
@@ -45,7 +47,6 @@ let BattleAbilities = {
 		id: "protectivepowder",
 		name: "Protective Powder",
 	},
-
 	"arcticarmor": { // Walrein line, Lapras, Rotom-Frost, Kyurem
 		shortDesc: "Allied Ice types summon Mist upon switching in. Aurora Veil now lasts 8 turns.", // Edit in Aurora Veil's moves.js code
 		onSwitchIn(source) { 
@@ -56,7 +57,6 @@ let BattleAbilities = {
 		id: "arcticarmor",
 		name: "Arctic Armor",
 	},
-
 	"heavyexpert": {
 		shortDesc: "Allies' Rock and Steel-type moves have 100% base accuracy.",
 		onAllyModifyMove(move) {
@@ -377,6 +377,73 @@ let BattleAbilities = {
 		},
 		rating: 4.5,
 		num: 156,
+	},
+	"dragonfocus": {
+		shortDesc: "Draco Meteor and Outrage are drawback free, but 10% less powerful.",
+		onAllyModifyMove(move) {
+			if ( move.name ==='Draco Meteor' || move.name === 'Outrage' ) {
+				move.basePower = move.basePower * 0.9;
+				move.self = null;
+				move.onAfterMove = null;
+			}
+		},
+		id: "dragonfocus",
+		name: "Dragon Focus",
+	},
+	"windtunnel": { 
+		shortDesc: "Allied Flying types set Delta Stream on switch in.",
+		onSwitchIn(source) { 
+            
+		},desc: "On switch-in, the weather becomes strong winds that remove the weaknesses of the Flying type from Flying-type Pokemon. This weather remains in effect until this Ability is no longer active for any Pokemon, or the weather is changed by Desolate Land or Primordial Sea.",
+		shortDesc: "On switch-in, strong winds begin until this Ability is not active in battle.",
+		onStart(source) {
+			if (source.hasType('Flying')) {
+				this.field.setWeather('deltastream');
+			}
+		},
+		onAnySetWeather(target, source, weather) {
+			if (this.field.getWeather().id === 'deltastream' && !['desolateland', 'primordialsea', 'deltastream'].includes(weather.id)) return false;
+		},
+		onEnd(pokemon) {
+			if (this.field.weatherData.source !== pokemon) return;
+			for (const target of this.getAllActive()) {
+				if (target === pokemon) continue;
+				if (target.hasAbility('deltastream')) {
+					this.field.weatherData.source = target;
+					return;
+				}
+			}
+			this.field.clearWeather();
+		},
+		onAllyModifyMove(move) {
+			if ( move.name ==='Sky Attack' ) {
+				move.onTryMove = null;
+				move.flags.charge = null;
+			}
+		},
+		id: "windtunnel",
+		name: "Wind Tunnel",
+	},
+	"precociouspupae": {
+		desc: "This Pokemon's Speed is raised by 1 stage at the end of each full turn it has been on the field.",
+		shortDesc: "This Pokemon's Speed is raised 1 stage at the end of each full turn on the field.",
+		onResidualOrder: 26,
+		onResidualSubOrder: 1,
+		onResidual(pokemon) {
+			if (pokemon.activeTurns && precociousPupae.includes(pokemon.speciesid) {
+				this.boost({
+					atk: 1,
+					def: 1,
+					spa: 1,
+					spd: 1,
+					spe: 1,
+				});
+			}
+		},
+		id: "precociouspupae",
+		name: "Precocious Pupae",
+		rating: 4.5,
+		num: 3,
 	},
 };
 

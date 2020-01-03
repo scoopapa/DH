@@ -20,7 +20,7 @@ type SparseStatsTable = Partial<StatsTable>;
 type BoostName = StatNameExceptHP | 'accuracy' | 'evasion';
 type BoostsTable = {[boost in BoostName]: number };
 type SparseBoostsTable = Partial<BoostsTable>;
-type Nonstandard = 'Glitch' | 'Past' | 'Future' | 'CAP' | 'LGPE' | 'Pokestar' | 'Custom';
+type Nonstandard = 'Past' | 'Future' | 'Unobtainable' | 'CAP' | 'LGPE' | 'Custom';
 type PokemonSet = {
 	name: string,
 	species: string,
@@ -156,6 +156,7 @@ interface MoveEventMethods {
 	onHitSide?: (this: Battle, side: Side, source: Pokemon, move: ActiveMove) => boolean | null | "" | void
 	onModifyMove?: (this: Battle, move: ActiveMove, pokemon: Pokemon, target: Pokemon) => void
 	onMoveFail?: CommonHandlers['VoidMove']
+	onModifyType?: (this: Battle, move: ActiveMove, pokemon: Pokemon, target: Pokemon) => void
 	onPrepareHit?: CommonHandlers['ResultMove']
 	onTry?: CommonHandlers['ResultSourceMove']
 	onTryHit?: CommonHandlers['ExtResultSourceMove']
@@ -206,6 +207,7 @@ interface EventMethods {
 	onEffectiveness?: MoveEventMethods['onEffectiveness']
 	onFaint?: CommonHandlers['VoidEffect']
 	onFlinch?: ((this: Battle, pokemon: Pokemon) => boolean | void) | boolean
+	onFractionalPriority?: CommonHandlers['ModifierSourceMove']
 	onHit?: MoveEventMethods['onHit']
 	onImmunity?: (this: Battle, type: string, pokemon: Pokemon) => void
 	onLockMove?: string | ((this: Battle, pokemon: Pokemon) => void | string)
@@ -219,6 +221,7 @@ interface EventMethods {
 	onModifyMove?: MoveEventMethods['onModifyMove']
 	onModifyPriority?: CommonHandlers['ModifierSourceMove']
 	onModifySecondaries?: (this: Battle, secondaries: SecondaryEffect[], target: Pokemon, source: Pokemon, move: ActiveMove) => void
+	onModifyType?: MoveEventMethods['onModifyType']
 	onModifySpA?: CommonHandlers['ModifierSourceMove']
 	onModifySpD?: CommonHandlers['ModifierMove']
 	onModifySpe?: (this: Battle, spe: number, pokemon: Pokemon) => number | void
@@ -306,6 +309,7 @@ interface EventMethods {
 	onAllyModifySpA?: CommonHandlers['ModifierSourceMove']
 	onAllyModifySpD?: CommonHandlers['ModifierMove']
 	onAllyModifySpe?: (this: Battle, spe: number, pokemon: Pokemon) => number | void
+	onAllyModifyType?: MoveEventMethods['onModifyType']
 	onAllyModifyWeight?: (this: Battle, weighthg: number, pokemon: Pokemon) => number | void
 	onAllyMoveAborted?: CommonHandlers['VoidMove']
 	onAllyNegateImmunity?: ((this: Battle, pokemon: Pokemon, type: string) => boolean | void) | boolean
@@ -390,6 +394,7 @@ interface EventMethods {
 	onFoeModifySpA?: CommonHandlers['ModifierSourceMove']
 	onFoeModifySpD?: CommonHandlers['ModifierMove']
 	onFoeModifySpe?: (this: Battle, spe: number, pokemon: Pokemon) => number | void
+	onFoeModifyType?: MoveEventMethods['onModifyType']
 	onFoeModifyWeight?: (this: Battle, weighthg: number, pokemon: Pokemon) => number | void
 	onFoeMoveAborted?: CommonHandlers['VoidMove']
 	onFoeNegateImmunity?: ((this: Battle, pokemon: Pokemon, type: string) => boolean | void) | boolean
@@ -474,6 +479,7 @@ interface EventMethods {
 	onSourceModifySpA?: CommonHandlers['ModifierSourceMove']
 	onSourceModifySpD?: CommonHandlers['ModifierMove']
 	onSourceModifySpe?: (this: Battle, spe: number, pokemon: Pokemon) => number | void
+	onSourceModifyType?: MoveEventMethods['onModifyType']
 	onSourceModifyWeight?: (this: Battle, weighthg: number, pokemon: Pokemon) => number | void
 	onSourceMoveAborted?: CommonHandlers['VoidMove']
 	onSourceNegateImmunity?: ((this: Battle, pokemon: Pokemon, type: string) => boolean | void) | boolean
@@ -558,6 +564,7 @@ interface EventMethods {
 	onAnyModifySpA?: CommonHandlers['ModifierSourceMove']
 	onAnyModifySpD?: CommonHandlers['ModifierMove']
 	onAnyModifySpe?: (this: Battle, spe: number, pokemon: Pokemon) => number | void
+	onAnyModifyType?: MoveEventMethods['onModifyType']
 	onAnyModifyWeight?: (this: Battle, weighthg: number, pokemon: Pokemon) => number | void
 	onAnyMoveAborted?: CommonHandlers['VoidMove']
 	onAnyNegateImmunity?: ((this: Battle, pokemon: Pokemon, type: string) => boolean | void) | boolean
@@ -619,6 +626,7 @@ interface EventMethods {
 	onFoeModifyDefPriority?: number
 	onFoeRedirectTargetPriority?: number
 	onFoeTrapPokemonPriority?: number
+	onFractionalPriorityPriority?: number
 	onHitPriority?: number
 	onModifyAccuracyPriority?: number
 	onModifyAtkPriority?: number
@@ -628,6 +636,7 @@ interface EventMethods {
 	onModifyPriorityPriority?: number
 	onModifySpAPriority?: number
 	onModifySpDPriority?: number
+	onModifyTypePriority?: number
 	onModifyWeightPriority?: number
 	onRedirectTargetPriority?: number
 	onResidualOrder?: number
@@ -928,7 +937,7 @@ interface TemplateData {
 	otherForms?: string[]
 	otherFormes?: string[]
 	prevo?: string
-	inheritsLearnsetFrom?: string
+	inheritsFrom?: string | string[]
 }
 
 interface ModdedTemplateData extends Partial<TemplateData> {
@@ -1002,6 +1011,7 @@ interface FormatsData extends EventMethods {
 	mod?: string
 	onBasePowerPriority?: number
 	onModifyMovePriority?: number
+	onModifyTypePriority?: number
 	onSwitchInPriority?: number
 	rated?: boolean
 	minSourceGen?: number
@@ -1183,6 +1193,8 @@ namespace Actions {
 		order: 3 | 5 | 200 | 201 | 199;
 		/** priority of the action (lower first) */
 		priority: number;
+		/** fractional priority of the action (lower first) */
+		fractionalPriority: number;
 		/** speed of pokemon using move (higher first if priority tie) */
 		speed: number;
 		/** the pokemon doing the move */

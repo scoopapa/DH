@@ -89,6 +89,7 @@ exports.BattleLearnsets = {
 		attract: ["7M", "7V", "6M", "5M", "4M", "3M"],
 		bide: ["7V"],
 		bite: ["7L11", "7L1", "7V", "6L1", "5L13", "4L13", "3L16"],
+		bravebird: ["7L1"],
 		captivate: ["4M"],
 		circlethrow: ["7L1"],
 		confide: ["7M", "6M"],

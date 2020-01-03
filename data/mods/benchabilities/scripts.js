@@ -207,5 +207,121 @@ exports.BattleScripts = {
 		this.modData('Pokedex', 'hydreigon').abilities['S'] = 'Sinister Escort';
 		this.modData('Pokedex', 'misdreavus').abilities['S'] = 'Sinister Escort';
 		this.modData('Pokedex', 'mismagius').abilities['S'] = 'Sinister Escort';
+		
+		// Dragon Focus: Dragonite, Flygon, Goodra
+		this.modData('Pokedex', 'dragonite').abilities['S'] = 'Dragon Focus';
+		this.modData('Pokedex', 'goodra').abilities['S'] = 'Dragon Focus';
+		this.modData('Pokedex', 'flygon').abilities['S'] = 'Dragon Focus';
+		
+		// Wind Tunnel: Ducklett, Swanna,
+		this.modData('Pokedex', 'ducklett').abilities['S'] = 'Wind Tunnel';
+		this.modData('Pokedex', 'swanna').abilities['S'] = 'Wind Tunnel';
+		
+		// Precocious Pupae: Metapod, Kakuna, Dottler, Swadloon,
+		this.modData('Pokedex', 'metapod').abilities['S'] = 'Precocious Pupae';
+		this.modData('Pokedex', 'kakuna').abilities['S'] = 'Precocious Pupae';
+		this.modData('Pokedex', 'dottler').abilities['S'] = 'Precocious Pupae';
+		this.modData('Pokedex', 'swadloon').abilities['S'] = 'Precocious Pupae';
+		
+		// Eviofite: Mankey, Doublade, Clobbopus
+		// this.modData('Pokedex', 'doublade').abilities['S'] = 'Eviofite';
+		// this.modData('Pokedex', 'mankey').abilities['S'] = 'Eviofite';
+		// this.modData('Pokedex', 'clobbopus').abilities['S'] = 'Eviofite';
+		
+		// Deceptive Endurance: Ledyba, Ledian, Silcoon, Cascoon, Dustox
+		// this.modData('Pokedex', 'ledyba').abilities['S'] = 'Deceptive Endurance';
+		// this.modData('Pokedex', 'ledian').abilities['S'] = 'Deceptive Endurance';
+		// this.modData('Pokedex', 'silcoon').abilities['S'] = 'Deceptive Endurance';
+		// this.modData('Pokedex', 'cascoon').abilities['S'] = 'Deceptive Endurance';
+		// this.modData('Pokedex', 'dustox').abilities['S'] = 'Deceptive Endurance';
+		
+		//Pecking Order: Pidgey, Pidgeotto, Pidgeot, Pidove, Tranquill, Unfezant, Vullaby, Mandibuzz, Fletchling, Fletchinder, Talonflame
+		// this.modData('Pokedex', 'pidgey').abilities['S'] = 'Pecking Order';
+		// this.modData('Pokedex', 'pidgeotto').abilities['S'] = 'Pecking Order';
+		// this.modData('Pokedex', 'pidgeot').abilities['S'] = 'Pecking Order';
+		// this.modData('Pokedex', 'pidove').abilities['S'] = 'Pecking Order';
+		// this.modData('Pokedex', 'tranquill').abilities['S'] = 'Pecking Order';
+		// this.modData('Pokedex', 'unfezant').abilities['S'] = 'Pecking Order';
+		// this.modData('Pokedex', 'vullaby').abilities['S'] = 'Pecking Order';
+		// this.modData('Pokedex', 'mandibuzz').abilities['S'] = 'Pecking Order';
+		// this.modData('Pokedex', 'fletchling').abilities['S'] = 'Pecking Order';
+		// this.modData('Pokedex', 'fletchinder').abilities['S'] = 'Pecking Order';
+		// this.modData('Pokedex', 'talonflame').abilities['S'] = 'Pecking Order';
+		
+		//Instinctive Adjustment: Sneasel
+		// this.modData('Pokedex', 'sneasel').abilities['S'] = 'Instinctive Adjustment';
+		
+		//Sunlight Supercharge: Vulpix, Ninetales, Torkoal, Lurantis
+		// this.modData('Pokedex', 'vulpix').abilities['S'] = 'Sunlight Supercharge';
+		// this.modData('Pokedex', 'ninetales').abilities['S'] = 'Sunlight Supercharge';
+		// this.modData('Pokedex', 'torkoal').abilities['S'] = 'Sunlight Supercharge';
+		// this.modData('Pokedex', 'lurantis').abilities['S'] = 'Sunlight Supercharge';
+		
+		//Alchemy: Solgaleo, Lunala, Grimer-Alola, Muk-Alola, Salandit, Salazzle, Croagunk, Toxicroak
+		// this.modData('Pokedex', 'solgaleo').abilities['S'] = 'Alchemy';
+		// this.modData('Pokedex', 'lunala').abilities['S'] = 'Alchemy';
+		// this.modData('Pokedex', 'grimeralola').abilities['S'] = 'Alchemy';
+		// this.modData('Pokedex', 'mukalola').abilities['S'] = 'Alchemy';
+		// this.modData('Pokedex', 'salandit').abilities['S'] = 'Alchemy';
+		// this.modData('Pokedex', 'salazzle').abilities['S'] = 'Alchemy';
+		// this.modData('Pokedex', 'croagunk').abilities['S'] = 'Alchemy';
+		// this.modData('Pokedex', 'toxicroak').abilities['S'] = 'Alchemy';
+		
+		//Surround: Wishiwashi
+		// this.modData('Pokedex', 'wishiwashi').abilities['S'] = 'Surround';
+		
+		//Surface to Air: Geodude, Graveler, Golem, Larvitar, Pupitar, Silicobra, Sandaconda
+		// this.modData('Pokedex', 'geodude').abilities['S'] = 'Surface to Air';
+		// this.modData('Pokedex', 'graveler').abilities['S'] = 'Surface to Air';
+		// this.modData('Pokedex', 'golem').abilities['S'] = 'Surface to Air';
+		// this.modData('Pokedex', 'larvitar').abilities['S'] = 'Surface to Air';
+		// this.modData('Pokedex', 'pupitar').abilities['S'] = 'Surface to Air';
+		// this.modData('Pokedex', 'silicobra').abilities['S'] = 'Surface to Air';
+		// this.modData('Pokedex', 'sandaconda').abilities['S'] = 'Surface to Air';
+		
+		//Combo Attacker: Shellder, Cloyster, Mincinno, Cincinno, Pikipek, Trumbeak, Toucannon
+		// this.modData('Pokedex', 'shellder').abilities['S'] = 'Combo Attacker';
+		// this.modData('Pokedex', 'cloyster').abilities['S'] = 'Combo Attacker';
+		// this.modData('Pokedex', 'mincinno').abilities['S'] = 'Combo Attacker';
+		// this.modData('Pokedex', 'cincinno').abilities['S'] = 'Combo Attacker';
+		// this.modData('Pokedex', 'pikipek').abilities['S'] = 'Combo Attacker';
+		// this.modData('Pokedex', 'trumbeak').abilities['S'] = 'Combo Attacker';
+		// this.modData('Pokedex', 'toucannon').abilities['S'] = 'Combo Attacker';
+		
+		//Fertilizer: Miltank, Mudbray, Mudsdale, Bouffalant, Comfey
+		// this.modData('Pokedex', 'miltank').abilities['S'] = 'Fertilizer';
+		// this.modData('Pokedex', 'mudbray').abilities['S'] = 'Fertilizer';
+		// this.modData('Pokedex', 'mudsdale').abilities['S'] = 'Fertilizer';
+		// this.modData('Pokedex', 'bouffalant').abilities['S'] = 'Fertilizer';
+		// this.modData('Pokedex', 'comfey').abilities['S'] = 'Fertilizer';
+		
+		//Lunar Veil: Cresselia
+		// this.modData('Pokedex', 'cresselia').abilities['S'] = 'Lunar Veil';
+		
+		//Electro Magnet: Magnemite, Magneton, Magnezone, Nosepass, Probopass, Geodude-Alola, Graveler-Alola, Golem-Alola
+		// this.modData('Pokedex', 'magnemite').abilities['S'] = 'Electro Magnet';
+		// this.modData('Pokedex', 'magneton').abilities['S'] = 'Electro Magnet';
+		// this.modData('Pokedex', 'magnezone').abilities['S'] = 'Electro Magnet';
+		// this.modData('Pokedex', 'nosepass').abilities['S'] = 'Electro Magnet';
+		// this.modData('Pokedex', 'probopass').abilities['S'] = 'Electro Magnet';
+		// this.modData('Pokedex', 'geodudealola').abilities['S'] = 'Electro Magnet';
+		// this.modData('Pokedex', 'graveleralola').abilities['S'] = 'Electro Magnet';
+		// this.modData('Pokedex', 'golemalola').abilities['S'] = 'Electro Magnet';
+		
+		//Legendary Presence: Moltres, Articuno, Zapdos, Mewtwo
+		// this.modData('Pokedex', 'moltres').abilities['S'] = 'Legendary Presence';
+		// this.modData('Pokedex', 'articuno').abilities['S'] = 'Legendary Presence';
+		// this.modData('Pokedex', 'zapdos').abilities['S'] = 'Legendary Presence';
+		// this.modData('Pokedex', 'mewtwo').abilities['S'] = 'Legendary Presence';
+		
+		//Ancestry: Horsea, Drampa
+		// this.modData('Pokedex', 'horsea').abilities['S'] = 'Ancestry';
+		// this.modData('Pokedex', 'drampa').abilities['S'] = 'Ancestry';
+		
+		//Phoneme Fantasy: Ditto, Smeargle
+		// this.modData('Pokedex', 'ditto').abilities['S'] = 'Phoneme Fantasy';
+		// this.modData('Pokedex', 'smeargle').abilities['S'] = 'Phoneme Fantasy';
+
+
 	}
 };
