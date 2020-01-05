@@ -83,6 +83,9 @@ let BattleAliases = {
 	"momo": "Creati",
 	"momoyaoyorozu": "Creati",
 	"yaoyorozumomo": "Creati",
+	"kalel": "Superman",
+	"clarkkent": "Superman",
+	"spiderman": "Miles Morales",
 };
 
 exports.BattleAliases = BattleAliases;
