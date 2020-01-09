@@ -511,13 +511,13 @@ exports.Formats = [
 			`&bullet; <a href="https://www.smogon.com/forums/threads/gen-8-more-balanced-hackmons.3644050/">More Balanced Hackmons</a>`,
 		],
 		mod: 'morebalancedhackmons',
-		ruleset: [ 'OHKO Clause', 'Evasion Moves Clause', 'CFZ Clause', 
+		ruleset: [ 'OHKO Clause', 'Evasion Moves Clause', 'CFZ Clause', 'Sleep Clause',
 					'Endless Battle Clause', 'Team Preview', 'HP Percentage Mod', 'Cancel Mod', 
 					'Species Clause', 'Standard Natdex' ],
 		banlist: ['Groudon-Primal', 'Arena Trap', 'Huge Power', 'Illusion', 'Innards Out', 'Magnet Pull', 
 					'Moody', 'Parental Bond', 'Protean', 'Psychic Surge', 'Pure Power', 'Shadow Tag', 
 					'Stakeout', 'Water Bubble', 'Wonder Guard', 'Gengarite', 'Chatter', 'Comatose + Sleep Talk',
-					'Libero', 'Neutralizing Gas', 'Gorilla Tactics', 'Intrepid Sword'],
+					'Libero', 'Neutralizing Gas', 'Gorilla Tactics', 'Intrepid Sword', 'Contrary'],
 		onValidateTeam(team, format){
 			/**@type {{[k: string]: true}} */
 			let abilityTable = [];
@@ -527,6 +527,33 @@ exports.Formats = [
 				}
 				else {
 					return [`You have more than one pokemon with the ability ${set.ability}.`];
+				}
+			}
+		},
+		onChangeSet(set) {
+			const item = toID(set.item);
+			if (set.species === 'Zacian' || set.species === 'Zacian-Crowned') {
+				if (item === 'rustedsword') {
+					set.species = 'Zacian-Crowned';
+					set.ability = 'Intrepid Sword';
+					let ironHead = set.moves.indexOf('ironhead');
+					if (ironHead >= 0) {
+						set.moves[ironHead] = 'behemothblade';
+					}
+				} else {
+					set.species = 'Zacian';
+				}
+			}
+			if (set.species === 'Zamazenta' || set.species === 'Zamazenta-Crowned') {
+				if (item === 'rustedshield') {
+					set.species = 'Zamazenta-Crowned';
+					set.ability = 'Dauntless Shield';
+					let ironHead = set.moves.indexOf('ironhead');
+					if (ironHead >= 0) {
+						set.moves[ironHead] = 'behemothbash';
+					}
+				} else {
+					set.species = 'Zamazenta';
 				}
 			}
 		},
