@@ -6,7 +6,7 @@ exports.BattleMovedex = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		desc: "Boosts the user and its allies' Speed by 1 stage. BP scales with the base move's BP.",
+		desc: "Boosts the user and its allies' Speed by 1 stage, but lowers Atk and SpA one stage. BP scales with the base move's BP.",
 		shortDesc: "User/allies: +1 Spe. BP scales w/ base move.",
 		id: "maxairstream",
 		name: "Max Airstream",
@@ -19,8 +19,8 @@ exports.BattleMovedex = {
 				if (!source.volatiles['dynamax']) return;
 				for (let pokemon of source.side.active) {
 					this.boost( {spe: 1},
-								{spa: 1},
-								{atk: 1},
+								{spa: -1},
+								{atk: -1},
 								pokemon );
 				}
 			},
@@ -34,7 +34,7 @@ exports.BattleMovedex = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		desc: "Lowers all the opposing Pokemon's Special Defense by 1 stage. BP scales with the base move's BP.",
+		desc: "Lowers all the opposing Pokemon's Special Defense by 1 stage, but subjects user's team to Torment. BP scales with the base move's BP.",
 		shortDesc: "Foes: -1 Sp.Def. BP scales with base move's BP.",
 		id: "maxdarkness",
 		name: "Max Darkness",
@@ -48,6 +48,9 @@ exports.BattleMovedex = {
 				for (let pokemon of source.side.foe.active) {
 					this.boost({spd: -1}, pokemon);
 				}
+				for (let pokemon of source.side.active) {
+					pokemon.addVolatile('torment');
+				}
 			},
 		},
 		target: "adjacentFoe",
@@ -59,7 +62,7 @@ exports.BattleMovedex = {
 		accuracy: true,
 		basePower: 100,
 		category: "Physical",
-		desc: "Summons Sunny Day. BP scales with the base move's BP.",
+		desc: "Summons Sunny Day, but Incinerates the user's item. BP scales with the base move's BP.",
 		shortDesc: "Sets Sun. BP scales with base move's BP.",
 		id: "maxflare",
 		isViable: true,
@@ -72,6 +75,10 @@ exports.BattleMovedex = {
 			onHit(source) {
 				if (!source.volatiles['dynamax']) return;
 				this.field.setWeather('sunnyday');
+				let item = source.getItem();
+				if ((item.isBerry || item.isGem) && source.takeItem(source)) {
+					this.add('-enditem', source, item.name, '[from] move: Incinerate');
+				}
 			},
 		},
 		target: "adjacentFoe",
@@ -83,7 +90,7 @@ exports.BattleMovedex = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		desc: "Lowers all the opposing Pokemon's Special Attack by 1 stage. BP scales with the base move's BP.",
+		desc: "Lowers all the opposing Pokemon's Special Attack by 1 stage, but lowers Special Defense. BP scales with the base move's BP.",
 		shortDesc: "Foes: -1 Sp.Atk. BP scales with base move's BP.",
 		id: "maxflutterby",
 		name: "Max Flutterby",
@@ -97,6 +104,9 @@ exports.BattleMovedex = {
 				for (let pokemon of source.side.foe.active) {
 					this.boost({spa: -1}, pokemon);
 				}
+				for (let pokemon of source.side.active) {
+					this.boost( {spd: -1}, pokemon );
+				}
 			},
 		},
 		target: "adjacentFoe",
@@ -108,7 +118,7 @@ exports.BattleMovedex = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		desc: "Summons Rain Dance. BP scales with the base move's BP.",
+		desc: "Summons Rain Dance, but lowers Defense. BP scales with the base move's BP.",
 		shortDesc: "Sets Rain. BP scales with base move's BP.",
 		id: "maxgeyser",
 		name: "Max Geyser",
@@ -120,6 +130,9 @@ exports.BattleMovedex = {
 			onHit(source) {
 				if (!source.volatiles['dynamax']) return;
 				this.field.setWeather('raindance');
+				for (let pokemon of source.side.active) {
+					this.boost( {def: -1}, pokemon );
+				}
 			},
 		},
 		target: "adjacentFoe",
@@ -176,7 +189,7 @@ exports.BattleMovedex = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		desc: "Summons Hail. BP scales with the base move's BP.",
+		desc: "Summons Hail, but clears away user's stat boosts. BP scales with the base move's BP.",
 		shortDesc: "Sets Hail. BP scales with base move's BP.",
 		id: "maxhailstorm",
 		name: "Max Hailstorm",
@@ -188,6 +201,7 @@ exports.BattleMovedex = {
 			onHit(source) {
 				if (!source.volatiles['dynamax']) return;
 				this.field.setWeather('hail');
+				this.add('-clearboost', source);
 			},
 		},
 		target: "adjacentFoe",
@@ -199,7 +213,7 @@ exports.BattleMovedex = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		desc: "Boosts the user and its allies' Attack by 1 stage. BP scales with the base move's BP.",
+		desc: "Boosts the user and its allies' Attack by 1 stage, by user takes 50% recoil damage. BP scales with the base move's BP.",
 		shortDesc: "User/allies: +1 Atk. BP scales w/ base move.",
 		id: "maxknuckle",
 		name: "Max Knuckle",
@@ -215,6 +229,7 @@ exports.BattleMovedex = {
 				}
 			},
 		},
+		recoil: [50, 100],
 		target: "adjacentFoe",
 		type: "Fighting",
 		contestType: "Cool",
@@ -224,7 +239,7 @@ exports.BattleMovedex = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		desc: "Summons Electric Terrain. BP scales with the base move's BP.",
+		desc: "Summons Electric Terrain, but user takes 33% recoil damage. BP scales with the base move's BP.",
 		shortDesc: "Sets Electric Terrain. BP scales with base move's BP.",
 		id: "maxlightning",
 		name: "Max Lightning",
@@ -238,6 +253,7 @@ exports.BattleMovedex = {
 				this.field.setTerrain('electricterrain');
 			},
 		},
+		recoil: [33, 100],
 		target: "adjacentFoe",
 		type: "Electric",
 		contestType: "Cool",
@@ -247,7 +263,7 @@ exports.BattleMovedex = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		desc: "Summons Psychic Terrain. BP scales with the base move's BP.",
+		desc: "Summons Psychic Terrain. User must recharge after Dynamax ends. BP scales with the base move's BP.",
 		shortDesc: "Sets Psychic Terrain. BP scales with base move's BP.",
 		id: "maxmindstorm",
 		name: "Max Mindstorm",
@@ -270,7 +286,7 @@ exports.BattleMovedex = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		desc: "Boosts the user and its allies' Special Attack by 1 stage. BP scales with the base move's BP.",
+		desc: "Boosts the user and its allies' Special Attack by 1 stage. User is badly poisoned regardless of typing. BP scales with the base move's BP.",
 		shortDesc: "User/allies: +1 SpA. BP scales w/ base move.",
 		id: "maxooze",
 		name: "Max Ooze",
@@ -279,10 +295,13 @@ exports.BattleMovedex = {
 		flags: {},
 		isMax: true,
 		self: {
-			onHit(source) {
+			onHit(target, source, move) {
 				if (!source.volatiles['dynamax']) return;
 				for (let pokemon of source.side.active) {
 					this.boost({spa: 1}, pokemon);
+				}
+				if ( !source.status ){
+					source.setStatus( 'tox', source, move )
 				}
 			},
 		},
@@ -355,7 +374,7 @@ exports.BattleMovedex = {
 			onHit(source) {
 				if (!source.volatiles['dynamax']) return;
 				for (let pokemon of source.side.active) {
-					this.boost({spd: 1}, pokemon);
+					this.boost({spd: 1}, {accuracy: -1}, pokemon);
 				}
 			},
 		},
@@ -380,6 +399,9 @@ exports.BattleMovedex = {
 			onHit(source) {
 				if (!source.volatiles['dynamax']) return;
 				this.field.setWeather('sandstorm');
+				for (let pokemon of source.side.active) {
+					this.boost({atk: -1}, pokemon);
+				}
 			},
 		},
 		target: "adjacentFoe",
@@ -403,6 +425,9 @@ exports.BattleMovedex = {
 			onHit(source) {
 				if (!source.volatiles['dynamax']) return;
 				this.field.setTerrain('mistyterrain');
+				for (let pokemon of source.side.active) {
+					this.boost({spa: -1}, pokemon);
+				}
 			},
 		},
 		target: "adjacentFoe",
@@ -426,7 +451,7 @@ exports.BattleMovedex = {
 			onHit(source) {
 				if (!source.volatiles['dynamax']) return;
 				for (let pokemon of source.side.active) {
-					this.boost({def: 1}, pokemon);
+					this.boost({def: 1}, {spe: -1}, pokemon);
 				}
 			},
 		},
@@ -454,6 +479,16 @@ exports.BattleMovedex = {
 					this.boost({spe: -1}, pokemon);
 				}
 			},
+			volatileStatus: 'maxstrike',
+			effect: {
+			noCopy: true,
+			onStart(pokemon) {
+				this.add('-start', pokemon, 'Max Strike');
+			},
+			onNegateImmunity(pokemon, type) {
+				if (pokemon.hasType('Ghost') && ['Normal', 'Fighting'].includes(type)) return false;
+				if (pokemon.hasType('Normal') && ['Ghost'].includes(type)) return false;
+			},
 		},
 		target: "adjacentFoe",
 		type: "Normal",
@@ -478,6 +513,7 @@ exports.BattleMovedex = {
 				for (let pokemon of source.side.foe.active) {
 					this.boost({atk: -1}, pokemon);
 				}
+				source.addVolatile('confusion');
 			},
 		},
 		target: "adjacentFoe",
