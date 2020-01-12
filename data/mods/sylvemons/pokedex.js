@@ -1650,4 +1650,8 @@ exports.BattlePokedex = {
 		inherit: true,
       abilities: {0: "Beast Boost", H: "Knight's Blade"},
 	},
+	grookey: {
+			inherit: true,        
+		abilities: {0: "Overgrow", H: "Loudspeaker"},
+    },
 };
