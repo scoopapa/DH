@@ -23,21 +23,21 @@ exports.BattleItems = {
 	"choiceband": {
 		inherit: true,
 		onModifyAtk(atk, pokemon) {
-			if (pokemon.volatiles['dynamax'] || pokemon.ability === 'gorillatactics') return;
+			if (pokemon.ability === 'gorillatactics') return;
 			return this.chainModify(1.5);
 		},
 	},
 	"choicescarf": {
 		inherit: true,
 		onModifySpe(spe, pokemon) {
-			if (pokemon.volatiles['dynamax'] || pokemon.ability === 'gorillatactics') return;
+			if (pokemon.ability === 'gorillatactics') return;
 			return this.chainModify(1.5);
 		},
 	},
 	"choicespecs": {
 		inherit: true,
 		onModifySpA(spa, pokemon) {
-			if (pokemon.volatiles['dynamax'] || pokemon.ability === 'gorillatactics') return;
+			if (pokemon.ability === 'gorillatactics') return;
 			return this.chainModify(1.5);
 		},
 	},
