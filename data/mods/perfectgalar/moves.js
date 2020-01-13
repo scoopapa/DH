@@ -480,13 +480,15 @@ exports.BattleMovedex = {
 				}
 			},
 			volatileStatus: 'maxstrike',
-			noCopy: true,
-			onStart(pokemon) {
-				this.add('-start', pokemon, 'Max Strike');
-			},
-			onNegateImmunity(pokemon, type) {
-				if (pokemon.hasType('Ghost') && ['Normal', 'Fighting'].includes(type)) return false;
-				if (pokemon.hasType('Normal') && ['Ghost'].includes(type)) return false;
+			effect: {
+				noCopy: true,
+				onStart(pokemon) {
+					this.add('-start', pokemon, 'Max Strike');
+				},
+				onNegateImmunity(pokemon, type) {
+					if (pokemon.hasType('Ghost') && ['Normal', 'Fighting'].includes(type)) return false;
+					if (pokemon.hasType('Normal') && ['Ghost'].includes(type)) return false;
+				},
 			},
 		},
 		target: "adjacentFoe",
