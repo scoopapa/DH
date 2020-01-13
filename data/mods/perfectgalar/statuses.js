@@ -22,7 +22,7 @@ exports.BattleStatuses = {
 					this.add('-message', pokemon.baseStats[statName] );
 				}
 			}
-			this.add('-message', 'dynamax debug' );
+			console.log( 'dynamax debug' );
 			if (pokemon.species === 'Shedinja') return;
 
 			// Changes based on dynamax level, 2 is max (at LVL 10)
