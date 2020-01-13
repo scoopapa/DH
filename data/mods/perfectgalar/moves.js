@@ -480,7 +480,6 @@ exports.BattleMovedex = {
 				}
 			},
 			volatileStatus: 'maxstrike',
-			effect: {
 			noCopy: true,
 			onStart(pokemon) {
 				this.add('-start', pokemon, 'Max Strike');
