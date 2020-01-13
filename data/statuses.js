@@ -740,7 +740,6 @@ let BattleStatuses = {
 			pokemon.hp = Math.floor(pokemon.hp * ratio);
 			this.add('-heal', pokemon, pokemon.getHealth, '[silent]');
 		},
-		onFlinch: false,
 		onBeforeSwitchOut(pokemon) {
 			pokemon.removeVolatile('dynamax');
 		},
