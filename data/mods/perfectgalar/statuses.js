@@ -18,6 +18,8 @@ exports.BattleStatuses = {
 				for (let statName in pokemon.baseStats) {
 					if (statName === 'hp') continue;
 					pokemon.baseStats[statName] = this.dex.clampIntRange(pokemon.baseStats[statName] + 10, 1, 255);
+					console.log( statName );
+					console.log( pokemon.baseStats[statName] );
 				}
 			}
 			if (pokemon.species === 'Shedinja') return;
@@ -29,19 +31,24 @@ exports.BattleStatuses = {
 			pokemon.hp = Math.floor(pokemon.hp * ratio);
 			this.add('-heal', pokemon, pokemon.getHealth, '[silent]');
 		},
-		onFlinch: false,
-		onBeforeSwitchOut(pokemon) {
-			pokemon.removeVolatile('dynamax');
-		},
+		// onBeforeSwitchOut(pokemon) {
+			// pokemon.removeVolatile('dynamax');
+		// },
 		onSourceModifyDamage(damage, source, target, move) {
 			if (move.id === 'behemothbash' || move.id === 'behemothblade' || move.id === 'dynamaxcannon') {
 				return this.chainModify(2);
 			}
 		},
+		onTrapPokemon(pokemon) {
+			pokemon.tryTrap();
+		},
 		onDragOutPriority: 2,
 		onDragOut(pokemon) {
-			this.add('-block', pokemon, 'Dynamax');
-			return null;
+			if( !pokemon.redCardWhileDynamax ){
+				this.add('-block', pokemon, 'Dynamax');
+				return null;
+			}
+			pokemon.removeVolatile('dynamax');
 		},
 		onEnd(pokemon) {
 			this.add('-end', pokemon, 'Dynamax');

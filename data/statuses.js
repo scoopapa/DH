@@ -740,12 +740,10 @@ let BattleStatuses = {
 			pokemon.hp = Math.floor(pokemon.hp * ratio);
 			this.add('-heal', pokemon, pokemon.getHealth, '[silent]');
 		},
-		onTrapPokemon(pokemon) {
-			pokemon.tryTrap();
+		onFlinch: false,
+		onBeforeSwitchOut(pokemon) {
+			pokemon.removeVolatile('dynamax');
 		},
-		// onBeforeSwitchOut(pokemon) {
-			// pokemon.removeVolatile('dynamax');
-		// },
 		onSourceModifyDamage(damage, source, target, move) {
 			if (move.id === 'behemothbash' || move.id === 'behemothblade' || move.id === 'dynamaxcannon') {
 				return this.chainModify(2);
@@ -753,11 +751,8 @@ let BattleStatuses = {
 		},
 		onDragOutPriority: 2,
 		onDragOut(pokemon) {
-			if( !pokemon.redCardWhileDynamax ){
-				this.add('-block', pokemon, 'Dynamax');
-				return null;
-			}
-			pokemon.removeVolatile('dynamax');
+			this.add('-block', pokemon, 'Dynamax');
+			return null;
 		},
 		onEnd(pokemon) {
 			this.add('-end', pokemon, 'Dynamax');
