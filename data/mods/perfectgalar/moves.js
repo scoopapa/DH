@@ -355,6 +355,7 @@ exports.BattleMovedex = {
 				for (let pokemon of source.side.foe.active) {
 					this.boost({def: -1}, pokemon);
 				}
+				source.addVolatile('curse');
 			},
 		},
 		target: "adjacentFoe",
