@@ -53,3 +53,5 @@ let BattleScripts = {
 		
 		// Silvally
 		this.modData('Learnsets', 'silvally').learnset.recover = ['7M'];
+	},
+};
