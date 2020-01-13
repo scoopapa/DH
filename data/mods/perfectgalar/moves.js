@@ -18,9 +18,9 @@ exports.BattleMovedex = {
 			onHit(source) {
 				if (!source.volatiles['dynamax']) return;
 				for (let pokemon of source.side.active) {
-					this.boost( {spe: 1},
-								{spa: -1},
-								{atk: -1},
+					this.boost( {spe: 1,
+								spa: -1,
+								atk: -1},
 								pokemon );
 				}
 			},
@@ -75,11 +75,15 @@ exports.BattleMovedex = {
 			onHit(source) {
 				if (!source.volatiles['dynamax']) return;
 				this.field.setWeather('sunnyday');
-				let item = source.getItem();
-				if ((item.isBerry || item.isGem) && source.takeItem(source)) {
-					this.add('-enditem', source, item.name, '[from] move: Incinerate');
-				}
 			},
+		},
+		onAfterHit(target, source) {
+			if (source.hp) {
+				let item = source.takeItem();
+				if (item) {
+					this.add('-enditem', source, item.name, '[from] move: Max Flare', '[of] ' + source);
+				}
+			}
 		},
 		target: "adjacentFoe",
 		type: "Fire",
@@ -374,7 +378,7 @@ exports.BattleMovedex = {
 			onHit(source) {
 				if (!source.volatiles['dynamax']) return;
 				for (let pokemon of source.side.active) {
-					this.boost({spd: 1}, {accuracy: -1}, pokemon);
+					this.boost({spd: 1, accuracy: -1}, pokemon);
 				}
 			},
 		},
@@ -451,7 +455,7 @@ exports.BattleMovedex = {
 			onHit(source) {
 				if (!source.volatiles['dynamax']) return;
 				for (let pokemon of source.side.active) {
-					this.boost({def: 1}, {spe: -1}, pokemon);
+					this.boost({def: 1, spe: -1}, pokemon);
 				}
 			},
 		},
