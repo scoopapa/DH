@@ -18,10 +18,11 @@ exports.BattleStatuses = {
 				for (let statName in pokemon.baseStats) {
 					if (statName === 'hp') continue;
 					pokemon.baseStats[statName] = this.dex.clampIntRange(pokemon.baseStats[statName] + 10, 1, 255);
-					console.log( statName );
-					console.log( pokemon.baseStats[statName] );
+					this.add('-message', statName );
+					this.add('-message', pokemon.baseStats[statName] );
 				}
 			}
+			this.add('-message', 'dynamax debug' );
 			if (pokemon.species === 'Shedinja') return;
 
 			// Changes based on dynamax level, 2 is max (at LVL 10)
