@@ -400,9 +400,9 @@ iceclimbers: {
    heightm: 1.3,
 			weightkg: 50,
 },
-bandanadee: {
+bandanawaddledee: {
 			num: 6000010,
-			species: "Bandana Dee", /* Kirby */
+			species: "Bandana Waddle Dee", /* Kirby */
 			types: ["Normal"],
 		gender: "M",
 			baseStats: {hp: 120, atk: 120, def: 80, spa: 80, spd: 80, spe: 70},
