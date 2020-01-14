@@ -54,4 +54,8 @@ let BattleScripts = {
 		// Silvally
 		this.modData('Learnsets', 'silvally').learnset.recover = ['7M'];
 	},
+	getMaxBoosts( pokemon ){
+		let statBoost = { atk: 10, def: 10, spa: 10, spd: 10, spe: 10 };
+		return statBoost;
+	}
 };

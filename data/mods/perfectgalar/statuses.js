@@ -1,5 +1,7 @@
 'use strict';
 
+
+
 exports.BattleStatuses = {
 	dynamax: {
 		name: 'Dynamax',
@@ -14,12 +16,6 @@ exports.BattleStatuses = {
 			if (pokemon.canGigantamax){
 				this.add('-formechange', pokemon, pokemon.canGigantamax);
 			}
-			for (let statName in pokemon.template.baseStats) {
-				if (statName === 'hp') continue;
-				pokemon.template.baseStats[statName] = this.dex.clampIntRange(pokemon.template.baseStats[statName] + 10, 1, 255);
-				this.add('-message', statName );
-				this.add('-message', pokemon.template.baseStats[statName] );
-			}
 			console.log( 'dynamax debug' );
 			if (pokemon.species === 'Shedinja') return;
 
@@ -29,10 +25,11 @@ exports.BattleStatuses = {
 			pokemon.maxhp = Math.floor(pokemon.maxhp * ratio);
 			pokemon.hp = Math.floor(pokemon.hp * ratio);
 			this.add('-heal', pokemon, pokemon.getHealth, '[silent]');
+			pokemon.addVolatile('maxstatboost');
 		},
-		// onBeforeSwitchOut(pokemon) {
-			// pokemon.removeVolatile('dynamax');
-		// },
+		onBeforeSwitchOut(pokemon) {
+			pokemon.removeVolatile('dynamax');
+		},
 		onSourceModifyDamage(damage, source, target, move) {
 			if (move.id === 'behemothbash' || move.id === 'behemothblade' || move.id === 'dynamaxcannon') {
 				return this.chainModify(2);
@@ -57,5 +54,22 @@ exports.BattleStatuses = {
 			pokemon.maxhp = pokemon.baseMaxhp;
 			this.add('-heal', pokemon, pokemon.getHealth, '[silent]');
 		},
+	},
+	maxstatboost: {
+		name: 'Max Stat Boost',
+		id: 'maxstatboost',
+		num: 0,
+		noCopy: true,
+		duration: 0,
+		onModifyTemplate(template, pokemon, source, effect){
+			let newTemplate = this.dex.deepClone(template);
+			//let boosts = this.getMaxBoosts( pokemon );
+			let boosts = { atk: 10, def: 10, spa: 10, spd: 10, spe: 10 };
+			for (let statName in newTemplate.baseStats) {
+				if (statName === 'hp') continue;
+				newTemplate.baseStats[statName] = this.dex.clampIntRange(newTemplate.baseStats[statName] + boost, 1, 255);
+			}
+			return newTemplate;
+		}
 	},
 };
