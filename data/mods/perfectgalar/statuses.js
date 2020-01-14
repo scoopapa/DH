@@ -67,7 +67,7 @@ exports.BattleStatuses = {
 			let boosts = { atk: 10, def: 10, spa: 10, spd: 10, spe: 10 };
 			for (let statName in newTemplate.baseStats) {
 				if (statName === 'hp') continue;
-				newTemplate.baseStats[statName] = this.dex.clampIntRange(newTemplate.baseStats[statName] + boost, 1, 255);
+				newTemplate.baseStats[statName] = this.dex.clampIntRange(newTemplate.baseStats[statName] + boosts[ statName ], 1, 255);
 			}
 			return newTemplate;
 		}
