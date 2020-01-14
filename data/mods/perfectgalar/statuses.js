@@ -14,13 +14,11 @@ exports.BattleStatuses = {
 			if (pokemon.canGigantamax){
 				this.add('-formechange', pokemon, pokemon.canGigantamax);
 			}
-			else {
-				for (let statName in pokemon.baseStats) {
-					if (statName === 'hp') continue;
-					pokemon.baseStats[statName] = this.dex.clampIntRange(pokemon.baseStats[statName] + 10, 1, 255);
-					this.add('-message', statName );
-					this.add('-message', pokemon.baseStats[statName] );
-				}
+			for (let statName in pokemon.template.baseStats) {
+				if (statName === 'hp') continue;
+				pokemon.template.baseStats[statName] = this.dex.clampIntRange(pokemon.template.baseStats[statName] + 10, 1, 255);
+				this.add('-message', statName );
+				this.add('-message', pokemon.template.baseStats[statName] );
 			}
 			console.log( 'dynamax debug' );
 			if (pokemon.species === 'Shedinja') return;
