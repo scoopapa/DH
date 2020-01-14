@@ -567,17 +567,6 @@ exports.Formats = [
 		mod: 'roulettemons',
 	},
 	{
-		name: "[Gen 1 The Pokedex Redone] OU",
-		threads: [
-			`&bullet; <a href="https://www.smogon.com/forums/threads/3572352/">RBY OU Viability Ranking</a>`,
-			`&bullet; <a href="https://www.smogon.com/forums/threads/3650478/#post-8133786">RBY Sample Teams</a>`,
-		],
-
-		mod: 'tpr',
-		ruleset: ['Standard'],
-		banlist: ['Uber'],
-	},
-	{
 		name: "[Gen 8] Crossover Chaos v2",
 		desc: ["&bullet; <a href=https://www.smogon.com/forums/threads/crossover-chaos-v2.3636780/>Crossover Chaos</a>",
 		      ],
@@ -877,6 +866,17 @@ exports.Formats = [
 		banlist: [],
 		mod: 'megasforall',
 		searchShow: false,
+	},
+	{
+		name: "[Gen 1 The Pokedex Redone] OU",
+		threads: [
+			`&bullet; <a href="https://www.smogon.com/forums/threads/3572352/">RBY OU Viability Ranking</a>`,
+			`&bullet; <a href="https://www.smogon.com/forums/threads/3650478/#post-8133786">RBY Sample Teams</a>`,
+		],
+
+		mod: 'tpr',
+		ruleset: ['Standard'],
+		banlist: ['Uber'],
 	},
 	{
   		name: "[Gen 7] Pokemon Let's Go",
