@@ -659,6 +659,8 @@ exports.Formats = [
 				return statBoost;
 			};
 			this.doMaxBoostFormeChange = function( pokemon, bool ){
+				let tempFormes = {};
+				console.log( pokemon.template.forme );
 				let template = this.dex.deepClone(this.dex.getTemplate( pokemon.species ));
 				for ( let statName in template.baseStats ){
 					let boost = this.getMaxBoost( statName, pokemon );
