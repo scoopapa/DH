@@ -67,6 +67,9 @@ exports.BattleStatuses = {
 		onStart(pokemon) {
 			this.add('-start', pokemon, 'Max Stat Boost');
 		},
+		onSwitchOut(pokemon){
+			pokemon.lastFormeBoosted = null;
+		}
 	},
 	gmaxstatboost: {
 		name: 'G-Max Stat Boost',
@@ -75,5 +78,8 @@ exports.BattleStatuses = {
 		onStart(pokemon) {
 			this.add('-start', pokemon, 'G-Max Stat Boost');
 		},
+		onSwitchOut(pokemon){
+			pokemon.lastFormeBoosted = null;
+		}
 	},
 };
