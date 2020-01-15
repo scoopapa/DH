@@ -11,12 +11,14 @@ exports.BattleStatuses = {
 		duration: 3,
 		onStart(pokemon) {
 			pokemon.hasDynamaxed = true;
+			pokemon.volatileTag = 'maxstatboost';
 			pokemon.removeVolatile('substitute');
 			if (pokemon.illusion) this.singleEvent('End', this.dex.getAbility('Illusion'), pokemon.abilityData, pokemon);
 			this.add('-start', pokemon, 'Dynamax');
 			this.doMaxBoostFormeChange( pokemon, false );
 			if (pokemon.canGigantamax){
 				this.add('-formechange', pokemon, pokemon.canGigantamax);
+				pokemon.volatileTag = 'gmaxstatboost';
 			}
 			if (pokemon.species === 'Shedinja') return;
 
@@ -26,6 +28,7 @@ exports.BattleStatuses = {
 			pokemon.maxhp = Math.floor(pokemon.maxhp * ratio);
 			pokemon.hp = Math.floor(pokemon.hp * ratio);
 			this.add('-heal', pokemon, pokemon.getHealth, '[silent]');
+			pokemon.addVolatile( pokemon.volatileTag );
 		},
 		onBeforeSwitchOut(pokemon) {
 			pokemon.removeVolatile('dynamax');
@@ -55,6 +58,22 @@ exports.BattleStatuses = {
 			this.add('-heal', pokemon, pokemon.getHealth, '[silent]');
 			let template = this.dex.deepClone(pokemon.template);
 			this.doMaxBoostFormeChange( pokemon, true );
+		},
+	},
+	maxstatboost: {
+		name: 'Max Stat Boost',
+		id: 'maxstatboost',
+		num: 0,
+		onStart(pokemon) {
+			this.add('-start', pokemon, 'Max Stat Boost');
+		},
+	},
+	gmaxstatboost: {
+		name: 'G-Max Stat Boost',
+		id: 'gmaxstatboost',
+		num: 0,
+		onStart(pokemon) {
+			this.add('-start', pokemon, 'G-Max Stat Boost');
 		},
 	},
 };

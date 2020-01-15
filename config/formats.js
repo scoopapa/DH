@@ -671,6 +671,9 @@ exports.Formats = [
 				pokemon.formeChange(template, "dynamax", isPermanent);
 			}
 		},
+		onSwitchIn( pokemon ){
+			if ( pokemon.hasDynamaxed ) pokemon.addVolatile( pokemon.volatileTag );
+		},
 	}, 
 	// Old Pet Mods ///////////////////////////////////////////////////////////////////
 	{
