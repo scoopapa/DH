@@ -78,6 +78,7 @@ exports.BattleStatuses = {
 			return stat + boost;
 		},
 		onModifySpe( stat, pokemon ){
+			console.log( this )
 			let boost = this.getMaxBoost( stat, 'spe', pokemon );
 			return stat + boost;
 		},
