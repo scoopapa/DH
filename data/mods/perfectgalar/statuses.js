@@ -75,27 +75,32 @@ exports.BattleStatuses = {
 		onModifyAtkPriority: 1,
 		onModifyAtk( stat, pokemon ){
 			let boost = this.getMaxBoost( 'atk', pokemon ); //implemented in perfectgalar/scripts.j
-			return stat + boost;
+			let mult = ( stat + boost ) / stat;
+			return this.chainModify( mult );
 		},
 		onModifyDefPriority: 1,
 		onModifyDef( stat, pokemon ){
 			let boost = this.getMaxBoost( 'def', pokemon );
-			return stat + boost;
+			let mult = ( stat + boost ) / stat;
+			return this.chainModify( mult );
 		},
 		onModifySpAPriority: 1,
 		onModifySpA( stat, pokemon ){
 			let boost = this.getMaxBoost( 'spa', pokemon );
-			return stat + boost;
+			let mult = ( stat + boost ) / stat;
+			return this.chainModify( mult );
 		},
 		onModifySpDPriority: 1,
 		onModifySpD( stat, pokemon ){
 			let boost = this.getMaxBoost( 'spd', pokemon );
-			return stat + boost;
+			let mult = ( stat + boost ) / stat;
+			return this.chainModify( mult );
 		},
 		onModifySpePriority: 1,
 		onModifySpe( stat, pokemon ){
 			let boost = this.getMaxBoost( 'spe', pokemon );
-			return stat + boost;
+			let mult = ( stat + boost ) / stat;
+			return this.chainModify( mult );
 		},
 	},
 };
