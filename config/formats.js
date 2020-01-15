@@ -624,6 +624,9 @@ exports.Formats = [
 		ruleset: ['Obtainable', 'Standard', 'Team Preview',],
 		banlist: ['Uber', 'Shadow Tag', 'Baton Pass'],
 		mod: 'perfectgalar',
+		onBegin: function(){
+			
+		}
 	}, 
 	// Old Pet Mods ///////////////////////////////////////////////////////////////////
 	{
