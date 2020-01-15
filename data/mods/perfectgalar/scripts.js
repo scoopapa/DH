@@ -54,7 +54,7 @@ let BattleScripts = {
 		// Silvally
 		this.modData('Learnsets', 'silvally').learnset.recover = ['7M'];
 	},
-	maxStatBoost( stat, statName, pokemon ){
+	getMaxBoost( stat, statName, pokemon ){
 		let statBoosts = {
 			dynamax: { hp: 0, atk: 10, def: 10, spa: 10, spd: 10, spe: 10 },
 			alcremie: { hp: 0, atk: 0, def: 30, spa: 10, spd: 10, spe: 0 },
@@ -82,7 +82,9 @@ let BattleScripts = {
 			sandaconda: { hp: 0, atk: 0, def: 20, spa: 0, spd: 0, spe: 30 },
 			toxtricity: { hp: 0, atk: 20, def: 0, spa: 4, spd: 16, spe: 10 },
 		}
-		let statBoost = pokemon.maxStatBoosts[ statName ]
-		return stat + statBoost;
+		let boostType = statBoosts.dynamax;
+		if ( pokemon.canGigantamax ) boostType = statBoosts[ pokemon.speciesid ];
+		let statBoost = boostType[ statName ]
+		return statBoost;
 	}
 };
