@@ -43,6 +43,7 @@ exports.BattleAbilities = {
 		onSwitchOut( pokemon ){
 			pokemon.formeChange('Aegislash');
 			this.doMaxBoostFormeChange( pokemon, true );
+			pokemon.lastFormeBoosted = null;
 		},
 	},
 	"hungerswitch": {
@@ -53,6 +54,9 @@ exports.BattleAbilities = {
 			pokemon.formeChange(targetForme);
 			this.doMaxBoostFormeChange( pokemon, true );
 		},
+		onSwitchOut(pokemon){
+			pokemon.lastFormeBoosted = null;
+		}
 	},
 	"flowergift": {
 		inherit: true,
@@ -70,6 +74,9 @@ exports.BattleAbilities = {
 				}
 			}
 		},
+		onSwitchOut(pokemon){
+			pokemon.lastFormeBoosted = null;
+		}
 	},
 	"disguise": {
 		inherit: true,
@@ -81,6 +88,9 @@ exports.BattleAbilities = {
 				this.damage(pokemon.baseMaxhp / 8, pokemon, pokemon);
 			}
 		},
+		onSwitchOut(pokemon){
+			pokemon.lastFormeBoosted = null;
+		}
 	},
 	"iceface": {
 		inherit: true,
@@ -107,6 +117,9 @@ exports.BattleAbilities = {
 				this.doMaxBoostFormeChange( pokemon, true );
 			}
 		},
+		onSwitchOut(pokemon){
+			pokemon.lastFormeBoosted = null;
+		}
 	},
 	"gulpmissile": {
 		inherit: true,
@@ -116,7 +129,7 @@ exports.BattleAbilities = {
 				// Forme change before damaging to avoid a potential infinite loop with surf cramorant vs surf cramorant
 				const forme = target.template.speciesid;
 				target.formeChange('cramorant', effect);
-				this.doMaxBoostFormeChange( pokemon, false );
+				this.doMaxBoostFormeChange( target, false );
 				this.damage(source.baseMaxhp / 4, source, target);
 				if (forme === 'cramorantgulping') {
 					this.boost({def: -1}, source, target, null, true);
@@ -131,5 +144,8 @@ exports.BattleAbilities = {
 			pokemon.formeChange(forme, move);
 			this.doMaxBoostFormeChange( pokemon, false );
 		},
+		onSwitchOut(pokemon){
+			pokemon.lastFormeBoosted = null;
+		}
 	},
 };
