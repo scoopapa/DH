@@ -88,4 +88,5 @@ let BattleScripts = {
 			return statBoost;
 		}
 	},
+	console.log( this )
 };
