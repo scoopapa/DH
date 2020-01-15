@@ -660,6 +660,11 @@ exports.Formats = [
 			}
 		}
 	}, 
+	onSwitchIn: function (pokemon) {
+		if ( pokemon.hasDynamaxed ){
+			pokemon.addVolatile('maxstatboost')
+		}
+	},
 	// Old Pet Mods ///////////////////////////////////////////////////////////////////
 	{
 		section: "Old Pet Mods",

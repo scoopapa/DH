@@ -16,7 +16,6 @@ exports.BattleStatuses = {
 			if (pokemon.canGigantamax){
 				this.add('-formechange', pokemon, pokemon.canGigantamax);
 			}
-			console.log( 'dynamax debug' );
 			if (pokemon.species === 'Shedinja') return;
 
 			// Changes based on dynamax level, 2 is max (at LVL 10)
@@ -26,8 +25,7 @@ exports.BattleStatuses = {
 			pokemon.hp = Math.floor(pokemon.hp * ratio);
 			this.add('-heal', pokemon, pokemon.getHealth, '[silent]');
 			pokemon.addVolatile('maxstatboost');
-			let boost = this.getMaxBoost( 'atk', pokemon );
-			pokemon.baseStoredStats['atk'] = pokemon.baseStoredStats['atk'] + 50;
+			pokemon.hasDynamaxed = true;
 		},
 		// onBeforeSwitchOut(pokemon) {
 			// pokemon.removeVolatile('dynamax');
@@ -66,23 +64,27 @@ exports.BattleStatuses = {
 		},
 		onModifyAtk( stat, pokemon ){
 			let boost = this.getMaxBoost( 'atk', pokemon ); //implemented in perfectgalar/scripts.js
+			pokemon.baseStoredStats['atk'] = pokemon.baseStoredStats['atk'] + boost;
 			return stat + boost;
 		},
 		onModifyDef( stat, pokemon ){
 			let boost = this.getMaxBoost( 'def', pokemon );
+			pokemon.baseStoredStats['def'] = pokemon.baseStoredStats['def'] + boost;
 			return stat + boost;
 		},
 		onModifySpA( stat, pokemon ){
 			let boost = this.getMaxBoost( 'spa', pokemon );
+			pokemon.baseStoredStats['spa'] = pokemon.baseStoredStats['spa'] + boost;
 			return stat + boost;
 		},
 		onModifySpD( stat, pokemon ){
 			let boost = this.getMaxBoost( 'spd', pokemon );
+			pokemon.baseStoredStats['spd'] = pokemon.baseStoredStats['spd'] + boost;
 			return stat + boost;
 		},
 		onModifySpe( stat, pokemon ){
-			console.log( this );
 			let boost = this.getMaxBoost( 'spe', pokemon );
+			pokemon.baseStoredStats['spe'] = pokemon.baseStoredStats['spe'] + boost;
 			return stat + boost;
 		},
 	},
