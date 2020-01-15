@@ -659,7 +659,7 @@ exports.Formats = [
 				return statBoost;
 			}
 		}
-		onSwitchIn: function (pokemon) {
+		onSwitchIn: function(pokemon) {
 			if ( pokemon.hasDynamaxed ){
 				pokemon.addVolatile('maxstatboost')
 			}
