@@ -427,7 +427,7 @@ exports.Formats = [
 				pkmnInfo[ 'ability' ] = benchAbility;
 				pkmnInfo[ 'item' ] = pokemon.item;
 				//-----------------------------------------------------------------------
-				allyBench.push( pkmnInfo ) // onModifyTemplate goes over the team in order, so this stores them in order
+				allyBench.push( pkmnInfo )
 			}
 		},
 		onBeforeSwitchIn: function (pokemon) {
@@ -608,8 +608,9 @@ exports.Formats = [
 	},
 	{
 		name: "[Gen 8] Crossover Chaos v2 + Expanded Ubers",
-		desc: [ "The goal of Perfect Galar is to make a Sword and Shield OU metagame where every single fully evolved Pokemon in the Galar Pokedex has a unique, valuable niche.",
-				"&bullet; <a href=https://www.smogon.com/forums/threads/gen-8-perfect-galar.3656660/>Crossover Chaos</a>",],
+		desc: [
+				"&bullet; <a href=https://www.smogon.com/forums/threads/crossover-chaos-v2.3636780/>Crossover Chaos</a>",
+		      "&bullet; <a href=https://www.smogon.com/forums/threads/crossover-chaos-expanded-side-project.3647108/>Crossover Chaos</a>"],
 		ruleset: [ 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 
 					'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 
 					'Swagger Clause', 'Baton Pass Clause', 'Obtainable', 'Standard Natdex'],
@@ -618,9 +619,8 @@ exports.Formats = [
 	}, 
 	{
 		name: "[Gen 8] Perfect Galar",
-		desc: [
-				"&bullet; <a href=https://www.smogon.com/forums/threads/crossover-chaos-v2.3636780/>Crossover Chaos</a>",
-		      "&bullet; <a href=https://www.smogon.com/forums/threads/crossover-chaos-expanded-side-project.3647108/>Crossover Chaos</a>"],
+		desc: [ "The goal of Perfect Galar is to make a Sword and Shield OU metagame where every single fully evolved Pokemon in the Galar Pokedex has a unique, valuable niche.",
+				"&bullet; <a href=https://www.smogon.com/forums/threads/gen-8-perfect-galar.3656660/>Perfect Galar</a>",],
 		ruleset: ['Obtainable', 'Standard', 'Team Preview',],
 		banlist: ['Uber', 'Shadow Tag', 'Baton Pass'],
 		mod: 'perfectgalar',
@@ -655,7 +655,10 @@ exports.Formats = [
 				}
 				let boostType = statBoosts.dynamax;
 				if ( pokemon.canGigantamax ) boostType = statBoosts[ pokemon.speciesid ];
-				let statBoost = boostType[ statName ] * 20;
+				let statBoost = boostType[ statName ] * 2;
+				let nature = pokemon.battle.getNature(pokemon.set.nature);
+				if ( nature.plus === statName ) statBoost = statBoost * 1.1;
+				if ( nature.minus === statName ) statBoost = statBoost * 0.9;
 				return statBoost;
 			}
 		},
