@@ -59,8 +59,9 @@ exports.BattleStatuses = {
 		name: 'Max Stat Boost',
 		id: 'maxstatboost',
 		num: 0,
-		noCopy: true,
-		duration: 0,
+		onStart(pokemon) {
+			this.add('-start', pokemon, 'Max Stat Boost');
+		}
 		onModifyAtk( stat, pokemon ){
 			let boost = this.getMaxBoost( stat, 'atk', pokemon ); //implemented in perfectgalar/scripts.js
 			return stat + boost;
