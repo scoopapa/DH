@@ -668,7 +668,7 @@ exports.Formats = [
 					}
 				}
 				pokemon.lastFormeBoosted = pokemon.template.forme;
-				pokemon.formeChange(template, this.effect, isPermanent);
+				pokemon.formeChange(template, "dynamax", isPermanent);
 			}
 		},
 	}, 
