@@ -663,7 +663,7 @@ exports.Formats = [
 				console.log( pokemon.template.forme );
 				// let template = this.dex.deepClone(this.dex.getTemplate( pokemon.species ));
 				// if ( changedFormes.includes( pokemon.template.forme )){
-					template = this.dex.deepClone( pokemon.template );
+					let template = this.dex.deepClone( pokemon.template );
 				// }
 				if ( pokemon.lastFormeBoosted !== pokemon.template.forme ){ // don't boost the same forme twice in a row
 					for ( let statName in template.baseStats ){

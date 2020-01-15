@@ -39,7 +39,7 @@ exports.BattleAbilities = {
 			let targetSpecies = (move.id === 'kingsshield' ? 'Aegislash' : 'Aegislash-Blade');
 			if (attacker.template.species !== targetSpecies){
 				attacker.formeChange(targetSpecies);
-				this.doMaxBoostFormeChange( attacker );
+				this.doMaxBoostFormeChange( attacker, false );
 			}
 		},
 		id: "stancechange",
