@@ -53,6 +53,7 @@ exports.BattleStatuses = {
 			pokemon.hp = pokemon.getUndynamaxedHP();
 			pokemon.maxhp = pokemon.baseMaxhp;
 			this.add('-heal', pokemon, pokemon.getHealth, '[silent]');
+			let template = this.dex.deepClone(pokemon.template);
 			this.doMaxBoostFormeChange( pokemon, true );
 		},
 	},
