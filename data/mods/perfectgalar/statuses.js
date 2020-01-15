@@ -13,7 +13,7 @@ exports.BattleStatuses = {
 			pokemon.removeVolatile('substitute');
 			if (pokemon.illusion) this.singleEvent('End', this.dex.getAbility('Illusion'), pokemon.abilityData, pokemon);
 			this.add('-start', pokemon, 'Dynamax');
-			this.doMaxBoostFormeChange( pokemon );
+			this.doMaxBoostFormeChange( pokemon, false );
 			if (pokemon.canGigantamax){
 				this.add('-formechange', pokemon, pokemon.canGigantamax);
 			}
@@ -27,9 +27,9 @@ exports.BattleStatuses = {
 			this.add('-heal', pokemon, pokemon.getHealth, '[silent]');
 			pokemon.hasDynamaxed = true;
 		},
-		// onBeforeSwitchOut(pokemon) {
-			// pokemon.removeVolatile('dynamax');
-		// },
+		onBeforeSwitchOut(pokemon) {
+			pokemon.removeVolatile('dynamax');
+		},
 		onSourceModifyDamage(damage, source, target, move) {
 			if (move.id === 'behemothbash' || move.id === 'behemothblade' || move.id === 'dynamaxcannon') {
 				return this.chainModify(2);
@@ -48,11 +48,12 @@ exports.BattleStatuses = {
 		},
 		onEnd(pokemon) {
 			this.add('-end', pokemon, 'Dynamax');
-			this.add('-formechange', pokemon, pokemon.template.species);
+			this.add('-formechange', pokemon, pokemon.template.baseSpecies);
 			if (pokemon.species === 'Shedinja') return;
 			pokemon.hp = pokemon.getUndynamaxedHP();
 			pokemon.maxhp = pokemon.baseMaxhp;
 			this.add('-heal', pokemon, pokemon.getHealth, '[silent]');
+			this.doMaxBoostFormeChange( pokemon, true );
 		},
 	},
 };
