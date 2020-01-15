@@ -30,9 +30,7 @@ exports.BattleAbilities = {
 	},
 //-----------------------------forme changes---------------------------------------------------------------------------------
 	"stancechange": {
-		desc: "If this Pokemon is an Aegislash, it changes to Blade Forme before attempting to use an attacking move, and changes to Shield Forme before attempting to use King's Shield.",
-		shortDesc: "If Aegislash, changes Forme to Blade before attacks and Shield before King's Shield.",
-		onBeforeMovePriority: 0.5,
+		inherit: true;
 		onBeforeMove(attacker, defender, move) {
 			if (attacker.template.baseSpecies !== 'Aegislash' || attacker.transformed) return;
 			if (move.category === 'Status' && move.id !== 'kingsshield') return;
@@ -42,9 +40,46 @@ exports.BattleAbilities = {
 				this.doMaxBoostFormeChange( attacker, false );
 			}
 		},
-		id: "stancechange",
-		name: "Stance Change",
-		rating: 4.5,
-		num: 176,
+		onSwitchOut( pokemon ){
+			pokemon.formeChange('Aegislash');
+			this.doMaxBoostFormeChange( pokemon, true );
+		},
+	},
+	"hungerswitch": {
+		inherit: true;
+		onResidual(pokemon) {
+			if (pokemon.template.baseSpecies !== 'Morpeko' || pokemon.transformed) return;
+			let targetForme = pokemon.template.species === 'Morpeko' ? 'Morpeko-Hangry' : 'Morpeko';
+			pokemon.formeChange(targetForme);
+			this.doMaxBoostFormeChange( pokemon, true );
+		},
+	},
+	"flowergift": {
+		inherit: true;
+		onUpdate(pokemon) {
+			if (!pokemon.isActive || pokemon.baseTemplate.baseSpecies !== 'Cherrim' || pokemon.transformed) return;
+			if (['sunnyday', 'desolateland'].includes(pokemon.effectiveWeather())) {
+				if (pokemon.template.speciesid !== 'cherrimsunshine') {
+					pokemon.formeChange('Cherrim-Sunshine', this.effect, false, '[msg]');
+					this.doMaxBoostFormeChange( pokemon, false );
+				}
+			} else {
+				if (pokemon.template.speciesid === 'cherrimsunshine') {
+					pokemon.formeChange('Cherrim', this.effect, false, '[msg]');
+					this.doMaxBoostFormeChange( pokemon, false );
+				}
+			}
+		},
+	},
+	"disguise": {
+		inherit: true;
+		onUpdate(pokemon) {
+			if (['mimikyu', 'mimikyutotem'].includes(pokemon.template.speciesid) && this.effectData.busted) {
+				let templateid = pokemon.template.speciesid === 'mimikyutotem' ? 'Mimikyu-Busted-Totem' : 'Mimikyu-Busted';
+				pokemon.formeChange(templateid, this.effect, true);
+				this.doMaxBoostFormeChange( pokemon, true );
+				this.damage(pokemon.baseMaxhp / 8, pokemon, pokemon);
+			}
+		},
 	},
 };

@@ -10,6 +10,7 @@ exports.BattleStatuses = {
 		noCopy: true,
 		duration: 3,
 		onStart(pokemon) {
+			pokemon.hasDynamaxed = true;
 			pokemon.removeVolatile('substitute');
 			if (pokemon.illusion) this.singleEvent('End', this.dex.getAbility('Illusion'), pokemon.abilityData, pokemon);
 			this.add('-start', pokemon, 'Dynamax');
@@ -25,7 +26,6 @@ exports.BattleStatuses = {
 			pokemon.maxhp = Math.floor(pokemon.maxhp * ratio);
 			pokemon.hp = Math.floor(pokemon.hp * ratio);
 			this.add('-heal', pokemon, pokemon.getHealth, '[silent]');
-			pokemon.hasDynamaxed = true;
 		},
 		onBeforeSwitchOut(pokemon) {
 			pokemon.removeVolatile('dynamax');

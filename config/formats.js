@@ -659,12 +659,8 @@ exports.Formats = [
 				return statBoost;
 			};
 			this.doMaxBoostFormeChange = function( pokemon, isPermanent ){
-				let changedFormes = ['Blade'];
-				console.log( pokemon.template.forme );
-				// let template = this.dex.deepClone(this.dex.getTemplate( pokemon.species ));
-				// if ( changedFormes.includes( pokemon.template.forme )){
-					let template = this.dex.deepClone( pokemon.template );
-				// }
+				if ( !pokemon.hasDynamaxed ) return;
+				let template = this.dex.deepClone( pokemon.template );
 				if ( pokemon.lastFormeBoosted !== pokemon.template.forme ){ // don't boost the same forme twice in a row
 					for ( let statName in template.baseStats ){
 						let boost = this.getMaxBoost( statName, pokemon );
