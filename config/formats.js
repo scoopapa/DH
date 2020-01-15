@@ -656,13 +656,9 @@ exports.Formats = [
 				let boostType = statBoosts.dynamax;
 				if ( pokemon.canGigantamax ) boostType = statBoosts[ pokemon.speciesid ];
 				let statBoost = boostType[ statName ];
-				// let nature = this.dex.getNature(pokemon.set.nature);
-				// if ( nature.plus === statName ) statBoost = statBoost * 1.1;
-				// if ( nature.minus === statName ) statBoost = statBoost * 0.9;
 				return statBoost;
 			};
 			this.doMaxBoostFormeChange = function( pokemon ){
-				if ( !pokemon.hasDynamaxed ) return;
 				let template = this.dex.deepClone(pokemon.template);
 				for ( let statName in template.baseStats ){
 					let boost = this.getMaxBoost( statName, pokemon );
@@ -671,11 +667,6 @@ exports.Formats = [
 				pokemon.formeChange(template, this.effect, true);
 			}
 		},
-		onSwitchIn: function(pokemon) {
-			if ( pokemon.hasDynamaxed ){
-				pokemon.addVolatile('maxstatboost')
-			}
-		}
 	}, 
 	// Old Pet Mods ///////////////////////////////////////////////////////////////////
 	{
