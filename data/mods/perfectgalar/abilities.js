@@ -28,4 +28,23 @@ exports.BattleAbilities = {
 		rating: 2,
 		num: 251,
 	},
+//-----------------------------forme changes---------------------------------------------------------------------------------
+	"stancechange": {
+		desc: "If this Pokemon is an Aegislash, it changes to Blade Forme before attempting to use an attacking move, and changes to Shield Forme before attempting to use King's Shield.",
+		shortDesc: "If Aegislash, changes Forme to Blade before attacks and Shield before King's Shield.",
+		onBeforeMovePriority: 0.5,
+		onBeforeMove(attacker, defender, move) {
+			if (attacker.template.baseSpecies !== 'Aegislash' || attacker.transformed) return;
+			if (move.category === 'Status' && move.id !== 'kingsshield') return;
+			let targetSpecies = (move.id === 'kingsshield' ? 'Aegislash' : 'Aegislash-Blade');
+			if (attacker.template.species !== targetSpecies){
+				attacker.formeChange(targetSpecies);
+				this.doMaxBoostFormeChange( attacker );
+			}
+		},
+		id: "stancechange",
+		name: "Stance Change",
+		rating: 4.5,
+		num: 176,
+	},
 };
