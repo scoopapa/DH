@@ -60,22 +60,23 @@ exports.BattleStatuses = {
 		id: 'maxstatboost',
 		num: 0,
 		onStart(pokemon) {
-			this.add('-start', pokemon, 'Max Stat Boost');
-			let boost = this.getMaxBoost( 'atk', pokemon );
-			pokemon.baseStoredStats['atk'] = pokemon.baseStoredStats['atk'] + boost;
-			pokemon.storedStats['atk'] = pokemon.storedStats['atk'] + boost;
-			boost = this.getMaxBoost( 'def', pokemon );
-			pokemon.baseStoredStats['def'] = pokemon.baseStoredStats['def'] + boost;
-			pokemon.storedStats['def'] = pokemon.storedStats['def'] + boost;
-			boost = this.getMaxBoost( 'spa', pokemon );
-			pokemon.baseStoredStats['spa'] = pokemon.baseStoredStats['spa'] + boost;
-			pokemon.storedStats['spa'] = pokemon.storedStats['spa'] + boost;
-			boost = this.getMaxBoost( 'spd', pokemon );
-			pokemon.baseStoredStats['spd'] = pokemon.baseStoredStats['spd'] + boost;
-			pokemon.storedStats['spd'] = pokemon.storedStats['spd'] + boost;
-			boost = this.getMaxBoost( 'spe', pokemon );
-			pokemon.baseStoredStats['spe'] = pokemon.baseStoredStats['spe'] + boost;
-			pokemon.storedStats['spe'] = pokemon.storedStats['spe'] + boost;
+			this.doMaxBoostFormeChange( pokemon );
+			// this.add('-start', pokemon, 'Max Stat Boost');
+			// let boost = this.getMaxBoost( 'atk', pokemon );
+			// pokemon.baseStoredStats['atk'] = pokemon.baseStoredStats['atk'] + boost;
+			// pokemon.storedStats['atk'] = pokemon.storedStats['atk'] + boost;
+			// boost = this.getMaxBoost( 'def', pokemon );
+			// pokemon.baseStoredStats['def'] = pokemon.baseStoredStats['def'] + boost;
+			// pokemon.storedStats['def'] = pokemon.storedStats['def'] + boost;
+			// boost = this.getMaxBoost( 'spa', pokemon );
+			// pokemon.baseStoredStats['spa'] = pokemon.baseStoredStats['spa'] + boost;
+			// pokemon.storedStats['spa'] = pokemon.storedStats['spa'] + boost;
+			// boost = this.getMaxBoost( 'spd', pokemon );
+			// pokemon.baseStoredStats['spd'] = pokemon.baseStoredStats['spd'] + boost;
+			// pokemon.storedStats['spd'] = pokemon.storedStats['spd'] + boost;
+			// boost = this.getMaxBoost( 'spe', pokemon );
+			// pokemon.baseStoredStats['spe'] = pokemon.baseStoredStats['spe'] + boost;
+			// pokemon.storedStats['spe'] = pokemon.storedStats['spe'] + boost;
 		},
 	},
 };
