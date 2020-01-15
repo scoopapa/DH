@@ -61,30 +61,35 @@ exports.BattleStatuses = {
 		num: 0,
 		onStart(pokemon) {
 			this.add('-start', pokemon, 'Max Stat Boost');
+			let boost = this.getMaxBoost( 'atk', pokemon );
+			pokemon.baseStoredStats['atk'] = pokemon.baseStoredStats['atk'] + boost;
+			boost = this.getMaxBoost( 'def', pokemon );
+			pokemon.baseStoredStats['def'] = pokemon.baseStoredStats['def'] + boost;
+			boost = this.getMaxBoost( 'spa', pokemon );
+			pokemon.baseStoredStats['spa'] = pokemon.baseStoredStats['spa'] + boost;
+			boost = this.getMaxBoost( 'spd', pokemon );
+			pokemon.baseStoredStats['spd'] = pokemon.baseStoredStats['spd'] + boost;
+			boost = this.getMaxBoost( 'spe', pokemon );
+			pokemon.baseStoredStats['spe'] = pokemon.baseStoredStats['spe'] + boost;
 		},
 		onModifyAtk( stat, pokemon ){
-			let boost = this.getMaxBoost( 'atk', pokemon ); //implemented in perfectgalar/scripts.js
-			pokemon.baseStoredStats['atk'] = pokemon.baseStoredStats['atk'] + boost;
+			let boost = this.getMaxBoost( 'atk', pokemon ); //implemented in perfectgalar/scripts.j
 			return stat + boost;
 		},
 		onModifyDef( stat, pokemon ){
 			let boost = this.getMaxBoost( 'def', pokemon );
-			pokemon.baseStoredStats['def'] = pokemon.baseStoredStats['def'] + boost;
 			return stat + boost;
 		},
 		onModifySpA( stat, pokemon ){
 			let boost = this.getMaxBoost( 'spa', pokemon );
-			pokemon.baseStoredStats['spa'] = pokemon.baseStoredStats['spa'] + boost;
 			return stat + boost;
 		},
 		onModifySpD( stat, pokemon ){
 			let boost = this.getMaxBoost( 'spd', pokemon );
-			pokemon.baseStoredStats['spd'] = pokemon.baseStoredStats['spd'] + boost;
 			return stat + boost;
 		},
 		onModifySpe( stat, pokemon ){
 			let boost = this.getMaxBoost( 'spe', pokemon );
-			pokemon.baseStoredStats['spe'] = pokemon.baseStoredStats['spe'] + boost;
 			return stat + boost;
 		},
 	},

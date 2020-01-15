@@ -655,7 +655,7 @@ exports.Formats = [
 				}
 				let boostType = statBoosts.dynamax;
 				if ( pokemon.canGigantamax ) boostType = statBoosts[ pokemon.speciesid ];
-				let statBoost = boostType[ statName ] * 2;
+				let statBoost = boostType[ statName ] * 20;
 				return statBoost;
 			}
 		},
