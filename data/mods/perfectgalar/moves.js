@@ -347,6 +347,7 @@ exports.BattleMovedex = {
 			onHit(source) {
 				if (!source.volatiles['dynamax']) return;
 				this.field.setTerrain('psychicterrain');
+				source.usedMindstorm = true;
 			},
 		},
 		target: "adjacentFoe",
@@ -373,7 +374,7 @@ exports.BattleMovedex = {
 					this.boost({spa: 1}, pokemon);
 				}
 				if ( !source.status ){
-					source.setStatus( 'tox', source, move )
+					source.setStatus( 'tox', source, move, true )
 				}
 			},
 		},

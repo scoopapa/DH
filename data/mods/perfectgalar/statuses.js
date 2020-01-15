@@ -52,12 +52,15 @@ exports.BattleStatuses = {
 		onEnd(pokemon) {
 			this.add('-end', pokemon, 'Dynamax');
 			this.add('-formechange', pokemon, pokemon.template.baseSpecies);
-			if (pokemon.species === 'Shedinja') return;
-			pokemon.hp = pokemon.getUndynamaxedHP();
-			pokemon.maxhp = pokemon.baseMaxhp;
-			this.add('-heal', pokemon, pokemon.getHealth, '[silent]');
-			let template = this.dex.deepClone(pokemon.template);
+			if ( pokemon.species !== 'Shedinja' ) {
+				pokemon.hp = pokemon.getUndynamaxedHP();
+				pokemon.maxhp = pokemon.baseMaxhp;
+				this.add('-heal', pokemon, pokemon.getHealth, '[silent]');
+			}
 			this.doMaxBoostFormeChange( pokemon, true );
+			if ( pokemon.usedMindstorm ) {
+				pokemon.addVolatile( 'mustrecharge' );
+			}
 		},
 	},
 	maxstatboost: {
