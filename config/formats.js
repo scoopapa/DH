@@ -663,7 +663,7 @@ exports.Formats = [
 				console.log( pokemon.template.forme );
 				let template = this.dex.deepClone(this.dex.getTemplate( pokemon.species ));
 				if ( changedFormes.includes( 'Blade' ){
-					template = this.dex.deepClone( pokemon.template ));
+					template = this.dex.deepClone( pokemon.template );
 				}
 				for ( let statName in template.baseStats ){
 					let boost = this.getMaxBoost( statName, pokemon );
