@@ -658,12 +658,13 @@ exports.Formats = [
 				let statBoost = boostType[ statName ];
 				return statBoost;
 			};
-			this.doMaxBoostFormeChange = function( pokemon, useBaseTemplate ){
+			this.doMaxBoostFormeChange = function( pokemon, doStatBoost ){
 				let template = this.dex.deepClone(pokemon.template);
-				if ( useBaseTemplate ) template = this.dex.deepClone(pokemon.baseTemplate);
-				for ( let statName in template.baseStats ){
-					let boost = this.getMaxBoost( statName, pokemon );
-					template.baseStats[ statName ] = template.baseStats[ statName ] + boost;
+				if ( doStatBoost ){
+					for ( let statName in template.baseStats ){
+						let boost = this.getMaxBoost( statName, pokemon );
+						template.baseStats[ statName ] = template.baseStats[ statName ] + boost;
+					}
 				}
 				pokemon.formeChange(template, this.effect, true);
 			}
