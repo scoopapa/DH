@@ -25,7 +25,7 @@ exports.BattleStatuses = {
 			pokemon.maxhp = Math.floor(pokemon.maxhp * ratio);
 			pokemon.hp = Math.floor(pokemon.hp * ratio);
 			this.add('-heal', pokemon, pokemon.getHealth, '[silent]');
-			source.addVolatile('maxstatboost');
+			pokemon.addVolatile('maxstatboost');
 		},
 		// onBeforeSwitchOut(pokemon) {
 			// pokemon.removeVolatile('dynamax');
