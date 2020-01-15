@@ -25,11 +25,11 @@ exports.BattleStatuses = {
 			pokemon.maxhp = Math.floor(pokemon.maxhp * ratio);
 			pokemon.hp = Math.floor(pokemon.hp * ratio);
 			this.add('-heal', pokemon, pokemon.getHealth, '[silent]');
-			pokemon.addVolatile('maxstatboost');
+			source.addVolatile('maxstatboost');
 		},
-		onBeforeSwitchOut(pokemon) {
-			pokemon.removeVolatile('dynamax');
-		},
+		// onBeforeSwitchOut(pokemon) {
+			// pokemon.removeVolatile('dynamax');
+		// },
 		onSourceModifyDamage(damage, source, target, move) {
 			if (move.id === 'behemothbash' || move.id === 'behemothblade' || move.id === 'dynamaxcannon') {
 				return this.chainModify(2);
@@ -61,15 +61,25 @@ exports.BattleStatuses = {
 		num: 0,
 		noCopy: true,
 		duration: 0,
-		onModifyTemplate(template, pokemon, source, effect){
-			let newTemplate = this.dex.deepClone(template);
-			//let boosts = this.getMaxBoosts( pokemon );
-			let boosts = { atk: 10, def: 10, spa: 10, spd: 10, spe: 10 };
-			for (let statName in newTemplate.baseStats) {
-				if (statName === 'hp') continue;
-				newTemplate.baseStats[statName] = this.dex.clampIntRange(newTemplate.baseStats[statName] + boosts[ statName ], 1, 255);
-			}
-			return newTemplate;
-		}
+		onModifyAtk( stat, pokemon ){
+			let boost = this.getMaxBoost( stat, 'atk', pokemon ); //implemented in perfectgalar/scripts.js
+			return stat + boost;
+		},
+		onModifyDef( stat, pokemon ){
+			let boost = this.getMaxBoost( stat, 'def', pokemon );
+			return stat + boost;
+		},
+		onModifySpA( stat, pokemon ){
+			let boost = this.getMaxBoost( stat, 'spa', pokemon );
+			return stat + boost;
+		},
+		onModifySpD( stat, pokemon ){
+			let boost = this.getMaxBoost( stat, 'spd', pokemon );
+			return stat + boost;
+		},
+		onModifySpe( stat, pokemon ){
+			let boost = this.getMaxBoost( stat, 'spe', pokemon );
+			return stat + boost;
+		},
 	},
 };
