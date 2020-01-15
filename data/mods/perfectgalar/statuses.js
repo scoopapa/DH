@@ -26,6 +26,8 @@ exports.BattleStatuses = {
 			pokemon.hp = Math.floor(pokemon.hp * ratio);
 			this.add('-heal', pokemon, pokemon.getHealth, '[silent]');
 			pokemon.addVolatile('maxstatboost');
+			let boost = this.getMaxBoost( stat, 'atk', pokemon );
+			pokemon.baseStoredStats['atk'] = pokemon.baseStoredStats['atk'] + 50;
 		},
 		// onBeforeSwitchOut(pokemon) {
 			// pokemon.removeVolatile('dynamax');
@@ -61,7 +63,7 @@ exports.BattleStatuses = {
 		num: 0,
 		onStart(pokemon) {
 			this.add('-start', pokemon, 'Max Stat Boost');
-		}
+		},
 		onModifyAtk( stat, pokemon ){
 			let boost = this.getMaxBoost( stat, 'atk', pokemon ); //implemented in perfectgalar/scripts.js
 			return stat + boost;
