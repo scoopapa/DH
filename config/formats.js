@@ -661,14 +661,14 @@ exports.Formats = [
 				// if ( nature.minus === statName ) statBoost = statBoost * 0.9;
 				return statBoost;
 			};
-			this.getMaxBoostedTemplate = function( pokemon ){
+			this.doMaxBoostFormeChange = function( pokemon ){
+				if ( !pokemon.hasDynamaxed ) return;
 				let template = this.dex.deepClone(pokemon.template);
 				for ( let statName in template.baseStats ){
 					let boost = this.getMaxBoost( statName, pokemon );
-					
+					template.baseStats[ statName ] = template.baseStats[ statName ] + boost;
 				}
-				
-				
+				pokemon.formeChange(template, this.effect, true);
 			}
 		},
 		onSwitchIn: function(pokemon) {
