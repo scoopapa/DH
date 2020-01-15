@@ -62,23 +62,23 @@ exports.BattleStatuses = {
 		noCopy: true,
 		duration: 0,
 		onModifyAtk( stat, pokemon ){
-			let boost = this.getMaxBoost( stat, 'atk', pokemon ); //implemented in perfectgalar/scripts.js
+			let boost = pokemon.battle.getMaxBoost( stat, 'atk', pokemon ); //implemented in perfectgalar/scripts.js
 			return stat + boost;
 		},
 		onModifyDef( stat, pokemon ){
-			let boost = this.getMaxBoost( stat, 'def', pokemon );
+			let boost = pokemon.battle.getMaxBoost( stat, 'def', pokemon );
 			return stat + boost;
 		},
 		onModifySpA( stat, pokemon ){
-			let boost = this.getMaxBoost( stat, 'spa', pokemon );
+			let boost = pokemon.battle.getMaxBoost( stat, 'spa', pokemon );
 			return stat + boost;
 		},
 		onModifySpD( stat, pokemon ){
-			let boost = this.getMaxBoost( stat, 'spd', pokemon );
+			let boost = pokemon.battle.getMaxBoost( stat, 'spd', pokemon );
 			return stat + boost;
 		},
 		onModifySpe( stat, pokemon ){
-			let boost = this.getMaxBoost( stat, 'spe', pokemon );
+			let boost = pokemon.battle.getMaxBoost( stat, 'spe', pokemon );
 			return stat + boost;
 		},
 	},
