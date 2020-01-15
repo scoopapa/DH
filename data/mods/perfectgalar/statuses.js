@@ -26,7 +26,7 @@ exports.BattleStatuses = {
 			pokemon.hp = Math.floor(pokemon.hp * ratio);
 			this.add('-heal', pokemon, pokemon.getHealth, '[silent]');
 			pokemon.addVolatile('maxstatboost');
-			let boost = this.getMaxBoost( stat, 'atk', pokemon );
+			let boost = this.getMaxBoost( 'atk', pokemon );
 			pokemon.baseStoredStats['atk'] = pokemon.baseStoredStats['atk'] + 50;
 		},
 		// onBeforeSwitchOut(pokemon) {
@@ -65,24 +65,24 @@ exports.BattleStatuses = {
 			this.add('-start', pokemon, 'Max Stat Boost');
 		},
 		onModifyAtk( stat, pokemon ){
-			let boost = this.getMaxBoost( stat, 'atk', pokemon ); //implemented in perfectgalar/scripts.js
+			let boost = this.getMaxBoost( 'atk', pokemon ); //implemented in perfectgalar/scripts.js
 			return stat + boost;
 		},
 		onModifyDef( stat, pokemon ){
-			let boost = this.getMaxBoost( stat, 'def', pokemon );
+			let boost = this.getMaxBoost( 'def', pokemon );
 			return stat + boost;
 		},
 		onModifySpA( stat, pokemon ){
-			let boost = this.getMaxBoost( stat, 'spa', pokemon );
+			let boost = this.getMaxBoost( 'spa', pokemon );
 			return stat + boost;
 		},
 		onModifySpD( stat, pokemon ){
-			let boost = this.getMaxBoost( stat, 'spd', pokemon );
+			let boost = this.getMaxBoost( 'spd', pokemon );
 			return stat + boost;
 		},
 		onModifySpe( stat, pokemon ){
 			console.log( this );
-			let boost = this.getMaxBoost( stat, 'spe', pokemon );
+			let boost = this.getMaxBoost( 'spe', pokemon );
 			return stat + boost;
 		},
 	},

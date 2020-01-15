@@ -625,7 +625,7 @@ exports.Formats = [
 		banlist: ['Uber', 'Shadow Tag', 'Baton Pass'],
 		mod: 'perfectgalar',
 		onBegin: function(){
-			this.getMaxBoost = function( stat, statName, pokemon ){
+			this.getMaxBoost = function( statName, pokemon ){
 				let statBoosts = {
 					dynamax: { hp: 0, atk: 10, def: 10, spa: 10, spd: 10, spe: 10 },
 					alcremie: { hp: 0, atk: 0, def: 30, spa: 10, spd: 10, spe: 0 },
