@@ -39,7 +39,7 @@ exports.BattleStatuses = {
 			}
 		},
 		onTrapPokemon(pokemon) {
-			pokemon.tryTrap();
+			pokemon.trapped = true;
 		},
 		onDragOutPriority: 2,
 		onDragOut(pokemon) {
@@ -61,6 +61,7 @@ exports.BattleStatuses = {
 			if ( pokemon.usedMindstorm ) {
 				pokemon.addVolatile( 'mustrecharge' );
 			}
+			pokemon.trapped = false;
 		},
 	},
 	maxstatboost: {
