@@ -2,7 +2,6 @@
 
 /**@type {ModdedBattleScriptsData} */
 exports.BattleScripts = {
-	inherit: 'gen7',
 	init() {
 		// Butterfree
 		this.modData('Learnsets', 'butterfree').learnset.dazzlinggleam = ['7M'];
@@ -55,34 +54,7 @@ exports.BattleScripts = {
 		this.modData('Learnsets', 'silvally').learnset.recover = ['7M'];
 	},
 	
-	canDynamax(pokemon, skipChecks) {
-		console.log( 'canDynamax debug' );
-		// {gigantamax?: string, maxMoves: {[k: string]: string} | null}[]
-		if (!skipChecks) {
-			if (!pokemon.canDynamax) return;
-			if (pokemon.template.isMega || pokemon.template.isPrimal || pokemon.template.forme === "Ultra" || pokemon.getItem().zMove || this.canMegaEvo(pokemon)) {
-				return;
-			}
-			// Some pokemon species are unable to dynamax
-			const cannotDynamax = ['zacian', 'zamazenta', 'eternatus'];
-			if (cannotDynamax.includes(toID(pokemon.template.baseSpecies))) {
-				return;
-			}
-		}
-		/** @type {DynamaxOptions} */
-		let result = {maxMoves: []};
-		for (let moveSlot of pokemon.moveSlots) {
-			let move = this.dex.getMove(moveSlot.id);
-			// move.gmaxPower = this.newGMaxPower( move );
-			let maxMove = this.getMaxMove(move, pokemon);
-			if (maxMove) result.maxMoves.push({move: maxMove.id, target: maxMove.target});
-		}
-		if (pokemon.canGigantamax) result.gigantamax = pokemon.canGigantamax;
-		return result;
-	},
-	
 	getActiveMaxMove(move, pokemon) {
-		console.log( 'getActiveMaxMove debug' );
 		if (typeof move === 'string') move = this.dex.getActiveMove(move);
 		let maxMove = this.dex.getActiveMove(this.maxMoveTable[move.category === 'Status' ? move.category : move.type]);
 		if (move.category !== 'Status') {
@@ -91,9 +63,9 @@ exports.BattleScripts = {
 				let gMaxMove = this.dex.getActiveMove(gMaxTemplate.isGigantamax ? gMaxTemplate.isGigantamax : '');
 				if (gMaxMove.exists && gMaxMove.type === move.type) maxMove = gMaxMove;
 			}
-			let gmaxPower = this.newGMaxPower( move );
 			if (!move.gmaxPower) throw new Error(`${move.name} doesn't have a gmaxPower`);
-			maxMove.basePower = gmaxPower;
+			let gmaxPower = this.newGMaxPower( move ); // new max power
+			maxMove.basePower = gmaxPower; // bypass old max power
 			maxMove.category = move.category;
 		}
 		maxMove.maxPowered = true;

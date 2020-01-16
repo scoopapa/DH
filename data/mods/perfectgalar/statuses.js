@@ -31,6 +31,13 @@ exports.BattleStatuses = {
 		onBeforeSwitchOut(pokemon) {
 			pokemon.removeVolatile('dynamax');
 		},
+		onTryHit( target, source, move ){
+			if ( move.isMax || move.maxPowered ){
+				this.hint( move.name + ' was used at ' + move.basePower + ' base power.', 
+				false,
+				source.side.id )
+			}
+		},
 		onSourceModifyDamage(damage, source, target, move) {
 			if (move.id === 'behemothbash' || move.id === 'behemothblade' || move.id === 'dynamaxcannon') {
 				return this.chainModify(2);

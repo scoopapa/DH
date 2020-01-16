@@ -670,38 +670,35 @@ exports.Formats = [
 				pokemon.lastFormeBoosted = pokemon.template.forme;
 				pokemon.formeChange(template, "dynamax", isPermanent);
 			};
-			let basePowers = [45, 55, 65, 75, 110, 150];
+			let oldMaxPowers = [100, 110, 120, 130, 140, 150];
 			let weakMaxPowers = [75, 80, 85, 90, 95, 100];
 			let maxPowers = [85, 90, 95, 100, 105, 110];
 			this.newGMaxPower = function( move ){
 				let gmaxPower = 90;
 				if (!move.basePower) {
-					console.log( 'returning' );
 					return gmaxPower;
-				} else if (['Fighting', 'Poison', 'Flying'].includes(move.type)) {
-					for ( const i in basePowers ){
-						if ( move.basePower >= basePowers[i] ){
+				} else if ( !move.gmaxPower ){
+					return null;
+				} else if (['Fighting', 'Poison'].includes(move.type)) {
+					return move.gmaxPower;
+				} else if (['Flying'].includes(move.type)) {
+					for ( const i in oldMaxPowers ){
+						if ( move.gmaxPower === oldMaxPowers[i] ){
 							gmaxPower = weakMaxPowers[i]
-						} else {
 							break
 						}
 					}
 				} else {
 					for ( const i in basePowers ){
-						if ( move.basePower >= basePowers[i] ){
+						for ( const i in oldMaxPowers ){
+						if ( move.gmaxPower === oldMaxPowers[i] ){
 							gmaxPower = maxPowers[i]
-						} else {
 							break
 						}
 					}
 				}
 				return gmaxPower;
 			};
-			// let allMoves = this.dex.data.Movedex;
-			// for ( var j in allMoves) {
-				// let move = allMoves[j];
-				// if ( move.category !== 'Status' ) this.dex.data.Movedex[j].gmaxPower = newGMaxPower( move );
-			// }
 		},
 		onSwitchIn( pokemon ){
 			if ( pokemon.hasDynamaxed ) pokemon.addVolatile( pokemon.volatileTag );
