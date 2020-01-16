@@ -54,7 +54,45 @@ let BattleScripts = {
 		// Silvally
 		this.modData('Learnsets', 'silvally').learnset.recover = ['7M'];
 	},
+	
+	canDynamax(pokemon, skipChecks) {
+		// {gigantamax?: string, maxMoves: {[k: string]: string} | null}[]
+		if (!skipChecks) {
+			if (!pokemon.canDynamax) return;
+			if (pokemon.template.isMega || pokemon.template.isPrimal || pokemon.template.forme === "Ultra" || pokemon.getItem().zMove || this.canMegaEvo(pokemon)) {
+				return;
+			}
+			// Some pokemon species are unable to dynamax
+			const cannotDynamax = ['zacian', 'zamazenta', 'eternatus'];
+			if (cannotDynamax.includes(toID(pokemon.template.baseSpecies))) {
+				return;
+			}
+		}
+		/** @type {DynamaxOptions} */
+		let result = {maxMoves: []};
+		for (let moveSlot of pokemon.moveSlots) {
+			let move = this.dex.getMove(moveSlot.id);
+			move.gmaxPower = this.newGMaxPower( move );
+			let maxMove = this.getMaxMove(move, pokemon);
+			if (maxMove) result.maxMoves.push({move: maxMove.id, target: maxMove.target});
+		}
+		if (pokemon.canGigantamax) result.gigantamax = pokemon.canGigantamax;
+		return result;
+	},
+	
+	getMaxMove(move, pokemon) {
+		if (typeof move === 'string') move = this.dex.getMove(move);
+		if (pokemon.canGigantamax && move.category !== 'Status') {
+			let gMaxTemplate = this.dex.getTemplate(pokemon.canGigantamax);
+			let gMaxMove = this.dex.getMove(gMaxTemplate.isGigantamax);
+			if (gMaxMove.exists && gMaxMove.type === move.type) return gMaxMove;
+		}
+		let maxMove = this.dex.getMove(this.maxMoveTable[move.category === 'Status' ? move.category : move.type]);
+		if (maxMove.exists) return maxMove;
+	},
+	
 	getActiveMaxMove(move, pokemon) {
+		console.log( 'maxmove debug' );
 		if (typeof move === 'string') move = this.dex.getActiveMove(move);
 		let maxMove = this.dex.getActiveMove(this.maxMoveTable[move.category === 'Status' ? move.category : move.type]);
 		if (move.category !== 'Status') {
@@ -67,7 +105,6 @@ let BattleScripts = {
 			if (!move.gmaxPower) throw new Error(`${move.name} doesn't have a gmaxPower`);
 			maxMove.basePower = gmaxPower;
 			maxMove.category = move.category;
-			console.log( maxMove.id + ' ' + maxMove.basePower + ' ' + gmaxPower );
 		}
 		maxMove.maxPowered = true;
 		return maxMove;
