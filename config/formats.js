@@ -694,11 +694,9 @@ exports.Formats = [
 						}
 					}
 				}
-				console.log( move.id );
-				console.log( move.gmaxPower );
 				return gmaxPower;
 			};
-			let allMoves = this.dex.data.Movedex;
+			let allMoves = exports.battleMoveDex;
 			for (let i in allMoves) {
 				let move = allMoves[i];
 				if ( move.category !== 'Status' ) move.gmaxPower = newGMaxPower( move );
