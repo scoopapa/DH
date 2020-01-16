@@ -90,4 +90,43 @@ exports.BattleStatuses = {
 			pokemon.lastFormeBoosted = null;
 		}
 	},
+	choicelock: {
+		name: 'choicelock',
+		id: 'choicelock',
+		num: 0,
+		noCopy: true,
+		onStart(pokemon) {
+			if (!this.activeMove) throw new Error("Battle.activeMove is null");
+			if (!this.activeMove.id || this.activeMove.hasBounced) return false;
+			this.effectData.move = this.activeMove.id;
+		},
+		onBeforeMove(pokemon, target, move) {
+			if (!pokemon.getItem().isChoice) {
+				pokemon.removeVolatile('choicelock');
+				return;
+			}
+			if (!pokemon.ignoringItem() && move.id !== this.effectData.move && move.id !== 'struggle') {
+				// Fails unless the Choice item is being ignored, and no PP is lost
+				this.addMove('move', pokemon, move.name);
+				this.attrLastMove('[still]');
+				this.debug("Disabled by Choice item lock");
+				this.add('-fail', pokemon);
+				return false;
+			}
+		},
+		onDisableMove(pokemon) {
+			if (!pokemon.getItem().isChoice || !pokemon.hasMove(this.effectData.move)) {
+				pokemon.removeVolatile('choicelock');
+				return;
+			}
+			if (pokemon.ignoringItem() || pokemon.volatiles['dynamax']) {
+				return;
+			}
+			for (const moveSlot of pokemon.moveSlots) {
+				if (moveSlot.id !== this.effectData.move) {
+					pokemon.disableMove(moveSlot.id, false, this.effectData.sourceEffect);
+				}
+			}
+		},
+	},
 };
