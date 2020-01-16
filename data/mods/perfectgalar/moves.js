@@ -374,7 +374,7 @@ exports.BattleMovedex = {
 					this.boost({spa: 1}, pokemon);
 				}
 				if ( !source.status ){
-					source.setStatus( 'tox', source, move, true )
+					source.setStatus( 'tox', source, move, true );
 				}
 			},
 		},
@@ -399,6 +399,7 @@ exports.BattleMovedex = {
 			onHit(source) {
 				if (!source.volatiles['dynamax']) return;
 				this.field.setTerrain('grassyterrain');
+				source.addVolatile( 'leechseed' );
 			},
 		},
 		target: "adjacentFoe",
@@ -622,6 +623,9 @@ exports.BattleMovedex = {
 						pokemon.trySetStatus('psn', source);
 					}
 				}
+				for (let pokemon of source.side.active) {
+					this.boost( {spd: -1}, pokemon );
+				}
 			},
 		},
 		target: "adjacentFoe",
@@ -649,6 +653,14 @@ exports.BattleMovedex = {
 				}
 			},
 		},
+		onAfterHit(target, source) {
+			if (source.hp) {
+				let item = source.takeItem();
+				if (item) {
+					this.add('-enditem', source, item.name, '[from] move: G-Max Centiferno', '[of] ' + source);
+				}
+			}
+		},
 		secondary: null,
 		target: "adjacentFoe",
 		type: "Fire",
@@ -675,6 +687,7 @@ exports.BattleMovedex = {
 				}
 			},
 		},
+		recoil: [50, 100],
 		secondary: null,
 		target: "adjacentFoe",
 		type: "Fighting",
@@ -700,6 +713,17 @@ exports.BattleMovedex = {
 					pokemon.addVolatile('attract');
 				}
 			},
+			volatileStatus: 'maxstrike',
+			effect: {
+				noCopy: true,
+				onStart(pokemon) {
+					this.add('-start', pokemon, 'G-Max Cuddle');
+				},
+				onNegateImmunity(pokemon, type) {
+					if (pokemon.hasType('Ghost') && ['Normal', 'Fighting'].includes(type)) return false;
+					if (pokemon.hasType('Normal') && ['Ghost'].includes(type)) return false;
+				},
+			},
 		},
 		secondary: null,
 		target: "adjacentFoe",
@@ -721,6 +745,9 @@ exports.BattleMovedex = {
 		flags: {},
 		isMax: "Duraludon",
 		self: {
+			onHit(source) {
+				source.addVolatile('confusion');
+			},
 			onAfterHit(source) {
 				for (let pokemon of source.side.foe.active) {
 					const move = pokemon.lastMove;
@@ -760,6 +787,11 @@ exports.BattleMovedex = {
 					this.heal(pokemon.maxhp / 6, pokemon, source);
 				}
 			},
+			onHit(source) {
+				for (let pokemon of source.side.active) {
+					this.boost({spa: -1}, pokemon);
+				}
+			},
 		},
 		secondary: null,
 		target: "adjacentFoe",
@@ -784,6 +816,9 @@ exports.BattleMovedex = {
 			onHit(source) {
 				for (let pokemon of source.side.foe.active) {
 					this.boost({spe: -2}, pokemon);
+				}
+				for (let pokemon of source.side.active) {
+					this.boost( {def: -1}, pokemon );
 				}
 			},
 		},
@@ -812,6 +847,17 @@ exports.BattleMovedex = {
 					pokemon.addVolatile('confusion');
 				}
 			},
+			volatileStatus: 'maxstrike',
+			effect: {
+				noCopy: true,
+				onStart(pokemon) {
+					this.add('-start', pokemon, 'G-Max Cuddle');
+				},
+				onNegateImmunity(pokemon, type) {
+					if (pokemon.hasType('Ghost') && ['Normal', 'Fighting'].includes(type)) return false;
+					if (pokemon.hasType('Normal') && ['Ghost'].includes(type)) return false;
+				},
+			},
 		},
 		secondary: null,
 		target: "adjacentFoe",
@@ -834,6 +880,10 @@ exports.BattleMovedex = {
 		isMax: "Orbeetle",
 		self: {
 			pseudoWeather: 'gravity',
+			onHit(source) {
+				if (!source.volatiles['dynamax']) return;
+				source.usedMindstorm = true;
+			},
 		},
 		target: "adjacentFoe",
 		type: "Psychic",
@@ -857,6 +907,9 @@ exports.BattleMovedex = {
 			onHit(source) {
 				for (let pokemon of source.side.foe.active) {
 					pokemon.trySetStatus('psn', source);
+				}
+				if ( !source.status ){
+					source.setStatus( 'tox', source, move, true );
 				}
 			},
 		},
@@ -882,6 +935,9 @@ exports.BattleMovedex = {
 			onHit(source) {
 				for (let pokemon of source.side.foe.active) {
 					pokemon.addVolatile('torment');
+				}
+				for (let pokemon of source.side.active) {
+					this.boost({def: 1, spe: -1}, pokemon);
 				}
 			},
 		},
@@ -916,6 +972,17 @@ exports.BattleMovedex = {
 					}
 				}
 			},
+			volatileStatus: 'maxstrike',
+			effect: {
+				noCopy: true,
+				onStart(pokemon) {
+					this.add('-start', pokemon, 'Max Strike');
+				},
+				onNegateImmunity(pokemon, type) {
+					if (pokemon.hasType('Ghost') && ['Normal', 'Fighting'].includes(type)) return false;
+					if (pokemon.hasType('Normal') && ['Ghost'].includes(type)) return false;
+				},
+			},
 		},
 		secondary: null,
 		target: "adjacentFoe",
@@ -938,6 +1005,10 @@ exports.BattleMovedex = {
 		isMax: "Lapras",
 		self: {
 			sideCondition: 'auroraveil',
+			onHit(source) {
+				if (!source.volatiles['dynamax']) return;
+				this.add('-clearboost', source);
+			},
 		},
 		secondary: null,
 		target: "adjacentFoe",
@@ -962,6 +1033,9 @@ exports.BattleMovedex = {
 			onHit(source) {
 				for (let pokemon of source.side.foe.active) {
 					pokemon.addVolatile('partiallytrapped', source, this.dex.getActiveMove('G-Max Sandblast'), 'trapper');
+				}
+				for (let pokemon of source.side.active) {
+					this.boost({accuracy: -1}, pokemon);
 				}
 			},
 		},
@@ -988,6 +1062,9 @@ exports.BattleMovedex = {
 			onHit(source) {
 				for (let pokemon of source.side.foe.active) {
 					pokemon.addVolatile('confusion', source);
+				}
+				for (let pokemon of source.side.active) {
+					this.boost({spa: -1}, pokemon);
 				}
 			},
 		},
@@ -1020,6 +1097,14 @@ exports.BattleMovedex = {
 			if (this.random(2) === 0) return;
 			target.addVolatile('yawn');
 		},
+		self: {
+			onHit(source) {
+				if (!source.volatiles['dynamax']) return;
+				for (let pokemon of source.side.active) {
+					pokemon.addVolatile('torment');
+				}
+			},
+		},
 		secondary: null,
 		target: "adjacentFoe",
 		type: "Dark",
@@ -1042,6 +1127,9 @@ exports.BattleMovedex = {
 		self: {
 			onHit(source) {
 				source.side.foe.addSideCondition('gmaxsteelsurge');
+				for (let pokemon of source.side.active) {
+					this.boost({spe: -1}, pokemon);
+				}
 			},
 		},
 		effect: {
@@ -1076,6 +1164,9 @@ exports.BattleMovedex = {
 		self: {
 			onHit(source) {
 				source.side.foe.addSideCondition('stealthrock');
+				for (let pokemon of source.side.active) {
+					this.boost( {def: -1}, source );
+				}
 			},
 		},
 		secondary: null,
@@ -1109,6 +1200,7 @@ exports.BattleMovedex = {
 				}
 			},
 		},
+		recoil: [33, 100],
 		secondary: null,
 		target: "adjacentFoe",
 		type: "Electric",
@@ -1134,6 +1226,7 @@ exports.BattleMovedex = {
 				for (const ally of source.side.pokemon) {
 					ally.cureStatus();
 				}
+				source.addVolatile( 'leechseed' );
 			},
 		},
 		secondary: null,
@@ -1161,6 +1254,7 @@ exports.BattleMovedex = {
 					this.boost({evasion: -1}, pokemon);
 				}
 			},
+			source.addVolatile( 'leechseed' );
 		},
 		secondary: null,
 		target: "adjacentFoe",
@@ -1186,6 +1280,7 @@ exports.BattleMovedex = {
 				for (const pokemon of source.side.foe.active) {
 					pokemon.addVolatile('trapped', source, null, 'trapper');
 				}
+				source.addVolatile('curse');
 			},
 		},
 		secondary: null,
@@ -1210,6 +1305,9 @@ exports.BattleMovedex = {
 		self: {
 			onHit(source) {
 				source.side.foe.addSideCondition('gmaxvolcalith');
+				for (let pokemon of source.side.active) {
+					this.boost({atk: -1}, pokemon);
+				}
 			},
 		},
 		effect: {
@@ -1252,6 +1350,7 @@ exports.BattleMovedex = {
 				}
 			},
 		},
+		recoil: [33, 100],
 		secondary: null,
 		target: "adjacentFoe",
 		type: "Electric",
@@ -1289,6 +1388,14 @@ exports.BattleMovedex = {
 			onEnd(targetSide) {
 				this.add('-sideend', targetSide, 'G-Max Wildfire');
 			},
+		},
+		onAfterHit(target, source) {
+			if (source.hp) {
+				let item = source.takeItem();
+				if (item) {
+					this.add('-enditem', source, item.name, '[from] move: Max Flare', '[of] ' + source);
+				}
+			}
 		},
 		secondary: null,
 		target: "adjacentFoe",
@@ -1329,6 +1436,9 @@ exports.BattleMovedex = {
 					}
 				}
 				this.field.clearTerrain();
+				for (let pokemon of source.side.active) {
+					this.boost( { spa: -1, atk: -1}, pokemon );
+				}
 				return success;
 			},
 		},
