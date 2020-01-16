@@ -242,24 +242,18 @@ let BattleLearnsets = {
 		confusion: ["1"],
 		hornattack: ["1"],
 		disable: ["1"],
-		glare: ["1"],
-		recover: ["1"],
 	}},
 	prinstone: {learnset: {
 		rockslide: ["1"],
 		confusion: ["1"],
 		hornattack: ["1"],
 		disable: ["1"],
-		glare: ["1"],
-		recover: ["1"],
 	}},
 	rokking: {learnset: {
 		rockslide: ["1"],
 		confusion: ["1"],
 		hornattack: ["1"],
 		disable: ["1"],
-		glare: ["1"],
-		recover: ["1"],
 	}},
 	shalady: {learnset: {
 		rockslide: ["1"],
@@ -268,7 +262,6 @@ let BattleLearnsets = {
 		submission: ["1"],
 		bide: ["1"],
 		doubleslap: ["1"],
-		lovelykiss: ["1"],
 	}},
 	prinsestone: {learnset: {
 		rockslide: ["1"],
@@ -277,7 +270,6 @@ let BattleLearnsets = {
 		submission: ["1"],
 		bide: ["1"],
 		doubleslap: ["1"],
-		lovelykiss: ["1"],
 	}},
 	rokween: {learnset: {
 		rockslide: ["1"],
@@ -286,7 +278,6 @@ let BattleLearnsets = {
 		submission: ["1"],
 		bide: ["1"],
 		doubleslap: ["1"],
-		lovelykiss: ["1"],
 	}},
 	plunchker: {learnset: {
 		thunderpunch: ["1"],
