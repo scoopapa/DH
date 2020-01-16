@@ -1,7 +1,5 @@
 'use strict';
 
-
-
 exports.BattleStatuses = {
 	dynamax: {
 		name: 'Dynamax',
@@ -29,6 +27,11 @@ exports.BattleStatuses = {
 			pokemon.hp = Math.floor(pokemon.hp * ratio);
 			this.add('-heal', pokemon, pokemon.getHealth, '[silent]');
 			pokemon.addVolatile( pokemon.volatileTag );
+		},
+		onTryMove(attacker, defender, move) {
+			if ( move.gmaxPower ){
+				console.log( move.id + ' ' + move.gmaxPower );
+			}
 		},
 		onBeforeSwitchOut(pokemon) {
 			pokemon.removeVolatile('dynamax');

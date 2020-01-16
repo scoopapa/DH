@@ -696,10 +696,10 @@ exports.Formats = [
 				}
 				return gmaxPower;
 			};
-			let allMoves = exports.battleMoveDex;
+			let allMoves = this.dex.data.Movedex;
 			for (let i in allMoves) {
 				let move = allMoves[i];
-				if ( move.category !== 'Status' ) move.gmaxPower = newGMaxPower( move );
+				if ( move.category !== 'Status' ) this.dex.data.Movedex[i].gmaxPower = newGMaxPower( move );
 			}
 		},
 		onSwitchIn( pokemon ){
