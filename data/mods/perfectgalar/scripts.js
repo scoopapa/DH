@@ -1,7 +1,7 @@
 'use strict';
 
 /**@type {ModdedBattleScriptsData} */
-exports.battleScripts = {
+exports.BattleScripts = {
 	inherit: 'gen7',
 	init() {
 		// Butterfree
@@ -73,7 +73,7 @@ exports.battleScripts = {
 		let result = {maxMoves: []};
 		for (let moveSlot of pokemon.moveSlots) {
 			let move = this.dex.getMove(moveSlot.id);
-			move.gmaxPower = this.newGMaxPower( move );
+			// move.gmaxPower = this.newGMaxPower( move );
 			let maxMove = this.getMaxMove(move, pokemon);
 			if (maxMove) result.maxMoves.push({move: maxMove.id, target: maxMove.target});
 		}
