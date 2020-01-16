@@ -689,8 +689,7 @@ exports.Formats = [
 						}
 					}
 				} else {
-					for ( const i in basePowers ){
-						for ( const i in oldMaxPowers ){
+					for ( const i in oldMaxPowers ){
 						if ( move.gmaxPower === oldMaxPowers[i] ){
 							gmaxPower = maxPowers[i]
 							break
