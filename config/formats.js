@@ -680,7 +680,7 @@ exports.Formats = [
 				} else if (['Fighting', 'Poison', 'Flying'].includes(move.type)) {
 					for ( const i in basePowers ){
 						if ( move.basePower >= basePowers[i] ){
-							move.gmaxPower = weakMaxPowers[i]
+							gmaxPower = weakMaxPowers[i]
 						} else {
 							break
 						}
@@ -688,12 +688,14 @@ exports.Formats = [
 				} else {
 					for ( const i in basePowers ){
 						if ( move.basePower >= basePowers[i] ){
-							move.gmaxPower = maxPowers[i]
+							gmaxPower = maxPowers[i]
 						} else {
 							break
 						}
 					}
 				}
+				console.log( move.id );
+				console.log( move.gmaxPower );
 				return gmaxPower;
 			};
 			let allMoves = this.dex.data.Movedex;
