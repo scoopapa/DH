@@ -697,11 +697,11 @@ exports.Formats = [
 				}
 				return gmaxPower;
 			};
-			let allMoves = this.dex.data.Movedex;
-			for ( var j in allMoves) {
-				let move = allMoves[j];
-				if ( move.category !== 'Status' ) this.dex.data.Movedex[j].gmaxPower = newGMaxPower( move );
-			}
+			// let allMoves = this.dex.data.Movedex;
+			// for ( var j in allMoves) {
+				// let move = allMoves[j];
+				// if ( move.category !== 'Status' ) this.dex.data.Movedex[j].gmaxPower = newGMaxPower( move );
+			// }
 		},
 		onSwitchIn( pokemon ){
 			if ( pokemon.hasDynamaxed ) pokemon.addVolatile( pokemon.volatileTag );

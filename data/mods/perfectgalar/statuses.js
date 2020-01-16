@@ -28,11 +28,6 @@ exports.BattleStatuses = {
 			this.add('-heal', pokemon, pokemon.getHealth, '[silent]');
 			pokemon.addVolatile( pokemon.volatileTag );
 		},
-		onTryMove(attacker, defender, move) {
-			if ( move.gmaxPower ){
-				console.log( move.id + ' ' + move.gmaxPower );
-			}
-		},
 		onBeforeSwitchOut(pokemon) {
 			pokemon.removeVolatile('dynamax');
 		},
