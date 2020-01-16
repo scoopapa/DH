@@ -33,9 +33,8 @@ exports.BattleStatuses = {
 		},
 		onTryHit( target, source, move ){
 			if ( move.isMax || move.maxPowered ){
-				this.hint( move.name + ' was used at ' + move.basePower + ' base power.', 
-				false,
-				source.side.id )
+				let str = move.name + ' was used at ' + move.basePower + ' base power.';
+				this.addSplit( source.side.id, [str])
 			}
 		},
 		onSourceModifyDamage(damage, source, target, move) {
