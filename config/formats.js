@@ -673,9 +673,10 @@ exports.Formats = [
 			let basePowers = [45, 55, 65, 75, 110, 150];
 			let weakMaxPowers = [75, 80, 85, 90, 95, 100];
 			let maxPowers = [85, 90, 95, 100, 105, 110];
-			let newGMaxPower = function( move ){
+			this.newGMaxPower = function( move ){
 				let gmaxPower = 90;
 				if (!move.basePower) {
+					console.log( 'returning' );
 					return gmaxPower;
 				} else if (['Fighting', 'Poison', 'Flying'].includes(move.type)) {
 					for ( const i in basePowers ){
@@ -697,9 +698,9 @@ exports.Formats = [
 				return gmaxPower;
 			};
 			let allMoves = this.dex.data.Movedex;
-			for (let i in allMoves) {
-				let move = allMoves[i];
-				if ( move.category !== 'Status' ) this.dex.data.Movedex[i].gmaxPower = newGMaxPower( move );
+			for ( var j in allMoves) {
+				let move = allMoves[j];
+				if ( move.category !== 'Status' ) this.dex.data.Movedex[j].gmaxPower = newGMaxPower( move );
 			}
 		},
 		onSwitchIn( pokemon ){
