@@ -72,7 +72,7 @@ exports.BattleScripts = {
 		return maxMove;
 	},
 	//New functions
-	doMaxBoostFormeChange = function( pokemon, isPermanent ){
+	doMaxBoostFormeChange( pokemon, isPermanent ){
 		if ( !pokemon.hasDynamaxed ) return;
 		let template = this.dex.deepClone( pokemon.template );
 		if ( pokemon.lastFormeBoosted !== pokemon.template.forme ){ // don't boost the same forme twice in a row
@@ -83,9 +83,9 @@ exports.BattleScripts = {
 		}
 		pokemon.lastFormeBoosted = pokemon.template.forme;
 		pokemon.formeChange(template, "dynamax", isPermanent);
-	};
+	},
 	
-	newGMaxPower = function( move ){
+	newGMaxPower( move ){
 		let oldMaxPowers = [100, 110, 120, 130, 140, 150];
 		let weakMaxPowers = [75, 80, 85, 90, 95, 100];
 		let maxPowers = [85, 90, 95, 100, 105, 110];
@@ -112,9 +112,9 @@ exports.BattleScripts = {
 			}
 		}
 		return gmaxPower;
-	};
+	},
 	
-	getMaxBoost = function( statName, pokemon ){
+	getMaxBoost( statName, pokemon ){
 		let statBoosts = {
 			dynamax: { hp: 0, atk: 10, def: 10, spa: 10, spd: 10, spe: 10 },
 			alcremie: { hp: 0, atk: 0, def: 30, spa: 10, spd: 10, spe: 0 },
@@ -146,5 +146,5 @@ exports.BattleScripts = {
 		if ( pokemon.canGigantamax ) boostType = statBoosts[ pokemon.speciesid ];
 		let statBoost = boostType[ statName ];
 		return statBoost;
-	};
+	},
 };

@@ -105,9 +105,10 @@ exports.BattleStatuses = {
 				pokemon.removeVolatile('choicelock');
 				return;
 			}
+			let maxID = toID( this.getMaxMove( this.effectData.move, pokemon ))
 			if ( !pokemon.ignoringItem() 
 				&& ( move.id !== this.effectData.move
-					&& move.id !== this.getMaxMove( move, pokemon ))
+					&& move.id !== maxID )
 				&& move.id !== 'struggle' ) 
 			{
 				// Fails unless the Choice item is being ignored, and no PP is lost
@@ -127,8 +128,9 @@ exports.BattleStatuses = {
 				return;
 			}
 			for (const moveSlot of pokemon.moveSlots) {
+				let maxID = toID( this.getMaxMove( this.effectData.move, pokemon ))
 				if ( moveSlot.id !== this.effectData.move 
-					&& moveSlot.id !== this.getMaxMove( this.effectData.move, pokemon ))
+					&& moveSlot.id !== maxID )
 				{
 					pokemon.disableMove(moveSlot.id, false, this.effectData.sourceEffect);
 				}
