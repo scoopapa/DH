@@ -53,3 +53,23 @@ let BattleScripts = {
 		
 		// Silvally
 		this.modData('Learnsets', 'silvally').learnset.recover = ['7M'];
+	},
+	getActiveMaxMove(move, pokemon) {
+		if (typeof move === 'string') move = this.dex.getActiveMove(move);
+		let maxMove = this.dex.getActiveMove(this.maxMoveTable[move.category === 'Status' ? move.category : move.type]);
+		if (move.category !== 'Status') {
+			if (pokemon.canGigantamax) {
+				let gMaxTemplate = this.dex.getTemplate(pokemon.canGigantamax);
+				let gMaxMove = this.dex.getActiveMove(gMaxTemplate.isGigantamax ? gMaxTemplate.isGigantamax : '');
+				if (gMaxMove.exists && gMaxMove.type === move.type) maxMove = gMaxMove;
+			}
+			let gmaxPower = this.newGMaxPower( move );
+			if (!move.gmaxPower) throw new Error(`${move.name} doesn't have a gmaxPower`);
+			maxMove.basePower = gmaxPower;
+			maxMove.category = move.category;
+			console.log( maxMove.id + ' ' + maxMove.basePower + ' ' + gmaxPower );
+		}
+		maxMove.maxPowered = true;
+		return maxMove;
+	},
+};

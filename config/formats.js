@@ -427,7 +427,7 @@ exports.Formats = [
 				pkmnInfo[ 'ability' ] = benchAbility;
 				pkmnInfo[ 'item' ] = pokemon.item;
 				//-----------------------------------------------------------------------
-				allyBench.push( pkmnInfo ) // onModifyTemplate goes over the team in order, so this stores them in order
+				allyBench.push( pkmnInfo )
 			}
 		},
 		onBeforeSwitchIn: function (pokemon) {
@@ -511,13 +511,13 @@ exports.Formats = [
 			`&bullet; <a href="https://www.smogon.com/forums/threads/gen-8-more-balanced-hackmons.3644050/">More Balanced Hackmons</a>`,
 		],
 		mod: 'morebalancedhackmons',
-		ruleset: [ 'OHKO Clause', 'Evasion Moves Clause', 'CFZ Clause', 
+		ruleset: [ 'OHKO Clause', 'Evasion Moves Clause', 'CFZ Clause', 'Sleep Clause Mod',
 					'Endless Battle Clause', 'Team Preview', 'HP Percentage Mod', 'Cancel Mod', 
 					'Species Clause', 'Standard Natdex' ],
-		banlist: ['Groudon-Primal', 'Arena Trap', 'Huge Power', 'Illusion', 'Innards Out', 'Magnet Pull', 
+		banlist: ['Groudon-Primal', 'Eternatus-Eternamax', 'Arena Trap', 'Huge Power', 'Illusion', 'Innards Out', 'Magnet Pull', 
 					'Moody', 'Parental Bond', 'Protean', 'Psychic Surge', 'Pure Power', 'Shadow Tag', 
 					'Stakeout', 'Water Bubble', 'Wonder Guard', 'Gengarite', 'Chatter', 'Comatose + Sleep Talk',
-					'Libero', 'Neutralizing Gas', 'Gorilla Tactics', 'Intrepid Sword'],
+					'Libero', 'Neutralizing Gas', 'Gorilla Tactics', 'Intrepid Sword', 'Contrary'],
 		onValidateTeam(team, format){
 			/**@type {{[k: string]: true}} */
 			let abilityTable = [];
@@ -527,6 +527,33 @@ exports.Formats = [
 				}
 				else {
 					return [`You have more than one pokemon with the ability ${set.ability}.`];
+				}
+			}
+		},
+		onChangeSet(set) {
+			const item = toID(set.item);
+			if (set.species === 'Zacian' || set.species === 'Zacian-Crowned') {
+				if (item === 'rustedsword') {
+					set.species = 'Zacian-Crowned';
+					set.ability = 'Intrepid Sword';
+					let ironHead = set.moves.indexOf('ironhead');
+					if (ironHead >= 0) {
+						set.moves[ironHead] = 'behemothblade';
+					}
+				} else {
+					set.species = 'Zacian';
+				}
+			}
+			if (set.species === 'Zamazenta' || set.species === 'Zamazenta-Crowned') {
+				if (item === 'rustedshield') {
+					set.species = 'Zamazenta-Crowned';
+					set.ability = 'Dauntless Shield';
+					let ironHead = set.moves.indexOf('ironhead');
+					if (ironHead >= 0) {
+						set.moves[ironHead] = 'behemothbash';
+					}
+				} else {
+					set.species = 'Zamazenta';
 				}
 			}
 		},
@@ -581,8 +608,9 @@ exports.Formats = [
 	},
 	{
 		name: "[Gen 8] Crossover Chaos v2 + Expanded Ubers",
-		desc: [ "The goal of Perfect Galar is to make a Sword and Shield OU metagame where every single fully evolved Pokemon in the Galar Pokedex has a unique, valuable niche.",
-				"&bullet; <a href=https://www.smogon.com/forums/threads/gen-8-perfect-galar.3656660/>Crossover Chaos</a>",],
+		desc: [
+				"&bullet; <a href=https://www.smogon.com/forums/threads/crossover-chaos-v2.3636780/>Crossover Chaos</a>",
+		      "&bullet; <a href=https://www.smogon.com/forums/threads/crossover-chaos-expanded-side-project.3647108/>Crossover Chaos</a>"],
 		ruleset: [ 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 
 					'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 
 					'Swagger Clause', 'Baton Pass Clause', 'Obtainable', 'Standard Natdex'],
@@ -591,12 +619,93 @@ exports.Formats = [
 	}, 
 	{
 		name: "[Gen 8] Perfect Galar",
-		desc: [
-				"&bullet; <a href=https://www.smogon.com/forums/threads/crossover-chaos-v2.3636780/>Crossover Chaos</a>",
-		      "&bullet; <a href=https://www.smogon.com/forums/threads/crossover-chaos-expanded-side-project.3647108/>Crossover Chaos</a>"],
+		desc: [ "The goal of Perfect Galar is to make a Sword and Shield OU metagame where every single fully evolved Pokemon in the Galar Pokedex has a unique, valuable niche.",
+				"&bullet; <a href=https://www.smogon.com/forums/threads/gen-8-perfect-galar.3656660/>Perfect Galar</a>",],
 		ruleset: ['Obtainable', 'Standard', 'Team Preview',],
 		banlist: ['Uber', 'Shadow Tag', 'Baton Pass'],
 		mod: 'perfectgalar',
+		onBegin: function(){
+			this.getMaxBoost = function( statName, pokemon ){
+				let statBoosts = {
+					dynamax: { hp: 0, atk: 10, def: 10, spa: 10, spd: 10, spe: 10 },
+					alcremie: { hp: 0, atk: 0, def: 30, spa: 10, spd: 10, spe: 0 },
+					appletun: { hp: 0, atk: 0, def: 30, spa: 20, spd: 0, spe: 0 },
+					butterfree: { hp: 0, atk: 0, def: 0, spa: 10, spd: 0, spe: 40 },
+					centiscorch: { hp: 0, atk: 20, def: 30, spa: 0, spd: 0, spe: 0 },
+					charizard: { hp: 0, atk: 30, def: 0, spa: 10, spd: 0, spe: 10 },
+					coalossal: { hp: 0, atk: 0, def: 0, spa: 35, spd: 15, spe: 0 },
+					copperajah: { hp: 0, atk: 0, def: 30, spa: 0, spd: 20, spe: 0 },
+					corviknight: { hp: 0, atk: 10, def: 10, spa: 0, spd: 30, spe: 0 },
+					drednaw: { hp: 0, atk: 25, def: 15, spa: 0, spd: 0, spe: 10 },
+					duraludon: { hp: 0, atk: 0, def: 5, spa: 20, spd: 25, spe: 0 },
+					eevee: { hp: 0, atk: 50, def: 0, spa: 0, spd: 0, spe: 0 },
+					flapple: { hp: 20, atk: 5, def: 10, spa: 0, spd: 10, spe: 5 },
+					garbodor: { hp: 0, atk: 10, def: 25, spa: 0, spd: 25, spe: -10 },
+					gengar: { hp: 0, atk: 0, def: 25, spa: 10, spd: 15, spe: 0 },
+					hatterene: { hp: 0, atk: 10, def: 0, spa: 16, spd: 24, spe: 0 },
+					kingler: { hp: 0, atk: 20, def: 0, spa: 0, spd: 0, spe: 30 },
+					lapras: { hp: 0, atk: 0, def: 20, spa: 0, spd: 30, spe: 0 },
+					machamp: { hp: 0, atk: 30, def: 0, spa: 0, spd: 0, spe: 20 },
+					melmetal: { hp: 0, atk: 10, def: 10, spa: 0, spd: 0, spe: 30 },
+					meowth: { hp: 0, atk: 5, def: 0, spa: 0, spd: 0, spe: 45 },
+					orbeetle: { hp: 0, atk: 0, def: 0, spa: 30, spd: 0, spe: 20 },
+					pikachu: { hp: 30, atk: 10, def: 10, spa: 20, spd: 10, spe: -30 },
+					sandaconda: { hp: 0, atk: 0, def: 20, spa: 0, spd: 0, spe: 30 },
+					toxtricity: { hp: 0, atk: 20, def: 0, spa: 4, spd: 16, spe: 10 },
+				}
+				let boostType = statBoosts.dynamax;
+				if ( pokemon.canGigantamax ) boostType = statBoosts[ pokemon.speciesid ];
+				let statBoost = boostType[ statName ];
+				return statBoost;
+			};
+			this.doMaxBoostFormeChange = function( pokemon, isPermanent ){
+				if ( !pokemon.hasDynamaxed ) return;
+				let template = this.dex.deepClone( pokemon.template );
+				if ( pokemon.lastFormeBoosted !== pokemon.template.forme ){ // don't boost the same forme twice in a row
+					for ( let statName in template.baseStats ){
+						let boost = this.getMaxBoost( statName, pokemon );
+						template.baseStats[ statName ] = template.baseStats[ statName ] + boost;
+					}
+				}
+				pokemon.lastFormeBoosted = pokemon.template.forme;
+				pokemon.formeChange(template, "dynamax", isPermanent);
+			};
+			let basePowers = [45, 55, 65, 75, 110, 150];
+			let weakMaxPowers = [75, 80, 85, 90, 95, 100];
+			let maxPowers = [85, 90, 95, 100, 105, 110];
+			this.newGMaxPower = function( move ){
+				let gmaxPower = 90;
+				if (!move.basePower) {
+					console.log( 'returning' );
+					return gmaxPower;
+				} else if (['Fighting', 'Poison', 'Flying'].includes(move.type)) {
+					for ( const i in basePowers ){
+						if ( move.basePower >= basePowers[i] ){
+							gmaxPower = weakMaxPowers[i]
+						} else {
+							break
+						}
+					}
+				} else {
+					for ( const i in basePowers ){
+						if ( move.basePower >= basePowers[i] ){
+							gmaxPower = maxPowers[i]
+						} else {
+							break
+						}
+					}
+				}
+				return gmaxPower;
+			};
+			// let allMoves = this.dex.data.Movedex;
+			// for ( var j in allMoves) {
+				// let move = allMoves[j];
+				// if ( move.category !== 'Status' ) this.dex.data.Movedex[j].gmaxPower = newGMaxPower( move );
+			// }
+		},
+		onSwitchIn( pokemon ){
+			if ( pokemon.hasDynamaxed ) pokemon.addVolatile( pokemon.volatileTag );
+		},
 	}, 
 	// Old Pet Mods ///////////////////////////////////////////////////////////////////
 	{
@@ -720,7 +829,6 @@ exports.Formats = [
   		      ],
   		ruleset: ['Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause'],
 		banlist: ['Unreleased', /*'Dialcatty', 'Kars', 'Dittsey', 'Diceus', 'Peridot-Mega', 'Kyzor', 'Gonzap', 'Harem', 'Cinshado', 'Enteon', 'Lucashadow-Mega', 'Taiwan', 'Dad', 'Enteon', 'Entir', 'Necrynx-Ultra', 'Shenala', 'Xurkizard-Mega-Y', 'Archedactyl-Mega', 'Miminja', 'Toxicario-Mega', 'Lucasol-Mega-L', 'Alakario-Mega-L', 'Kangorus-Khan-Mega', 'Absoko-Mega', 'Kartaria-Mega', 'Dio', 'Mendoza', 'Deoxurk-Outlet', 'Omneus','Muddy Seed'*/], // Mega Kasukabe Necrozerain-Ultra'
-
 		mod: 'fe',
 		onPrepareHit: function(target, source, move) {
 			if (!move.contestType) {
@@ -739,25 +847,25 @@ exports.Formats = [
 // 			return temp;
 //   		},
 		onSwitchIn: function (pokemon) {
-				if (pokemon.illusion){
-            	this.add('-start', pokemon, 'typechange', pokemon.illusion.template.types.join('/'), '[silent]');
-					let illusionability = this.getAbility(pokemon.illusion.ability);
-					this.add('raw',illusionability,illusionability.shortDesc);
+			if (pokemon.illusion){
+			this.add('-start', pokemon, 'typechange', pokemon.illusion.template.types.join('/'), '[silent]');
+				let illusionability = this.getAbility(pokemon.illusion.ability);
+				this.add('raw',illusionability,illusionability.shortDesc);
+			} else {
+				let ability = this.getAbility(pokemon.ability);
+				if (pokemon.hasAbility('typeillusionist') || pokemon.hasAbility('sleepingsystem')){
+			 this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');	
 				} else {
-					let ability = this.getAbility(pokemon.ability);
-					if (pokemon.hasAbility('typeillusionist') || pokemon.hasAbility('sleepingsystem')){
-       		     this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');	
-					} else {
-            		this.add('-start', pokemon, 'typechange', pokemon.getTypes().join('/'), '[silent]');
-					}
-					this.add('raw',ability,ability.shortDesc);
+				this.add('-start', pokemon, 'typechange', pokemon.getTypes().join('/'), '[silent]');
 				}
+				this.add('raw',ability,ability.shortDesc);
+			}
         },
 		checkLearnset: function (move, template, lsetData, set) {
            return null
         },
   	},
-		{
+	{
 		name: "[Gen 7] Generation SD",
 		threads: [
 			`&bullet; <a href="https://www.smogon.com/forums/threads/.3641374/">Generation SD</a>`,
@@ -840,6 +948,17 @@ exports.Formats = [
 		banlist: [],
 		mod: 'megasforall',
 		searchShow: false,
+	},
+	{
+		name: "[Gen 1 The Pokedex Redone] OU",
+		threads: [
+			`&bullet; <a href="https://www.smogon.com/forums/threads/3572352/">RBY OU Viability Ranking</a>`,
+			`&bullet; <a href="https://www.smogon.com/forums/threads/3650478/#post-8133786">RBY Sample Teams</a>`,
+		],
+
+		mod: 'tpr',
+		ruleset: ['Standard'],
+		banlist: ['Uber'],
 	},
 	{
   		name: "[Gen 7] Pokemon Let's Go",
