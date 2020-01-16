@@ -396,10 +396,11 @@ exports.BattleMovedex = {
 		flags: {},
 		isMax: true,
 		self: {
-			onHit(source) {
+			onHit(target, source, move) {
 				if (!source.volatiles['dynamax']) return;
 				this.field.setTerrain('grassyterrain');
 				source.addVolatile( 'leechseed' );
+				source.volatiles[ 'leechseed' ].sourcePosition = target.position;
 			},
 		},
 		target: "adjacentFoe",
@@ -1221,12 +1222,13 @@ exports.BattleMovedex = {
 		flags: {},
 		isMax: "Appletun",
 		self: {
-			onHit(source) {
+			onHit(target, source, move) {
 				this.add('-activate', source, 'move: G-Max Sweetness');
 				for (const ally of source.side.pokemon) {
 					ally.cureStatus();
 				}
 				source.addVolatile( 'leechseed' );
+				source.volatiles[ 'leechseed' ].sourcePosition = target.position;
 			},
 		},
 		secondary: null,
@@ -1249,12 +1251,13 @@ exports.BattleMovedex = {
 		flags: {},
 		isMax: "Flapple",
 		self: {
-			onHit(source) {
+			onHit(target, source, move) {
 				for (const pokemon of source.side.foe.active) {
 					this.boost({evasion: -1}, pokemon);
 				}
+				source.addVolatile( 'leechseed' );
+				source.volatiles[ 'leechseed' ].sourcePosition = target.position;
 			},
-			source.addVolatile( 'leechseed' );
 		},
 		secondary: null,
 		target: "adjacentFoe",
