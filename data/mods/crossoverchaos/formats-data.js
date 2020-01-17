@@ -623,7 +623,7 @@ exports.BattleFormatsData = { //
 		  tier: "V2",
 	 },
 	 dimentiosuper: {
-		  tier: "V2",
+		  tier: "Uber",
 	 },
 	 traitorlord: {
 		  tier: "V2",
@@ -875,6 +875,7 @@ exports.BattleFormatsData = { //
 		  tier: "G8",
 	 },
 	 drawciasoul: {
+		  requiredItem: "Soul Orb",
 		  tier: "Uber",
 	 },
 	 whispywoods: {
