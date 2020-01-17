@@ -28,7 +28,7 @@ exports.BattleMovedex = {
 			boosts:{
 				atk: 1,
 			}
-		}
+		},
 		target: "AllAdjacentFoes",
 	},
 	"octolock": {
@@ -70,26 +70,45 @@ exports.BattleMovedex = {
 		effect: {
 			// this is a side condition
 			onStart(side) {
+				this.effectData.gMaxLayers = 0;
+				this.effectData.layers = 0;
 				this.add('-sidestart', side, 'move: Toxic Spikes');
-				this.effectData.layers = 1;
-				console.log( this.effectData.source );
+				if ( this.activeMove.id === 'gmaxmalodor' ){
+					this.effectData.gMaxLayers = 1;
+					this.effectData.layers = 1;
+				} else {
+					this.effectData.layers = 1;
+				}
 			},
 			onRestart(side) {
-				if (this.effectData.layers >= 2) return false;
+				if ( this.activeMove.id === 'toxicspikes' ){
+					if ( this.effectData.layers >= 2 ) return false;
+					this.effectData.layers++;
+				}
+				else if ( this.activeMove.id === 'gmaxmalodor' ){
+					if ( this.effectData.gMaxLayers >= 2 ) return false;
+					this.effectData.gMaxLayers++;
+					this.effectData.layers++;
+				}
 				this.add('-sidestart', side, 'move: Toxic Spikes');
-				this.effectData.layers++;
-				console.log( this.effectData.source );
 			},
 			onSwitchIn(pokemon) {
+				let totalLayers = this.effectData.layers + this.effectData.gMaxLayers;
 				if (!pokemon.isGrounded()) return;
 				if (pokemon.hasType('Poison')) {
-					this.add('-sideend', pokemon.side, 'move: Toxic Spikes', '[of] ' + pokemon);
-					pokemon.side.removeSideCondition('toxicspikes');
+					if ( this.effectData.gMaxLayers === 0 ){
+						this.add('-sideend', pokemon.side, 'move: Toxic Spikes', '[of] ' + pokemon);
+						pokemon.side.removeSideCondition('toxicspikes');
+					} else if (this.effectData.gMaxLayers === 1 {
+						this.effectData.layers = 0;
+						this.add('-sideend', pokemon.side, 'move: Toxic Spikes', '[of] ' + pokemon);
+						this.add('-sidestart', side, 'move: Toxic Spikes');
+					}					
 				} else if (pokemon.hasType('Steel') || pokemon.hasItem('heavydutyboots')) {
 					return;
-				} else if (this.effectData.layers >= 2) {
+				} else if ( totalLayers >= 2 ) {
 					pokemon.trySetStatus('tox', pokemon.side.foe.active[0]);
-				} else {
+				} else if ( totalLayers === 1 ){
 					pokemon.trySetStatus('psn', pokemon.side.foe.active[0]);
 				}
 			},
@@ -493,9 +512,7 @@ exports.BattleMovedex = {
 		isMax: "Garbodor",
 		self: {
 			onHit(source) {
-				for (let pokemon of source.side.foe.active) {
-					pokemon.trySetStatus('psn', source);
-				}
+				source.side.foe.addSideCondition('toxicspikes');
 				if ( !source.status ){
 					source.setStatus( 'tox', source, move, true );
 				}
