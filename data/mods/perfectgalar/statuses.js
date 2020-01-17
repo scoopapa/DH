@@ -99,6 +99,9 @@ exports.BattleStatuses = {
 			if (!this.activeMove) throw new Error("Battle.activeMove is null");
 			if (!this.activeMove.id || this.activeMove.hasBounced) return false;
 			this.effectData.move = this.activeMove.id;
+			if ( this.dex.getMove( this.effectData.move ).isMax ){
+				this.effectData.move = this.activeMove.baseMove;
+			}
 		},
 		onBeforeMove(pokemon, target, move) {
 			if (!pokemon.getItem().isChoice) {
@@ -120,18 +123,23 @@ exports.BattleStatuses = {
 			}
 		},
 		onDisableMove(pokemon) {
-			if (!pokemon.getItem().isChoice || !pokemon.hasMove(this.effectData.move)) {
+			if (!pokemon.getItem().isChoice 
+				|| ( pokemon.hasMove(this.effectData.move) === false
+					&& !this.dex.getMove( this.effectData.move ).isMax))
+			{
 				pokemon.removeVolatile('choicelock');
 				return;
 			}
 			if (pokemon.ignoringItem()) {
 				return;
 			}
+			let maxID = toID( this.getMaxMove( this.effectData.move, pokemon ))
 			for (const moveSlot of pokemon.moveSlots) {
-				let maxID = toID( this.getMaxMove( this.effectData.move, pokemon ))
+				let moveSlotMaxID = toID( this.getMaxMove( moveSlot.id, pokemon ))
 				if ( moveSlot.id !== this.effectData.move 
-					&& moveSlot.id !== maxID )
+					&& moveSlotMaxID !== maxID )
 				{
+					console.log( 'disabling move: ' + moveSlot.id );
 					pokemon.disableMove(moveSlot.id, false, this.effectData.sourceEffect);
 				}
 			}

@@ -68,6 +68,7 @@ exports.BattleMovedex = {
 		type: "Flying",
 		contestType: "Clever",
 	},
+	
 //------------------------------------------------------ Dynamax Moves ------------------------------------------------------------------
 	"maxairstream": {
 		num: 766,
