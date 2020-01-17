@@ -108,7 +108,7 @@ export const commands: ChatCommands = {
 			break;
 		}
 		if (currentModchat === room.modchat) {
-			return this.errorReply(`Modchat is already set to ${currentModchat}.`);
+			return this.errorReply(`Modchat is already set to ${currentModchat || 'off'}.`);
 		}
 		if (!room.modchat) {
 			this.add("|raw|<div class=\"broadcast-blue\"><strong>Moderated chat was disabled!</strong><br />Anyone may talk now.</div>");
@@ -117,15 +117,15 @@ export const commands: ChatCommands = {
 			this.add(`|raw|<div class="broadcast-red"><strong>Moderated chat was set to ${modchatSetting}!</strong><br />Only users of rank ${modchatSetting} and higher can talk.</div>`);
 		}
 		if ((room as GameRoom).requestModchat && !room.modchat) (room as GameRoom).requestModchat(null);
-		this.privateModAction(`(${user.name} set modchat to ${room.modchat})`);
-		this.modlog('MODCHAT', null, `to ${room.modchat}`);
+		this.privateModAction(`(${user.name} set modchat to ${room.modchat || "off"})`);
+		this.modlog('MODCHAT', null, `to ${room.modchat || "false"}`);
 
 		if (room.chatRoomData) {
 			room.chatRoomData.modchat = room.modchat;
 			Rooms.global.writeChatRoomData();
 		}
 	},
-	modchathelp: [`/modchat [off/autoconfirmed/+/%/@/*/player/#/&/~] - Set the level of moderated chat. Requires: * @ \u2606 for off/autoconfirmed/+ options, # & ~ for all the options`],
+	modchathelp: [`/modchat [off/autoconfirmed/trusted/+/%/@/*/player/#/&/~] - Set the level of moderated chat. Requires: % \u2606 for off/autoconfirmed/+ options, * @ # & ~ for all the options`],
 
 	ioo(target, room, user) {
 		return this.parse('/modjoin %');
