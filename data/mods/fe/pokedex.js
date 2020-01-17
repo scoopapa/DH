@@ -21017,7 +21017,7 @@ auroritarmega: {
 		  heightm: 1.3,
 		  weightkg: 52.8,
 		  otherFormes: ["noivianmega"],
-		  eggGroups: ["Flying"],
+		  eggGroups: ["Flying", "Dragon"],
 	},
 	noivianmega: {
 		num: 7500487,
@@ -21040,7 +21040,7 @@ auroritarmega: {
         color: "Blue",
 		  heightm: 1.7,
 		  weightkg: 52.8,
-		  eggGroups: ["Flying"],
+		  eggGroups: ["Flying", "Dragon"],
 	},
 	cruski: {
 		num: 7500488,
