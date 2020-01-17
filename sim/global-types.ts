@@ -26,6 +26,7 @@ type Nonstandard = 'Past' | 'Future' | 'Unobtainable' | 'CAP' | 'LGPE' | 'Custom
  * adjacentAlly - Only relevant to Doubles or Triples, the move only targets an ally of the user.
  * adjacentAllyOrSelf - The move can target the user or its ally.
  * adjacentFoe - The move can target a foe, but not (in Triples) a distant foe.
+ * adjacentOrSelf - The move can target any adjacent Pokémon of choice or the user.
  * all - The move targets the field or all Pokémon at once.
  * allAdjacent - The move is a spread move that also hits the user's ally.
  * allAdjacentFoes - The move is a spread move.
@@ -39,7 +40,7 @@ type Nonstandard = 'Past' | 'Future' | 'Unobtainable' | 'CAP' | 'LGPE' | 'Custom
  * scripted - The move targets the foe that damaged the user.
  * self - The move affects the user of the move.
  */
-type MoveTarget = 'adjacentAlly' | 'adjacentAllyOrSelf' | 'adjacentFoe' | 'all' | 'allAdjacent' | 'allAdjacentFoes' | 'allies' | 'allySide' | 'allyTeam' | 'any' | 'foeSide' | 'normal' | 'randomNormal' | 'scripted' | 'self';
+type MoveTarget = 'adjacentAlly' | 'adjacentAllyOrSelf' | 'adjacentFoe' | 'adjacentOrSelf' | 'all' | 'allAdjacent' | 'allAdjacentFoes' | 'allies' | 'allySide' | 'allyTeam' | 'any' | 'foeSide' | 'normal' | 'randomNormal' | 'scripted' | 'self';
 
 type PokemonSet = {
 	name: string,
