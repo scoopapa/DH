@@ -880,7 +880,7 @@ exports.BattleFormatsData = { //
 	 whispywoods: {
 		  tier: "G8",
 	 },
-	 whispysrevenge: {
+	 whispywoodsrevenge: {
 		  tier: "G8",
 	 },
 	 mewtwoshadow: {
