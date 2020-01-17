@@ -46,6 +46,8 @@ import * as path from 'path';
 import * as Data from './dex-data';
 import {PRNG, PRNGSeed} from './prng';
 
+const BASE_MOD = 'gen8' as ID;
+const DEFAULT_MOD = BASE_MOD;
 const DATA_DIR = path.resolve(__dirname, '../data');
 const MODS_DIR = path.resolve(__dirname, '../data/mods');
 const FORMATS = path.resolve(__dirname, '../config/formats');
@@ -222,7 +224,7 @@ export class ModdedDex {
 	forFormat(format: Format | string): ModdedDex {
 		if (!this.modsLoaded) this.includeMods();
 		const mod = this.getFormat(format).mod;
-		return dexes[mod || 'gen8'].includeData();
+		return dexes[mod || BASE_MOD].includeData();
 	}
 
 	modData(dataType: DataType, id: string) {
@@ -581,8 +583,8 @@ export class ModdedDex {
 			name = this.data.Aliases[id];
 			id = toID(name);
 		}
-		if (this.data.Formats.hasOwnProperty('gen8' + id)) {
-			id = ('gen8' + id) as ID;
+		if (this.data.Formats.hasOwnProperty(DEFAULT_MOD + id)) {
+			id = (DEFAULT_MOD + id) as ID;
 		}
 		let supplementaryAttributes: AnyObject | null = null;
 		if (name.includes('@@@')) {
@@ -795,8 +797,12 @@ export class ModdedDex {
 		}
 	}
 
-	getRuleTable(format: Format, depth: number = 0): Data.RuleTable {
-		if (format.ruleTable) return format.ruleTable;
+	getRuleTable(format: Format, depth: number = 1, repeals?: Map<string, number>): Data.RuleTable {
+		if (format.ruleTable && !repeals) return format.ruleTable;
+		if (depth === 1 && dexes[format.mod || 'base'] !== this) {
+			// throw new Error(`${format.mod} ${this.currentMod}`);
+			return this.mod(format.mod).getRuleTable(format, depth + 1);
+		}
 		const ruleTable = new Data.RuleTable();
 
 		const ruleset = format.ruleset.slice();
@@ -815,19 +821,23 @@ export class ModdedDex {
 		if (format.timer) {
 			ruleTable.timer = [format.timer, format.name];
 		}
+		if (format.minSourceGen) {
+			ruleTable.minSourceGen = [format.minSourceGen, format.name];
+		}
 
 		// apply rule repeals before other rules
+		// repeals is a ruleid:depth map
 		for (const rule of ruleset) {
 			if (rule.startsWith('!')) {
 				const ruleSpec = this.validateRule(rule, format) as string;
-				ruleTable.set(ruleSpec, '');
+				if (!repeals) repeals = new Map();
+				repeals.set(ruleSpec.slice(1), depth);
 			}
 		}
 
 		for (const rule of ruleset) {
-			if (rule.startsWith('!')) continue;
-
 			const ruleSpec = this.validateRule(rule, format);
+
 			if (typeof ruleSpec !== 'string') {
 				if (ruleSpec[0] === 'complexTeamBan') {
 					const complexTeamBan: Data.ComplexTeamBan = ruleSpec.slice(1) as Data.ComplexTeamBan;
@@ -840,22 +850,45 @@ export class ModdedDex {
 				}
 				continue;
 			}
-			if ("!+-".includes(ruleSpec.charAt(0))) {
+
+			if (rule.startsWith('!')) {
+				const repealDepth = repeals!.get(ruleSpec.slice(1));
+				if (repealDepth === undefined) throw new Error(`Multiple "${rule}" rules in ${format.name}`);
+				if (repealDepth === depth) {
+					throw new Error(`Rule "${rule}" did nothing because "${rule.slice(1)}" is not in effect`);
+				}
+				if (repealDepth === -depth) repeals!.delete(ruleSpec.slice(1));
+				continue;
+			}
+
+			if ("+-".includes(ruleSpec.charAt(0))) {
 				if (ruleSpec.startsWith('+')) ruleTable.delete('-' + ruleSpec.slice(1));
 				if (ruleSpec.startsWith('-')) ruleTable.delete('+' + ruleSpec.slice(1));
+				if (ruleTable.has(ruleSpec)) {
+					throw new Error(`Rule "${rule}" was added by "${format.name}" but already exists in "${ruleTable.get(ruleSpec) || format.name}"`);
+				}
 				ruleTable.set(ruleSpec, '');
 				continue;
 			}
 			const subformat = this.getFormat(ruleSpec);
-			if (ruleTable.has('!' + subformat.id)) continue;
+			if (repeals && repeals.has(subformat.id)) {
+				repeals.set(subformat.id, -Math.abs(repeals.get(subformat.id)!));
+				continue;
+			}
+			if (ruleTable.has(subformat.id)) {
+				throw new Error(`Rule "${rule}" was added by "${format.name}" but already exists in "${ruleTable.get(subformat.id) || format.name}"`);
+			}
 			ruleTable.set(subformat.id, '');
 			if (!subformat.exists) continue;
 			if (depth > 16) {
 				throw new Error(`Excessive ruleTable recursion in ${format.name}: ${ruleSpec} of ${format.ruleset}`);
 			}
-			const subRuleTable = this.getRuleTable(subformat, depth + 1);
+			const subRuleTable = this.getRuleTable(subformat, depth + 1, repeals);
 			for (const [k, v] of subRuleTable) {
-				if (!ruleTable.has('!' + k)) ruleTable.set(k, v || subformat.name);
+				// don't check for "already exists" here; multiple inheritance is allowed
+				if (!(repeals && repeals.has(k))) {
+					ruleTable.set(k, v || subformat.name);
+				}
 			}
 			// tslint:disable-next-line:no-shadowed-variable
 			for (const [rule, source, limit, bans] of subRuleTable.complexBans) {
@@ -880,6 +913,17 @@ export class ModdedDex {
 						`"${ruleTable.timer[1]}" and "${subRuleTable.timer[1]}"`);
 				}
 				ruleTable.timer = subRuleTable.timer;
+			}
+			// minSourceGen is automatically ignored if higher than current gen
+			// this helps the common situation where Standard has a minSourceGen in the
+			// latest gen but not in any past gens
+			if (subRuleTable.minSourceGen && subRuleTable.minSourceGen[0] <= this.gen) {
+				if (ruleTable.minSourceGen) {
+					throw new Error(
+						`"${format.name}" has conflicting minSourceGen from ` +
+						`"${ruleTable.minSourceGen[1]}" and "${subRuleTable.minSourceGen[1]}"`);
+				}
+				ruleTable.minSourceGen = subRuleTable.minSourceGen;
 			}
 		}
 
@@ -1532,6 +1576,6 @@ export class ModdedDex {
 dexes['base'] = new ModdedDex(undefined, true);
 
 // "gen8" is an alias for the current base data
-dexes['gen8'] = dexes['base'];
+dexes[BASE_MOD] = dexes['base'];
 
-export const Dex = dexes['gen8'];
+export const Dex = dexes['base'];
