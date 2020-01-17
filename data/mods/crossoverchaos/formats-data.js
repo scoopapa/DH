@@ -820,6 +820,69 @@ exports.BattleFormatsData = { //
 	 lucina: {
 		  tier: "V2",
 	 },
+	 biolizard: {
+		  tier: "V2",
+	 },
+	 finalhazard: {
+		  tier: "V2",
+	 },
+	 whambamrock: {
+		  tier: "V2",
+	 },
+	 whambamjewel: {
+		  tier: "V2",
+	 },
+	 austincarter: {
+		  tier: "V2",
+	 },
+	 radiance: {
+		  tier: "Uber",
+	 },
+	 radianceabsolute: {
+		  tier: "Uber",
+	 },
+	 bluebaby: {
+		  tier: "V2",
+	 },
+	 hush: {
+		  tier: "Uber",
+	 },
+	 promestein: {
+		  tier: "V2",
+	 },
+	 promesteinultimate: {
+		  tier: "Uber",
+	 },
+	 zote: {
+		  tier: "LC",
+	 },
+	 greyprincezote: {
+		  tier: "G8",
+	 },
+	 ghast: {
+		  tier: "G8",
+	 },
+	 undyne: {
+		  tier: "G8",
+	 },
+	 undyneundying: {
+		  tier: "G8",
+	 },
+	 rebel: {
+		  tier: "G8",
+	 },
+	 drawcia: {
+		  tier: "G8",
+	 },
+	 drawciasoul: {
+		  tier: "Uber",
+	 },
+	 whispywoods: {
+		  tier: "G8",
+	 },
+	 whispysrevenge: {
+		  tier: "G8",
+	 },
 	 mewtwoshadow: {
 		  tier: "V1",
 	 },
