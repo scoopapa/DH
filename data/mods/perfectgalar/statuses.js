@@ -123,23 +123,15 @@ exports.BattleStatuses = {
 			}
 		},
 		onDisableMove(pokemon) {
-			if (!pokemon.getItem().isChoice 
-				|| ( pokemon.hasMove(this.effectData.move) === false
-					&& !this.dex.getMove( this.effectData.move ).isMax))
-			{
+			if (!pokemon.getItem().isChoice || !pokemon.hasMove(this.effectData.move)){
 				pokemon.removeVolatile('choicelock');
 				return;
 			}
 			if (pokemon.ignoringItem()) {
 				return;
 			}
-			let maxID = toID( this.getMaxMove( this.effectData.move, pokemon ))
 			for (const moveSlot of pokemon.moveSlots) {
-				let moveSlotMaxID = toID( this.getMaxMove( moveSlot.id, pokemon ))
-				if ( moveSlot.id !== this.effectData.move 
-					&& moveSlotMaxID !== maxID )
-				{
-					console.log( 'disabling move: ' + moveSlot.id );
+				if ( moveSlot.id !== this.effectData.move ){
 					pokemon.disableMove(moveSlot.id, false, this.effectData.sourceEffect);
 				}
 			}
