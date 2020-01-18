@@ -119,6 +119,38 @@ exports.BattleMovedex = {
 		zMoveBoost: {def: 1},
 		contestType: "Clever",
 	},
+	"torment": {
+		num: 259,
+		accuracy: 100,
+		basePower: 0,
+		category: "Status",
+		desc: "Prevents the target from selecting the same move for use two turns in a row. This effect ends when the target is no longer active.",
+		shortDesc: "Target can't select the same move twice in a row.",
+		id: "torment",
+		name: "Torment",
+		pp: 15,
+		priority: 0,
+		flags: {protect: 1, reflectable: 1, mirror: 1, authentic: 1},
+		volatileStatus: 'torment',
+		effect: {
+			noCopy: true,
+			onStart(pokemon) {
+				this.add('-start', pokemon, 'Torment');
+			},
+			onEnd(pokemon) {
+				this.add('-end', pokemon, 'Torment');
+			},
+			onDisableMove(pokemon) {
+				if ( pokemon.lastMove ) console.log( pokemon.lastMove.id );
+				if (pokemon.lastMove && pokemon.lastMove.id !== 'struggle') pokemon.disableMove(pokemon.lastMove.id);
+			},
+		},
+		secondary: null,
+		target: "normal",
+		type: "Dark",
+		zMoveBoost: {def: 1},
+		contestType: "Tough",
+	},
 //------------------------------------------------------ Dynamax Moves ------------------------------------------------------------------
 	"maxairstream": {
 		inherit: true,
@@ -513,8 +545,8 @@ exports.BattleMovedex = {
 		self: {
 			onHit(source) {
 				source.side.foe.addSideCondition('toxicspikes');
-				if ( !source.status ){
-					source.setStatus( 'tox', source, move, true );
+				for ( let pokemon of source.side.active ) {
+					this.boost({ spe: -1 }, pokemon );
 				}
 			},
 		},
