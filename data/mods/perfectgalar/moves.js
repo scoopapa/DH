@@ -119,6 +119,104 @@ exports.BattleMovedex = {
 		zMoveBoost: {def: 1},
 		contestType: "Clever",
 	},
+	"torment": {
+		num: 259,
+		accuracy: 100,
+		basePower: 0,
+		category: "Status",
+		desc: "Prevents the target from selecting the same move for use two turns in a row. This effect ends when the target is no longer active.",
+		shortDesc: "Target can't select the same move twice in a row.",
+		id: "torment",
+		name: "Torment",
+		pp: 15,
+		priority: 0,
+		flags: {protect: 1, reflectable: 1, mirror: 1, authentic: 1},
+		volatileStatus: 'torment',
+		effect: {
+			noCopy: true,
+			onStart(pokemon) {
+				this.add('-start', pokemon, 'Torment');
+			},
+			onEnd(pokemon) {
+				this.add('-end', pokemon, 'Torment');
+			},
+			onDisableMove(pokemon) {
+				if ( pokemon.lastMove ) console.log( pokemon.lastMove.id );
+				if (pokemon.lastMove && pokemon.lastMove.id !== 'struggle') pokemon.disableMove(pokemon.lastMove.id);
+			},
+		},
+		secondary: null,
+		target: "normal",
+		type: "Dark",
+		zMoveBoost: {def: 1},
+		contestType: "Tough",
+	},
+	"encore": {
+		num: 227,
+		accuracy: 100,
+		basePower: 0,
+		category: "Status",
+		desc: "For its next 3 turns, the target is forced to repeat its last move used. If the affected move runs out of PP, the effect ends. Fails if the target is already under this effect, if it has not made a move, if the move has 0 PP, or if the move is Assist, Copycat, Encore, Me First, Metronome, Mimic, Mirror Move, Nature Power, Sketch, Sleep Talk, Struggle, Transform, or any Z-Move.",
+		shortDesc: "Target repeats its last move for its next 3 turns.",
+		id: "encore",
+		isViable: true,
+		name: "Encore",
+		pp: 5,
+		priority: 0,
+		flags: {protect: 1, reflectable: 1, mirror: 1, authentic: 1},
+		volatileStatus: 'encore',
+		effect: {
+			duration: 3,
+			noCopy: true, // doesn't get copied by Z-Baton Pass
+			onStart(target) {
+				const noEncore = [
+					'assist', 'copycat', 'encore', 'mefirst', 'metronome', 'mimic', 'mirrormove', 'naturepower', 'sketch', 'sleeptalk', 'struggle', 'transform',
+				];
+				const move = target.lastMove;
+				if ( target.lastMove ) console.log( target.lastMove.id );
+				let moveIndex = move ? target.moves.indexOf(move.id) : -1;
+				if (!move || move.isZ || move.isMax || noEncore.includes(move.id) || !target.moveSlots[moveIndex] || target.moveSlots[moveIndex].pp <= 0) {
+					// it failed
+					delete target.volatiles['encore'];
+					return false;
+				}
+				this.effectData.move = move.id;
+				this.add('-start', target, 'Encore');
+				if (!this.willMove(target)) {
+					this.effectData.duration++;
+				}
+			},
+			onOverrideAction(pokemon, target, move) {
+				if (move.id !== this.effectData.move) return this.effectData.move;
+			},
+			onResidualOrder: 13,
+			onResidual(target) {
+				if (target.moves.includes(this.effectData.move) && target.moveSlots[target.moves.indexOf(this.effectData.move)].pp <= 0) {
+					// early termination if you run out of PP
+					delete target.volatiles.encore;
+					this.add('-end', target, 'Encore');
+				}
+			},
+			onEnd(target) {
+				this.add('-end', target, 'Encore');
+			},
+			onDisableMove(pokemon) {
+				if (!this.effectData.move || !pokemon.hasMove(this.effectData.move)) {
+					return;
+				}
+				for (const moveSlot of pokemon.moveSlots) {
+					if (moveSlot.id !== this.effectData.move) {
+						pokemon.disableMove(moveSlot.id);
+					}
+				}
+			},
+		},
+		secondary: null,
+		target: "normal",
+		type: "Normal",
+		zMoveBoost: {spe: 1},
+		contestType: "Cute",
+	},
 //------------------------------------------------------ Dynamax Moves ------------------------------------------------------------------
 	"maxairstream": {
 		inherit: true,
@@ -513,8 +611,8 @@ exports.BattleMovedex = {
 		self: {
 			onHit(target, source, move) {
 				source.side.foe.addSideCondition('toxicspikes');
-				if ( !source.status ){
-					source.setStatus( 'tox', source, move, true );
+				for ( let pokemon of source.side.active ) {
+					this.boost({ spe: -1 }, pokemon );
 				}
 			},
 		},
