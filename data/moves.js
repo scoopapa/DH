@@ -3782,10 +3782,6 @@ let BattleMovedex = {
 			if (attacker.removeVolatile(move.id)) {
 				return;
 			}
-			if (attacker.hasAbility('gulpmissile') && attacker.template.species === 'Cramorant' && !attacker.transformed) {
-				const forme = attacker.hp <= attacker.maxhp / 2 ? 'cramorantgorging' : 'cramorantgulping';
-				attacker.formeChange(forme, move);
-			}
 			this.add('-prepare', attacker, move.name, defender);
 			if (!this.runEvent('ChargeMove', attacker, defender, move)) {
 				return;
@@ -4734,9 +4730,6 @@ let BattleMovedex = {
 		priority: 0,
 		flags: {protect: 1, reflectable: 1, mirror: 1, authentic: 1},
 		volatileStatus: 'encore',
-		onTryHit(target) {
-			if (target.volatiles['dynamax']) return false;
-		},
 		effect: {
 			duration: 3,
 			noCopy: true, // doesn't get copied by Z-Baton Pass
@@ -5902,9 +5895,9 @@ let BattleMovedex = {
 		onHit(target, source) {
 			let success = false;
 			if (this.field.isTerrain('grassyterrain')) {
-				success = !!this.heal(this.modify(target.baseMaxhp, 0.667)); // TODO: find out the real value
+				success = !!this.heal(this.modify(target.maxhp, 0.667)); // TODO: find out the real value
 			} else {
-				success = !!this.heal(Math.ceil(target.baseMaxhp * 0.5));
+				success = !!this.heal(Math.ceil(target.maxhp * 0.5));
 			}
 			if (success && target.side.id !== source.side.id) {
 				target.staleness = 'external';
@@ -6975,9 +6968,9 @@ let BattleMovedex = {
 		flags: {},
 		isMax: "Alcremie",
 		self: {
-			onAfterHit(target, source, move) {
+			onAfterHit(source) {
 				for (let pokemon of source.side.active) {
-					this.heal(pokemon.maxhp / 6, pokemon, source, move);
+					this.heal(pokemon.maxhp / 6, pokemon, source);
 				}
 			},
 		},
@@ -8445,9 +8438,9 @@ let BattleMovedex = {
 		onHit(target, source) {
 			let success = false;
 			if (source.hasAbility('megalauncher')) {
-				success = !!this.heal(this.modify(target.baseMaxhp, 0.75));
+				success = !!this.heal(this.modify(target.maxhp, 0.75));
 			} else {
-				success = !!this.heal(Math.ceil(target.baseMaxhp * 0.5));
+				success = !!this.heal(Math.ceil(target.maxhp * 0.5));
 			}
 			if (success && target.side.id !== source.side.id) {
 				target.staleness = 'external';
@@ -9168,7 +9161,7 @@ let BattleMovedex = {
 			atk: 1,
 		},
 		secondary: null,
-		target: "allies",
+		target: "allyTeam",
 		type: "Normal",
 		zMoveBoost: {atk: 1},
 		contestType: "Cool",
@@ -9814,7 +9807,7 @@ let BattleMovedex = {
 		priority: 0,
 		flags: {protect: 1, authentic: 1, mystery: 1},
 		onHit(target, source) {
-			if (!target.lastMove || target.volatiles['dynamax']) return false;
+			if (!target.lastMove) return false;
 			const lastMove = target.lastMove;
 			const moveIndex = target.moves.indexOf(lastMove.id);
 			const noInstruct = [
@@ -10457,7 +10450,7 @@ let BattleMovedex = {
 		flags: {snatch: 1, heal: 1, authentic: 1},
 		onHit(target, source) {
 			for (const pokemon of source.side.active) {
-				this.heal(Math.ceil(pokemon.baseMaxhp / 4), pokemon, source);
+				this.heal(Math.ceil(pokemon.maxhp / 4), pokemon, source);
 			}
 		},
 		secondary: null,
@@ -11265,7 +11258,7 @@ let BattleMovedex = {
 		contestType: "Cool",
 	},
 	"maxdarkness": {
-		num: 772,
+		num: 766,
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
@@ -13160,7 +13153,7 @@ let BattleMovedex = {
 			},
 			onTryHitPriority: 3,
 			onTryHit(target, source, move) {
-				if (!move.flags['protect'] || move.category === 'Status') {
+				if (!move.flags['protect']) {
 					if (move.isZ || move.isMax) target.getMoveHitData(move).zBrokeProtect = true;
 					return;
 				}
@@ -13973,11 +13966,7 @@ let BattleMovedex = {
 		onTryHit(target, source, move) {
 			if (source.side === target.side) {
 				move.basePower = 0;
-			}
-		},
-		onHit(target, source) {
-			if (source.side === target.side) {
-				this.heal(Math.floor(target.baseMaxhp * 0.5));
+				move.heal = [1, 2];
 			}
 		},
 		secondary: null,
@@ -16884,7 +16873,7 @@ let BattleMovedex = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		desc: "The user swaps its Ability with the target's Ability. Fails if either the user or the target's Ability is Battle Bond, Comatose, Disguise, Gulp Missile, Hunger Switch, Ice Face, Illusion, Multitype, Power Construct, RKS System, Schooling, Shields Down, Stance Change, Wonder Guard, or Zen Mode.",
+		desc: "The user swaps its Ability with the target's Ability. Fails if either the user or the target's Ability is Battle Bond, Comatose, Disguise, Illusion, Multitype, Power Construct, RKS System, Schooling, Shields Down, Stance Change, Wonder Guard, or Zen Mode.",
 		shortDesc: "The user and the target trade Abilities.",
 		id: "skillswap",
 		name: "Skill Swap",
@@ -16892,7 +16881,7 @@ let BattleMovedex = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1, authentic: 1, mystery: 1},
 		onTryHit(target, source) {
-			const bannedAbilities = ['battlebond', 'comatose', 'disguise', 'gulpmissile', 'hungerswitch', 'iceface', 'illusion', 'multitype', 'powerconstruct', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange', 'wonderguard', 'zenmode'];
+			let bannedAbilities = ['battlebond', 'comatose', 'disguise', 'illusion', 'multitype', 'powerconstruct', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange', 'wonderguard', 'zenmode'];
 			if (target.volatiles['dynamax'] || bannedAbilities.includes(target.ability) || bannedAbilities.includes(source.ability)) {
 				return false;
 			}
@@ -18336,7 +18325,7 @@ let BattleMovedex = {
 				if (!pokemon.isGrounded()) return;
 				if (pokemon.hasItem('heavydutyboots')) return;
 				this.add('-activate', pokemon, 'move: Sticky Web');
-				this.boost({spe: -1}, pokemon, this.effectData.source, this.dex.getActiveMove('stickyweb'));
+				this.boost({spe: -1}, pokemon, pokemon.side.foe.active[0], this.dex.getActiveMove('stickyweb'));
 			},
 		},
 		secondary: null,
@@ -19971,9 +19960,6 @@ let BattleMovedex = {
 		priority: 0,
 		flags: {protect: 1, reflectable: 1, mirror: 1, authentic: 1},
 		volatileStatus: 'torment',
-		onTryHit(target) {
-			if (target.volatiles['dynamax']) return false;
-		},
 		effect: {
 			noCopy: true,
 			onStart(pokemon) {
@@ -21440,8 +21426,8 @@ let BattleMovedex = {
 		accuracy: 100,
 		basePower: 80,
 		category: "Physical",
-		desc: "Has a 100% chance to raise the user's evasion by 1 stage.",
-		shortDesc: "Goes first. Raises user's evasion by 1.",
+		desc: "Will always result in a critical hit. Has a 100% chance to raise the user's evasion by 1 stage.",
+		shortDesc: "Goes first. Always crits. 100% +1 evasion.",
 		id: "zippyzap",
 		isNonstandard: "LGPE",
 		isViable: true,
@@ -21449,6 +21435,7 @@ let BattleMovedex = {
 		pp: 10,
 		priority: 2,
 		flags: {contact: 1, protect: 1},
+		willCrit: true,
 		secondary: {
 			chance: 100,
 			self: {

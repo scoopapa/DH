@@ -134,7 +134,7 @@ let BattleItems = {
 			if (!this.runEvent('TryHeal', pokemon)) return false;
 		},
 		onEat(pokemon) {
-			this.heal(pokemon.baseMaxhp * 0.33);
+			this.heal(pokemon.maxhp * 0.33);
 			if (pokemon.getNature().minus === 'spd') {
 				pokemon.addVolatile('confusion');
 			}
@@ -269,7 +269,6 @@ let BattleItems = {
 		},
 		num: 104,
 		gen: 4,
-		isNonstandard: "Past",
 		desc: "Can be revived into Shieldon.",
 	},
 	"aspearberry": {
@@ -433,7 +432,7 @@ let BattleItems = {
 	"berrysweet": {
 		id: "berrysweet",
 		name: "Berry Sweet",
-		spritenum: 706,
+		spritenum: 0,
 		fling: {
 			basePower: 10,
 		},
@@ -606,7 +605,7 @@ let BattleItems = {
 	"blunderpolicy": {
 		id: "blunderpolicy",
 		name: "Blunder Policy",
-		spritenum: 716,
+		spritenum: 0,
 		fling: {
 			basePower: 80,
 		},
@@ -911,7 +910,7 @@ let BattleItems = {
 	"chippedpot": {
 		id: "chippedpot",
 		name: "Chipped Pot",
-		spritenum: 720,
+		spritenum: 0,
 		fling: {
 			basePower: 80,
 		},
@@ -1028,13 +1027,12 @@ let BattleItems = {
 		},
 		num: 100,
 		gen: 3,
-		isNonstandard: "Past",
 		desc: "Can be revived into Anorith.",
 	},
 	"cloversweet": {
 		id: "cloversweet",
 		name: "Clover Sweet",
-		spritenum: 707,
+		spritenum: 0,
 		fling: {
 			basePower: 10,
 		},
@@ -1112,13 +1110,12 @@ let BattleItems = {
 		},
 		num: 572,
 		gen: 5,
-		isNonstandard: "Past",
 		desc: "Can be revived into Tirtouga.",
 	},
 	"crackedpot": {
 		id: "crackedpot",
 		name: "Cracked Pot",
-		spritenum: 719,
+		spritenum: 0,
 		fling: {
 			basePower: 80,
 		},
@@ -1325,7 +1322,6 @@ let BattleItems = {
 		},
 		num: 102,
 		gen: 3,
-		isNonstandard: "Past",
 		desc: "Can be revived into Kabuto.",
 	},
 	"dousedrive": {
@@ -1474,7 +1470,7 @@ let BattleItems = {
 		num: 576,
 		gen: 5,
 		isPokeball: true,
-		desc: "A Poke Ball that makes it easier to catch wild Pokémon while they're asleep.",
+		desc: "A special Poke Ball that appears out of nowhere in a bag at the Entree Forest.",
 	},
 	"dubiousdisc": {
 		id: "dubiousdisc",
@@ -1585,7 +1581,7 @@ let BattleItems = {
 	"ejectpack": {
 		id: "ejectpack",
 		name: "Eject Pack",
-		spritenum: 714,
+		spritenum: 0,
 		fling: {
 			basePower: 50,
 		},
@@ -1703,7 +1699,7 @@ let BattleItems = {
 		},
 		num: 34,
 		gen: 2,
-		desc: "Restores 60 HP to one Pokemon.",
+		desc: "Restores 50 HP to one Pokemon but lowers Happiness.",
 	},
 	"enigmaberry": {
 		id: "enigmaberry",
@@ -1738,15 +1734,13 @@ let BattleItems = {
 		},
 		onModifyDefPriority: 2,
 		onModifyDef(def, pokemon) {
-			// Temporary hardcode for Slowpoke-Galar since it's a special case
-			if (pokemon.baseTemplate.nfe || pokemon.baseTemplate.species === 'Slowpoke-Galar') {
+			if (pokemon.baseTemplate.nfe) {
 				return this.chainModify(1.5);
 			}
 		},
 		onModifySpDPriority: 2,
 		onModifySpD(spd, pokemon) {
-			// Temporary hardcode for Slowpoke-Galar since it's a special case
-			if (pokemon.baseTemplate.nfe || pokemon.baseTemplate.species === 'Slowpoke-Galar') {
+			if (pokemon.baseTemplate.nfe) {
 				return this.chainModify(1.5);
 			}
 		},
@@ -1897,7 +1891,7 @@ let BattleItems = {
 			if (!this.runEvent('TryHeal', pokemon)) return false;
 		},
 		onEat(pokemon) {
-			this.heal(pokemon.baseMaxhp * 0.33);
+			this.heal(pokemon.maxhp * 0.33);
 			if (pokemon.getNature().minus === 'atk') {
 				pokemon.addVolatile('confusion');
 			}
@@ -2046,7 +2040,7 @@ let BattleItems = {
 	"flowersweet": {
 		id: "flowersweet",
 		name: "Flower Sweet",
-		spritenum: 708,
+		spritenum: 10,
 		fling: {
 			basePower: 0,
 		},
@@ -2142,7 +2136,7 @@ let BattleItems = {
 	"fossilizedbird": {
 		id: "fossilizedbird",
 		name: "Fossilized Bird",
-		spritenum: 700,
+		spritenum: 0,
 		fling: {
 			basePower: 100,
 		},
@@ -2154,7 +2148,7 @@ let BattleItems = {
 	"fossilizeddino": {
 		id: "fossilizeddino",
 		name: "Fossilized Dino",
-		spritenum: 703,
+		spritenum: 0,
 		fling: {
 			basePower: 100,
 		},
@@ -2166,7 +2160,7 @@ let BattleItems = {
 	"fossilizeddrake": {
 		id: "fossilizeddrake",
 		name: "Fossilized Drake",
-		spritenum: 702,
+		spritenum: 0,
 		fling: {
 			basePower: 100,
 		},
@@ -2178,7 +2172,7 @@ let BattleItems = {
 	"fossilizedfish": {
 		id: "fossilizedfish",
 		name: "Fossilized Fish",
-		spritenum: 701,
+		spritenum: 0,
 		fling: {
 			basePower: 100,
 		},
@@ -2642,7 +2636,7 @@ let BattleItems = {
 	"heavydutyboots": {
 		id: "heavydutyboots",
 		name: "Heavy-Duty Boots",
-		spritenum: 715,
+		spritenum: 0,
 		fling: {
 			basePower: 80,
 		},
@@ -2660,7 +2654,6 @@ let BattleItems = {
 		},
 		num: 101,
 		gen: 3,
-		isNonstandard: "Past",
 		desc: "Can be revived into Omanyte.",
 	},
 	"heracronite": {
@@ -2727,7 +2720,7 @@ let BattleItems = {
 			if (!this.runEvent('TryHeal', pokemon)) return false;
 		},
 		onEat(pokemon) {
-			this.heal(pokemon.baseMaxhp * 0.33);
+			this.heal(pokemon.maxhp * 0.33);
 			if (pokemon.getNature().minus === 'def') {
 				pokemon.addVolatile('confusion');
 			}
@@ -2939,7 +2932,6 @@ let BattleItems = {
 		},
 		num: 710,
 		gen: 6,
-		isNonstandard: "Past",
 		desc: "Can be revived into Tyrunt.",
 	},
 	"kasibberry": {
@@ -3352,7 +3344,7 @@ let BattleItems = {
 	"lovesweet": {
 		id: "lovesweet",
 		name: "Love Sweet",
-		spritenum: 705,
+		spritenum: 0,
 		fling: {
 			basePower: 10,
 		},
@@ -3555,7 +3547,7 @@ let BattleItems = {
 			if (!this.runEvent('TryHeal', pokemon)) return false;
 		},
 		onEat(pokemon) {
-			this.heal(pokemon.baseMaxhp * 0.33);
+			this.heal(pokemon.maxhp * 0.33);
 			if (pokemon.getNature().minus === 'spe') {
 				pokemon.addVolatile('confusion');
 			}
@@ -4185,7 +4177,6 @@ let BattleItems = {
 		},
 		num: 103,
 		gen: 3,
-		isNonstandard: "Past",
 		desc: "Can be revived into Aerodactyl.",
 	},
 	"oranberry": {
@@ -4461,7 +4452,6 @@ let BattleItems = {
 		},
 		num: 573,
 		gen: 5,
-		isNonstandard: "Past",
 		desc: "Can be revived into Archen.",
 	},
 	"poisonbarb": {
@@ -5056,7 +5046,7 @@ let BattleItems = {
 	"ribbonsweet": {
 		id: "ribbonsweet",
 		name: "Ribbon Sweet",
-		spritenum: 710,
+		spritenum: 0,
 		fling: {
 			basePower: 10,
 		},
@@ -5186,7 +5176,7 @@ let BattleItems = {
 	"roomservice": {
 		id: "roomservice",
 		name: "Room Service",
-		spritenum: 717,
+		spritenum: 0,
 		fling: {
 			basePower: 100,
 		},
@@ -5208,7 +5198,6 @@ let BattleItems = {
 		},
 		num: 99,
 		gen: 3,
-		isNonstandard: "Past",
 		desc: "Can be revived into Lileep.",
 	},
 	"roseincense": {
@@ -5276,7 +5265,7 @@ let BattleItems = {
 	"rustedshield": {
 		id: "rustedshield",
 		name: "Rusted Shield",
-		spritenum: 699,
+		spritenum: 0,
 		onTakeItem(item, pokemon, source) {
 			if ((source && source.baseTemplate.num === 889) || pokemon.baseTemplate.num === 889) {
 				return false;
@@ -5292,7 +5281,7 @@ let BattleItems = {
 	"rustedsword": {
 		id: "rustedsword",
 		name: "Rusted Sword",
-		spritenum: 698,
+		spritenum: 0,
 		onTakeItem(item, pokemon, source) {
 			if ((source && source.baseTemplate.num === 888) || pokemon.baseTemplate.num === 888) {
 				return false;
@@ -5370,7 +5359,6 @@ let BattleItems = {
 		},
 		num: 711,
 		gen: 6,
-		isNonstandard: "Past",
 		desc: "Can be revived into Amaura.",
 	},
 	"salacberry": {
@@ -5657,7 +5645,6 @@ let BattleItems = {
 		},
 		num: 105,
 		gen: 4,
-		isNonstandard: "Past",
 		desc: "Can be revived into Cranidos.",
 	},
 	"skyplate": {
@@ -5908,7 +5895,7 @@ let BattleItems = {
 	"starsweet": {
 		id: "starsweet",
 		name: "Star Sweet",
-		spritenum: 709,
+		spritenum: 0,
 		fling: {
 			basePower: 10,
 		},
@@ -6049,7 +6036,7 @@ let BattleItems = {
 	"strawberrysweet": {
 		id: "strawberrysweet",
 		name: "Strawberry Sweet",
-		spritenum: 704,
+		spritenum: 0,
 		fling: {
 			basePower: 10,
 		},
@@ -6088,7 +6075,7 @@ let BattleItems = {
 	"sweetapple": {
 		id: "sweetapple",
 		name: "Sweet Apple",
-		spritenum: 711,
+		spritenum: 0,
 		fling: {
 			basePower: 30,
 		},
@@ -6149,7 +6136,7 @@ let BattleItems = {
 	"tartapple": {
 		id: "tartapple",
 		name: "Tart Apple",
-		spritenum: 712,
+		spritenum: 0,
 		fling: {
 			basePower: 30,
 		},
@@ -6189,7 +6176,7 @@ let BattleItems = {
 	"throatspray": {
 		id: "throatspray",
 		name: "Throat Spray",
-		spritenum: 713,
+		spritenum: 0,
 		fling: {
 			basePower: 30,
 		},
@@ -6331,15 +6318,14 @@ let BattleItems = {
 	"utilityumbrella": {
 		id: "utilityumbrella",
 		name: "Utility Umbrella",
-		spritenum: 718,
+		spritenum: 0,
 		fling: {
 			basePower: 60,
 		},
 		// Implemented in statuses.js, moves.js, and abilities.js
 		num: 1123,
 		gen: 8,
-		desc: "The holder is immune to the weather-based modifiers of the attacker's moves in the effects of Sunny Day and Rain Dance. However, the user's Weather Ball and own weather-based abilities will not activate.",
-		shortDesc: "Blocks the holder from the effects of sun/rain.",
+		desc: "Blocks the holder from receiving any effects of Sunny Day/Rain Dance.",
 	},
 	"venusaurite": {
 		id: "venusaurite",
@@ -6594,7 +6580,7 @@ let BattleItems = {
 			if (!this.runEvent('TryHeal', pokemon)) return false;
 		},
 		onEat(pokemon) {
-			this.heal(pokemon.baseMaxhp * 0.33);
+			this.heal(pokemon.maxhp * 0.33);
 			if (pokemon.getNature().minus === 'spa') {
 				pokemon.addVolatile('confusion');
 			}

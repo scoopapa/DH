@@ -2,9 +2,6 @@ type ChildProcess = import('child_process').ChildProcess;
 
 type Config = typeof import('../config/config-example') & AnyObject;
 
-type GroupSymbol = '~' | '&' | '#' | '★' | '*' | '@' | '%' | '☆' | '+' | ' ' | '‽' | '!';
-
-
 // Chat
 type CommandContext = Chat.CommandContext;
 type PageContext = Chat.PageContext;

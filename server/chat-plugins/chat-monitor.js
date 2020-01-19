@@ -281,7 +281,7 @@ let chatfilter = function (message, user, room) {
 		const {location, condition, monitor} = Chat.monitors[list];
 		if (!monitor) continue;
 		// Ignore challenge games, which are unrated and not part of roomtours.
-		if (location === 'BATTLES' && !(room && room.battle && room.battle.challengeType !== 'challenge')) continue;
+		if (location === 'BATTLES' && !(room && room.battle && (room.battle.rated || room.parent))) continue;
 		if (location === 'PUBLIC' && room && room.isPrivate === true) continue;
 
 		switch (condition) {
@@ -343,7 +343,7 @@ let loginfilter = function (user) {
 
 	const forceRenamed = Chat.forceRenames.get(user.id);
 	if (user.trackRename) {
-		Rooms.global.notifyRooms([/** @type {RoomID} */('staff')], Chat.html`|html|[NameMonitor] Username used: <span class="username">${user.name}</span> ${user.getAccountStatusString()} (${forceRenamed ? 'automatically ' : ''}forcerenamed from <span class="username">${user.trackRename}</span>)`);
+		Rooms.global.notifyRooms([/** @type {RoomID} */('staff')], `|html|[NameMonitor] Username used: <span class="username">${user.name}</span> ${user.getAccountStatusString()} (${forceRenamed ? 'automatically ' : ''}forcerenamed from <span class="username">${user.trackRename}</span>)`);
 		user.trackRename = '';
 	}
 	if (Chat.namefilterwhitelist.has(user.id)) return;

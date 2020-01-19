@@ -188,17 +188,12 @@ export class TeamValidator {
 	readonly dex: ModdedDex;
 	readonly gen: number;
 	readonly ruleTable: import('./dex-data').RuleTable;
-	readonly minSourceGen: number;
 
 	constructor(format: string | Format) {
 		this.format = Dex.getFormat(format);
 		this.dex = Dex.forFormat(this.format);
 		this.gen = this.dex.gen;
 		this.ruleTable = this.dex.getRuleTable(this.format);
-
-		this.minSourceGen = this.ruleTable.minSourceGen ?
-			this.ruleTable.minSourceGen[0] :
-			(this.dex.gen === 8 && this.ruleTable.has('-unreleased') ? 8 : 1);
 	}
 
 	validateTeam(team: PokemonSet[] | null, removeNicknames: boolean = false): string[] | null {
@@ -281,7 +276,6 @@ export class TeamValidator {
 		}
 
 		for (const rule of ruleTable.keys()) {
-			if ('!+-'.includes(rule.charAt(0))) continue;
 			const subformat = dex.getFormat(rule);
 			if (subformat.onValidateTeam && ruleTable.has(subformat.id)) {
 				problems = problems.concat(subformat.onValidateTeam.call(this, team, format, teamHas) || []);
@@ -299,6 +293,7 @@ export class TeamValidator {
 		const format = this.format;
 		const dex = this.dex;
 		const ruleTable = this.ruleTable;
+		const minPastGen = format.minSourceGen || 1;
 
 		let problems: string[] = [];
 		if (!set) {
@@ -362,7 +357,6 @@ export class TeamValidator {
 		const setSources = this.allSources(template);
 
 		for (const [rule] of ruleTable) {
-			if ('!+-'.includes(rule.charAt(0))) continue;
 			const subformat = dex.getFormat(rule);
 			if (subformat.onChangeSet && ruleTable.has(subformat.id)) {
 				problems = problems.concat(subformat.onChangeSet.call(this, set, format, setHas, teamHas) || []);
@@ -470,11 +464,11 @@ export class TeamValidator {
 					setSources.isHidden = true;
 
 					let unreleasedHidden = template.unreleasedHidden;
-					if (unreleasedHidden === 'Past' && this.minSourceGen < dex.gen) unreleasedHidden = false;
+					if (unreleasedHidden === 'Past' && minPastGen < dex.gen) unreleasedHidden = false;
 
 					if (unreleasedHidden && ruleTable.has('-unreleased')) {
 						problems.push(`${name}'s Hidden Ability is unreleased.`);
-					} else if (['entei', 'suicune', 'raikou'].includes(template.id) && this.minSourceGen > 1) {
+					} else if (['entei', 'suicune', 'raikou'].includes(template.id) && minPastGen > 1) {
 						problems.push(`${name}'s Hidden Ability is only available from Virtual Console, which is not allowed in this format.`);
 					} else if (dex.gen === 6 && ability.name === 'Symbiosis' &&
 						(set.species.endsWith('Orange') || set.species.endsWith('White'))) {
@@ -597,7 +591,7 @@ export class TeamValidator {
 				let eventInfo = eventPokemon[0];
 				let eventNum = 1;
 				for (const [i, eventData] of eventPokemon.entries()) {
-					if (eventData.generation <= dex.gen && eventData.generation >= this.minSourceGen) {
+					if (eventData.generation <= dex.gen && eventData.generation >= minPastGen) {
 						eventInfo = eventData;
 						eventNum = i + 1;
 						break;
@@ -614,7 +608,7 @@ export class TeamValidator {
 			problems.push(`${name} must be at least level ${template.evoLevel} to be evolved.`);
 		}
 		if (ruleTable.has('obtainablemoves') && template.id === 'keldeo' && set.moves.includes('secretsword') &&
-			this.minSourceGen > 5) {
+			minPastGen > 5) {
 			problems.push(`${name} has Secret Sword, which is only compatible with Keldeo-Ordinary obtained from Gen 5.`);
 		}
 		const requiresGen3Source = setSources.maxSourceGen() <= 3;
@@ -660,7 +654,7 @@ export class TeamValidator {
 		}
 
 		for (const [rule] of ruleTable) {
-			if ('!+-'.includes(rule.charAt(0))) continue;
+			if (rule.startsWith('!')) continue;
 			const subformat = dex.getFormat(rule);
 			if (subformat.onValidateSet && ruleTable.has(subformat.id)) {
 				problems = problems.concat(subformat.onValidateSet.call(this, set, format, setHas, teamHas) || []);
@@ -743,7 +737,8 @@ export class TeamValidator {
 				if (set.ivs[stat as 'hp'] >= 31) perfectIVs++;
 			}
 			if (perfectIVs < 3) {
-				const reason = (this.minSourceGen === 6 ? ` and this format requires gen ${dex.gen} Pokémon` : ` in gen 6`);
+				const minPastGen = this.format.minSourceGen || 1;
+				const reason = (minPastGen === 6 ? ` and this format requires gen ${dex.gen} Pokémon` : ` in gen 6`);
 				problems.push(`${name} must have at least three perfect IVs because it's a legendary${reason}.`);
 			}
 		}
@@ -1070,7 +1065,7 @@ export class TeamValidator {
 					problems.push(`Necrozma-Ultra must start the battle as Necrozma-Dawn-Wings or Necrozma-Dusk-Mane holding Ultranecrozium Z.`);
 				} else if (!template.requiredItems.includes(item.name)) {
 					// Mega or Primal
-					problems.push(`${template.species} transforms in-battle with ${template.requiredItem}.`);
+					problems.push(`${template.species} transforms in-battle with ${Chat.toOrList(template.requiredItems)}.`);
 				}
 			}
 			if (template.requiredMove && !set.moves.includes(toID(template.requiredMove))) {
@@ -1087,11 +1082,11 @@ export class TeamValidator {
 				if (dex.gen >= 8 && (template.baseSpecies === 'Arceus' || template.baseSpecies === 'Silvally')) {
 					// Arceus/Silvally formes in gen 8 only require the item with Multitype/RKS System
 					if (set.ability === template.abilities[0]) {
-						problems.push(`${name} needs to hold ${template.requiredItems.join(' or ')}.`);
+						problems.push(`${name} needs to hold ${Chat.toOrList(template.requiredItems)}.`);
 					}
 				} else {
 					// Memory/Drive/Griseous Orb/Plate/Z-Crystal - Forme mismatch
-					problems.push(`${name} needs to hold ${template.requiredItems.join(' or ')}.`);
+					problems.push(`${name} needs to hold ${Chat.toOrList(template.requiredItems)}.`);
 				}
 			}
 
@@ -1204,23 +1199,22 @@ export class TeamValidator {
 				if (tierTemplate.isNonstandard === 'Unobtainable') {
 					return `${tierTemplate.species} is not obtainable without hacking or glitches.`;
 				}
-				return `${tierTemplate.species} is tagged ${tierTemplate.isNonstandard}, which is ${banReason}.`;
+				if (['Past', 'Future'].includes(tierTemplate.isNonstandard)) {
+					return `${tierTemplate.species} does not exist in Gen ${dex.gen}.`;
+				}
 			}
 			if (banReason === '') return null;
 		}
 
-		if (tierTemplate.isNonstandard && tierTemplate.isNonstandard !== 'Unobtainable') {
+		if (tierTemplate.isNonstandard) {
 			banReason = ruleTable.check('nonexistent', setHas);
 			if (banReason) {
-				if (['Past', 'Future'].includes(tierTemplate.isNonstandard)) {
-					return `${tierTemplate.species} does not exist in Gen ${dex.gen}.`;
-				}
 				return `${tierTemplate.species} does not exist in this game.`;
 			}
 			if (banReason === '') return null;
 		} else if (tierTemplate.isUnreleased) {
 			let isUnreleased: boolean | 'Past' = tierTemplate.isUnreleased;
-			if (isUnreleased === 'Past' && this.minSourceGen < dex.gen) isUnreleased = false;
+			if (isUnreleased === 'Past' && (this.format.minSourceGen || 0) < dex.gen) isUnreleased = false;
 
 			if (isUnreleased) {
 				banReason = ruleTable.check('unreleased', setHas);
@@ -1375,15 +1369,17 @@ export class TeamValidator {
 		if (!eventTemplate) eventTemplate = template;
 		if (set.name && set.species !== set.name && template.baseSpecies !== set.name) name = `${set.name} (${set.species})`;
 
+		const minPastGen = this.format.minSourceGen || 1;
+
 		const fastReturn = !because;
 		if (eventData.from) from = `from ${eventData.from}`;
 		const etc = `${because} ${from}`;
 
 		const problems = [];
 
-		if (this.minSourceGen > eventData.generation) {
+		if (minPastGen > eventData.generation) {
 			if (fastReturn) return true;
-			problems.push(`This format requires Pokemon from gen ${this.minSourceGen} or later and ${name} is from gen ${eventData.generation}${etc}.`);
+			problems.push(`This format requires Pokemon from gen ${minPastGen} or later and ${name} is from gen ${eventData.generation}${etc}.`);
 		}
 		if (dex.gen < eventData.generation) {
 			if (fastReturn) return true;
@@ -1512,11 +1508,10 @@ export class TeamValidator {
 	}
 
 	allSources(template?: Template) {
-		let minSourceGen = this.minSourceGen;
-		if (this.dex.gen >= 3 && minSourceGen < 3) minSourceGen = 3;
-		if (template) minSourceGen = Math.max(minSourceGen, template.gen);
-		const maxSourceGen = this.ruleTable.has('allowtradeback') ? 2 : this.dex.gen;
-		return new PokemonSources(maxSourceGen, minSourceGen);
+		let minPastGen = (this.dex.gen < 3 ? 1 : this.format.minSourceGen || 3);
+		if (template) minPastGen = Math.max(minPastGen, template.gen);
+		const maxPastGen = this.ruleTable.has('allowtradeback') ? 2 : this.dex.gen;
+		return new PokemonSources(maxPastGen, minPastGen);
 	}
 
 	reconcileLearnset(
@@ -1644,6 +1639,10 @@ export class TeamValidator {
 		const moveSources = new PokemonSources();
 
 		/**
+		 * The minimum past gen the format allows
+		 */
+		const minPastGen = format.minSourceGen || 1;
+		/**
 		 * The format doesn't allow Pokemon traded from the future
 		 * (This is everything except in Gen 1 Tradeback)
 		 */
@@ -1699,7 +1698,7 @@ export class TeamValidator {
 					//   teach it, and transfer it to the current gen.)
 
 					const learnedGen = parseInt(learned.charAt(0));
-					if (learnedGen < this.minSourceGen) continue;
+					if (learnedGen < minPastGen) continue;
 					if (noFutureGen && learnedGen > dex.gen) continue;
 
 					// redundant
@@ -1843,7 +1842,7 @@ export class TeamValidator {
 
 		// Now that we have our list of possible sources, intersect it with the current list
 		if (!moveSources.size()) {
-			if (this.minSourceGen > 1 && sometimesPossible) return {type: 'pastgen', gen: this.minSourceGen};
+			if (minPastGen > 1 && sometimesPossible) return {type: 'pastgen', gen: minPastGen};
 			if (incompatibleAbility) return {type: 'incompatibleAbility'};
 			return {type: 'invalid'};
 		}

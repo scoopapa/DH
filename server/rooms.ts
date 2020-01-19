@@ -72,7 +72,7 @@ export abstract class BasicRoom {
 	parent: Room | null;
 	aliases: string[] | null;
 	userCount: number;
-	auth: {[userid: string]: GroupSymbol} | null;
+	auth: {[userid: string]: string} | null;
 	game: RoomGame | null;
 	active: boolean;
 	muteTimer: NodeJS.Timer | null;
@@ -83,7 +83,7 @@ export abstract class BasicRoom {
 	isPrivate: boolean | 'hidden' | 'voice';
 	hideReplay: boolean;
 	isPersonal: boolean;
-	isHelp: boolean;
+	isHelp: string | boolean;
 	isOfficial: boolean;
 	reportJoins: boolean;
 	batchJoins: number;
@@ -179,7 +179,7 @@ export abstract class BasicRoom {
 	sendMods(data: string) {
 		this.sendRankedUsers(data, '%');
 	}
-	sendRankedUsers(data: string, minRank: GroupSymbol = '+') {
+	sendRankedUsers(data: string, minRank = '+') {
 		if (this.staffRoom) {
 			if (!this.log) throw new Error(`Staff room ${this.roomid} has no log`);
 			this.log.add(data);
@@ -277,7 +277,7 @@ export abstract class BasicRoom {
 			this.runMuteTimer(true);
 		}, timeUntilExpire);
 	}
-	isMuted(user: User): ID | undefined {
+	isMuted(user: User) {
 		if (!user) return;
 		if (this.muteQueue) {
 			for (const entry of this.muteQueue) {
@@ -286,16 +286,15 @@ export abstract class BasicRoom {
 					(user.autoconfirmed && user.autoconfirmed === entry.autoconfirmed)) {
 					if (entry.time - Date.now() < 0) {
 						this.unmute(user.id);
-						return;
+						return null;
 					} else {
 						return entry.userid;
 					}
 				}
 			}
 		}
-		if (this.parent) return this.parent.isMuted(user);
 	}
-	getMuteTime(user: User): number | undefined {
+	getMuteTime(user: User) {
 		const userid = this.isMuted(user);
 		if (!userid) return;
 		for (const entry of this.muteQueue) {
@@ -303,12 +302,11 @@ export abstract class BasicRoom {
 				return entry.time - Date.now();
 			}
 		}
-		if (this.parent) return this.parent.getMuteTime(user);
 	}
 	/**
 	 * Gets the group symbol of a user in the room.
 	 */
-	getAuth(user: User): GroupSymbol {
+	getAuth(user: User): string {
 		if (this.auth && user.id in this.auth) {
 			return this.auth[user.id];
 		}
@@ -375,7 +373,7 @@ export abstract class BasicRoom {
 		}
 		this.runMuteTimer();
 
-		user.updateIdentity();
+		user.updateIdentity(this.roomid);
 
 		if (!(this.isPrivate === true || this.isPersonal || this.battle)) Punishments.monitorRoomPunishments(user);
 
@@ -406,7 +404,7 @@ export abstract class BasicRoom {
 		}
 
 		if (user && successUserid && userid in this.users) {
-			user.updateIdentity();
+			user.updateIdentity(this.roomid);
 			if (notifyText) user.popup(notifyText);
 		}
 		return successUserid;
@@ -716,7 +714,7 @@ export class GlobalRoom extends BasicRoom {
 		return true;
 	}
 	isMuted(user: User) {
-		return undefined;
+		return null;
 	}
 	send(message: string) {
 		Sockets.roomBroadcast(this.roomid, message);
@@ -1187,7 +1185,7 @@ export class BasicChatRoom extends BasicRoom {
 	}
 	pokeExpireTimer() {
 		if (this.expireTimer) clearTimeout(this.expireTimer);
-		if (this.isPersonal || this.isHelp) {
+		if ((this.isPersonal && !this.isHelp) || (this.isHelp && this.isHelp !== 'open')) {
 			this.expireTimer = setTimeout(() => this.expire(), TIMEOUT_INACTIVE_DEALLOCATE);
 		} else {
 			this.expireTimer = null;
@@ -1377,9 +1375,6 @@ export class BasicChatRoom extends BasicRoom {
 		}
 		this.active = false;
 
-		// Ensure there aren't any pending messages that could restart the expire timer
-		this.update();
-
 		// Clear any active timers for the room
 		if (this.muteTimer) {
 			clearTimeout(this.muteTimer);
@@ -1435,7 +1430,7 @@ export class GameRoom extends BasicChatRoom {
 	game: RoomGame;
 	modchatUser: string;
 	active: boolean;
-	auth: {[userid: string]: GroupSymbol};
+	auth: {[userid: string]: string};
 	constructor(roomid: RoomID, title?: string, options: AnyObject = {}) {
 		options.logTimes = false;
 		options.autoTruncate = false;
