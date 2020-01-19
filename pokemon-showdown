@@ -38,7 +38,7 @@ if (!process.argv[2] || /^[0-9]+$/.test(process.argv[2])) {
 	// $ ./pokemon-showdown 9000
 
 	if (!built) build();
-	require('module')._load('./server', module, true);
+	require('module')._load('./.server-dist', module, true);
 } else switch (process.argv[2]) {
 	case 'help':
 	case 'h':
@@ -91,7 +91,7 @@ if (!process.argv[2] || /^[0-9]+$/.test(process.argv[2])) {
 				built = true;
 			}
 			if (!built) build();
-			require('module')._load('./server', module, true);
+			require('module')._load('./.server-dist', module, true);
 			break;
 		}
 	case 'generate-team':
@@ -134,7 +134,7 @@ if (!process.argv[2] || /^[0-9]+$/.test(process.argv[2])) {
 			var stdin = new Streams.ReadStream(process.stdin);
 			var stdout = new Streams.WriteStream(process.stdout);
 
-			var args = process.argv[3].split(' ');
+			var args = (process.argv[3] || '').split(' ');
 
 			var battleStream = new BattleTextStream({
 				debug: args.includes('--debug') || args.includes('-D') || args.includes('-DR') || args.includes('-RD'),
