@@ -706,7 +706,6 @@ const commands = {
 						'adjacentAlly': "One Ally",
 						'adjacentAllyOrSelf': "User or Ally",
 						'adjacentFoe': "One Adjacent Opposing Pok\u00e9mon",
-						'adjacentOrSelf': "User or One Adjacent Pok\u00e9mon",
 						'allAdjacentFoes': "All Adjacent Opponents",
 						'foeSide': "Opposing Side",
 						'allySide': "User's Side",

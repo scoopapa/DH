@@ -1353,7 +1353,7 @@ let BattleMovedex = {
 						return false;
 					}
 					if (!target.isActive) {
-						const possibleTarget = this.resolveTarget(pokemon, this.dex.getMove('pound'));
+						const possibleTarget = this.getRandomTarget(pokemon, this.dex.getMove('pound'));
 						if (!possibleTarget) {
 							this.add('-miss', pokemon);
 							return false;
@@ -4734,9 +4734,6 @@ let BattleMovedex = {
 		priority: 0,
 		flags: {protect: 1, reflectable: 1, mirror: 1, authentic: 1},
 		volatileStatus: 'encore',
-		onTryHit(target) {
-			if (target.volatiles['dynamax']) return false;
-		},
 		effect: {
 			duration: 3,
 			noCopy: true, // doesn't get copied by Z-Baton Pass
@@ -4746,7 +4743,7 @@ let BattleMovedex = {
 				];
 				const move = target.lastMove;
 				let moveIndex = move ? target.moves.indexOf(move.id) : -1;
-				if (!move || move.isZ || move.isMax || noEncore.includes(move.id) || !target.moveSlots[moveIndex] || target.moveSlots[moveIndex].pp <= 0) {
+				if (!move || move.isZ || move.isMax || target.volatiles['dynamax'] || noEncore.includes(move.id) || !target.moveSlots[moveIndex] || target.moveSlots[moveIndex].pp <= 0) {
 					// it failed
 					delete target.volatiles['encore'];
 					return false;
@@ -4899,7 +4896,7 @@ let BattleMovedex = {
 		onHit(target, source) {
 			let oldAbility = target.setAbility(source.ability);
 			if (oldAbility) {
-				this.add('-ability', target, this.dex.getAbility(target.ability).name, '[from] move: Entrainment');
+				this.add('-ability', target, target.getAbility().name, '[from] move: Entrainment');
 				return;
 			}
 			return false;
@@ -6571,7 +6568,7 @@ let BattleMovedex = {
 			// Ability suppression implemented in Pokemon.ignoringAbility() within sim/pokemon.js
 			onStart(pokemon) {
 				this.add('-endability', pokemon);
-				this.singleEvent('End', this.dex.getAbility(pokemon.ability), pokemon.abilityData, pokemon, pokemon, 'gastroacid');
+				this.singleEvent('End', pokemon.getAbility(), pokemon.abilityData, pokemon, pokemon, 'gastroacid');
 			},
 		},
 		secondary: null,
@@ -7101,7 +7098,7 @@ let BattleMovedex = {
 		self: {
 			onHit(source) {
 				for (let pokemon of source.side.foe.active) {
-					pokemon.addVolatile('torment');
+					if (!pokemon.volatiles['dynamax']) pokemon.addVolatile('torment');
 				}
 			},
 		},
@@ -10455,13 +10452,9 @@ let BattleMovedex = {
 		pp: 10,
 		priority: 0,
 		flags: {snatch: 1, heal: 1, authentic: 1},
-		onHit(target, source) {
-			for (const pokemon of source.side.active) {
-				this.heal(Math.ceil(pokemon.baseMaxhp / 4), pokemon, source);
-			}
-		},
+		heal: [1, 4],
 		secondary: null,
-		target: "allyTeam",
+		target: "allies",
 		type: "Water",
 	},
 	"lightofruin": {
@@ -11265,7 +11258,7 @@ let BattleMovedex = {
 		contestType: "Cool",
 	},
 	"maxdarkness": {
-		num: 772,
+		num: 766,
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
@@ -15693,7 +15686,7 @@ let BattleMovedex = {
 		onHit(target, source) {
 			let oldAbility = source.setAbility(target.ability);
 			if (oldAbility) {
-				this.add('-ability', source, this.dex.getAbility(source.ability).name, '[from] move: Role Play', '[of] ' + target);
+				this.add('-ability', source, source.getAbility().name, '[from] move: Role Play', '[of] ' + target);
 				return;
 			}
 			return false;
@@ -16898,8 +16891,8 @@ let BattleMovedex = {
 			}
 		},
 		onHit(target, source, move) {
-			let targetAbility = this.dex.getAbility(target.ability);
-			let sourceAbility = this.dex.getAbility(source.ability);
+			let targetAbility = target.getAbility();
+			let sourceAbility = source.getAbility();
 			if (target.side === source.side) {
 				this.add('-activate', source, 'move: Skill Swap', '', '', '[of] ' + target);
 			} else {
@@ -17509,6 +17502,7 @@ let BattleMovedex = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
 		critRatio: 2,
+		tracksTarget: true,
 		secondary: null,
 		target: "normal",
 		type: "Water",
@@ -19971,12 +19965,13 @@ let BattleMovedex = {
 		priority: 0,
 		flags: {protect: 1, reflectable: 1, mirror: 1, authentic: 1},
 		volatileStatus: 'torment',
-		onTryHit(target) {
-			if (target.volatiles['dynamax']) return false;
-		},
 		effect: {
 			noCopy: true,
 			onStart(pokemon) {
+				if (pokemon.volatiles['dynamax']) {
+					delete pokemon.volatiles['torment'];
+					return false;
+				}
 				this.add('-start', pokemon, 'Torment');
 			},
 			onEnd(pokemon) {

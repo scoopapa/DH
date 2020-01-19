@@ -331,56 +331,6 @@ export const commands: ChatCommands = {
 	},
 	tiershifthelp: [`/ts OR /tiershift <pokemon> - Shows the base stats that a Pokemon would have in Tier Shift.`],
 
-	
-	fuse(target, room, user) {
-		if (!this.runBroadcast()) return;
-		if(!target || target === ' ' || !target.includes(',')) return this.errorReply('Error: Invalid Argument(s).')
-		let text = "";
-		let separated = target.split(",");
-		let name = toID(separated[0]), name2 = toID(separated[1]);
-		if (!Dex.data.Pokedex[name] || !Dex.data.Pokedex[name2]) {
-			return this.errorReply("Error: Pokemon not found");;
-		}
-		let baseStats = {}, fusedTemplate = Object.assign({}, Dex.getTemplate(name)), template = Object.assign({}, Dex.getTemplate(name2));
-		Object.keys(fusedTemplate.baseStats).forEach(stat => {
-			baseStats[stat] = Math.floor((fusedTemplate.baseStats[stat] + template.baseStats[stat]) / 2);
-		});
-		fusedTemplate.baseStats = Object.assign({}, baseStats);
-		fusedTemplate.types = [fusedTemplate.types[0]];
-		let type = (separated[2] && toID(separated[2]) === 'shiny' && template.types[1]) ? 1 : 0;
-		if(template.types[type] && template.types[type] !== fusedTemplate.types[0]) fusedTemplate.types.push(template.types[type]);
-		let weight = (Dex.data.Pokedex[fusedTemplate.id].weightkg + template.weightkg) / 2;
-		fusedTemplate.weightkg = weight;
-		fusedTemplate.heightm = (Dex.data.Pokedex[fusedTemplate.id].heightm + template.heightm) / 2;
-		fusedTemplate.abilities = Object.assign({'S': `<b>${template.abilities['0']}</b>`}, Dex.data.Pokedex[fusedTemplate.id].abilities);
-		this.sendReply(`|html|${Chat.getDataPokemonHTML(fusedTemplate)}`);
-		let details;
-		let weighthit = 20;
-		if (fusedTemplate.weightkg >= 200) {
-			weighthit = 120;
-		} else if (fusedTemplate.weightkg >= 100) {
-			weighthit = 100;
-		} else if (fusedTemplate.weightkg >= 50) {
-			weighthit = 80;
-		} else if (fusedTemplate.weightkg >= 25) {
-			weighthit = 60;
-		} else if (fusedTemplate.weightkg >= 10) {
-			weighthit = 40;
-		}
-		details = {
-			"Dex#": fusedTemplate.num,
-			"Gen": fusedTemplate.gen,
-			"Height": fusedTemplate.heightm + " m",
-			"Weight": fusedTemplate.weightkg + " kg <em>(" + weighthit + " BP)</em>",
-			"Dex Colour": fusedTemplate.color,
-		};
-		details['<font color="#686868">Does Not Evolve</font>'] = "";
-		this.sendReply('|raw|<font size="1">' + Object.keys(details).map(detail => {
-				if (details[detail] === '') return detail;
-				return '<font color="#686868">' + detail + ':</font> ' + details[detail];
-			}).join("&nbsp;|&ThickSpace;") + '</font>');
-	},
-	
 	'!scalemons': true,
 	scale: 'scalemons',
 	scalemons(target, room, user) {
@@ -509,41 +459,4 @@ export const commands: ChatCommands = {
 		}).join("&nbsp;|&ThickSpace;") + '</font>');
 	},
 	crossevolvehelp: ["/crossevo <base pokemon>, <evolved pokemon> - Shows the type and stats for the Cross Evolved Pokemon."],
-	
-	'!badnboosted': true,
-	'bnb' : 'badnboosted',
-	badnboosted : function (target, room, user) {
-		if (!this.runBroadcast()) return;
-		if(!Dex.data.Pokedex[toID(target)]) {
-			return this.errorReply("Error: Pokemon not found.")
-		}
-		let template = Object.assign({}, Dex.getTemplate(target));
-		let newStats = Object.values(template.baseStats).map(function (stat) {
- 			return (stat <= 70) ? (stat * 2) : stat;
- 		});
-		this.sendReplyBox(`${Dex.data.Pokedex[toID(target)].species} in Bad 'n Boosted: <br /> ${newStats.join('/')}`);
-	},
-	badnboostedhelp: ["/bnb <pokemon> - Shows the base stats that a Pokemon would have in Bad 'n Boosted."],
-
-	'!fairplay': true,
-	fp: 'fairplay',
-	fairplay : function (target, room, user) {
-		if (!this.runBroadcast()) return;
-		if(!Dex.getMove(target).exists) {
-			return this.errorReply("Error: Move not found.");
-		}
-		let newMove = Object.assign({}, Dex.getMove(target));
-		if (newMove.category === 'Status' || newMove.basePower <= 1 || newMove.accuracy === true) this.sendReply(`|raw|${Chat.getDataMoveHTML(newMove)}`);
-		if (newMove.accuracy < 100) {
-			newMove.basePower -= 100 - newMove.accuracy;
-			newMove.accuracy = 100;
-		}
-		if (newMove.secondary) {
-			newMove.basePower += newMove.secondary.chance;
-			delete newMove.secondary;
-		}
-		this.sendReply(`|raw|${Chat.getDataMoveHTML(newMove)}`);
-	},
-	fairplayhelp: ["/fp <pokemon> - Shows the data of a move in Fair Play."],
-	
 };

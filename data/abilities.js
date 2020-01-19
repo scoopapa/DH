@@ -1766,7 +1766,7 @@ let BattleAbilities = {
 				if (target.volatiles['substitute']) {
 					this.add('-immune', target);
 				} else if (target.hasAbility(['Inner Focus', 'Oblivious', 'Own Tempo', 'Scrappy'])) {
-					this.add('-immune', target, `[from] ability: ${this.dex.getAbility(target.ability).name}`);
+					this.add('-immune', target, `[from] ability: ${target.getAbility().name}`);
 				} else {
 					this.boost({atk: -1}, target, pokemon, null, true);
 				}
@@ -2482,7 +2482,7 @@ let BattleAbilities = {
 			for (const pokemon of this.getAllActive()) {
 				if (pokemon !== source) {
 					// Will be suppressed by Pokemon#ignoringAbility if needed
-					this.singleEvent('Start', this.dex.getAbility(pokemon.ability), pokemon.abilityData, pokemon);
+					this.singleEvent('Start', pokemon.getAbility(), pokemon.abilityData, pokemon);
 				}
 			}
 		},
@@ -2847,7 +2847,7 @@ let BattleAbilities = {
 		shortDesc: "This Pokemon copies the Ability of an ally that faints.",
 		onAllyFaint(target) {
 			if (!this.effectData.target.hp) return;
-			let ability = this.dex.getAbility(target.ability);
+			let ability = target.getAbility();
 			let bannedAbilities = ['battlebond', 'comatose', 'disguise', 'flowergift', 'forecast', 'gulpmissile', 'hungerswitch', 'iceface', 'illusion', 'imposter', 'multitype', 'powerconstruct', 'powerofalchemy', 'receiver', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange', 'trace', 'wonderguard', 'zenmode'];
 			if (bannedAbilities.includes(target.ability)) return;
 			this.add('-ability', this.effectData.target, ability, '[from] ability: Power of Alchemy', '[of] ' + target);
@@ -2942,15 +2942,10 @@ let BattleAbilities = {
 	},
 	"propellertail": {
 		shortDesc: "Ignores the effects of opposing Pokémon's moves/Abilities that redirect move targets.",
-		onRedirectTargetPriority: 3,
-		onRedirectTarget(target, source, source2, move) {
-			// Fires for all pokemon on the ability holder's side apparently
-			// Ensure source is the ability holder
-			this.debug(`onRedirectTarget: ${target} (${target.side.name}), ${source} (${source.side.name}), ${source2}, ${move}`);
-			if (source.hasAbility('Propeller Tail')) {
-				this.debug(`Propeller Tail prevented redirection`);
-				return target;
-			}
+		onModifyMove(move) {
+			// this doesn't actually do anything because ModifyMove happens after the tracksTarget check
+			// the actual implementation is in Battle#getTarget
+			move.tracksTarget = true;
 		},
 		id: "propellertail",
 		name: "Propeller Tail",
@@ -3080,7 +3075,7 @@ let BattleAbilities = {
 		shortDesc: "This Pokemon copies the Ability of an ally that faints.",
 		onAllyFaint(target) {
 			if (!this.effectData.target.hp) return;
-			let ability = this.dex.getAbility(target.ability);
+			let ability = target.getAbility();
 			let bannedAbilities = ['battlebond', 'comatose', 'disguise', 'flowergift', 'forecast', 'gulpmissile', 'hungerswitch', 'iceface', 'illusion', 'imposter', 'multitype', 'powerconstruct', 'powerofalchemy', 'receiver', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange', 'trace', 'wonderguard', 'zenmode'];
 			if (bannedAbilities.includes(target.ability)) return;
 			this.add('-ability', this.effectData.target, ability, '[from] ability: Receiver', '[of] ' + target);
@@ -3790,14 +3785,10 @@ let BattleAbilities = {
 	},
 	"stalwart": {
 		shortDesc: "Ignores the effects of opposing Pokémon's Abilities and moves that draw in moves.",
-		onRedirectTargetPriority: 3,
-		onRedirectTarget(target, source, source2, move) {
-			// Fires for all pokemon on the ability holder's side apparently
-			// Ensure source is the ability holder
-			if (source.hasAbility('Stalwart')) {
-				this.debug(`Stalwart prevented redirection`);
-				return target;
-			}
+		onModifyMove(move) {
+			// this doesn't actually do anything because ModifyMove happens after the tracksTarget check
+			// the actual implementation is in Battle#getTarget
+			move.tracksTarget = true;
 		},
 		id: "stalwart",
 		name: "Stalwart",
@@ -4292,7 +4283,7 @@ let BattleAbilities = {
 				let rand = 0;
 				if (possibleTargets.length > 1) rand = this.random(possibleTargets.length);
 				let target = possibleTargets[rand];
-				let ability = this.dex.getAbility(target.ability);
+				let ability = target.getAbility();
 				let bannedAbilities = ['noability', 'battlebond', 'comatose', 'disguise', 'flowergift', 'forecast', 'gulpmissile', 'hungerswitch', 'iceface', 'illusion', 'imposter', 'multitype', 'powerconstruct', 'powerofalchemy', 'receiver', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange', 'trace', 'zenmode'];
 				if (bannedAbilities.includes(target.ability)) {
 					possibleTargets.splice(rand, 1);
