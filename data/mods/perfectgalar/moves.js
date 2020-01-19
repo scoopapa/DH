@@ -99,7 +99,7 @@ exports.BattleMovedex = {
 					if ( this.effectData.gMaxLayers === 0 ){
 						this.add('-sideend', pokemon.side, 'move: Toxic Spikes', '[of] ' + pokemon);
 						pokemon.side.removeSideCondition('toxicspikes');
-					} else if (this.effectData.gMaxLayers === 1 {
+					} else if (this.effectData.gMaxLayers === 1) {
 						this.effectData.layers = 0;
 						this.add('-sideend', pokemon.side, 'move: Toxic Spikes', '[of] ' + pokemon);
 						this.add('-sidestart', side, 'move: Toxic Spikes');
@@ -511,7 +511,7 @@ exports.BattleMovedex = {
 		inherit: true,
 		isMax: "Garbodor",
 		self: {
-			onHit(source) {
+			onHit(target, source, move) {
 				source.side.foe.addSideCondition('toxicspikes');
 				if ( !source.status ){
 					source.setStatus( 'tox', source, move, true );
