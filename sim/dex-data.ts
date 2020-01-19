@@ -169,6 +169,7 @@ export class RuleTable extends Map<string, string> {
 	// tslint:disable-next-line:ban-types
 	checkLearnset: [Function, string] | null;
 	timer: [Partial<GameTimerSettings>, string] | null;
+	minSourceGen: [number, string] | null;
 
 	constructor() {
 		super();
@@ -176,6 +177,7 @@ export class RuleTable extends Map<string, string> {
 		this.complexTeamBans = [];
 		this.checkLearnset = null;
 		this.timer = null;
+		this.minSourceGen = null;
 	}
 
 	isBanned(thing: string) {
@@ -735,7 +737,7 @@ export class Move extends BasicEffect implements Readonly<BasicEffect & MoveData
 	/** Move type. */
 	readonly type: string;
 	/** Move target. */
-	readonly target: string;
+	readonly target: MoveTarget;
 	/** Move base power. */
 	readonly basePower: number;
 	/** Move base accuracy. True denotes a move that always hits. */
@@ -841,7 +843,7 @@ export class Move extends BasicEffect implements Readonly<BasicEffect & MoveData
 		this.fullname = `move: ${this.name}`;
 		this.effectType = 'Move';
 		this.type = Tools.getString(data.type);
-		this.target = Tools.getString(data.target);
+		this.target = data.target;
 		this.basePower = Number(data.basePower!);
 		this.accuracy = data.accuracy!;
 		this.critRatio = Number(data.critRatio) || 1;
