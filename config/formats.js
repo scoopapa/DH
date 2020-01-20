@@ -110,7 +110,7 @@ exports.Formats = [
 
 		mod: 'gen8',
 		searchShow: false,
-		ruleset: ['Obtainable', 'Team Preview', 'HP Percentage Mod', 'Cancel Mod', 'Endless Battle Clause'],
+		ruleset: ['Obtainable', 'HP Percentage Mod', 'Cancel Mod', 'Endless Battle Clause'],
 	},
 	{
 		name: "[Gen 8] NFE",
@@ -663,7 +663,7 @@ exports.Formats = [
 				"&bullet; <a href=https://www.smogon.com/forums/threads/crossover-chaos-v2.3636780/>Crossover Chaos</a>",
 		      "&bullet; <a href=https://www.smogon.com/forums/threads/crossover-chaos-expanded-side-project.3647108/>Crossover Chaos</a>"],
 		ruleset: [ 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 
-					'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 
+					'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod',
 					'Swagger Clause', 'Baton Pass Clause', 'Obtainable', 'Standard Natdex'],
 		banlist: [],
 		mod: 'crossoverchaos',
@@ -672,7 +672,7 @@ exports.Formats = [
 		name: "[Gen 8] Perfect Galar",
 		desc: [ "The goal of Perfect Galar is to make a Sword and Shield OU metagame where every single fully evolved Pokemon in the Galar Pokedex has a unique, valuable niche.",
 				"&bullet; <a href=https://www.smogon.com/forums/threads/gen-8-perfect-galar.3656660/>Perfect Galar</a>",],
-		ruleset: ['Obtainable', 'Standard', 'Team Preview',],
+		ruleset: ['Obtainable', 'Standard',],
 		banlist: ['Uber', 'Shadow Tag', 'Baton Pass'],
 		mod: 'perfectgalar',
 		onBegin: function(){
