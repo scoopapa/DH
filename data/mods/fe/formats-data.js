@@ -4095,4 +4095,31 @@ tier: "OU",
     cramazantagorging: {
         tier: "OU",
     },
+    rotomwheeze: {
+        tier: "OU",
+    },
+    boomer: {
+        tier: "OU",
+    },
+    tapuapex: {
+        tier: "OU",
+    },
+    terror: {
+        tier: "OU",
+    },
+    xyeromdefense: {
+        tier: "OU",
+    },
+    crayquazant: {
+        tier: "OU",
+    },
+    crayquazantgulping: {
+        tier: "OU",
+    },
+    crayquazantgorging: {
+        tier: "OU",
+    },
+    crayquazantmega: {
+        tier: "OU",
+    },
 };
