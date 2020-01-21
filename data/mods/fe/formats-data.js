@@ -3861,4 +3861,238 @@ tier: "OU",
     sensationalmega: {
         tier: "OU",
     },
+    lukeldeo: {
+        tier: "OU",
+    },
+    lukeldeomega: {
+        tier: "OU",
+    },
+    moron: {
+        tier: "OU",
+    },
+    moronmega: {
+        tier: "OU",
+    },
+    lordkaiyur: {
+        tier: "OU",
+    },
+    aloola: {
+        tier: "OU",
+    },
+    rotias: {
+        tier: "OU",
+    },
+    rotiasmega: {
+        tier: "OU",
+    },
+    licquaza: {
+        tier: "OU",
+    },
+    licquazamega: {
+        tier: "OU",
+    },
+    furpurr: {
+        tier: "OU",
+    },
+    shaymie: {
+        tier: "OU",
+    },
+    ventel: {
+        tier: "OU",
+    },
+    miniking: {
+        tier: "OU",
+    },
+    minikingunguarded: {
+        tier: "OU",
+    },
+    megalovania: {
+        tier: "OU",
+    },
+    guzzira: {
+        tier: "OU",
+    },
+    guzziramega: {
+        tier: "OU",
+    },
+    ninjaleo: {
+        tier: "OU",
+    },
+    tapuno: {
+        tier: "OU",
+    },
+    fuglet: {
+        tier: "OU",
+    },
+    fugletmega: {
+        tier: "OU",
+    },
+    klopsogre: {
+        tier: "OU",
+    },
+    klopsogreprimal: {
+        tier: "OU",
+    },
+    choko: {
+        tier: "OU",
+    },
+    chokomega: {
+        tier: "OU",
+    },
+    gog: {
+        tier: "OU",
+    },
+    snowtyrant: {
+        tier: "OU",
+    },
+    snowtyrantmegax: {
+        tier: "OU",
+    },
+    snowtyrantmegay: {
+        tier: "OU",
+    },
+    zydisc: {
+        tier: "OU",
+    },
+    zydiscbuff: {
+        tier: "OU",
+    },
+    sillyputty: {
+        tier: "OU",
+    },
+    magnetar: {
+        tier: "OU",
+    },
+    magnetarmega: {
+        tier: "OU",
+    },
+    castor: {
+        tier: "OU",
+    },
+    castormega: {
+        tier: "OU",
+    },
+    throopah: {
+        tier: "OU",
+    },
+    darmadon: {
+        tier: "OU",
+    },
+    darmadonzen: {
+        tier: "OU",
+    },
+    exeggutorprime: {
+        tier: "OU",
+    },
+    haunky: {
+        tier: "OU",
+    },
+    watchozma: {
+        tier: "OU",
+    },
+    watchozmaultra: {
+        tier: "OU",
+    },
+    armalion: {
+        tier: "OU",
+    },
+    blazipour: {
+        tier: "OU",
+    },
+    mushdale: {
+        tier: "OU",
+    },
+    except: {
+        tier: "OU",
+    },
+    byegerestic: {
+        tier: "OU",
+    },
+    mawiggly: {
+        tier: "OU",
+    },
+    mawigglymega: {
+        tier: "OU",
+    },
+    mushoal: {
+        tier: "OU",
+    },
+    gongira: {
+        tier: "OU",
+    },
+    accelfini: {
+        tier: "OU",
+    },
+    uxiancie: {
+        tier: "OU",
+    },
+    uxianciemega: {
+        tier: "OU",
+    },
+    dracodraco: {
+        tier: "OU",
+    },
+    crufearigus: {
+        tier: "OU",
+    },
+    pyukchin: {
+        tier: "OU",
+    },
+    sabatus: {
+        tier: "OU",
+    },
+    sabatusmega: {
+        tier: "OU",
+    },
+    gardecitytamper: {
+        tier: "OU",
+    },
+    gardecitytampermega: {
+        tier: "OU",
+    },
+    icepole: {
+        tier: "OU",
+    },
+    icepolemelted: {
+        tier: "OU",
+    },
+    steezzoll: {
+        tier: "OU",
+    },
+    steezzollmega: {
+        tier: "OU",
+    },
+    runereelix: {
+        tier: "OU",
+    },
+    runereelixmega: {
+        tier: "OU",
+    },
+    runethorns: {
+        tier: "OU",
+    },
+    suplexelpus: {
+        tier: "OU",
+    },
+    quagmirecrowned: {
+        tier: "OU",
+    },
+    cogalyph: {
+        tier: "OU",
+    },
+    escaskorch: {
+        tier: "OU",
+    },
+    kyuvatron: {
+        tier: "OU",
+    },
+    cramazanta: {
+        tier: "OU",
+    },
+    cramazantagulping: {
+        tier: "OU",
+    },
+    cramazantagorging: {
+        tier: "OU",
+    },
 };
