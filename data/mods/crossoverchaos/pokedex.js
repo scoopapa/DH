@@ -2694,6 +2694,7 @@ hush: {
 			weightkg: 150,
 			prevo: "bluebaby",
 			evoType: "trade",
+			evoItem: "Reaper Cloth",
 },
 promestein: {
 			num: 6000142,
