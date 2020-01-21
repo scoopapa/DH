@@ -2715,6 +2715,124 @@ promesteinultimate: {
 			baseStats: {hp: 180, atk: 105, def: 90, spa: 110, spd: 95, spe: 100},
 			abilities: {0: "Regenerator", 1: "Chlorophyll", H: "Mad Scientist Angel"},
 },
+zotethemighty: {
+			num: 6000143,
+			species: "Zote the Mighty", /* Hollow Knight */
+			types: ["Bug"],
+			gender: "M",
+			baseStats: {hp: 30, atk: 35, def: 30, spa: 20, spd: 35, spe: 50},
+			abilities: {0: "Klutz"},
+		evos: ["greyprincezote"]
+},
+greyprincezote: {
+			num: 6000144,
+			species: "Grey Prince Zote",
+			types: ["Bug", "Psychic"],
+			gender: "M",
+			baseStats: {hp: 100, atk: 150, def: 85, spa: 80, spd: 85, spe: 100},
+			abilities: {0: "Klutz"},
+		prevo: "zotethemighty",
+},
+ghast: {
+			num: 6000145,
+			species: "Ghast", /* Minecraft */
+			types: ["Fire"],
+			gender: "N",
+			baseStats: {hp: 70, atk: 125, def: 60, spa: 90, spd: 60, spe: 85},
+			abilities: {0: "Levitate"},
+},
+undyne: {
+			num: 6000146,
+			species: "Undyne", /* Undertale */
+			types: ["Fighting", "Water"],
+			gender: "F",
+			baseStats: {hp: 100, atk: 120, def: 90, spa: 80, spd: 80, spe: 60},
+			abilities: {0: "Justified", 1: "Battle Armor", H: "Undying Determination"},
+			otherFormes: ["undynetheundying"],
+},
+undynetheundying: {
+			num: 6000146,
+			species: "Undyne-The Undying",
+			baseSpecies: "Undyne",
+			forme: "Undying",
+			formeLetter: "U",
+			types: ["Fighting", "Water"],
+			gender: "F",
+			baseStats: {hp: 130, atk: 140, def: 140, spa: 80, spd: 80, spe: 60},
+			abilities: {0: "Undying Determination"},
+},
+rebel: {
+			num: 6000147,
+			species: "Rebel", /* Nuclear Throne */
+			types: ["Dark"],
+			gender: "F",
+			baseStats: {hp: 80, atk: 70, def: 60, spa: 110, spd: 90, spe: 90},
+			abilities: {0: "Immunity", H: "Regenerator"},
+},
+drawcia: {
+			num: 6000148,
+			species: "Drawcia", /* Kirby */
+			types: ["Poison", "Psychic"],
+			gender: "F",
+			baseStats: {hp: 90, atk: 80, def: 70, spa: 130, spd: 120, spe: 110},
+			abilities: {0: "Levitate"},
+			otherFormes: ["drawciasoul"],
+},
+drawciasoul: {
+			num: 6000148,
+			species: "Drawcia-Soul",
+			baseSpecies: "Drawcia",
+			forme: "Soul",
+			formeLetter: "S",
+			types: ["Poison", "Ghost"],
+			gender: "F",
+			baseStats: {hp: 90, atk: 150, def: 80, spa: 150, spd: 160, spe: 70},
+			abilities: {0: "Painted Soul"},
+},
+whispywoods: {
+			num: 6000149,
+			species: "Whispy Woods", /* Kirby */
+			types: ["Grass"],
+			gender: "M",
+			baseStats: {hp: 90, atk: 100, def: 130, spa: 90, spd: 90, spe: 30},
+			abilities: {0: "Forest Breeze", H: "Harvest"},
+			otherFormes: ["whispywoodsrevenge"],
+},
+whispywoodsrevenge: {
+			num: 6000149,
+			species: "Whispy Woods-Revenge",
+			baseSpecies: "Whispy Woods",
+			forme: "Revenge",
+			formeLetter: "R",
+			types: ["Grass", "Poison"],
+			gender: "M",
+			baseStats: {hp: 100, atk: 130, def: 130, spa: 120, spd: 90, spe: 30},
+			abilities: {0: "Forest Breeze", H: "Harvest"},
+},
+melting: {
+			num: 6000150,
+			species: "Melting", /* Nuclear Throne */
+			types: ["Normal", "Ghost"],
+			gender: "M",
+			baseStats: {hp: 20, atk: 85, def: 50, spa: 85, spd: 50, spe: 90},
+			abilities: {0: "Immunity", H: "Brain Capacity"},
+},
+trouppleking: {
+			num: 6000151,
+			species: "Troupple King", /* Shovel Knight */
+			types: ["Water", "Grass"],
+			gender: "M",
+			baseStats: {hp: 130, atk: 120, def: 70, spa: 110, spd: 70, spe: 70},
+			abilities: {0: "Dancer"},
+},
+kyokokirigiri: {
+			num: 6000152,
+			species: "Kyoko Kirigiri", /* Danganronpa */
+			types: ["Psychic"],
+			gender: "F",
+			baseStats: {hp: 68, atk: 75, def: 80, spa: 98, spd: 127, spe: 87},
+			abilities: {0: "Inner Focus", 1: "Intimidate", H: "Ultimate Detective"},
+},
 walle: {
 			num: 7000001,
 			species: "WALL-E", /* WALL-E */
