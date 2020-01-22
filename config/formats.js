@@ -782,7 +782,7 @@ exports.Formats = [
   		ruleset: ['Obtainable', 'Sleep Clause Mod', 'Nickname Clause', 'OHKO Clause', 'Evasion Moves Clause', 
 					'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Dynamax Clause', 'Standard NatDex'],
 		mod: 'cleanslatemicro',
-		banlist: ['Unreleased', 'Baton Pass'],
+		banlist: ['Baton Pass'],
 		onSwitchIn: function (pokemon) {
             this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');
         },

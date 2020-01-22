@@ -149,7 +149,7 @@ exports.BattlePokedex = {
 		types: ["Water", "Flying"],
 		baseStats: {hp: 140, atk: 65, def: 70, spa: 88, spd: 82, spe: 55},
 		abilities: {0: "Oblivious", H: "Pressure"},
-	}
+	},
 	rotomheat: {
 		inherit: true,
 		species: "Rotom-Heat",
