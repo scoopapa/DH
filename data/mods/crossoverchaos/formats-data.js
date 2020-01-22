@@ -890,6 +890,15 @@ exports.BattleFormatsData = { //
 	 whispywoodsrevenge: {
 		  tier: "G8",
 	 },
+	 melting: {
+		  tier: "G8",
+	 },
+	 trouppleking: {
+		  tier: "G8",
+	 },
+	 kyokokirigiri: {
+		  tier: "G8",
+	 },
 	 mewtwoshadow: {
 		  tier: "V1",
 	 },
