@@ -81,4 +81,8 @@ exports.BattleFormatsData = {
 		tier: "CSM",
 		doublesTier: "DOU",
 	},
+	rotomheat: {
+		tier: "CSM",
+		doublesTier: "DOU",
+	},
 };

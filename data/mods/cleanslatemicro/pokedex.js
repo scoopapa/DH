@@ -14,7 +14,7 @@ exports.BattlePokedex = {
 		species: "Crobat",
 		types: ["Poison", "Fighting"],
 		baseStats: {hp: 110, atk: 70, def: 100, spa: 60, spd: 65, spe: 80},
-		abilities: {0: "Big Pecks", 1: "Magic Guard"},
+		abilities: {0: "Big Pecks", 1: "Magic Guard", H: "Scrappy"},
 		prevo: null,
 	},
 	galvantula: {
@@ -84,7 +84,7 @@ exports.BattlePokedex = {
 		species: "Farfetch'd",
 		types: ["Fighting", "Flying"],
 		baseStats: {hp: 75, atk: 115, def: 85, spa: 45, spd: 55, spe: 95},
-		abilities: {0: "Defiant", 1: "Sniper", H: "Sap Sipper"},
+		abilities: {0: "Defiant", 1: "Big Pecks", H: "Sap Sipper"},
 	},
 	purugly: {
 		inherit: true,
@@ -150,4 +150,11 @@ exports.BattlePokedex = {
 		baseStats: {hp: 140, atk: 65, def: 70, spa: 88, spd: 82, spe: 55},
 		abilities: {0: "Oblivious", H: "Pressure"},
 	}
+	rotomheat: {
+		inherit: true,
+		species: "Rotom-Heat",
+		types: ["Fire", "Rock"],
+		baseStats: {hp: 50, atk: 50, def: 97, spa: 105, spd: 127, spe: 76},
+		abilities: {0: "Levitate", 1: "Flame Body", H: "Sand Stream"},
+	},
 };
