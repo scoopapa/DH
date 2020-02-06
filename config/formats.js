@@ -762,6 +762,30 @@ exports.Formats = [
 					'Swagger Clause', 'Baton Pass Clause', 'Obtainable', 'Standard Natdex'],
 		banlist: [],
 		mod: 'pokeclasses',
+		onBegin() {
+			let pokeClasses = ['warrior','mage','thief']
+			let pokeSkills = ['blade','destruction','athletics']
+			let allPokemon = this.p1.pokemon.concat(this.p2.pokemon);
+			for (let pokemon of allPokemon) {
+				//apply pokeClasses
+				if pokeClasses.includes( pokemon.set.name ){
+					pokemon.pokeSkill = pokemon.set.name;
+					pokemon.set.name = pokemon.set.species;
+				}
+				//apply pokeSkills
+				for (let i in pokemon.set.moves) {
+					let pokeSkillName = pokemon.set.moves[i].id;
+					if pokeSkills.includes( pokeSkillName ){
+						pokemon.pokeSkill = pokeSkillName;
+						pokemon.set.moves[i] = null;
+					}
+				}
+			}
+		},
+		onSwitchInPriority: 2,
+		onSwitchIn(pokemon) {
+			pokemon.addVolatile('ability:' + pokemon.pokeClass, pokemon));
+		},
 	}, 
 	// Old Pet Mods ///////////////////////////////////////////////////////////////////
 	{
