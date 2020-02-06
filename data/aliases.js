@@ -43,6 +43,9 @@ let BattleAliases = {
 	"cleanslatemicro": "[Gen 7] Clean Slate: Micro",
 	"csm": "[Gen 7] Clean Slate: Micro",
 	"mbh": "[Gen 8] More Balanced Hackmons",
+	"ccv2": "[Gen 8] Crossover Chaos V2",
+	"ccex": "[Gen 8] Crossover Chaos Expanded",
+	"ccubers": "[Gen 8] Crossover Chaos V2 + Expanded Ubers",
 
 	// mega evos
 	"fabio": "Ampharos-Mega",
