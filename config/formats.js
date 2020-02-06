@@ -781,7 +781,7 @@ exports.Formats = [
 				}
 				//apply pokeSkills
 				for ( let i in pokemon.set.moves ) {
-					let pokeSkillName = pokemon.set.moves[i].id;
+					let pokeSkillName = pokemon.set.moves[i];
 					console.log( "hi" + pokeSkillName );
 					if ( pokeSkills.includes( pokeSkillName )){
 						pokemon.pokeSkill = pokeSkillName;
