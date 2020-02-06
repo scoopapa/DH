@@ -765,16 +765,16 @@ exports.Formats = [
 		onBegin() {
 			let pokeClasses = ['warrior','mage','thief']
 			let pokeSkills = ['blade','destruction','athletics']
-			let allPokemon = this.p1.pokemon.concat(this.p2.pokemon);
-			for (let pokemon of allPokemon) {
+			let allPokemon = this.p1.pokemon.concat( this.p2.pokemon );
+			for ( let pokemon of allPokemon ) {
 				//apply pokeClasses
-				if pokeClasses.includes( pokemon.set.name ){
+				if ( pokeClasses.includes( pokemon.set.name )){
 					pokemon.pokeClass = pokemon.set.name;
 				}
 				//apply pokeSkills
-				for (let i in pokemon.set.moves) {
+				for ( let i in pokemon.set.moves ) {
 					let pokeSkillName = pokemon.set.moves[i].id;
-					if pokeSkills.includes( pokeSkillName ){
+					if ( pokeSkills.includes( pokeSkillName )){
 						pokemon.pokeSkill = pokeSkillName;
 						pokemon.set.moves[i] = null;
 					}
