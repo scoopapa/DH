@@ -598,7 +598,7 @@ exports.Formats = [
 					set.species = 'Zacian';
 				}
 			}
-			if (set.species === 'Zamazenta' || set.species === 'Zamazenta-Crowned') {
+			else if (set.species === 'Zamazenta' || set.species === 'Zamazenta-Crowned') {
 				if (item === 'rustedshield') {
 					set.species = 'Zamazenta-Crowned';
 					set.ability = 'Dauntless Shield';
