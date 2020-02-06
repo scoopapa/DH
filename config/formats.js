@@ -754,6 +754,15 @@ exports.Formats = [
 			if ( pokemon.hasDynamaxed ) pokemon.addVolatile( pokemon.volatileTag );
 		},
 	}, 
+	{
+		name: "[Gen 8] PokeClasses",
+		desc: ["&bullet; <a href=https://www.smogon.com/forums/threads/gen-8-pokeclasses-playtesting-phase-1.3657264//>PokeClasses</a>"],
+		ruleset: [ 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 
+					'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod',
+					'Swagger Clause', 'Baton Pass Clause', 'Obtainable', 'Standard Natdex'],
+		banlist: [],
+		mod: 'pokeclasses',
+	}, 
 	// Old Pet Mods ///////////////////////////////////////////////////////////////////
 	{
 		section: "Old Pet Mods",
