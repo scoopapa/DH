@@ -769,8 +769,7 @@ exports.Formats = [
 			for (let pokemon of allPokemon) {
 				//apply pokeClasses
 				if pokeClasses.includes( pokemon.set.name ){
-					pokemon.pokeSkill = pokemon.set.name;
-					pokemon.set.name = pokemon.set.species;
+					pokemon.pokeClass = pokemon.set.name;
 				}
 				//apply pokeSkills
 				for (let i in pokemon.set.moves) {
@@ -784,7 +783,8 @@ exports.Formats = [
 		},
 		onSwitchInPriority: 2,
 		onSwitchIn(pokemon) {
-			pokemon.addVolatile('ability:' + pokemon.pokeClass, pokemon));
+			if ( pokemon.pokeClass ) pokemon.addVolatile('ability:' + pokemon.pokeClass, pokemon);
+			if ( pokemon.pokeSkill ) pokemon.addVolatile(pokemon.pokeSkill, pokemon);
 		},
 	}, 
 	// Old Pet Mods ///////////////////////////////////////////////////////////////////
