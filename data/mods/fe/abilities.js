@@ -14204,9 +14204,7 @@ exports.BattleAbilities = {
 				target.setAbility(sourceAbility);
 			}
 		},
-		id: "wanderingspirit",
-		name: "Wandering Spirit",
-		rating: 2.5,
-		num: 254,
+		id: "vengefulcurse",
+		name: "Vengeful Curse",
 	},
 };
