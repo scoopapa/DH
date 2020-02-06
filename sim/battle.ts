@@ -1320,6 +1320,7 @@ export class Battle {
 		this.add('drag', pokemon, pokemon.getDetails);
 		if (this.gen >= 5) {
 			this.singleEvent('PreStart', pokemon.getAbility(), pokemon.abilityData, pokemon);
+			this.runEvent('Swap', pokemon);
 			this.runEvent('SwitchIn', pokemon);
 			if (!pokemon.hp) return true;
 			pokemon.isStarted = true;
@@ -1349,6 +1350,8 @@ export class Battle {
 		side.active[slot] = side.pokemon[slot];
 		if (target) target.position = pokemon.position;
 		pokemon.position = slot;
+		this.runEvent('Swap', target, pokemon);
+		this.runEvent('Swap', pokemon, target);
 		return true;
 	}
 
@@ -1637,6 +1640,8 @@ export class Battle {
 					if (!effect) break;
 					if (effect.effectType === 'Move') {
 						this.add(msg, target, boostName, boostBy);
+					} else if (effect.effectType === 'Item') {
+						this.add(msg, target, boostName, boostBy, '[from] item: ' + effect.name);
 					} else {
 						if (effect.effectType === 'Ability' && !boosted) {
 							this.add('-ability', target, effect.name, 'boost');
@@ -2723,6 +2728,7 @@ export class Battle {
 			this.singleEvent('PreStart', action.pokemon.getAbility(), action.pokemon.abilityData, action.pokemon);
 			break;
 		case 'runSwitch':
+			this.runEvent('Swap', action.pokemon);
 			this.runEvent('SwitchIn', action.pokemon);
 			if (this.gen <= 2 && !action.pokemon.side.faintedThisTurn && action.pokemon.draggedIn !== this.turn) {
 				this.runEvent('AfterSwitchInSelf', action.pokemon);

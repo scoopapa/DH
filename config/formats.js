@@ -14,6 +14,9 @@ exports.Formats = [
 	{
 		name: "[Gen 8] Random Battle",
 		desc: `Randomized teams of level-balanced Pok&eacute;mon with sets that are generated to be competitively viable.`,
+		threads: [
+			`&bullet; <a href="https://www.smogon.com/forums/threads/3656537/">Random Battle Suggestions</a>`,
+		],
 
 		mod: 'gen8',
 		team: 'random',
@@ -568,19 +571,7 @@ exports.Formats = [
 		banlist: ['Groudon-Primal', 'Eternatus-Eternamax', 'Arena Trap', 'Huge Power', 'Illusion', 'Innards Out', 'Magnet Pull', 
 					'Moody', 'Parental Bond', 'Protean', 'Psychic Surge', 'Pure Power', 'Shadow Tag', 
 					'Stakeout', 'Water Bubble', 'Wonder Guard', 'Gengarite', 'Chatter', 'Comatose + Sleep Talk',
-					'Libero', 'Neutralizing Gas', 'Gorilla Tactics', 'Intrepid Sword', 'Contrary'],
-		onValidateTeam(team, format){
-			/**@type {{[k: string]: true}} */
-			let abilityTable = [];
-			for (const set of team) {
-				if (!abilityTable.includes( set.ability )){
-					abilityTable.push( set.ability );
-				}
-				else {
-					return [`You have more than one pokemon with the ability ${set.ability}.`];
-				}
-			}
-		},
+					'Libero', 'Neutralizing Gas', 'Gorilla Tactics', 'Contrary'],
 		onChangeSet(set) {
 			const item = toID(set.item);
 			if (set.species === 'Zacian' || set.species === 'Zacian-Crowned') {
@@ -595,7 +586,7 @@ exports.Formats = [
 					set.species = 'Zacian';
 				}
 			}
-			if (set.species === 'Zamazenta' || set.species === 'Zamazenta-Crowned') {
+			else if (set.species === 'Zamazenta' || set.species === 'Zamazenta-Crowned') {
 				if (item === 'rustedshield') {
 					set.species = 'Zamazenta-Crowned';
 					set.ability = 'Dauntless Shield';
@@ -605,6 +596,23 @@ exports.Formats = [
 					}
 				} else {
 					set.species = 'Zamazenta';
+				}
+			}
+		},
+		onValidateTeam(team, format){
+			/**@type {{[k: string]: true}} */
+			let abilityTable = [];
+			for (const set of team) {
+				let template = this.dex.getTemplate(set.species);
+				if (template.species == 'Zacian-Crowned' && template.ability != 'Intrepid Sword')
+					 return ["Zacian-Crowned can only have Intrepid Sword as its ability."]
+				if (template.species != 'Zacian-Crowned' && template.ability == 'Intrepid Sword')
+					 return ["Only Zacian-Crowned can have Intrepid Sword as its ability."]
+				if (!abilityTable.includes( set.ability )){
+					abilityTable.push( set.ability );
+				}
+				else {
+					return [`You have more than one pokemon with the ability ${set.ability}.`];
 				}
 			}
 		},

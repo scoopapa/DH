@@ -459,4 +459,54 @@ export const commands: ChatCommands = {
 		}).join("&nbsp;|&ThickSpace;") + '</font>');
 	},
 	crossevolvehelp: ["/crossevo <base pokemon>, <evolved pokemon> - Shows the type and stats for the Cross Evolved Pokemon."],
+	
+	fuse(target, room, user) {
+		if (!this.runBroadcast()) return;
+		if(!target || target === ' ' || !target.includes(',')) return this.errorReply('Error: Invalid Argument(s).')
+		let text = "";
+		let separated = target.split(",");
+		let name = toID(separated[0]), name2 = toID(separated[1]);
+		if (!Dex.data.Pokedex[name] || !Dex.data.Pokedex[name2]) {
+			return this.errorReply("Error: Pokemon not found");;
+		}
+		let baseStats = {}, fusedTemplate = Object.assign({}, Dex.getTemplate(name)), template = Object.assign({}, Dex.getTemplate(name2));
+		Object.keys(fusedTemplate.baseStats).forEach(stat => {
+			baseStats[stat] = Math.floor((fusedTemplate.baseStats[stat] + template.baseStats[stat]) / 2);
+		});
+		fusedTemplate.baseStats = Object.assign({}, baseStats);
+		fusedTemplate.types = [fusedTemplate.types[0]];
+		let type = (separated[2] && toID(separated[2]) === 'shiny' && template.types[1]) ? 1 : 0;
+		if(template.types[type] && template.types[type] !== fusedTemplate.types[0]) fusedTemplate.types.push(template.types[type]);
+		let weight = (Dex.data.Pokedex[fusedTemplate.id].weightkg + template.weightkg) / 2;
+		fusedTemplate.weightkg = weight;
+		fusedTemplate.heightm = (Dex.data.Pokedex[fusedTemplate.id].heightm + template.heightm) / 2;
+		fusedTemplate.abilities = Object.assign({'S': `<b>${template.abilities['0']}</b>`}, Dex.data.Pokedex[fusedTemplate.id].abilities);
+		this.sendReply(`|html|${Chat.getDataPokemonHTML(fusedTemplate)}`);
+		let details;
+		let weighthit = 20;
+		if (fusedTemplate.weightkg >= 200) {
+			weighthit = 120;
+		} else if (fusedTemplate.weightkg >= 100) {
+			weighthit = 100;
+		} else if (fusedTemplate.weightkg >= 50) {
+			weighthit = 80;
+		} else if (fusedTemplate.weightkg >= 25) {
+			weighthit = 60;
+		} else if (fusedTemplate.weightkg >= 10) {
+			weighthit = 40;
+		}
+		details = {
+			"Dex#": fusedTemplate.num,
+			"Gen": fusedTemplate.gen,
+			"Height": fusedTemplate.heightm + " m",
+			"Weight": fusedTemplate.weightkg + " kg <em>(" + weighthit + " BP)</em>",
+			"Dex Colour": fusedTemplate.color,
+		};
+		details['<font color="#686868">Does Not Evolve</font>'] = "";
+		this.sendReply('|raw|<font size="1">' + Object.keys(details).map(detail => {
+				if (details[detail] === '') return detail;
+				return '<font color="#686868">' + detail + ':</font> ' + details[detail];
+			}).join("&nbsp;|&ThickSpace;") + '</font>');
+	},
+	
 };

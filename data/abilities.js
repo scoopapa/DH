@@ -1,35 +1,26 @@
 /*
-
 Ratings and how they work:
-
 -1: Detrimental
 	  An ability that severely harms the user.
 	ex. Defeatist, Slow Start
-
  0: Useless
 	  An ability with no overall benefit in a singles battle.
 	ex. Color Change, Plus
-
  1: Ineffective
 	  An ability that has minimal effect or is only useful in niche situations.
 	ex. Light Metal, Suction Cups
-
  2: Useful
 	  An ability that can be generally useful.
 	ex. Flame Body, Overcoat
-
  3: Effective
 	  An ability with a strong effect on the user or foe.
 	ex. Chlorophyll, Natural Cure
-
  4: Very useful
 	  One of the more popular abilities. It requires minimal support to be effective.
 	ex. Adaptability, Magic Bounce
-
  5: Essential
 	  The sort of ability that defines metagames.
 	ex. Imposter, Shadow Tag
-
 */
 
 'use strict';
@@ -763,7 +754,7 @@ let BattleAbilities = {
 			if (['mimikyu', 'mimikyutotem'].includes(pokemon.template.speciesid) && this.effectData.busted) {
 				let templateid = pokemon.template.speciesid === 'mimikyutotem' ? 'Mimikyu-Busted-Totem' : 'Mimikyu-Busted';
 				pokemon.formeChange(templateid, this.effect, true);
-				this.damage(pokemon.baseMaxhp / 8, pokemon, pokemon);
+				this.damage(pokemon.baseMaxhp / 8, pokemon, pokemon, this.dex.getTemplate(templateid));
 			}
 		},
 		id: "disguise",
@@ -1717,7 +1708,7 @@ let BattleAbilities = {
 		onAfterDamageOrder: 1,
 		onAfterDamage(damage, target, source, move) {
 			if (source && source !== target && move && move.effectType === 'Move' && !target.hp) {
-				this.damage(damage, source, target);
+				this.damage(target.getUndynamaxedHP(damage), source, target);
 			}
 		},
 		rating: 3.5,
@@ -2693,7 +2684,7 @@ let BattleAbilities = {
 		shortDesc: "If this Pokemon has no item, it steals the item off a Pokemon making contact with it.",
 		onAfterMoveSecondary(target, source, move) {
 			if (source && source !== target && move && move.flags['contact']) {
-				if (target.item || target.switchFlag) {
+				if (target.item || target.switchFlag || target.forceSwitchFlag || source.switchFlag === true) {
 					return;
 				}
 				let yourItem = source.takeItem(target);
@@ -2832,9 +2823,10 @@ let BattleAbilities = {
 			if (pokemon.template.speciesid === 'zygardecomplete' || pokemon.hp > pokemon.maxhp / 2) return;
 			this.add('-activate', pokemon, 'ability: Power Construct');
 			pokemon.formeChange('Zygarde-Complete', this.effect, true);
-			let newHP = Math.floor(Math.floor(2 * pokemon.template.baseStats['hp'] + pokemon.set.ivs['hp'] + Math.floor(pokemon.set.evs['hp'] / 4) + 100) * pokemon.level / 100 + 10);
-			pokemon.hp = newHP - (pokemon.maxhp - pokemon.hp);
-			pokemon.maxhp = pokemon.baseMaxhp = newHP;
+			pokemon.baseMaxhp = Math.floor(Math.floor(2 * pokemon.template.baseStats['hp'] + pokemon.set.ivs['hp'] + Math.floor(pokemon.set.evs['hp'] / 4) + 100) * pokemon.level / 100 + 10);
+			let newMaxHP = pokemon.volatiles['dynamax'] ? (2 * pokemon.baseMaxhp) : pokemon.baseMaxhp;
+			pokemon.hp = newMaxHP - (pokemon.maxhp - pokemon.hp);
+			pokemon.maxhp = newMaxHP;
 			this.add('-heal', pokemon, pokemon.getHealth, '[silent]');
 		},
 		id: "powerconstruct",
@@ -4455,7 +4447,8 @@ let BattleAbilities = {
 		desc: "The Pokémon exchanges Abilities with a Pokémon that hits it with a move that makes direct contact.",
 		shortDesc: "Exchanges abilities when hit with a contact move.",
 		onAfterDamage(damage, target, source, effect) {
-			if (!source || source.ability === 'wanderingspirit' || target.volatiles['dynamax']) return;
+			if (!source || source.ability === 'wanderingspirit') return;
+			if (target.volatiles['dynamax'] || target.ability === 'illusion' || target.ability === 'wonderguard') return;
 			if (effect && effect.effectType === 'Move' && effect.flags['contact']) {
 				let sourceAbility = source.setAbility('wanderingspirit', target);
 				if (!sourceAbility) return;

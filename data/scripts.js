@@ -866,7 +866,7 @@ let BattleScripts = {
 						didAnything = this.combineResults(didAnything, null);
 						continue;
 					}
-					let amount = target.maxhp * moveData.heal[0] / moveData.heal[1];
+					let amount = target.baseMaxhp * moveData.heal[0] / moveData.heal[1];
 					let d = target.heal((this.gen < 5 ? Math.floor : Math.round)(amount));
 					if (!d && d !== 0) {
 						this.add('-fail', pokemon);
@@ -1223,6 +1223,7 @@ let BattleScripts = {
 			maxMove.basePower = move.gmaxPower;
 			maxMove.category = move.category;
 		}
+		maxMove.baseMove = move.id;
 		maxMove.maxPowered = true;
 		return maxMove;
 	},

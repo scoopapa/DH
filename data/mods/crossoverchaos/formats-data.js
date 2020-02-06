@@ -451,6 +451,9 @@ exports.BattleFormatsData = { //
         tier: "V2",
 //         doublesTier: "DOU",
     },
+	 galeemultimate: {
+		  tier: "Uber",
+	 },
     isabelle: {
         tier: "V2",
 //         doublesTier: "DOU",
@@ -703,6 +706,9 @@ exports.BattleFormatsData = { //
 	 dharkon: {
 		  tier: "V2",
 	 },
+	 dharkonultimate: {
+		  tier: "Uber",
+	 },
 	 deliciousfruit: {
 		  tier: "V2",
 	 },
@@ -824,7 +830,7 @@ exports.BattleFormatsData = { //
 		  tier: "V2",
 	 },
 	 finalhazard: {
-		  tier: "V2",
+		  tier: "Uber",
 	 },
 	 whambamrock: {
 		  tier: "V2",
@@ -882,6 +888,15 @@ exports.BattleFormatsData = { //
 		  tier: "G8",
 	 },
 	 whispywoodsrevenge: {
+		  tier: "G8",
+	 },
+	 melting: {
+		  tier: "G8",
+	 },
+	 trouppleking: {
+		  tier: "G8",
+	 },
+	 kyokokirigiri: {
 		  tier: "G8",
 	 },
 	 mewtwoshadow: {
