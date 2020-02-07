@@ -567,7 +567,7 @@ exports.Formats = [
 		mod: 'morebalancedhackmons',
 		ruleset: [ 'OHKO Clause', 'Evasion Moves Clause', 'CFZ Clause', 'Sleep Clause Mod',
 					'Endless Battle Clause', 'Team Preview', 'HP Percentage Mod', 'Cancel Mod', 
-					'Species Clause', 'Standard Natdex' ],
+					'Species Clause', 'Team Preview', '+Past'],
 		banlist: ['Groudon-Primal', 'Eternatus-Eternamax', 'Arena Trap', 'Huge Power', 'Illusion', 'Innards Out', 'Magnet Pull', 
 					'Moody', 'Parental Bond', 'Protean', 'Psychic Surge', 'Pure Power', 'Shadow Tag', 
 					'Stakeout', 'Water Bubble', 'Wonder Guard', 'Gengarite', 'Chatter', 'Comatose + Sleep Talk',
