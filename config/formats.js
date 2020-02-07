@@ -785,7 +785,6 @@ exports.Formats = [
 					console.log( "hi" + pokeSkillName );
 					if ( pokeSkills.includes( pokeSkillName )){
 						pokemon.pokeSkill = pokeSkillName;
-						pokemon.set.moves[i] = null;
 					}
 				}
 			}
@@ -793,7 +792,10 @@ exports.Formats = [
 		onSwitchInPriority: 2,
 		onSwitchIn(pokemon) {
 			if ( pokemon.pokeClass ) pokemon.addVolatile('ability:' + pokemon.pokeClass, pokemon);
-			if ( pokemon.pokeSkill ) pokemon.addVolatile(pokemon.pokeSkill, pokemon);
+			if ( pokemon.pokeSkill ){
+				pokemon.addVolatile(pokemon.pokeSkill, pokemon);
+				pokemon.disableMove(pokemon.pokeSkill, false, this.effectData.sourceEffect);
+			}
 		},
 	}, 
 	// Old Pet Mods ///////////////////////////////////////////////////////////////////
