@@ -6,16 +6,11 @@ exports.BattleAbilities = {
         onPrepareHit(source, target, move) {
             if (['iceball', 'rollout'].includes(move.id) || move.useTargetOffensive || move.useSourceDefensive) return;
             if (move.category !== 'Status' && !move.selfdestruct && !move.multihit && !move.flags['charge'] && !move.spreadHit && !move.isZ) {
-                move.multihit = 4;
+                move.multihit = 5;
+					 move.multiaccuracy = true;
                 move.multihitType = 'karmicretribution';
             } else if (move.multihit) {
-                if (Array.isArray(move.multihit) && move.multihit[1] > 4) {
-                    if (move.multihit[0] === 2 && move.multihit[1] === 5 && this.randomChance(1, 3)) {
-                        move.multihit = 4;
-                    } else {
-                        move.multihit = [4, move.multihit[1]];
-                    }
-                } else move.multihit = 4;
+                move.multihit = move.multihit[1];
             }
         },
         onSourceModifySecondaries(secondaries, target, source, move) {
@@ -109,6 +104,25 @@ exports.BattleAbilities = {
 		},
 		id: "sonicwind",
 		name: "Sonic Wind",
+	},
+	"forestbreeze": {
+		shortDesc: "This Pokemon's attacking stat is multiplied by 1.5 while using a Flying-type attack.",
+		onModifyAtkPriority: 5,
+		onModifyAtk(atk, attacker, defender, move) {
+			if (move.type === 'Flying') {
+				this.debug('Forest Breeze boost');
+				return this.chainModify(1.5);
+			}
+		},
+		onModifySpAPriority: 5,
+		onModifySpA(atk, attacker, defender, move) {
+			if (move.type === 'Flying') {
+				this.debug('Forest Breeze boost');
+				return this.chainModify(1.5);
+			}
+		},
+		id: "forestbreeze",
+		name: "Forest Breeze",
 	},
 	"poisondippedclaws": {
 		shortDesc: "This Pokemon's attacking stat is multiplied by 1.5 while using a Poison-type attack.",
@@ -695,6 +709,26 @@ exports.BattleAbilities = {
 		id: "inkysurge",
 		name: "Inky Surge",
 	},
+	"paintedsoul": {
+		desc: "This Pokemon's Normal-type moves become Ghost-type moves and have their power multiplied by 1.2. On switch-in, this Pokemon summons Inky Terrain.",
+		shortDesc: "User's Normal-type moves become Ghost-type with 1.2x power. On switch-in, this Pokemon summons Inky Terrain.",
+		onStart(source) {
+			this.field.setTerrain('inkyterrain');
+		},
+		onModifyMovePriority: -1,
+		onModifyMove(move, pokemon) {
+			if (move.type === 'Normal' && !['judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'weatherball'].includes(move.id) && !(move.isZ && move.category !== 'Status')) {
+				move.type = 'Ghost';
+				move.paintedSoulBoosted = true;
+			}
+		},
+		onBasePowerPriority: 8,
+		onBasePower(basePower, pokemon, target, move) {
+			if (move.paintedSoulBoosted) return this.chainModify([0x1333, 0x1000]);
+		},
+		id: "paintedsoul",
+		name: "Painted Soul",
+	},
 	"chemicalburn": {
 		shortDesc: "User's Poison-type moves have halved secondary chances, but have a 30+% chance of inflicting burn. The more secondaries, the stronger the chance for burns",
 		onModifyMovePriority: -2,
@@ -748,19 +782,8 @@ exports.BattleAbilities = {
 		name: "Variability",
 	},
 	"soulofmadness": {
-		desc: "This Pokemon's Normal-type moves become Ghost-type moves and have their power multiplied by 1.2. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects. Upon fainting, this Pokemon resets all adjacent opponents' positive stat boosts and inflicts -2 Def/SpD on them. Pokemon with Soundproof are immune to this effect.",
+		desc: "This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects. Upon fainting, this Pokemon resets all adjacent opponents' positive stat boosts and inflicts -2 Def/SpD on them. Pokemon with Soundproof are immune to this effect.",
 		shortDesc: "User's Normal-type moves become Ghost-type with 1.2x power. Upon fainting, opponents' positive boosts are negated, -2 Def/SpD",
-		onModifyMovePriority: -1,
-		onModifyMove(move, pokemon) {
-			if (move.type === 'Normal' && !['judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'weatherball'].includes(move.id) && !(move.isZ && move.category !== 'Status')) {
-				move.type = 'Ghost';
-				move.soulOfMadnessBoosted = true;
-			}
-		},
-		onBasePowerPriority: 8,
-		onBasePower(basePower, pokemon, target, move) {
-			if (move.soulOfMadnessBoosted) return this.chainModify([0x1333, 0x1000]);
-		},
 		onFaint(pokemon) {
 			for (const target of pokemon.side.foe.active) {
 				if (!target || target.hasAbility('soundproof')) continue;
@@ -1207,6 +1230,22 @@ exports.BattleAbilities = {
 		id: "underworldknight",
 		name: "Underworld Knight",
 	},
+	"ultimatedetective": {
+		shortDesc: "On switch-in, this Pokemon identifies the held items, abilities, and a single move of each opposing Pokemon.",
+		onStart(pokemon) {
+			for (const target of pokemon.side.foe.active) {
+				if (!target || target.fainted) continue;
+				this.add('-ability', target, target.getAbility().name);
+				const warnMoveName = this.sample(target.moveSlots);
+				this.add('-activate', pokemon, 'ability: Ultimate Detective', warnMoveName, '[of] ' + target);
+				if (target.item) {
+					this.add('-item', target, target.getItem().name, '[from] ability: Ultimate Detective', '[of] ' + pokemon, '[identify]');
+				}
+			}
+		},
+		id: "ultimatedetective",
+		name: "Ultimate Detective",
+	},
 	
 	//These vanilla abilities are overridden, though mostly just to account for custom elements (For instance, Damp blocking Creeper Blast, etc.)
 	
@@ -1226,9 +1265,9 @@ exports.BattleAbilities = {
 		onBasePower(basePower, pokemon, target, move) {
 			if (move.multihitType === 'parentalbond' && move.hit > 1) return this.chainModify(0.25);
 			if (move.multihitType === 'fourheads' && move.hit > 1) return this.chainModify(0.3);
-      if (move.multihitType === 'fairyswarm6' && move.hit > 1) return basePower / 6 + 5;
-      if (move.multihitType === 'fairyswarm8' && move.hit > 1) return basePower / 8 + 5;
-      if (move.multihitType === 'fairyswarm10' && move.hit > 1) return basePower / 10 + 5;
+         if (move.multihitType === 'fairyswarm6' && move.hit > 1) return basePower / 6 + 5;
+         if (move.multihitType === 'fairyswarm8' && move.hit > 1) return basePower / 8 + 5;
+         if (move.multihitType === 'fairyswarm10' && move.hit > 1) return basePower / 10 + 5;
 		},
 		rating: 2.5,
 		num: 152,
