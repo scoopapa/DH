@@ -773,18 +773,20 @@ exports.Formats = [
 			let allPokemon = this.p1.pokemon.concat( this.p2.pokemon );
 			for ( let pokemon of allPokemon ) {
 				//apply pokeClasses
-				if ( this.pokeClasses.includes( pokemon.set.name )){
+				if ( this.format.pokeClasses.includes( pokemon.set.name )){
 					pokemon.pokeClass = pokemon.set.name;
 				}
 				//apply pokeSkills
 				for ( let i in pokemon.set.moves ) {
 					let pokeSkillName = pokemon.set.moves[i];
-					if ( this.pokeSkills.includes( pokeSkillName )){
+					if ( this.format.pokeSkills.includes( pokeSkillName )){
 						pokemon.pokeSkill = pokeSkillName;
 					}
 				}
 			}
 		},
+		pokeClasses: ['warrior','mage','thief'],
+		pokeSkills: ['blade','destruction','athletics'],
 		onSwitchInPriority: 2,
 		onSwitchIn(pokemon) {
 			if ( pokemon.pokeClass ) pokemon.addVolatile('ability:' + pokemon.pokeClass, pokemon);
