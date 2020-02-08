@@ -12,7 +12,7 @@ exports.BattleScripts = {
 		this.modData('Movedex', 'solarblade').flags.blade = 1;
 		this.modData('Movedex', 'razorshell').flags.blade = 1;
 		this.modData('Movedex', 'smartstrike').flags.blade = 1;
-		
-		this.modData('Learnsets', 'aegislash').learnset.blade = ['7M'];
 	},
+	pokeClasses = ['warrior','mage','thief'],
+	pokeSkills = ['blade','destruction','athletics'],
 };

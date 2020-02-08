@@ -765,25 +765,21 @@ exports.Formats = [
 	{
 		name: "[Gen 8] PokeClasses",
 		desc: ["&bullet; <a href=https://www.smogon.com/forums/threads/gen-8-pokeclasses-playtesting-phase-1.3657264//>PokeClasses</a>"],
-		ruleset: [ 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 
-					'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod',
-					'Swagger Clause', 'Baton Pass Clause', 'Obtainable', 'Standard Natdex'],
+		ruleset: ['Standard Natdex', 'PokeSkills Move Legality'],
 		banlist: [],
 		mod: 'pokeclasses',
 		onBegin() {
-			let pokeClasses = ['warrior','mage','thief']
-			let pokeSkills = ['blade','destruction','athletics']
+			// names of classes and skills are contained in this.pokeClasses and this.pokeSkills, see pokeclasses/scripts.js
 			let allPokemon = this.p1.pokemon.concat( this.p2.pokemon );
 			for ( let pokemon of allPokemon ) {
 				//apply pokeClasses
-				if ( pokeClasses.includes( pokemon.set.name )){
+				if ( this.pokeClasses.includes( pokemon.set.name )){
 					pokemon.pokeClass = pokemon.set.name;
 				}
 				//apply pokeSkills
 				for ( let i in pokemon.set.moves ) {
 					let pokeSkillName = pokemon.set.moves[i];
-					console.log( "hi" + pokeSkillName );
-					if ( pokeSkills.includes( pokeSkillName )){
+					if ( this.pokeSkills.includes( pokeSkillName )){
 						pokemon.pokeSkill = pokeSkillName;
 					}
 				}
