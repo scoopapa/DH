@@ -791,8 +791,8 @@ exports.Formats = [
 		onSwitchIn(pokemon) {
 			if ( pokemon.pokeClass ) pokemon.addVolatile('ability:' + pokemon.pokeClass, pokemon);
 			if ( pokemon.pokeSkill ){
-				pokemon.addVolatile(pokemon.pokeSkill, pokemon);
-				pokemon.disableMove(pokemon.pokeSkill, false, this.effectData.sourceEffect);
+				pokemon.addVolatile(pokemon.pokeSkill);
+				
 			}
 		},
 	}, 

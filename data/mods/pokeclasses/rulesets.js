@@ -9,7 +9,9 @@ let BattleFormats = {
 		checkLearnset(move, template, setSources, set) {
 			const restrictedMoves = this.format.restrictedMoves || [];
 			if (!restrictedMoves.includes(move.name) && !move.isNonstandard && !move.isMax) {
-				if (this.pokeClasses.includes( move.id )) return null;
+				if (this.format.pokeSkills.includes( move.id )){
+					return null;
+				}
 			}
 			return this.checkLearnset(move, template, setSources, set);
 		},
