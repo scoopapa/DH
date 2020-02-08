@@ -3,12 +3,11 @@
 exports.BattleStatuses = {
 	// pokeskills
 	blade: {
-		name: 'blade',
+		name: 'Blade',
 		id: 'blade',
 		num: 0,
-		onDisableMove( pokemon ){
-			pokemon.disableMove(pokemon.pokeSkill, false, this.effectData.sourceEffect);
-		},
+		onStart(pokemon){ this.add('-start', pokemon, 'Blade');},
+		onDisableMove( pokemon ){ pokemon.disableMove(pokemon.pokeSkill, false, this.effectData.sourceEffect); },
 		onBasePowerPriority: 8,
 		onBasePower(basePower, attacker, defender, move) {
 			if (move.flags['blade']) {
@@ -23,10 +22,13 @@ exports.BattleStatuses = {
 		},
 	},
 	destruction: {
-		name: 'destruction',
-		id: 'Destruction',
+		name: 'Destruction',
+		id: 'destruction',
 		num: 0,
-		onHit(target, source, move) {
+		onStart(pokemon){ this.add('-start', pokemon, 'Destruction');},
+		onDisableMove( pokemon ){ pokemon.disableMove(pokemon.pokeSkill, false, this.effectData.sourceEffect); },
+		onSourceHit(target, source, move) {
+			console.log( 'destruction' );
 			if ( move.type === "Fire" ) source.side.foe.addSideCondition('firestorm');
 			if ( move.type === "Ice" ) source.side.foe.addSideCondition('icestorm');
 			if ( move.type === "Electric" ) source.side.foe.addSideCondition('thunderstorm');
@@ -34,66 +36,66 @@ exports.BattleStatuses = {
 	},
 	//destruction effects
 	firestorm: {
-		name: 'firestorm',
-		id: 'Fire Storm',
-		duration: 3,
+		id: 'firestorm',
+		name: 'Fire Storm',
+		duration: 4,
 		onStart(targetSide) {
-			this.add('-sidestart', targetSide, 'Destruction');
-			if ( targetSide.removeSideCondition( 'thunderstorm' )) this.add('-sideend', targetSide, 'Thunder Storm');
-			if ( targetSide.removeSideCondition( 'icestorm' )) this.add('-sideend', targetSide, 'Ice Storm');
+			this.add('-sidestart', targetSide, 'Fire Storm');
+			if ( targetSide.removeSideCondition( 'thunderstorm' )) return;
+			if ( targetSide.removeSideCondition( 'icestorm' )) return;
 		},
 		onRestart(targetSide) {
 			return false;
 		},
 		onResidual(targetSide) {
 			for (const pokemon of targetSide.active) {
-				if (!pokemon.runImmunity('Fire')) this.damage(pokemon.baseMaxhp / 8, pokemon);
+				if (pokemon.runImmunity('Fire')) this.damage(pokemon.baseMaxhp / 8, pokemon);
 			}
 		},
 		onEnd(targetSide) {
-			this.add('-sideend', targetSide, 'G-Max Wildfire');
+			this.add('-sideend', targetSide, 'Fire Storm');
 		},
 	},
 	icestorm: {
-		name: 'icestorm',
-		id: 'Ice Storm',
-		duration: 3,
+		id: 'icestorm',
+		name: 'Ice Storm',
+		duration: 4,
 		onStart(targetSide) {
-			this.add('-sidestart', targetSide, 'Destruction');
-			if ( targetSide.removeSideCondition( 'thunderstorm' )) this.add('-sideend', targetSide, 'Thunder Storm');
-			if ( targetSide.removeSideCondition( 'firestorm' )) this.add('-sideend', targetSide, 'Fire Storm');
+			this.add('-sidestart', targetSide, 'Ice Storm');
+			if ( targetSide.removeSideCondition( 'thunderstorm' )) return;
+			if ( targetSide.removeSideCondition( 'firestorm' )) return;
 		},
 		onRestart(targetSide) {
 			return false;
 		},
 		onResidual(targetSide) {
 			for (const pokemon of targetSide.active) {
-				if (!pokemon.runImmunity('Ice')) this.damage(pokemon.baseMaxhp / 8, pokemon);
+				if (pokemon.runImmunity('Ice')) this.damage(pokemon.baseMaxhp / 8, pokemon);
 			}
 		},
 		onEnd(targetSide) {
-			this.add('-sideend', targetSide, 'G-Max Wildfire');
+			this.add('-sideend', targetSide, 'Ice Storm');
 		},
 	},
 	thunderstorm: {
-		name: 'thunderstorm',
-		id: 'Thunder Storm',
-		duration: 3,
+		id: 'thunderstorm',
+		name: 'Thunder Storm',
+		duration: 4,
 		onStart(targetSide) {
-			this.add('-sidestart', targetSide, 'Destruction');
-			if ( targetSide.removeSideCondition( 'firestorm' )) this.add('-sideend', targetSide, 'Fire Storm');
-			if ( targetSide.removeSideCondition( 'icestorm' )) this.add('-sideend', targetSide, 'Ice Storm');
+			this.add('-sidestart', targetSide, 'Thunder Storm');
+			if ( targetSide.removeSideCondition( 'firestorm' )) return;
+			if ( targetSide.removeSideCondition( 'icestorm' )) return;
 		},
 		onRestart(targetSide) {
 			return false;
 		},
 		onResidual(targetSide) {
 			for (const pokemon of targetSide.active) {
-				if (!pokemon.runImmunity('Electric')) this.damage(pokemon.baseMaxhp / 8, pokemon);
+				if (pokemon.runImmunity('Electric')) this.damage(pokemon.baseMaxhp / 8, pokemon);
 			}
 		},
 		onEnd(targetSide) {
-			this.add('-sideend', targetSide, 'G-Max Wildfire');
+			this.add('-sideend', targetSide, 'Thunder Storm');
 		},
 	},
 };
