@@ -341,6 +341,7 @@ exports.commands = {
 		let targetUser = this.targetUser;
 		if (!targetUser || !targetUser.connected) {
 			if (!targetUser || !globalWarn) return this.errorReply(`User '${this.targetUsername}' not found.`);
+			if (!this.can('warn')) return false;
 
 			this.addModAction(`${targetUser.name} would be warned by ${user.name} but is offline.${(target ? ` (${target})` : ``)}`);
 			this.globalModlog('WARN OFFLINE', targetUser, ` by ${user.id}${(target ? `: ${target}` : ``)}`);
@@ -1080,33 +1081,38 @@ exports.commands = {
 	untrustuser: 'trustuser',
 	unconfirmuser: 'trustuser',
 	confirmuser: 'trustuser',
+	forceconfirmuser: 'trustuser',
+	forcetrustuser: 'trustuser',
 	trustuser(target, room, user, connection, cmd) {
 		if (!target) return this.parse('/help trustuser');
 		if (!this.can('promote')) return;
 
+		const force = cmd.includes('force');
+		const untrust = cmd.includes('un');
 		target = this.splitTarget(target, true);
 		if (target) return this.errorReply(`This command does not support specifying a reason.`);
 		let targetUser = this.targetUser;
 		let userid = toID(this.targetUsername);
 		let name = targetUser ? targetUser.name : this.targetUsername;
 
-		if (!userid) return this.parse('/help trustuser');
-		if (!targetUser) return this.errorReply(`User '${name}' is not online.`);
+		let currentGroup = Users.usergroups[userid];
+		currentGroup = currentGroup ? currentGroup.charAt(0) : '';
 
-		if (cmd.startsWith('un')) {
-			if (!targetUser.trusted) return this.errorReply(`User '${name}' is not trusted.`);
-			if (targetUser.group !== Config.groupsranking[0]) {
-				return this.errorReply(`User '${name}' has a global rank higher than trusted.`);
-			}
+		if (untrust) {
+			if (currentGroup !== Config.groupsranking[0]) return this.errorReply(`User '${name}' is not trusted.`);
 
-			targetUser.setGroup(' ');
+			Users.setOfflineGroup(userid, Config.groupsranking[0]);
 			this.sendReply(`User '${name}' is no longer trusted.`);
 			this.privateModAction(`${name} was set to no longer be a trusted user by ${user.name}.`);
 			this.modlog('UNTRUSTUSER', userid);
 		} else {
-			if (targetUser.trusted) return this.errorReply(`User '${name}' is already trusted.`);
+			if (!targetUser && !force) return this.errorReply(`User '${name}' is offline. Use /force${cmd} if you're sure.`);
+			if (currentGroup) {
+				if (currentGroup === Config.groupsranking[0]) return this.errorReply(`User '${name}' is already trusted.`);
+				return this.errorReply(`User '${name}' has a global rank higher than trusted.`);
+			}
 
-			targetUser.setGroup(Config.groupsranking[0], true);
+			Users.setOfflineGroup(userid, Config.groupsranking[0], true);
 			this.sendReply(`User '${name}' is now trusted.`);
 			this.privateModAction(`${name} was set as a trusted user by ${user.name}.`);
 			this.modlog('TRUSTUSER', userid);

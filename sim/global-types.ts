@@ -21,6 +21,26 @@ type BoostName = StatNameExceptHP | 'accuracy' | 'evasion';
 type BoostsTable = {[boost in BoostName]: number };
 type SparseBoostsTable = Partial<BoostsTable>;
 type Nonstandard = 'Past' | 'Future' | 'Unobtainable' | 'CAP' | 'LGPE' | 'Custom';
+/**
+ * Describes the acceptable target(s) of a move.
+ * adjacentAlly - Only relevant to Doubles or Triples, the move only targets an ally of the user.
+ * adjacentAllyOrSelf - The move can target the user or its ally.
+ * adjacentFoe - The move can target a foe, but not (in Triples) a distant foe.
+ * all - The move targets the field or all Pokémon at once.
+ * allAdjacent - The move is a spread move that also hits the user's ally.
+ * allAdjacentFoes - The move is a spread move.
+ * allies - The move affects all active Pokémon on the user's team.
+ * allySide - The move adds a side condition on the user's side.
+ * allyTeam - The move affects all unfainted Pokémon on the user's team.
+ * any - The move can hit any other active Pokémon, not just those adjacent.
+ * foeSide - The move adds a side condition on the foe's side.
+ * normal - The move can hit one adjacent Pokémon of your choice.
+ * randomNormal - The move targets an adjacent foe at random.
+ * scripted - The move targets the foe that damaged the user.
+ * self - The move affects the user of the move.
+ */
+type MoveTarget = 'adjacentAlly' | 'adjacentAllyOrSelf' | 'adjacentFoe' | 'all' | 'allAdjacent' | 'allAdjacentFoes' | 'allies' | 'allySide' | 'allyTeam' | 'any' | 'foeSide' | 'normal' | 'randomNormal' | 'scripted' | 'self';
+
 type PokemonSet = {
 	name: string,
 	species: string,
@@ -238,6 +258,7 @@ interface EventMethods {
 	onStallMove?: (this: Battle, pokemon: Pokemon) => boolean | void
 	onSwitchIn?: (this: Battle, pokemon: Pokemon) => void
 	onSwitchOut?: (this: Battle, pokemon: Pokemon) => void
+	onSwap?: (this: Battle, target: Pokemon, source: Pokemon) => void
 	onTakeItem?: ((this: Battle, item: Item, pokemon: Pokemon, source: Pokemon, move?: ActiveMove) => boolean | void) | boolean
 	onTerrain?: (this: Battle, pokemon: Pokemon) => void
 	onTerrainStart?: (this: Battle, target: Pokemon, source: Pokemon, terrain: PureEffect) => void
@@ -762,6 +783,7 @@ interface ItemData extends EffectData, ItemEventMethods, EventMethods {
 	zMoveFrom?: string
 	zMoveType?: string
 	itemUser?: string[]
+	boosts?: SparseBoostsTable | false
 }
 
 interface ModdedItemData extends Partial<ItemData>, ModdedEffectData {
@@ -779,7 +801,7 @@ interface MoveData extends EffectData, MoveEventMethods {
 	flags: AnyObject
 	pp: number
 	priority: number
-	target: string
+	target: MoveTarget
 	type: string
 	alwaysHit?: boolean
 	baseMoveType?: string
@@ -832,6 +854,11 @@ interface MoveData extends EffectData, MoveEventMethods {
 	struggleRecoil?: boolean
 	terrain?: string
 	thawsTarget?: boolean
+	/**
+	 * Tracks the original target through Ally Switch and other switch-out-and-back-in
+	 * situations, rather than just targeting a slot. (Stalwart, Snipe Shot)
+	 */
+	tracksTarget?: boolean
 	useTargetOffensive?: boolean
 	useSourceDefensiveAsOffensive?: boolean
 	volatileStatus?: string
@@ -843,6 +870,18 @@ interface MoveData extends EffectData, MoveEventMethods {
 	zMoveBoost?: SparseBoostsTable
 	gmaxPower?: number
 	basePowerCallback?: (this: Battle, pokemon: Pokemon, target: Pokemon, move: ActiveMove) => number | false | null
+	baseMove?: string
+	/**
+	 * Has this move been boosted by a Z-crystal? Usually the same as
+	 * `isZ`, but hacked moves will have this be `false` and `isZ` be
+	 * truthy.
+	 */
+	isZPowered?: boolean
+	/**
+	 * Same idea has `isZPowered`. Hacked Max moves will have this be
+	 * `false` and `isMax` be truthy.
+	 */
+	maxPowered?: boolean
 }
 
 interface ModdedMoveData extends Partial<MoveData>, ModdedEffectData {}
@@ -880,6 +919,7 @@ interface ActiveMove extends BasicEffect, MoveData {
 	hasAuraBreak?: boolean
 	hasBounced?: boolean
 	hasSheerForce?: boolean
+	/** Is the move called by Dancer? Used to prevent infinite Dancer recursion. */
 	isExternal?: boolean
 	lastHit?: boolean
 	magnitude?: number
@@ -896,17 +936,6 @@ interface ActiveMove extends BasicEffect, MoveData {
 	totalDamage?: number | false
 	willChangeForme?: boolean
 	infiltrates?: boolean
-	/**
-	 * Has this move been boosted by a Z-crystal? Usually the same as
-	 * `isZ`, but hacked moves will have this be `false` and `isZ` be
-	 * truthy.
-	 */
-	isZPowered?: boolean
-	/**
-	 * Same idea has isZPowered. (Is only blocked by protect if its)
-	 * maxPowered. Update/remove this when this is confirmed.
-	 */
-	maxPowered?: boolean
 }
 
 type TemplateAbility = {0: string, 1?: string, H?: string, S?: string}
@@ -998,6 +1027,7 @@ interface FormatsData extends EventMethods {
 	name: string
 	banlist?: string[]
 	battle?: ModdedBattleScriptsData
+	pokemon?: ModdedBattlePokemon
 	cannotMega?: string[]
 	challengeShow?: boolean
 	debug?: boolean
@@ -1062,8 +1092,8 @@ interface Format extends Readonly<BasicEffect & FormatsData> {
 
 type SpreadMoveTargets = (Pokemon | false | null)[]
 type SpreadMoveDamage = (number | boolean | undefined)[]
-type ZMoveOptions = ({move: string, target: string} | null)[]
-type DynamaxOptions = {maxMoves: ({move: string, target: string})[], gigantamax?: string}
+type ZMoveOptions = ({move: string, target: MoveTarget} | null)[]
+type DynamaxOptions = {maxMoves: ({move: string, target: MoveTarget})[], gigantamax?: string}
 
 interface BattleScriptsData {
 	gen: number
@@ -1094,7 +1124,7 @@ interface BattleScriptsData {
 	resolveAction?: (this: Battle, action: AnyObject, midTurn?: boolean) => Actions.Action
 	runAction?: (this: Battle, action: Actions.Action) => void
 	runMegaEvo?: (this: Battle, pokemon: Pokemon) => boolean
-	runMove?: (this: Battle, moveOrMoveName: Move | string, pokemon: Pokemon, targetLoc: number, sourceEffect?: Effect | null, zMove?: string, externalMove?: boolean, maxMove?: string) => void
+	runMove?: (this: Battle, moveOrMoveName: Move | string, pokemon: Pokemon, targetLoc: number, sourceEffect?: Effect | null, zMove?: string, externalMove?: boolean, maxMove?: string, originalTarget?: Pokemon) => void
 	runMoveEffects?: (this: Battle, damage: SpreadMoveDamage, targets: SpreadMoveTargets, source: Pokemon, move: ActiveMove, moveData: ActiveMove, isSecondary?: boolean, isSelf?: boolean) => SpreadMoveDamage
 	runZPower?: (this: Battle, move: ActiveMove, pokemon: Pokemon) => void
 	secondaries?: (this: Battle, targets: SpreadMoveTargets, source: Pokemon, move: ActiveMove, moveData: ActiveMove, isSelf?: boolean) => void
@@ -1116,6 +1146,7 @@ interface ModdedBattlePokemon {
 	inherit?: boolean
 	boostBy?: (this: Pokemon, boost: SparseBoostsTable) => boolean | number
 	calculateStat?: (this: Pokemon, statName: StatNameExceptHP, boost: number, modifier?: number) => number
+	getAbility?: (this: Pokemon) => Ability
 	getActionSpeed?: (this: Pokemon) => number
 	getRequestData?: (this: Pokemon) => {moves: {move: string, id: ID, target?: string, disabled?: boolean}[], maybeDisabled?: boolean, trapped?: boolean, maybeTrapped?: boolean, canMegaEvo?: boolean, canUltraBurst?: boolean, canZMove?: ZMoveOptions}
 	getStat?: (this: Pokemon, statName: StatNameExceptHP, unboosted?: boolean, unmodified?: boolean, fastReturn?: boolean) => number
@@ -1201,6 +1232,8 @@ namespace Actions {
 		pokemon: Pokemon;
 		/** location of the target, relative to pokemon's side */
 		targetLoc: number;
+		/** original target pokemon, for target-tracking moves */
+		originalTarget: Pokemon;
 		/** a move to use (move action only) */
 		moveid: ID
 		/** a move to use (move action only) */
@@ -1286,7 +1319,7 @@ namespace RandomTeamsTypes {
 		toxicSpikes?: number;
 		stickyWeb?: number;
 		rapidSpin?: number;
-		hazardClear?: number;
+		defog?: number;
 		illusion?: number;
 	}
 	export interface FactoryTeamDetails {

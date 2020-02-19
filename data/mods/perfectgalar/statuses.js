@@ -31,6 +31,12 @@ exports.BattleStatuses = {
 		onBeforeSwitchOut(pokemon) {
 			pokemon.removeVolatile('dynamax');
 		},
+		onTryHit( target, source, move ){
+			if ( move.isMax || move.maxPowered ){
+				let str = move.name + ' was used at ' + move.basePower + ' base power.';
+				this.addSplit( source.side.id, [str])
+			}
+		},
 		onSourceModifyDamage(damage, source, target, move) {
 			if (move.id === 'behemothbash' || move.id === 'behemothblade' || move.id === 'dynamaxcannon') {
 				return this.chainModify(2);
@@ -83,5 +89,52 @@ exports.BattleStatuses = {
 		onSwitchOut(pokemon){
 			pokemon.lastFormeBoosted = null;
 		}
+	},
+	choicelock: {
+		name: 'choicelock',
+		id: 'choicelock',
+		num: 0,
+		noCopy: true,
+		onStart(pokemon) {
+			if (!this.activeMove) throw new Error("Battle.activeMove is null");
+			if (!this.activeMove.id || this.activeMove.hasBounced) return false;
+			this.effectData.move = this.activeMove.id;
+			if ( this.dex.getMove( this.effectData.move ).isMax ){
+				this.effectData.move = this.activeMove.baseMove;
+			}
+		},
+		onBeforeMove(pokemon, target, move) {
+			if (!pokemon.getItem().isChoice) {
+				pokemon.removeVolatile('choicelock');
+				return;
+			}
+			let maxID = toID( this.getMaxMove( this.effectData.move, pokemon ))
+			if ( !pokemon.ignoringItem() 
+				&& ( move.id !== this.effectData.move
+					&& move.id !== maxID )
+				&& move.id !== 'struggle' ) 
+			{
+				// Fails unless the Choice item is being ignored, and no PP is lost
+				this.addMove('move', pokemon, move.name);
+				this.attrLastMove('[still]');
+				this.debug("Disabled by Choice item lock");
+				this.add('-fail', pokemon);
+				return false;
+			}
+		},
+		onDisableMove(pokemon) {
+			if (!pokemon.getItem().isChoice || !pokemon.hasMove(this.effectData.move)){
+				pokemon.removeVolatile('choicelock');
+				return;
+			}
+			if (pokemon.ignoringItem()) {
+				return;
+			}
+			for (const moveSlot of pokemon.moveSlots) {
+				if ( moveSlot.id !== this.effectData.move ){
+					pokemon.disableMove(moveSlot.id, false, this.effectData.sourceEffect);
+				}
+			}
+		},
 	},
 };

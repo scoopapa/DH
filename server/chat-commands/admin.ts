@@ -64,7 +64,7 @@ export const commands: ChatCommands = {
 			html += Chat.html`<div style="float:right;color:#888;font-size:8pt">[${user.name}]</div><div style="clear:both"></div>`;
 		}
 
-		this.room.sendRankedUsers(`|html|<div class="infobox">${html}</div>`, rank);
+		this.room.sendRankedUsers(`|html|<div class="infobox">${html}</div>`, rank as GroupSymbol);
 	},
 	addrankhtmlboxhelp: [
 		`/addrankhtmlbox [rank], [message] - Shows everyone with the specified rank or higher a message, parsing HTML code contained. Requires: * & ~`,
@@ -111,7 +111,7 @@ export const commands: ChatCommands = {
 		}
 
 		html = `|uhtml${(cmd === 'changerankuhtml' ? 'change' : '')}|${name}|${html}`;
-		this.room.sendRankedUsers(html, rank);
+		this.room.sendRankedUsers(html, rank as GroupSymbol);
 	},
 	addrankuhtmlhelp: [
 		`/addrankuhtml [rank], [name], [message] - Shows everyone with the specified rank or higher a message that can change, parsing HTML code contained.  Requires: * & ~`,
@@ -776,7 +776,7 @@ export const commands: ChatCommands = {
 		if (!stdout && !stderr) {
 			Monitor.updateServerLock = false;
 			this.sendReply(`There were no updates.`);
-			[code, stdout, stderr] = await exec('../../build');
+			[code, stdout, stderr] = await exec('node ../../build');
 			if (stderr) {
 				return this.errorReply(`Crash while rebuilding: ${stderr}`);
 			}
@@ -827,7 +827,7 @@ export const commands: ChatCommands = {
 			await exec(`git stash pop`);
 			this.sendReply(`FAILED, old changes restored.`);
 		}
-		[code, stdout, stderr] = await exec('../../build');
+		[code, stdout, stderr] = await exec('node ../../build');
 		if (stderr) {
 			return this.errorReply(`Crash while rebuilding: ${stderr}`);
 		}
@@ -855,7 +855,7 @@ export const commands: ChatCommands = {
 		if (!user.can('hotpatch')) {
 			return this.errorReply(`/updateserver - Access denied.`);
 		}
-		const [, , stderr] = await exec('../../build');
+		const [, , stderr] = await exec('node ../../build');
 		if (stderr) {
 			return this.errorReply(`Crash while rebuilding: ${stderr}`);
 		}

@@ -1028,7 +1028,6 @@ exports.BattleAbilities = {
 				let oldAbility = source.setAbility('mummy', target);
 				if (oldAbility) {
 					this.add('-activate', target, 'ability: Mummy Fortitude', this.getAbility(oldAbility).name, '[of] ' + source);
-					this.add('-ability', source, 'Mummy', '[from] ability: Mummy Fortitude', '[of] ' + target);
 				}
 			}
 		},
@@ -14188,5 +14187,24 @@ exports.BattleAbilities = {
 // 		},
 		id: "berrycola",
 		name: "Berry Cola",
+	},
+	"vengefulcurse": {
+		desc: "The Pokémon copies the ability of a Pokémon that hits it with a move that makes direct contact and turns that Pokémon's ability to Mummy.",
+		shortDesc: "Copies the ability of the first Pokémon to hit it with a contact move and changes that Pokémon's ability to Mummy.",
+		onAfterDamage(damage, target, source, effect) {
+			if (!source || target.volatiles['dynamax']) return;
+			if (effect && effect.effectType === 'Move' && effect.flags['contact']) {
+				let sourceAbility = source.setAbility('mummy', target);
+				if (!sourceAbility) return;
+				if (target.side === source.side) {
+					this.add('-activate', target, 'Role Play', '', '', '[of] ' + source);
+				} else {
+					this.add('-activate', target, 'ability: Vengeful Curse', this.dex.getAbility(sourceAbility).name, '[of] ' + source);		
+				}
+				target.setAbility(sourceAbility);
+			}
+		},
+		id: "vengefulcurse",
+		name: "Vengeful Curse",
 	},
 };

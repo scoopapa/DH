@@ -451,6 +451,9 @@ exports.BattleFormatsData = { //
         tier: "V2",
 //         doublesTier: "DOU",
     },
+	 galeemultimate: {
+		  tier: "Uber",
+	 },
     isabelle: {
         tier: "V2",
 //         doublesTier: "DOU",
@@ -623,7 +626,7 @@ exports.BattleFormatsData = { //
 		  tier: "V2",
 	 },
 	 dimentiosuper: {
-		  tier: "V2",
+		  tier: "Uber",
 	 },
 	 traitorlord: {
 		  tier: "V2",
@@ -702,6 +705,9 @@ exports.BattleFormatsData = { //
 	 },
 	 dharkon: {
 		  tier: "V2",
+	 },
+	 dharkonultimate: {
+		  tier: "Uber",
 	 },
 	 deliciousfruit: {
 		  tier: "V2",
@@ -819,6 +825,79 @@ exports.BattleFormatsData = { //
 	 },
 	 lucina: {
 		  tier: "V2",
+	 },
+	 biolizard: {
+		  tier: "V2",
+	 },
+	 finalhazard: {
+		  tier: "Uber",
+	 },
+	 whambamrock: {
+		  tier: "V2",
+	 },
+	 whambamjewel: {
+		  tier: "V2",
+	 },
+	 austincarter: {
+		  tier: "V2",
+	 },
+	 radiance: {
+		  tier: "Uber",
+	 },
+	 radianceabsolute: {
+		  tier: "Uber",
+	 },
+	 bluebaby: {
+		  tier: "V2",
+	 },
+	 hush: {
+		  tier: "Uber",
+	 },
+	 promestein: {
+		  tier: "V2",
+	 },
+	 promesteinultimate: {
+		  tier: "Uber",
+	 },
+	 zote: {
+		  tier: "LC",
+	 },
+	 greyprincezote: {
+		  tier: "G8",
+	 },
+	 ghast: {
+		  tier: "G8",
+	 },
+	 undyne: {
+		  tier: "G8",
+	 },
+	 undyneundying: {
+		  tier: "G8",
+	 },
+	 rebel: {
+		  tier: "G8",
+	 },
+	 drawcia: {
+		  tier: "G8",
+	 },
+	 drawciasoul: {
+		  requiredItem: "Soul Orb",
+		  tier: "Uber",
+	 },
+	 whispywoods: {
+		  tier: "G8",
+	 },
+	 whispywoodsrevenge: {
+		  tier: "G8",
+	 },
+	 melting: {
+		  tier: "G8",
+	 },
+	 trouppleking: {
+		  tier: "G8",
+	 },
+	 kyokokirigiri: {
+		  tier: "G8",
 	 },
 	 mewtwoshadow: {
 		  tier: "V1",
