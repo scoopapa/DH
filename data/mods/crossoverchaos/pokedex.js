@@ -3581,6 +3581,8 @@ gokusupersaiyangod: {
 		heightm: 1.5,
 		weightkg: 48,
 	},
+/*
+does marvel's big ol mutant trex exist? who knows
 	devildinosaur: {
 		num: 7000034,
 		species: "Devil Dinosaur", /* Marvel */
@@ -3591,6 +3593,7 @@ gokusupersaiyangod: {
 		heightm: 6.1,
 		weightkg: 999.9,
 	},
+*/
 	elmerape: {
 		num: 7000035,
 		species: "Elmer Ape", /* Sandsverse */

@@ -1135,9 +1135,12 @@ exports.BattleFormatsData = { //
 	 moongirl: {
 		  tier: "EX",
 	 },
+/*
+absolutely FUCK devil dinosaur and everything he stands for, it's such a pain in the ass to figure out whether or not he "counts"
 	devildinosaur: {
 		tier: "Uber",
 	},
+*/
 	 elmerape: {
 		  tier: "EX",
 	 },
