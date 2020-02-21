@@ -3351,6 +3351,7 @@ goku: {
 			abilities: {0: "Gluttony", H: "Competitive"},
 		heightm: 1.8,
 			weightkg: 55,
+		otherFormes: ["gokusupersaiyan", "gokusupersaiyanblue", "gokusupersaiyangod", "gokuultrainstinct", "gokusupersaiyan4"],
 },
 gokusupersaiyan: {
 			num: 7000027,
@@ -3401,6 +3402,31 @@ gokusupersaiyangod: {
 		gender: "M",
 		baseStats: {hp: 90, atk: 115, def: 100, spa: 100, spd: 100, spe: 165},
 		abilities: {0: "Divine Instinct"},
+		heightm: 1.8,
+		weightkg: 55,
+	},
+	gokuoozaru: {
+		num: 7000027,
+		species: "Goku-Oozaru",
+		baseSpecies: "Goku",
+		forme: "Oozaru",
+		formeLetter: "O",
+		types: ["Fighting"],
+		gender: "M",
+		baseStats: {hp: 90, atk: 100, def: 90, spa: 100, spd: 90, spe: 100},
+		abilities: {0: "Gluttony", H: "Competitive"},
+		heightm: 18,
+		weightkg: 0,
+	},
+	gokusupersaiyan4: {
+		num: 7000027,
+		species: "Goku-Super Saiyan 4",
+		baseSpecies: "Goku",
+		forme: "Super Saiyan 4",
+		formeLetter: "4",
+		types: ["Fighting"],
+		gender: "M",
+		baseStats: {hp: 90, atk: 150, def: 115, spa: 115, spd: 100, spe: 110},
 		heightm: 1.8,
 		weightkg: 55,
 	},
@@ -3555,8 +3581,18 @@ gokusupersaiyangod: {
 		heightm: 1.5,
 		weightkg: 48,
 	},
-	elmerape: {
+	devildinosaur: {
 		num: 7000034,
+		species: "Devil Dinosaur", /* Marvel */
+		types: ["Dragon"],
+		gender: "M",
+		baseStats: {hp: 110, atk: 160, def: 105, spa: 80, spd: 90, spe: 95},
+		abilities: {0: "Intimidate", H: "Reckless"},
+		heightm: 6.1,
+		weightkg: 999.9,
+	},
+	elmerape: {
+		num: 7000035,
 		species: "Elmer Ape", /* Sandsverse */
 		types: ["Grass"],
 		gender: "M",
@@ -3567,7 +3603,7 @@ gokusupersaiyangod: {
 		otherFormes: ["everylivingmonkeyexactsrevenge"],
 	},
 	everylivingmonkeyexactsrevenge: {
-		num: 7000034,
+		num: 7000035,
 		species: "Every Living Monkey Exacts Revenge",
 		baseSpecies: "Elmer Ape",
 		forme: "Lent",
@@ -3580,7 +3616,7 @@ gokusupersaiyangod: {
 		weightkg: 0,
 	},
 	gregheffley: {
-		num: 7000035,
+		num: 7000036,
 		species: "Greg Heffley", /* Diary of a Wimpy Kid */
 		types: ["Ice"],
 		gender: "M",
@@ -3590,7 +3626,7 @@ gokusupersaiyangod: {
 		weightkg: 48,
 	},
 	aimizuno: {
-		num: 7000036,
+		num: 7000037,
 		species: "Ai Mizuno", /* Zombie Land SAGA */
 		types: ["Ghost", "Electric"],
 		gender: "F",
@@ -3600,7 +3636,7 @@ gokusupersaiyangod: {
 		weightkg: 42,
 	},
 	rapunzel: {
-		num: 7000037,
+		num: 7000038,
 		species: "Rapunzel", /* Tangled */
 		types: ["Grass", "Fairy"],
 		gender: "F",
@@ -3610,7 +3646,7 @@ gokusupersaiyangod: {
 		weightkg: 42,
 	},
 	elphaba: {
-		num: 7000038,
+		num: 7000039,
 		species: "Elphaba", /* Wicked */
 		types: ["Dark", "Flying"],
 		gender: "F",
@@ -3620,7 +3656,7 @@ gokusupersaiyangod: {
 		weightkg: 48,
 	},
 	trashman: {
-		num: 7000039,
+		num: 7000040,
 		species: "trash man",
 		types: ["Poison", "Ghost"],
 		gender: "M",
@@ -3630,7 +3666,7 @@ gokusupersaiyangod: {
 		weightkg: 89,
 	},
 	pelones: {
-		num: 7000040,
+		num: 7000041,
 		species: "Pelones", /* Sr Pelo */
 		types: ["Normal", "Fighting"],
 		gender: "M",
@@ -3640,7 +3676,7 @@ gokusupersaiyangod: {
 		weightkg: 48,
 	},
 	tamatoa: {
-		num: 7000041,
+		num: 7000042,
 		species: "Tamatoa", /* Moana */
 		types: ["Water", "Steel"],
 		gender: "M",
@@ -3650,7 +3686,7 @@ gokusupersaiyangod: {
 		weightkg: 700,
 	},
 	vegeta: {
-		num: 7000042,
+		num: 7000043,
 		species: "Vegeta", /* Dragon Ball */
 		types: ["Fighting"],
 		gender: "M",
@@ -3660,8 +3696,93 @@ gokusupersaiyangod: {
 		weightkg: 56,
 		otherFormes: ["vegetasupersaiyan", "vegetasupersaiyangod", "vegetasupersaiyanblue", "vegetamajin", "vegetaoozaru", "vegetasupersaiyan4"],
 	},
-	milesmorales: {
+	vegetasupersaiyan: {
+		num: 7000043,
+		species: "Vegeta-Super Saiyan",
+		baseSpecies: "Vegeta",
+		forme: "Super Saiyan",
+		formeLetter: "S",
+		types: ["Fighting", "Electric"],
+		gender: "M",
+		baseStats: {hp: 80, atk: 135, def: 100, spa: 135, spd: 100, spe: 120},
+		abilities: {0: "Levitate"},
+		heightm: 1.64,
+		weightkg: 56,
+	},
+	vegetasupersaiyanblue: {
+		num: 7000043,
+		species: "Vegeta-Super Saiyan Blue",
+		baseSpecies: "Vegeta",
+		forme: "Super Saiyan Blue",
+		formeLetter: "B",
+		types: ["Fighting", "Flying"],
+		gender: "M",
+		baseStats: {hp: 80, atk: 115, def: 110, spa: 135, spd: 110, spe: 120},
+		abilities: {0: "Aerilate"},
+		heightm: 1.64,
+		weightkg: 56,
+	},
+	vegetamajin: {
+		num: 7000043,
+		species: "Vegeta-Majin",
+		baseSpecies: "Vegeta",
+		forme: "Majin",
+		formeLetter: "M",
+		types: ["Fighting", "Dark"],
+		gender: "M",
+		baseStats: {hp: 80, atk: 155, def: 80, spa: 155, spd: 80, spe: 120},
+		abilities: {0: "Cursed Body"},
+		heightm: 1.64,
+		weightkg: 56,
+	},
+	vegetaoozaru: {
+		num: 7000043,
+		species: "Vegeta-Oozaru",
+		baseSpecies: "Vegeta",
+		forme: "Oozaru",
+		formeLetter: "O",
+		types: ["Fighting"],
+		gender: "M",
+		baseStats: {hp: 80, atk: 115, def: 75, spa: 115, spd: 75, spe: 110},
+		abilities: {0: "Zenkai Boost", H: "Defiant"},
+		heightm: 18,
+		weightkg: 0,
+	},
+	vegetasupersaiyan4: {
+		num: 7000043,
+		species: "Vegeta-Super Saiyan 4",
+		baseSpecies: "Vegeta",
+		forme: "Super Saiyan 4",
+		formeLetter: "4",
+		types: ["Fighting"],
+		gender: "M",
+		baseStats: {hp: 80, atk: 160, def: 125, spa: 105, spd: 110, spe: 90},
+		abilities: {0: "Levitate"},
+		heightm: 1.64,
+		weightkg: 56,
+	},
+	shark: {
+		num: 7000044,
+		species: "Shark", /* Yu-Gi-Oh */
+		types: ["Water", "Dark"],
+		gender: "M",
+		baseStats: {hp: 80, atk: 115, def: 75, spa: 115, spd: 75, spe: 95},
+		abilities: {0: "Swift Swim", 1: "Storm Drain", H: "Drizzle"},
+		heightm: 1.7,
+		weightkg: 70,
+	},
+	megamind: {
 		num: 7000045,
+		species: "Megamind", /* Megamind */
+		types: ["Psychic", "Electric"],
+		gender: "M",
+		baseStats: {hp: 75, atk: 60, def: 60, spa: 120, spd: 70, spe: 110},
+		abilities: {0: "Illusion", H: "Levitate"},
+		heightm: 1.7,
+		weightkg: 65,
+	},
+	milesmorales: {
+		num: 7000046,
 		species: "Miles Morales", /* Spider Man: Into the Spiderverse */
 		types: ["Bug", "Electric"],
 		gender: "M",
@@ -3671,7 +3792,7 @@ gokusupersaiyangod: {
 		weightkg: 50,
 	},
 	shrek: {
-		num: 7000046,
+		num: 7000047,
 		species: "Shrek",
 		types: ["Poison", "Ground"],
 		gender: "M",
@@ -3681,7 +3802,7 @@ gokusupersaiyangod: {
 		weightkg: 180,
 	},
 	siren: {
-		num: 7000047,
+		num: 7000048,
 		species: "Siren", /* Divine Bestiary */
 		types: ["Water", "Fairy"],
 		gender: "F",
@@ -3691,7 +3812,7 @@ gokusupersaiyangod: {
 		weightkg: 90,
 	},
 	calcifer: {
-		num: 7000048,
+		num: 7000049,
 		species: "Calcifer", /* Howl's Moving Castle */
 		types: ["Fire"],
 		gender: "M",
@@ -3701,7 +3822,7 @@ gokusupersaiyangod: {
 		weightkg: 0.5,
 	},
 	petshop: {
-		num: 7000049,
+		num: 7000050,
 		species: "Pet Shop", /* JoJo's Bizarre Adventure */
 		types: ["Flying", "Ice"],
 		gender: "M",
@@ -3711,7 +3832,7 @@ gokusupersaiyangod: {
 		weightkg: 4,
 	},
 	tama: {
-		num: 7000050,
+		num: 7000051,
 		species: "Tama", /* JoJo's Bizarre Adventure */
 		types: ["Grass", "Ghost"],
 		gender: "M",
@@ -3721,7 +3842,7 @@ gokusupersaiyangod: {
 		weightkg: 0.1,
 	},
 	theasset: {
-		num: 7000051,
+		num: 7000052,
 		species: "The Asset", /* Shape of Water */
 		types: ["Water"],
 		gender: "M",
@@ -3730,9 +3851,9 @@ gokusupersaiyangod: {
 		heightm: 1.9,
 		weightkg: 70,
 	},
-	motoko: {
-		num: 7000052,
-		species: "Motoko", /* Love Hina */
+	motokoaoyama: {
+		num: 7000053,
+		species: "Motoko Aoyama", /* Love Hina */
 		types: ["Fighting"],
 		gender: "F",
 		baseStats: {hp: 95, atk: 125, def: 47, spa: 125, spd: 47, spe: 100},
@@ -3741,7 +3862,7 @@ gokusupersaiyangod: {
 		weightkg: 50,
 	},
 	normanbates: {
-		num: 7000053,
+		num: 7000054,
 		species: "Norman Bates", /* Psycho */
 		types: ["Normal", "Dark"],
 		gender: "M",
@@ -3751,7 +3872,7 @@ gokusupersaiyangod: {
 		weightkg: 65,
 	},
 	tomcat: {
-		num: 7000054,
+		num: 7000055,
 		species: "Tom Cat", /* Tom and Jerry */
 		types: ["Normal"],
 		gender: "M",
@@ -3762,7 +3883,7 @@ gokusupersaiyangod: {
 		weightkg: 30,
 	},
 	mickeymouse: {
-		num: 7000055,
+		num: 7000056,
 		species: "Mickey Mouse", /* Disney */
 		types: ["Fairy", "Psychic"],
 		gender: "M",
@@ -3773,7 +3894,7 @@ gokusupersaiyangod: {
 		weightkg: 30,
 	},
 	achilles: {
-		num: 7000056,
+		num: 7000057,
 		species: "Achilles", /* The Iliad */
 		types: ["Fighting", "Steel"],
 		gender: "M",
@@ -3783,7 +3904,7 @@ gokusupersaiyangod: {
 		weightkg: 120,
 	},
 	killerrabbit: {
-		num: 7000057,
+		num: 7000058,
 		species: "Killer Rabbit", /* Monty Python */
 		types: ["Dark"],
 		gender: "M",
@@ -3793,7 +3914,7 @@ gokusupersaiyangod: {
 		weightkg: 1,
 	},
 	superman: {
-		num: 7000058,
+		num: 7000059,
 		species: "Superman", 
 		types: ["Steel", "Flying"],
 		gender: "M",
@@ -3803,7 +3924,7 @@ gokusupersaiyangod: {
 		weightkg: 107,
 	},
 	nicorobin: {
-		num: 7000059,
+		num: 7000060,
 		species: "Nico Robin", /* One Piece */
 		types: ["Grass"],
 		gender: "F",
@@ -3811,7 +3932,7 @@ gokusupersaiyangod: {
 		abilities: {0: "Infiltrator"},
 	},
 	moonknight: {
-		num: 7000060,
+		num: 7000061,
 		species: "Moon Knight", /* Marvel Comics */
 		types: ["Fighting", "Psychic"],
 		gender: "M",
@@ -3819,7 +3940,7 @@ gokusupersaiyangod: {
 		abilities: {0: "Technician", H: "Lunar Power"},
 	},
 	twilightsparkle: {
-		num: 7000061,
+		num: 7000062,
 		species: "Twilight Sparkle", /* My Little Pony: Friendship is Magic */
 		types: ["Fairy", "Psychic"],
 		gender: "F",
@@ -3829,7 +3950,7 @@ gokusupersaiyangod: {
 		otherFormes: ["twilightsparklemega"],
 	},
 	twilightsparklemega: {
-		num: 7000061,
+		num: 70000621,
 		species: "Twilight Sparkle-Mega",
 		baseSpecies: "Twilight Sparkle",
 		forme: "Mega",
@@ -3841,7 +3962,7 @@ gokusupersaiyangod: {
 		color: "Purple",
 	},
 	josephjoestar: {
-		num: 7000062,
+		num: 7000063,
 		species: "Joseph Joestar", /* JoJo's Bizarre Adventure */
 		types: ["Psychic", "Fighting"],
 		gender: "M",
@@ -3852,7 +3973,7 @@ gokusupersaiyangod: {
 		weightkg: 97,
 	},
 	josephjoestarold: {
-		num: 7000062,
+		num: 7000063,
 		species: "Joseph Joestar-Old",
 		baseSpecies: "Joseph Joestar",
 		forme: "Old",
@@ -3865,7 +3986,7 @@ gokusupersaiyangod: {
 		weightkg: 97,
 	},
 	psylocke: {
-		num: 7000063,
+		num: 7000064,
 		species: "Psylocke", /* Marvel */
 		types: ["Psychic"],
 		gender: "F",
@@ -3875,7 +3996,7 @@ gokusupersaiyangod: {
 		weightkg: 75,
 	},
 	toatahu: {
-		num: 7000064,
+		num: 7000065,
 		species: "Toa Tahu", /* Bionicle */
 		types: ["Fire", "Steel"],
 		gender: "M",
@@ -3886,7 +4007,7 @@ gokusupersaiyangod: {
 		otherFormes: ["toatahushielding", "toatahushielding2", "toatahuxray", "toatahuspeed", "toatahulevitation", "toatahustrength", "toatahuwaterbreathing"]
 	},
 	toatahushielding: {
-		num: 7000064,
+		num: 7000065,
 		species: "Toa Tahu-Shielding",
 		baseSpecies: "Toa Tahu",
 		forme: "Shielding",
@@ -3899,7 +4020,7 @@ gokusupersaiyangod: {
 		weightkg: 90,
 	},
 	toatahushielding2: {
-		num: 7000064,
+		num: 7000065,
 		species: "Toa Tahu-Shielding 2", /* not an official form but needed for ability to work */
 		baseSpecies: "Toa Tahu",
 		forme: "Shielding 2",
@@ -3912,7 +4033,7 @@ gokusupersaiyangod: {
 		weightkg: 90,
 	},
 	toatahuxray: {
-		num: 7000064,
+		num: 7000065,
 		species: "Toa Tahu-X-Ray",
 		baseSpecies: "Toa Tahu",
 		forme: "X-Ray",
@@ -3925,7 +4046,7 @@ gokusupersaiyangod: {
 		weightkg: 90,
 	},
 	toatahuspeed: {
-		num: 7000064,
+		num: 7000065,
 		species: "Toa Tahu-Speed",
 		baseSpecies: "Toa Tahu",
 		forme: "Speed",
@@ -3938,7 +4059,7 @@ gokusupersaiyangod: {
 		weightkg: 90,
 	},
 	toatahulevitation: {
-		num: 7000064,
+		num: 7000065,
 		species: "Toa Tahu-Levitation",
 		baseSpecies: "Toa Tahu",
 		forme: "Levitation",
@@ -3951,7 +4072,7 @@ gokusupersaiyangod: {
 		weightkg: 90,
 	},
 	toatahustrength: {
-		num: 7000064,
+		num: 7000065,
 		species: "Toa Tahu-Strength",
 		baseSpecies: "Toa Tahu",
 		forme: "Strength",
@@ -3964,7 +4085,7 @@ gokusupersaiyangod: {
 		weightkg: 90,
 	},
 	toatahuwaterbreathing: {
-		num: 7000064,
+		num: 7000065,
 		species: "Toa Tahu-Water Breathing",
 		baseSpecies: "Toa Tahu",
 		forme: "Water Breathing",
@@ -3977,7 +4098,7 @@ gokusupersaiyangod: {
 		weightkg: 90,
 	},
 	azula: {
-		num: 7000065,
+		num: 7000066,
 		species: "Azula", /* Avatar: The Last Airbender */
 		types: ["Fire", "Dark"]
 		gender: "F",
@@ -3987,7 +4108,7 @@ gokusupersaiyangod: {
 		weightkg: 70,
 	},
 	santaclaus: {
-		num: 7000066,
+		num: 7000067,
 		species: "Santa Claus",
 		types: ["Ice", "Fairy"],
 		gender: "M",
@@ -3997,7 +4118,7 @@ gokusupersaiyangod: {
 		weightkg: 100,
 	},
 	rudolph: {
-		num: 7000067,
+		num: 7000068,
 		species: "Rudolph", /* Rudolph the Red-Nosed Reindeer */
 		types: ["Normal", "Ice"],
 		gender: "M",
@@ -4007,7 +4128,7 @@ gokusupersaiyangod: {
 		weightkg: 70,
 	},
 	jackskellington: {
-		num: 7000068,
+		num: 7000069,
 		species: "Jack Skellington", /* The Nightmare Before Christmas */
 		types: ["Fire", "Ghost"],
 		gender: "M",
@@ -4017,7 +4138,7 @@ gokusupersaiyangod: {
 		weightkg: 70,
 	},
 	drdoofenshmirtz: {
-		num: 7000069,
+		num: 7000070,
 		species: "Dr. Doofenshmirtz", /* Phineas and Ferb */
 		types: ["Normal", "Dark"],
 		gender: "M",
@@ -4027,7 +4148,7 @@ gokusupersaiyangod: {
 		weightkg: 70,
 	},
 	kenshiro: {
-		num: 7000070,
+		num: 7000071,
 		species: "Kenshiro", /* Fist of the North Star */
 		types: ["Fighting"],
 		gender: "M",
@@ -4037,7 +4158,7 @@ gokusupersaiyangod: {
 		weightkg: 100,
 	},
 	sailormoon: {
-		num: 7000071,
+		num: 7000072,
 		species: "Sailor Moon", /* Sailor Moon... what else would she be from? */
 		types: ["Fairy", "Normal"],
 		gender: "F",
@@ -4048,7 +4169,7 @@ gokusupersaiyangod: {
 		otherFormes: ["sailormoonsuper", "sailormooneternal", "neoqueenserenity"],
 	},
 	sailormoonsuper: {
-		num: 7000071,
+		num: 7000072,
 		species: "Sailor Moon-Super",
 		baseSpecies: "Sailor Moon",
 		forme: "Super",
@@ -4061,7 +4182,7 @@ gokusupersaiyangod: {
 		weightkg: 60,
 	},
 	sailormooneternal: {
-		num: 7000071,
+		num: 7000072,
 		species: "Sailor Moon-Eternal",
 		baseSpecies: "Sailor Moon",
 		forme: "Eternal",
@@ -4074,7 +4195,7 @@ gokusupersaiyangod: {
 		weightkg: 60,
 	},
 	neoqueenserenity: {
-		num: 7000071,
+		num: 7000072,
 		species: "Neo-Queen Serenity",
 		baseSpecies: "Sailor Moon",
 		forme: "Neo-Queen",
@@ -4087,7 +4208,7 @@ gokusupersaiyangod: {
 		weightkg: 60,
 	},
 	froppy: {
-		num: 7000072,
+		num: 7000073,
 		species: "Froppy",
 		types: ["Water"],
 		gender: "F",
@@ -4097,7 +4218,7 @@ gokusupersaiyangod: {
 		weightkg: 60,
 	},
 	mightguy: {
-		num: 7000073,
+		num: 7000074,
 		species: "Might Guy",
 		types: ["Fighting"],
 		gender: "M",
@@ -4108,7 +4229,7 @@ gokusupersaiyangod: {
 		otherFormes: ["mightguyfirstgate", "mightguysecondgate", "mightguythirdgate", "mightguyfourthgate", "mightguyfifthgate", "mightguysixthgate", "mightguyseventhgate", "mightguyeighthgate"],
 	},
 	mightguyfirstgate: {
-		num: 7000073,
+		num: 7000074,
 		species: "Might Guy-First Gate",
 		baseSpecies: "Might Guy",
 		forme: "First Gate",
@@ -4121,7 +4242,7 @@ gokusupersaiyangod: {
 		weightkg: 72,
 	},
 	mightguysecondgate: {
-		num: 7000073,
+		num: 7000074,
 		species: "Might Guy-Second Gate",
 		baseSpecies: "Might Guy",
 		forme: "Second Gate",
@@ -4134,7 +4255,7 @@ gokusupersaiyangod: {
 		weightkg: 72,
 	},
 	mightguythirdgate: {
-		num: 7000073,
+		num: 7000074,
 		species: "Might Guy-Third Gate",
 		baseSpecies: "Might Guy",
 		forme: "Third Gate",
@@ -4147,7 +4268,7 @@ gokusupersaiyangod: {
 		weightkg: 72,
 	},
 	mightguyfourthgate: {
-		num: 7000073,
+		num: 7000074,
 		species: "Might Guy-Fourth Gate",
 		baseSpecies: "Might Guy",
 		forme: "Fourth Gate",
@@ -4160,7 +4281,7 @@ gokusupersaiyangod: {
 		weightkg: 72,
 	},
 	mightguyfifthgate: {
-		num: 7000073,
+		num: 7000074,
 		species: "Might Guy-Fifth Gate",
 		baseSpecies: "Might Guy",
 		forme: "Fifth Gate",
@@ -4173,7 +4294,7 @@ gokusupersaiyangod: {
 		weightkg: 72,
 	},
 	mightguysixthgate: {
-		num: 7000073,
+		num: 7000074,
 		species: "Might Guy-Sixth Gate",
 		baseSpecies: "Might Guy",
 		forme: "Sixth Gate",
@@ -4186,7 +4307,7 @@ gokusupersaiyangod: {
 		weightkg: 72,
 	},
 	mightguysixthgate: {
-		num: 7000073,
+		num: 7000074,
 		species: "Might Guy-Sixth Gate",
 		baseSpecies: "Might Guy",
 		forme: "Sixth Gate",
@@ -4199,7 +4320,7 @@ gokusupersaiyangod: {
 		weightkg: 72,
 	},
 	mightguyseventhgate: {
-		num: 7000073,
+		num: 7000074,
 		species: "Might Guy-Seventh Gate",
 		baseSpecies: "Might Guy",
 		forme: "Seventh Gate",
@@ -4212,7 +4333,7 @@ gokusupersaiyangod: {
 		weightkg: 72,
 	},
 	mightguyeighthgate: {
-		num: 7000073,
+		num: 7000074,
 		species: "Might Guy-Eighth Gate",
 		baseSpecies: "Might Guy",
 		forme: "Eighth Gate",
@@ -4225,7 +4346,7 @@ gokusupersaiyangod: {
 		weightkg: 72,
 	},
 	yoda: {
-		num: 7000074,
+		num: 7000075,
 		species: "Yoda",
 		types: ["Psychic", "Fighting"],
 		gender: "M",
@@ -4235,7 +4356,7 @@ gokusupersaiyangod: {
 		weightkg: 23,
 	},
 	thechild: {
-		num: 7000075,
+		num: 7000076,
 		species: "The Child",
 		gender: "M",
 		baseStats: {hp: 40, atk: 5, def: 5, spa: 20, spd: 5, spe: 5},
