@@ -1377,4 +1377,13 @@ absolutely FUCK devil dinosaur and everything he stands for, it's such a pain in
 	thechild: {
 		tier: "EX",
 	},
+	scp743: {
+		tier: "EX",
+	},
+	beatricerappacini: {
+		tier: "EX",
+	},
+	naofumiiwatani: {
+		tier: "EX",
+	},
 };

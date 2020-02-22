@@ -4212,7 +4212,7 @@ does marvel's big ol mutant trex exist? who knows
 	},
 	froppy: {
 		num: 7000073,
-		species: "Froppy",
+		species: "Froppy", /* My Hero Academia */
 		types: ["Water"],
 		gender: "F",
 		baseStats: {hp: 70, atk: 105, def: 90, spa: 115, spd: 80, spe: 85},
@@ -4222,7 +4222,7 @@ does marvel's big ol mutant trex exist? who knows
 	},
 	mightguy: {
 		num: 7000074,
-		species: "Might Guy",
+		species: "Might Guy", /* Naruto */
 		types: ["Fighting"],
 		gender: "M",
 		baseStats: {hp: 90, atk: 100, def: 80, spa: 40, spd: 80, spe: 100},
@@ -4350,7 +4350,7 @@ does marvel's big ol mutant trex exist? who knows
 	},
 	yoda: {
 		num: 7000075,
-		species: "Yoda",
+		species: "Yoda", /* Star Wars */
 		types: ["Psychic", "Fighting"],
 		gender: "M",
 		baseStats: {hp: 70, atk: 60, def: 80, spa: 150, spd: 140, spe: 70},
@@ -4360,11 +4360,41 @@ does marvel's big ol mutant trex exist? who knows
 	},
 	thechild: {
 		num: 7000076,
-		species: "The Child",
+		species: "The Child", /* Star Wars */
+		types: ["Psychic"],
 		gender: "M",
 		baseStats: {hp: 40, atk: 5, def: 5, spa: 20, spd: 5, spe: 5},
 		abilities: {0: "Cute Charm", H: "Force Mastery"},
 		heightm: 0.1,
 		weightkg: 5,
+	},
+	scp743: {
+		num: 7000077,
+		species: "SCP-743", /* SCP Foundation */
+		types: ["Fairy", "Bug"],
+		gender: "N",
+		baseStats: {hp: 110, atk: 90, def: 140, spa: 80, spd: 110, spe: 5},
+		abilities: {0: "Swarm", 1: "Steelworker", H: "Long Reach"},
+		heightm: 1.12,
+		weightkg: 35,
+	},
+	beatricerappacini: {
+		num: 7000078,
+		species: "Beatrice Rappacini", /* Rappacini's Daughter */
+		types: ["Poison"],
+		gender: "F",
+		baseStats: {hp: 182, atk: 80, def: 75, spa: 80, spd: 75, spe: 30},
+		abilities: {0: "Poison Point", H: "Poison Touch"},
+		heightm: 1.6,
+		weightkg: 60,
+	},
+	naofumiiwatani: {
+		num: 7000079,
+		species: "Naofumi Iwatani", /* Rising of the Shield Hero */
+		types: ["Dark"],
+		gender: "M",
+		baseStas: {hp: 65, atk: 5, def: 135, spa: 5, spd: 135, spe: 95},
+		heightm: 1.7,
+		weightkg: 90,
 	},
 };
