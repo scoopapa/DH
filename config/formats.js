@@ -796,6 +796,22 @@ exports.Formats = [
 			}
 		},
 	}, 
+	{
+		name: "[Gen 8 Pet Mod] Clean Slate 2",
+		desc: `A brand new metagame created from scratch, with the ultimate goal of creating a unique metagame different from any other tier.`,
+		threads: [
+			`<a href="https://www.smogon.com/forums/threads/clean-slate-2.3657640/">Clean Slate 2</a>`,
+		],
+		mod: 'cleanslate2',
+		banlist: ['All Pokemon'],
+		unbanlist: [
+			'Weezing-Galar', 'Orbeetle', 'Stonjourner', 'Cherrim-Sunshine', 'Zacian', 'Dubwool', 'Gumshoos', 'Seismitoad', 'Snorlax-Gmax', 'Walrein', 'Dhelmise', 'Togekiss', 'Scolipede', 'Cursola'
+		],
+		ruleset: ['Standard NatDex', 'OHKO Clause', 'Evasion Moves Clause', 'Species Clause', 'Dynamax Clause', 'Sleep Clause Mod'],
+		onSwitchIn(pokemon) {
+			this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');
+		},
+	},
 	// Old Pet Mods ///////////////////////////////////////////////////////////////////
 	{
 		section: "Old Pet Mods",
