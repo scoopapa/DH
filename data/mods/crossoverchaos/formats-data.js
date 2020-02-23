@@ -1274,6 +1274,7 @@ absolutely FUCK devil dinosaur and everything he stands for, it's such a pain in
 		requiredAbility: 'Force Barrier',
 		battleOnly: true,
 		tier: "EX",
+	},
 	toatahuxray: {
 		requiredItem: "Mask Of X-Ray Vision",
 		tier: "EX",
