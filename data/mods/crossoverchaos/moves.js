@@ -2325,13 +2325,13 @@ let BattleMovedex = {
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1, mystery: 1},
 		secondary: {
-			chance: 100,
+			chance: 50,
 			self: {
 				boosts: {
 					atk: 1,
 				},
 			},
-			chance: 30,
+			chance: 50,
 			self: {
 				boosts: {
 					spe: 1,
@@ -2548,24 +2548,18 @@ let BattleMovedex = {
 	},
 	"sonicboost": {
 		num: 40080,
-		accuracy: 90,
-		basePower: 80,
+		accuracy: 100,
+		basePower: 90,
 		category: "Physical",
-		desc: "Has a 50% chance to raise the user's Attack by 1 stage. Has a 50% chance to raise the user's Speed by 1 stage.",
-		shortDesc: "Individual 50% chances to +1 Attack or Speed.",
-		id: "foilflourish",
+		desc: "Has a 30% chance to raise the user's Speed by 1 stage.",
+		shortDesc: "30% chance to +1  Speed.",
+		id: "sonicboost",
 		isViable: true,
-		name: "Foil Flourish",
+		name: "Sonic Boost",
 		pp: 10,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1, mystery: 1},
+		flags: {contact: 1, protect: 1, mirror: 1},
 		secondary: {
-			chance: 100,
-			self: {
-				boosts: {
-					atk: 1,
-				},
-			},
 			chance: 30,
 			self: {
 				boosts: {
@@ -2574,7 +2568,7 @@ let BattleMovedex = {
 			},
 		},
 		target: "normal",
-		type: "Steel",
+		type: "Flying",
 		contestType: "Cool",
 	},
 	"suicideride": {
