@@ -2163,7 +2163,7 @@ let BattleMovedex = {
 		name: "Alter Ego",
 		pp: 20,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1},
+		flags: {protect: 1, mirror: 1},
 		self: {
 			onHit(pokemon) {
 				if (pokemon.hp && pokemon.removeVolatile('leechseed')) {
@@ -2470,7 +2470,7 @@ let BattleMovedex = {
 		name: "Dust Knuckle",
 		pp: 20,
 		priority: 0,
-		flags: {protect: 1, mirror: 1},
+		flags: {protect: 1, mirror: 1, contact: 1},
 		onEffectiveness(typeMod, target, type) {
 			if (type === 'Flying') return 2;
 		},
@@ -2501,7 +2501,7 @@ let BattleMovedex = {
 		contestType: "Cool",
 	},
 	"soulabsorption": {
-		num: 202,
+		num: 40078,
 		accuracy: 100,
 		basePower: 100,
 		category: "Special",
@@ -2524,6 +2524,58 @@ let BattleMovedex = {
 		target: "normal",
 		type: "Fairy",
 		contestType: "Clever",
+	},
+	"spindash": {
+		num: 40079,
+		accuracy: 100,
+		basePower: 90,
+		category: "Physical",
+		desc: "This move's type effectiveness against Flying is changed to be neutral no matter what this move's type is.",
+		shortDesc: "Hits Flying.",
+		id: "spindash",
+		isViable: true,
+		name: "Spin Dash",
+		pp: 20,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, contact: 1},
+		onEffectiveness(typeMod, target, type) {
+			if (type === 'Flying') return 0;
+		},
+		secondary: null,
+		target: "normal",
+		type: "Ground",
+		contestType: "Cool",
+	},
+	"sonicboost": {
+		num: 40080,
+		accuracy: 90,
+		basePower: 80,
+		category: "Physical",
+		desc: "Has a 50% chance to raise the user's Attack by 1 stage. Has a 50% chance to raise the user's Speed by 1 stage.",
+		shortDesc: "Individual 50% chances to +1 Attack or Speed.",
+		id: "foilflourish",
+		isViable: true,
+		name: "Foil Flourish",
+		pp: 10,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1, mystery: 1},
+		secondary: {
+			chance: 100,
+			self: {
+				boosts: {
+					atk: 1,
+				},
+			},
+			chance: 30,
+			self: {
+				boosts: {
+					spe: 1,
+				},
+			},
+		},
+		target: "normal",
+		type: "Steel",
+		contestType: "Cool",
 	},
 	"suicideride": {
 		num: 50001,
