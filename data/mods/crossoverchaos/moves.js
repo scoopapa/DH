@@ -2145,7 +2145,8 @@ let BattleMovedex = {
 				pokemon.formeChange(pokemon.template.speciesid === 'inklingkid', this.effect, false, '[msg]');
 			}
 			if (!target || target.fainted || target.hp <= 0 && pokemon.template.species === 'Inkling-Kid') this.boost({spe: 1}, pokemon, pokemon, move);
-			if
+		},
+		secondary: null,
 		target: "normal", 
 		type: "Poison",
 		zMovePower: 100,
@@ -2498,6 +2499,31 @@ let BattleMovedex = {
 		target: "normal",
 		type: "Dark",
 		contestType: "Cool",
+	},
+	"soulabsorption": {
+		num: 202,
+		accuracy: 100,
+		basePower: 100,
+		category: "Special",
+		desc: "The user recovers 1/2 the HP lost by the target, rounded half up. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded half down. Flowey form changes into Omega Flowey if he lands a KO with this move.",
+		shortDesc: "User recovers 50% of the damage dealt. On KO, Flowey -> Omega Flowey",
+		id: "gigadrain",
+		isViable: true,
+		name: "Giga Drain",
+		pp: 5,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, heal: 1},
+		drain: [1, 2],
+		onAfterMoveSecondarySelf(pokemon, target, move) {
+//			I have NO idea what I'm doing here so if this works I just got lucky
+			if (!target || target.fainted || target.hp <= 0 && pokemon.template.species === 'Flowey') {
+				pokemon.formeChange(pokemon.template.speciesid === 'floweyomega', this.effect, false, '[msg]');
+			}
+		},
+		secondary: null,
+		target: "normal",
+		type: "Fairy",
+		contestType: "Clever",
 	},
 	"suicideride": {
 		num: 50001,
