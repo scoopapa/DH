@@ -2571,6 +2571,27 @@ let BattleMovedex = {
 		type: "Flying",
 		contestType: "Cool",
 	},
+	"cleaningblast": {
+		num: 40081,
+		accuracy: 100,
+		basePower: 75,
+		category: "Special",
+		desc: "SE against Poison-types. Having another type that resists the move leads to neutral damage instead of a quad resist.", /* hmm yes i believe that is how the type chart works */
+		shortDesc: "Super effective on Poison.",
+		id: "cleaningblast",
+		isViable: true,
+		name: "Cleaning Blast",
+		pp: 20,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onEffectiveness(typeMod, target, type) {
+			if (type === 'Poison') return 1;
+		},
+		secondary: null,
+		target: "normal",
+		type: "Water",
+		contestType: "Smart",
+	},
 	"suicideride": {
 		num: 50001,
 		accuracy: 100,
