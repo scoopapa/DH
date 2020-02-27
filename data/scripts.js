@@ -42,7 +42,7 @@ let BattleScripts = {
 		/* if (pokemon.moveThisTurn) {
 			// THIS IS PURELY A SANITY CHECK
 			// DO NOT TAKE ADVANTAGE OF THIS TO PREVENT A POKEMON FROM MOVING;
-			// USE this.cancelMove INSTEAD
+			// USE this.queue.cancelMove INSTEAD
 			this.debug('' + pokemon.id + ' INCONSISTENT STATE, ALREADY MOVED: ' + pokemon.moveThisTurn);
 			this.clearActiveMove(true);
 			return;
@@ -291,8 +291,9 @@ let BattleScripts = {
 
 		return true;
 	},
+	/** NOTE: includes single-target moves */
 	trySpreadMoveHit(targets, pokemon, move) {
-		if (targets.length > 1) move.spreadHit = true;
+		if (targets.length > 1 && !move.smartTarget) move.spreadHit = true;
 
 		/** @type {((targets: Pokemon[], pokemon: Pokemon, move: ActiveMove) => (number | boolean | "" | undefined)[] | undefined)[]} */
 		let moveSteps = [
@@ -377,8 +378,12 @@ let BattleScripts = {
 		const hitResults = this.runEvent('Invulnerability', targets, pokemon, move);
 		for (const [i, target] of targets.entries()) {
 			if (hitResults[i] === false) {
-				if (!move.spreadHit) this.attrLastMove('[miss]');
-				this.add('-miss', pokemon, target);
+				if (move.smartTarget) {
+					move.smartTarget = false;
+				} else {
+					if (!move.spreadHit) this.attrLastMove('[miss]');
+					this.add('-miss', pokemon, target);
+				}
 			}
 		}
 		return hitResults;
@@ -401,7 +406,8 @@ let BattleScripts = {
 
 		const hitResults = [];
 		for (let i = 0; i < targets.length; i++) {
-			hitResults[i] = (move.ignoreImmunity && (move.ignoreImmunity === true || move.ignoreImmunity[move.type])) || targets[i].runImmunity(move.type, true);
+			hitResults[i] = (move.ignoreImmunity && (move.ignoreImmunity === true || move.ignoreImmunity[move.type])) || targets[i].runImmunity(move.type, !move.smartTarget);
+			if (move.smartTarget && !hitResults[i]) move.smartTarget = false;
 		}
 
 		return hitResults;
@@ -479,8 +485,12 @@ let BattleScripts = {
 				accuracy = this.runEvent('Accuracy', target, pokemon, move, accuracy);
 			}
 			if (accuracy !== true && !this.randomChance(accuracy, 100)) {
-				if (!move.spreadHit) this.attrLastMove('[miss]');
-				this.add('-miss', pokemon, target);
+				if (move.smartTarget) {
+					move.smartTarget = false;
+				} else {
+					if (!move.spreadHit) this.attrLastMove('[miss]');
+					this.add('-miss', pokemon, target);
+				}
 				if (pokemon.hasItem('blunderpolicy') && pokemon.useItem()) this.boost({spe: 2}, pokemon);
 				hitResults[i] = false;
 				continue;
@@ -549,6 +559,7 @@ let BattleScripts = {
 		}
 		return undefined;
 	},
+	/** NOTE: used only for moves that target sides/fields rather than pokemon */
 	tryMoveHit(target, pokemon, move) {
 		this.setActiveMove(move, pokemon, target);
 
@@ -612,10 +623,21 @@ let BattleScripts = {
 		for (hit = 1; hit <= targetHits; hit++) {
 			if (damage.includes(false)) break;
 			if (hit > 1 && pokemon.status === 'slp' && !isSleepUsable) break;
-			if (targets.some(target => target && !target.hp)) break;
+			if (targets.every(target => !target || !target.hp)) break;
 			move.hit = hit;
-			targetsCopy = targets.slice(0);
+			if (move.smartTarget && targets.length > 1) {
+				targetsCopy = [targets[hit - 1]];
+			} else {
+				targetsCopy = targets.slice(0);
+			}
 			let target = targetsCopy[0]; // some relevant-to-single-target-moves-only things are hardcoded
+			if (target && typeof move.smartTarget === 'boolean') {
+				if (hit > 1) {
+					this.addMove('-anim', pokemon, move.name, target);
+				} else {
+					this.retargetLastMove(target);
+				}
+			}
 
 			// like this (Triple Kick)
 			if (target && move.multiaccuracy && hit > 1) {
@@ -670,7 +692,7 @@ let BattleScripts = {
 				move.mindBlownRecoil = false;
 			}
 			this.eachEvent('Update');
-			if (!pokemon.hp) {
+			if (!pokemon.hp && targets.length === 1) {
 				hit++; // report the correct number of hits for multihit moves
 				break;
 			}
@@ -678,7 +700,9 @@ let BattleScripts = {
 		// hit is 1 higher than the actual hit count
 		if (hit === 1) return damage.fill(false);
 		if (nullDamage) damage.fill(false);
-		if (move.multihit) this.add('-hitcount', targets[0], hit - 1);
+		if (move.multihit && typeof move.smartTarget !== 'boolean') {
+			this.add('-hitcount', targets[0], hit - 1);
+		}
 
 		if (move.recoil && move.totalDamage) {
 			this.damage(this.calcRecoilDamage(move.totalDamage, move), pokemon, pokemon, 'recoil');
@@ -688,6 +712,9 @@ let BattleScripts = {
 			// @ts-ignore
 			this.directDamage(this.dex.clampIntRange(Math.round(pokemon.maxhp / 4), 1), pokemon, pokemon, {id: 'strugglerecoil'});
 		}
+
+		// smartTarget messes up targetsCopy, but smartTarget should in theory ensure that targets will never fail, anyway
+		if (move.smartTarget) targetsCopy = targets.slice(0);
 
 		for (let i = 0; i < targetsCopy.length; i++) {
 			let target = targetsCopy[i];
@@ -705,6 +732,19 @@ let BattleScripts = {
 
 		// @ts-ignore
 		this.afterMoveSecondaryEvent(targetsCopy.filter(val => !!val), pokemon, move);
+
+		if (!move.negateSecondary && !(move.hasSheerForce && pokemon.hasAbility('sheerforce'))) {
+			for (let i = 0; i < damage.length; i++) {
+				// There are no multihit spread moves, so it's safe to use move.totalDamage for multihit moves
+				// The previous check was for `move.multihit`, but that fails for Dragon Darts
+				const curDamage = targets.length === 1 ? move.totalDamage : damage[i];
+				if (typeof curDamage === 'number' && targets[i].hp) {
+					if (targets[i].hp <= targets[i].maxhp / 2 && targets[i].hp + curDamage > targets[i].maxhp / 2) {
+						this.runEvent('EmergencyExit', targets[i], pokemon);
+					}
+				}
+			}
+		}
 
 		return damage;
 	},
@@ -788,6 +828,28 @@ let BattleScripts = {
 
 		for (let j = 0; j < targets.length; j++) {
 			if (!damage[j] && damage[j] !== 0) targets[j] = false;
+		}
+
+		/** @type {Pokemon[]} */
+		let damagedTargets = [];
+		let damagedDamage = [];
+		for (let i = 0; i < targets.length; i++) {
+			if (typeof damage[i] === 'number' && targets[i]) {
+				damagedTargets.push(/** @type {Pokemon} */ (targets[i]));
+				damagedDamage.push(damage[i]);
+			}
+		}
+		const pokemonOriginalHP = pokemon.hp;
+		if (damagedDamage.length && !isSecondary && !isSelf) {
+			this.runEvent('DamagingHit', damagedTargets, pokemon, move, damagedDamage);
+			if (moveData.onAfterHit) {
+				for (const target of damagedTargets) {
+					this.singleEvent('AfterHit', moveData, {}, target, pokemon, move);
+				}
+			}
+			if (pokemon.hp && pokemon.hp <= pokemon.maxhp / 2 && pokemonOriginalHP > pokemon.maxhp / 2) {
+				this.runEvent('EmergencyExit', pokemon);
+			}
 		}
 
 		return [damage, targets];
@@ -940,10 +1002,6 @@ let BattleScripts = {
 					}
 					if (!isSelf && !isSecondary) {
 						this.runEvent('Hit', target, pokemon, move);
-					}
-					if (moveData.onAfterHit) {
-						hitResult = this.singleEvent('AfterHit', moveData, {}, target, pokemon, move);
-						didSomething = this.combineResults(didSomething, hitResult);
 					}
 				}
 			}
@@ -1193,7 +1251,13 @@ let BattleScripts = {
 		for (let moveSlot of pokemon.moveSlots) {
 			let move = this.dex.getMove(moveSlot.id);
 			let maxMove = this.getMaxMove(move, pokemon);
-			if (maxMove) result.maxMoves.push({move: maxMove.id, target: maxMove.target});
+			if (maxMove) {
+				if (pokemon.maxMoveDisabled(maxMove)) {
+					result.maxMoves.push({move: maxMove.id, target: maxMove.target, disabled: true});
+				} else {
+					result.maxMoves.push({move: maxMove.id, target: maxMove.target});
+				}
+			}
 		}
 		if (pokemon.canGigantamax) result.gigantamax = pokemon.canGigantamax;
 		return result;
