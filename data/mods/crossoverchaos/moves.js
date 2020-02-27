@@ -2606,9 +2606,12 @@ let BattleMovedex = {
 		priority: 0,
 		flags: {},
 		isZ: "fluddiumz",
-		secondary: null,
-		onHit(target) {
-			this.add('-start', target, 'typechange', 'Water');
+		secondary: {
+			dustproof: true,
+			chance: 100,
+			onHit(target) {
+				this.add('-start', target, 'typechange', 'Water');
+			},
 		},
 		target: "normal",
 		type: "Ice",
