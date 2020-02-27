@@ -2312,7 +2312,7 @@ let BattleMovedex = {
 		contestType: "Tough",
 	},
 	"foilflourish": {
-		num: 40072,
+		num: 40073,
 		accuracy: 90,
 		basePower: 80,
 		category: "Physical",
@@ -2343,7 +2343,7 @@ let BattleMovedex = {
 		contestType: "Cool",
 	},
 	"particlegrenade": {
-		num: 40073,
+		num: 40074,
 		accuracy: 100,
 		basePower: 80,
 		category: "Physical",
@@ -2362,7 +2362,7 @@ let BattleMovedex = {
 		contestType: "Tough",
 	},
 	"shootercutter": {
-		num: 40074,
+		num: 40075,
 		accuracy: 100,
 		basePower: 30,
 		category: "Physical",
@@ -2383,7 +2383,7 @@ let BattleMovedex = {
 		contestType: "Cool",
 	},
 	"shovelbash": {
-		num: 40075,
+		num: 40076,
 		accuracy: 100,
 		basePower: 95,
 		category: "Physical",
@@ -2459,7 +2459,7 @@ let BattleMovedex = {
 		contestType: "Tough",
 	},
 	"dustknuckle": {
-		num: 40076,
+		num: 40077,
 		accuracy: 100,
 		basePower: 95,
 		category: "Physical",
@@ -2480,7 +2480,7 @@ let BattleMovedex = {
 		contestType: "Tough",
 	},
 	"corruptedwing": {
-		num: 40077,
+		num: 40078,
 		accuracy: 95,
 		basePower: 100,
 		category: "Special",
@@ -2501,7 +2501,7 @@ let BattleMovedex = {
 		contestType: "Cool",
 	},
 	"soulabsorption": {
-		num: 40078,
+		num: 40079,
 		accuracy: 100,
 		basePower: 100,
 		category: "Special",
@@ -2526,7 +2526,7 @@ let BattleMovedex = {
 		contestType: "Clever",
 	},
 	"spindash": {
-		num: 40079,
+		num: 40080,
 		accuracy: 100,
 		basePower: 90,
 		category: "Physical",
@@ -2547,7 +2547,7 @@ let BattleMovedex = {
 		contestType: "Cool",
 	},
 	"sonicboost": {
-		num: 40080,
+		num: 40081,
 		accuracy: 100,
 		basePower: 90,
 		category: "Physical",
@@ -2572,7 +2572,7 @@ let BattleMovedex = {
 		contestType: "Cool",
 	},
 	"cleaningblast": {
-		num: 40081,
+		num: 40082,
 		accuracy: 100,
 		basePower: 75,
 		category: "Special",
@@ -2591,6 +2591,28 @@ let BattleMovedex = {
 		target: "normal",
 		type: "Water",
 		contestType: "Smart",
+	},
+	"shiningdouser": {
+		num: 40083,
+		accuracy: true,
+		basePower: 185,
+		category: "Special",
+		desc: "Has a 30% chance to freeze the target.",
+		shortDesc: "30% chance to freeze the target.",
+		id: "shiningdouser",
+		isViable: true,
+		name: "Shining Douser",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		isZ: "fluddiumz",
+		secondary: null,
+		onHit(target) {
+			this.add('-start', target, 'typechange', 'Water');
+		},
+		target: "normal",
+		type: "Ice",
+		contestType: "Tough",
 	},
 	"suicideride": {
 		num: 50001,
