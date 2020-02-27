@@ -45,10 +45,10 @@ type Generation = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
 
 // The tiers we support, ie. ones that we have data sources for.
 export const TIERS = new Set([
-	'ubers', 'ou', 'uu', 'ru', 'nu', 'pu', 'zu', 'lc', 'cap',
+	'ubers', 'ou', 'uu', 'ru', 'nu', 'pu', 'zu', 'lc', 'cap', 'nationaldex',
 	'doublesou', 'battlespotsingles', 'battlespotdoubles', 'battlestadiumsingles',
-	'vgc2016', 'vgc2017', 'vgc2018', 'vgc2019ultraseries', '1v1',
-	'anythinggoes', 'balancedhackmons', 'letsgoou', 'monotype',
+	'vgc2016', 'vgc2017', 'vgc2018', 'vgc2019ultraseries', 'vgc2020', '1v1',
+	'anythinggoes', 'nationaldexag', 'balancedhackmons', 'letsgoou', 'monotype',
 ]);
 const FORMATS = new Map<ID, {gen: Generation, format: Format}>();
 const VALIDATORS = new Map<ID, TeamValidator>();
@@ -245,7 +245,7 @@ function movesetToPokemonSet(dex: ModdedDex, format: Format, pokemon: string, se
 	const level = getLevel(format, set.level);
 	return {
 		level: level === 100 ? undefined : level,
-		moves: set.moveslots.map(ms => ms[0]),
+		moves: set.moveslots.map(ms => ms[0]).map(s => s.type ? `${s.move} ${s.type}` : s.move),
 		ability: fixedAbility(dex, pokemon, set.abilities[0]),
 		item: set.items[0] === 'No Item' ? undefined : set.items[0],
 		nature: set.natures[0],
