@@ -2367,7 +2367,7 @@ let BattleMovedex = {
 		basePower: 30,
 		category: "Physical",
 		desc: "Hits four times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits.",
-		shortDesc: "Hits 2-5 times in one turn.",
+		shortDesc: "Hits 4 times in one turn.",
 		id: "shootercutter",
 		isViable: true,
 		name: "Shooter Cutter",
@@ -2379,7 +2379,7 @@ let BattleMovedex = {
 		target: "normal",
 		type: "Ghost",
 		zMovePower: 190,
-		gmaxPower: 130,
+		gmaxPower: 150,
 		contestType: "Cool",
 	},
 	"shovelbash": {
@@ -2616,6 +2616,66 @@ let BattleMovedex = {
 		target: "normal",
 		type: "Water",
 		contestType: "Beautiful",
+	},
+	"meowtivate": {
+		num: 40084,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "The user is replaced with another Pokemon in its party. The selected Pokemon gets Attack and Special Attack boosted by one stage.",
+		shortDesc: "User switches, replacement +1 Atk/SpA.",
+		id: "meowtivate",
+		isViable: true,
+		name: "Meowtivate",
+		pp: 30,
+		priority: 0,
+		flags: {},
+		selfSwitch: true,
+		sideCondition: 'meowtivate',
+		effect: { /* code shamelessly swiped from Dirty Escape in Fusion Evolution */
+			duration: 1,
+			onStart(source) {
+				let side = source.side;
+				this.add('-sidestart', side, 'move: Meowtivate');
+			},
+			onSwitchIn(pokemon) {
+				this.add('-activate', pokemon, 'move: Meowtivate');
+				this.boost({
+					atk: 1,
+					spa: 1,
+ 			}, pokemon, this.effectData.positions[pokemon.position], this.getMove('meowtivate'));
+			pokemon.side.removeSideCondition('meowtivate');
+			},
+			onEnd() {
+				this.add('-sideend', 'move: Meowtivate');
+			},
+		},
+		secondary: null,
+		target: "self",
+		type: "Normal",
+		zMoveEffect: 'healreplacement',
+		contestType: "Cute",
+	},
+	"flickerlick": {
+		num: 40075,
+		accuracy: 100,
+		basePower: 15,
+		category: "Physical",
+		desc: "Hits 6 times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits.",
+		shortDesc: "Hits 6 times in one turn.",
+		id: "flickerlick",
+		isViable: true,
+		name: "Flicker Lick",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, contact: 1},
+		multihit: 6,
+		secondary: null,
+		target: "normal",
+		type: "Water",
+		zMovePower: 175,
+		gmaxPower: 130,
+		contestType: "Cute",
 	},
 	"suicideride": {
 		num: 50001,
