@@ -2614,8 +2614,8 @@ let BattleMovedex = {
 			},
 		},
 		target: "normal",
-		type: "Ice",
-		contestType: "Tough",
+		type: "Water",
+		contestType: "Beautiful",
 	},
 	"suicideride": {
 		num: 50001,
