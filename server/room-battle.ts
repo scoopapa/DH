@@ -485,7 +485,7 @@ export class RoomBattle extends RoomGames.RoomGame {
 	 * If the battle is ended: an array of the number of Pokemon left for each side.
 	 */
 	score: number[] | null;
-	inputLog: string | null;
+	inputLog: string[] | null;
 	turn: number;
 	rqid: number;
 	requestCount: number;
@@ -698,13 +698,24 @@ export class RoomBattle extends RoomGames.RoomGame {
 
 	async listen() {
 		let next;
-		// tslint:disable-next-line: no-conditional-assignment
-		while ((next = await this.stream.read())) {
-			this.receive(next.split('\n'));
+		let disconnected = false;
+		try {
+			// tslint:disable-next-line: no-conditional-assignment
+			while ((next = await this.stream.read())) {
+				this.receive(next.split('\n'));
+			}
+		} catch (err) {
+			// Disconnected processes are already crashlogged when they happen;
+			// also logging every battle room would overwhelm the crashlogger
+			if (err.message.includes('Process disconnected')) {
+				disconnected = true;
+			} else {
+				Monitor.crashlog(err, 'A sim stream');
+			}
 		}
 		if (!this.ended) {
 			this.room.add(`|bigerror|The simulator process has crashed. We've been notified and will fix this ASAP.`);
-			Monitor.crashlog(new Error(`Process disconnected`), `A battle`);
+			if (!disconnected) Monitor.crashlog(new Error(`Sim stream interrupted`), `A sim stream`);
 			this.started = true;
 			this.ended = true;
 			this.checkActive();
@@ -1102,12 +1113,14 @@ export class RoomBattleStream extends BattleStream {
 	readonly battle: Battle;
 	constructor() {
 		super({keepAlive: true});
-		// @ts-ignore
-		this.battle = null;
+		this.battle = null!;
 	}
 
 	_write(chunk: string) {
 		const startTime = Date.now();
+		if (this.battle && Config.debugsimprocesses && process.send) {
+			process.send('DEBUG\n' + this.battle.inputLog.join('\n'));
+		}
 		try {
 			this._writeLines(chunk);
 		} catch (err) {
@@ -1146,7 +1159,7 @@ export class RoomBattleStream extends BattleStream {
 			const p2active = p2 && p2.active[0];
 			const p3active = p3 && p3.active[0];
 			const p4active = p4 && p4.active[0];
-			battle.inputLog.push(`${type} ${message}`);
+			battle.inputLog.push(`>${type} ${message}`);
 			message = message.replace(/\f/g, '\n');
 			battle.add('', '>>> ' + message.replace(/\n/g, '\n||'));
 			try {
