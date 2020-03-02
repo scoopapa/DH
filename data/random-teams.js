@@ -1058,82 +1058,123 @@ class RandomTeams {
 					// Adaptability, Contrary, Iron Fist, Skill Link, Strong Jaw
 					// @ts-ignore
 					rejectAbility = !counter[toID(ability)];
-				} else if (ability === 'Bulletproof' || ability === 'Overcoat') {
-					rejectAbility = (counter.setupType && hasAbility['Soundproof']);
-				} else if (ability === 'Chlorophyll') {
-					rejectAbility = (template.baseStats.spe > 100 || !counter.setupType && !teamDetails['sun']);
-				} else if (ability === 'Competitive') {
-					rejectAbility = (counter['Special'] < 2 || hasMove['rest'] && hasMove['sleeptalk']);
-				} else if (ability === 'Compound Eyes' || ability === 'No Guard') {
-					rejectAbility = !counter['inaccurate'];
-				} else if (ability === 'Cursed Body' || ability === 'Speed Boost') {
-					rejectAbility = hasAbility['Infiltrator'];
-				} else if (ability === 'Defiant' || ability === 'Moxie') {
-					rejectAbility = (!counter['Physical'] || hasMove['dragontail']);
-				} else if (ability === 'Flash Fire') {
-					rejectAbility = (this.dex.getEffectiveness('Fire', template) < -1);
-				} else if (ability === 'Gluttony') {
-					rejectAbility = hasAbility['Cheek Pouch'];
-				} else if (ability === 'Harvest') {
-					rejectAbility = hasAbility['Frisk'];
-				} else if (ability === 'Hustle') {
-					rejectAbility = counter.Physical < 2;
-				} else if (ability === 'Intimidate') {
-					rejectAbility = hasMove['bounce'];
-				} else if (ability === 'Lightning Rod') {
-					rejectAbility = template.types.includes('Ground');
-				} else if (ability === 'Limber') {
-					rejectAbility = template.types.includes('Electric');
-				} else if (ability === 'Magic Guard') {
-					rejectAbility = hasAbility['Tinted Lens'];
-				} else if (ability === 'Mold Breaker') {
-					rejectAbility = (hasAbility['Adaptability'] || hasAbility['Unburden'] && counter.setupType);
-				} else if (ability === 'Moody') {
-					rejectAbility = (template.species === 'Octillery');
-				} else if (ability === 'Neutralizing Gas') {
-					rejectAbility = !hasMove['toxicspikes'];
-				} else if (ability === 'Overgrow') {
-					rejectAbility = !counter['Grass'];
-				} else if (ability === 'Prankster' || ability === 'Steely Spirit') {
-					rejectAbility = !counter['Status'];
-				} else if (ability === 'Pressure' || ability === 'Synchronize') {
-					rejectAbility = (counter.setupType || counter.Status < 2);
-				} else if (ability === 'Regenerator') {
-					rejectAbility = hasAbility['Magic Guard'];
-				} else if (ability === 'Reckless' || ability === 'Rock Head') {
-					rejectAbility = !counter['recoil'];
-				} else if (ability === 'Sand Force' || ability === 'Sand Rush' || ability === 'Sand Veil') {
-					rejectAbility = !teamDetails['sand'];
-				} else if (ability === 'Scrappy') {
-					rejectAbility = template.types.includes('Dark');
-				} else if (ability === 'Shadow Tag') {
-					rejectAbility = (template.species === 'Gothitelle');
-				} else if (ability === 'Sheer Force') {
-					rejectAbility = (!counter['sheerforce'] || hasAbility['Guts']);
-				} else if (ability === 'Sniper') {
-					rejectAbility = counter['Water'] > 1;
-				} else if (ability === 'Sturdy') {
-					rejectAbility = !!counter['recoil'];
-				} else if (ability === 'Swarm') {
-					rejectAbility = (!counter['Bug'] || !!counter['recovery']);
-				} else if (ability === 'Sweet Veil') {
-					rejectAbility = hasType['Grass'];
-				} else if (ability === 'Swift Swim') {
-					rejectAbility = (!hasMove['raindance'] && (hasAbility['Intimidate'] || hasAbility['Slush Rush'] || hasAbility['Water Absorb']));
-				} else if (ability === 'Technician') {
-					rejectAbility = (!counter['technician'] || hasMove['tailslap']);
-				} else if (ability === 'Tinted Lens') {
-					rejectAbility = (hasMove['hurricane'] || counter.Status > 2 && !counter.setupType);
-				} else if (ability === 'Torrent') {
-					rejectAbility = hasMove['snipeshot'];
-				} else if (ability === 'Unaware') {
-					rejectAbility = (counter.setupType || hasMove['stealthrock']);
-				} else if (ability === 'Unburden') {
-					rejectAbility = (hasAbility['Prankster'] || !counter.setupType && !hasMove['acrobatics']);
-				} else if (ability === 'Volt Absorb') {
-					rejectAbility = (this.dex.getEffectiveness('Electric', template) < -1);
-				} else if (ability === 'Water Absorb') {
-					rejectAbility = (hasMove['raindance'] || hasAbility['Strong Jaw'] || hasAbility['Volt Absorb']);
+				} else {
+					switch(ability): {
+						case 'Bulletproof': case 'Soundproof':
+							rejectAbility = (counter.setupType && hasAbility['Soundproof']);
+							break;
+						case 'Chlorophyll':
+							rejectAbility = (template.baseStats.spe > 100 || !counter.setupType && !teamDetails['sun']);
+							break;
+						case 'Competitive':
+							rejectAbility = (counter['Special'] < 2 || hasMove['rest'] && hasMove['sleeptalk']);
+							break;
+						case 'Compound Eyes': case 'No Guard':
+							rejectAbility = !counter['inaccurate'];
+							break;
+						case 'Cursed Body': case 'Speed Boost':
+							rejectAbility = hasAbility['Infiltrator'];
+							break;
+						case 'Defiant': case 'Moxie':
+							rejectAbility = (!counter['Physical'] || hasMove['dragontail']);
+							break;
+						case 'Flash Fire':
+							rejectAbility = (this.dex.getEffectiveness('Fire', template) < -1);
+							break;
+						case 'Gluttony':
+							rejectAbility = hasAbility['Cheek Pouch'];
+							break;
+						case 'Harvest':
+							rejectAbility = hasAbility['Frisk'];
+							break;
+						case 'Hustle':
+							rejectAbility = counter.Physical < 2;
+							break;
+						case 'Intimidate':
+							rejectAbility = hasMove['bounce'];
+							break;
+						case 'Lightning Rod':
+							rejectAbility = template.types.includes('Ground');
+							break;
+						case 'Limber':
+							rejectAbility = template.types.includes('Electric');
+							break;
+						case 'Magic Guard':
+							rejectAbility = hasAbility['Tinted Lens'];
+							break;
+						case 'Mold Breaker':
+							rejectAbility = (hasAbility['Adaptability'] || hasAbility['Unburden'] && counter.setupType);
+							break;
+						case 'Moody':
+							rejectAbility = (template.species === 'Octillery');
+							break;
+						case 'Neutralizing Gas':
+							rejectAbility = !hasMove['toxicspikes'];
+							break;
+						case 'Overgrow':
+							rejectAbility = !counter['Grass'];
+							break;
+						case 'Prankster': case 'Steely Spirit':
+							rejectAbility = !counter['Status'];
+							break;
+						case 'Pressure': case 'Synchronize':
+							rejectAbility = (counter.setupType || counter.Status < 2);
+							break;
+						case 'Regenerator':
+							rejectAbility = hasAbility['Magic Guard'];
+							break;
+						case 'Reckless': case 'Rock Head':
+							rejectAbility = !counter['recoil'];
+							break;
+						case 'Sand Force': case 'Sand Rush': case 'Sand Veil':
+							rejectAbility = !teamDetails['sand'];
+							break;
+						case 'Scrappy':
+							rejectAbility = template.types.includes('Dark');
+							break;
+						case 'Shadow Tag':
+							rejectAbility = (template.species === 'Gothitelle');
+							break;
+						case 'Sheer Force':
+							rejectAbility = (!counter['sheerforce'] || hasAbility['Guts']);
+							break;
+						case 'Sniper': 
+							rejectAbility = counter['Water'] > 1;
+							break;
+						case 'Sturdy':
+							rejectAbility = !!counter['recoil'];
+							break;
+						case 'Swarm':
+							rejectAbility = (!counter['Bug'] || !!counter['recovery']);
+							break;
+						case 'Sweet Veil':
+							rejectAbility = hasType['Grass'];
+							break;
+						case 'Swift Swim':
+							rejectAbility = (!hasMove['raindance'] && (hasAbility['Intimidate'] || hasAbility['Slush Rush'] || hasAbility['Water Absorb']));
+							break;
+						case 'Technician':
+							rejectAbility = (!counter['technician'] || hasMove['tailslap']);
+							break;
+						case 'Tinted Lens':
+							rejectAbility = (hasMove['hurricane'] || counter.Status > 2 && !counter.setupType);
+							break;
+						case 'Torrent':
+							rejectAbility = hasMove['snipeshot'];
+							break;
+						case 'Unaware':
+							rejectAbility = (counter.setupType || hasMove['stealthrock']);
+							break;
+						case 'Unburden':
+							rejectAbility = (hasAbility['Prankster'] || !counter.setupType && !hasMove['acrobatics']);
+							break;
+						case 'Volt Absorb':
+							rejectAbility = (this.dex.getEffectiveness('Electric', template) < -1);
+							break;
+						case 'Water Absorb':
+							rejectAbility = (hasMove['raindance'] || hasAbility['Strong Jaw'] || hasAbility['Volt Absorb']);
+							break;
+					}
 				}
 
 				if (rejectAbility) {
