@@ -733,6 +733,7 @@ exports.Formats = [
 				"&bullet; <a href=https://www.smogon.com/forums/threads/gen-8-perfect-galar.3656660/>Perfect Galar</a>",],
 		ruleset: ['Obtainable', 'Standard',],
 		banlist: ['Uber', 'Shadow Tag', 'Baton Pass'],
+		unbanlist: ['Darmanitan-Galar'],
 		mod: 'perfectgalar',
 		onBegin: function(){
 			this.getMaxBoost = function( statName, pokemon ){
