@@ -1306,7 +1306,7 @@ exports.Formats = [
 				// @ts-ignore
 				if (learnset && !moves.some(move => !!Object.keys(learnset).map(toID).includes(move))) learnsMove = false;
 				if (!learnsMove) continue;
-
+			}
 			/** @type {string[]} */
 			let problems = [];
 
