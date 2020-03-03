@@ -1726,10 +1726,7 @@ const commands = {
 				if (format.removedRules && format.removedRules.length) rules.push("<b>Removed rules</b> - " + Chat.escapeHTML(format.removedRules.join(", ")));
 				if (format.banlist && format.banlist.length) rules.push("<b>Bans</b> - " + Chat.escapeHTML(format.banlist.join(", ")));
 				if (format.unbanlist && format.unbanlist.length) rules.push("<b>Unbans</b> - " + Chat.escapeHTML(format.unbanlist.join(", ")));
-				if (format.restrictedStones && format.restrictedStones.length) rules.push("<b>Restricted Mega Stones</b> - " + Chat.escapeHTML(format.restrictedStones.join(", ")));
-				if (format.cannotMega && format.cannotMega.length) rules.push("<b>Can't Mega Evolve non-natively</b> - " + Chat.escapeHTML(format.cannotMega.join(", ")));
-				if (format.restrictedAbilities && format.restrictedAbilities.length) rules.push("<b>Restricted abilities</b> - " + Chat.escapeHTML(format.restrictedAbilities.join(", ")));
-				if (format.restrictedMoves && format.restrictedMoves.length) rules.push("<b>Restricted moves</b> - " + Chat.escapeHTML(format.restrictedMoves.join(", ")));
+				if (format.restricted && format.restricted.length) rules.push("<b>Restricted</b> - " + Chat.escapeHTML(format.restricted.join(", ")));
 				if (rules.length > 0) {
 					rulesetHtml = `<details><summary>Banlist/Ruleset</summary>${rules.join("<br />")}</details>`;
 				} else {
@@ -2342,6 +2339,18 @@ const commands = {
 	},
 	pickrandomhelp: [`/pick [option], [option], ... - Randomly selects an item from a list containing 2 or more elements.`],
 
+	'!shuffle': true,
+	shuffle(target, room, user) {
+		if (!target || !target.includes(',')) return this.parse('/help shuffle');
+		const args = target.split(',');
+		if (!this.runBroadcast(true)) return false;
+		const results = Dex.shuffle(args.map(arg => arg.trim()));
+		return this.sendReplyBox(Chat.html`<em>Shuffled:</em><br> ${results.join(', ')}`);
+	},
+	shufflehelp: [
+		`/shuffle [option], [option], [option], ... - Randomly shuffles a list of 2 or more elements.`,
+	],
+
 	showimage(target, room, user) {
 		if (!target) return this.parse('/help showimage');
 		if (!this.can('declare', null, room)) return false;
@@ -2400,12 +2409,14 @@ const commands = {
 
 	'!code': true,
 	code(target, room, user) {
+		// XXX: target is trimmed by Chat#splitMessage. Let's not add another
+		// awful hack like ! or help command keys for whether or not the target
+		// is raw for now.
+		target = this.message.substr(this.cmdToken.length + this.cmd.length + +this.message.includes(' ')).trimEnd();
 		if (!target) return this.parse('/help code');
 		if (target.length >= 8192) return this.errorReply("Your code must be under 8192 characters long!");
 
-		const params = target.split('\n');
-		if (!params[0]) params.unshift();
-		if (!params[params.length - 1]) params.pop();
+		const params = target.substr(+target.startsWith('\n')).split('\n');
 		if (params.length === 1 && params[0].length < 80 && !params[0].includes('```') && this.shouldBroadcast()) {
 			return this.canTalk(`\`\`\`${params[0]}\`\`\``);
 		}

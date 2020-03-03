@@ -23,9 +23,11 @@ const RETRY_AFTER_LOGIN = null;
 
 import {FS} from '../lib/fs';
 import {WriteStream} from '../lib/streams';
+import {GTSGiveaway, LotteryGiveaway, QuestionGiveaway} from './chat-plugins/wifi';
 import {PM as RoomBattlePM, RoomBattle, RoomBattlePlayer, RoomBattleTimer} from "./room-battle";
 import {RoomGame, RoomGamePlayer} from './room-game';
 import {Roomlogs} from './roomlogs';
+import * as crypto from 'crypto';
 
 /*********************************************************
  * the Room object.
@@ -94,13 +96,17 @@ export abstract class BasicRoom {
 	staffRoom: boolean;
 	language: string | false;
 	slowchat: number | false;
+	events: {[k: string]: {eventName: string, date: string, desc: string, started: boolean}};
 	filterStretching: boolean;
 	filterEmojis: boolean;
 	filterCaps: boolean;
+	jeopardyDisabled: boolean;
 	mafiaDisabled: boolean;
 	unoDisabled: boolean;
 	blackjackDisabled: boolean;
 	hangmanDisabled: boolean;
+	giveaway: QuestionGiveaway | LotteryGiveaway | null;
+	gtsga: GTSGiveaway | null;
 	toursEnabled: '%' | boolean;
 	tourAnnouncements: boolean;
 	privacySetter: Set<ID> | null;
@@ -150,13 +156,17 @@ export abstract class BasicRoom {
 		this.staffRoom = false;
 		this.language = false;
 		this.slowchat = false;
+		this.events = {};
 		this.filterStretching = false;
 		this.filterEmojis = false;
 		this.filterCaps = false;
+		this.jeopardyDisabled = false;
 		this.mafiaDisabled = false;
 		this.unoDisabled = false;
 		this.blackjackDisabled = false;
 		this.hangmanDisabled = false;
+		this.giveaway = null;
+		this.gtsga = null;
 		this.toursEnabled = false;
 		this.tourAnnouncements = false;
 		this.privacySetter = null;
@@ -499,7 +509,7 @@ export class GlobalRoom extends BasicRoom {
 			if (room.autojoin) this.autojoinList.push(id);
 			if (room.staffAutojoin) this.staffAutojoinList.push(id);
 		}
-		Rooms.lobby = Rooms.rooms.get('lobby' as RoomID) as ChatRoom;
+		Rooms.lobby = Rooms.rooms.get('lobby') as ChatRoom;
 
 		// init battle room logging
 		if (Config.logladderip) {
@@ -741,6 +751,7 @@ export class GlobalRoom extends BasicRoom {
 			title,
 		};
 		const room = Rooms.createChatRoom(id, title, chatRoomData);
+		if (id === 'lobby') Rooms.lobby = room;
 		this.chatRoomDataList.push(chatRoomData);
 		this.chatRooms.push(room);
 		this.writeChatRoomData();
@@ -751,7 +762,7 @@ export class GlobalRoom extends BasicRoom {
 		// console.log('BATTLE START BETWEEN: ' + p1.id + ' ' + p2.id);
 		const roomPrefix = `battle-${toID(Dex.getFormat(format).name)}-`;
 		let battleNum = this.lastBattle;
-		let roomid;
+		let roomid: RoomID;
 		do {
 			roomid = `${roomPrefix}${++battleNum}` as RoomID;
 		} while (Rooms.rooms.has(roomid));
@@ -923,7 +934,7 @@ export class GlobalRoom extends BasicRoom {
 		this.lastReportedCrash = Date.now();
 	}
 	automaticKillRequest() {
-		const notifyPlaces = ['development', 'staff', 'upperstaff'] as RoomID[];
+		const notifyPlaces: RoomID[] = ['development', 'staff', 'upperstaff'];
 		if (Config.autolockdown === undefined) Config.autolockdown = true; // on by default
 
 		if (Config.autolockdown && Rooms.global.lockdown === true && Rooms.global.battleCount === 0) {
@@ -1345,6 +1356,69 @@ export class BasicChatRoom extends BasicRoom {
 		if (this.game && this.game.onLeave) this.game.onLeave(user);
 		return true;
 	}
+	/**
+	 * @param newID Add this param if the roomid is different from `toID(newTitle)`
+	 */
+	async rename(newTitle: string, newID?: RoomID) {
+		if (!newID) newID = toID(newTitle) as RoomID;
+		if (this.game || this.tour) return;
+
+		const oldID = this.roomid;
+		this.roomid = newID;
+		this.title = newTitle;
+		Rooms.rooms.delete(oldID);
+		Rooms.rooms.set(newID, this as ChatRoom);
+
+		if (oldID === 'lobby') {
+			Rooms.lobby = null;
+		} else if (newID === 'lobby') {
+			Rooms.lobby = this as ChatRoom;
+		}
+
+		for (const [alias, roomid] of Rooms.aliases.entries()) {
+			if (roomid === oldID) {
+				Rooms.aliases.set(alias, newID);
+			}
+		}
+		// add an alias from the old id
+		Rooms.aliases.set(oldID, newID);
+		if (!this.aliases) this.aliases = [];
+		this.aliases.push(oldID);
+		if (this.chatRoomData) {
+			this.chatRoomData.aliases = this.aliases;
+			Rooms.global.writeChatRoomData();
+		}
+
+		for (const user of Object.values(this.users)) {
+			user.inRooms.delete(oldID);
+			user.inRooms.add(newID);
+			for (const connection of user.connections) {
+				connection.inRooms.delete(oldID);
+				connection.inRooms.add(newID);
+				Sockets.roomRemove(connection.worker, oldID, connection.socketid);
+				Sockets.roomAdd(connection.worker, newID, connection.socketid);
+			}
+			user.send(`>${oldID}\n|noinit|rename|${newID}|${newTitle}`);
+		}
+
+		if (this.parent && this.parent.subRooms) {
+			this.parent.subRooms.delete(oldID);
+			this.parent.subRooms.set(newID, this as ChatRoom);
+		}
+
+		if (this.subRooms) {
+			for (const subRoom of this.subRooms.values()) {
+				subRoom.parent = this as ChatRoom;
+			}
+		}
+
+		if (this.chatRoomData) {
+			this.chatRoomData.title = newTitle;
+			Rooms.global.writeChatRoomData();
+		}
+
+		return this.log.rename(newID);
+	}
 	destroy() {
 		// deallocate ourself
 
@@ -1417,7 +1491,7 @@ export class ChatRoom extends BasicChatRoom {
 	active: false;
 	type: 'chat';
 	constructor() {
-		super('' as RoomID);
+		super('');
 		this.battle = null;
 		this.active = false;
 		this.type = 'chat';
@@ -1529,6 +1603,44 @@ export class GameRoom extends BasicChatRoom {
 	onConnect(user: User, connection: Connection) {
 		this.sendUser(connection, '|init|battle\n|title|' + this.title + '\n' + this.getLogForUser(user));
 		if (this.game && this.game.onConnect) this.game.onConnect(user, connection);
+	}
+	async uploadReplay(user: User, connection: Connection, options?: 'forpunishment' | 'silent') {
+		const battle = this.battle;
+		if (!battle) return;
+
+		// retrieve spectator log (0) if there are privacy concerns
+		const format = Dex.getFormat(this.format, true);
+
+		// custom games always show full details
+		// random-team battles show full details if the battle is ended
+		// otherwise, don't show full details
+		let hideDetails = !format.id.includes('customgame');
+		if (format.team && battle.ended) hideDetails = false;
+
+		const data = this.getLog(hideDetails ? 0 : -1);
+		const datahash = crypto.createHash('md5').update(data.replace(/[^(\x20-\x7F)]+/g, '')).digest('hex');
+		let rating = 0;
+		if (battle.ended && this.rated) rating = this.rated;
+		const [success] = await LoginServer.request('prepreplay', {
+			id: this.roomid.substr(7),
+			loghash: datahash,
+			p1: battle.p1.name,
+			p2: battle.p2.name,
+			format: format.id,
+			rating,
+			hidden: options === 'forpunishment' || (this as any).unlistReplay ? '2' : this.isPrivate || this.hideReplay ? '1' : '',
+			inputlog: battle.inputLog?.join('\n') || null,
+		});
+		if (success) battle.replaySaved = true;
+		if (success && success.errorip) {
+			connection.popup(`This server's request IP ${success.errorip} is not a registered server.`);
+			return;
+		}
+		connection.send('|queryresponse|savereplay|' + JSON.stringify({
+			log: data,
+			id: this.roomid.substr(7),
+			silent: options === 'forpunishment' || options === 'silent',
+		}));
 	}
 }
 
@@ -1690,6 +1802,6 @@ export const Rooms = {
 
 Monitor.notice("NEW GLOBAL: global");
 
-Rooms.global = new GlobalRoom('global' as RoomID);
+Rooms.global = new GlobalRoom('global');
 
-Rooms.rooms.set('global' as RoomID, Rooms.global);
+Rooms.rooms.set('global', Rooms.global);

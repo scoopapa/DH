@@ -158,7 +158,7 @@ let BattleStatuses = {
 			if (this.effectData.stage < 15) {
 				this.effectData.stage++;
 			}
-			this.damage(this.dex.clampIntRange(pokemon.maxhp / 16, 1) * this.effectData.stage);
+			this.damage(this.dex.clampIntRange(pokemon.baseMaxhp / 16, 1) * this.effectData.stage);
 		},
 	},
 	confusion: {
@@ -727,6 +727,10 @@ let BattleStatuses = {
 		onStart(pokemon) {
 			pokemon.removeVolatile('substitute');
 			if (pokemon.illusion) this.singleEvent('End', this.dex.getAbility('Illusion'), pokemon.abilityData, pokemon);
+			if (pokemon.volatiles['torment']) {
+				delete pokemon.volatiles['torment'];
+				this.add('-end', pokemon, 'Torment', '[silent]');
+			}
 			this.add('-start', pokemon, 'Dynamax');
 			if (pokemon.canGigantamax) this.add('-formechange', pokemon, pokemon.canGigantamax);
 			if (pokemon.species === 'Shedinja') return;

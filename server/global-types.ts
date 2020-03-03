@@ -21,6 +21,7 @@ namespace Chat {
 	export type SettingsHandler = import('./chat').SettingsHandler;
 	export type PageTable = import('./chat').PageTable;
 	export type ChatCommands = import('./chat').ChatCommands;
+	export type ChatHandler = import('./chat').ChatHandler;
 	export type ChatFilter = import('./chat').ChatFilter;
 	export type NameFilter = import('./chat').NameFilter;
 	export type StatusFilter = import('./chat').StatusFilter;
@@ -37,7 +38,8 @@ type RoomGame = Rooms.RoomGame;
 type RoomBattle = Rooms.RoomBattle;
 type Roomlog = Rooms.Roomlog;
 type Room = Rooms.Room;
-type RoomID = string & {__isRoomID: true};
+type RoomID = "" | "global" | "lobby" | "staff" | "upperstaff" | "development" | "battle"
+	| string & {__isRoomID: true};
 namespace Rooms {
 	export type GlobalRoom = import('./rooms').GlobalRoom
 	export type ChatRoom = import('./rooms').ChatRoom
