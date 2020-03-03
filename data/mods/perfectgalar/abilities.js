@@ -28,6 +28,22 @@ exports.BattleAbilities = {
 		rating: 2,
 		num: 251,
 	},
+	"gorillatactics": {
+		inherit: true,
+		onModifyAtk(atk, pokemon) {
+			// PLACEHOLDER
+			this.debug('Gorilla Tactics Atk Boost');
+			return this.chainModify(1.5);
+		},
+		onDisableMove(pokemon) {
+			if (!pokemon.abilityData.choiceLock) return;
+			for (const moveSlot of pokemon.moveSlots) {
+				if (moveSlot.id !== pokemon.abilityData.choiceLock) {
+					pokemon.disableMove(moveSlot.id, false, this.effectData.sourceEffect);
+				}
+			}
+		},
+	},
 //-----------------------------forme changes---------------------------------------------------------------------------------
 	"stancechange": {
 		inherit: true,
