@@ -268,7 +268,7 @@ exports.Formats = [
 		mod: 'gen8',
 		gameType: 'doubles',
 		ruleset: ['Standard Doubles'],
-		banlist: ['DUber'],
+		banlist: ['DUber', 'Beat Up'],
 	},
 	{
 		name: "[Gen 8] Doubles UU",
@@ -1280,6 +1280,8 @@ exports.Formats = [
 
 			/** @type {{[k: string]: string[]}} */
 			const abilityMap = Object.create(null);
+			
+			const moves = set.moves.map(toID);
 
 			const donorBanlist = this.format.restricted || [];
 			for (const speciesid of Object.keys(dex.data.Pokedex)) {
@@ -1288,15 +1290,15 @@ exports.Formats = [
 				if (pokemon.isUnreleased || pokemon.isNonstandard) continue;
 				if (pokemon.requiredItem || pokemon.requiredMove) continue;
 				if (pokemon.isGigantamax) continue;
-				for (const key of Object.values(pokemon.abilities)) {
-					const abilityId = toID(key);
-					if (abilityMap[abilityId]) {
-						abilityMap[abilityId][pokemon.evos ? 'push' : 'unshift'](speciesid);
-					} else {
-						abilityMap[abilityId] = [speciesid];
-					}
-				}
-			}
+				/** @type {AnyObject | null} */
+				let learnset = null;
+				if (pokemon.learnset) learnset = pokemon.learnset;
+				if (!pokemon.learnset && dex.getLearnset(pokemon.baseSpecies)) learnset = dex.getLearnset(pokemon.baseSpecies);
+				if (!learnset) continue;
+				let learnsMove = true;
+				// @ts-ignore
+				if (learnset && !moves.some(move => !!Object.keys(learnset).map(toID).includes(move))) learnsMove = false;
+				if (!learnsMove) continue;
 
 			/** @type {string[]} */
 			let problems = [];
