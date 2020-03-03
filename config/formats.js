@@ -677,6 +677,17 @@ exports.Formats = [
 		mod: 'crossoverchaos',
 	}, 
 	{
+		name: "[Gen 8] Optimons",
+		threads: [
+			`&bullet; <a href="https://www.smogon.com/forums/threads/gen-8-optimons-gen-4-cross-gen-evos.3657509/">OU Thread</a>`,
+			`&bullet; <a href="https://docs.google.com/spreadsheets/d/1k_nvLAq1Qh0yfFjYSr-hy9xsoglgkZTGriKdM6oFRDI/edit#gid=0">Spreadsheet</a>`,
+		],
+
+		mod: 'optimons',
+		ruleset: ['Standard', 'Dynamax Clause'],
+		banlist: ['Uber', 'Moody', 'Shadow Tag', 'Baton Pass'],
+	},
+	{
 		name: "[Gen 8] Perfect Galar",
 		desc: [ "The goal of Perfect Galar is to make a Sword and Shield OU metagame where every single fully evolved Pokemon in the Galar Pokedex has a unique, valuable niche.",
 				"&bullet; <a href=https://www.smogon.com/forums/threads/gen-8-perfect-galar.3656660/>Perfect Galar</a>",],
@@ -769,7 +780,6 @@ exports.Formats = [
 		banlist: [],
 		mod: 'pokeclasses',
 		onBegin() {
-			// names of classes and skills are contained in this.pokeClasses and this.pokeSkills, see pokeclasses/scripts.js
 			let allPokemon = this.p1.pokemon.concat( this.p2.pokemon );
 			for ( let pokemon of allPokemon ) {
 				//apply pokeClasses
@@ -790,10 +800,7 @@ exports.Formats = [
 		onSwitchInPriority: 2,
 		onSwitchIn(pokemon) {
 			if ( pokemon.pokeClass ) pokemon.addVolatile('ability:' + pokemon.pokeClass, pokemon);
-			if ( pokemon.pokeSkill ){
-				pokemon.addVolatile(pokemon.pokeSkill);
-				
-			}
+			if ( pokemon.pokeSkill ) pokemon.addVolatile(pokemon.pokeSkill);
 		},
 	}, 
 	// Old Pet Mods ///////////////////////////////////////////////////////////////////
