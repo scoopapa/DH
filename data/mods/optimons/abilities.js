@@ -30,7 +30,7 @@ exports.BattleAbilities = {
 	},
 	"steamengine": {
 		shortDesc: "This Pokemon's Speed is raised by 6 stages after it is damaged by Fire/Water moves.",
-		onAfterDamage(damage, target, source, effect) {
+		onDamagingHit(damage, target, source, effect) {
 			if (effect && ['Fire'].includes(effect.type)) {
 				this.boost({spe: 6});
 			}
