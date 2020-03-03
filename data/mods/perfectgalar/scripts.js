@@ -70,11 +70,11 @@ exports.BattleScripts = {
 		/** @type {DynamaxOptions} */
 		let result = {maxMoves: []};
 		for ( let moveSlot of pokemon.moveSlots ) {
-			if ( !moveSlot.disabled ){
+			//if ( !moveSlot.disabled ){
 				let move = this.dex.getMove(moveSlot.id);
 				let maxMove = this.getMaxMove(move, pokemon);
 				if (maxMove) result.maxMoves.push({move: maxMove.id, target: maxMove.target});
-			}
+			//}
 		}
 		if (pokemon.canGigantamax) result.gigantamax = pokemon.canGigantamax;
 		return result;
