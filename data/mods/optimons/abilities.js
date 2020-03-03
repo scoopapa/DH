@@ -6,11 +6,7 @@ exports.BattleAbilities = {
 		onDamagingHit(damage, target, source, move) {
 			if (move.effectType === 'Move' && ['cramorantgulping', 'cramorantgorging'].includes(target.template.speciesid) && !target.transformed && !target.isSemiInvulnerable()) {
 				this.damage(source.baseMaxhp / 4, source, target);
-				if (target.template.speciesid === 'cramorantgulping') {
-					this.boost({def: -1}, source, target, null, true);
-				} else {
-					source.trySetStatus('par', target, move);
-				}
+				this.boost({def: -1}, source, target, null, true);
 				target.formeChange('cramorant', move);
 			}
 		},
