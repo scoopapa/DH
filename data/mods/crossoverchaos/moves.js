@@ -2056,14 +2056,17 @@ let BattleMovedex = {
 		num: 40062,
 		accuracy: true,
 		basePower: 90,
-		category: "Physical",
-		shortDesc: "This move does not check accuracy.",
+		category: "Special",
+		shortDesc: "Physical if user's Atk > Sp. Atk. This move does not check accuracy.",
 		id: "invisibleair",
 		isViable: true,
 		name: "Invisible Air",
 		pp: 20,
 		priority: 0,
 		flags: {protect: 1, mirror: 1, mystery: 1},
+		onModifyMove(move, pokemon) {
+			if (pokemon.getStat('atk', false, true) > pokemon.getStat('spa', false, true)) move.category = 'Physical';
+		},
 		secondary: null,
 		target: "normal",
 		type: "Steel",
@@ -2121,6 +2124,558 @@ let BattleMovedex = {
 		type: "Poison",
 		zMovePower: 160,
 		contestType: "Clever",
+	},
+	"rapidsplat": {
+		num: 40065,
+		accuracy: 100,
+		basepower: 15
+		category: "Special",
+		desc: "Hits 2-5 times. If Inkling-Squid knocks out an opponent with this move, change to Inkling-Kid. If Inkling-Kid knocks out an opponent with this move, raise speed by 1 stage."
+		shortDesc: "2-5 hits. If Inkling-Squid gets KO, turn to Kid form. If Inkling-Kid gets KO, +1 Spe."
+		id: "rapidsplat",
+		isViable: true,
+		name: "Rapid Splat",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1}
+		multihit: [2, 5]
+		onAfterMoveSecondarySelf(pokemon, target, move) {
+//			I have NO idea what I'm doing here so if this works I just got lucky
+			if (!target || target.fainted || target.hp <= 0 && pokemon.template.species === 'Inkling') {
+				pokemon.formeChange(pokemon.template.speciesid === 'inklingkid', this.effect, false, '[msg]');
+			}
+			if (!target || target.fainted || target.hp <= 0 && pokemon.template.species === 'Inkling-Kid') this.boost({spe: 1}, pokemon, pokemon, move);
+		},
+		secondary: null,
+		target: "normal", 
+		type: "Poison",
+		zMovePower: 100,
+	},
+	"alterego": {
+		num: 40066,
+		accuracy: 90,
+		basePower: 90,
+		category: "Special",
+		desc: "If this move is successful and the user has not fainted, the effects of Leech Seed and binding moves end for the user, and all hazards are removed from the user's side of the field.",
+		shortDesc: "Free user from hazards/bind/Leech Seed.",
+		id: "alterego",
+		isViable: true,
+		name: "Alter Ego",
+		pp: 20,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		self: {
+			onHit(pokemon) {
+				if (pokemon.hp && pokemon.removeVolatile('leechseed')) {
+					this.add('-end', pokemon, 'Leech Seed', '[from] move: Rapid Spin', '[of] ' + pokemon);
+				}
+				let sideConditions = ['spikes', 'toxicspikes', 'stealthrock', 'stickyweb', 'gmaxsteelsurge'];
+				for (const condition of sideConditions) {
+					if (pokemon.hp && pokemon.side.removeSideCondition(condition)) {
+						this.add('-sideend', pokemon.side, this.dex.getEffect(condition).name, '[from] move: Rapid Spin', '[of] ' + pokemon);
+					}
+				}
+				if (pokemon.hp && pokemon.volatiles['partiallytrapped']) {
+					pokemon.removeVolatile('partiallytrapped');
+				}
+			},
+		},
+		secondary: null,
+		target: "normal",
+		type: "Normal",
+		contestType: "Smart",
+	},
+	"machtornado": {
+		num: 40067,
+		accuracy: 100,
+		basePower: 100,
+		category: "Physical",
+		desc: "Has a 30% chance to lower the target's Defense by 1 stage.",
+		shortDesc: "30% chance to lower the target's Defense by 1.",
+		id: "machtornado",
+		name: "Mach Tornado",
+		pp: 15,
+		priority: 0,
+		flags: {mystery: 1, protect: 1, mirror: 1},
+		secondary: {
+			chance: 30,
+			boosts: {
+				def: -1,
+			},
+		},
+		target: "normal",
+		type: "Flying",
+		contestType: "Cool",
+	},
+	"squallhammer": {
+		num: 40068,
+		accuracy: 100,
+		basePower: 90,
+		category: "Physical",
+		desc: "The user recovers 1/2 the HP lost by the target, rounded half up. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded half down.",
+		shortDesc: "User recovers 50% of the damage dealt.",
+		id: "squallhammer",
+		isViable: true,
+		name: "Squall Hammer",
+		pp: 10,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1, heal: 1},
+		drain: [1, 2],
+		secondary: null,
+		target: "normal",
+		type: "Normal",
+		contestType: "Cute",
+	},
+	"glaciergrind": {
+		num: 40069,
+		accuracy: true,
+		basePower: 175,
+		category: "Physical",
+		desc: "Has a 100% chance to freeze the target.",
+		shortDesc: "100% chance to freeze the target.",
+		id: "glaciergrind",
+		isViable: true,
+		name: "Glacier Grind",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		isZ: "climbiumz",
+		secondary: {
+			chance: 100,
+			status: 'frz',
+		},
+		target: "normal",
+		type: "Ice",
+		contestType: "Tough",
+	},
+	"waddlespearbarrage": {
+		num: 40070,
+		accuracy: 100,
+		basePower: 30,
+		category: "Physical",
+		desc: "Hits two to five times. Has a 1/3 chance to hit two or three times, and a 1/6 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times.",
+		shortDesc: "Hits 2-5 times in one turn.",
+		id: "waddlespearbarrage",
+		isViable: true,
+		name: "Waddle Spear Barrage",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		multihit: [2, 5],
+		secondary: null,
+		target: "normal",
+		type: "Normal",
+		zMovePower: 140,
+		gmaxPower: 130,
+		contestType: "Cute",
+	},
+	"scytheslash": {
+		num: 40071,
+		accuracy: 100,
+		basePower: 80,
+		category: "Physical",
+		desc: "Has a 20% chance to inflict Perish Song on the target.",
+		shortDesc: "20% chance to Perish Song the target.",
+		id: "scytheslash",
+		name: "Scythe Slash",
+		pp: 10,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		secondary: {
+			chance: 20,
+			volatileStatus: 'perishsong',
+		},
+		target: "normal",
+		type: "Ghost",
+		contestType: "Cool",
+	},
+	"winterdragonblitz": {
+		num: 40072,
+		accuracy: true,
+		basePower: 190,
+		category: "Physical",
+		desc: "Has a 30% chance to freeze the target.",
+		shortDesc: "30% chance to freeze the target.",
+		id: "winterdragonblitz",
+		isViable: true,
+		name: "Winter Dragon Blitz",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		isZ: "fredrikiumz",
+		secondary: {
+			chance: 30,
+			status: 'frz',
+		},
+		target: "normal",
+		type: "Ice",
+		contestType: "Tough",
+	},
+	"foilflourish": {
+		num: 40073,
+		accuracy: 90,
+		basePower: 80,
+		category: "Physical",
+		desc: "Has a 50% chance to raise the user's Attack by 1 stage. Has a 50% chance to raise the user's Speed by 1 stage.",
+		shortDesc: "Individual 50% chances to +1 Attack or Speed.",
+		id: "foilflourish",
+		isViable: true,
+		name: "Foil Flourish",
+		pp: 10,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1, mystery: 1},
+		secondary: {
+			chance: 50,
+			self: {
+				boosts: {
+					atk: 1,
+				},
+			},
+			chance: 50,
+			self: {
+				boosts: {
+					spe: 1,
+				},
+			},
+		},
+		target: "normal",
+		type: "Steel",
+		contestType: "Cool",
+	},
+	"particlegrenade": {
+		num: 40074,
+		accuracy: 100,
+		basePower: 80,
+		category: "Physical",
+		defensiveCategory: "Special",
+		desc: "Deals damage to the target based on its Special Defense instead of Defense. Boosted by Mega Launcher, blocked by Bulletproof.",
+		shortDesc: "Damages target based on Defense, not Sp. Def. Pulse + bomb.",
+		id: "particlegrenade",
+		isViable: true,
+		name: "Particle Grenade",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, pulse: 1, bullet: 1},
+		secondary: null,
+		target: "normal",
+		type: "Psychic",
+		contestType: "Tough",
+	},
+	"shootercutter": {
+		num: 40075,
+		accuracy: 100,
+		basePower: 30,
+		category: "Physical",
+		desc: "Hits four times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits.",
+		shortDesc: "Hits 4 times in one turn.",
+		id: "shootercutter",
+		isViable: true,
+		name: "Shooter Cutter",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, mystery: 1},
+		multihit: 4,
+		secondary: null,
+		target: "normal",
+		type: "Ghost",
+		zMovePower: 190,
+		gmaxPower: 150,
+		contestType: "Cool",
+	},
+	"shovelbash": {
+		num: 40076,
+		accuracy: 100,
+		basePower: 95,
+		category: "Physical",
+		desc: "Hits targets using Dig and stops them from using it.",
+		shortDesc: "Hits targets using Dig and stops them from using it.",
+		id: "shovelbash",
+		isViable: true,
+		name: "Shovel Bash",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, contact},
+		secondary: null, /* dig is handled in dig */
+		target: "normal",
+		type: "Steel",
+		contestType: "Tough",
+	},
+	"dig": {
+		num: 91,
+		accuracy: 100,
+		basePower: 80,
+		category: "Physical",
+		desc: "This attack charges on the first turn and executes on the second. On the first turn, the user avoids all attacks other than Earthquake and Magnitude but takes double damage from them, and is also unaffected by weather. If the user is holding a Power Herb, the move completes in one turn.",
+		shortDesc: "Digs underground turn 1, strikes turn 2.",
+		id: "dig",
+		name: "Dig",
+		pp: 10,
+		priority: 0,
+		flags: {contact: 1, charge: 1, protect: 1, mirror: 1, nonsky: 1},
+		onTryMove(attacker, defender, move) {
+			if (attacker.removeVolatile(move.id)) {
+				return;
+			}
+			this.add('-prepare', attacker, move.name, defender);
+			if (!this.runEvent('ChargeMove', attacker, defender, move)) {
+				return;
+			}
+			attacker.addVolatile('twoturnmove', defender);
+			return null;
+		},
+		beforeTurnCallback(pokemon) {
+			pokemon.addVolatile('focuspunch');
+		},
+		beforeMoveCallback(pokemon) {
+			if (pokemon.volatiles['focuspunch'] && pokemon.volatiles['focuspunch'].lostFocus) {
+				this.add('cant', pokemon, 'Focus Punch', 'Focus Punch');
+				return true;
+			}
+		},
+		effect: {
+			duration: 2,
+			onImmunity(type, pokemon) {
+				if (type === 'sandstorm' || type === 'hail') return false;
+			},
+			onInvulnerability(target, source, move) {
+				if (['earthquake', 'magnitude', 'shovelbash'].includes(move.id)) {
+					return;
+				}
+				return false;
+			},
+			onSourceModifyDamage(damage, source, target, move) {
+				if (move.id === 'earthquake' || move.id === 'magnitude') {
+					return this.chainModify(2);
+				}
+			onHit(pokemon, source, move) {
+				if (move.id === 'shovelbash') {
+					pokemon.volatiles['focuspunch'].lostFocus = true;
+				}
+			},
+		},
+		secondary: null,
+		target: "normal",
+		type: "Ground",
+		contestType: "Tough",
+	},
+	"dustknuckle": {
+		num: 40077,
+		accuracy: 100,
+		basePower: 95,
+		category: "Physical",
+		desc: "This move's type effectiveness against Flying is changed to be not very effective no matter what this move's type is.",
+		shortDesc: "Hits Flying, but is not very effective.",
+		id: "dustknuckle",
+		isViable: true,
+		name: "Dust Knuckle",
+		pp: 20,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, contact: 1},
+		onEffectiveness(typeMod, target, type) {
+			if (type === 'Flying') return 2;
+		},
+		secondary: null,
+		target: "normal",
+		type: "Ground",
+		contestType: "Tough",
+	},
+	"corruptedwing": {
+		num: 40078,
+		accuracy: 95,
+		basePower: 100,
+		category: "Special",
+		desc: "This move becomes a physical attack if the user's Attack is greater than its Special Attack, including stat stage changes.",
+		shortDesc: "Physical if user's Atk > Sp. Atk.",
+		id: "corruptedwing",
+		isViable: true,
+		name: "Corrupted Wing",
+		pp: 5,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onModifyMove(move, pokemon) {
+			if (pokemon.getStat('atk', false, true) > pokemon.getStat('spa', false, true)) move.category = 'Physical';
+		},
+		secondary: null,
+		target: "normal",
+		type: "Dark",
+		contestType: "Cool",
+	},
+	"soulabsorption": {
+		num: 40079,
+		accuracy: 100,
+		basePower: 100,
+		category: "Special",
+		desc: "The user recovers 1/2 the HP lost by the target, rounded half up. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded half down. Flowey form changes into Omega Flowey if he lands a KO with this move.",
+		shortDesc: "User recovers 50% of the damage dealt. On KO, Flowey -> Omega Flowey",
+		id: "gigadrain",
+		isViable: true,
+		name: "Giga Drain",
+		pp: 5,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, heal: 1},
+		drain: [1, 2],
+		onAfterMoveSecondarySelf(pokemon, target, move) {
+//			I have NO idea what I'm doing here so if this works I just got lucky
+			if (!target || target.fainted || target.hp <= 0 && pokemon.template.species === 'Flowey') {
+				pokemon.formeChange(pokemon.template.speciesid === 'floweyomega', this.effect, false, '[msg]');
+			}
+		},
+		secondary: null,
+		target: "normal",
+		type: "Fairy",
+		contestType: "Clever",
+	},
+	"spindash": {
+		num: 40080,
+		accuracy: 100,
+		basePower: 90,
+		category: "Physical",
+		desc: "This move's type effectiveness against Flying is changed to be neutral no matter what this move's type is.",
+		shortDesc: "Hits Flying.",
+		id: "spindash",
+		isViable: true,
+		name: "Spin Dash",
+		pp: 20,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, contact: 1},
+		onEffectiveness(typeMod, target, type) {
+			if (type === 'Flying') return 0;
+		},
+		secondary: null,
+		target: "normal",
+		type: "Ground",
+		contestType: "Cool",
+	},
+	"sonicboost": {
+		num: 40081,
+		accuracy: 100,
+		basePower: 90,
+		category: "Physical",
+		desc: "Has a 30% chance to raise the user's Speed by 1 stage.",
+		shortDesc: "30% chance to +1  Speed.",
+		id: "sonicboost",
+		isViable: true,
+		name: "Sonic Boost",
+		pp: 10,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		secondary: {
+			chance: 30,
+			self: {
+				boosts: {
+					spe: 1,
+				},
+			},
+		},
+		target: "normal",
+		type: "Flying",
+		contestType: "Cool",
+	},
+	"cleaningblast": {
+		num: 40082,
+		accuracy: 100,
+		basePower: 75,
+		category: "Special",
+		desc: "SE against Poison-types. Having another type that resists the move leads to neutral damage instead of a quad resist.", /* hmm yes i believe that is how the type chart works */
+		shortDesc: "Super effective on Poison.",
+		id: "cleaningblast",
+		isViable: true,
+		name: "Cleaning Blast",
+		pp: 20,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onEffectiveness(typeMod, target, type) {
+			if (type === 'Poison') return 1;
+		},
+		secondary: null,
+		target: "normal",
+		type: "Water",
+		contestType: "Smart",
+	},
+	"shiningdouser": {
+		num: 40083,
+		accuracy: true,
+		basePower: 185,
+		category: "Special",
+		desc: "Has a 30% chance to freeze the target.",
+		shortDesc: "30% chance to freeze the target.",
+		id: "shiningdouser",
+		isViable: true,
+		name: "Shining Douser",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		isZ: "fluddiumz",
+		secondary: {
+			dustproof: true,
+			chance: 100,
+			onHit(target) {
+				this.add('-start', target, 'typechange', 'Water');
+			},
+		},
+		target: "normal",
+		type: "Water",
+		contestType: "Beautiful",
+	},
+	"meowtivate": {
+		num: 40084,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "The user is replaced with another Pokemon in its party. The selected Pokemon gets Attack and Special Attack boosted by one stage.",
+		shortDesc: "User switches, replacement +1 Atk/SpA.",
+		id: "meowtivate",
+		isViable: true,
+		name: "Meowtivate",
+		pp: 30,
+		priority: 0,
+		flags: {},
+		selfSwitch: true,
+		sideCondition: 'meowtivate',
+		effect: { /* code shamelessly swiped from Dirty Escape in Fusion Evolution */
+			duration: 1,
+			onStart(source) {
+				let side = source.side;
+				this.add('-sidestart', side, 'move: Meowtivate');
+			},
+			onSwitchIn(pokemon) {
+				this.add('-activate', pokemon, 'move: Meowtivate');
+				this.boost({
+					atk: 1,
+					spa: 1,
+ 			}, pokemon, this.effectData.positions[pokemon.position], this.getMove('meowtivate'));
+			pokemon.side.removeSideCondition('meowtivate');
+			},
+			onEnd() {
+				this.add('-sideend', 'move: Meowtivate');
+			},
+		},
+		secondary: null,
+		target: "self",
+		type: "Normal",
+		zMoveEffect: 'healreplacement',
+		contestType: "Cute",
+	},
+	"flickerlick": {
+		num: 40075,
+		accuracy: 100,
+		basePower: 15,
+		category: "Physical",
+		desc: "Hits 6 times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits.",
+		shortDesc: "Hits 6 times in one turn.",
+		id: "flickerlick",
+		isViable: true,
+		name: "Flicker Lick",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, contact: 1},
+		multihit: 6,
+		secondary: null,
+		target: "normal",
+		type: "Water",
+		zMovePower: 175,
+		gmaxPower: 130,
+		contestType: "Cute",
 	},
 	"suicideride": {
 		num: 50001,

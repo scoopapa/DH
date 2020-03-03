@@ -415,8 +415,9 @@ type ChatQueueEntry = [string, RoomID, Connection];
 const SETTINGS = [
 	'isSysop', 'isStaff', 'blockChallenges', 'blockPMs',
 	'ignoreTickets', 'lastConnected', 'lastDisconnected',
-	'inviteOnlyNextBattle',
-];
+	'inviteOnlyNextBattle', 'statusType',
+] as const;
+type UserSetting = typeof SETTINGS[number];
 
 // User
 export class User extends Chat.MessageContext {
@@ -464,6 +465,7 @@ export class User extends Chat.MessageContext {
 	lastDisconnected: number;
 	lastConnected: number;
 	inviteOnlyNextBattle: boolean;
+	foodfight?: {generatedTeam: string[], dish: string, ingredients: string[], timestamp: number};
 
 	chatQueue: ChatQueueEntry[] | null;
 	chatQueueTimeout: NodeJS.Timeout | null;
@@ -588,7 +590,7 @@ export class User extends Chat.MessageContext {
 	popup(message: string) {
 		this.send(`|popup|` + message.replace(/\n/g, '||'));
 	}
-	getIdentity(roomid = '' as RoomID) {
+	getIdentity(roomid: RoomID = '') {
 		if (this.locked || this.namelocked) {
 			const lockedSymbol = (Config.punishgroups && Config.punishgroups.locked ? Config.punishgroups.locked.symbol
 				: '\u203d');
@@ -611,7 +613,7 @@ export class User extends Chat.MessageContext {
 		}
 		return this.group + this.name;
 	}
-	getIdentityWithStatus(roomid = '' as RoomID) {
+	getIdentityWithStatus(roomid: RoomID = '') {
 		const identity = this.getIdentity(roomid);
 		const status = this.statusType === 'online' ? '' : '@!';
 		return `${identity}${status}`;
@@ -1018,12 +1020,11 @@ export class User extends Chat.MessageContext {
 	/**
 	 * @param updated the settings which have been updated or none for all settings.
 	 */
-	getUpdateuserText(...updated: string[]) {
+	getUpdateuserText(...updated: UserSetting[]) {
 		const named = this.named ? 1 : 0;
-		const diff = {};
+		const diff: AnyObject = {};
 		const settings = updated.length ? updated : SETTINGS;
 		for (const setting of settings) {
-			// @ts-ignore - dynamic lookup
 			diff[setting] = this[setting];
 		}
 		return `|updateuser|${this.getIdentityWithStatus()}|${named}|${this.avatar}|${JSON.stringify(diff)}`;
@@ -1031,7 +1032,7 @@ export class User extends Chat.MessageContext {
 	/**
 	 * @param updated the settings which have been updated or none for all settings.
 	 */
-	update(...updated: string[]) {
+	update(...updated: UserSetting[]) {
 		this.send(this.getUpdateuserText(...updated));
 	}
 	merge(oldUser: User) {
@@ -1383,7 +1384,7 @@ export class User extends Chat.MessageContext {
 				// only join full clients, not pop-out single-room
 				// clients
 				// (...no, pop-out rooms haven't been implemented yet)
-				if (curConnection.inRooms.has('global' as RoomID)) {
+				if (curConnection.inRooms.has('global')) {
 					this.joinRoom(room, curConnection);
 				}
 			}
@@ -1677,7 +1678,7 @@ function socketConnect(
 		}
 	});
 
-	user.joinRoom('global' as RoomID, connection);
+	user.joinRoom('global', connection);
 }
 function socketDisconnect(worker: Worker, workerid: number, socketid: string) {
 	const id = '' + workerid + '-' + socketid;

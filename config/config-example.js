@@ -253,7 +253,6 @@ exports.restrictLinks = false;
  *   chat to autoconfirmed users.
  *   This is usually intended to be used as a whitelist feature - set these to '+' and
  *   voice every user you want whitelisted on the server.
-
 /**
   * chat modchat - default minimum group for speaking in chatrooms; changeable with /modchat
   * @type {false | string}
@@ -413,6 +412,12 @@ exports.disablehotpatchall = false;
  * @type {string[]}
  */
 exports.forcedpublicprefixes = [];
+
+/**
+ * startuphook - function to call when the server is fully initialized and ready
+ * to serve requests.
+ */
+exports.startuphook = function () {};
 
 /**
  * permissions and groups:

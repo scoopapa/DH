@@ -9,7 +9,7 @@ import {Pokemon} from './pokemon';
 import {State} from './state';
 
 /** A single action that can be chosen. */
-interface ChosenAction {
+export interface ChosenAction {
 	choice: 'move' | 'switch' | 'instaswitch' | 'team' | 'shift' | 'pass'; 	// action type
 	pokemon?: Pokemon; // the pokemon doing the action
 	targetLoc?: number; // relative location of the target to pokemon (move action only)
@@ -172,36 +172,7 @@ export class Side {
 			pokemon: [] as AnyObject[],
 		};
 		for (const pokemon of this.pokemon) {
-			const entry: AnyObject = {
-				ident: pokemon.fullname,
-				details: pokemon.details,
-				condition: pokemon.getHealth().secret,
-				active: (pokemon.position < pokemon.side.active.length),
-				stats: {
-					atk: pokemon.baseStoredStats['atk'],
-					def: pokemon.baseStoredStats['def'],
-					spa: pokemon.baseStoredStats['spa'],
-					spd: pokemon.baseStoredStats['spd'],
-					spe: pokemon.baseStoredStats['spe'],
-				},
-				moves: pokemon.moves.map(move => {
-					if (move === 'hiddenpower') {
-						return move + toID(pokemon.hpType) + (this.battle.gen < 6 ? '' : pokemon.hpPower);
-					}
-					if (move === 'frustration' || move === 'return') {
-						const m = this.battle.dex.getMove(move)!;
-						// @ts-ignore - Frustration and Return only require the source Pokemon
-						const basePower = m.basePowerCallback(pokemon);
-						return `${move}${basePower}`;
-					}
-					return move;
-				}),
-				baseAbility: pokemon.baseAbility,
-				item: pokemon.item,
-				pokeball: pokemon.pokeball,
-			};
-			if (this.battle.gen > 6) entry.ability = pokemon.ability;
-			data.pokemon.push(entry);
+			data.pokemon.push(pokemon.getSwitchRequestData());
 		}
 		return data;
 	}
@@ -373,7 +344,7 @@ export class Side {
 		// Parse moveText (name or index)
 		// If the move is not found, the action is invalid without requiring further inspection.
 
-		const requestMoves = pokemon.getRequestData().moves;
+		const requestMoves = pokemon.getMoveRequestData().moves;
 		let moveid = '';
 		let targetType = '';
 		if (autoChoose) moveText = 1;
@@ -468,7 +439,12 @@ export class Side {
 			// Gen 4 and earlier announce a Pokemon has no moves left before the turn begins, and only to that player's side.
 			if (this.battle.gen <= 4) this.send('-activate', pokemon, 'move: Struggle');
 			moveid = 'struggle';
-		} else if (!zMove && !(megaDynaOrZ === 'dynamax' || pokemon.volatiles['dynamax'])) {
+		} else if (maxMove) {
+			// Dynamaxed; only Taunt and Assault Vest disable Max Guard
+			if (pokemon.maxMoveDisabled(maxMove)) {
+				return this.emitChoiceError(`Can't move: ${pokemon.name}'s ${maxMove.name} is disabled`);
+			}
+		} else if (!zMove) {
 			// Check for disabled moves
 			let isEnabled = false;
 			let disabledSource = '';
@@ -904,9 +880,19 @@ export class Side {
 		if (this.requestState === 'teampreview') {
 			if (!this.isChoiceDone()) this.chooseTeam();
 		} else if (this.requestState === 'switch') {
-			while (!this.isChoiceDone()) this.chooseSwitch();
+			let i = 0;
+			while (!this.isChoiceDone()) {
+				if (!this.chooseSwitch()) throw new Error(`autoChoose switch crashed: ${this.choice.error}`);
+				i++;
+				if (i > 10) throw new Error(`autoChoose failed: infinite looping`);
+			}
 		} else if (this.requestState === 'move') {
-			while (!this.isChoiceDone()) this.chooseMove();
+			let i = 0;
+			while (!this.isChoiceDone()) {
+				if (!this.chooseMove()) throw new Error(`autoChoose crashed: ${this.choice.error}`);
+				i++;
+				if (i > 10) throw new Error(`autoChoose failed: infinite looping`);
+			}
 		}
 		return true;
 	}
