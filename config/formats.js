@@ -1287,7 +1287,7 @@ exports.Formats = [
 
 			/** @type {{[k: string]: string[]}} */
 			const abilityMap = Object.create(null);
-			
+
 			const moves = set.moves.map(toID);
 
 			const donorBanlist = this.format.restricted || [];
@@ -1306,7 +1306,16 @@ exports.Formats = [
 				// @ts-ignore
 				if (learnset && !moves.some(move => !!Object.keys(learnset).map(toID).includes(move))) learnsMove = false;
 				if (!learnsMove) continue;
+				for (const key of Object.values(pokemon.abilities)) {
+					const abilityId = toID(key);
+					if (abilityMap[abilityId]) {
+						abilityMap[abilityId][pokemon.evos ? 'push' : 'unshift'](speciesid);
+					} else {
+						abilityMap[abilityId] = [speciesid];
+					}
+				}
 			}
+
 			/** @type {string[]} */
 			let problems = [];
 
