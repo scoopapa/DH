@@ -1852,10 +1852,10 @@ let BattleMovedex = {
 		flags: {bullet: 1, protect: 1, mirror: 1},
 		onModifyMove(move, pokemon) {
 			if (!(pokemon.set.ivs['spa'] % 2)){
-        move.type = 'Fire';
-      } else {
-        move.type = 'Ice';
-      }
+      	  move.type = 'Fire';
+      	} else {
+      	  move.type = 'Ice';
+      	}
 		},
 		secondary: null,
 		target: "normal",
@@ -2128,23 +2128,27 @@ let BattleMovedex = {
 	"rapidsplat": {
 		num: 40065,
 		accuracy: 100,
-		basepower: 15
+		basepower: 15,
 		category: "Special",
-		desc: "Hits 2-5 times. If Inkling-Squid knocks out an opponent with this move, change to Inkling-Kid. If Inkling-Kid knocks out an opponent with this move, raise speed by 1 stage."
-		shortDesc: "2-5 hits. If Inkling-Squid gets KO, turn to Kid form. If Inkling-Kid gets KO, +1 Spe."
+		desc: "Hits 2-5 times. If Inkling-Squid knocks out an opponent with this move, change to Inkling-Kid. If Inkling-Kid knocks out an opponent with this move, raise speed by 1 stage.",
+		shortDesc: "2-5 hits. If Inkling-Squid gets KO, turn to Kid form. If Inkling-Kid gets KO, +1 Spe.",
 		id: "rapidsplat",
 		isViable: true,
 		name: "Rapid Splat",
 		pp: 10,
 		priority: 0,
-		flags: {protect: 1, mirror: 1}
-		multihit: [2, 5]
+		flags: {protect: 1, mirror: 1},
+		multihit: [2, 5],
 		onAfterMoveSecondarySelf(pokemon, target, move) {
 //			I have NO idea what I'm doing here so if this works I just got lucky
-			if (!target || target.fainted || target.hp <= 0 && pokemon.template.species === 'Inkling') {
-				pokemon.formeChange(pokemon.template.speciesid === 'inklingkid', this.effect, false, '[msg]');
+			if (pokemon.template.baseSpecies !== 'Inkling') return;
+			if (!target || target.fainted || target.hp <= 0){
+				if (pokemon.template.species === 'Inkling') {
+					pokemon.formeChange('Inkling-Kid', this.effect, false, '[msg]');
+				} else {
+					this.boost({spe: 1}, pokemon, pokemon, move);
+				}
 			}
-			if (!target || target.fainted || target.hp <= 0 && pokemon.template.species === 'Inkling-Kid') this.boost({spe: 1}, pokemon, pokemon, move);
 		},
 		secondary: null,
 		target: "normal", 
@@ -2324,20 +2328,24 @@ let BattleMovedex = {
 		pp: 10,
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1, mystery: 1},
-		secondary: {
-			chance: 50,
-			self: {
-				boosts: {
-					atk: 1,
+		secondaries: [
+			{
+				chance: 50,
+				self: {
+					boosts: {
+						atk: 1,
+					},
 				},
 			},
-			chance: 50,
-			self: {
-				boosts: {
-					spe: 1,
+	 		{
+				chance: 50,
+				self: {
+					boosts: {
+						spe: 1,
+					},
 				},
 			},
-		},
+		],
 		target: "normal",
 		type: "Steel",
 		contestType: "Cool",
@@ -2379,7 +2387,7 @@ let BattleMovedex = {
 		target: "normal",
 		type: "Ghost",
 		zMovePower: 190,
-		gmaxPower: 150,
+		gmaxPower: 130,
 		contestType: "Cool",
 	},
 	"shovelbash": {
@@ -2428,7 +2436,7 @@ let BattleMovedex = {
 		},
 		beforeMoveCallback(pokemon) {
 			if (pokemon.volatiles['focuspunch'] && pokemon.volatiles['focuspunch'].lostFocus) {
-				this.add('cant', pokemon, 'Focus Punch', 'Focus Punch');
+				this.add('cant', pokemon, 'Dig', 'Dig');
 				return true;
 			}
 		},
@@ -2447,6 +2455,7 @@ let BattleMovedex = {
 				if (move.id === 'earthquake' || move.id === 'magnitude') {
 					return this.chainModify(2);
 				}
+			},
 			onHit(pokemon, source, move) {
 				if (move.id === 'shovelbash') {
 					pokemon.volatiles['focuspunch'].lostFocus = true;
@@ -2516,8 +2525,8 @@ let BattleMovedex = {
 		drain: [1, 2],
 		onAfterMoveSecondarySelf(pokemon, target, move) {
 //			I have NO idea what I'm doing here so if this works I just got lucky
-			if (!target || target.fainted || target.hp <= 0 && pokemon.template.species === 'Flowey') {
-				pokemon.formeChange(pokemon.template.speciesid === 'floweyomega', this.effect, false, '[msg]');
+			if ((!target || target.fainted || target.hp <= 0) && pokemon.template.species === 'Flowey') {
+				pokemon.formeChange('Flowey-Omega', this.effect, false, '[msg]');
 			}
 		},
 		secondary: null,
@@ -2576,7 +2585,7 @@ let BattleMovedex = {
 		accuracy: 100,
 		basePower: 75,
 		category: "Special",
-		desc: "SE against Poison-types. Having another type that resists the move leads to neutral damage instead of a quad resist.", /* hmm yes i believe that is how the type chart works */
+		desc: "This move's type effectiveness against Poison is changed to be super effective no matter what this move's type is.",
 		shortDesc: "Super effective on Poison.",
 		id: "cleaningblast",
 		isViable: true,
@@ -2597,8 +2606,8 @@ let BattleMovedex = {
 		accuracy: true,
 		basePower: 185,
 		category: "Special",
-		desc: "Has a 30% chance to freeze the target.",
-		shortDesc: "30% chance to freeze the target.",
+		desc: "Causes the target to become a Water type unless the target is an Arceus or a Silvally, or if the target is already purely Water type.",
+		shortDesc: "Changes the target's type to Water.",
 		id: "shiningdouser",
 		isViable: true,
 		name: "Shining Douser",
@@ -2607,9 +2616,9 @@ let BattleMovedex = {
 		flags: {},
 		isZ: "fluddiumz",
 		secondary: {
-			dustproof: true,
 			chance: 100,
 			onHit(target) {
+				if (target.getTypes().join() === 'Water' || !target.setType('Water')) return;
 				this.add('-start', target, 'typechange', 'Water');
 			},
 		},
