@@ -558,7 +558,7 @@ export class ObjectReadStream<T> {
 		});
 	}
 
-	_read(size: number = 0): void | Promise<void> {
+	_read(size = 0): void | Promise<void> {
 		throw new Error(`ReadStream needs to be subclassed and the _read function needs to be implemented.`);
 	}
 
