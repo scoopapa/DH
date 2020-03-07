@@ -7785,7 +7785,10 @@ let BattleFormatsData = {
 		doublesTier: "DOU",
 	},
 	zacian: {
-		randomBattleMoves: ["closecombat", "crunch", "playrough", "psychicfangs", "swordsdance"],
+		randomBattleMoves: ["closecombat", "crunch", "playrough", "psychicfangs", "swordsdance"],	
+		eventPokemon: [
+			{"generation": 8, "level": 70, "perfectIVs": 3, "moves": ["sacredsword", "swordsdance", "ironhead", "crunch"]},
+		],
 		tier: "Uber",
 		doublesTier: "DUber",
 	},
@@ -7797,6 +7800,9 @@ let BattleFormatsData = {
 	},
 	zamazenta: {
 		randomBattleMoves: ["closecombat", "crunch", "psychicfangs", "wildcharge"],
+		eventPokemon: [
+			{"generation": 8, "level": 70, "perfectIVs": 3, "moves": ["slash", "crunch", "ironhead", "irondefense"]},
+		],
 		tier: "Uber",
 		doublesTier: "DUber",
 	},
@@ -7808,6 +7814,9 @@ let BattleFormatsData = {
 	},
 	eternatus: {
 		randomBattleMoves: ["dynamaxcannon", "flamethrower", "recover", "sludgewave", "toxic"],
+		eventPokemon: [
+			{"generation": 8, "level": 60, "perfectIVs": 3, "moves": ["crosspoison", "dragonpulse", "flamethrower", "dynamaxcannon"]},
+		],
 		tier: "Uber",
 		doublesTier: "DUber",
 	},
