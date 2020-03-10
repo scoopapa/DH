@@ -4182,7 +4182,7 @@ does marvel's big ol mutant trex exist? who knows
 	azula: {
 		num: 7000066,
 		species: "Azula", /* Avatar: The Last Airbender */
-		types: ["Fire", "Dark"]
+		types: ["Fire", "Dark"],
 		gender: "F",
 		baseStats: {hp: 71, atk: 75, def: 75, spa: 120, spd: 80, spe: 109},
 		abilities: {0: "Competitive", H: "Merciless"},
