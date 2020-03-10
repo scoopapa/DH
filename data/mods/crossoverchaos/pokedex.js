@@ -2865,7 +2865,7 @@ kyokokirigiri: {
 		types: ["Dark", "Dragon"],
 		gender: "M",
 		baseStats: {hp: 102, atk: 126, def: 96, spa: 95, spd: 86, spe: 75},
-		abilities: {0: "Moxie", 1: "Stakeout", H: "Analytic",
+		abilities: {0: "Moxie", 1: "Stakeout", H: "Analytic"},
 		heightm: 4,
 		weightkg: 127.4,
 	},
