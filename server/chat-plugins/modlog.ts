@@ -13,8 +13,6 @@
  * @license MIT
  */
 
-'use strict';
-
 import * as child_process from 'child_process';
 import * as path from 'path';
 import * as util from 'util';
@@ -180,9 +178,8 @@ async function runModlog(
 }
 
 async function checkRoomModlog(pathString: string, regex: RegExp | null, results: SortedLimitedLengthList) {
-	const fileStream = await FS(pathString).createReadStream();
+	const fileStream = FS(pathString).createReadStream();
 	let line;
-	// tslint:disable-next-line no-conditional-assignment
 	while ((line = await fileStream.readLine()) !== null) {
 		if (!regex || regex.test(line)) {
 			results.insert(line);
@@ -314,7 +311,7 @@ async function getModlog(
 	}
 
 	let exactSearch = false;
-	if (searchString.match(/^["'].+["']$/)) {
+	if (/^["'].+["']$/.test(searchString)) {
 		exactSearch = true;
 		searchString = searchString.substring(1, searchString.length - 1);
 	}
@@ -324,7 +321,7 @@ async function getModlog(
 	if (roomid === 'public') {
 		const isPublicRoom = (
 			(room: Room) =>
-			!(room.isPrivate || room.battle || room.isPersonal || room.roomid === 'global')
+				!(room.isPrivate || room.battle || room.isPersonal || room.roomid === 'global')
 		);
 		roomidList = [...Rooms.rooms.values()].filter(isPublicRoom).map(room => room.roomid);
 	} else {
@@ -502,7 +499,7 @@ export const pages: PageTable = {
 		}).map(tier => {
 			// Use the official tier name
 			const format = Dex.getFormat(tier);
-			if (format && format.exists) tier = format.name;
+			if (format?.exists) tier = format.name;
 			// Otherwise format as best as possible
 			if (tier.substring(0, 3) === 'gen') {
 				return `[Gen ${tier.substring(3, 4)}] ${tier.substring(4)}`;
@@ -608,7 +605,7 @@ export const commands: ChatCommands = {
 
 		void getModlog(
 			connection,
-			roomid as RoomID,
+			roomid,
 			target,
 			lines,
 			(cmd === 'punishlog' || cmd === 'pl'),
@@ -647,7 +644,7 @@ export const commands: ChatCommands = {
  * Process manager
  *********************************************************/
 
-export const PM: QueryProcessManager = new QueryProcessManager(module, async data => {
+export const PM = new QueryProcessManager<AnyObject, AnyObject>(module, async data => {
 	switch (data.cmd) {
 	case 'modlog':
 		const {roomidList, searchString, exactSearch, maxLines, onlyPunishments} = data;
@@ -698,7 +695,7 @@ if (!PM.isParentProcess) {
 	});
 	global.Dex = Dex;
 	global.toID = Dex.getId;
-	// tslint:disable-next-line: no-eval
+	// eslint-disable-next-line no-eval
 	Repl.start('modlog', cmd => eval(cmd));
 } else {
 	PM.spawn(MAX_PROCESSES);

@@ -232,8 +232,8 @@ export class Battle {
 			if (rule.startsWith('+') || rule.startsWith('-') || rule.startsWith('!')) continue;
 			const subFormat = this.dex.getFormat(rule);
 			if (subFormat.exists) {
-				const hasEventHandler = Object.keys(subFormat).some(val =>
-					val.startsWith('on') && !['onBegin', 'onValidateTeam', 'onChangeSet', 'onValidateSet'].includes(val)
+				const hasEventHandler = Object.keys(subFormat).some(
+					val => val.startsWith('on') && !['onBegin', 'onValidateTeam', 'onChangeSet', 'onValidateSet'].includes(val)
 				);
 				if (hasEventHandler) this.field.addPseudoWeather(rule);
 			}
@@ -274,7 +274,7 @@ export class Battle {
 		return this.prng.randomChance(numerator, denominator);
 	}
 
-	sample<T>(items: ReadonlyArray<T>): T {
+	sample<T>(items: readonly T[]): T {
 		return this.prng.sample(items);
 	}
 
@@ -886,7 +886,7 @@ export class Battle {
 					callback,
 					statusData: slotConditionData,
 					end: side.removeSlotCondition,
-					endCallArgs: [side, pokemon, slotCondition!.id],
+					endCallArgs: [side, pokemon, slotCondition.id],
 					thing: side,
 				}, callbackName));
 			}
@@ -1099,7 +1099,7 @@ export class Battle {
 
 	getMaxTeamSize() {
 		const teamLengthData = this.format.teamLength;
-		return (teamLengthData && teamLengthData.battle) || 6;
+		return teamLengthData?.battle || 6;
 	}
 
 	getRequests(type: RequestState, maxTeamSize: number) {
@@ -1112,7 +1112,7 @@ export class Battle {
 				const side = this.sides[i];
 				const switchTable = [];
 				for (const pokemon of side.active) {
-					switchTable.push(!!(pokemon && pokemon.switchFlag));
+					switchTable.push(!!pokemon?.switchFlag);
 				}
 				if (switchTable.some(flag => flag === true)) {
 					requests[i] = {forceSwitch: switchTable, side: side.getRequestData()};
@@ -1614,7 +1614,7 @@ export class Battle {
 
 	boost(
 		boost: SparseBoostsTable, target: Pokemon | null = null, source: Pokemon | null = null,
-		effect: Effect | null = null, isSecondary: boolean = false, isSelf: boolean = false
+		effect: Effect | null = null, isSecondary = false, isSelf = false
 	) {
 		if (this.event) {
 			if (!target) target = this.event.target;
@@ -1639,7 +1639,7 @@ export class Battle {
 			}
 			if (boostBy) {
 				success = true;
-				switch (effect && effect.id) {
+				switch (effect?.id) {
 				case 'bellydrum':
 					this.add('-setboost', target, 'atk', target.boosts['atk'], '[from] move: Belly Drum');
 					break;
@@ -1678,7 +1678,7 @@ export class Battle {
 
 	spreadDamage(
 		damage: SpreadMoveDamage, targetArray: (false | Pokemon | null)[] | null = null,
-		source: Pokemon | null = null, effect: 'drain' | 'recoil' | Effect | null = null, instafaint: boolean = false
+		source: Pokemon | null = null, effect: 'drain' | 'recoil' | Effect | null = null, instafaint = false
 	) {
 		if (!targetArray) return [0];
 		const retVals: (number | false | undefined)[] = [];
@@ -1784,7 +1784,8 @@ export class Battle {
 
 	damage(
 		damage: number, target: Pokemon | null = null, source: Pokemon | null = null,
-		effect: 'drain' | 'recoil' | Effect | null = null, instafaint: boolean = false) {
+		effect: 'drain' | 'recoil' | Effect | null = null, instafaint = false
+	) {
 		if (this.event) {
 			if (!target) target = this.event.target;
 			if (!source) source = this.event.source;
@@ -1808,9 +1809,8 @@ export class Battle {
 		// In Gen 1 BUT NOT STADIUM, Substitute also takes confusion and HJK recoil damage
 		if (this.gen <= 1 && this.dex.currentMod !== 'stadium' &&
 			['confusion', 'jumpkick', 'highjumpkick'].includes(effect.id) && target.volatiles['substitute']) {
-
 			const hint = "In Gen 1, if a Pokemon with a Substitute hurts itself due to confusion or Jump Kick/Hi Jump Kick recoil and the target";
-			if (source && source.volatiles['substitute']) {
+			if (source?.volatiles['substitute']) {
 				source.volatiles['substitute'].hp -= damage;
 				if (source.volatiles['substitute'].hp <= 0) {
 					source.removeVolatile('substitute');
@@ -1858,7 +1858,7 @@ export class Battle {
 		if (!target.isActive) return false;
 		if (target.hp >= target.maxhp) return false;
 		const finalDamage = target.heal(damage, source, effect);
-		switch (effect && effect.id) {
+		switch (effect?.id) {
 		case 'leechseed':
 		case 'rest':
 			this.add('-heal', target, target.getHealth, '[silent]');
@@ -1945,7 +1945,7 @@ export class Battle {
 	 */
 	getDamage(
 		pokemon: Pokemon, target: Pokemon, move: string | number | ActiveMove,
-		suppressMessages: boolean = false
+		suppressMessages = false
 	): number | undefined | null | false {
 		if (typeof move === 'string') move = this.dex.getActiveMove(move);
 
@@ -2088,7 +2088,7 @@ export class Battle {
 	}
 
 	modifyDamage(
-		baseDamage: number, pokemon: Pokemon, target: Pokemon, move: ActiveMove, suppressMessages: boolean = false
+		baseDamage: number, pokemon: Pokemon, target: Pokemon, move: ActiveMove, suppressMessages = false
 	) {
 		const tr = this.trunc;
 		if (!move.type) move.type = '???';
@@ -2246,7 +2246,7 @@ export class Battle {
 		}
 		if (move.target !== 'randomNormal' && this.validTargetLoc(targetLoc, pokemon, move.target)) {
 			const target = this.getAtLoc(pokemon, targetLoc);
-			if (target && target.fainted && target.side === pokemon.side) {
+			if (target?.fainted && target.side === pokemon.side) {
 				// Target is a fainted ally: attack shouldn't retarget
 				return target;
 			}
@@ -2310,7 +2310,7 @@ export class Battle {
 		}
 	}
 
-	faintMessages(lastFirst: boolean = false) {
+	faintMessages(lastFirst = false) {
 		if (this.ended) return;
 		if (!this.faintQueue.length) return false;
 		if (lastFirst) {
@@ -2582,7 +2582,13 @@ export class Battle {
 			this.add('');
 			this.clearActiveMove(true);
 			this.updateSpeed();
+			const residualPokemon = this.getAllActive().map(pokemon => [pokemon, pokemon.hp] as const);
 			this.residualEvent('Residual');
+			for (const [pokemon, originalHP] of residualPokemon) {
+				if (pokemon.hp && pokemon.hp <= pokemon.maxhp / 2 && originalHP > pokemon.maxhp / 2) {
+					this.runEvent('EmergencyExit', pokemon);
+				}
+			}
 			this.add('upkeep');
 			break;
 		}
@@ -2626,8 +2632,19 @@ export class Battle {
 			return false;
 		}
 
-		const switches = this.sides.map(side =>
-			side.active.some(pokemon => pokemon && !!pokemon.switchFlag)
+		if (this.gen >= 5) {
+			this.eachEvent('Update');
+		}
+
+		if (action.choice === 'runSwitch') {
+			const pokemon = action.pokemon;
+			if (pokemon.hp && pokemon.hp <= pokemon.maxhp / 2 && pokemonOriginalHP! > pokemon.maxhp / 2) {
+				this.runEvent('EmergencyExit', pokemon);
+			}
+		}
+
+		const switches = this.sides.map(
+			side => side.active.some(pokemon => pokemon && !!pokemon.switchFlag)
 		);
 
 		for (let i = 0; i < this.sides.length; i++) {
@@ -2641,22 +2658,12 @@ export class Battle {
 
 		for (const playerSwitch of switches) {
 			if (playerSwitch) {
-				if (this.gen >= 5) {
-					this.eachEvent('Update');
-				}
 				this.makeRequest('switch');
 				return true;
 			}
 		}
 
-		this.eachEvent('Update');
-
-		if (action.choice === 'runSwitch') {
-			const pokemon = action.pokemon;
-			if (pokemon.hp && pokemon.hp <= pokemon.maxhp / 2 && pokemonOriginalHP! > pokemon.maxhp / 2) {
-				this.runEvent('EmergencyExit', pokemon);
-			}
-		}
+		if (this.gen < 5) this.eachEvent('Update');
 
 		if (this.gen >= 8 && this.queue.length && this.queue[0].choice === 'move') {
 			// In gen 8, speed is updated dynamically so update the queue's speed properties and sort it.
@@ -2911,7 +2918,7 @@ export class Battle {
 	setPlayer(slot: SideID, options: PlayerOptions) {
 		let side;
 		let didSomething = true;
-		const slotNum = parseInt(slot[1], 10) - 1;
+		const slotNum = parseInt(slot[1]) - 1;
 		if (!this.sides[slotNum]) {
 			// create player
 			const team = this.getTeam(options);
@@ -3006,7 +3013,7 @@ export class Battle {
 	}
 
 	getSide(sideid: SideID): Side {
-		return this.sides[parseInt(sideid[1], 10) - 1];
+		return this.sides[parseInt(sideid[1]) - 1];
 	}
 
 	afterMoveSecondaryEvent(targets: Pokemon[], pokemon: Pokemon, move: ActiveMove): undefined {

@@ -1,26 +1,35 @@
 /*
+
 Ratings and how they work:
+
 -1: Detrimental
 	  An ability that severely harms the user.
 	ex. Defeatist, Slow Start
+
  0: Useless
 	  An ability with no overall benefit in a singles battle.
 	ex. Color Change, Plus
+
  1: Ineffective
 	  An ability that has minimal effect or is only useful in niche situations.
 	ex. Light Metal, Suction Cups
+
  2: Useful
 	  An ability that can be generally useful.
 	ex. Flame Body, Overcoat
+
  3: Effective
 	  An ability with a strong effect on the user or foe.
 	ex. Chlorophyll, Natural Cure
+
  4: Very useful
 	  One of the more popular abilities. It requires minimal support to be effective.
 	ex. Adaptability, Magic Bounce
+
  5: Essential
 	  The sort of ability that defines metagames.
 	ex. Imposter, Shadow Tag
+
 */
 
 'use strict';
@@ -1967,8 +1976,8 @@ let BattleAbilities = {
 		desc: "This Pokemon's sound-based moves become Water-type moves. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
 		shortDesc: "This Pokemon's sound-based moves become Water type.",
 		onModifyTypePriority: -1,
-		onModifyType(move) {
-			if (move.flags['sound']) {
+		onModifyType(move, pokemon) {
+			if (move.flags['sound'] && !pokemon.volatiles.dynamax) { // hardcode
 				move.type = 'Water';
 			}
 		},

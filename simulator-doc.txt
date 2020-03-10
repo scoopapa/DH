@@ -1,4 +1,3 @@
-  
 This is a pseudocode overview of how Pokémon Showdown works - particularly relevant to anyone writing event code.
 
 (A) = negated by Mold Breaker (and Turboblaze/Teravolt) on abilities only during a move

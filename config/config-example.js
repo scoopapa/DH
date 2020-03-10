@@ -253,6 +253,7 @@ exports.restrictLinks = false;
  *   chat to autoconfirmed users.
  *   This is usually intended to be used as a whitelist feature - set these to '+' and
  *   voice every user you want whitelisted on the server.
+
 /**
   * chat modchat - default minimum group for speaking in chatrooms; changeable with /modchat
   * @type {false | string}

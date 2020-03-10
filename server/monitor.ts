@@ -6,7 +6,6 @@
  *
  * @license MIT
  */
-'use strict';
 
 import {exec, ExecException, ExecOptions} from 'child_process';
 import {crashlogger} from "../lib/crashlogger";
@@ -286,7 +285,7 @@ export const Monitor = new class {
 	sh(command: string, options: ExecOptions = {}): Promise<[number, string, string]> {
 		return new Promise((resolve, reject) => {
 			exec(command, options, (error: ExecException | null, stdout: string | Buffer, stderr: string | Buffer) => {
-				resolve([error && error.code || 0, '' + stdout, '' + stderr]);
+				resolve([error?.code || 0, '' + stdout, '' + stderr]);
 			});
 		});
 	}

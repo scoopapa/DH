@@ -124,6 +124,7 @@ const SETS = path.resolve(__dirname, 'sets');
 		'	return Promise.resolve(require(path));',
 		'}',
 		'function forGen(gen) {',
+		// eslint-disable-next-line no-template-curly-in-string
 		'	return JSON[`gen${gen}`];',
 		'}',
 		'exports.forGen = forGen;',
@@ -134,3 +135,4 @@ const SETS = path.resolve(__dirname, 'sets');
 	].join('\n');
 	fs.writeFileSync(path.resolve(SETS, 'index.js'), indexjs);
 })().catch(err => console.error(err));
+

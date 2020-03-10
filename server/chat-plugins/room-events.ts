@@ -7,8 +7,6 @@
  * @license MIT license
  */
 
-'use strict';
-
 function formatEvent(event: {eventName: string, date: string, desc: string, started: boolean}) {
 	const timeRemaining = new Date(event.date).getTime() - new Date().getTime();
 	let explanation = timeRemaining.toString();
@@ -96,7 +94,7 @@ export const commands: ChatCommands = {
 			}
 			for (const u in room.users) {
 				const activeUser = Users.get(u);
-				if (activeUser && activeUser.connected) {
+				if (activeUser?.connected) {
 					activeUser.sendTo(
 						room,
 						Chat.html`|notify|A new roomevent in ${room.title} has started!|` +
@@ -146,7 +144,7 @@ export const commands: ChatCommands = {
 			if (!this.broadcasting && user.can('ban', null, room)) {
 				this.sendReplyBox(
 					Chat.html`<code>/roomevents add ${room.events[target].eventName} |` +
-					`${room.events[target].date} | ${room.events[target].desc}</code>`
+					Chat.html`${room.events[target].date} | ${room.events[target].desc}</code>`
 				);
 			}
 		},
@@ -184,8 +182,8 @@ export const commands: ChatCommands = {
 			case "eventdate":
 				sortable.sort(
 					(a, b) =>
-					(toID(a.date) < toID(b.date)) ? -1 * multiplier :
-					(toID(b.date) < toID(a.date)) ? 1 * multiplier : 0
+						(toID(a.date) < toID(b.date)) ? -1 * multiplier :
+						(toID(b.date) < toID(a.date)) ? 1 * multiplier : 0
 				);
 				break;
 			case "desc":
@@ -193,16 +191,16 @@ export const commands: ChatCommands = {
 			case "eventdescription":
 				sortable.sort(
 					(a, b) =>
-					(toID(a.desc) < toID(b.desc)) ? -1 * multiplier :
-					(toID(b.desc) < toID(a.desc)) ? 1 * multiplier : 0
+						(toID(a.desc) < toID(b.desc)) ? -1 * multiplier :
+						(toID(b.desc) < toID(a.desc)) ? 1 * multiplier : 0
 				);
 				break;
 			case "eventname":
 			case "name":
 				sortable.sort(
 					(a, b) =>
-					(toID(a.eventName) < toID(b.eventName)) ? -1 * multiplier :
-					(toID(b.eventName) < toID(a.eventName)) ? 1 * multiplier : 0
+						(toID(a.eventName) < toID(b.eventName)) ? -1 * multiplier :
+						(toID(b.eventName) < toID(a.eventName)) ? 1 * multiplier : 0
 				);
 				break;
 			default:
