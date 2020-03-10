@@ -2402,7 +2402,7 @@ let BattleMovedex = {
 		name: "Shovel Bash",
 		pp: 10,
 		priority: 0,
-		flags: {protect: 1, mirror: 1, contact},
+		flags: {protect: 1, mirror: 1, contact: 1},
 		secondary: null, /* dig is handled in dig */
 		target: "normal",
 		type: "Steel",
