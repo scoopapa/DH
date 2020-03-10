@@ -12940,7 +12940,7 @@ TMs/Tutors sorted by last generation they carry that status (for kirby, nero, et
 		stealthrock: ["7L1"],
 		spikes: ["7L1"],
 		toxicspikes: ["7L1"],
-		slack off: ["7L1"],
+		slackoff: ["7L1"],
 	}},
 	siren: {learnset: {
 		sparklingaria: ["7L1"],
