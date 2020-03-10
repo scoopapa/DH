@@ -9305,7 +9305,7 @@ TMs/Tutors sorted by last generation they carry that status (for kirby, nero, et
 		magiccoat: ["7L1"],
 		mirrorcoat: ["7L1"],
 		reflect: ["7L1"],
-		nasty plot: ["7L1"],
+		nastyplot: ["7L1"],
 		recover: ["7L1"],
 	}},
 	flandrescarlet: {learnset: {
@@ -9379,7 +9379,7 @@ TMs/Tutors sorted by last generation they carry that status (for kirby, nero, et
 		teleport: ["7L1"],
 		sludgebomb: ["7L1"],
 		drillrun: ["7L1"],
-		x-scissor: ["7L1"],
+		xscissor: ["7L1"],
 		laserfocus: ["7L1"],
 	}},
 	dharkonultimate: {learnset: {
@@ -9399,7 +9399,7 @@ TMs/Tutors sorted by last generation they carry that status (for kirby, nero, et
 		teleport: ["7L1"],
 		sludgebomb: ["7L1"],
 		drillrun: ["7L1"],
-		x-scissor: ["7L1"],
+		xscissor: ["7L1"],
 		laserfocus: ["7L1"],
 		powerwhip: ["7L1"],
 	}},
@@ -10142,7 +10142,7 @@ TMs/Tutors sorted by last generation they carry that status (for kirby, nero, et
 		secretpower: ["6M", "4M", "3M"],
 		strength: ["7V", "6M", "5M", "4M", "3M"],
 		strugglebug: ["6M", "5M"],
-	}}
+	}},
 	lucina: {learnset: {
 		closecombat: ["7L1"],
 		psychocut: ["7L1"],
@@ -10209,7 +10209,7 @@ TMs/Tutors sorted by last generation they carry that status (for kirby, nero, et
 		stealthrock: ["7L1"],
 		stoneedge: ["7L1"],
 		wideguard: ["7L1"],
-	}}
+	}},
 	whambamjewel: {learnset: {
 		hammerarm: ["7L1"],
 		megapunch: ["7L1"],
@@ -10447,7 +10447,7 @@ TMs/Tutors sorted by last generation they carry that status (for kirby, nero, et
 		substitute: ["8L1"],
 		explosion: ["8L1"],
 		flail: ["8L1"],
-		x-scissor: ["8L1"],
+		xscissor: ["8L1"],
 		earthquake: ["8L1"],
 		woodhammer: ["8L1"],
 		thrash: ["8L1"],
@@ -10493,7 +10493,7 @@ TMs/Tutors sorted by last generation they carry that status (for kirby, nero, et
 		knockoff: ["8L1"],
 		allysummon: ["8L1"],
 	}},
-	drawcia: {
+	drawcia: {learnset: {
 		toxic: ["8L1"],
 		psyshock: ["8L1"],
 		sludgebomb: ["8L1"],
@@ -10514,7 +10514,7 @@ TMs/Tutors sorted by last generation they carry that status (for kirby, nero, et
 		spikes: ["8L1"],
 		venomdrench: ["8L1"],
 	}},
-	drawciasoul: {
+	drawciasoul: { learnset: {
 		toxic: ["8L1"],
 		psyshock: ["8L1"],
 		sludgebomb: ["8L1"],
@@ -10569,7 +10569,7 @@ TMs/Tutors sorted by last generation they carry that status (for kirby, nero, et
 		shadowclaw: ["8L1"],
 		dig: ["8L1"],
 	}},
-	trouppleking: {learnsets: {
+	trouppleking: {learnset: {
 		gravapple: ["8L1"],
 		dive: ["8L1"],
 		earthquake: ["8L1"],
@@ -10671,7 +10671,7 @@ TMs/Tutors sorted by last generation they carry that status (for kirby, nero, et
 		roost: ["8L1"],
 		endure: ["8L1"],
 	}},
-	batter: {
+	batter: { learnset: {
 		knockoff: ["8L1"],
 		submission: ["8L1"],
 		revenge: ["8L1"],
@@ -10708,7 +10708,7 @@ TMs/Tutors sorted by last generation they carry that status (for kirby, nero, et
 		slap: ["8L1"],
 		homerun: ["8L1"],
 	}},
-	batterbad: {
+	batterbad: { learnset: {
 		knockoff: ["8L1"],
 		submission: ["8L1"],
 		revenge: ["8L1"],
@@ -10838,6 +10838,116 @@ TMs/Tutors sorted by last generation they carry that status (for kirby, nero, et
 		dynamicpunch: ["8L1"],
 		growth: ["8L1"],
 		infinitegrowth: ["8L1"],
+	}},
+	reimuhakurei: {learnset: {
+		fantasyseal: ["8L1"],
+		musotensei: ["8L1"],
+		pinmissile: ["8L1"],
+		psychocut: ["8L1"],
+		jumpkick: ["8L1"],
+		petalblizzard: ["8L1"],
+		slackoff: ["8L1"],
+		rapidspin: ["8L1"],
+		reflect: ["8L1"],
+		lightscreen: ["8L1"],
+		psychic: ["8L1"],
+		psyshock: ["8L1"],
+		earthpower: ["8L1"],
+		teleport: ["8L1"],
+	}},
+	orochi: {learnset: {
+		dragonpulse: ["8L1"],
+		dragonrush: ["8L1"],
+		dracometeor: ["8L1"],
+		roar: ["8L1"],
+		flamethrower: ["8L1"],
+		fireblast: ["8L1"],
+		mysticalfire: ["8L1"],
+		earthquake: ["8L1"],
+		bulldoze: ["8L1"],
+		earthpower: ["8L1"],
+		thunder: ["8L1"],
+		zapcannon: ["8L1"],
+		hydropump: ["8L1"],
+		liquidation: ["8L1"],
+		airslash: ["8L1"],
+		hurricane: ["8L1"],
+		darkpulse: ["8L1"],
+		nightdaze: ["8L1"],
+		shadowball: ["8L1"],
+		disable: ["8L1"],
+		toxic: ["8L1"],
+		venoshock: ["8L1"],
+		belch: ["8L1"],
+		sludgebomb: ["8L1"],
+		sludgewave: ["8L1"],
+		dazzlinggleam: ["8L1"],
+		flashcannon: ["8L1"],
+		thrash: ["8L1"],
+		triattack: ["8L1"],
+	}},
+	vortexpillar: {learnset: {
+		stoneedge: ["8L1"],
+		ancientpower: ["8L1"],
+		rockslide: ["8L1"],
+		powergem: ["8L1"],
+		moonblast: ["8L1"],
+		moonlight: ["8L1"],
+		infestation: ["8L1"],
+		heavyslam: ["8L1"],
+		attackorder: ["8L1"],
+		defendorder: ["8L1"],
+		thunder: ["8L1"],
+		thunderbolt: ["8L1"],
+		vortexmissile: ["8L1"],
+		thunderwave: ["8L1"],
+	}},
+	stardustpillar: {learnset: {
+		stoneedge: ["8L1"],
+		ancientpower: ["8L1"],
+		rockslide: ["8L1"],
+		powergem: ["8L1"],
+		moonblast: ["8L1"],
+		moonlight: ["8L1"],
+		infestation: ["8L1"],
+		heavyslam: ["8L1"],
+		thunderwave: ["8L1"],
+		waterpulse: ["8L1"],
+		aquaring: ["8L1"],
+		chargebeam: ["8L1"],
+		dragonpulse: ["8L1"],
+	}},
+	nebulapillar: {learnset: {
+		stoneedge: ["8L1"],
+		ancientpower: ["8L1"],
+		rockslide: ["8L1"],
+		powergem: ["8L1"],
+		moonblast: ["8L1"],
+		moonlight: ["8L1"],
+		infestation: ["8L1"],
+		heavyslam: ["8L1"],
+		psychic: ["8L1"],
+		psyshock: ["8L1"],
+		psychicfangs: ["8L1"],
+		dazzlinggleam: ["8L1"],
+		psychicterrain: ["8L1"],
+	}},
+	solarpillar: {learnset: {
+		stoneedge: ["8L1"],
+		ancientpower: ["8L1"],
+		rockslide: ["8L1"],
+		powergem: ["8L1"],
+		moonblast: ["8L1"],
+		moonlight: ["8L1"],
+		infestation: ["8L1"],
+		heavyslam: ["8L1"],
+		fireblast: ["8L1"],
+		flamethrower: ["8L1"],
+		heatcrash: ["8L1"],
+		fireball: ["8L1"],
+		solarbeam: ["8L1"],
+		solarblade: ["8L1"],
+		firelash: ["8L1"],
 	}},
 	walle: {learnset: {
 		fireextinguisher: ["7L1"],
@@ -13565,7 +13675,7 @@ TMs/Tutors sorted by last generation they carry that status (for kirby, nero, et
 		shadowball: ["8L1"],
 		earthpower: ["8L1"],
 		hydropump: ["8L1"],
-		tri-attack: ["8L1"],
+		triattack: ["8L1"],
 		thunderwave: ["8L1"],
 		darkpulse: ["8L1"],
 	}},
@@ -13726,18 +13836,3 @@ TMs/Tutors sorted by last generation they carry that status (for kirby, nero, et
 		wish: ["8L1"],
 	}},
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
