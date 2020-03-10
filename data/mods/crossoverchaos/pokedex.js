@@ -2874,7 +2874,7 @@ kyokokirigiri: {
 		species: "Batter", /* OFF */
 		types: ["Fighting", "Fairy"],
 		gender: "M",
-		baseStats: {hp: 90, atk: 130, def: 72, spa: 60: spd: 72, spe: 111},
+		baseStats: {hp: 90, atk: 130, def: 72, spa: 60, spd: 72, spe: 111},
 		abilities: {0: "Justified", 1: "Inner Focus", H: "Sheer Force"},
 		heightm: 1.8,
 		weightkg: 88,
@@ -2888,7 +2888,7 @@ kyokokirigiri: {
 		formeLetter: "B",
 		types: ["Fighting", "Dark"],
 		gender: "M",
-		baseStats: {hp: 90, atk: 130, def: 72, spa: 60: spd: 72, spe: 111},
+		baseStats: {hp: 90, atk: 130, def: 72, spa: 60, spd: 72, spe: 111},
 		abilities: {0: "Battery", 1: "Dark Aura", H: "Levitate"},
 		heightm: 1.8,
 		weightkg: 88,
