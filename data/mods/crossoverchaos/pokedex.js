@@ -3664,7 +3664,7 @@ gokusupersaiyangod: {
 does marvel's big ol mutant trex exist? who knows
 	devildinosaur: {
 		num: 7000034,
-		species: "Devil Dinosaur", /* Marvel */
+		species: "Devil Dinosaur", / Marvel /
 		types: ["Dragon"],
 		gender: "M",
 		baseStats: {hp: 110, atk: 160, def: 105, spa: 80, spd: 90, spe: 95},
