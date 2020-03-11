@@ -182,7 +182,7 @@ exports.BattleScripts = {
 
 	setStatus(status,	source,	sourceEffect,	ignoreImmunities) {
 		if (!this.hp) return false;
-		status = this.battle.getEffect(status);
+		status = this.battle.dex.getEffect(status);
 		if (this.battle.event) {
 			if (!source) source = this.battle.event.source;
 			if (!sourceEffect) sourceEffect = this.battle.effect;
@@ -192,7 +192,7 @@ exports.BattleScripts = {
 		if (this.status === status.id) {
 			if (sourceEffect && sourceEffect.status === this.status) {
 				this.battle.add('-fail', this, this.status);
-			} else if (sourceEffect && sourceEffect.status) {
+			} else if (sourceEffect?.status) {
 				this.battle.add('-fail', source);
 				this.battle.attrLastMove('[still]');
 			}
@@ -241,13 +241,13 @@ exports.BattleScripts = {
 	runEffectiveness(move) {
 		let totalTypeMod = 0;
 		for (const type of this.getTypes()) {
-			let typeMod = this.battle.getEffectiveness(move, type);
+			let typeMod = this.battle.dex.getEffectiveness(move, type);
 			typeMod = this.battle.singleEvent('Effectiveness', move, null, this, type, move, typeMod);
 			totalTypeMod += this.battle.runEvent('Effectiveness', this, type, move, typeMod);
 		}
-    if (totalTypeMod >= 0 && this.hasAbility('powerofsummer') && move.type === 'Fire'){
-      totalTypeMod = -1;
-    }
+      if (totalTypeMod >= 0 && this.hasAbility('powerofsummer') && move.type === 'Fire'){
+        totalTypeMod = -1;
+      }
 		return totalTypeMod;
 	},
   
