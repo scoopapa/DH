@@ -7,10 +7,7 @@ exports.BattleAbilities = {
     shortDesc:
       "This Pokemon's damaging moves hit five times, each with their own accuracy. (not Foul Play)",
     onPrepareHit(source, target, move) {
-      if (
-        ["iceball", "rollout"].includes(move.id) ||
-        move.useTargetOffensive ||
-        move.useSourceDefensive
+      if (["iceball", "rollout"].includes(move.id) || move.useTargetOffensive || move.useSourceDefensive
       )
         return;
       if (
@@ -30,9 +27,7 @@ exports.BattleAbilities = {
     },
     onSourceModifySecondaries(secondaries, target, source, move) {
       if (
-        move.multihitType === "karmicretribution" &&
-        move.id === "secretpower" &&
-        move.hit < 4
+        move.multihitType === "karmicretribution" && move.id === "secretpower" && move.hit < 4
       ) {
         // hack to prevent accidentally suppressing King's Rock/Razor Fang
         return secondaries.filter(effect => effect.volatileStatus === "flinch");
@@ -183,10 +178,7 @@ exports.BattleAbilities = {
     onAfterMoveSecondary(target, source, move) {
       if (!source || source === target || !target.hp || !move.totalDamage)
         return;
-      if (
-        target.hp <= target.maxhp / 2 &&
-        target.hp + move.totalDamage > target.maxhp / 2
-      ) {
+      if (target.hp <= target.maxhp / 2 && target.hp + move.totalDamage > target.maxhp / 2) {
         this.boost({ atk: 1, def: 1 });
       }
     },
