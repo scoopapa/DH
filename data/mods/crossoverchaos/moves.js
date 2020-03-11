@@ -2439,15 +2439,6 @@ let BattleMovedex = {
 			attacker.addVolatile('twoturnmove', defender);
 			return null;
 		},
-		beforeTurnCallback(pokemon) {
-			pokemon.addVolatile('focuspunch');
-		},
-		beforeMoveCallback(pokemon) {
-			if (pokemon.volatiles['focuspunch'] && pokemon.volatiles['focuspunch'].lostFocus) {
-				this.add('cant', pokemon, 'Dig', 'Dig');
-				return true;
-			}
-		},
 		effect: {
 			duration: 2,
 			onImmunity(type, pokemon) {
