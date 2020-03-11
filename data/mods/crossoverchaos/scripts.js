@@ -192,7 +192,7 @@ exports.BattleScripts = {
 		if (this.status === status.id) {
 			if (sourceEffect && sourceEffect.status === this.status) {
 				this.battle.add('-fail', this, this.status);
-			} else if (sourceEffect?.status) {
+			} else if (sourceEffect && sourceEffect.status) {
 				this.battle.add('-fail', source);
 				this.battle.attrLastMove('[still]');
 			}
