@@ -1814,6 +1814,7 @@ export class Pokemon {
 			typeMod = this.battle.singleEvent('Effectiveness', move, null, this, type, move, typeMod);
 			totalTypeMod += this.battle.runEvent('Effectiveness', this, type, move, typeMod);
 		}
+		if (move.type === 'Fire' && 'tarshot' in this.volatiles) totalTypeMod++;
 		return totalTypeMod;
 	}
 
