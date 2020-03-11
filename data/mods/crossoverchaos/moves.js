@@ -2458,7 +2458,11 @@ let BattleMovedex = {
 			},
 			onHit(pokemon, source, move) {
 				if (move.id === 'shovelbash') {
-					pokemon.volatiles['focuspunch'].lostFocus = true;
+					if (this.queue.willMove(pokemon)) {
+						pokemon.addVolatile('flinch');
+					} else {
+						pokemon.removeVolatile('dig');
+					}
 				}
 			},
 		},
