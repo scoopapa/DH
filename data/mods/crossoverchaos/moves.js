@@ -2461,6 +2461,7 @@ let BattleMovedex = {
 						pokemon.addVolatile('shovelbash');
 					} else {
 						pokemon.removeVolatile('dig');
+						pokemon.removeVolatile('twoturnmove');
 					}
 				}
 			},
