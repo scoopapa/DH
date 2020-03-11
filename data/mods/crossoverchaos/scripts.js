@@ -2,7 +2,7 @@
 
 exports.BattleScripts = {
 
-	useMoveInner(moveOrMoveName, pokemon, target, sourceEffect, zMove) {
+	useMoveInner(moveOrMoveName, pokemon, target, sourceEffect, zMove, maxMove) {
 		if (!sourceEffect && this.effect.id) sourceEffect = this.effect;
 		if (sourceEffect && ['instruct', 'custapberry'].includes(sourceEffect.id)) sourceEffect = null;
 
