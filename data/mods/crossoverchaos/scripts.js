@@ -248,6 +248,7 @@ exports.BattleScripts = {
       if (totalTypeMod >= 0 && this.hasAbility('powerofsummer') && move.type === 'Fire'){
         totalTypeMod = -1;
       }
+		if (move.type === 'Fire' && ('tarshot' in this.volatiles)) totalTypeMod++;
 		return totalTypeMod;
 	},
   
