@@ -2407,6 +2407,14 @@ let BattleMovedex = {
 		target: "normal",
 		type: "Steel",
 		contestType: "Tough",
+		effect: {
+				duration: 1,
+				onBeforeMovePriority: 8,
+				onBeforeMove(pokemon) {
+					this.add('cant', pokemon, 'Dig', 'Dig');
+					return false;
+				},
+		}
 	},
 	"dig": {
 		num: 91,
@@ -2459,7 +2467,7 @@ let BattleMovedex = {
 			onHit(pokemon, source, move) {
 				if (move.id === 'shovelbash') {
 					if (this.queue.willMove(pokemon)) {
-						pokemon.addVolatile('flinch');
+						pokemon.addVolatile('shovelbash');
 					} else {
 						pokemon.removeVolatile('dig');
 					}
