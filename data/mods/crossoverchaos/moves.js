@@ -2128,7 +2128,7 @@ let BattleMovedex = {
 	"rapidsplat": {
 		num: 40065,
 		accuracy: 100,
-		basepower: 15,
+		basePower: 15,
 		category: "Special",
 		desc: "Hits 2-5 times. If Inkling-Squid knocks out an opponent with this move, change to Inkling-Kid. If Inkling-Kid knocks out an opponent with this move, raise speed by 1 stage.",
 		shortDesc: "2-5 hits. If Inkling-Squid gets KO, turn to Kid form. If Inkling-Kid gets KO, +1 Spe.",
