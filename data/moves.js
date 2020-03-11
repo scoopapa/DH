@@ -19416,13 +19416,14 @@ let BattleMovedex = {
 		effect: {
 			onStart(pokemon) {
 				this.add('-start', pokemon, 'Tar Shot');
-			},
-			onEffectiveness(typeMod, target, type, move) {
-				if (!target) return;
-				if (move.type === 'Fire') {
-					return this.dex.getEffectiveness('Fire', target) + 1;
-				}
-			},
+ 			},
+			//Moving this to sim/pokemon.ts.
+// 			onEffectiveness(typeMod, target, type, move) {
+// 				if (!target) return;
+// 				if (move.type === 'Fire') {
+// 					return this.dex.getEffectiveness('Fire', target) + 1;
+// 				}
+// 			},
 		},
 		boosts: {
 			spe: -1,
