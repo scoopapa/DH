@@ -3031,7 +3031,7 @@ kyokokirigiri: {
 	},
 	nebulapillar: {
 		num: 6000164,
-		species: "Stardust Pillar",
+		species: "Nebula Pillar",
 		types: ["Rock", "Psychic"],
 		gender: "N",
 		baseStats: {hp: 127, atk: 89, def: 61, spa: 137, spd: 113, spe: 53},
@@ -4472,7 +4472,7 @@ does marvel's big ol mutant trex exist? who knows
 		species: "Naofumi Iwatani", /* Rising of the Shield Hero */
 		types: ["Dark"],
 		gender: "M",
-		baseStas: {hp: 65, atk: 5, def: 135, spa: 5, spd: 135, spe: 95},
+		baseStats: {hp: 65, atk: 5, def: 135, spa: 5, spd: 135, spe: 95},
 		heightm: 1.7,
 		weightkg: 90,
 	},

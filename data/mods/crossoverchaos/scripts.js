@@ -2,19 +2,29 @@
 
 exports.BattleScripts = {
 
-	useMoveInner(moveOrMoveName, pokemon, target, sourceEffect, zMove) {
+	useMoveInner(moveOrMoveName, pokemon, target, sourceEffect, zMove, maxMove) {
 		if (!sourceEffect && this.effect.id) sourceEffect = this.effect;
 		if (sourceEffect && ['instruct', 'custapberry'].includes(sourceEffect.id)) sourceEffect = null;
 
-		let move = this.getActiveMove(moveOrMoveName);
+		let move = this.dex.getActiveMove(moveOrMoveName);
 		if (move.id === 'weatherball' && zMove) {
 			// Z-Weather Ball only changes types if it's used directly,
 			// not if it's called by Z-Sleep Talk or something.
-			this.singleEvent('ModifyMove', move, null, pokemon, target, move, move);
+			this.singleEvent('ModifyType', move, null, pokemon, target, move, move);
 			if (move.type !== 'Normal') sourceEffect = move;
 		}
-		if (zMove || (move.category !== 'Status' && sourceEffect && sourceEffect.isZ)) {
+		if (zMove || (move.category !== 'Status' && sourceEffect && /** @type {ActiveMove} */(sourceEffect).isZ)) {
 			move = this.getActiveZMove(move, pokemon);
+		}
+		if (maxMove && move.category !== 'Status') {
+			let moveType = move.type;
+			// Max move outcome is dependent on the move type after type modifications from ability and the move itself
+			this.singleEvent('ModifyType', move, null, pokemon, target, move, move);
+			this.runEvent('ModifyType', pokemon, target, move, move);
+			if (move.type !== moveType) sourceEffect = move;
+		}
+		if (maxMove || (move.category !== 'Status' && sourceEffect && /** @type {ActiveMove} */(sourceEffect).isMax)) {
+			move = this.getActiveMaxMove(move, pokemon);
 		}
 
 		if (this.activeMove) {
@@ -22,7 +32,7 @@ exports.BattleScripts = {
 			if (!move.hasBounced) move.pranksterBoosted = this.activeMove.pranksterBoosted;
 		}
 		let baseTarget = move.target;
-		if (target === undefined) target = this.resolveTarget(pokemon, move);
+		if (target === undefined) target = this.getRandomTarget(pokemon, move);
 		if (move.target === 'self' || move.target === 'allies') {
 			target = pokemon;
 		}
@@ -34,17 +44,19 @@ exports.BattleScripts = {
 
 		this.setActiveMove(move, pokemon, target);
 
+		this.singleEvent('ModifyType', move, null, pokemon, target, move, move);
 		this.singleEvent('ModifyMove', move, null, pokemon, target, move, move);
 		if (baseTarget !== move.target) {
 			// Target changed in ModifyMove, so we must adjust it here
 			// Adjust before the next event so the correct target is passed to the
 			// event
-			target = this.resolveTarget(pokemon, move);
+			target = this.getRandomTarget(pokemon, move);
 		}
+		move = this.runEvent('ModifyType', pokemon, target, move, move);
 		move = this.runEvent('ModifyMove', pokemon, target, move, move);
 		if (baseTarget !== move.target) {
 			// Adjust again
-			target = this.resolveTarget(pokemon, move);
+			target = this.getRandomTarget(pokemon, move);
 		}
 		if (!move || pokemon.fainted) {
 			return false;
@@ -54,7 +66,7 @@ exports.BattleScripts = {
 
 		let movename = move.name;
 		if (move.id === 'hiddenpower') movename = 'Hidden Power';
-		if (sourceEffect) attrs += '|[from]' + this.getEffect(sourceEffect);
+		if (sourceEffect) attrs += '|[from]' + this.dex.getEffect(sourceEffect);
 		if (zMove && move.isZ === true) {
 			attrs = '|[anim]' + movename + attrs;
 			movename = 'Z-' + movename;
@@ -170,7 +182,7 @@ exports.BattleScripts = {
 
 	setStatus(status,	source,	sourceEffect,	ignoreImmunities) {
 		if (!this.hp) return false;
-		status = this.battle.getEffect(status);
+		status = this.battle.dex.getEffect(status);
 		if (this.battle.event) {
 			if (!source) source = this.battle.event.source;
 			if (!sourceEffect) sourceEffect = this.battle.effect;
@@ -229,13 +241,14 @@ exports.BattleScripts = {
 	runEffectiveness(move) {
 		let totalTypeMod = 0;
 		for (const type of this.getTypes()) {
-			let typeMod = this.battle.getEffectiveness(move, type);
+			let typeMod = this.battle.dex.getEffectiveness(move, type);
 			typeMod = this.battle.singleEvent('Effectiveness', move, null, this, type, move, typeMod);
 			totalTypeMod += this.battle.runEvent('Effectiveness', this, type, move, typeMod);
 		}
-    if (totalTypeMod >= 0 && this.hasAbility('powerofsummer') && move.type === 'Fire'){
-      totalTypeMod = -1;
-    }
+      if (totalTypeMod >= 0 && this.hasAbility('powerofsummer') && move.type === 'Fire'){
+        totalTypeMod = -1;
+      }
+		if (move.type === 'Fire' && ('tarshot' in this.volatiles)) totalTypeMod++;
 		return totalTypeMod;
 	},
   
