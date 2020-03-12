@@ -1,5 +1,4 @@
 // Other Metas plugin by Spandan
-'use strict';
 
 interface StoneDeltas {
 	baseStats: {[stat in StatName]: number};
@@ -87,7 +86,9 @@ export const commands: ChatCommands = {
 		if (mod && toID(mod) in Dex.dexes) dex = Dex.mod(toID(mod));
 		const stone = getMegaStone(stoneName[0], mod);
 		const template = dex.getTemplate(sep[0]);
-		if (!stone || (dex.gen >= 8 && ['redorb', 'blueorb'].includes(stone.id))) return this.errorReply(`Error: Mega Stone not found.`);
+		if (!stone || (dex.gen >= 8 && ['redorb', 'blueorb'].includes(stone.id))) {
+			return this.errorReply(`Error: Mega Stone not found.`);
+		}
 		if (!template.exists) return this.errorReply(`Error: Pokemon not found.`);
 		const banlist = Dex.getFormat('gen8mixandmega').banlist;
 		if (banlist.includes(stone.name)) {
@@ -115,7 +116,7 @@ export const commands: ChatCommands = {
 		};
 		let statId: StatName;
 		for (statId in megaTemplate.baseStats) {
-			deltas.baseStats[statId] = megaTemplate.baseStats[statId as StatName] - baseTemplate.baseStats[statId];
+			deltas.baseStats[statId] = megaTemplate.baseStats[statId] - baseTemplate.baseStats[statId];
 		}
 		if (megaTemplate.types.length > baseTemplate.types.length) {
 			deltas.type = megaTemplate.types[1];
@@ -124,7 +125,6 @@ export const commands: ChatCommands = {
 		} else if (megaTemplate.types[1] !== baseTemplate.types[1]) {
 			deltas.type = megaTemplate.types[1];
 		}
-		//////////////////////////////////////////
 		const mixedTemplate = Dex.deepClone(template);
 		mixedTemplate.abilities = Dex.deepClone(megaTemplate.abilities);
 		if (mixedTemplate.types[0] === deltas.type) { // Add any type gains
@@ -169,7 +169,9 @@ export const commands: ChatCommands = {
 			return '<font color="#686868">' + detail + ':</font> ' + details[detail];
 		}).join("&nbsp;|&ThickSpace;") + '</font>');
 	},
-	mixandmegahelp: [`/mnm <pokemon> @ <mega stone>[, generation] - Shows the Mix and Mega evolved Pokemon's type and stats.`],
+	mixandmegahelp: [
+		`/mnm <pokemon> @ <mega stone>[, generation] - Shows the Mix and Mega evolved Pokemon's type and stats.`,
+	],
 
 	'!stone': true,
 	orb: 'stone',
@@ -182,18 +184,12 @@ export const commands: ChatCommands = {
 		const targetid = toID(sep[0]);
 		if (!targetid) return this.parse('/help stone');
 		const stone = getMegaStone(targetid, sep[1]);
-		if (!stone || (dex.gen >= 8 && ['redorb', 'blueorb'].includes(stone.id))) return this.errorReply(`Error: Mega Stone not found.`);
+		if (!stone || (dex.gen >= 8 && ['redorb', 'blueorb'].includes(stone.id))) {
+			return this.errorReply(`Error: Mega Stone not found.`);
+		}
 		const banlist = Dex.getFormat('gen8mixandmega').banlist;
 		if (banlist.includes(stone.name)) {
 			this.errorReply(`Warning: ${stone.name} is banned from Mix and Mega.`);
-		}
-		const restrictedStones = Dex.getFormat('gen8mixandmega').restrictedStones || [];
-		if (restrictedStones.includes(stone.name)) {
-			if (dex.getTemplate(stone.megaEvolves).isNonstandard === "Past") {
-				this.errorReply(`Warning: ${stone.name} is restricted in Mix and Mega.`);
-			} else {
-				this.errorReply(`Warning: ${stone.name} is restricted to ${stone.megaEvolves} in Mix and Mega.`);
-			}
 		}
 		if (stone.isUnreleased) {
 			this.errorReply(`Warning: ${stone.name} is unreleased and is not usable in current Mix and Mega.`);
@@ -369,7 +365,9 @@ export const commands: ChatCommands = {
 		}
 		this.sendReply(`|raw|${Chat.getDataPokemonHTML(template)}`);
 	},
-	natureswapshelp: [`/ns OR /natureswap <pokemon> - Shows the base stats that a Pokemon would have in Nature Swap. Usage: /ns <Nature> <Pokemon>.`],
+	natureswapshelp: [
+		`/ns OR /natureswap <pokemon> - Shows the base stats that a Pokemon would have in Nature Swap. Usage: /ns <Nature> <Pokemon>.`,
+	],
 
 	'!crossevolve': true,
 	ce: 'crossevolve',
@@ -458,55 +456,7 @@ export const commands: ChatCommands = {
 			return '<font color="#686868">' + detail + ':</font> ' + details[detail];
 		}).join("&nbsp;|&ThickSpace;") + '</font>');
 	},
-	crossevolvehelp: ["/crossevo <base pokemon>, <evolved pokemon> - Shows the type and stats for the Cross Evolved Pokemon."],
-	
-	fuse(target, room, user) {
-		if (!this.runBroadcast()) return;
-		if(!target || target === ' ' || !target.includes(',')) return this.errorReply('Error: Invalid Argument(s).')
-		let text = "";
-		let separated = target.split(",");
-		let name = toID(separated[0]), name2 = toID(separated[1]);
-		if (!Dex.data.Pokedex[name] || !Dex.data.Pokedex[name2]) {
-			return this.errorReply("Error: Pokemon not found");;
-		}
-		let baseStats = {}, fusedTemplate = Object.assign({}, Dex.getTemplate(name)), template = Object.assign({}, Dex.getTemplate(name2));
-		Object.keys(fusedTemplate.baseStats).forEach(stat => {
-			baseStats[stat] = Math.floor((fusedTemplate.baseStats[stat] + template.baseStats[stat]) / 2);
-		});
-		fusedTemplate.baseStats = Object.assign({}, baseStats);
-		fusedTemplate.types = [fusedTemplate.types[0]];
-		let type = (separated[2] && toID(separated[2]) === 'shiny' && template.types[1]) ? 1 : 0;
-		if(template.types[type] && template.types[type] !== fusedTemplate.types[0]) fusedTemplate.types.push(template.types[type]);
-		let weight = (Dex.data.Pokedex[fusedTemplate.id].weightkg + template.weightkg) / 2;
-		fusedTemplate.weightkg = weight;
-		fusedTemplate.heightm = (Dex.data.Pokedex[fusedTemplate.id].heightm + template.heightm) / 2;
-		fusedTemplate.abilities = Object.assign({'S': `<b>${template.abilities['0']}</b>`}, Dex.data.Pokedex[fusedTemplate.id].abilities);
-		this.sendReply(`|html|${Chat.getDataPokemonHTML(fusedTemplate)}`);
-		let details;
-		let weighthit = 20;
-		if (fusedTemplate.weightkg >= 200) {
-			weighthit = 120;
-		} else if (fusedTemplate.weightkg >= 100) {
-			weighthit = 100;
-		} else if (fusedTemplate.weightkg >= 50) {
-			weighthit = 80;
-		} else if (fusedTemplate.weightkg >= 25) {
-			weighthit = 60;
-		} else if (fusedTemplate.weightkg >= 10) {
-			weighthit = 40;
-		}
-		details = {
-			"Dex#": fusedTemplate.num,
-			"Gen": fusedTemplate.gen,
-			"Height": fusedTemplate.heightm + " m",
-			"Weight": fusedTemplate.weightkg + " kg <em>(" + weighthit + " BP)</em>",
-			"Dex Colour": fusedTemplate.color,
-		};
-		details['<font color="#686868">Does Not Evolve</font>'] = "";
-		this.sendReply('|raw|<font size="1">' + Object.keys(details).map(detail => {
-				if (details[detail] === '') return detail;
-				return '<font color="#686868">' + detail + ':</font> ' + details[detail];
-			}).join("&nbsp;|&ThickSpace;") + '</font>');
-	},
-	
+	crossevolvehelp: [
+		"/crossevo <base pokemon>, <evolved pokemon> - Shows the type and stats for the Cross Evolved Pokemon.",
+	],
 };

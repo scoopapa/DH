@@ -14,8 +14,6 @@
  * @license MIT
  */
 
-'use strict';
-
 const BLOCKLISTS = ['sbl.spamhaus.org', 'rbl.efnetrbl.org'];
 
 import * as dns from 'dns';
@@ -234,9 +232,9 @@ export const IPTools = new class {
 		});
 	}
 
-/*********************************************************
- * IP parsing
- *********************************************************/
+	/*********************************************************
+	 * IP parsing
+	 *********************************************************/
 
 	ipToNumber(ip: string) {
 		if (ip.includes(':') && !ip.includes('.')) {
@@ -330,9 +328,9 @@ export const IPTools = new class {
 		return (ip: string) => IPTools.checkPattern(patterns, IPTools.ipToNumber(ip));
 	}
 
-/*********************************************************
- * Datacenter parsing
- *********************************************************/
+	/*********************************************************
+	 * Datacenter parsing
+	 *********************************************************/
 
 	urlToHost(url: string) {
 		if (url.startsWith('http://')) url = url.slice(7);
@@ -558,15 +556,15 @@ export const IPTools = new class {
 		}, () => {
 			connected = true;
 			this.connectionTestCache.set(ip, true);
-			callback(true);
 			socket.destroy();
+			return callback(true);
 		});
 		socket.on('error', () => {});
 		socket.on('timeout', () => socket.destroy());
 		socket.on('close', () => {
 			if (!connected) {
 				this.connectionTestCache.set(ip, false);
-				callback(false);
+				return callback(false);
 			}
 		});
 	}
@@ -656,7 +654,10 @@ export const IPTools = new class {
 			'50.205.151.218', '50.253.211.61', '77.121.5.131', '77.37.208.119', '79.101.105.74', '80.89.137.210',
 			'85.237.63.124', '86.101.159.121', '90.151.180.215', '92.234.72.248', '92.255.164.166', '95.161.196.146',
 			'80.59.233.178', '88.146.204.165', '158.58.197.227', '185.41.76.35', '212.170.49.70', '91.139.202.50',
-			'92.115.247.61', '95.65.89.96', '61.221.12.80', '210.217.18.70', '211.197.11.17',
+			'92.115.247.61', '95.65.89.96', '61.221.12.80', '210.217.18.70', '211.197.11.17', '178.20.137.178',
+			'137.63.71.51', '78.60.203.75', '188.186.4.177', '87.92.64.0', '88.119.43.142', '24.135.56.196',
+			'31.168.98.68', '78.60.203.75', '78.62.214.242', '83.238.39.241', '84.22.63.122', '87.255.79.223',
+			'89.239.96.118',
 		].includes(ip)) {
 			// single-IP open proxies
 			return 'proxy';

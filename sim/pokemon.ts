@@ -203,7 +203,7 @@ export class Pokemon {
 	canMegaEvo: string | null | undefined;
 	canUltraBurst: string | null | undefined;
 	canDynamax: boolean;
-	canGigantamax: string | null;
+	readonly canGigantamax: string | null;
 
 	staleness?: 'internal' | 'external';
 	pendingStaleness?: 'internal' | 'external';
@@ -506,7 +506,7 @@ export class Pokemon {
 		// stat modifier effects
 		if (!unmodified) {
 			const statTable: {[s in StatNameExceptHP]?: string} = {atk: 'Atk', def: 'Def', spa: 'SpA', spd: 'SpD', spe: 'Spe'};
-			stat = this.battle.runEvent('Modify' + statTable[statName as StatNameExceptHP], this, null, null, stat);
+			stat = this.battle.runEvent('Modify' + statTable[statName], this, null, null, stat);
 		}
 
 		if (statName === 'spe' && stat > 10000) stat = 10000;
@@ -542,7 +542,7 @@ export class Pokemon {
 	}
 
 	getMoveData(move: string | Move) {
-		move = this.battle.dex.getMove(move) as Move;
+		move = this.battle.dex.getMove(move);
 		for (const moveSlot of this.moveSlots) {
 			if (moveSlot.id === move.id) {
 				return moveSlot;
@@ -566,8 +566,8 @@ export class Pokemon {
 		if (this.battle.gameType === 'multi') {
 			const team = this.side.n % 2;
 			// @ts-ignore
-			allies = this.battle.sides.flatMap(side =>
-				side.n % 2 === team ? side.active : []
+			allies = this.battle.sides.flatMap(
+				(side: Side) => side.n % 2 === team ? side.active : []
 			);
 		}
 		return allies.filter(ally => ally && !ally.fainted);
@@ -582,8 +582,8 @@ export class Pokemon {
 		if (this.battle.gameType === 'multi') {
 			const team = this.side.foe.n % 2;
 			// @ts-ignore
-			foes = this.battle.sides.flatMap(side =>
-				side.n % 2 === team ? side.active : []
+			foes = this.battle.sides.flatMap(
+				(side: Side) => side.n % 2 === team ? side.active : []
 			);
 		}
 		return foes.filter(foe => foe && !foe.fainted);
@@ -601,8 +601,22 @@ export class Pokemon {
 		return hp;
 	}
 
-	getMoveTargets(move: Move, target: Pokemon): {targets: Pokemon[], pressureTargets: Pokemon[]} {
-		let targets = [];
+	/** Get targets for Dragon Darts */
+	getSmartTargets(target: Pokemon, move: ActiveMove) {
+		const target2 = target.nearbyAllies()[0];
+		if (!target2 || target2 === this || !target2.hp) {
+			move.smartTarget = false;
+			return [target];
+		}
+		if (!target.hp) {
+			move.smartTarget = false;
+			return [target2];
+		}
+		return [target, target2];
+	}
+
+	getMoveTargets(move: ActiveMove, target: Pokemon): {targets: Pokemon[], pressureTargets: Pokemon[]} {
+		let targets: Pokemon[] = [];
 		let pressureTargets;
 
 		switch (move.target) {
@@ -641,11 +655,18 @@ export class Pokemon {
 				target = possibleTarget;
 			}
 			if (target.side.active.length > 1 && !move.tracksTarget) {
-				if (!move.flags['charge'] || this.volatiles['twoturnmove'] ||
-						(move.id.startsWith('solarb') && this.battle.field.isWeather(['sunnyday', 'desolateland'])) ||
-						(this.hasItem('powerherb') && move.id !== 'skydrop')) {
-					target = this.battle.priorityEvent('RedirectTarget', this, this, this.battle.dex.getActiveMove(move), target);
+				const isCharging = move.flags['charge'] && !this.volatiles['twoturnmove'] &&
+					!(move.id.startsWith('solarb') && this.battle.field.isWeather(['sunnyday', 'desolateland'])) &&
+					!(this.hasItem('powerherb') && move.id !== 'skydrop');
+				if (!isCharging) {
+					target = this.battle.priorityEvent('RedirectTarget', this, this, move, target);
 				}
+			}
+			if (move.smartTarget) {
+				targets = this.getSmartTargets(target, move);
+				target = targets[0];
+			} else {
+				targets.push(target);
 			}
 			if (target.fainted) {
 				return {targets: [], pressureTargets: []};
@@ -653,7 +674,6 @@ export class Pokemon {
 			if (selectedTarget !== target) {
 				this.battle.retargetLastMove(target);
 			}
-			targets.push(target);
 
 			// Resolve apparent targets for Pressure.
 			if (move.pressureTarget) {
@@ -675,16 +695,18 @@ export class Pokemon {
 		let neutralizinggas = false;
 		for (const pokemon of this.battle.getAllActive()) {
 			// can't use hasAbility because it would lead to infinite recursion
-			if (pokemon.ability === ('neutralizinggas' as ID) && !pokemon.volatiles['gastroacid']
-				&& !pokemon.abilityData.ending) {
+			if (pokemon.ability === ('neutralizinggas' as ID) && !pokemon.volatiles['gastroacid'] &&
+				!pokemon.abilityData.ending) {
 				neutralizinggas = true;
 				break;
 			}
 		}
 
-		return !!((this.battle.gen >= 5 && !this.isActive) ||
-			((this.volatiles['gastroacid'] || (neutralizinggas && this.ability !== ('neutralizinggas' as ID)))
-			&& !abilities.includes(this.ability)));
+		return !!(
+			(this.battle.gen >= 5 && !this.isActive) ||
+			((this.volatiles['gastroacid'] || (neutralizinggas && this.ability !== ('neutralizinggas' as ID))) &&
+			!abilities.includes(this.ability))
+		);
 	}
 
 	ignoringItem() {
@@ -695,7 +717,7 @@ export class Pokemon {
 
 	deductPP(move: string | Move, amount?: number | null, target?: Pokemon | null | false) {
 		const gen = this.battle.gen;
-		move = this.battle.dex.getMove(move) as Move;
+		move = this.battle.dex.getMove(move);
 		const ppData = this.getMoveData(move);
 		if (!ppData) return 0;
 		ppData.used = true;
@@ -718,7 +740,7 @@ export class Pokemon {
 
 	gotAttacked(move: string | Move, damage: number | false | undefined, source: Pokemon) {
 		if (!damage) damage = 0;
-		move = this.battle.dex.getMove(move) as Move;
+		move = this.battle.dex.getMove(move);
 		this.attackedBy.push({
 			source,
 			damage,
@@ -737,9 +759,10 @@ export class Pokemon {
 		return (lockedMove === true) ? null : lockedMove;
 	}
 
-	getMoves(lockedMove?: string | null, restrictData?: boolean):
-	{move: string, id: string, disabled?: string | boolean,
-		disabledSource?: string, target?: string, pp?: number, maxpp?: number}[] {
+	getMoves(lockedMove?: string | null, restrictData?: boolean): {
+		move: string, id: string, disabled?: string | boolean, disabledSource?: string,
+		target?: string, pp?: number, maxpp?: number,
+	}[] {
 		if (lockedMove) {
 			lockedMove = toID(lockedMove);
 			this.trapped = true;
@@ -784,7 +807,7 @@ export class Pokemon {
 			}
 			let disabled = moveSlot.disabled;
 			if (this.volatiles['dynamax']) {
-				disabled = false;
+				disabled = this.maxMoveDisabled(this.battle.dex.getMove(moveSlot.id));
 			} else if (
 				(moveSlot.pp <= 0 && !this.volatiles['partialtrappinglock']) || disabled &&
 				this.side.active.length >= 2 && this.battle.targetTypeChoices(target!)
@@ -808,7 +831,11 @@ export class Pokemon {
 		return hasValidMove ? moves : [];
 	}
 
-	getRequestData() {
+	maxMoveDisabled(move: Move) {
+		return !!(move.category === 'Status' && (this.hasItem('assaultvest') || this.volatiles['taunt']));
+	}
+
+	getMoveRequestData() {
 		let lockedMove = this.getLockedMove();
 
 		// Information should be restricted for the last active Pokémon
@@ -862,6 +889,39 @@ export class Pokemon {
 		}
 
 		return data;
+	}
+
+	getSwitchRequestData() {
+		const entry: AnyObject = {
+			ident: this.fullname,
+			details: this.details,
+			condition: this.getHealth().secret,
+			active: (this.position < this.side.active.length),
+			stats: {
+				atk: this.baseStoredStats['atk'],
+				def: this.baseStoredStats['def'],
+				spa: this.baseStoredStats['spa'],
+				spd: this.baseStoredStats['spd'],
+				spe: this.baseStoredStats['spe'],
+			},
+			moves: this.moves.map(move => {
+				if (move === 'hiddenpower') {
+					return move + toID(this.hpType) + (this.battle.gen < 6 ? '' : this.hpPower);
+				}
+				if (move === 'frustration' || move === 'return') {
+					const m = this.battle.dex.getMove(move)!;
+					// @ts-ignore - Frustration and Return only require the source Pokemon
+					const basePower = m.basePowerCallback(this);
+					return `${move}${basePower}`;
+				}
+				return move;
+			}),
+			baseAbility: this.baseAbility,
+			item: this.item,
+			pokeball: this.pokeball,
+		};
+		if (this.battle.gen > 6) entry.ability = this.ability;
+		return entry;
 	}
 
 	isLastActive() {
@@ -942,7 +1002,7 @@ export class Pokemon {
 		if (pokemon.fainted || pokemon.illusion || (pokemon.volatiles['substitute'] && this.battle.gen >= 5) ||
 			(pokemon.transformed && this.battle.gen >= 2) || (this.transformed && this.battle.gen >= 5) ||
 			template.species === 'Eternatus-Eternamax') {
- 			return false;
+			return false;
 		}
 
 		if (!this.setTemplate(template, null, true)) return false;
@@ -1007,7 +1067,7 @@ export class Pokemon {
 			if (this.template.num === 493) {
 				// Arceus formes
 				const item = this.getItem();
-				const targetForme = (item && item.onPlate ? 'Arceus-' + item.onPlate : 'Arceus');
+				const targetForme = (item?.onPlate ? 'Arceus-' + item.onPlate : 'Arceus');
 				if (this.template.species !== targetForme) {
 					this.formeChange(targetForme);
 				}
@@ -1215,7 +1275,7 @@ export class Pokemon {
 		return d;
 	}
 
-	tryTrap(isHidden: boolean = false) {
+	tryTrap(isHidden = false) {
 		if (!this.runStatusImmunity('trapped')) return false;
 		if (this.trapped && isHidden) return true;
 		this.trapped = isHidden ? 'hidden' : true;
@@ -1296,7 +1356,7 @@ export class Pokemon {
 		status: string | PureEffect,
 		source: Pokemon | null = null,
 		sourceEffect: Effect | null = null,
-		ignoreImmunities: boolean = false
+		ignoreImmunities = false
 	) {
 		if (!this.hp) return false;
 		status = this.battle.dex.getEffect(status);
@@ -1309,7 +1369,7 @@ export class Pokemon {
 		if (this.status === status.id) {
 			if (sourceEffect && sourceEffect.status === this.status) {
 				this.battle.add('-fail', this, this.status);
-			} else if (sourceEffect && sourceEffect.status) {
+			} else if (sourceEffect?.status) {
 				this.battle.add('-fail', source);
 				this.battle.attrLastMove('[still]');
 			}
@@ -1317,11 +1377,11 @@ export class Pokemon {
 		}
 
 		if (!ignoreImmunities && status.id &&
-				!(source && source.hasAbility('corrosion') && ['tox', 'psn'].includes(status.id))) {
+				!(source?.hasAbility('corrosion') && ['tox', 'psn'].includes(status.id))) {
 			// the game currently never ignores immunities
 			if (!this.runStatusImmunity(status.id === 'tox' ? 'psn' : status.id)) {
 				this.battle.debug('immune to status');
-				if (sourceEffect && sourceEffect.status) this.battle.add('-immune', this);
+				if (sourceEffect?.status) this.battle.add('-immune', this);
 				return false;
 			}
 		}
@@ -1378,7 +1438,6 @@ export class Pokemon {
 			this.battle.runEvent('UseItem', this, null, null, item) &&
 			(force || this.battle.runEvent('TryEatItem', this, null, null, item))
 		) {
-
 			this.battle.add('-enditem', this, item, '[eat]');
 
 			this.battle.singleEvent('Eat', item, this.itemData, this, source, sourceEffect);
@@ -1463,7 +1522,7 @@ export class Pokemon {
 
 	setItem(item: string | Item, source?: Pokemon, effect?: Effect) {
 		if (!this.hp || !this.isActive) return false;
-		if (typeof item === 'string') item = this.battle.dex.getItem(item) as Item;
+		if (typeof item === 'string') item = this.battle.dex.getItem(item);
 
 		const effectid = this.battle.effect ? this.battle.effect.id : '';
 		if (item.id === 'leppaberry') {
@@ -1498,13 +1557,13 @@ export class Pokemon {
 
 	setAbility(ability: string | Ability, source?: Pokemon | null, isFromFormeChange?: boolean) {
 		if (!this.hp) return false;
-		if (typeof ability === 'string') ability = this.battle.dex.getAbility(ability) as Ability;
+		if (typeof ability === 'string') ability = this.battle.dex.getAbility(ability);
 		const oldAbility = this.ability;
 		if (!isFromFormeChange) {
 			const abilities = [
 				'battlebond', 'comatose', 'disguise', 'gulpmissile', 'hungerswitch', 'iceface', 'multitype', 'powerconstruct', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange',
 			];
-			if ('illusion' === ability.id || abilities.includes(ability.id) || abilities.includes(oldAbility)) return false;
+			if (ability.id === 'illusion' || abilities.includes(ability.id) || abilities.includes(oldAbility)) return false;
 			if (this.battle.gen >= 7 && (ability.id === 'zenmode' || oldAbility === 'zenmode')) return false;
 		}
 		if (!this.battle.runEvent('SetAbility', this, source, this.battle.effect, ability)) return false;
@@ -1543,9 +1602,10 @@ export class Pokemon {
 
 	addVolatile(
 		status: string | PureEffect, source: Pokemon | null = null, sourceEffect: Effect | null = null,
-		linkedStatus: string | PureEffect | null = null): boolean | any {
+		linkedStatus: string | PureEffect | null = null
+	): boolean | any {
 		let result;
-		status = this.battle.dex.getEffect(status) as PureEffect;
+		status = this.battle.dex.getEffect(status);
 		if (!this.hp && !status.affectsFainted) return false;
 		if (linkedStatus && source && !source.hp) return false;
 		if (this.battle.event) {
@@ -1560,7 +1620,7 @@ export class Pokemon {
 		}
 		if (!this.runStatusImmunity(status.id)) {
 			this.battle.debug('immune to volatile status');
-			if (sourceEffect && sourceEffect.status) this.battle.add('-immune', this);
+			if (sourceEffect?.status) this.battle.add('-immune', this);
 			return false;
 		}
 		result = this.battle.runEvent('TryAddVolatile', this, source, sourceEffect, status);
@@ -1667,7 +1727,7 @@ export class Pokemon {
 	 * newType can be an array, but this is for OMs only. The game in
 	 * reality doesn't support setting a type to more than one type.
 	 */
-	setType(newType: string | string[], enforce: boolean = false) {
+	setType(newType: string | string[], enforce = false) {
 		// First type of Arceus, Silvally cannot be normally changed
 		if (!enforce && (this.template.num === 493 || this.template.num === 773)) return false;
 
@@ -1693,7 +1753,7 @@ export class Pokemon {
 		return [this.battle.gen >= 5 ? 'Normal' : '???'];
 	}
 
-	isGrounded(negateImmunity: boolean = false) {
+	isGrounded(negateImmunity = false) {
 		if ('gravity' in this.battle.field.pseudoWeather) return true;
 		if ('ingrain' in this.volatiles && this.battle.gen >= 4) return true;
 		if ('smackdown' in this.volatiles) return true;
@@ -1720,6 +1780,15 @@ export class Pokemon {
 			}
 		}
 		return false;
+	}
+
+	/** Specifically: is protected against a single-target damaging move */
+	isProtected() {
+		return !!(
+			this.volatiles['protect'] || this.volatiles['detect'] || this.volatiles['maxguard'] ||
+			this.volatiles['kingsshield'] || this.volatiles['spikyshield'] || this.volatiles['banefulbunker'] ||
+			this.volatiles['obstruct']
+		);
 	}
 
 	/**

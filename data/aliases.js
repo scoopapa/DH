@@ -40,12 +40,9 @@ let BattleAliases = {
 	"gen7bsd": "[Gen 7] Battle Spot Doubles",
 	"gen6mono": "[Gen 6] Monotype",
 	"gen6ag": "[Gen 6] Anything Goes",
-	"cleanslatemicro": "[Gen 7] Clean Slate: Micro",
-	"csm": "[Gen 7] Clean Slate: Micro",
-	"mbh": "[Gen 8] More Balanced Hackmons",
-	"ccv2": "[Gen 8] Crossover Chaos V2",
-	"ccex": "[Gen 8] Crossover Chaos Expanded",
-	"ccubers": "[Gen 8] Crossover Chaos V2 + Expanded Ubers",
+	"petmod": "[Gen 7 Pet Mod] Clean Slate: Micro",
+	"cleanslatemicro": "[Gen 7 Pet Mod] Clean Slate: Micro",
+	"csm": "[Gen 7 Pet Mod] Clean Slate: Micro",
 
 	// mega evos
 	"fabio": "Ampharos-Mega",
@@ -1723,8 +1720,6 @@ let BattleAliases = {
 	"zugadoon": "Blacephalon",
 	"merutan": "Meltan",
 	"merumetaru": "Melmetal",
-	"mugendaina": "Eternatus",
-	"mugendyna": "Eternatus",
 };
 
 exports.BattleAliases = BattleAliases;

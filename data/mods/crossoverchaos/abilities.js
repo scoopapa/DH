@@ -1,8 +1,8 @@
 'use strict';
 exports.BattleAbilities = {
     "karmicretribution": {
-        desc: "This Pokemon's damaging moves become multi-hit moves that hit four times. Does not affect moves that have multiple targets or moves that use the target's attacking stats instead of the user's.",
-        shortDesc: "This Pokemon's damaging moves hit four times (not Foul Play).",
+        desc: "This Pokemon's damaging moves become multi-hit moves that hit five times, each with their own accuracy. Does not affect moves that have multiple targets or moves that use the target's attacking stats instead of the user's.",
+        shortDesc: "This Pokemon's damaging moves hit five times, each with their own accuracy. (not Foul Play)",
         onPrepareHit(source, target, move) {
             if (['iceball', 'rollout'].includes(move.id) || move.useTargetOffensive || move.useSourceDefensive) return;
             if (move.category !== 'Status' && !move.selfdestruct && !move.multihit && !move.flags['charge'] && !move.spreadHit && !move.isZ) {
@@ -935,12 +935,12 @@ exports.BattleAbilities = {
       //Case 1 is use of a Fire-type move in Rain or a Water-type move in Sun.
       //Case 2 is using Solar Blade in non-Sun weather.
       if (attacker.side === this.effectData.target.side){
-  			if ((this.field.isWeather('raindance') && move.type === 'Fire' || this.field.isWeather('sunnyday') && move.type === 'Water') || 
+  			if (((attacker.effectiveWeather() == 'raindance' && move.type === 'Fire') || (attacker.effectiveWeather() == 'sunnyday' && move.type === 'Water')) || 
             (['solarblade', 'solarbeam'].includes(move.id) && this.field.isWeather(['sandstorm', 'hail', 'raindance', 'primordialsea']))) {
 	  			basePower *= 2;
 	  		}
       } else {
-  			if (this.field.isWeather(['raindance', 'primordialsea']) && move.type === 'Water' || this.field.isWeather(['sunnyday', 'desolateland']) && move.type === 'Fire') {
+  			if (['raindance', 'primordialsea'].includes(attacker.effectiveWeather()) && move.type === 'Water' || this.field.isWeather(['sunnyday', 'desolateland']) && move.type === 'Fire') {
 	  			basePower = (basePower * 2) / 3;
 	  		} else if (this.field.isWeather('sandstorm') && ['Rock', 'Steel', 'Ground'].includes(move.type) && attacker.hasAbility('sandforce')) {
           //Negate Sand Force.
@@ -952,6 +952,7 @@ exports.BattleAbilities = {
 		},
 		onModifyAtkPriority: 5,
 		onAnyModifyAtk(atk, pokemon) {
+			if (this.field.isWeather(['raindance', 'primordialsea', 'sunnyday', 'desolateland']) && pokemon.hasItem('utilityumbrella')) return;
 			if (pokemon === this.effectData.target && this.field.isWeather(['sunnyday', 'desolateland', 'deltastream'])) {
 				return this.chainModify(this.field.isWeather('deltastream') ? 2 : 1.5);
 			}
@@ -970,6 +971,7 @@ exports.BattleAbilities = {
 		onModifyMovePriority: -1,
 		onAnyModifyMove(move, attacker, defender) {
 			if (defender.side !== this.effectData.target.side && defender.hasAbility('leafguard')) {
+			if (this.field.isWeather(['raindance', 'primordialsea', 'sunnyday', 'desolateland']) && defender.hasItem('utilityumbrella')) return;
 				move.ignoreAbility = true;
 			}
       if (attacker.side !== this.effectData.target.side && move.id === 'weatherball' && move.type !== 'Normal'){
@@ -978,6 +980,7 @@ exports.BattleAbilities = {
 		},
 		onModifyDefPriority: 5,
 		onAnyModifyDef(spd, pokemon) {
+			if (this.field.isWeather(['raindance', 'primordialsea', 'sunnyday', 'desolateland']) && pokemon.hasItem('utilityumbrella')) return;
       if (this.field.isWeather(['sandstorm', 'deltastream']) && this.effectData.target === pokemon){
         return this.chainModify(this.field.isWeather('sandstorm') ? 1.5 : 2);
       }
@@ -987,6 +990,7 @@ exports.BattleAbilities = {
 		},
 		onModifySpAPriority: 5,
 		onAnyModifySpA(spa, pokemon) {
+			if (this.field.isWeather(['raindance', 'primordialsea', 'sunnyday', 'desolateland']) && pokemon.hasItem('utilityumbrella')) return;
       if (this.field.isWeather('deltastream') && this.effectData.target === pokemon){
         return this.chainModify(2);
       }
@@ -997,6 +1001,7 @@ exports.BattleAbilities = {
 		onModifySpDPriority: 4,
 		onAnyModifySpD(spd, pokemon) {
 			if (this.effectData.target !== pokemon && this.effectData.target.side === pokemon.side) return;
+			if (this.field.isWeather(['raindance', 'primordialsea', 'sunnyday', 'desolateland']) && pokemon.hasItem('utilityumbrella')) return;
 			if (this.field.isWeather('sandstorm') && this.effectData.target.side !== pokemon.side) {
 				return this.chainModify([0x0AAB, 0x1000]);
 			}
@@ -1018,6 +1023,7 @@ exports.BattleAbilities = {
     //Synthesis/Morning Sun/Moonlight restore HP as if it's no weather out.
 		onAnyTryHeal(damage, target, source, effect) {
 			this.debug("Heal is occurring: " + target + " <- " + source + " :: " + effect.id);
+			if (this.field.isWeather(['raindance', 'primordialsea', 'sunnyday', 'desolateland']) && target.hasItem('utilityumbrella')) return;
 			if (['morningsun', 'synthesis', 'moonlight'].includes(effect.id)){
         if (target.side === this.effectData.target.side && this.field.isWeather(['raindance', 'primordialsea', 'hail', 'sandstorm'])) {
 				  return damage*2;
@@ -1030,31 +1036,32 @@ exports.BattleAbilities = {
       if (this.effectData.target.side !== target.side && ['icebody', 'hydration', 'dryskin'].includes(effect)) return 0;
 		},
 		onAnyModifySpe(spe, pokemon) {
+			if (this.field.isWeather(['raindance', 'primordialsea', 'sunnyday', 'desolateland']) && pokemon.hasItem('utilityumbrella')) return;
 			if (pokemon === this.effectData.target && this.field.isWeather(['hail', 'deltastream'])) {
 				return this.chainModify(this.field.isWeather('hail') ? 1.5 : 2);
 			}
-      if (pokemon.side !== this.effectData.target.side){
-        if ((pokemon.hasAbility('chlorophyll') && this.field.isWeather(['sunnyday', 'desolateland'])) || 
-          (pokemon.hasAbility('swiftswim') && this.field.isWeather(['raindance', 'primordialsea'])) || 
-          (pokemon.hasAbility('sandrush') && this.field.isWeather('sandstorm')) || (pokemon.hasAbility('slushrush') && this.field.isWeather('hail')) 
-          || (pokemon.hasAbility('scarlettemperament') && this.field.isWeather('deltastream'))){
-          
-          return this.chainModify(0.5)
-        }
-        if (pokemon.hasAbility('powerofsummer') && this.field.isWeather(['sunnyday', 'desolateland'])) return this.chainModify([0x0AAB, 0x1000]);
-      }
+   	   if (pokemon.side !== this.effectData.target.side){
+   	     if ((pokemon.hasAbility('chlorophyll') && this.field.isWeather(['sunnyday', 'desolateland'])) || 
+   	       (pokemon.hasAbility('swiftswim') && this.field.isWeather(['raindance', 'primordialsea'])) || 
+   	       (pokemon.hasAbility('sandrush') && this.field.isWeather('sandstorm')) || (pokemon.hasAbility('slushrush') && this.field.isWeather('hail')) 
+   	       || (pokemon.hasAbility('scarlettemperament') && this.field.isWeather('deltastream'))){       
+    	      return this.chainModify(0.5)
+    	    }
+      	  if (pokemon.hasAbility('powerofsummer') && this.field.isWeather(['sunnyday', 'desolateland'])) return this.chainModify([0x0AAB, 0x1000]);
+      	}
 		},
 		onAnyModifyAccuracy(accuracy, target, source, move) {
-      if (source.side === this.effectData.target.side){
+      	if (source.side === this.effectData.target.side){
         //Restore Thunder and Hurricane's accuracy in sun.
+			  if (this.field.isWeather(['raindance', 'primordialsea', 'sunnyday', 'desolateland']) && source.hasItem('utilityumbrella')) return;
 			  if (!this.field.isWeather(['sunnyday', 'desolateland']) || typeof accuracy !== 'number' || !['thunder', 'hurricane'].includes(move.id)) return;
 			  this.debug('fixing ' + move.id + ' accuracy');
 			  return accuracy * 1.4;
-      }
-      if (target.side !== this.effectData.target.side){
-        if ((target.hasAbility('sandveil') && this.field.isWeather('sandstorm')) || 
-            (target.hasAbility('snowcloak') && this.field.isWeather('hail'))) return accuracy * 0.8;
-      }
+      	}
+      	if (target.side !== this.effectData.target.side){
+        		if ((target.hasAbility('sandveil') && this.field.isWeather('sandstorm')) || 
+            	(target.hasAbility('snowcloak') && this.field.isWeather('hail'))) return accuracy * 0.8;
+      	}
 		},
 		onAllyDamage(damage, target, source, effect) {
 			if (['solarpower', 'dryskin', 'hydrophobia'].includes(effect.id)) {

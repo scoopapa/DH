@@ -2798,6 +2798,8 @@ whispywoods: {
 			baseStats: {hp: 90, atk: 100, def: 130, spa: 90, spd: 90, spe: 30},
 			abilities: {0: "Forest Breeze", H: "Harvest"},
 			otherFormes: ["whispywoodsrevenge"],
+			heightm: 2.3,
+			weightkg: 300,
 },
 whispywoodsrevenge: {
 			num: 6000149,
@@ -2809,6 +2811,8 @@ whispywoodsrevenge: {
 			gender: "M",
 			baseStats: {hp: 100, atk: 130, def: 130, spa: 120, spd: 90, spe: 30},
 			abilities: {0: "Forest Breeze", H: "Harvest"},
+			heightm: 2.3,
+			weightkg: 300,
 },
 melting: {
 			num: 6000150,
@@ -2833,6 +2837,7 @@ kyokokirigiri: {
 			gender: "F",
 			baseStats: {hp: 68, atk: 75, def: 80, spa: 98, spd: 127, spe: 87},
 			abilities: {0: "Inner Focus", 1: "Intimidate", H: "Ultimate Detective"},
+			heightm: 1.68,
 },
 	guardian: {
 		num: 6000153,
@@ -2860,7 +2865,7 @@ kyokokirigiri: {
 		types: ["Dark", "Dragon"],
 		gender: "M",
 		baseStats: {hp: 102, atk: 126, def: 96, spa: 95, spd: 86, spe: 75},
-		abilities: {0: "Moxie", 1: "Stakeout", H: "Analytic",
+		abilities: {0: "Moxie", 1: "Stakeout", H: "Analytic"},
 		heightm: 4,
 		weightkg: 127.4,
 	},
@@ -2869,7 +2874,7 @@ kyokokirigiri: {
 		species: "Batter", /* OFF */
 		types: ["Fighting", "Fairy"],
 		gender: "M",
-		baseStats: {hp: 90, atk: 130, def: 72, spa: 60: spd: 72, spe: 111},
+		baseStats: {hp: 90, atk: 130, def: 72, spa: 60, spd: 72, spe: 111},
 		abilities: {0: "Justified", 1: "Inner Focus", H: "Sheer Force"},
 		heightm: 1.8,
 		weightkg: 88,
@@ -2883,7 +2888,7 @@ kyokokirigiri: {
 		formeLetter: "B",
 		types: ["Fighting", "Dark"],
 		gender: "M",
-		baseStats: {hp: 90, atk: 130, def: 72, spa: 60: spd: 72, spe: 111},
+		baseStats: {hp: 90, atk: 130, def: 72, spa: 60, spd: 72, spe: 111},
 		abilities: {0: "Battery", 1: "Dark Aura", H: "Levitate"},
 		heightm: 1.8,
 		weightkg: 88,
@@ -2912,7 +2917,7 @@ kyokokirigiri: {
 	},
 	shantae: {
 		num: 6000158,
-		species: "Shantae", /* Shantae series */
+		species: "Shantae",
 		types: ["Fairy"],
 		gender: "F",
 		baseStats: {hp: 85, atk: 95, def: 75, spa: 95, spd: 75, spe: 75},
@@ -2963,24 +2968,98 @@ kyokokirigiri: {
 	kingprotea: {
 		num: 6000159,
 		species: "Kingprotea", /* Fate/EXTRA */
-		types: ["Grass", "Water"]
+		types: ["Grass", "Water"],
 		gender: "F",
 		baseStats: {hp: 165, atk: 145, def: 115, spa: 70, spd: 115, spe: 110},
 		abilities: {0: "Pressure", H: "Huge Scale"},
-		height: 5,
+		heightm: 5,
 		weightkg: 999.9,
 	},
-walle: {
+	reimuhakurei: {
+		num: 6000160,
+		species: "Reimu Hakurei", /* Touhou */
+		types: ["Flying", "Psychic"],
+		gender: "F",
+		baseStats: {hp: 90, atk: 100, def: 90, spa: 95, spd: 140, spe: 85},
+		abilities: {0: "Levitate", 1: "Super Luck", H: "Sacred Barrier"},
+		heightm: 1.6,
+		weightkg: 45,
+	},
+	orochi: {
+		num: 6000161,
+		species: "Orochi", /* Okami */
+		types: ["Dragon"],
+		gender: "M",
+		baseStats: {hp: 80, atk: 104, def: 120, spa: 128, spd: 80, spe: 56},
+		abilities: {0: "Eight Elemental Heads"},
+		heightm: 10,
+		weightkg: 888.8,
+		otherFormes: ["orochitrue"],
+	},
+	orochitrue: {
+		num: 6000161,
+		species: "Orochi-True",
+		baseSpecies: "Orochi",
+		forme: "True",
+		formeLetter: "T",
+		types: ["Dragon"],
+		gender: "M",
+		baseStats: {hp: 96, atk: 120, def: 128, spa: 144, spd: 104, spe: 80},
+		abilities: {0: "Eight Elemental Heads"},
+		heightm: 10,
+		weightkg: 888.8,
+	},
+	vortexpillar: {
+		num: 6000162,
+		species: "Vortex Pillar", /* Terraria */
+		types: ["Rock", "Bug"],
+		gender: "N",
+		baseStats: {hp: 127, atk: 113, def: 89, spa: 61, spd: 137, spe: 53},
+		abilities: {0: "Long Reach", H: "Levitate"},
+		heightm: 10,
+		weightkg: 950,
+	},
+	stardustpillar: {
+		num: 6000163,
+		species: "Stardust Pillar",
+		types: ["Rock", "Water"],
+		gender: "N",
+		baseStats: {hp: 127, atk: 61, def: 137, spa: 113, spd: 89, spe: 53},
+		abilities: {0: "Swarming Minions", H: "Levitate"},
+		heightm: 10,
+		weightkg: 950,
+	},
+	nebulapillar: {
+		num: 6000164,
+		species: "Stardust Pillar",
+		types: ["Rock", "Psychic"],
+		gender: "N",
+		baseStats: {hp: 127, atk: 89, def: 61, spa: 137, spd: 113, spe: 53},
+		abilities: {0: "Psychic Surge", H: "Levitate"},
+		heightm: 10,
+		weightkg: 950,
+	},
+	solarpillar: {
+		num: 6000165,
+		species: "Solar Pillar",
+		types: ["Rock", "Fire"],
+		gender: "N",
+		baseStats: {hp: 127, atk: 137, def: 113, spa: 89, spd: 61, spe: 53},
+		abilities: {0: "Drought", H: "Levitate"},
+		heightm: 10,
+		weightkg: 950,
+	},
+	walle: {
 			num: 7000001,
 			species: "WALL-E", /* WALL-E */
 			types: ["Steel", "Normal"],
-		gender: "M",
+			gender: "M",
 			baseStats: {hp: 100, atk: 70, def: 100, spa: 70, spd: 100, spe: 100},
 			abilities: {0: "Sturdy", H: "Trash Compactor"},
-		heightm: 0.5,
+			heightm: 0.5,
 			weightkg: 5,
-},
-shaggy: {
+	},
+	shaggy: {
 			num: 7000002,
 			species: "Shaggy", /* Scooby-Doo */
 			types: ["Normal"],
@@ -3585,7 +3664,7 @@ gokusupersaiyangod: {
 does marvel's big ol mutant trex exist? who knows
 	devildinosaur: {
 		num: 7000034,
-		species: "Devil Dinosaur", /* Marvel */
+		species: "Devil Dinosaur", / Marvel /
 		types: ["Dragon"],
 		gender: "M",
 		baseStats: {hp: 110, atk: 160, def: 105, spa: 80, spd: 90, spe: 95},
@@ -4103,7 +4182,7 @@ does marvel's big ol mutant trex exist? who knows
 	azula: {
 		num: 7000066,
 		species: "Azula", /* Avatar: The Last Airbender */
-		types: ["Fire", "Dark"]
+		types: ["Fire", "Dark"],
 		gender: "F",
 		baseStats: {hp: 71, atk: 75, def: 75, spa: 120, spd: 80, spe: 109},
 		abilities: {0: "Competitive", H: "Merciless"},
