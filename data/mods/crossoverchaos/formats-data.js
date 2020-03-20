@@ -97,7 +97,7 @@ exports.BattleFormatsData = { //
     },
     dededemasked: {
 		  requiredItem: "Dedede Mask",
-        tier: "V2",
+        tier: "Uber",
 //         doublesTier: "DOU",
     },
     plagueknight: {
@@ -133,11 +133,11 @@ exports.BattleFormatsData = { //
 //         doublesTier: "DOU",
     },
     titandweevil: {
-        tier: "V2",
+        tier: "Uber",
 //         doublesTier: "DOU",
     },
     lordfredrik: {
-        tier: "V2",
+        tier: "Uber",
 //         doublesTier: "DOU",
     },
     stardream: {
@@ -380,11 +380,11 @@ exports.BattleFormatsData = { //
 //         doublesTier: "DOU",
     },
     chaoskin: {
-        tier: "V2",
+        tier: "Uber",
 //         doublesTier: "DOU",
     },
     chaoskinash: {
-        tier: "V2",
+        tier: "Uber",
 //         doublesTier: "DOU",
     },
     captainfalcon: {
@@ -459,7 +459,7 @@ exports.BattleFormatsData = { //
 //         doublesTier: "DOU",
     },
     joker: {
-        tier: "V2",
+        tier: "Uber",
 //         doublesTier: "DOU",
     },
     riki: {
@@ -551,8 +551,8 @@ exports.BattleFormatsData = { //
         tier: "V2",
 //         doublesTier: "DOU",
     },
-    mokou: {
-        tier: "V2",
+    fujiwaranomokou: {
+        tier: "Uber",
 //         doublesTier: "DOU",
     },
     link: {
@@ -572,7 +572,7 @@ exports.BattleFormatsData = { //
 //         doublesTier: "DOU",
     },
     landia: {
-        tier: "V2",
+        tier: "Uber",
 //         doublesTier: "DOU",
     },
     landiaone: {
@@ -695,13 +695,13 @@ exports.BattleFormatsData = { //
 		  tier: "V2",
 	 },
 	 flandrescarlet: {
-		  tier: "V2",
+		  tier: "Uber",
 	 },
 	 zeromus: {
 		  tier: "V2",
 	 },
 	 truezeromus: {
-		  tier: "V2",
+		  tier: "Uber",
 	 },
 	 dharkon: {
 		  tier: "V2",
@@ -827,7 +827,7 @@ exports.BattleFormatsData = { //
 		  tier: "V2",
 	 },
 	 biolizard: {
-		  tier: "V2",
+		  tier: "Uber",
 	 },
 	 finalhazard: {
 		  tier: "Uber",
@@ -939,7 +939,28 @@ exports.BattleFormatsData = { //
 		tier: "V2",
 	},
 	kingprotea: {
+		tier: "AG",
+	},
+	reimuhakurei: {
+		tier: "V2",
+	},
+	orochi: {
+		tier: "V2",
+	},
+	orochitrue: {
 		tier: "Uber",
+	},
+	vortexpillar: {
+		tier: "V2",
+	},
+	stardustpillar: {
+		tier: "V2",
+	},
+	nebulapillar: {
+		tier: "V2",
+	},
+	solarpillar: {
+		tier: "V2",
 	},
 	 walle: {
 		  tier: "EX",
@@ -1048,7 +1069,7 @@ exports.BattleFormatsData = { //
 		  tier: "EX",
 	 },
 	 gigan: {
-		  tier: "EX",
+		  tier: "Uber",
 	 },
 	 anguirus: {
 		  tier: "EX",
@@ -1289,7 +1310,7 @@ absolutely FUCK devil dinosaur and everything he stands for, it's such a pain in
 	},
 	toatahustrength: {
 		requiredItem: "Mask Of Strength",
-		tier: "EX",
+		tier: "Uber",
 	},
 	toatahuwaterbreathing: {
 		requiredItem: "Mask Of Water Breathing",
@@ -1386,5 +1407,26 @@ absolutely FUCK devil dinosaur and everything he stands for, it's such a pain in
 	},
 	naofumiiwatani: {
 		tier: "EX",
+	},
+	orc: {
+		tier: "EX",
+	},
+	orceyeofgruumsh: {
+		tier: "EX",
+	},
+	diobrando: {
+		tier: "EX",
+	},
+	dio: {
+		tier: "EX",
+	},
+	slimerimuru: {
+		tier: "EX",
+	},
+	humanrimuru: {
+		tier: "EX",
+	},
+	demonlordrimuru: {
+		tier: "Uber",
 	},
 };

@@ -10560,7 +10560,7 @@ TMs/Tutors sorted by last generation they carry that status (for kirby, nero, et
 		poisonjab: ["8L1"],
 		sludgewave: ["8L1"],
 	}},
-	melting: {learnsets: {
+	melting: {learnset: {
 		explosion: ["8L1"],
 		yawn: ["8L1"],
 		shadowball: ["8L1"],
@@ -12305,7 +12305,7 @@ TMs/Tutors sorted by last generation they carry that status (for kirby, nero, et
 		healpulse: ["8L1"],
 		lifedew: ["8L1"]
 	}},
-	orga: {learnsets: {
+	orga: {learnset: {
 		destructivemotionattack: ["7L1"],
 		psychicfangs: ["7L1"],
 		psychic: ["7L1"],
@@ -13323,7 +13323,7 @@ TMs/Tutors sorted by last generation they carry that status (for kirby, nero, et
 		lifedew: ["8L1"],
 		healpulse: ["8L1"],
 	}},
-	psylocke: {learnsets: {
+	psylocke: {learnset: {
 		psychicknife: ["8L1"],
 		psioniccharge: ["8L1"],
 		psychic: ["8L1"],
@@ -13359,7 +13359,7 @@ TMs/Tutors sorted by last generation they carry that status (for kirby, nero, et
 		telekinesis: ["8L1"],
 		miracleeye: ["8L1"],
 	}},
-	toatahu: {learnsets: {
+	toatahu: {learnset: {
 		flamingsword: ["8L1"],
 		burnup: ["8L1"],
 		flamethrower: ["8L1"],
@@ -13376,7 +13376,7 @@ TMs/Tutors sorted by last generation they carry that status (for kirby, nero, et
 		recover: ["8L1"],
 		explosion: ["8L1"],
 	}},
-	toatahushielding: {learnsets: {
+	toatahushielding: {learnset: {
 		flamingsword: ["8L1"],
 		burnup: ["8L1"],
 		flamethrower: ["8L1"],
@@ -13394,7 +13394,7 @@ TMs/Tutors sorted by last generation they carry that status (for kirby, nero, et
 		explosion: ["8L1"],
 		kingsshield: ["8L1"],
 	}},
-	toatahu: {learnsets: {
+	toatahu: {learnset: {
 		flamingsword: ["8L1"],
 		burnup: ["8L1"],
 		flamethrower: ["8L1"],
@@ -13412,7 +13412,7 @@ TMs/Tutors sorted by last generation they carry that status (for kirby, nero, et
 		explosion: ["8L1"],
 		laserfocus: ["8L1"],
 	}},
-	toatahuspeed: {learnsets: {
+	toatahuspeed: {learnset: {
 		flamingsword: ["8L1"],
 		burnup: ["8L1"],
 		flamethrower: ["8L1"],
@@ -13430,7 +13430,7 @@ TMs/Tutors sorted by last generation they carry that status (for kirby, nero, et
 		explosion: ["8L1"],
 		extremespeed: ["8L1"],
 	}},
-	toatahulevitation: {learnsets: {
+	toatahulevitation: {learnset: {
 		flamingsword: ["8L1"],
 		burnup: ["8L1"],
 		flamethrower: ["8L1"],
@@ -13448,7 +13448,7 @@ TMs/Tutors sorted by last generation they carry that status (for kirby, nero, et
 		explosion: ["8L1"],
 		flyingpress: ["8L1"],
 	}},
-	toatahustrength: {learnsets: {
+	toatahustrength: {learnset: {
 		flamingsword: ["8L1"],
 		burnup: ["8L1"],
 		flamethrower: ["8L1"],
@@ -13466,7 +13466,7 @@ TMs/Tutors sorted by last generation they carry that status (for kirby, nero, et
 		explosion: ["8L1"],
 		earthquake: ["8L1"],
 	}},
-	toatahu: {learnsets: {
+	toatahuwaterbreathing: {learnset: {
 		flamingsword: ["8L1"],
 		burnup: ["8L1"],
 		flamethrower: ["8L1"],
@@ -13509,7 +13509,7 @@ TMs/Tutors sorted by last generation they carry that status (for kirby, nero, et
 		nastyplot: ["8L1"],
 		switcheroo: ["8L1"],
 	}},
-	santaclaus: {learnsets: {
+	santaclaus: {learnset: {
 		heartylaughter: ["8L1"],
 		wintermagic: ["8L1"],
 		icebeam: ["8L1"],
@@ -13568,7 +13568,7 @@ TMs/Tutors sorted by last generation they carry that status (for kirby, nero, et
 		workup: ["8L1"],
 		secretsword: ["8L1"],
 	}},
-	jackskellington: {learnsets: {
+	jackskellington: {learnset: {
 		trickortreat: ["8L1"],
 		trick: ["8L1"],
 		fireblast: ["8L1"],
@@ -13586,7 +13586,7 @@ TMs/Tutors sorted by last generation they carry that status (for kirby, nero, et
 		present: ["8L1"],
 		fakeout: ["8L1"],
 	}},
-	drdoofenshmirtz: {learnsets: {
+	drdoofenshmirtz: {learnset: {
 		tragicbackstory: ["8L1"],
 		attackinator: ["8L1"],
 		hypervoice: ["8L1"],
@@ -13616,7 +13616,7 @@ TMs/Tutors sorted by last generation they carry that status (for kirby, nero, et
 		drillrun: ["8L1"],
 		megapunch: ["8L1"],
 	}},
-	kenshiro: {learnsets: {
+	kenshiro: {learnset: {
 		musotensei: ["8L1"],
 		closecombat: ["8L1"],
 		jumpkick: ["8L1"],
@@ -13633,7 +13633,7 @@ TMs/Tutors sorted by last generation they carry that status (for kirby, nero, et
 		bulkup: ["8L1"],
 		taunt: ["8L1"],
 	}},
-	sailormoon: {learnsets: {
+	sailormoon: {learnset: {
 		moonblast: ["8L1"],
 		moonlight: ["8L1"],
 		dazzlinggleam: ["8L1"],
@@ -13679,7 +13679,7 @@ TMs/Tutors sorted by last generation they carry that status (for kirby, nero, et
 		thunderwave: ["8L1"],
 		darkpulse: ["8L1"],
 	}},
-	froppy: {learnsets: {
+	froppy: {learnset: {
 		waterfall: ["8L1"],
 		bounce: ["8L1"],
 		superpower: ["8L1"],
@@ -13703,7 +13703,7 @@ TMs/Tutors sorted by last generation they carry that status (for kirby, nero, et
 		uturn: ["8L1"],
 		toxic: ["8L1"],
 	}},
-	mightguy: {learnsets: {
+	mightguy: {learnset: {
 		lowkick: ["8L1"],
 		highjumpkick: ["8L1"],
 		jumpkick: ["8L1"],
@@ -13728,7 +13728,7 @@ TMs/Tutors sorted by last generation they carry that status (for kirby, nero, et
 		daytimetiger: ["8L1"],
 		nightguy: ["8L1"],
 	}},
-	yoda: {learnsets: {
+	yoda: {learnset: {
 		psychic: ["8L1"],
 		psyshock: ["8L1"],
 		futuresight: ["8L1"],
@@ -13748,13 +13748,13 @@ TMs/Tutors sorted by last generation they carry that status (for kirby, nero, et
 		telekinesis: ["8L1"],
 		aeroblast: ["8L1"],
 	}},
-	thechild: {learnsets: {
+	thechild: {learnset: {
 		stockpile: ["8L1"],
 		spitup: ["8L1"],
 		swallow: ["8L1"],
 		splash: ["8L1"],
 	}},
-	scp743: {learnsets: {
+	scp743: {learnset: {
 		sweetscent: ["8L1"],
 		attackorder: ["8L1"],
 		defendorder: ["8L1"],
@@ -13764,7 +13764,7 @@ TMs/Tutors sorted by last generation they carry that status (for kirby, nero, et
 		infestation: ["8L1"],
 		aromatherapy: ["8L1"],
 	}},
-	beatricerappacini: {learnsets: {
+	beatricerappacini: {learnset: {
 		gardenofpoisonousplants: ["8L1"],
 		poisonjab: ["8L1"],
 		sludgebomb: ["8L1"],
