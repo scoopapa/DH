@@ -2128,7 +2128,7 @@ let BattleMovedex = {
 	"rapidsplat": {
 		num: 40065,
 		accuracy: 100,
-		basepower: 15,
+		basePower: 15,
 		category: "Special",
 		desc: "Hits 2-5 times. If Inkling-Squid knocks out an opponent with this move, change to Inkling-Kid. If Inkling-Kid knocks out an opponent with this move, raise speed by 1 stage.",
 		shortDesc: "2-5 hits. If Inkling-Squid gets KO, turn to Kid form. If Inkling-Kid gets KO, +1 Spe.",
@@ -2407,6 +2407,14 @@ let BattleMovedex = {
 		target: "normal",
 		type: "Steel",
 		contestType: "Tough",
+		effect: {
+				duration: 1,
+				onBeforeMovePriority: 8,
+				onBeforeMove(pokemon) {
+					this.add('cant', pokemon, 'Dig', 'Dig');
+					return false;
+				},
+		}
 	},
 	"dig": {
 		num: 91,
@@ -2431,15 +2439,6 @@ let BattleMovedex = {
 			attacker.addVolatile('twoturnmove', defender);
 			return null;
 		},
-		beforeTurnCallback(pokemon) {
-			pokemon.addVolatile('focuspunch');
-		},
-		beforeMoveCallback(pokemon) {
-			if (pokemon.volatiles['focuspunch'] && pokemon.volatiles['focuspunch'].lostFocus) {
-				this.add('cant', pokemon, 'Dig', 'Dig');
-				return true;
-			}
-		},
 		effect: {
 			duration: 2,
 			onImmunity(type, pokemon) {
@@ -2458,7 +2457,12 @@ let BattleMovedex = {
 			},
 			onHit(pokemon, source, move) {
 				if (move.id === 'shovelbash') {
-					pokemon.volatiles['focuspunch'].lostFocus = true;
+					if (this.queue.willMove(pokemon)) {
+						pokemon.addVolatile('shovelbash');
+					} else {
+						pokemon.removeVolatile('dig');
+						pokemon.removeVolatile('twoturnmove');
+					}
 				}
 			},
 		},
