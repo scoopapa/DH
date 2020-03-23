@@ -962,6 +962,21 @@ exports.BattleFormatsData = { //
 	solarpillar: {
 		tier: "V2",
 	},
+	chromedino: {
+		tier: "V2",
+	},
+	ori: {
+		tier: "V2",
+	},
+	orion: {
+		tier: "V2",
+	},
+	oriongrand: {
+		tier: "Uber",
+	},
+	orionartemis: {
+		tier: "V2",
+	},
 	 walle: {
 		  tier: "EX",
 	 },
@@ -1428,5 +1443,17 @@ absolutely FUCK devil dinosaur and everything he stands for, it's such a pain in
 	},
 	demonlordrimuru: {
 		tier: "Uber",
+	},
+	earthchan: {
+		tier: "EX",
+	},
+	alexanderthegreat: {
+		tier: "EX",
+	},
+	iskandar: {
+		tier: "EX",
+	},
+	tenmillionfireflies: {
+		tier: "EX",
 	},
 };
