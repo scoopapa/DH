@@ -135,6 +135,63 @@ cursola: {
 	baseStats: {hp: 60, atk: 95, def: 80, spa: 95, spd: 210, spe: 30},
 	abilities: {0: "Cloud Nine", 1: "Cursed Body", H: "Natural Cure"},
 },
+torkoal: {
+	inherit: true,
+	species: "Torkoal",
+	types: ["Fire", "Water"],
+	baseStats: {hp: 90, atk: 130, def: 120, spa: 95, spd: 100, spe: 70},
+	abilities: {0: "Humidifier"},
+},
+gligar: {
+	inherit: true,
+	species: "Gligar",
+	types: ["Poison", "Dark"],
+	baseStats: {hp: 78, atk: 94, def: 117, spa: 67, spd: 65, spe: 59},
+	abilities: {0: "Hyper Cutter", 1: "Sticky Hold", H: "Prankster"},
+},
+octillery: {
+	inherit: true,
+	species: "Octillery",
+	types: ["Ice"],
+	baseStats: {hp: 88, atk: 88, def: 88, spa: 118, spd: 118, spe: 100},
+	abilities: {0: "Suction Cups", 1: "Sniper", H: "Rain Dish"},
+},
+necrozma: {
+	inherit: true,
+	species: "Necrozma",
+	types: ["Dark", "Psychic"],
+	baseStats: {hp: 97, atk: 113, def: 113, spa: 113, spd: 113, spe: 101},
+	abilities: {0: "Prism Armor", H: "Magic Bounce"},
+},
+dunsparce: {
+	inherit: true,
+	species: "Dunsparce",
+	types: ["Fairy", "Dragon"],
+	baseStats: {hp: 100, atk: 108, def: 75, spa: 98, spd: 125, spe: 70},
+	abilities: {0: "Poison Heal", 1: "Serene Grace", H: "Natural Cure"},
+},
+victreebel: {
+	inherit: true,
+	species: "Victreebel",
+	types: ["Grass", "Dragon"],
+	baseStats: {hp: 100, atk: 135, def: 80, spa: 130, spd: 80, spe: 95},
+	abilities: {0: "Chlorophyll", 1: "Mold Breaker", H: "Stench"},
+},
+runerigus: {
+	inherit: true,
+	species: "Runerigus",
+	types: ["Rock", "Electric"],
+	baseStats: {hp: 80, atk: 70, def: 105, spa: 145, spd: 105, spe: 110},
+	abilities: {0: "Grounding", 1: "Heatproof", H: "Lightning Rod"},
+},
+aerodactyl: {
+	inherit: true,
+	species: "Aerodactyl",
+	types: ["Rock", "Flying"],
+	baseStats: {hp: 100, atk: 60, def: 105, spa: 135, spd: 105, spe: 110},
+	abilities: {0: "Sand Stream", 1: "Pressure", H: "Sand Force"},
+},
+
 };
 
 exports.BattlePokedex = BattlePokedex;
