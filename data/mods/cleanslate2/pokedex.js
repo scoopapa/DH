@@ -72,11 +72,14 @@ let BattlePokedex = {
 		eggGroups: ["Water1"],
 	},
 	snorlaxgmax: {
-		inherit: true,
+		num: 143,
 		species: "Snorlax-Gmax",
 		types: ["Grass", "Ground"],
 		baseStats: {hp: 150, atk: 100, def: 90, spa: 70, spd: 90, spe: 40},
 		abilities: {0: "Harvest", 1: "Ripen", H: "Thick Fat"},
+		genderRatio: {M: 0.875, F: 0.125},
+		heightm: 2.1,
+		weightkg: 460,
 	},
 	walrein: {
 		num: 365,
