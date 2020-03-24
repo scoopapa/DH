@@ -1551,6 +1551,7 @@ let BattleLearnsets = {
 		wrap: ["7L11", "7L1", "7V", "6L1", "5L1", "4L1", "3L1"],
 		wringout: ["7L58", "6L47", "5L47", "4L47"],
 		strengthsap: ["7L1"],
+		weatherball: ["7L1"],
 	}},
 	runerigus: {learnset: {
 		allyswitch: ["8M"],
