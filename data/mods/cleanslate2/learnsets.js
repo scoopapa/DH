@@ -1511,6 +1511,7 @@ let BattleLearnsets = {
 		naturalgift: ["4M"],
 		naturepower: ["7M", "6M"],
 		poisonjab: ["7M", "7L47"],
+		powerwhip: ["7M", "7L47"],
 		poisonpowder: ["7L15", "7V", "6L15", "5L15", "4L15", "3L17"],
 		protect: ["7M", "7V", "6M", "5M", "4M", "3M"],
 		rage: ["7V"],
