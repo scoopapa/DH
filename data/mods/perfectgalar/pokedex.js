@@ -52,6 +52,11 @@ let BattlePokedex = {
 		abilities: {0: "Levitate", 1: "Motor Drive", H: "Reckless"},
 		baseStats: {hp: 50, atk: 50, def: 85, spa: 101, spd: 85, spe: 121},
 	},
+	weezinggalar: {
+		inherit: true,
+		baseStats: {hp: 75, atk: 80, def: 120, spa: 105, spd: 70, spe: 50},
+		abilities: {0: "Levitate", 1: "Neutralizing Gas", H: "Corrosion"},
+	},
 };
 
 exports.BattlePokedex = BattlePokedex;

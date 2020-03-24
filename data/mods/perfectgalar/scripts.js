@@ -52,6 +52,12 @@ exports.BattleScripts = {
 		
 		// Silvally
 		this.modData('Learnsets', 'silvally').learnset.recover = ['7M'];
+		
+		// Weezing-Galar
+		this.modData('Learnsets', 'weezinggalar').learnset.toxicthread = ['7M'];
+		this.modData('Learnsets', 'weezinggalar').learnset.banefulbunker = ['7M'];
+		this.modData('Learnsets', 'weezinggalar').learnset.acidarmor = ['7M'];
+		this.modData('Learnsets', 'weezinggalar').learnset.wonderroom = ['7M'];
 	},
 	//Modded functions
 	canDynamax(pokemon, skipChecks) {
