@@ -6,7 +6,7 @@ exports.BattleMovedex = {
 		accuracy: 100,
 		basePower: 85,
 		basePowerCallback(pokemon, target, move) {
-			if (target.newlySwitched || this.willMove(target)) {
+			if (target.newlySwitched || this.queue.willMove(target)) {
 				this.debug('Sheepious Rend damage boost');
 				return move.basePower * 2;
 			}
@@ -16,7 +16,7 @@ exports.BattleMovedex = {
 		category: "Physical",
 		desc: "If the user moves before the target, this move's power is doubled.",
 		shortDesc: "Double power if the user moves first.",
-		id: "Sheepiousrend",
+		id: "sheepiousrend",
 		isViable: true,
 		name: "Sheepious Rend",
 		pp: 10,
