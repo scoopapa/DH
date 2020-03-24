@@ -8,6 +8,7 @@ let BattlePokedex = {
 		types: ["Poison", "Fairy"],
 		baseStats: {hp: 89, atk: 113, def: 154, spa: 106, spd: 76, spe: 82},
 		abilities: {0: "Neutralizing Gas", H: "Misty Surge"},
+		prevo: null,
 	},
 	orbeetle: {
 		inherit: true,
@@ -15,6 +16,7 @@ let BattlePokedex = {
 		types: ["Psychic", "Electric"],
 		baseStats: {hp: 72, atk: 52, def: 150, spa: 69, spd: 164, spe: 123},
 		abilities: {0: "Swarm", 1: "Frisk", H: "Trace"},
+		prevo: null,
 	},
 	stonjourner: {
 		inherit: true,
