@@ -76,6 +76,43 @@ let BattleScripts = {
 		this.modData('Learnsets', 'appletun').learnset.earthquake = ['7L1'];
 		this.modData('Learnsets', 'appletun').learnset.flamethrower = ['7L1'];
 		this.modData('Learnsets', 'appletun').learnset.sludgebomb = ['7L1'];
+		
+		this.modData('Learnsets', 'electivire').learnset.bulkup = ['7L1'];
+		this.modData('Learnsets', 'electivire').learnset.closecombat = ['7L1'];
+		this.modData('Learnsets', 'electivire').learnset.knockoff = ['7L1'];
+		this.modData('Learnsets', 'electivire').learnset.meteormash = ['7L1'];
+
+		this.modData('Learnsets', 'yanmega').learnset.dracometeor = ['7L1'];
+		this.modData('Learnsets', 'yanmega').learnset.dragonpulse = ['7L1'];
+		this.modData('Learnsets', 'yanmega').learnset.focusblast = ['7L1'];
+
+		this.modData('Learnsets', 'dusknoir').learnset.bulkup = ['7L1'];
+		this.modData('Learnsets', 'dusknoir').learnset.drainpunch = ['7L1'];
+		this.modData('Learnsets', 'dusknoir').learnset.knockoff = ['7L1'];
+
+		this.modData('Learnsets', 'sudowoodo').learnset.leechseed = ['7L1'];
+		this.modData('Learnsets', 'sudowoodo').learnset.superpower = ['7L1'];
+		this.modData('Learnsets', 'sudowoodo').learnset.synthesis = ['7L1'];
+
+		this.modData('Learnsets', 'oranguru').learnset.earthpower = ['7L1'];
+		this.modData('Learnsets', 'oranguru').learnset.hypervoice = ['7L1'];
+		this.modData('Learnsets', 'oranguru').learnset.slackoff = ['7L1'];
+		this.modData('Learnsets', 'oranguru').learnset.teleport = ['7L1'];
+
+		this.modData('Learnsets', 'bellossom').learnset.aromatherapy = ['7L1'];
+		this.modData('Learnsets', 'bellossom').learnset.hypervoice = ['7L1'];
+		this.modData('Learnsets', 'bellossom').learnset.mysticalfire = ['7L1'];
+		this.modData('Learnsets', 'bellossom').learnset.uturn = ['7L1'];
+
+		this.modData('Learnsets', 'garbodor').learnset.flashcannon = ['7L1'];
+		this.modData('Learnsets', 'garbodor').learnset.recover = ['7L1'];
+		this.modData('Learnsets', 'garbodor').learnset.steelbeam = ['7L1'];
+
+		this.modData('Learnsets', 'druddigon').learnset.dragondance = ['7L1'];
+		this.modData('Learnsets', 'druddigon').learnset.recover = ['7L1'];
+
+		this.modData('Learnsets', 'flygon').learnset.powergem = ['7L1'];
+		this.modData('Learnsets', 'flygon').learnset.sludgewave = ['7L1'];
 	},
 };
 
