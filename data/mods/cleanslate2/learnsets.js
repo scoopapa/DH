@@ -118,6 +118,7 @@ let BattleLearnsets = {
 		uturn: ["8M"],
 		wonderroom: ["8M"],
 		zenheadbutt: ["8M"],
+		recover: ["8M"],
 	}},
 	stonjourner: {learnset: {
 		ancientpower: ["8E"],
