@@ -28,7 +28,7 @@ let BattleAbilities = {
 				if (target.volatiles['substitute']) {
 					this.add('-immune', target);
 				} else {
-					this.target.addPseudoWeather('fairylock');
+					target.addVolatile('fairylock');
 				}
 			}
 		},
