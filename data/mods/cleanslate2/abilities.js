@@ -29,6 +29,7 @@ let BattleAbilities = {
 					this.add('-immune', target);
 				} else {
 					target.addVolatile('fairylock');
+					if( pokemon.switchFlag ) return;
 					target.volatiles['fairylock'].duration = 1;
 				}
 			}

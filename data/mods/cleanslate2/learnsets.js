@@ -119,6 +119,7 @@ let BattleLearnsets = {
 		wonderroom: ["8M"],
 		zenheadbutt: ["8M"],
 		recover: ["8M"],
+		infestation: ["8M"],
 	}},
 	stonjourner: {learnset: {
 		ancientpower: ["8E"],
