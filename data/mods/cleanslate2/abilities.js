@@ -34,6 +34,20 @@ let BattleAbilities = {
 				}
 			}
 		},
+		onUpdate(pokemon){
+			if( pokemon.activeTurns ){
+				for (const target of pokemon.side.foe.active) {
+					target.removeVolatiles('fairylock');
+				}
+			}
+		},
+		onEnd(pokemon){
+			if( pokemon.activeTurns ){
+				for (const target of pokemon.side.foe.active) {
+					target.removeVolatiles('fairylock');
+				}
+			}
+		},
 		id: "zephyr",
 		name: "Zephyr",
 		rating: 3.5,
