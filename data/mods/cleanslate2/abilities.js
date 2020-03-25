@@ -29,6 +29,7 @@ let BattleAbilities = {
 					this.add('-immune', target);
 				} else {
 					target.addVolatile('fairylock');
+					target.volatiles['fairylock'].duration = 1;
 				}
 			}
 		},
