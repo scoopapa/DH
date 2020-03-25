@@ -2063,6 +2063,23 @@ exports.BattleAbilities = {
     id: "voiceless",
     name: "voiceless"
   },
+	trashcompaction: {
+    desc:
+      "On switch-in, removes hazards. The user is also immune to all hazards",
+    shortDesc:
+      "On switch-in, removes hazards. User is immune to such",
+    onStart(pokemon) {
+      let sideConditions = ['spikes', 'toxicspikes', 'stealthrock', 'stickyweb', 'gmaxsteelsurge', 'mine'];
+		 //Hazard immunity has to be manually added in moves.js by customizing the respective moves above to simply do nothing if the user holds this ability
+      for (const condition of sideConditions) {
+        if (pokemon.hp && pokemon.side.removeSideCondition(condition)) {
+          this.add('-sideend', pokemon.side, this.dex.getEffect(condition).name, '[from] ability: Trash Compaction', '[of] ' + pokemon);
+        }
+      }
+    },
+    id: "trashcompaction",
+    name: "Trash Compaction"
+},
   aimforthehead: {
     desc:
       "If this Pokemon is at full HP, it survives one hit with at least 1 HP. OHKO moves fail when used against this Pokemon.",
