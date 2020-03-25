@@ -17,34 +17,23 @@ let BattleAbilities = {
 	"zephyr": {
 		desc: "On switch-in, this Pokemon lowers the Attack of adjacent opposing Pokemon by 1 stage. Inner Focus, Oblivious, Own Tempo, Scrappy, and Pokemon behind a substitute are immune.",
 		shortDesc: "On switch-in, this Pokemon applies the Fairy Lock status to the target.",
-		onStart(pokemon) {
-			let activated = false;
-			for (const target of pokemon.side.foe.active) {
-				if (!target || !this.isAdjacent(target, pokemon)) continue;
-				if (!activated) {
-					this.add('-ability', pokemon, 'Zephyr', 'boost');
-					activated = true;
-				}
-				if (target.volatiles['substitute']) {
-					this.add('-immune', target);
-				} else {
-					target.addVolatile('fairylock');
-				}
+		onStart( pokemon ){
+			pokemon.zephyr = true;
+		}
+		onFoeTrapPokemon(pokemon) {
+			if (!pokemon.hasAbility('shadowtag') && this.isAdjacent(pokemon, this.effectData.target)) {
+				pokemon.tryTrap(true);
+			}
+		},
+		onFoeMaybeTrapPokemon(pokemon, source) {
+			if (!source) source = this.effectData.target;
+			if (!source || !this.isAdjacent(pokemon, source)) return;
+			if (!pokemon.hasAbility('shadowtag')) {
+				pokemon.maybeTrapped = true;
 			}
 		},
 		onBeforeMove(pokemon){
-			if( pokemon.activeTurns ){
-				for (const target of pokemon.side.foe.active) {
-					target.removeVolatiles('fairylock');
-				}
-			}
-		},
-		onEnd(pokemon){
-			if( pokemon.activeTurns ){
-				for (const target of pokemon.side.foe.active) {
-					target.removeVolatiles('fairylock');
-				}
-			}
+			pokemon.zephyr = false;
 		},
 		id: "zephyr",
 		name: "Zephyr",
