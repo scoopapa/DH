@@ -67,7 +67,7 @@ let BattleAbilities = {
 			if (this.field.isWeather('raindance')) {
 				if (move.type === 'Fire') {
 					this.debug('Humidifier boost');
-					return this.chainModify([0x14CD, 0x1000]);
+					return this.chainModify(1.5);
 				}
 			}
 		},
