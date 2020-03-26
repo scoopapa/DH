@@ -34,7 +34,6 @@ let BattlePokedex = {
 		abilities: {0: "Drought"},
 		height: 0.5,
 		weightkg: 9.3,
-		prevo: null,
 		eggGroups: ["Fairy", "Grass"],
 	},
 	zacian: {
@@ -59,7 +58,6 @@ let BattlePokedex = {
 		abilities: {0: "Stakeout", 1: "Adaptability"},
 		height: 0.7,
 		weightkg: 14.2,
-		prevo: null,
 		eggGroups: ["Field"],
 	},
 	seismitoad: {
@@ -70,7 +68,6 @@ let BattlePokedex = {
 		abilities: {0: "Swift Swim", 1: "Water Absorb", H: "Flare Boost"},
 		height: 1.5,
 		weightkg: 62,
-		prevo: null,
 		eggGroups: ["Water1"],
 	},
 	snorlaxgmax: {
@@ -177,7 +174,6 @@ let BattlePokedex = {
 		types: ["Grass", "Dragon"],
 		baseStats: {hp: 100, atk: 135, def: 80, spa: 130, spd: 80, spe: 95},
 		abilities: {0: "Chlorophyll", 1: "Mold Breaker", H: "Stench"},
-		prevo: null,
 	},
 	runerigus: {
 		inherit: true,
@@ -194,7 +190,6 @@ let BattlePokedex = {
 		baseStats: {hp: 100, atk: 60, def: 105, spa: 135, spd: 105, spe: 110},
 		abilities: {0: "Sand Stream", 1: "Pressure", H: "Sand Force"},
 	},
-
 };
 
 exports.BattlePokedex = BattlePokedex;
