@@ -4,54 +4,64 @@
 exports.BattleScripts = {
 	init() {
 		// Butterfree
-		this.modData('Learnsets', 'butterfree').learnset.dazzlinggleam = ['7M'];
-		this.modData('Learnsets', 'butterfree').learnset.defog = ['7M'];
-		this.modData('Learnsets', 'butterfree').learnset.moonblast = ['7M'];
+		this.modData('Learnsets', 'butterfree').learnset.dazzlinggleam = ['8L1'];
+		this.modData('Learnsets', 'butterfree').learnset.defog = ['8L1'];
+		this.modData('Learnsets', 'butterfree').learnset.moonblast = ['8L1'];
 		
 		// Kingler
-		this.modData('Learnsets', 'kingler').learnset.closecombat = ['7M'];
-		this.modData('Learnsets', 'kingler').learnset.earthquake = ['7M'];
-		this.modData('Learnsets', 'kingler').learnset.stoneedge = ['7M'];
+		this.modData('Learnsets', 'kingler').learnset.closecombat = ['8L1'];
+		this.modData('Learnsets', 'kingler').learnset.earthquake = ['8L1'];
+		this.modData('Learnsets', 'kingler').learnset.stoneedge = ['8L1'];
 		
 		// Seaking
-		this.modData('Learnsets', 'seaking').learnset.aquajet = ['7M'];
-		this.modData('Learnsets', 'seaking').learnset.drillpeck = ['7M'];
+		this.modData('Learnsets', 'seaking').learnset.aquajet = ['8L1'];
+		this.modData('Learnsets', 'seaking').learnset.drillpeck = ['8L1'];
 		
 		// Garbodor
-		this.modData('Learnsets', 'garbodor').learnset.earthquake = ['7M'];
-		this.modData('Learnsets', 'garbodor').learnset.irontail = ['7M'];
-		this.modData('Learnsets', 'garbodor').learnset.knockoff = ['7M'];
-		this.modData('Learnsets', 'garbodor').learnset.stealthrock = ['7M'];
+		this.modData('Learnsets', 'garbodor').learnset.earthquake = ['8L1'];
+		this.modData('Learnsets', 'garbodor').learnset.irontail = ['8L1'];
+		this.modData('Learnsets', 'garbodor').learnset.knockoff = ['8L1'];
+		this.modData('Learnsets', 'garbodor').learnset.stealthrock = ['8L1'];
 		
 		// Pikachu
 		delete this.modData('Learnsets', 'pikachu').learnset.extremespeed;
 		delete this.modData('Learnsets', 'pikachu').learnset.nastyplot;
 		
 		// Flapple
-		this.modData('Learnsets', 'flapple').learnset.crunch = ['7M'];
-		this.modData('Learnsets', 'flapple').learnset.refresh = ['7M'];
+		this.modData('Learnsets', 'flapple').learnset.crunch = ['8L1'];
+		this.modData('Learnsets', 'flapple').learnset.refresh = ['8L1'];
 		
 		// Appletun
-		this.modData('Learnsets', 'appletun').learnset.calmmind = ['7M'];
+		this.modData('Learnsets', 'appletun').learnset.calmmind = ['8L1'];
 		
 		// Qwilfish
-		this.modData('Learnsets', 'qwilfish').learnset.recover = ['7M'];
+		this.modData('Learnsets', 'qwilfish').learnset.recover = ['8L1'];
 		
 		// Pincurchin
-		this.modData('Learnsets', 'pincurchin').learnset.spikyshield = ['7M'];
-		this.modData('Learnsets', 'pincurchin').learnset.taunt = ['7M'];
-		this.modData('Learnsets', 'pincurchin').learnset.voltswitch = ['7M'];
+		this.modData('Learnsets', 'pincurchin').learnset.spikyshield = ['8L1'];
+		this.modData('Learnsets', 'pincurchin').learnset.taunt = ['8L1'];
+		this.modData('Learnsets', 'pincurchin').learnset.voltswitch = ['8L1'];
 		
 		// Rotom
-		this.modData('Learnsets', 'rotom').learnset.aurasphere = ['7M'];
-		this.modData('Learnsets', 'rotom').learnset.rapidspin = ['7M'];
-		this.modData('Learnsets', 'rotom').learnset.sludgebomb = ['7M'];
+		this.modData('Learnsets', 'rotom').learnset.aurasphere = ['8L1'];
+		this.modData('Learnsets', 'rotom').learnset.rapidspin = ['8L1'];
+		this.modData('Learnsets', 'rotom').learnset.sludgebomb = ['8L1'];
 		
 		// Charizard
-		this.modData('Learnsets', 'charizard').learnset.closecombat = ['7M'];
+		this.modData('Learnsets', 'charizard').learnset.closecombat = ['8L1'];
 		
 		// Silvally
-		this.modData('Learnsets', 'silvally').learnset.recover = ['7M'];
+		this.modData('Learnsets', 'silvally').learnset.recover = ['8L1'];
+		
+		// Weezing-Galar
+		this.modData('Learnsets', 'weezinggalar').learnset.toxicthread = ['8L1'];
+		this.modData('Learnsets', 'weezinggalar').learnset.banefulbunker = ['8L1'];
+		this.modData('Learnsets', 'weezinggalar').learnset.acidarmor = ['8L1'];
+		this.modData('Learnsets', 'weezinggalar').learnset.wonderroom = ['8L1'];
+		this.modData('Learnsets', 'weezinggalar').learnset.sunnyday = null;
+		
+		// Gloom
+		this.modData('Learnsets', 'gloom').learnset.toxicspikes = ['8M'];
 	},
 	//Modded functions
 	canDynamax(pokemon, skipChecks) {

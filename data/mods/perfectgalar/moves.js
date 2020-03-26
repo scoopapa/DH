@@ -1,6 +1,57 @@
 'use strict';
 
 exports.BattleMovedex = {
+	"doubleironbash": {
+		num: 742,
+		accuracy: 100,
+		basePower: 60,
+		category: "Physical",
+		desc: "Hits twice. If the first hit breaks the target's substitute, it will take damage for the second hit. Has a 30% chance to flinch the target.",
+		shortDesc: "Hits twice. 30% chance to flinch.",
+		id: "doubleironbash",
+		isViable: true,
+		name: "Double Iron Bash",
+		pp: 5,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1, punch: 1},
+		multihit: 2,
+		target: "normal",
+		type: "Steel",
+		zMovePower: 180,
+		gmaxPower: 140,
+		contestType: "Clever",
+	},
+	"smackdown": {
+		inherit: true,
+		basePower: 70,
+		flags: {protect: 1, mirror: 1, nonsky: 1},
+		volatileStatus: 'smackdown',
+		onBasePower(basePower, source, target, move) {
+			let applies = false;
+			if (pokemon.hasType('Flying') || pokemon.hasAbility('levitate')) applies = true;
+			if (pokemon.hasItem('ironball') || pokemon.volatiles['ingrain'] || this.field.getPseudoWeather('gravity')) applies = false;
+			if (pokemon.removeVolatile('fly') || pokemon.removeVolatile('bounce')) {
+				applies = true;
+				this.queue.cancelMove(pokemon);
+				pokemon.removeVolatile('twoturnmove');
+			}
+			if (pokemon.volatiles['magnetrise']) {
+				applies = true;
+				delete pokemon.volatiles['magnetrise'];
+			}
+			if (pokemon.volatiles['telekinesis']) {
+				applies = true;
+				delete pokemon.volatiles['telekinesis'];
+			}
+			if (!applies) return basePower;
+			target.addVolatile( 'smackdown' );
+			return this.chainModify(1.5);
+		},
+		secondary: null,
+		target: "normal",
+		type: "Rock",
+		contestType: "Tough",
+	},
 	"fishiousrend": {
 		inherit: true,
 		flags: {contact: 1, protect: 1, mirror: 1},
