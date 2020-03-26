@@ -4599,7 +4599,7 @@ does marvel's big ol mutant trex exist? who knows
 	},
 	demonlordrimuru: {
 		num: 7000086,
-		species: "Demon Lord Rimuru"
+		species: "Demon Lord Rimuru",
 		types: ["Water", "Dark"],
 		gender: "N",
 		baseStats: {hp: 110, atk: 70, def: 120, spa: 110, spd: 120, spe: 100},
