@@ -828,50 +828,12 @@ exports.BattleAbilities = {
   swordofswords: {
     shortDesc:
       "This Pokemon deals x1.33 damage with slash-based moves and takes x0.667 damage from slash-based moves.",
-    onModifyMovePriority: -1,
-    onAnyModifyMove(move, pokemon) {
-      if (
-        [
-          "sacredsword",
-          "leafblade",
-          "cut",
-          "nightslash",
-          "crosspoison",
-          "slash",
-          "razorwind",
-          "airslash",
-          "furycutter",
-          "falseswipe",
-          "psychocut",
-          "secretsword",
-          "xscissor",
-          "swordrainbeta",
-          "machtornado",
-          "solarblade",
-          "invisibleair",
-          "foilflourish",
-          "zsaber",
-          "risingphoenix",
-          "chargedsaber",
-          "dashslash",
-          "greatslash",
-          "cycloneslash",
-          "swordofhisou",
-          "excaliburswordofpromisedvictory",
-          "gladiusanusblauserium",
-          "rosaichthys",
-          "underworldkingslash",
-          "laevateinn",
-          "demonicrend"
-        ].includes(move.id)
-      ) {
-        move.swordOfSwordsBoosted = true;
-      }
-    },
+    onBasePowerPriority: 8,
+    onAnyBasePower(basePower, attacker, defender, move) {
     onBasePowerPriority: 8,
     onAnyBasePower(basePower, attacker, defender, move) {
       if (
-        move.swordOfSwordsBoosted &&
+        move.flags['mystery'] &&
         [attacker, defender].includes(this.effectData.target)
       ) {
         this.debug("Sword of Swords - Altering damage taken.");
@@ -2046,12 +2008,12 @@ exports.BattleAbilities = {
     name: "Cursed"
   },
   voiceless: {
-    shortDesc: "Punching moves 1.5x power, sound moves Physical.",
+    shortDesc: "Punching moves 1.2x power, sound moves Physical.",
     onBasePowerPriority: 8,
     onBasePower(basePower, attacker, defender, move) {
-      if (move.flags["sound"]) {
+      if (move.flags["punch"]) {
         this.debug("voiceless boost");
-        return this.chainModify(1.5);
+        return this.chainModify(1.2);
       }
     },
     onModifyMove(move) {
@@ -2060,6 +2022,13 @@ exports.BattleAbilities = {
         delete move.flags["sound"];
       }
     },
+		onBeforeMovePriority: 9,
+		onBeforeMove(pokemon) {
+			if (move.flags["sound"] && move.category == "Status") {
+				this.add('cant', pokemon, 'ability: voiceless');
+				return false;
+			}
+		},
     id: "voiceless",
     name: "voiceless"
   },
@@ -2105,7 +2074,120 @@ exports.BattleAbilities = {
     },
     id: "aimforthehead",
     name: "Aim For The Head",
-    rating: 3,
-    num: 5
   }
+	"charisma": {
+		shortDesc: "This Pokemon's allies have the base power of their moves multiplied by 1.3.",
+		onAllyBasePowerPriority: 8,
+		onAllyBasePower(basePower, attacker, defender, move) {
+			if (attacker !== this.effectData.target) {
+				this.debug('Charisma boost');
+				return this.chainModify([0x14CD, 0x1000]);
+			}
+		},
+		id: "charisma",
+		name: "Charisma",
+	},
+  masterchampion: {
+    shortDesc:
+      "This Pokemon deals x1.33 damage with punch-based moves and takes x0.667 damage from punch-based moves.",
+    onBasePowerPriority: 8,
+    onAnyBasePower(basePower, attacker, defender, move) {
+      if (
+        if (move.flags['punch']) &&
+        [attacker, defender].includes(this.effectData.target)
+      ) {
+        this.debug("Master Champion - Altering damage taken.");
+        return this.chainModify([
+          defender === this.effectData.target ? 0x0aac : 0x1547,
+          0x1000
+        ]);
+      }
+    },
+    id: "masterchampion",
+    name: "Master Champion"
+  },
+	"breathoftheearth": {
+		desc: "This Pokemon is immune to Water-type moves and restores 1/4 of its maximum HP, rounded down, when hit by a Water-type move.",
+		shortDesc: "This Pokemon heals 1/4 of its max HP when hit by Water moves; Water immunity.",
+		onStart(pokemon) {
+			this.add('-ability', pokemon, 'Breath of the Earth');
+		},
+		onTryHit(target, source, move) {
+			if (target !== source && move.type === 'Ground' || move.type === 'Rock') {
+				return null;
+			}
+		},
+		/* TODO: add groundedness, also do the summon earth spirit thing whenever that's added */
+		id: "breathoftheearth",
+		name: "Breath of the Earth",
+	},
+	"affectionofthegoddess": {
+		desc: "This Pokemon's damaging moves become multi-hit moves that hit twice. The second hit has its damage quartered. Does not affect multi-hit moves or moves that have multiple targets.",
+		shortDesc: "This Pokemon's damaging moves hit twice. The second hit has its damage quartered.",
+		onPrepareHit(source, target, move) {
+			if (['iceball', 'rollout'].includes(move.id)) return;
+			if (move.category !== 'Status' && !move.selfdestruct && !move.multihit && !move.flags['charge'] && !move.spreadHit && !move.isZ) {
+				move.multihit = 2;
+				move.multihitType = 'parentalbond';
+			}
+		},
+		onBasePowerPriority: 8,
+		onBasePower(basePower, pokemon, target, move) {
+			if (move.multihitType === 'parentalbond' && move.hit > 1) return this.chainModify(0.25);
+		},
+		onSourceModifySecondaries(secondaries, target, source, move) {
+			if (move.multihitType === 'parentalbond' && move.id === 'secretpower' && move.hit < 2) {
+				// hack to prevent accidentally suppressing King's Rock/Razor Fang
+				return secondaries.filter(effect => effect.volatileStatus === 'flinch');
+			}
+		},
+		id: "affectionofthegoddess",
+		name: "Affection of the Goddess",
+	},
+	"affectionofthegoddess": {
+		desc: "This Pokemon's damaging moves become multi-hit moves that hit twice. The second hit has its damage quartered. Does not affect multi-hit moves or moves that have multiple targets.",
+		shortDesc: "This Pokemon's damaging moves hit twice. The second hit has its damage quartered.",
+		onPrepareHit(source, target, move) {
+			if (['iceball', 'rollout'].includes(move.id)) return;
+			if (move.category !== 'Status' && !move.selfdestruct && !move.multihit && !move.flags['charge'] && !move.spreadHit && !move.isZ) {
+				move.multihit = 2;
+				move.multihitType = 'parentalbond';
+			}
+		},
+		onBasePowerPriority: 8,
+		onBasePower(basePower, pokemon, target, move) {
+			if (move.multihitType === 'parentalbond' && move.hit > 1) return this.chainModify(0.25);
+		},
+		onSourceModifySecondaries(secondaries, target, source, move) {
+			if (move.multihitType === 'parentalbond' && move.id === 'secretpower' && move.hit < 2) {
+				// hack to prevent accidentally suppressing King's Rock/Razor Fang
+				return secondaries.filter(effect => effect.volatileStatus === 'flinch');
+			}
+		},
+		id: "affectionofthegoddess",
+		name: "Affection of the Goddess",
+	},
+	"swarmingminions": {
+		desc: "This Pokemon's damaging moves become multi-hit moves that hit twice. The second hit has its damage quartered. Does not affect multi-hit moves or moves that have multiple targets.",
+		shortDesc: "This Pokemon's damaging moves hit twice. The second hit has its damage quartered.",
+		onPrepareHit(source, target, move) {
+			if (['iceball', 'rollout'].includes(move.id)) return;
+			if (move.category !== 'Status' && !move.selfdestruct && !move.multihit && !move.flags['charge'] && !move.spreadHit && !move.isZ) {
+				move.multihit = 2;
+				move.multihitType = 'parentalbond';
+			}
+		},
+		onBasePowerPriority: 8,
+		onBasePower(basePower, pokemon, target, move) {
+			if (move.multihitType === 'parentalbond' && move.hit > 1) return this.chainModify(0.25);
+		},
+		onSourceModifySecondaries(secondaries, target, source, move) {
+			if (move.multihitType === 'parentalbond' && move.id === 'secretpower' && move.hit < 2) {
+				// hack to prevent accidentally suppressing King's Rock/Razor Fang
+				return secondaries.filter(effect => effect.volatileStatus === 'flinch');
+			}
+		},
+		id: "swarmingminions",
+		name: "Swarming Minions",
+	},
 };

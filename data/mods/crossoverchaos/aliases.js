@@ -44,7 +44,6 @@ let BattleAliases = {
 	"presidenthaltmann": "Haltmann",
 	"queensectonia": "Sectonia",
 	"soulofsectonia": "Sectonia-Soul",
-	"tamamo": "Tamamo-no-Mae",
 	"casko": "Tamamo-no-Mae",
 	"caster": "Tamamo-no-Mae",
 	"castertamamo": "Tamamo-no-Mae",
