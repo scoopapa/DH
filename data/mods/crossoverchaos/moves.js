@@ -2785,7 +2785,7 @@ let BattleMovedex = {
 		accuracy: 100,
 		basePower: 40,
 		category: "Special",
-		desc: "Hits 1 to 3 times. idk how the probabilities work. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times. 10% chance to paralyze per hit.",
+		desc: "Hits one to three times. idk how the probabilities work. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit three times. 10% chance to paralyze per hit.",
 		shortDesc: "Hits 1-3 times in one turn. 10% paralysis per hit.",
 		id: "heartblast",
 		isViable: true,
@@ -2826,6 +2826,28 @@ let BattleMovedex = {
 		type: "Normal",
 		zMoveEffect: 'heal',
 		contestType: "Cute",
+	},
+	"ninemoons": {
+		num: 40092,
+		accuracy: 100,
+		basePower: 12,
+		category: "Special",
+		desc: "Hits nine times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits.",
+		shortDesc: "Hits 9 times in one turn.",
+		id: "ninemoons",
+		isViable: true,
+		name: "Nine Moons",
+		pp: 15,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		multihit: 9,
+		secondary: null,
+		target: "normal",
+		type: "Rock",
+		zMovePower: 185,
+		gmaxPower: 140,
+		contestType: "Beautiful",
+	},
 	"suicideride": {
 		num: 50001,
 		accuracy: 100,
@@ -3041,6 +3063,89 @@ let BattleMovedex = {
 		},
 		target: "normal",
 		type: "Fighting",
+		contestType: "Cute",
+	},
+	"vaporizingfreeze": {
+		num: 50009,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "The user is protected from non-Fire contact attacks made by other Pokemon during this turn, and Pokemon making contact with the user are frozen. This move has a 1/X chance of being successful, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails, if the user's last move used is not Baneful Bunker, Detect, Endure, King's Shield, Obstruct, Protect, Quick Guard, Spiky Shield, or Wide Guard, or if it was one of those moves and the user's protection was broken. Fails if the user moves last this turn.",
+		shortDesc: "Protects from non-Fire contact moves. Contact: freeze.",
+		id: "vaporizingfreeze",
+		isViable: true,
+		name: "Vaporizing Freeze",
+		pp: 10,
+		priority: 4,
+		flags: {},
+		stallingMove: true,
+		volatileStatus: 'vaporizingfreeze',
+		onTryHit(target, source, move) {
+			return !!this.queue.willAct() && this.runEvent('StallMove', target);
+		},
+		onHit(pokemon) {
+			pokemon.addVolatile('stall');
+		},
+		effect: {
+			duration: 1,
+			onStart(target) {
+				this.add('-singleturn', target, 'move: Protect');
+			},
+			onTryHitPriority: 3,
+			onTryHit(target, source, move) {
+				if (!move.flags['contact'] || move.type === 'Fire') {
+					return;
+				}
+				if (!move.flags['protect']) {
+					if (move.isZ || move.isMax) target.getMoveHitData(move).zBrokeProtect = true;
+					return;
+				}
+				if (move.smartTarget) {
+					move.smartTarget = false;
+				} else {
+					this.add('-activate', target, 'move: Protect');
+				}
+				let lockedmove = source.getVolatile('lockedmove');
+				if (lockedmove) {
+					// Outrage counter is reset
+					if (source.volatiles['lockedmove'].duration === 2) {
+						delete source.volatiles['lockedmove'];
+					}
+				}
+				if (move.flags['contact']) {
+					source.trySetStatus('frz', target);
+				}
+				return this.NOT_FAIL;
+			},
+			onHit(target, source, move) {
+				if (move.isZPowered && move.flags['contact'] && !move.type === 'Fire') {
+					source.trySetStatus('frz', target);
+				}
+			},
+		},
+		secondary: null,
+		target: "self",
+		type: "Ice",
+		zMoveBoost: {def: 1},
+		contestType: "Smart",
+	},
+	"orbitout": {
+		num: 50010,
+		accuracy: 100,
+		basePower: 80,
+		category: "Physical",
+		desc: "If this move is successful and the user has not fainted, the user switches out even if it is trapped and is replaced immediately by a selected party member. The user does not switch out if there are no unfainted party members, or if the target switched out using an Eject Button or through the effect of the Emergency Exit or Wimp Out Abilities.",
+		shortDesc: "User switches out after damaging the target.",
+		id: "orbitout",
+		isViable: true,
+		name: "Orbit Out",
+		pp: 20,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		selfSwitch: true,
+		secondary: null,
+		target: "normal",
+		type: "Rock",
 		contestType: "Cute",
 	},
 	//"Regular" hazard moves are here
