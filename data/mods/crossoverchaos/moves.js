@@ -2826,87 +2826,6 @@ let BattleMovedex = {
 		type: "Normal",
 		zMoveEffect: 'heal',
 		contestType: "Cute",
-	},
-	"viaexpugnatio": {
-		num: 40092,
-		accuracy: 100,
-		basePower: 0,
-		basePowerCallback(pokemon) {
-			return Math.floor((pokemon.happiness * 10) / 25) || 1;
-		},
-		category: "Physical",
-		desc: "Power is equal to the greater of (user's Happiness * 2/5), rounded down, or 1. 20% chance to paralyze.",
-		shortDesc: "Max 102 power at maximum Happiness. 20% chance to paralyze",
-		id: "viaexpugnatio",
-		isViable: true,
-		name: "Via Expugnatio",
-		pp: 20,
-		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1},
-		secondary: {
-			chance: 20,
-			status: 'par',
-		},
-		target: "normal",
-		type: "Fighting",
-		zMovePower: 160,
-		gmaxPower: 130,
-		contestType: "Cute",
-	},
-	"ionioihetaroi": {
-		num: 40093,
-		accuracy: true,
-		basePower: 210,
-		basePowerCallback(pokemon, target, move) {
-			if (pokemon.hasAbility('charisma')) {
-				return move.basePower + 63; /* don't know how to actually apply the Charisma multiplier but this'll be exactly as strong so who cares */
-			}
-			return move.basePower;
-		},
-		category: "Physical",
-		desc: "Field effects (including unremovable ones like Aestus Domus Aurea and Unlimited Blade Works from CCv2) are cleared, and Sandstorm is set up. This move is affected by the user's Charisma if it has it.",
-		shortDesc: "Clears field effects, sets sandstorm. Charisma: 1.3x power",
-		id: "ionioihetaroi",
-		name: "Ionioi Hetaroi",
-		pp: 1,
-		priority: 0,
-		flags: {},
-		isZ: "iskandiumz",
-		self: {
-			onHit(source) {
-				let success = false;
-				let removeTarget = ['reflect', 'lightscreen', 'auroraveil', 'safeguard', 'mist', 'spikes', 'toxicspikes', 'stealthrock', 'stickyweb'];
-				let removeAll = ['spikes', 'toxicspikes', 'stealthrock', 'stickyweb', 'gmaxsteelsurge'];
-				for (const targetCondition of removeTarget) {
-					if (source.side.foe.removeSideCondition(targetCondition)) {
-						if (!removeAll.includes(targetCondition)) continue;
-						this.add('-sideend', source.side.foe, this.dex.getEffect(targetCondition).name, '[from] move: Ionioi Hetaroi', '[of] ' + source);
-						success = true;
-					}
-				}
-				for (const sideCondition of removeAll) {
-					if (source.side.removeSideCondition(sideCondition)) {
-						this.add('-sideend', source.side, this.dex.getEffect(sideCondition).name, '[from] move: Ionioi Hetaroi', '[of] ' + source);
-						success = true;
-					}
-				}
-				this.field.clearTerrain();
-				this.field.clearWeather();
-				return success;
-			},
-		},
-		secondary: {
-			chance: 100,
-			self: {
-				onHit() {
-					this.field.setWeather('sandstorm');
-				},
-			},
-		},
-		target: "normal",
-		type: "Fighting",
-		contestType: "Cute",
-	},
 	"suicideride": {
 		num: 50001,
 		accuracy: 100,
@@ -3042,6 +2961,87 @@ let BattleMovedex = {
 		type: "Psychic",
 		zMovePower: 190,
 		contestType: "Beautiful",
+	},
+	},
+	"viaexpugnatio": {
+		num: 50007,
+		accuracy: 100,
+		basePower: 0,
+		basePowerCallback(pokemon) {
+			return Math.floor((pokemon.happiness * 10) / 25) || 1;
+		},
+		category: "Physical",
+		desc: "Power is equal to the greater of (user's Happiness * 2/5), rounded down, or 1. 20% chance to paralyze.",
+		shortDesc: "Max 102 power at maximum Happiness. 20% chance to paralyze",
+		id: "viaexpugnatio",
+		isViable: true,
+		name: "Via Expugnatio",
+		pp: 20,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		secondary: {
+			chance: 20,
+			status: 'par',
+		},
+		target: "normal",
+		type: "Fighting",
+		zMovePower: 160,
+		gmaxPower: 130,
+		contestType: "Cute",
+	},
+	"ionioihetaroi": {
+		num: 50008,
+		accuracy: true,
+		basePower: 210,
+		basePowerCallback(pokemon, target, move) {
+			if (pokemon.hasAbility('charisma')) {
+				return move.basePower + 63; /* don't know how to actually apply the Charisma multiplier but this'll be exactly as strong so who cares */
+			}
+			return move.basePower;
+		},
+		category: "Physical",
+		desc: "Field effects (including unremovable ones like Aestus Domus Aurea and Unlimited Blade Works from CCv2) are cleared, and Sandstorm is set up. This move is affected by the user's Charisma if it has it.",
+		shortDesc: "Clears field effects, sets sandstorm. Charisma: 1.3x power",
+		id: "ionioihetaroi",
+		name: "Ionioi Hetaroi",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		isZ: "iskandiumz",
+		self: {
+			onHit(source) {
+				let success = false;
+				let removeTarget = ['reflect', 'lightscreen', 'auroraveil', 'safeguard', 'mist', 'spikes', 'toxicspikes', 'stealthrock', 'stickyweb'];
+				let removeAll = ['spikes', 'toxicspikes', 'stealthrock', 'stickyweb', 'gmaxsteelsurge'];
+				for (const targetCondition of removeTarget) {
+					if (source.side.foe.removeSideCondition(targetCondition)) {
+						if (!removeAll.includes(targetCondition)) continue;
+						this.add('-sideend', source.side.foe, this.dex.getEffect(targetCondition).name, '[from] move: Ionioi Hetaroi', '[of] ' + source);
+						success = true;
+					}
+				}
+				for (const sideCondition of removeAll) {
+					if (source.side.removeSideCondition(sideCondition)) {
+						this.add('-sideend', source.side, this.dex.getEffect(sideCondition).name, '[from] move: Ionioi Hetaroi', '[of] ' + source);
+						success = true;
+					}
+				}
+				this.field.clearTerrain();
+				this.field.clearWeather();
+				return success;
+			},
+		},
+		secondary: {
+			chance: 100,
+			self: {
+				onHit() {
+					this.field.setWeather('sandstorm');
+				},
+			},
+		},
+		target: "normal",
+		type: "Fighting",
+		contestType: "Cute",
 	},
 	//"Regular" hazard moves are here
 		"gmaxsteelsurge": {
