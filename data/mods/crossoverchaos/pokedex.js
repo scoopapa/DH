@@ -3075,8 +3075,8 @@ kyokokirigiri: {
 		gender: "M",
 		baseStats: {hp: 110, atk: 130, def: 110, spa: 60, spd: 105, spe: 105},
 		abilities: {0: "Stout Arm of Brutality", 1: "Long Reach", H: "Sniper"},
-		heightm: 2,
-		weightkg: 75,
+		heightm: 2.3,
+		weightkg: 187,
 	},
 	oriongrand: {
 		num: 6000168,
@@ -3088,8 +3088,8 @@ kyokokirigiri: {
 		gender: "M",
 		baseStats: {hp: 120, atk: 140, def: 120, spa: 70, spd: 115, spe: 115},
 		abilities: {0: "Stout Arm of Brutality", 1: "Long Reach", H: "Sniper"},
-		heightm: 2.1,
-		weightkg: 75,
+		heightm: 2.4,
+		weightkg: 187,
 	},
 	orionartemis: {
 		num: 6000168,
@@ -3101,8 +3101,8 @@ kyokokirigiri: {
 		gender: "M",
 		baseStats: {hp: 80, atk: 70, def: 80, spa: 110, spd: 80, spe: 100},
 		abilities: {0: "Affection of the Goddess", 1: "Long Reach", H: "Sniper"},
-		heightm: 1.7,
-		weightkg: 75,
+		heightm: 1.65,
+		weightkg: 44,
 	},
 	walle: {
 			num: 7000001,
