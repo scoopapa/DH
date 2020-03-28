@@ -977,6 +977,22 @@ exports.BattleFormatsData = { //
 	orionartemis: {
 		tier: "V2",
 	},
+	matt: {
+		tier: "Uber",
+	},
+	pandora: {
+		tier: "V2",
+	},
+	pandoraamazon: {
+		tier: "V2",
+	},
+	tamamo: {
+		tier: "V2",
+	},
+	tamamoancestor: {
+		requiredMoves: "Word of Dispel",
+		tier: "V2", /* tentatively */
+	},
 	 walle: {
 		  tier: "EX",
 	 },
