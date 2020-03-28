@@ -3104,6 +3104,62 @@ kyokokirigiri: {
 		heightm: 1.65,
 		weightkg: 44,
 	},
+	matt: {
+		num: 60000169,
+		species: "Matt", /* Wii Sports */
+		types: ["Normal", "Fighting"],
+		gender: "M",
+		baseStats: {hp: 90, atk: 150, def: 40, spa: 20, spd: 30, spe: 135},
+		abilities: {0: "Master Champion", 1: "Receiver", H: "Sword of Swords"},
+		heightm: 1.9,
+		weightkg: 105,
+	},
+	pandora: {
+		num: 60000170,
+		species: "Pandora", /* Kid Icarus */
+		types: ["Dark", "Ghost"],
+		gender: "F",
+		baseStats: {hp: 101, atk: 88, def: 73, spa: 102, spd: 127, spe: 63},
+		abilities: {0: "Levitate", 1: "Prankster", H: "Cursed Body"},
+		heightm: 1.8,
+		weightkg: 1,
+	},
+	pandoraamazon: {
+		num: 60000171,
+		species: "Pandora-Amazon",
+		baseSpecies: "Pandora",
+		forme: "Amazon",
+		formeLetter: "A",
+		types: ["Dark", "Fairy"],
+		gender: "F",
+		baseStats: {hp: 91, atk: 108, def: 63, spa: 112, spd: 77, spe: 103},
+		abilities: {0: "Levitate", 1: "Prankster", H: "Serene Grace"},
+		heightm: 1.7,
+		weightkg: 67,
+	},
+	tamamo: {
+		num: 60000172,
+		species: "Tamamo", /* Monster Girl Quest */
+		types: ["Ground", "Rock"],
+		gender: "F",
+		baseStats: {hp: 120, atk: 120, def: 120, spa: 80, spd: 110, spe: 50},
+		abilities: {0: "Fluffy", 1: "Breath of the Earth", H: "Skill Link"},
+		heightm: 1.6,
+		weightkg: 65,
+	},
+	tamamoancestor: {
+		num: 60000172,
+		species: "Tamamo-Ancestor",
+		baseSpecies: "Tamamo",
+		forme: "Ancestor",
+		formeLetter: "A",
+		types: ["Ground", "Rock"],
+		gender: "F",
+		baseStats: {hp: 120, atk: 130, def: 130, spa: 130, spd: 120, spe: 70},
+		abilities: {0: "Skill Link"},
+		heightm: 1.6,
+		weightkg: 65,
+	},
 	walle: {
 			num: 7000001,
 			species: "WALL-E", /* WALL-E */
@@ -3592,7 +3648,7 @@ gokusupersaiyangod: {
 		baseStats: {hp: 120, atk: 130, def: 100, spa: 80, spd: 90, spe: 90},
 		abilities: {0: "Infinity Gauntlet", 1: "Aim For The Head", H: "Forewarn"},
 		heightm: 2,
-		weightkg: 105,
+		weightkg: 446.8,
 	},
 	thanosspace: {
 		num: 7000030,
@@ -3605,7 +3661,7 @@ gokusupersaiyangod: {
 		baseStats: {hp: 120, atk: 100, def: 110, spa: 130, spd: 120, spe: 80},
 		abilities: {0: "Infinity Gauntlet"},
 		heightm: 2,
-		weightkg: 105,
+		weightkg: 446.8,
 	},
 	thanosmind: {
 		num: 7000030,
@@ -3618,7 +3674,7 @@ gokusupersaiyangod: {
 		baseStats: {hp: 120, atk: 80, def: 130, spa: 100, spd: 130, spe: 100},
 		abilities: {0: "Infinity Gauntlet"},
 		heightm: 2,
-		weightkg: 105,
+		weightkg: 446.8,
 	},
 	thanosreality: {
 		num: 7000030,
@@ -3631,7 +3687,7 @@ gokusupersaiyangod: {
 		baseStats: {hp: 120, atk: 110, def: 110, spa: 100, spd: 120, spe: 100},
 		abilities: {0: "Infinity Gauntlet"},
 		heightm: 2,
-		weightkg: 105,
+		weightkg: 446.8,
 	},
 	thanospower: {
 		num: 7000030,
@@ -3644,7 +3700,7 @@ gokusupersaiyangod: {
 		baseStats: {hp: 120, atk: 140, def: 70, spa: 140, spd: 70, spe: 120},
 		abilities: {0: "Infinity Gauntlet"},
 		heightm: 2,
-		weightkg: 105,
+		weightkg: 446.8,
 	},
 	thanostime: {
 		num: 7000030,
@@ -3657,7 +3713,7 @@ gokusupersaiyangod: {
 		baseStats: {hp: 120, atk: 130, def: 120, spa: 80, spd: 80, spe: 130},
 		abilities: {0: "Infinity Gauntlet"},
 		heightm: 2,
-		weightkg: 105,
+		weightkg: 446.8,
 	},
 	thanossoul: {
 		num: 7000030,
@@ -3670,7 +3726,7 @@ gokusupersaiyangod: {
 		baseStats: {hp: 120, atk: 140, def: 100, spa: 110, spd: 80, spe: 110},
 		abilities: {0: "Infinity Gauntlet"},
 		heightm: 2,
-		weightkg: 105,
+		weightkg: 446.8,
 	},
 	thanosinfinity: {
 		num: 7000030,
@@ -3683,7 +3739,7 @@ gokusupersaiyangod: {
 		baseStats: {hp: 110, atk: 140, def: 130, spa: 140, spd: 130, spe: 130},
 		abilities: {0: "Inevitable"},
 		heightm: 2,
-		weightkg: 105,
+		weightkg: 446.8,
 	},
 	iroh: {
 		num: 7000031,
