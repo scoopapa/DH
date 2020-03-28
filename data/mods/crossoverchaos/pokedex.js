@@ -3121,7 +3121,7 @@ kyokokirigiri: {
 		gender: "F",
 		baseStats: {hp: 101, atk: 88, def: 73, spa: 102, spd: 127, spe: 63},
 		abilities: {0: "Levitate", 1: "Prankster", H: "Cursed Body"},
-		heightm: 1.8,
+		heightm: 3,
 		weightkg: 1,
 	},
 	pandoraamazon: {
