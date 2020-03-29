@@ -860,7 +860,7 @@ exports.BattleAbilities = {
     onBasePowerPriority: 8,
     onAnyBasePower(basePower, attacker, defender, move) {
       if (
-        move.flags['mystery'] &&
+        move.flags['slash'] &&
         [attacker, defender].includes(this.effectData.target)
       ) {
         this.debug("Sword of Swords - Altering damage taken.");
