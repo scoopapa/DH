@@ -3672,7 +3672,7 @@ let BattleMovedex = {
 					if ( typeMod <= 0 && pokemon.ability === 'wonderguard' ) return;
 					if (pokemon.runImmunity('Fire') && !abilities.includes( pokemon.ability )){
 						this.add('-message', 'Warp detonated the Carnage effect!');
-						this.add('-anim', target, "Explosion", source);
+						this.add('-anim', source, "Future Sight", pokemon);
 						this.damage(pokemon.maxhp * Math.pow(2, typeMod) / d);
 					}
 				}
