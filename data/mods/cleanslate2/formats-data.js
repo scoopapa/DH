@@ -14,6 +14,7 @@ exports.BattleFormatsData = {
 		tier: "CS2",
 	},
 	shayminsky: {
+		tier: "CS2",
 		requiredItems: ["Flying Memory"],
 	},
 };
