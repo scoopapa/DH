@@ -43,6 +43,7 @@ let BattleAliases = {
 	"petmod": "[Gen 7 Pet Mod] Clean Slate: Micro",
 	"cleanslatemicro": "[Gen 7] Clean Slate: Micro",
 	"csm": "[Gen 7] Clean Slate: Micro",
+	"cs2": "[Gen 8 Pet Mod] Clean Slate 2",
 	"mbh": "[Gen 8] More Balanced Hackmons",
 	"ccv2": "[Gen 8] Crossover Chaos V2",
 	"ccex": "[Gen 8] Crossover Chaos Expanded",
