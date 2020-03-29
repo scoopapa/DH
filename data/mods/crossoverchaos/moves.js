@@ -3687,7 +3687,7 @@ let BattleMovedex = {
 		},
 		onPrepareHit: function(target, source, move) {
 			this.attrLastMove('[still]');
-			this.add('-anim', source, "Shadow Ball", target);
+			this.add('-anim', source, "Dragon Pulse", target);
 		},
 		target: "normal",
 		type: "Psychic",
