@@ -2251,8 +2251,8 @@ exports.BattleAbilities = {
 			if (!pokemon.volatiles['hunger']) {
 				this.add('-activate', pokemon, 'ability: Hunger');
 				this.damage(target.baseMaxhp / 16, target, target);
-			},
-		}
+			}
+		},
 		id: "hunger",
 		name: "Hunger",
 	},
