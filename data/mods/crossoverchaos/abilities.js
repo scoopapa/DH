@@ -2220,4 +2220,56 @@ exports.BattleAbilities = {
 		id: "nowifi",
 		name: "No Wi-Fi",
 	},
+	"hunger": {
+		shortDesc: "On switch-in, this Pokemon's Attack and Speed are halved for 5 turns.",
+		onStart(pokemon) {
+			pokemon.addVolatile('hunger');
+		},
+		onEnd(pokemon) {
+			delete pokemon.volatiles['hunger'];
+			this.add('-end', pokemon, 'Hunger', '[silent]');
+		},
+		onEatItem(item, pokemon) {
+			pokemon.addVolatile('hunger');
+		},
+		effect: {
+			duration: 10,
+			onStart(target) {
+				this.add('-start', target, 'ability: Hunger');
+			},
+			this.heal(target.baseMaxhp / 16);
+			onEnd(target) {
+				this.add('-end', target, 'Hunger');
+			},
+		},
+		if (!pokemon.volatiles['hunger']) {
+			this.add('-activate', pokemon, 'ability: Hunger');
+			this.damage(target.baseMaxhp / 16, target, target);
+		}
+		id: "hunger",
+		name: "Hunger",
+	},
+	"dimensionalmastery": {
+		desc: "The duration of Gravity, Heal Block, Magic Room, Safeguard, Tailwind, Trick Room, and Wonder Room is increased by 2 turns if the effect is started by this Pokemon.",
+		shortDesc: "When used, Gravity/Heal Block/Safeguard/Tailwind/Room effects last 2 more turns.",
+		id: "dimensionalmastery",
+		name: "Dimensional Mastery",
+		// implemented in the corresponding move
+	},
+	"zeusthunder": {
+		desc: "When using Thunder, additionally uses Bulk Up.",
+		shortDesc: "When using Thunder, additionally uses Bulk Up.",
+		onAnyDamage(damage, target, source, effect) {
+			if (effect && effect.id === 'thunder' && source.hasAbility('zeusthunder')) {
+                		this.useMove('Bulk Up', source);
+			}
+		},
+		onAnyAfterSubDamage(damage, target, source, effect) {
+			if (effect && effect.id === 'thunder' && source.hasAbility('zeusthunder')) {
+                		this.useMove('Bulk Up', source);
+			}
+		},
+		id: "zeusthunder",
+		name: "Zeus Thunder",
+	},
 };

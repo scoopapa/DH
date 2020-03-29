@@ -3508,6 +3508,393 @@ let BattleMovedex = {
 		zMoveBoost: {def: 1},
 		contestType: "Clever",
 	},
+/* dimensional masturbation implemented here */
+
+
+	"gravity": {
+		num: 356,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "For 5 turns, the evasiveness of all active Pokemon is multiplied by 0.6. At the time of use, Bounce, Fly, Magnet Rise, Sky Drop, and Telekinesis end immediately for all active Pokemon. During the effect, Bounce, Fly, Flying Press, High Jump Kick, Jump Kick, Magnet Rise, Sky Drop, Splash, and Telekinesis are prevented from being used by all active Pokemon. Ground-type attacks, Spikes, Toxic Spikes, Sticky Web, and the Arena Trap Ability can affect Flying types or Pokemon with the Levitate Ability. Fails if this move is already in effect.",
+		shortDesc: "For 5 turns, negates all Ground immunities.",
+		id: "gravity",
+		name: "Gravity",
+		pp: 5,
+		priority: 0,
+		flags: {nonsky: 1},
+		pseudoWeather: 'gravity',
+		effect: {
+			duration: 5,
+			durationCallback(source, effect) {
+				if (source && source.hasAbility('persistent')) {
+					this.add('-activate', source, 'ability: Persistent', effect);
+					return 7;
+				}
+				if (source && source.hasAbility('dimensionalmastery')) {
+					this.add('-activate', source, 'ability: Dimensional Mastery', effect);
+					return 7;
+				}
+				return 5;
+			},
+			onStart() {
+				this.add('-fieldstart', 'move: Gravity');
+				for (const pokemon of this.getAllActive()) {
+					let applies = false;
+					if (pokemon.removeVolatile('bounce') || pokemon.removeVolatile('fly')) {
+						applies = true;
+						this.queue.cancelMove(pokemon);
+						pokemon.removeVolatile('twoturnmove');
+					}
+					if (pokemon.volatiles['skydrop']) {
+						applies = true;
+						this.queue.cancelMove(pokemon);
+
+						if (pokemon.volatiles['skydrop'].source) {
+							this.add('-end', pokemon.volatiles['twoturnmove'].source, 'Sky Drop', '[interrupt]');
+						}
+						pokemon.removeVolatile('skydrop');
+						pokemon.removeVolatile('twoturnmove');
+					}
+					if (pokemon.volatiles['magnetrise']) {
+						applies = true;
+						delete pokemon.volatiles['magnetrise'];
+					}
+					if (pokemon.volatiles['telekinesis']) {
+						applies = true;
+						delete pokemon.volatiles['telekinesis'];
+					}
+					if (applies) this.add('-activate', pokemon, 'move: Gravity');
+				}
+			},
+			onModifyAccuracy(accuracy) {
+				if (typeof accuracy !== 'number') return;
+				return accuracy * 5 / 3;
+			},
+			onDisableMove(pokemon) {
+				for (const moveSlot of pokemon.moveSlots) {
+					if (this.dex.getMove(moveSlot.id).flags['gravity']) {
+						pokemon.disableMove(moveSlot.id);
+					}
+				}
+			},
+			// groundedness implemented in battle.engine.js:BattlePokemon#isGrounded
+			onBeforeMovePriority: 6,
+			onBeforeMove(pokemon, target, move) {
+				if (move.flags['gravity']) {
+					this.add('cant', pokemon, 'move: Gravity', move);
+					return false;
+				}
+			},
+			onResidualOrder: 22,
+			onEnd() {
+				this.add('-fieldend', 'move: Gravity');
+			},
+		},
+		secondary: null,
+		target: "all",
+		type: "Psychic",
+		zMoveBoost: {spa: 1},
+		contestType: "Clever",
+	},
+	"healblock": {
+		num: 377,
+		accuracy: 100,
+		basePower: 0,
+		category: "Status",
+		desc: "For 5 turns, the target is prevented from restoring any HP as long as it remains active. During the effect, healing and draining moves are unusable, and Abilities and items that grant healing will not heal the user. If an affected Pokemon uses Baton Pass, the replacement will remain unable to restore its HP. Pain Split and the Regenerator Ability are unaffected.",
+		shortDesc: "For 5 turns, the foe(s) is prevented from healing.",
+		id: "healblock",
+		isNonstandard: "Past",
+		name: "Heal Block",
+		pp: 15,
+		priority: 0,
+		flags: {protect: 1, reflectable: 1, mirror: 1},
+		volatileStatus: 'healblock',
+		effect: {
+			duration: 5,
+			durationCallback(target, source, effect) {
+				if (source && source.hasAbility('persistent')) {
+					this.add('-activate', source, 'ability: Persistent', effect);
+					return 7;
+				}
+				if (source && source.hasAbility('dimensionalmastery')) {
+					this.add('-activate', source, 'ability: Dimensional Mastery', effect);
+					return 7;
+				}
+				return 5;
+			},
+			onStart(pokemon) {
+				this.add('-start', pokemon, 'move: Heal Block');
+			},
+			onDisableMove(pokemon) {
+				for (const moveSlot of pokemon.moveSlots) {
+					if (this.dex.getMove(moveSlot.id).flags['heal']) {
+						pokemon.disableMove(moveSlot.id);
+					}
+				}
+			},
+			onBeforeMovePriority: 6,
+			onBeforeMove(pokemon, target, move) {
+				if (move.flags['heal'] && !move.isZ && !move.isMax) {
+					this.add('cant', pokemon, 'move: Heal Block', move);
+					return false;
+				}
+			},
+			onResidualOrder: 17,
+			onEnd(pokemon) {
+				this.add('-end', pokemon, 'move: Heal Block');
+			},
+			onTryHeal(damage, target, source, effect) {
+				if ((effect && effect.id === 'zpower') || this.effectData.isZ) return damage;
+				return false;
+			},
+		},
+		secondary: null,
+		target: "allAdjacentFoes",
+		type: "Psychic",
+		zMoveBoost: {spa: 2},
+		contestType: "Clever",
+	},
+	"magicroom": {
+		num: 478,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "For 5 turns, the held items of all active Pokemon have no effect. An item's effect of causing forme changes is unaffected, but any other effects from such items are negated. During the effect, Fling and Natural Gift are prevented from being used by all active Pokemon. If this move is used during the effect, the effect ends.",
+		shortDesc: "For 5 turns, all held items have no effect.",
+		id: "magicroom",
+		name: "Magic Room",
+		pp: 10,
+		priority: 0,
+		flags: {mirror: 1},
+		pseudoWeather: 'magicroom',
+		effect: {
+			duration: 5,
+			durationCallback(source, effect) {
+				if (source && source.hasAbility('persistent')) {
+					this.add('-activate', source, 'ability: Persistent', effect);
+					return 7;
+				}
+				if (source && source.hasAbility('dimensionalmastery')) {
+					this.add('-activate', source, 'ability: Dimensional Mastery', effect);
+					return 7;
+				}
+				return 5;
+			},
+			onStart(target, source) {
+				this.add('-fieldstart', 'move: Magic Room', '[of] ' + source);
+			},
+			onRestart(target, source) {
+				this.field.removePseudoWeather('magicroom');
+			},
+			// Item suppression implemented in Pokemon.ignoringItem() within sim/pokemon.js
+			onResidualOrder: 25,
+			onEnd() {
+				this.add('-fieldend', 'move: Magic Room', '[of] ' + this.effectData.source);
+			},
+		},
+		secondary: null,
+		target: "all",
+		type: "Psychic",
+		zMoveBoost: {spd: 1},
+		contestType: "Clever",
+	},
+	"safeguard": {
+		num: 219,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "For 5 turns, the user and its party members cannot have major status conditions or confusion inflicted on them by other Pokemon. It is removed from the user's side if the user or an ally is successfully hit by Defog. Fails if the effect is already active on the user's side.",
+		shortDesc: "For 5 turns, protects user's party from status.",
+		id: "safeguard",
+		name: "Safeguard",
+		pp: 25,
+		priority: 0,
+		flags: {snatch: 1},
+		sideCondition: 'safeguard',
+		effect: {
+			duration: 5,
+			durationCallback(target, source, effect) {
+				if (source && source.hasAbility('persistent')) {
+					this.add('-activate', source, 'ability: Persistent', effect);
+					return 7;
+				}
+				if (source && source.hasAbility('dimensionalmastery')) {
+					this.add('-activate', source, 'ability: Dimensional Mastery', effect);
+					return 7;
+				}
+				return 5;
+			},
+			onSetStatus(status, target, source, effect) {
+				if (!effect || !source) return;
+				if (effect.id === 'yawn') return;
+				if (effect.effectType === 'Move' && effect.infiltrates && target.side !== source.side) return;
+				if (target !== source) {
+					this.debug('interrupting setStatus');
+					if (effect.id === 'synchronize' || (effect.effectType === 'Move' && !effect.secondaries)) {
+						this.add('-activate', target, 'move: Safeguard');
+					}
+					return null;
+				}
+			},
+			onTryAddVolatile(status, target, source, effect) {
+				if (!effect || !source) return;
+				if (effect.effectType === 'Move' && effect.infiltrates && target.side !== source.side) return;
+				if ((status.id === 'confusion' || status.id === 'yawn') && target !== source) {
+					if (effect.effectType === 'Move' && !effect.secondaries) this.add('-activate', target, 'move: Safeguard');
+					return null;
+				}
+			},
+			onStart(side) {
+				this.add('-sidestart', side, 'Safeguard');
+			},
+			onResidualOrder: 21,
+			onResidualSubOrder: 2,
+			onEnd(side) {
+				this.add('-sideend', side, 'Safeguard');
+			},
+		},
+		secondary: null,
+		target: "allySide",
+		type: "Normal",
+		zMoveBoost: {spe: 1},
+		contestType: "Beautiful",
+	},
+	"tailwind": {
+		num: 366,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "For 4 turns, the user and its party members have their Speed doubled. Fails if this move is already in effect for the user's side.",
+		shortDesc: "For 4 turns, allies' Speed is doubled.",
+		id: "tailwind",
+		isViable: true,
+		name: "Tailwind",
+		pp: 15,
+		priority: 0,
+		flags: {snatch: 1},
+		sideCondition: 'tailwind',
+		effect: {
+			duration: 4,
+			durationCallback(target, source, effect) {
+				if (source && source.hasAbility('persistent')) {
+					this.add('-activate', source, 'ability: Persistent', effect);
+					return 6;
+				}
+				if (source && source.hasAbility('dimensionalmastery')) {
+					this.add('-activate', source, 'ability: Dimensional Mastery', effect);
+					return 6;
+				}
+				return 4;
+			},
+			onStart(side) {
+				this.add('-sidestart', side, 'move: Tailwind');
+			},
+			onModifySpe(spe, pokemon) {
+				return this.chainModify(2);
+			},
+			onResidualOrder: 21,
+			onResidualSubOrder: 4,
+			onEnd(side) {
+				this.add('-sideend', side, 'move: Tailwind');
+			},
+		},
+		secondary: null,
+		target: "allySide",
+		type: "Flying",
+		zMoveEffect: 'crit2',
+		contestType: "Cool",
+	},
+	"trickroom": {
+		num: 433,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "For 5 turns, the Speed of every Pokemon is recalculated for the purposes of determining turn order. During the effect, each Pokemon's Speed is considered to be (10000 - its normal Speed), and if this value is greater than 8191, 8192 is subtracted from it. If this move is used during the effect, the effect ends.",
+		shortDesc: "Goes last. For 5 turns, turn order is reversed.",
+		id: "trickroom",
+		name: "Trick Room",
+		pp: 5,
+		priority: -7,
+		flags: {mirror: 1},
+		pseudoWeather: 'trickroom',
+		effect: {
+			duration: 5,
+			durationCallback(source, effect) {
+				if (source && source.hasAbility('persistent')) {
+					this.add('-activate', source, 'ability: Persistent', effect);
+					return 7;
+				}
+				if (source && source.hasAbility('dimensionalmastery')) {
+					this.add('-activate', source, 'ability: Dimensional Mastery', effect);
+					return 7;
+				}
+				return 5;
+			},
+			onStart(target, source) {
+				this.add('-fieldstart', 'move: Trick Room', '[of] ' + source);
+			},
+			onRestart(target, source) {
+				this.field.removePseudoWeather('trickroom');
+			},
+			// Speed modification is changed in Pokemon.getActionSpeed() in sim/pokemon.js
+			onResidualOrder: 23,
+			onEnd() {
+				this.add('-fieldend', 'move: Trick Room');
+			},
+		},
+		secondary: null,
+		target: "all",
+		type: "Psychic",
+		zMoveBoost: {accuracy: 1},
+		contestType: "Clever",
+	},
+	"wonderroom": {
+		num: 472,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "For 5 turns, all active Pokemon have their Defense and Special Defense stats swapped. Stat stage changes are unaffected. If this move is used during the effect, the effect ends.",
+		shortDesc: "For 5 turns, all Defense and Sp. Def stats switch.",
+		id: "wonderroom",
+		name: "Wonder Room",
+		pp: 10,
+		priority: 0,
+		flags: {mirror: 1},
+		pseudoWeather: 'wonderroom',
+		effect: {
+			duration: 5,
+			durationCallback(source, effect) {
+				if (source && source.hasAbility('persistent')) {
+					this.add('-activate', source, 'ability: Persistent', effect);
+					return 7;
+				}
+				return 5;
+				if (source && source.hasAbility('dimensionalmastery')) {
+					this.add('-activate', source, 'ability: Dimensional Mastery', effect);
+					return 7;
+				}
+				return 5;
+			},
+			onStart(side, source) {
+				this.add('-fieldstart', 'move: Wonder Room', '[of] ' + source);
+			},
+			onRestart(target, source) {
+				this.field.removePseudoWeather('wonderroom');
+			},
+			// Swapping defenses implemented in sim/pokemon.js:Pokemon#calculateStat and Pokemon#getStat
+			onResidualOrder: 24,
+			onEnd() {
+				this.add('-fieldend', 'move: Wonder Room');
+			},
+		},
+		secondary: null,
+		target: "all",
+		type: "Psychic",
+		zMoveBoost: {spd: 1},
+		contestType: "Clever",
+	},
 //Whenever the hazard "Mine" is added here, don't forget to turn the user immune if it holds the Trash Copaction ability, the code is right below the Heavy Duty Boots one in all the hazards above but Stealth Rock
 // "digslash": {
 //         num: 40000,
