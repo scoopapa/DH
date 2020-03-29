@@ -830,8 +830,6 @@ exports.BattleAbilities = {
       "This Pokemon deals x1.33 damage with slash-based moves and takes x0.667 damage from slash-based moves.",
     onBasePowerPriority: 8,
     onAnyBasePower(basePower, attacker, defender, move) {
-    onBasePowerPriority: 8,
-    onAnyBasePower(basePower, attacker, defender, move) {
       if (
         move.flags['mystery'] &&
         [attacker, defender].includes(this.effectData.target)
@@ -2075,7 +2073,7 @@ exports.BattleAbilities = {
     id: "aimforthehead",
     name: "Aim For The Head",
   }
-	"charisma": {
+	charisma: {
 		shortDesc: "This Pokemon's allies have the base power of their moves multiplied by 1.3.",
 		onAllyBasePowerPriority: 8,
 		onAllyBasePower(basePower, attacker, defender, move) {
@@ -2106,7 +2104,7 @@ exports.BattleAbilities = {
     id: "masterchampion",
     name: "Master Champion"
   },
-	"breathoftheearth": {
+	breathoftheearth: {
 		desc: "This Pokemon is immune to Water-type moves and restores 1/4 of its maximum HP, rounded down, when hit by a Water-type move.",
 		shortDesc: "This Pokemon heals 1/4 of its max HP when hit by Water moves; Water immunity.",
 		onStart(pokemon) {
@@ -2121,7 +2119,7 @@ exports.BattleAbilities = {
 		id: "breathoftheearth",
 		name: "Breath of the Earth",
 	},
-	"affectionofthegoddess": {
+	affectionofthegoddess: {
 		desc: "This Pokemon's damaging moves become multi-hit moves that hit twice. The second hit has its damage quartered. Does not affect multi-hit moves or moves that have multiple targets.",
 		shortDesc: "This Pokemon's damaging moves hit twice. The second hit has its damage quartered.",
 		onPrepareHit(source, target, move) {
@@ -2144,30 +2142,7 @@ exports.BattleAbilities = {
 		id: "affectionofthegoddess",
 		name: "Affection of the Goddess",
 	},
-	"affectionofthegoddess": {
-		desc: "This Pokemon's damaging moves become multi-hit moves that hit twice. The second hit has its damage quartered. Does not affect multi-hit moves or moves that have multiple targets.",
-		shortDesc: "This Pokemon's damaging moves hit twice. The second hit has its damage quartered.",
-		onPrepareHit(source, target, move) {
-			if (['iceball', 'rollout'].includes(move.id)) return;
-			if (move.category !== 'Status' && !move.selfdestruct && !move.multihit && !move.flags['charge'] && !move.spreadHit && !move.isZ) {
-				move.multihit = 2;
-				move.multihitType = 'parentalbond';
-			}
-		},
-		onBasePowerPriority: 8,
-		onBasePower(basePower, pokemon, target, move) {
-			if (move.multihitType === 'parentalbond' && move.hit > 1) return this.chainModify(0.25);
-		},
-		onSourceModifySecondaries(secondaries, target, source, move) {
-			if (move.multihitType === 'parentalbond' && move.id === 'secretpower' && move.hit < 2) {
-				// hack to prevent accidentally suppressing King's Rock/Razor Fang
-				return secondaries.filter(effect => effect.volatileStatus === 'flinch');
-			}
-		},
-		id: "affectionofthegoddess",
-		name: "Affection of the Goddess",
-	},
-	"swarmingminions": {
+	swarmingminions: {
 		desc: "This Pokemon's damaging moves become multi-hit moves that hit twice. The second hit has its damage quartered. Does not affect multi-hit moves or moves that have multiple targets.",
 		shortDesc: "This Pokemon's damaging moves hit twice. The second hit has its damage quartered.",
 		onPrepareHit(source, target, move) {
