@@ -3012,7 +3012,7 @@ let BattleMovedex = {
 				}
 			},
 			onModifyMove(move, pokemon, target) {
-				if target.hasAbility('breathoftheearth') move.ignoreAbility = true;
+				if (target.hasAbility('breathoftheearth')) move.ignoreAbility = true;
 			},
 		},
 		secondary: null,
