@@ -3021,6 +3021,46 @@ let BattleMovedex = {
 		zMoveEffect: 'clearnegativeboost',
 		contestType: "Clever",
 	},
+	"pandorasbox": {
+		num: 40099,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Sets up a hazard on the opposing side of the field, badly poisoning the next opposing Pokemon to switch in, unless it is a Flying-type Pokemon or has the Levitate Ability. Upon activation, it removes itself. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin or Defog successfully, is hit by Defog, or a grounded Poison-type Pokemon switches in. Safeguard prevents the opposing party from being poisoned on switch-in, but a substitute does not.",
+		shortDesc: "Badly poisons one grounded foe on switch-in.",
+		id: "pandorasbox",
+		isViable: true,
+		name: "Pandora's Box",
+		pp: 5,
+		priority: 0,
+		flags: {reflectable: 1, nonsky: 1},
+		sideCondition: 'pandorasbox',
+		effect: {
+			// this is a side condition
+			onStart(side) {
+				this.add('-sidestart', side, 'move: Pandora\'s Box');
+			},
+			onRestart(side) {
+				return false;
+			},
+			onSwitchIn(pokemon) {
+				if (!pokemon.isGrounded()) return;
+				if (pokemon.hasType('Poison')) {
+					this.add('-sideend', pokemon.side, 'move: Pandora\'s Box', '[of] ' + pokemon);
+				} else if (pokemon.hasType('Steel') || pokemon.hasItem('heavydutyboots') || pokemon.hasAbility('trashcompactor')) {
+					return;
+				} else {
+					pokemon.trySetStatus('tox', pokemon.side.foe.active[0]);
+				}
+				pokemon.side.removeSideCondition('pandorasbox');
+			},
+		},
+		secondary: null,
+		target: "foeSide",
+		type: "Dark",
+		zMoveBoost: {spd: 1},
+		contestType: "Clever",
+	},
 	"suicideride": {
 		num: 50001,
 		accuracy: 100,
