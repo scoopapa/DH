@@ -3663,7 +3663,7 @@ let BattleMovedex = {
 		pp: 10,
 		priority: 0,
 		flags: {protect: 1, mirror: 1, mystery: 1},
-		onAfterHit(pokemon, source) {
+		onHit(pokemon, source) {
 			if (pokemon.hp) {
 				if (pokemon.volatiles['carnage']){
 					pokemon.removeVolatile( 'carnage' );
@@ -3689,7 +3689,7 @@ let BattleMovedex = {
 		},
 		onPrepareHit: function(target, source, move) {
 			this.attrLastMove('[still]');
-			this.add('-anim', source, "Psyshock", target);
+			this.add('-anim', source, "Shadow Ball", target);
 		},
 		target: "normal",
 		type: "Psychic",
