@@ -895,7 +895,6 @@ let BattleLearnsets = {
 		thunderwave: ["8M", "7M", "6M", "5M", "4M", "3T"],
 		toxic: ["7M", "7V", "6M", "5M", "4M", "3M"],
 		triattack: ["8M"],
-		trick: ["8M", "7T", "6T", "5T", "4T"],
 		twister: ["4T"],
 		uproar: ["8M"],
 		uturn: ["7L1"],
