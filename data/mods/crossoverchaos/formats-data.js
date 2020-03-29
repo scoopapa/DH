@@ -990,7 +990,7 @@ exports.BattleFormatsData = { //
 		tier: "V2",
 	},
 	tamamoancestor: {
-		requiredMoves: "Word of Dispel",
+		requiredMove: "Word of Dispel",
 		tier: "V2", /* tentatively */
 	},
 	 walle: {
