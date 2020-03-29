@@ -3666,10 +3666,10 @@ let BattleMovedex = {
 		pp: 20,
 		priority: 0,
 		flags: {protect: 1, mirror: 1, mystery: 1},
-		onAfterHit(target, source) {
-			if (target.hp) {
-				if (target.volatiles['carnage']){
-					target.removeVolatile( 'carnage' );
+		onAfterHit(pokemon, source) {
+			if (pokemon.hp) {
+				if (pokemon.volatiles['carnage']){
+					pokemon.removeVolatile( 'carnage' );
 					let abilities = ['flashfire', 'personofhourai',]
 					let d = 4;
 					if ( pokemon.ability === 'thickfat' || pokemon.ability === 'heatproof' || 'powerofsummer' ) d = 8;
