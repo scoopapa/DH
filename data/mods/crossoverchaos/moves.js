@@ -3639,7 +3639,7 @@ let BattleMovedex = {
 			onResidual(pokemon) {
 				this.damage(pokemon.baseMaxhp / 8);
 				this.effectData.damageTurns++;
-				if ( this.effectData.damageTurns === 2 ) pokemon.removeVolatile( 'carnage';
+				if ( this.effectData.damageTurns === 2 ) pokemon.removeVolatile( 'carnage' );
 			},
 		},
 		onPrepareHit: function(target, source, move) {
