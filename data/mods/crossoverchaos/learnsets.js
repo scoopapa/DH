@@ -7979,6 +7979,8 @@ TMs/Tutors sorted by last generation they carry that status (for kirby, nero, et
 		sacredsword: ["7L1"],
 		slash: ["7L1"],
 		swordsdance: ["7L1"],
+		dragonpulse: ["8L1"],
+		dragonhammer: ["8L1"],
 	}},
 	shieldknight: {learnset: {
 		acidarmor: ["7L1"],
