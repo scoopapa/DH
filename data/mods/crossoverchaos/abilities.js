@@ -2090,8 +2090,8 @@ exports.BattleAbilities = {
       "This Pokemon deals x1.33 damage with punch-based moves and takes x0.667 damage from punch-based moves.",
     onBasePowerPriority: 8,
     onAnyBasePower(basePower, attacker, defender, move) {
-        if (move.flags['punch']) &&
-        [attacker, defender].includes(this.effectData.target)
+        if ((move.flags['punch']) &&
+        [attacker, defender].includes(this.effectData.target))
 		{
 			this.debug("Master Champion - Altering damage taken.");
 			return this.chainModify([
