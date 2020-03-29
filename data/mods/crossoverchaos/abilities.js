@@ -218,7 +218,7 @@ exports.BattleAbilities = {
   },
   crystalbarrier: {
     shortDesc:
-      "This Pokemon's Defense and Sp. Def are doubled; Every damaging move used against this Pokemon will always hit.",
+      "This Pokemon's Defense and Sp. Def are doubled; Every damaging move used against this Pokemon will always hit. Clears hazards on entry, but takes 1/8th HP in damage when doing so.",
     onModifyDefPriority: 6,
     onModifyDef(def) {
       return this.chainModify(2);
@@ -231,6 +231,15 @@ exports.BattleAbilities = {
       if (!move || typeof accuracy !== "number" || move.category === "Status")
         return;
       return true;
+    },
+    onStart(pokemon) {
+      let sideConditions = ['spikes', 'toxicspikes', 'stealthrock', 'stickyweb', 'gmaxsteelsurge', 'mine'];
+		 //Hazard immunity has to be manually added in moves.js by customizing the respective moves above to simply do nothing if the user holds this ability
+      for (const condition of sideConditions) {
+        if (pokemon.hp && pokemon.side.removeSideCondition(condition)) {
+          this.add('-sideend', pokemon.side, this.dex.getEffect(condition).name, '[from] ability: Trash Compactor', '[of] ' + pokemon);
+        }
+      }
     },
     id: "crystalbarrier",
     name: "Crystal Barrier"
