@@ -3631,12 +3631,15 @@ let BattleMovedex = {
 		flags: {protect: 1, mirror: 1, mystery: 1},
 		volatileStatus: 'carnage',
 		effect: {
-			duration: 2,
+			duration: 3,
 			onStart(pokemon) {
 				this.add('-activate', pokemon, 'Carnage');
+				this.effectData.damageTurns = 0;
 			},
 			onResidual(pokemon) {
 				this.damage(pokemon.baseMaxhp / 8);
+				this.effectData.damageTurns++;
+				if ( this.effectData.damageTurns === 2 ) pokemon.removeVolatile( 'carnage';
 			},
 		},
 		onPrepareHit: function(target, source, move) {
