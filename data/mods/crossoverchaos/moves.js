@@ -3676,7 +3676,10 @@ let BattleMovedex = {
 					if ( pokemon.ability === 'fluffy' || pokemon.ability === 'dryskin' ) d = 2;
 					let typeMod = this.clampIntRange(pokemon.runEffectiveness('Fire'), -6, 6);
 					if ( typeMod <= 0 && pokemon.ability === 'wonderguard' ) return;
-					if (pokemon.runImmunity('Fire') && !abilities.includes( pokemon.ability )) this.damage(pokemon.maxhp * Math.pow(2, typeMod) / d);
+					if (pokemon.runImmunity('Fire') && !abilities.includes( pokemon.ability )){
+						this.damage(pokemon.maxhp * Math.pow(2, typeMod) / d);
+						this.add('-message', 'Warp detonated the Carnage effect!');
+					}
 				}
 			}
 		},
