@@ -3635,19 +3635,14 @@ let BattleMovedex = {
 		},
 		effect: {
 			duration: 2,
-			onStart(targetSide) {
-				this.add('-sidestart', targetSide, 'Carnage');
+			onStart(pokemon) {
+				this.add('-activate', pokemon, 'Carnage');
 			},
-			onResidual(targetSide) {
-				for (const pokemon of targetSide.active) {
-					if (!pokemon.hasType('Fire')) this.damage(pokemon.baseMaxhp / 8, pokemon);
-				}
+			onResidual(pokemon) {
+				this.damage(pokemon.baseMaxhp / 8);
 			},
-			onEnd(targetSide) {
-				for (const pokemon of targetSide.active) {
-					if (!pokemon.hasType('Fire')) this.damage(pokemon.baseMaxhp / 8, pokemon);
-				}
-				this.add('-sideend', targetSide, 'Carnage');
+			onEnd(pokemon) {
+				this.damage(pokemon.baseMaxhp / 8, pokemon);
 			},
 		},
 		onPrepareHit: function(target, source, move) {
