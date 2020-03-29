@@ -3644,7 +3644,7 @@ let BattleMovedex = {
 		},
 		onPrepareHit: function(target, source, move) {
 			this.attrLastMove('[still]');
-			this.add('-anim', source, "Fusion Flare", target);
+			this.add('-anim', source, "Pyro Ball", target);
 		},
 		secondary: null,
 		target: "normal",
@@ -3671,7 +3671,7 @@ let BattleMovedex = {
 					let d = 4;
 					if ( pokemon.ability === 'thickfat' || pokemon.ability === 'heatproof' || 'powerofsummer' ) d = 8;
 					if ( pokemon.ability === 'fluffy' || pokemon.ability === 'dryskin' ) d = 2;
-					let typeMod = this.clampIntRange(pokemon.runEffectiveness('Fire'), -6, 6);
+					let typeMod = pokemon.runEffectiveness('Fire');
 					if ( typeMod <= 0 && pokemon.ability === 'wonderguard' ) return;
 					if (pokemon.runImmunity('Fire') && !abilities.includes( pokemon.ability )){
 						this.damage(pokemon.maxhp * Math.pow(2, typeMod) / d);
@@ -3689,7 +3689,7 @@ let BattleMovedex = {
 		},
 		onPrepareHit: function(target, source, move) {
 			this.attrLastMove('[still]');
-			this.add('-anim', source, "Mist Ball", target);
+			this.add('-anim', source, "Psyshock", target);
 		},
 		target: "normal",
 		type: "Psychic",
