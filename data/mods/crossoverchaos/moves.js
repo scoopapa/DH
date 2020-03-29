@@ -3626,13 +3626,10 @@ let BattleMovedex = {
 		shortDesc: "Causes residual Fire damage ( 1/8 ) for two turns.",
 		id: "carnage",
 		name: "Carnage",
-		pp: 20,
+		pp: 10,
 		priority: 0,
 		flags: {protect: 1, mirror: 1, mystery: 1},
 		volatileStatus: 'carnage',
-		onTryHit(target) {
-			if (!this.queue.willMove(target) && target.activeTurns) return false;
-		},
 		effect: {
 			duration: 2,
 			onStart(pokemon) {
@@ -3647,7 +3644,7 @@ let BattleMovedex = {
 		},
 		onPrepareHit: function(target, source, move) {
 			this.attrLastMove('[still]');
-			this.add('-anim', source, "Fire Pledge", target);
+			this.add('-anim', source, "Fusion Flare", target);
 		},
 		secondary: null,
 		target: "normal",
@@ -3663,7 +3660,7 @@ let BattleMovedex = {
 		shortDesc: "Lowers Def and SpD 1 stage. Detonates Carnage, causing Fire damage.",
 		id: "warp",
 		name: "Warp",
-		pp: 20,
+		pp: 10,
 		priority: 0,
 		flags: {protect: 1, mirror: 1, mystery: 1},
 		onAfterHit(pokemon, source) {
