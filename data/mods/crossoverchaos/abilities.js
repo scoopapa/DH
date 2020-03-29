@@ -2072,7 +2072,7 @@ exports.BattleAbilities = {
     },
     id: "aimforthehead",
     name: "Aim For The Head",
-  }
+  },
 	charisma: {
 		shortDesc: "This Pokemon's allies have the base power of their moves multiplied by 1.3.",
 		onAllyBasePowerPriority: 8,
