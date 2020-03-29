@@ -3638,9 +3638,6 @@ let BattleMovedex = {
 			onResidual(pokemon) {
 				this.damage(pokemon.baseMaxhp / 8);
 			},
-			onEnd(pokemon) {
-				this.damage(pokemon.baseMaxhp / 8, pokemon);
-			},
 		},
 		onPrepareHit: function(target, source, move) {
 			this.attrLastMove('[still]');
@@ -3668,9 +3665,9 @@ let BattleMovedex = {
 				if (pokemon.volatiles['carnage']){
 					pokemon.removeVolatile( 'carnage' );
 					let abilities = ['flashfire', 'personofhourai',]
-					let d = 4;
-					if ( pokemon.ability === 'thickfat' || pokemon.ability === 'heatproof' || 'powerofsummer' ) d = 8;
-					if ( pokemon.ability === 'fluffy' || pokemon.ability === 'dryskin' ) d = 2;
+					let d = 2;
+					if ( pokemon.ability === 'thickfat' || pokemon.ability === 'heatproof' || 'powerofsummer' ) d = 4;
+					if ( pokemon.ability === 'fluffy' || pokemon.ability === 'dryskin' ) d = 1;
 					let typeMod = pokemon.runEffectiveness('Fire');
 					if ( typeMod <= 0 && pokemon.ability === 'wonderguard' ) return;
 					if (pokemon.runImmunity('Fire') && !abilities.includes( pokemon.ability )){
