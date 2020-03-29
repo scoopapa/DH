@@ -3064,7 +3064,6 @@ let BattleMovedex = {
 		zMovePower: 190,
 		contestType: "Beautiful",
 	},
-	},
 	"viaexpugnatio": {
 		num: 50007,
 		accuracy: 100,
