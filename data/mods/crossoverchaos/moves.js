@@ -3431,8 +3431,8 @@ let BattleMovedex = {
 		ignoreImmunity: true,
 		isFutureMove: true,
 		onTry(source, target) {
-			if (!source.side.addSlotCondition(target, 'futuremove')) return false;
-			Object.assign(target.side.slotConditions[target.position]['futuremove'], {
+			if (!source.side.addSlotCondition(source, 'futuremove')) return false;
+			Object.assign(source.side.slotConditions[source.position]['futuremove'], {
 				duration: 3,
 				move: 'songoftime',
 				source: source,
@@ -3458,7 +3458,7 @@ let BattleMovedex = {
 			return null;
 		},
 		secondary: null,
-		target: "normal",
+		target: "self",
 		type: "Psychic",
 		zMoveBoost: {atk: 1, def: 1, spa: 1, spd: 1, spe: 1},
 		contestType: "Clever",

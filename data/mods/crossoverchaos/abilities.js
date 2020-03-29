@@ -2165,7 +2165,7 @@ exports.BattleAbilities = {
 		name: "Swarming Minions",
 	},
 	divinewisdom: {
-		shortDesc: "This Pokemon's Defense is raised by 1 stage after it is damaged by a move.",
+		shortDesc: "This Pokemon's Special Defense is raised by 1 stage after it is damaged by a move.",
 		onDamagingHit(damage, target, source, effect) {
 			this.boost({spd: 1});
 		},
