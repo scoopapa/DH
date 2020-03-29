@@ -170,6 +170,26 @@ exports.BattleAbilities = {
     id: "poisondippedclaws",
     name: "Poison-Dipped Claws"
   },
+  tearworker: {
+    shortDesc:
+      "This Pokemon's attacking stat is multiplied by 1.5 while using a Water-type attack.",
+    onModifyAtkPriority: 5,
+    onModifyAtk(atk, attacker, defender, move) {
+      if (move.type === "Water") {
+        this.debug("Tearworker boost");
+        return this.chainModify(1.5);
+      }
+    },
+    onModifySpAPriority: 5,
+    onModifySpA(atk, attacker, defender, move) {
+      if (move.type === "Water") {
+        this.debug("Tearworker boost");
+        return this.chainModify(1.5);
+      }
+    },
+    id: "tearworker",
+    name: "Tearworker"
+  },
   divinecourage: {
     desc:
       "When this Pokemon has more than 1/2 its maximum HP and takes damage from an attack bringing it to 1/2 or less of its maximum HP, its Attack and Defense are raised by 1 stage each. This effect applies after all hits from a multi-hit move; Sheer Force prevents it from activating if the move has a secondary effect.",
@@ -2030,7 +2050,7 @@ exports.BattleAbilities = {
     id: "voiceless",
     name: "voiceless"
   },
-	trashcompaction: {
+	trashcompactor: {
     desc:
       "On switch-in, removes hazards. The user is also immune to all hazards",
     shortDesc:
@@ -2040,12 +2060,12 @@ exports.BattleAbilities = {
 		 //Hazard immunity has to be manually added in moves.js by customizing the respective moves above to simply do nothing if the user holds this ability
       for (const condition of sideConditions) {
         if (pokemon.hp && pokemon.side.removeSideCondition(condition)) {
-          this.add('-sideend', pokemon.side, this.dex.getEffect(condition).name, '[from] ability: Trash Compaction', '[of] ' + pokemon);
+          this.add('-sideend', pokemon.side, this.dex.getEffect(condition).name, '[from] ability: Trash Compactor', '[of] ' + pokemon);
         }
       }
     },
-    id: "trashcompaction",
-    name: "Trash Compaction"
+    id: "trashcompactor",
+    name: "Trash Compactor"
 },
   aimforthehead: {
     desc:
@@ -2104,8 +2124,8 @@ exports.BattleAbilities = {
     name: "Master Champion"
   },
 	breathoftheearth: {
-		desc: "This Pokemon is immune to Water-type moves and restores 1/4 of its maximum HP, rounded down, when hit by a Water-type move.",
-		shortDesc: "This Pokemon heals 1/4 of its max HP when hit by Water moves; Water immunity.",
+		desc: "This Pokemon is immune to Ground-type and Rock-type moves, and is always treated as grounded.",
+		shortDesc: "Immune to Ground and Rock. Grounded.",
 		onStart(pokemon) {
 			this.add('-ability', pokemon, 'Breath of the Earth');
 		},
@@ -2164,31 +2184,31 @@ exports.BattleAbilities = {
 		id: "swarmingminions",
 		name: "Swarming Minions",
 	},
-	divinewisdom: {
-		shortDesc: "This Pokemon's Special Defense is raised by 1 stage after it is damaged by a move.",
-		onDamagingHit(damage, target, source, effect) {
-			this.boost({spd: 1});
+	"nowifi": {
+		desc: "While this Pokemon is active, Abilities of Electric-type Pokemon have no effect. Does not affect the Battle Bond, Comatose, Disguise, Gulp Missile, Ice Face, Multitype, Power Construct, RKS System, Schooling, Shields Down, Stance Change, or Zen Mode Abilities.",
+		shortDesc: "While this Pokemon is active, Abilities of Electric-types have no effect.",
+		// Ability suppression implemented in scripts/pokemon:ignoringAbility
+		// TODO Will abilities that already started start again? (Intimidate seems like a good test case)
+		onPreStart(pokemon) {
+			this.add('-ability', pokemon, 'No Wi-Fi');
+			pokemon.abilityData.ending = false;
 		},
-		id: "divinewisdom",
-		name: "Divine Wisdom",
-		rating: 3.5,
-		num: 192,
-	},
-	divinecourage: {
-		desc: "When this Pokemon has more than 1/2 its maximum HP and takes damage from an attack bringing it to 1/2 or less of its maximum HP, its Attack and Defense are raised by 1 stage. This effect applies after all hits from a multi-hit move; Sheer Force prevents it from activating if the move has a secondary effect.",
-		shortDesc: "This Pokemon's Atk and Def are raised by 1 when it reaches 1/2 or less of its max HP.",
-		onAfterMoveSecondary(target, source, move) {
-			if (!source || source === target || !target.hp || !move.totalDamage) return;
-			const lastAttackedBy = target.getLastAttackedBy();
-			if (!lastAttackedBy) return;
-			const damage = move.multihit ? move.totalDamage : lastAttackedBy.damage;
-			if (target.hp <= target.maxhp / 2 && target.hp + damage > target.maxhp / 2) {
-				this.boost({atk: 1, def: 1});
+		onEnd(source) {
+			// FIXME this happens before the pokemon switches out, should be the opposite order.
+			// Not an easy fix since we cant use a supported event. Would need some kind of special event that
+			// gathers events to run after the switch and then runs them when the ability is no longer accessible.
+			// (If your tackling this, do note extreme weathers have the same issue)
+
+			// Mark this pokemon's ability as ending so Pokemon#ignoringAbility skips it
+			source.abilityData.ending = true;
+			for (const pokemon of this.getAllActive()) {
+				if (pokemon !== source && pokemon.hasType('Electric')) {
+					// Will be suppressed by Pokemon#ignoringAbility if needed
+					this.singleEvent('Start', pokemon.getAbility(), pokemon.abilityData, pokemon);
+				}
 			}
 		},
-		id: "divinecourage",
-		name: "Divine Courage",
-		rating: 2.5,
-		num: 201,
+		id: "nowifi",
+		name: "No Wi-Fi",
 	},
 };
