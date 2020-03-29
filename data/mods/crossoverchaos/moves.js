@@ -1,32 +1,3 @@
-Skip to content
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@scoopapa 
-Learn Git and GitHub without any code!
-Using the Hello World guide, you’ll start a branch, write comments, and open a pull request.
-
-
-scoopapa
-/
-DH
-forked from Spandamn/DH
-0
-120
- Code Pull requests 1 Actions Projects 0 Wiki Security Insights Settings
-DH/data/mods/crossoverchaos/moves.js / 
-@KirbyRider1337 KirbyRider1337 Update moves.js
-6da0567 30 minutes ago
-@KirbyRider1337@scoopapa@pika-xreme@Bobsican@Spandamn@charizard8888
-4254 lines (4248 sloc)  126 KB
-  
-Code navigation is available!
-Navigate your code with ease. Click on function and method calls to jump to their definitions or references in the same repository. Learn more
-
   
 /*
 List of flags and their descriptions:
@@ -4281,15 +4252,3 @@ let BattleMovedex = {
 };
 
 exports.BattleMovedex = BattleMovedex;
-© 2020 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
