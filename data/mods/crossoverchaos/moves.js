@@ -3329,7 +3329,7 @@ let BattleMovedex = {
 			},
 			onSwitchIn(pokemon) {
 				if (pokemon.hasItem('heavydutyboots')) return;
-				if (pokemon.hasability('trashcompaction')) return;
+				if (pokemon.hasAbility('trashcompaction')) return;
 				let typeMod = this.dex.clampIntRange(pokemon.runEffectiveness(this.dex.getActiveMove('stealthrock')), -6, 6);
 				this.damage(pokemon.maxhp * Math.pow(2, typeMod) / 8);
 			},
@@ -3416,6 +3416,76 @@ let BattleMovedex = {
 		type: "Poison",
 		zMoveBoost: {def: 1},
 		contestType: "Clever",
+	},
+	"songoftime": {
+		num: 248,
+		accuracy: true,
+		category: "Status",
+		desc: "Two turns after being used, the pokemon currently on the field gets +1 Atk, +1 SpA, and +1 Spe.",
+		shortDesc: "Two turns after being used, the pokemon currently on the field gets +1 Atk, +1 SpA, and +1 Spe.",
+		id: "songoftime",
+		name: "Song of Time",
+		pp: 10,
+		priority: 0,
+		flags: {},
+		ignoreImmunity: true,
+		isFutureMove: true,
+		onTry(source, target) {
+			if (!source.side.addSlotCondition(target, 'futuremove')) return false;
+			Object.assign(target.side.slotConditions[target.position]['futuremove'], {
+				duration: 3,
+				move: 'songoftime',
+				source: source,
+				moveData: {
+					id: 'songoftime',
+					name: "Song of Time",
+					accuracy: true,
+					category: "Status",
+					priority: 0,
+					flags: {},
+					ignoreImmunity: false,
+					boosts: {
+						atk: 1,
+						spa: 1,
+						spe: 1,
+					},
+					effectType: 'Move',
+					isFutureMove: true,
+					type: 'Psychic',
+				},
+			});
+			this.add('-start', source, 'move: Song of Time');
+			return null;
+		},
+		secondary: null,
+		target: "normal",
+		type: "Psychic",
+		zMoveBoost: {atk: 1, def: 1, spa: 1, spd: 1, spe: 1},
+		contestType: "Clever",
+	},
+	"lightarrow": {
+		num: 614,
+		accuracy: 100,
+		basePower: 95,
+		category: "Special",
+		desc: "Super Effective vs. Dark types.",
+		shortDesc: "Super Effective vs. Dark types.",
+		id: "lightarrow",
+		isNonstandard: 'Past',
+		isViable: true,
+		name: "Light Arrow",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, nonsky: 1},
+		onEffectiveness(typeMod, target, type) {
+			if (type === 'Dark') return 1;
+		},
+		ignoreImmunity: {'Psychic': true},
+		secondary: null,
+		target: "normal",
+		type: "Psychic",
+		zMovePower: 175,
+		contestType: "Beautiful",
 	},
 //Whenever the hazard "Mine" is added here, don't forget to turn the user immune if it holds the Trash Copaction ability, the code is right below the Heavy Duty Boots one in all the hazards above but Stealth Rock
 // "digslash": {
