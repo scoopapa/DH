@@ -7253,7 +7253,7 @@ TMs/Tutors sorted by last generation they carry that status (for kirby, nero, et
 		swordsdance: ["7L1"],
 		xscissor: ["7L1"],
 	}},
-	presidenthaltmann: {learnset: {
+	haltmann: {learnset: {
 		drillrun: ["7L1"],
 		earthquake: ["7L1"],
 		heavyslam: ["7L1"],
