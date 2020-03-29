@@ -1736,4 +1736,12 @@ exports.Formats = [
 			}
 		},
 	},
+	{
+		name: "Clovermons",
+		desc: ["&bullet; Pokémon Clover",
+		      ],
+		ruleset: ['Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause'],
+		banlist: [],
+		mod: 'clovermons',
+	},
 ];
