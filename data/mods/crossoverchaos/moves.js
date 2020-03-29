@@ -2487,6 +2487,7 @@ let BattleMovedex = {
 		onEffectiveness(typeMod, target, type) {
 			if (type === 'Flying') return 2;
 		},
+		ignoreImmunity: {'Ground': true},
 		secondary: null,
 		target: "normal",
 		type: "Ground",
@@ -2520,9 +2521,9 @@ let BattleMovedex = {
 		category: "Special",
 		desc: "The user recovers 1/2 the HP lost by the target, rounded half up. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded half down. Flowey form changes into Omega Flowey if he lands a KO with this move.",
 		shortDesc: "User recovers 50% of the damage dealt. On KO, Flowey -> Omega Flowey",
-		id: "gigadrain",
+		id: "soulabsorption",
 		isViable: true,
-		name: "Giga Drain",
+		name: "Soul Absorption",
 		pp: 5,
 		priority: 0,
 		flags: {protect: 1, mirror: 1, heal: 1},
@@ -2948,10 +2949,6 @@ let BattleMovedex = {
 				this.add('-sidestart', side, 'move: Mine');
 			},
 			onSwitchIn(pokemon) {
-				if (pokemon.hasAbility('crystalbarrier')) {
-					this.damage(3 * pokemon.maxhp / 24);
-					return;
-				},
 				if (pokemon.hasItem('heavydutyboots') || pokemon.hasAbility('trashcompactor')) return;
 				const fireHazard = this.dex.getActiveMove('Stealth Rock');
 				fireHazard.type = 'Fire';
@@ -3049,13 +3046,14 @@ let BattleMovedex = {
 			},
 			onSwitchIn(pokemon) {
 				if (!pokemon.isGrounded()) return;
-				if (pokemon.hasType('Poison')) {
-					this.add('-sideend', pokemon.side, 'move: Pandora\'s Box', '[of] ' + pokemon);
-				} else if (pokemon.hasType('Steel') || pokemon.hasItem('heavydutyboots') || pokemon.hasAbility('trashcompactor')) {
-					return;
-				} else {
-					pokemon.trySetStatus('tox', pokemon.side.foe.active[0]);
+				if (!pokemon.hasType('Poison')) {
+					if (pokemon.hasType('Steel') || pokemon.hasItem('heavydutyboots') || pokemon.hasAbility('trashcompactor')) {
+						return;
+					} else {
+						pokemon.trySetStatus('tox', pokemon.side.foe.active[0]);
+					}
 				}
+				this.add('-sideend', pokemon.side, 'move: Pandora\'s Box', '[of] ' + pokemon);
 				pokemon.side.removeSideCondition('pandorasbox');
 			},
 		},
@@ -3065,25 +3063,152 @@ let BattleMovedex = {
 		zMoveBoost: {spd: 1},
 		contestType: "Clever",
 	},
-	"airbullet": {
+	"warp": {
 		num: 40100,
 		accuracy: 100,
-		basePower: 30,
-		category: "Physical",
-		desc: "Hits three times. If a hit breaks the target's substitute, they will take damage for the remaining hits.",
-		shortDesc: "Hits 3 times in one turn.",
-		id: "airbullet",
-		name: "Air Bullet",
-		pp: 15,
+		basePower: 70,
+		category: "Special",
+		desc: "Lowers Def and SpD 1 stage. Detonates Carnage, causing Fire damage.",
+		shortDesc: "Lowers Def and SpD 1 stage. Detonates Carnage, causing Fire damage.",
+		id: "warp",
+		name: "Warp",
+		pp: 10,
 		priority: 0,
-		flags: {protect: 1, mirror: 1},
-		multihit: 3,
+		flags: {protect: 1, mirror: 1, mystery: 1},
+		onHit(pokemon, source) {
+			if (pokemon.hp) {
+				if (pokemon.removeVolatile('carnage')){
+					let abilities = ['flashfire', 'personofhourai',]
+					let d = 2;
+					if ( pokemon.ability === 'thickfat' || pokemon.ability === 'heatproof') d = 4; //Effectiveness for Power of Summer is already accounted for.
+					if ( pokemon.ability === 'fluffy' || pokemon.ability === 'dryskin' ) d = 1;
+					let typeMod = pokemon.runEffectiveness('Fire');
+					if ( typeMod <= 0 && pokemon.ability === 'wonderguard' ) return;
+					if (pokemon.runImmunity('Fire') && !abilities.includes( pokemon.ability )){
+						this.add('-message', 'Warp detonated the Carnage effect!');
+						this.add('-anim', pokemon, "Boomburst", source);
+						this.damage(pokemon.maxhp * Math.pow(2, typeMod) / d);
+					}
+				}
+			}
+		},
+		secondary: {
+			chance: 100,
+			boosts: {
+				def: -1,
+				spd: -1,
+			},
+		},
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Shadow Ball", target);
+		},
+		target: "normal",
+		type: "Psychic",
+		contestType: "Tough",
+	},
+	"carnage": {
+		num: 40101,
+		accuracy: 90,
+		basePower: 100,
+		category: "Special",
+		desc: "Causes residual Fire damage ( 1/8 ) for two turns.",
+		shortDesc: "Causes residual Fire damage ( 1/8 ) for two turns.",
+		id: "carnage",
+		name: "Carnage",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, mystery: 1},
+		volatileStatus: 'carnage',
+		effect: {
+			duration: 3,
+			onStart(pokemon) {
+				this.add('-activate', pokemon, 'Carnage');
+				this.effectData.damageTurns = 0;
+			},
+			onResidual(pokemon) {
+				this.damage(pokemon.baseMaxhp / 8);
+				this.effectData.damageTurns++;
+				if ( this.effectData.damageTurns === 2 ) pokemon.removeVolatile( 'carnage' );
+			},
+		},
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Pyro Ball", target);
+		},
 		secondary: null,
 		target: "normal",
-		type: "Flying",
+		type: "Fire",
+		contestType: "Tough",
+	},
+	"songoftime": {
+		num: 40102,
+		accuracy: true,
+		category: "Status",
+		desc: "Two turns after being used, the pokemon currently on the field gets +1 Atk, +1 SpA, and +1 Spe.",
+		shortDesc: "Two turns after being used, the pokemon currently on the field gets +1 Atk, +1 SpA, and +1 Spe.",
+		id: "songoftime",
+		name: "Song of Time",
+		pp: 10,
+		priority: 0,
+		flags: {},
+		ignoreImmunity: true,
+		isFutureMove: true,
+		onTry(source, target) {
+			if (!source.side.addSlotCondition(source, 'futuremove')) return false;
+			Object.assign(source.side.slotConditions[source.position]['futuremove'], {
+				duration: 3,
+				move: 'songoftime',
+				source: source,
+				moveData: {
+					id: 'songoftime',
+					name: "Song of Time",
+					accuracy: true,
+					category: "Status",
+					priority: 0,
+					flags: {},
+					ignoreImmunity: true,
+					boosts: {
+						atk: 1,
+						spa: 1,
+						spe: 1,
+					},
+					effectType: 'Move',
+					isFutureMove: true,
+					type: 'Normal',
+				},
+			});
+			this.add('-start', source, 'move: Song of Time');
+			return null;
+		},
+		secondary: null,
+		target: "self",
+		type: "Psychic",
+		zMoveBoost: {atk: 1, def: 1, spa: 1, spd: 1, spe: 1},
+		contestType: "Clever",
+	},
+	"lightarrow": {
+		num: 40103,
+		accuracy: 100,
+		basePower: 95,
+		category: "Special",
+		desc: "Super Effective vs. Dark types.",
+		shortDesc: "Super Effective vs. Dark types.",
+		id: "lightarrow",
+		isViable: true,
+		name: "Light Arrow",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, nonsky: 1},
+		onEffectiveness(typeMod, target, type) {
+			if (type === 'Dark') return 1;
+		},
+		ignoreImmunity: {'Psychic': true},
+		secondary: null,
+		target: "normal",
+		type: "Psychic",
 		zMovePower: 175,
-		gmaxPower: 130,
-		contestType: "Smart",
+		contestType: "Beautiful",
 	},
 	"suicideride": {
 		num: 50001,
@@ -3409,10 +3534,6 @@ let BattleMovedex = {
 				this.add('-sidestart', side, 'move: G-Max Steelsurge');
 			},
 			onSwitchIn(pokemon) {
-				if (pokemon.hasAbility('crystalbarrier')) {
-					this.damage(3 * pokemon.maxhp / 24);
-					return;
-				},
 				if (pokemon.hasItem('heavydutyboots') || pokemon.hasAbility('trashcompactor')) return;
 				// Ice Face and Disguise correctly get typed damage from Stealth Rock
 				// because Stealth Rock bypasses Substitute.
@@ -3456,10 +3577,6 @@ let BattleMovedex = {
 			},
 			onSwitchIn(pokemon) {
 				if (!pokemon.isGrounded()) return;
-				if (pokemon.hasAbility('crystalbarrier')) {
-					this.damage(3 * pokemon.maxhp / 24);
-					return;
-				},
 				if (pokemon.hasItem('heavydutyboots')) return;
 				if (pokemon.hasAbility('trashcompactor')) return;
 				let damageAmounts = [0, 3, 4, 6]; // 1/8, 1/6, 1/4
@@ -3492,10 +3609,6 @@ let BattleMovedex = {
 				this.add('-sidestart', side, 'move: Stealth Rock');
 			},
 			onSwitchIn(pokemon) {
-				if (pokemon.hasAbility('crystalbarrier')) {
-					this.damage(3 * pokemon.maxhp / 24);
-					return;
-				},
 				if (pokemon.hasItem('heavydutyboots') || pokemon.hasAbility('trashcompactor')) return;
 				let typeMod = this.dex.clampIntRange(pokemon.runEffectiveness(this.dex.getActiveMove('stealthrock')), -6, 6);
 				this.damage(pokemon.maxhp * Math.pow(2, typeMod) / 8);
@@ -3527,10 +3640,6 @@ let BattleMovedex = {
 			},
 			onSwitchIn(pokemon) {
 				if (!pokemon.isGrounded()) return;
-				if (pokemon.hasAbility('crystalbarrier')) {
-					this.damage(3 * pokemon.maxhp / 24);
-					return;
-				},
 				if (pokemon.hasItem('heavydutyboots') || pokemon.hasAbility('trashcompactor')) return;
 				this.add('-activate', pokemon, 'move: Sticky Web');
 				this.boost({spe: -1}, pokemon, this.effectData.source, this.dex.getActiveMove('stickyweb'));
@@ -3569,10 +3678,6 @@ let BattleMovedex = {
 			},
 			onSwitchIn(pokemon) {
 				if (!pokemon.isGrounded()) return;
-				if (pokemon.hasAbility('crystalbarrier')) {
-					this.damage(3 * pokemon.maxhp / 24);
-					return;
-				},
 				if (pokemon.hasType('Poison')) {
 					this.add('-sideend', pokemon.side, 'move: Toxic Spikes', '[of] ' + pokemon);
 					pokemon.side.removeSideCondition('toxicspikes');
@@ -3590,155 +3695,6 @@ let BattleMovedex = {
 		type: "Poison",
 		zMoveBoost: {def: 1},
 		contestType: "Clever",
-	},
-	"songoftime": {
-		num: 248,
-		accuracy: true,
-		category: "Status",
-		desc: "Two turns after being used, the pokemon currently on the field gets +1 Atk, +1 SpA, and +1 Spe.",
-		shortDesc: "Two turns after being used, the pokemon currently on the field gets +1 Atk, +1 SpA, and +1 Spe.",
-		id: "songoftime",
-		name: "Song of Time",
-		pp: 10,
-		priority: 0,
-		flags: {},
-		ignoreImmunity: true,
-		isFutureMove: true,
-		onTry(source, target) {
-			if (!source.side.addSlotCondition(source, 'futuremove')) return false;
-			Object.assign(source.side.slotConditions[source.position]['futuremove'], {
-				duration: 3,
-				move: 'songoftime',
-				source: source,
-				moveData: {
-					id: 'songoftime',
-					name: "Song of Time",
-					accuracy: true,
-					category: "Status",
-					priority: 0,
-					flags: {},
-					ignoreImmunity: false,
-					boosts: {
-						atk: 1,
-						spa: 1,
-						spe: 1,
-					},
-					effectType: 'Move',
-					isFutureMove: true,
-					type: 'Psychic',
-				},
-			});
-			this.add('-start', source, 'move: Song of Time');
-			return null;
-		},
-		secondary: null,
-		target: "self",
-		type: "Psychic",
-		zMoveBoost: {atk: 1, def: 1, spa: 1, spd: 1, spe: 1},
-		contestType: "Clever",
-	},
-	"lightarrow": {
-		num: 614,
-		accuracy: 100,
-		basePower: 95,
-		category: "Special",
-		desc: "Super Effective vs. Dark types.",
-		shortDesc: "Super Effective vs. Dark types.",
-		id: "lightarrow",
-		isNonstandard: 'Past',
-		isViable: true,
-		name: "Light Arrow",
-		pp: 10,
-		priority: 0,
-		flags: {protect: 1, mirror: 1, nonsky: 1},
-		onEffectiveness(typeMod, target, type) {
-			if (type === 'Dark') return 1;
-		},
-		ignoreImmunity: {'Psychic': true},
-		secondary: null,
-		target: "normal",
-		type: "Psychic",
-		zMovePower: 175,
-		contestType: "Beautiful",
-	},
-	"carnage": {
-		num: 582,
-		accuracy: 90,
-		basePower: 100,
-		category: "Special",
-		desc: "Causes residual Fire damage ( 1/8 ) for two turns.",
-		shortDesc: "Causes residual Fire damage ( 1/8 ) for two turns.",
-		id: "carnage",
-		name: "Carnage",
-		pp: 10,
-		priority: 0,
-		flags: {protect: 1, mirror: 1, mystery: 1},
-		volatileStatus: 'carnage',
-		effect: {
-			duration: 3,
-			onStart(pokemon) {
-				this.add('-activate', pokemon, 'Carnage');
-				this.effectData.damageTurns = 0;
-			},
-			onResidual(pokemon) {
-				this.damage(pokemon.baseMaxhp / 8);
-				this.effectData.damageTurns++;
-				if ( this.effectData.damageTurns === 2 ) pokemon.removeVolatile( 'carnage' );
-			},
-		},
-		onPrepareHit: function(target, source, move) {
-			this.attrLastMove('[still]');
-			this.add('-anim', source, "Pyro Ball", target);
-		},
-		secondary: null,
-		target: "normal",
-		type: "Fire",
-		contestType: "Tough",
-	},
-	"warp": {
-		num: 582,
-		accuracy: 100,
-		basePower: 70,
-		category: "Special",
-		desc: "Lowers Def and SpD 1 stage. Detonates Carnage, causing Fire damage.",
-		shortDesc: "Lowers Def and SpD 1 stage. Detonates Carnage, causing Fire damage.",
-		id: "warp",
-		name: "Warp",
-		pp: 10,
-		priority: 0,
-		flags: {protect: 1, mirror: 1, mystery: 1},
-		onHit(pokemon, source) {
-			if (pokemon.hp) {
-				if (pokemon.volatiles['carnage']){
-					pokemon.removeVolatile( 'carnage' );
-					let abilities = ['flashfire', 'personofhourai',]
-					let d = 2;
-					if ( pokemon.ability === 'thickfat' || pokemon.ability === 'heatproof' || 'powerofsummer' ) d = 4;
-					if ( pokemon.ability === 'fluffy' || pokemon.ability === 'dryskin' ) d = 1;
-					let typeMod = pokemon.runEffectiveness('Fire');
-					if ( typeMod <= 0 && pokemon.ability === 'wonderguard' ) return;
-					if (pokemon.runImmunity('Fire') && !abilities.includes( pokemon.ability )){
-						this.add('-message', 'Warp detonated the Carnage effect!');
-						this.add('-anim', pokemon, "Boomburst", source);
-						this.damage(pokemon.maxhp * Math.pow(2, typeMod) / d);
-					}
-				}
-			}
-		},
-		secondary: {
-			chance: 100,
-			boosts: {
-				def: -1,
-				spd: -1,
-			},
-		},
-		onPrepareHit: function(target, source, move) {
-			this.attrLastMove('[still]');
-			this.add('-anim', source, "Shadow Ball", target);
-		},
-		target: "normal",
-		type: "Psychic",
-		contestType: "Tough",
 	},
 //Whenever the hazard "Mine" is added here, don't forget to turn the user immune if it holds the Trash Copaction ability, the code is right below the Heavy Duty Boots one in all the hazards above but Stealth Rock
 // "digslash": {
