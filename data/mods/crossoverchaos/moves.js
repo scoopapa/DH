@@ -2762,6 +2762,172 @@ let BattleMovedex = {
 		zMovePower: 220,
 		contestType: "Tough",
 	},
+	"speedslice": {
+		num: 40089,
+		accuracy: 100,
+		basePower: 70,
+		category: "Physical",
+		desc: "Has a higher chance for a critical hit.",
+		shortDesc: "High critical hit ratio.",
+		id: "speedslice",
+		name: "Speed Slice",
+		pp: 10,
+		priority: 1,
+		flags: {contact: 1, protect: 1, mirror: 1, mystery: 1},
+		critRatio: 2,
+		secondary: null,
+		target: "normal",
+		type: "Normal",
+		contestType: "Cool",
+	},
+	"heartblast": {
+		num: 40090,
+		accuracy: 100,
+		basePower: 40,
+		category: "Special",
+		desc: "Hits one to three times. idk how the probabilities work. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit three times. 10% chance to paralyze per hit.",
+		shortDesc: "Hits 1-3 times in one turn. 10% paralysis per hit.",
+		id: "heartblast",
+		isViable: true,
+		name: "Heart Blast",
+		pp: 15,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		multihit: [1, 3],
+		secondary: {
+			chance: 10,
+			status: 'par',
+		},
+		target: "normal",
+		type: "Fairy",
+		zMovePower: 140,
+		gmaxPower: 130,
+		contestType: "Cute",
+	},
+	"wordofdispel": {
+		num: 40091,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "The user cures its burn, poison, or paralysis. Fails if the user is not burned, poisoned, or paralyzed.",
+		shortDesc: "User cures its burn, poison, or paralysis.",
+		id: "wordofdispel",
+		isViable: true,
+		name: "Word of Dispel",
+		pp: 20,
+		priority: 0,
+		flags: {snatch: 1},
+		onHit(pokemon) {
+			if (['', 'slp', 'frz'].includes(pokemon.status)) return false;
+			pokemon.cureStatus();
+		},
+		secondary: null,
+		target: "self",
+		type: "Normal",
+		zMoveEffect: 'heal',
+		contestType: "Cute",
+	},
+	"ninemoons": {
+		num: 40092,
+		accuracy: 100,
+		basePower: 12,
+		category: "Special",
+		desc: "Hits nine times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits.",
+		shortDesc: "Hits 9 times in one turn.",
+		id: "ninemoons",
+		isViable: true,
+		name: "Nine Moons",
+		pp: 15,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		multihit: 9,
+		secondary: null,
+		target: "normal",
+		type: "Rock",
+		zMovePower: 185,
+		gmaxPower: 140,
+		contestType: "Beautiful",
+	},
+	"arrowshot": {
+		num: 40093,
+		accuracy: 100,
+		basePower: 80,
+		category: "Physical",
+		desc: "Has a higher chance for a critical hit.",
+		shortDesc: "High critical hit ratio.",
+		id: "arrowshot",
+		name: "Arrow Shot",
+		pp: 15,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		critRatio: 2,
+		tracksTarget: true,
+		secondary: null,
+		target: "normal",
+		type: "Rock",
+	},
+	"bowmanofthreestars": {
+		num: 40094,
+		accuracy: 100,
+		basePower: 30,
+		category: "Physical",
+		desc: "Hits three times. If a hit breaks the target's substitute, they will take damage for the remaining hits.",
+		shortDesc: "Hits 3 times in one turn.",
+		id: "bowmanofthreestars",
+		name: "Bowman of Three Stars",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		multihit: 3,
+		secondary: null,
+		target: "normal",
+		type: "Electic",
+		zMovePower: 175,
+		gmaxPower: 130,
+		contestType: "Smart",
+	},
+	"ortygiaamoremio": {
+		num: 40095,
+		accuracy: true,
+		basePower: 360,
+		category: "Physical",
+		desc: "User faints.",
+		shortDesc: "User faints.",
+		id: "ortygiaamoremio",
+		name: "Ortygia Amore Mio",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		selfdestruct: "always",
+		isZ: "grandoriumz",
+		secondary: null,
+		target: "normal",
+		type: "Electric",
+		contestType: "Cool",
+	},
+	"tristaramoremio": {
+		num: 40096,
+		accuracy: true,
+		basePower: 180,
+		category: "Physical",
+		desc: "Has a 100% chance to lower the target's Attack by 1 stage.",
+		shortDesc: "100% chance to lower the target's Attack by 1.",
+		id: "tristaramoremio",
+		name: "Tri-Star Amore Mio",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		isZ: "artemiumz",
+		secondary: {
+			chance: 100,
+			boosts: {
+				spa: -1,
+			},
+		},
+		target: "normal",
+		type: "Fairy",
+		contestType: "Cute",
+	},
 	"suicideride": {
 		num: 50001,
 		accuracy: 100,
@@ -2858,8 +3024,8 @@ let BattleMovedex = {
 		category: "Special",
 		desc: "Has a 100% chance to raise the user's Special Attack by 1 stage.",
 		shortDesc: "100% chance to raise the user's Special Attack by 1.",
-		id: "stokedsparksurfer",
-		name: "Stoked Sparksurfer",
+		id: "stonehalation",
+		name: "Stone Halation",
 		pp: 1,
 		priority: 0,
 		flags: {},
@@ -2897,6 +3063,170 @@ let BattleMovedex = {
 		type: "Psychic",
 		zMovePower: 190,
 		contestType: "Beautiful",
+	},
+	},
+	"viaexpugnatio": {
+		num: 50007,
+		accuracy: 100,
+		basePower: 0,
+		basePowerCallback(pokemon) {
+			return Math.floor((pokemon.happiness * 10) / 25) || 1;
+		},
+		category: "Physical",
+		desc: "Power is equal to the greater of (user's Happiness * 2/5), rounded down, or 1. 20% chance to paralyze.",
+		shortDesc: "Max 102 power at maximum Happiness. 20% chance to paralyze",
+		id: "viaexpugnatio",
+		isViable: true,
+		name: "Via Expugnatio",
+		pp: 20,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		secondary: {
+			chance: 20,
+			status: 'par',
+		},
+		target: "normal",
+		type: "Fighting",
+		zMovePower: 160,
+		gmaxPower: 130,
+		contestType: "Cute",
+	},
+	"ionioihetaroi": {
+		num: 50008,
+		accuracy: true,
+		basePower: 210,
+		basePowerCallback(pokemon, target, move) {
+			if (pokemon.hasAbility('charisma')) {
+				return move.basePower + 63; /* don't know how to actually apply the Charisma multiplier but this'll be exactly as strong so who cares */
+			}
+			return move.basePower;
+		},
+		category: "Physical",
+		desc: "Field effects (including unremovable ones like Aestus Domus Aurea and Unlimited Blade Works from CCv2) are cleared, and Sandstorm is set up. This move is affected by the user's Charisma if it has it.",
+		shortDesc: "Clears field effects, sets sandstorm. Charisma: 1.3x power",
+		id: "ionioihetaroi",
+		name: "Ionioi Hetaroi",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		isZ: "iskandiumz",
+		self: {
+			onHit(source) {
+				let success = false;
+				let removeTarget = ['reflect', 'lightscreen', 'auroraveil', 'safeguard', 'mist', 'spikes', 'toxicspikes', 'stealthrock', 'stickyweb'];
+				let removeAll = ['spikes', 'toxicspikes', 'stealthrock', 'stickyweb', 'gmaxsteelsurge'];
+				for (const targetCondition of removeTarget) {
+					if (source.side.foe.removeSideCondition(targetCondition)) {
+						if (!removeAll.includes(targetCondition)) continue;
+						this.add('-sideend', source.side.foe, this.dex.getEffect(targetCondition).name, '[from] move: Ionioi Hetaroi', '[of] ' + source);
+						success = true;
+					}
+				}
+				for (const sideCondition of removeAll) {
+					if (source.side.removeSideCondition(sideCondition)) {
+						this.add('-sideend', source.side, this.dex.getEffect(sideCondition).name, '[from] move: Ionioi Hetaroi', '[of] ' + source);
+						success = true;
+					}
+				}
+				this.field.clearTerrain();
+				this.field.clearWeather();
+				return success;
+			},
+		},
+		secondary: {
+			chance: 100,
+			self: {
+				onHit() {
+					this.field.setWeather('sandstorm');
+				},
+			},
+		},
+		target: "normal",
+		type: "Fighting",
+		contestType: "Cute",
+	},
+	"vaporizingfreeze": {
+		num: 50009,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "The user is protected from non-Fire contact attacks made by other Pokemon during this turn, and Pokemon making contact with the user are frozen. This move has a 1/X chance of being successful, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails, if the user's last move used is not Baneful Bunker, Detect, Endure, King's Shield, Obstruct, Protect, Quick Guard, Spiky Shield, or Wide Guard, or if it was one of those moves and the user's protection was broken. Fails if the user moves last this turn.",
+		shortDesc: "Protects from non-Fire contact moves. Contact: freeze.",
+		id: "vaporizingfreeze",
+		isViable: true,
+		name: "Vaporizing Freeze",
+		pp: 10,
+		priority: 4,
+		flags: {},
+		stallingMove: true,
+		volatileStatus: 'vaporizingfreeze',
+		onTryHit(target, source, move) {
+			return !!this.queue.willAct() && this.runEvent('StallMove', target);
+		},
+		onHit(pokemon) {
+			pokemon.addVolatile('stall');
+		},
+		effect: {
+			duration: 1,
+			onStart(target) {
+				this.add('-singleturn', target, 'move: Protect');
+			},
+			onTryHitPriority: 3,
+			onTryHit(target, source, move) {
+				if (!move.flags['contact'] || move.type === 'Fire') {
+					return;
+				}
+				if (!move.flags['protect']) {
+					if (move.isZ || move.isMax) target.getMoveHitData(move).zBrokeProtect = true;
+					return;
+				}
+				if (move.smartTarget) {
+					move.smartTarget = false;
+				} else {
+					this.add('-activate', target, 'move: Protect');
+				}
+				let lockedmove = source.getVolatile('lockedmove');
+				if (lockedmove) {
+					// Outrage counter is reset
+					if (source.volatiles['lockedmove'].duration === 2) {
+						delete source.volatiles['lockedmove'];
+					}
+				}
+				if (move.flags['contact']) {
+					source.trySetStatus('frz', target);
+				}
+				return this.NOT_FAIL;
+			},
+			onHit(target, source, move) {
+				if (move.isZPowered && move.flags['contact'] && !move.type === 'Fire') {
+					source.trySetStatus('frz', target);
+				}
+			},
+		},
+		secondary: null,
+		target: "self",
+		type: "Ice",
+		zMoveBoost: {def: 1},
+		contestType: "Smart",
+	},
+	"orbitout": {
+		num: 50010,
+		accuracy: 100,
+		basePower: 80,
+		category: "Physical",
+		desc: "If this move is successful and the user has not fainted, the user switches out even if it is trapped and is replaced immediately by a selected party member. The user does not switch out if there are no unfainted party members, or if the target switched out using an Eject Button or through the effect of the Emergency Exit or Wimp Out Abilities.",
+		shortDesc: "User switches out after damaging the target.",
+		id: "orbitout",
+		isViable: true,
+		name: "Orbit Out",
+		pp: 20,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		selfSwitch: true,
+		secondary: null,
+		target: "normal",
+		type: "Rock",
+		contestType: "Cute",
 	},
 	//"Regular" hazard moves are here
 		"gmaxsteelsurge": {
