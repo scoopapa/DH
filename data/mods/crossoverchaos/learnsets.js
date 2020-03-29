@@ -9864,7 +9864,7 @@ TMs/Tutors sorted by last generation they carry that status (for kirby, nero, et
 		strugglebug: ["6M", "5M"],
 	}},
 	romulus: {learnset: {
-		magnavouluissemagnum: ["7L1"],
+		magnavoluissemagnum: ["7L1"],
 		drillrun: ["7L1"],
 		furyattack: ["7L1"],
 		hornattack: ["7L1"],
