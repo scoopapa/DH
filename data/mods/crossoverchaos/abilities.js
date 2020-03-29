@@ -2164,4 +2164,31 @@ exports.BattleAbilities = {
 		id: "swarmingminions",
 		name: "Swarming Minions",
 	},
+	divinewisdom: {
+		shortDesc: "This Pokemon's Defense is raised by 1 stage after it is damaged by a move.",
+		onDamagingHit(damage, target, source, effect) {
+			this.boost({spd: 1});
+		},
+		id: "divinewisdom",
+		name: "Divine Wisdom",
+		rating: 3.5,
+		num: 192,
+	},
+	divinecourage: {
+		desc: "When this Pokemon has more than 1/2 its maximum HP and takes damage from an attack bringing it to 1/2 or less of its maximum HP, its Attack and Defense are raised by 1 stage. This effect applies after all hits from a multi-hit move; Sheer Force prevents it from activating if the move has a secondary effect.",
+		shortDesc: "This Pokemon's Atk and Def are raised by 1 when it reaches 1/2 or less of its max HP.",
+		onAfterMoveSecondary(target, source, move) {
+			if (!source || source === target || !target.hp || !move.totalDamage) return;
+			const lastAttackedBy = target.getLastAttackedBy();
+			if (!lastAttackedBy) return;
+			const damage = move.multihit ? move.totalDamage : lastAttackedBy.damage;
+			if (target.hp <= target.maxhp / 2 && target.hp + damage > target.maxhp / 2) {
+				this.boost({atk: 1, def: 1});
+			}
+		},
+		id: "divinecourage",
+		name: "Divine Courage",
+		rating: 2.5,
+		num: 201,
+	},
 };
