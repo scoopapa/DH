@@ -3650,6 +3650,10 @@ let BattleMovedex = {
 				this.add('-sideend', targetSide, 'Carnage');
 			},
 		},
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Fire Pledge", target);
+		},
 		secondary: null,
 		target: "normal",
 		type: "Fire",
@@ -3662,12 +3666,11 @@ let BattleMovedex = {
 		category: "Special",
 		desc: "Causes residual Fire damage ( 1/8 ) for two turns.",
 		shortDesc: "Causes residual Fire damage ( 1/8 ) for two turns.",
-		id: "carnage",
-		name: "Carnage",
+		id: "warp",
+		name: "Warp",
 		pp: 20,
 		priority: 0,
 		flags: {protect: 1, mirror: 1, mystery: 1},
-		volatileStatus: 'carnage',
 		onAfterHit(target, source) {
 			if (target.hp) {
 				if (target.volatiles['carnage']){
@@ -3689,8 +3692,12 @@ let BattleMovedex = {
 				spd: -1,
 			},
 		},
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Mist Ball", target);
+		},
 		target: "normal",
-		type: "Fire",
+		type: "Psychic",
 		contestType: "Tough",
 	},
 //Whenever the hazard "Mine" is added here, don't forget to turn the user immune if it holds the Trash Copaction ability, the code is right below the Heavy Duty Boots one in all the hazards above but Stealth Rock
