@@ -6601,6 +6601,7 @@ TMs/Tutors sorted by last generation they carry that status (for kirby, nero, et
 		uturn: ["7L1"],
 		venoshock: ["7L1"],
 		wildcharge: ["7L1"],
+		wyverntackle: ["7L1"],
 	}},
 	sonic: {learnset: {
 		extremespeed: ["7L1"],

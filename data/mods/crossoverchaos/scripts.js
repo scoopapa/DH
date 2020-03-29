@@ -251,7 +251,28 @@ exports.BattleScripts = {
 		if (move.type === 'Fire' && ('tarshot' in this.volatiles)) totalTypeMod++;
 		return totalTypeMod;
 	},
-  
+  	ignoringAbility() {
+		const abilities = [
+			'battlebond', 'comatose', 'disguise', 'gulpmissile', 'multitype', 'powerconstruct', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange', 'bellydances', 'deadringer', 'soul0system', 'physicalbreakdown', 'unsteadyhood', 'shadesoul', 'stolenarmour', 'lastditcheffort', 'stillheart',
+		];
+		// Check if any active pokemon have the ability Neutralizing Gas
+		let neutralizinggas = false;
+		for (const pokemon of this.battle.getAllActive()) {
+			// can't use hasAbility because it would lead to infinite recursion
+			if (((pokemon.ability === ('neutralizinggas')) || (this.hasType('Electric') && pokemon.ability === ('nowifi'))) && !pokemon.volatiles['gastroacid'] &&
+				!pokemon.abilityData.ending) {
+				neutralizinggas = true;
+				break;
+			}
+		}
+
+		return !!(
+			(this.battle.gen >= 5 && !this.isActive) ||
+			((this.volatiles['gastroacid'] || (neutralizinggas && this.ability !== ('neutralizinggas'))) &&
+			!abilities.includes(this.ability))
+		);
+	},
+	  
 	  isGrounded(negateImmunity = false) {
 		  if ('gravity' in this.battle.field.pseudoWeather) return true;
 		  if ('ingrain' in this.volatiles && this.battle.gen >= 4) return true;
@@ -268,7 +289,6 @@ exports.BattleScripts = {
 		  return item !== 'airballoon';
 	  },
   },
-  
   field: {
     //Completely negate weather if both sides have an active Scarlet Temperament.
 	  suppressingWeather() {
@@ -287,5 +307,4 @@ exports.BattleScripts = {
 		  return !(this.battle.sides.length - scarlettemperaments);
 	  }
   },
-
 };
