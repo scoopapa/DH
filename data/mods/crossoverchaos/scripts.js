@@ -259,13 +259,8 @@ exports.BattleScripts = {
 		let neutralizinggas = false;
 		for (const pokemon of this.battle.getAllActive()) {
 			// can't use hasAbility because it would lead to infinite recursion
-			if (( pokemon.ability === ('neutralizinggas' as ID)
-					|| ( this.hasType('Electric') 
-						&& pokemon.ability === ('nowifi' as ID)
-					))
-				&& !pokemon.volatiles['gastroacid'] 
-				&& !pokemon.abilityData.ending )
-			{
+			if (((pokemon.ability === ('neutralizinggas')) || (this.hasType('Electric') && pokemon.ability === ('nowifi'))) && !pokemon.volatiles['gastroacid'] &&
+				!pokemon.abilityData.ending) {
 				neutralizinggas = true;
 				break;
 			}
@@ -273,10 +268,10 @@ exports.BattleScripts = {
 
 		return !!(
 			(this.battle.gen >= 5 && !this.isActive) ||
-			((this.volatiles['gastroacid'] || (neutralizinggas && this.ability !== ('neutralizinggas' as ID))) &&
+			((this.volatiles['gastroacid'] || (neutralizinggas && this.ability !== ('neutralizinggas'))) &&
 			!abilities.includes(this.ability))
 		);
-	}
+	},
 	  
 	  isGrounded(negateImmunity = false) {
 		  if ('gravity' in this.battle.field.pseudoWeather) return true;
