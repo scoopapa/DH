@@ -1947,7 +1947,7 @@ let BattleLearnsets = {
 		tailwind: ["7T", "6T", "5T", "4T"],
 		worryseed: ["7T", "7L55", "6T", "6L55", "5T", "5L55", "4T", "4L55"],
 		zenheadbutt: ["7T", "6T", "5T", "4T"],
-		rest: ["7M", "6M", "5M", "4M"],
+		moonblast: ["7M", "6M", "5M", "4M"],
 		bravebird: ["7M", "6M", "5M", "4M"],
 		woodhammer: ["7M", "6M", "5M", "4M"],
 		defog: ["7M", "6M", "5M", "4M"],
