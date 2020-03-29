@@ -2948,6 +2948,10 @@ let BattleMovedex = {
 				this.add('-sidestart', side, 'move: Mine');
 			},
 			onSwitchIn(pokemon) {
+				if (pokemon.hasAbility('crystalbarrier')) {
+					this.damage(3 * pokemon.maxhp / 24);
+					return;
+				},
 				if (pokemon.hasItem('heavydutyboots') || pokemon.hasAbility('trashcompactor')) return;
 				const fireHazard = this.dex.getActiveMove('Stealth Rock');
 				fireHazard.type = 'Fire';
@@ -3060,6 +3064,26 @@ let BattleMovedex = {
 		type: "Dark",
 		zMoveBoost: {spd: 1},
 		contestType: "Clever",
+	},
+	"airbullet": {
+		num: 40100,
+		accuracy: 100,
+		basePower: 30,
+		category: "Physical",
+		desc: "Hits three times. If a hit breaks the target's substitute, they will take damage for the remaining hits.",
+		shortDesc: "Hits 3 times in one turn.",
+		id: "airbullet",
+		name: "Air Bullet",
+		pp: 15,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		multihit: 3,
+		secondary: null,
+		target: "normal",
+		type: "Flying",
+		zMovePower: 175,
+		gmaxPower: 130,
+		contestType: "Smart",
 	},
 	"suicideride": {
 		num: 50001,
@@ -3385,6 +3409,10 @@ let BattleMovedex = {
 				this.add('-sidestart', side, 'move: G-Max Steelsurge');
 			},
 			onSwitchIn(pokemon) {
+				if (pokemon.hasAbility('crystalbarrier')) {
+					this.damage(3 * pokemon.maxhp / 24);
+					return;
+				},
 				if (pokemon.hasItem('heavydutyboots') || pokemon.hasAbility('trashcompactor')) return;
 				// Ice Face and Disguise correctly get typed damage from Stealth Rock
 				// because Stealth Rock bypasses Substitute.
@@ -3428,6 +3456,10 @@ let BattleMovedex = {
 			},
 			onSwitchIn(pokemon) {
 				if (!pokemon.isGrounded()) return;
+				if (pokemon.hasAbility('crystalbarrier')) {
+					this.damage(3 * pokemon.maxhp / 24);
+					return;
+				},
 				if (pokemon.hasItem('heavydutyboots')) return;
 				if (pokemon.hasAbility('trashcompactor')) return;
 				let damageAmounts = [0, 3, 4, 6]; // 1/8, 1/6, 1/4
@@ -3460,6 +3492,10 @@ let BattleMovedex = {
 				this.add('-sidestart', side, 'move: Stealth Rock');
 			},
 			onSwitchIn(pokemon) {
+				if (pokemon.hasAbility('crystalbarrier')) {
+					this.damage(3 * pokemon.maxhp / 24);
+					return;
+				},
 				if (pokemon.hasItem('heavydutyboots') || pokemon.hasAbility('trashcompactor')) return;
 				let typeMod = this.dex.clampIntRange(pokemon.runEffectiveness(this.dex.getActiveMove('stealthrock')), -6, 6);
 				this.damage(pokemon.maxhp * Math.pow(2, typeMod) / 8);
@@ -3491,6 +3527,10 @@ let BattleMovedex = {
 			},
 			onSwitchIn(pokemon) {
 				if (!pokemon.isGrounded()) return;
+				if (pokemon.hasAbility('crystalbarrier')) {
+					this.damage(3 * pokemon.maxhp / 24);
+					return;
+				},
 				if (pokemon.hasItem('heavydutyboots') || pokemon.hasAbility('trashcompactor')) return;
 				this.add('-activate', pokemon, 'move: Sticky Web');
 				this.boost({spe: -1}, pokemon, this.effectData.source, this.dex.getActiveMove('stickyweb'));
@@ -3529,6 +3569,10 @@ let BattleMovedex = {
 			},
 			onSwitchIn(pokemon) {
 				if (!pokemon.isGrounded()) return;
+				if (pokemon.hasAbility('crystalbarrier')) {
+					this.damage(3 * pokemon.maxhp / 24);
+					return;
+				},
 				if (pokemon.hasType('Poison')) {
 					this.add('-sideend', pokemon.side, 'move: Toxic Spikes', '[of] ' + pokemon);
 					pokemon.side.removeSideCondition('toxicspikes');
