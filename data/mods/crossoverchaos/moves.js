@@ -2831,7 +2831,7 @@ let BattleMovedex = {
 		num: 40092,
 		accuracy: 100,
 		basePower: 12,
-		category: "Special",
+		category: "Physical",
 		desc: "Hits nine times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits.",
 		shortDesc: "Hits 9 times in one turn.",
 		id: "ninemoons",
@@ -2927,6 +2927,39 @@ let BattleMovedex = {
 		target: "normal",
 		type: "Fairy",
 		contestType: "Cute",
+	},
+		"mine": {
+		num: 40097,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in. Fails if the effect is already active on the opposing side. Foes lose 1/32, 1/16, 1/8, 1/4, or 1/2 of their maximum HP, rounded down, based on their weakness to the Fire type; 0.25x, 0.5x, neutral, 2x, or 4x, respectively. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin or Defog successfully, or is hit by Defog.",
+		shortDesc: "Hurts foes on switch-in. Factors Fire weakness.",
+		id: "mine",
+		isViable: true,
+		name: "Mine",
+		pp: 20,
+		priority: 0,
+		flags: {reflectable: 1},
+		sideCondition: 'mine',
+		effect: {
+			// this is a side condition
+			onStart(side) {
+				this.add('-sidestart', side, 'move: Mine');
+			},
+			onSwitchIn(pokemon) {
+				if (pokemon.hasItem('heavydutyboots') || pokemon.hasAbility('trashcompactor')) return;
+				const fireHazard = this.dex.getActiveMove('Stealth Rock');
+				fireHazard.type = 'Fire';
+				let typeMod = this.dex.clampIntRange(pokemon.runEffectiveness(fireHazard), -6, 6);
+				this.damage(pokemon.maxhp * Math.pow(2, typeMod) / 8);
+			},
+		},
+		secondary: null,
+		target: "foeSide",
+		type: "Fire",
+		zMoveBoost: {def: 1},
+		contestType: "Cool",
 	},
 	"suicideride": {
 		num: 50001,
@@ -3252,8 +3285,7 @@ let BattleMovedex = {
 				this.add('-sidestart', side, 'move: G-Max Steelsurge');
 			},
 			onSwitchIn(pokemon) {
-				if (pokemon.hasItem('heavydutyboots')) return;
-				if (pokemon.hasAbility('trashcompactor')) return;
+				if (pokemon.hasItem('heavydutyboots') || pokemon.hasAbility('trashcompactor')) return;
 				// Ice Face and Disguise correctly get typed damage from Stealth Rock
 				// because Stealth Rock bypasses Substitute.
 				// They don't get typed damage from Steelsurge because Steelsurge doesn't,
@@ -3328,8 +3360,7 @@ let BattleMovedex = {
 				this.add('-sidestart', side, 'move: Stealth Rock');
 			},
 			onSwitchIn(pokemon) {
-				if (pokemon.hasItem('heavydutyboots')) return;
-				if (pokemon.hasAbility('trashcompactor')) return;
+				if (pokemon.hasItem('heavydutyboots') || pokemon.hasAbility('trashcompactor')) return;
 				let typeMod = this.dex.clampIntRange(pokemon.runEffectiveness(this.dex.getActiveMove('stealthrock')), -6, 6);
 				this.damage(pokemon.maxhp * Math.pow(2, typeMod) / 8);
 			},
@@ -3360,8 +3391,7 @@ let BattleMovedex = {
 			},
 			onSwitchIn(pokemon) {
 				if (!pokemon.isGrounded()) return;
-				if (pokemon.hasItem('heavydutyboots')) return;
-				if (pokemon.hasAbility('trashcompactor')) return;
+				if (pokemon.hasItem('heavydutyboots') || pokemon.hasAbility('trashcompactor')) return;
 				this.add('-activate', pokemon, 'move: Sticky Web');
 				this.boost({spe: -1}, pokemon, this.effectData.source, this.dex.getActiveMove('stickyweb'));
 			},
