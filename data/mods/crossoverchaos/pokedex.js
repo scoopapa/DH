@@ -2570,7 +2570,7 @@ romulus: {
 			species: "Romulus", /* Fate: Grand Order */
 			types: ["Grass"],
 			gender: "M",
-			baseStats: {hp: 110, atk: 130, def: 120, spa: 40, spd: 110, spe: 100},
+			baseStats: {hp: 120, atk: 100, def: 130, spa: 60, spd: 90, spe: 110},
 			abilities: {0: "Imperial Privelege", 1: "Clear Body", H: "Sturdy"},
 			color: "Brown",
 			heightm: 1.9,
@@ -3062,10 +3062,11 @@ kyokokirigiri: {
 		num: 6000167,
 		species: "Ori", /* Ori and the Blind Forest */
 		types: ["Fairy"],
+		gender: "N",
 		baseStats: {hp: 85, atk: 110, def: 60, spa: 120, spd: 70, spe: 125},
 		abilities: {0: "Pixilate", H: "Soul Link"},
-		heightm: 1,
-		weightkg: 10,
+		heightm: 0.4,
+		weightkg: 1,
 	},
 	orion: {
 		num: 6000168,
@@ -3122,7 +3123,7 @@ kyokokirigiri: {
 		baseStats: {hp: 101, atk: 88, def: 73, spa: 102, spd: 127, spe: 63},
 		abilities: {0: "Levitate", 1: "Prankster", H: "Cursed Body"},
 		heightm: 3,
-		weightkg: 1,
+		weightkg: 60,
 	},
 	pandoraamazon: {
 		num: 60000171,
@@ -3134,8 +3135,8 @@ kyokokirigiri: {
 		gender: "F",
 		baseStats: {hp: 91, atk: 108, def: 63, spa: 112, spd: 77, spe: 103},
 		abilities: {0: "Levitate", 1: "Prankster", H: "Serene Grace"},
-		heightm: 1.7,
-		weightkg: 67,
+		heightm: 1.75,
+		weightkg: 60,
 	},
 	tamamo: {
 		num: 60000172,
