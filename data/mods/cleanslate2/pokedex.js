@@ -236,7 +236,7 @@ let BattlePokedex = {
 	shayminsky: {
 		inherit: true,
 		types: ["Grass", "Flying"],
-		baseStats: {hp: 100, atk: 103, def: 75, spa: 120, spd: 75, spe: 127},
+		baseStats: {hp: 80, atk: 120, def: 80, spa: 80, spd: 100, spe: 140},
 		abilities: {0: "Magic Guard"},
 	},
 	scrafty: {
