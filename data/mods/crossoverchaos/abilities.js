@@ -170,6 +170,26 @@ exports.BattleAbilities = {
     id: "poisondippedclaws",
     name: "Poison-Dipped Claws"
   },
+  tearworker: {
+    shortDesc:
+      "This Pokemon's attacking stat is multiplied by 1.5 while using a Water-type attack.",
+    onModifyAtkPriority: 5,
+    onModifyAtk(atk, attacker, defender, move) {
+      if (move.type === "Water") {
+        this.debug("Tearworker boost");
+        return this.chainModify(1.5);
+      }
+    },
+    onModifySpAPriority: 5,
+    onModifySpA(atk, attacker, defender, move) {
+      if (move.type === "Water") {
+        this.debug("Tearworker boost");
+        return this.chainModify(1.5);
+      }
+    },
+    id: "tearworker",
+    name: "Tearworker"
+  },
   divinecourage: {
     desc:
       "When this Pokemon has more than 1/2 its maximum HP and takes damage from an attack bringing it to 1/2 or less of its maximum HP, its Attack and Defense are raised by 1 stage each. This effect applies after all hits from a multi-hit move; Sheer Force prevents it from activating if the move has a secondary effect.",
