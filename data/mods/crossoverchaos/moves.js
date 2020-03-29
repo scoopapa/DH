@@ -2961,6 +2961,66 @@ let BattleMovedex = {
 		zMoveBoost: {def: 1},
 		contestType: "Cool",
 	},
+	"summonwindspirit": {
+		num: 40098,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Raises the user's Speed by 2 stages and its accuracy by 1 stage.",
+		shortDesc: "Raises the user's Speed by 2 and accuracy by 1.",
+		id: "summonwindspirit",
+		isViable: true,
+		name: "Summon Wind Spirit",
+		pp: 20,
+		priority: 0,
+		flags: {snatch: 1},
+		boosts: {
+			spe: 2,
+			accuracy: 1,
+		},
+		secondary: null,
+		target: "self",
+		type: "Flying",
+		zMoveEffect: 'clearnegativeboost',
+		contestType: "Clever",
+	},
+	"summonearthspirit": {
+		num: 40098,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Raises the user's Attack, Defense, and Special Defense by 1 stage. After using this move, the user's attacks ignore the effects of Breath of the Earth.",
+		shortDesc: "Raises user's Attack, Defense, Sp. Def by 1.",
+		id: "summonearthspirit",
+		isViable: true,
+		name: "Summon Earth Spirit",
+		pp: 20,
+		priority: 0,
+		flags: {snatch: 1},
+		boosts: {
+			atk: 1,
+			def: 1,
+			spd: 1,
+		},
+		volatileStatus: 'summonearthspirit',
+		effect: {
+			onStart(target, source, effect) {
+				if (effect && (['imposter', 'transform'].includes(effect.id))) {
+					this.add('-start', target, 'move: Summon Earth Spirit', '[silent]');
+				} else {
+					this.add('-start', target, 'move: Summon Earth Spirit');
+				}
+			},
+			onModifyMove(move, pokemon, target) {
+				if target.hasAbility('breathoftheearth') move.ignoreAbility = true;
+			},
+		},
+		secondary: null,
+		target: "self",
+		type: "Rock",
+		zMoveEffect: 'clearnegativeboost',
+		contestType: "Clever",
+	},
 	"suicideride": {
 		num: 50001,
 		accuracy: 100,
