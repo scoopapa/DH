@@ -2220,4 +2220,33 @@ exports.BattleAbilities = {
 		id: "nowifi",
 		name: "No Wi-Fi",
 	},
+	"hunger": {
+		shortDesc: "On switch-in, this Pokemon's Attack and Speed are halved for 5 turns.",
+		onStart(pokemon) {
+			pokemon.addVolatile('hunger');
+		},
+		onEnd(pokemon) {
+			delete pokemon.volatiles['hunger'];
+			this.add('-end', pokemon, 'Hunger', '[silent]');
+		},
+		onEatItem(item, pokemon) {
+			pokemon.addVolatile('hunger');
+		},
+		effect: {
+			duration: 10,
+			onStart(target) {
+				this.add('-start', target, 'ability: Hunger');
+			},
+			this.heal(target.baseMaxhp / 16);
+			onEnd(target) {
+				this.add('-end', target, 'Hunger');
+			},
+		},
+		if (!pokemon.volatiles['hunger']) {
+			this.add('-activate', pokemon, 'ability: Hunger');
+			this.damage(target.baseMaxhp / 16, target, target);
+		}
+		id: "hunger",
+		name: "Hunger",
+	},
 };
