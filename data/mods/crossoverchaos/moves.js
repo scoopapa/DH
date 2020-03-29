@@ -3487,6 +3487,82 @@ let BattleMovedex = {
 		zMovePower: 175,
 		contestType: "Beautiful",
 	},
+	"carnage": {
+		num: 582,
+		accuracy: 90,
+		basePower: 100,
+		category: "Special",
+		desc: "Causes residual Fire damage ( 1/8 ) for two turns.",
+		shortDesc: "Causes residual Fire damage ( 1/8 ) for two turns.",
+		id: "carnage",
+		name: "Carnage",
+		pp: 20,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, mystery: 1},
+		volatileStatus: 'carnage',
+		onTryHit(target) {
+			if (!this.queue.willMove(target) && target.activeTurns) return false;
+		},
+		effect: {
+			duration: 2,
+			onStart(targetSide) {
+				this.add('-sidestart', targetSide, 'Carnage');
+			},
+			onResidual(targetSide) {
+				for (const pokemon of targetSide.active) {
+					if (!pokemon.hasType('Fire')) this.damage(pokemon.baseMaxhp / 8, pokemon);
+				}
+			},
+			onEnd(targetSide) {
+				for (const pokemon of targetSide.active) {
+					if (!pokemon.hasType('Fire')) this.damage(pokemon.baseMaxhp / 8, pokemon);
+				}
+				this.add('-sideend', targetSide, 'Carnage');
+			},
+		},
+		secondary: null,
+		target: "normal",
+		type: "Fire",
+		contestType: "Tough",
+	},
+	"warp": {
+		num: 582,
+		accuracy: 100,
+		basePower: 70,
+		category: "Special",
+		desc: "Causes residual Fire damage ( 1/8 ) for two turns.",
+		shortDesc: "Causes residual Fire damage ( 1/8 ) for two turns.",
+		id: "carnage",
+		name: "Carnage",
+		pp: 20,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, mystery: 1},
+		volatileStatus: 'carnage',
+		onAfterHit(target, source) {
+			if (target.hp) {
+				if (target.volatiles['carnage']){
+					target.removeVolatile( 'carnage' );
+					let abilities = ['flashfire', 'personofhourai',]
+					let d = 4;
+					if ( pokemon.ability === 'thickfat' || pokemon.ability === 'heatproof' || 'powerofsummer' ) d = 8;
+					if ( pokemon.ability === 'fluffy' || pokemon.ability === 'dryskin' ) d = 2;
+					let typeMod = this.clampIntRange(pokemon.runEffectiveness('Fire'), -6, 6);
+					if ( typeMod <= 0 && pokemon.ability === 'wonderguard' ) return;
+					if (pokemon.runImmunity('Fire') && !abilities.includes( pokemon.ability )) this.damage(pokemon.maxhp * Math.pow(2, typeMod) / d);
+				}
+			}
+		},
+		secondary: {
+			chance: 100,
+			boosts: {
+				def: -1,
+				spd: -1,
+			},
+		},
+		target: "normal",
+		type: "Fire",
+		contestType: "Tough",
+	},
 //Whenever the hazard "Mine" is added here, don't forget to turn the user immune if it holds the Trash Copaction ability, the code is right below the Heavy Duty Boots one in all the hazards above but Stealth Rock
 // "digslash": {
 //         num: 40000,
