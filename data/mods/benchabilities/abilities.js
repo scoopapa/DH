@@ -538,6 +538,18 @@ let BattleAbilities = {
 		id: "retroracer",
 		name: "Retro Racer",
 	},
+	
+	"lunarveil": { // Cresselia
+		shortDesc: "Whenever a Fairy-type ally gets knocked out, Lunar Dance is triggered.",
+		onBeforeFaint: function (pokemon) {
+			if (pokemon.hasType('Fairy')) {
+			this.useMove("Lunar Dance", pokemon);
+			}
+		},
+		id: "lunarveil",
+		name: "Lunar Veil",
+	},
+	
 };
 
 exports.BattleAbilities = BattleAbilities;
