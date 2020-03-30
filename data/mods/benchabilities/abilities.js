@@ -2,7 +2,7 @@
 
 /**@type {{[k: string]: AbilityData}} */
 
-let precociousPupae = { 'kakuna', 'metapod', 'silcoon', 'cascoon', 'spewpa' };
+//let precociousPupae = { 'kakuna', 'metapod', 'silcoon', 'cascoon', 'spewpa' };
 let BattleAbilities = {
 
 	"confidenceboost": { // Machamp line, Victini, Plusle, Florges
