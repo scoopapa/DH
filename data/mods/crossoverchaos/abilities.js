@@ -2250,7 +2250,7 @@ exports.BattleAbilities = {
 		onResidual(pokemon) {
 			if (!pokemon.volatiles['hunger']) {
 				this.add('-activate', pokemon, 'ability: Hunger');
-				this.damage(target.baseMaxhp / 16, target, target);
+				this.damage(pokemon.baseMaxhp / 16, pokemon, pokemon);
 			}
 		},
 		id: "hunger",
