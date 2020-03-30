@@ -105,62 +105,250 @@ let BattleMovedex = {
 		zMovePower: 185,
 		contestType: "Tough",
 	},
-  //Slashing moves
+  //AND NOW, HOO BOY... We're repurposing the "mystery" flag.
 	"nightslash": {
 		inherit: true,
-		flags: {contact: 1, protect: 1, mirror: 1, slash: 1},
+		flags: {contact: 1, protect: 1, mirror: 1, mystery: 1},
 	},
 	"sacredsword": {
 		inherit: true,
-		flags: {contact: 1, protect: 1, mirror: 1, slash: 1},
+		flags: {contact: 1, protect: 1, mirror: 1, mystery: 1},
 	},
 	"crosspoison": {
 		inherit: true,
-		flags: {contact: 1, protect: 1, mirror: 1, slash: 1},
+		flags: {contact: 1, protect: 1, mirror: 1, mystery: 1},
 	},
 	"xscissor": {
 		inherit: true,
-		flags: {contact: 1, protect: 1, mirror: 1, slash: 1},
+		flags: {contact: 1, protect: 1, mirror: 1, mystery: 1},
 	},
 	"furycutter": {
 		inherit: true,
-		flags: {contact: 1, protect: 1, mirror: 1, slash: 1},
+		flags: {contact: 1, protect: 1, mirror: 1, mystery: 1},
 	},
 	"leafblade": {
 		inherit: true,
-		flags: {contact: 1, protect: 1, mirror: 1, slash: 1},
+		flags: {contact: 1, protect: 1, mirror: 1, mystery: 1},
 	},
 	"falseswipe": {
 		inherit: true,
-		flags: {contact: 1, protect: 1, mirror: 1, slash: 1},
+		flags: {contact: 1, protect: 1, mirror: 1, mystery: 1},
 	},
 	"solarblade": {
 		inherit: true,
-		flags: {charge: 1, contact: 1, protect: 1, mirror: 1, slash: 1},
+		flags: {charge: 1, contact: 1, protect: 1, mirror: 1, mystery: 1},
 	},
 	"cut": {
 		inherit: true,
-		flags: {contact: 1, protect: 1, mirror: 1, slash: 1},
+		flags: {contact: 1, protect: 1, mirror: 1, mystery: 1},
 	},
 	"slash": {
 		inherit: true,
-		flags: {contact: 1, protect: 1, mirror: 1, slash: 1},
+		flags: {contact: 1, protect: 1, mirror: 1, mystery: 1},
 	},
 	"razorwind": {
 		inherit: true,
-		flags: {charge: 1, protect: 1, mirror: 1, slash: 1},
+		flags: {charge: 1, protect: 1, mirror: 1, mystery: 1},
 	},
 	"secretsword": {
 		inherit: true,
-		flags: {protect: 1, mirror: 1, slash: 1},
+		flags: {protect: 1, mirror: 1, mystery: 1},
 	},
 	"airslash": {
 		inherit: true,
-		flags: {protect: 1, mirror: 1, distance: 1, slash: 1},
+		flags: {protect: 1, mirror: 1, distance: 1, mystery: 1},
 	},
 	"psychocut": {
 		inherit: true,
-		flags: {protect: 1, mirror: 1, slash: 1},
+		flags: {protect: 1, mirror: 1, mystery: 1},
+	},
+	"afteryou": {
+		inherit: true,
+		flags: {authentic: 1},
+	},
+	"babydolleyes": {
+		inherit: true,
+		flags: {protect: 1, reflectable: 1, mirror: 1,},
+	},
+	"beatup": {
+		inherit: true,
+		flags: {protect: 1, mirror: 1},
+	},
+	"bestow": {
+		inherit: true,
+		flags: {authentic: 1, mirror: 1},
+	},
+	"charm": {
+		inherit: true,
+		flags: {protect: 1, reflectable: 1, mirror: 1},
+	},
+	"electrify": {
+		inherit: true,
+		flags: {protect: 1, mirror: 1},
+	},
+	"entrainment": {
+		inherit: true,
+		flags: {protect: 1, reflectable: 1, mirror: 1},
+	},
+	"faketears": {
+		inherit: true,
+		flags: {protect: 1, reflectable: 1, mirror: 1},
+	},
+	"featherdance": {
+		inherit: true,
+		flags: {protect: 1, reflectable: 1, mirror: 1, dance: 1},
+	},
+	"flatter": {
+		inherit: true,
+		flags: {protect: 1, reflectable: 1, mirror: 1},
+	},
+	"fling": {
+		inherit: true,
+		flags: {protect: 1, mirror: 1},
+	},
+	"floralhealing": {
+		inherit: true,
+		flags: {protect: 1, reflectable: 1, heal: 1},
+	},
+	"forestscurse": {
+		inherit: true,
+		flags: {protect: 1, reflectable: 1, mirror: 1},
+	},
+	"gastroacid": {
+		inherit: true,
+		flags: {protect: 1, reflectable: 1, mirror: 1},
+	},
+	"guardsplit": {
+		inherit: true,
+		flags: {protect: 1, mirror: 1},
+	},
+	"guardswap": {
+		inherit: true,
+		flags: {protect: 1, mirror: 1, authentic: 1},
+	},
+	"healpulse": {
+		inherit: true,
+		flags: {protect: 1, reflectable: 1, heal: 1, distance: 1, pulse: 1},
+	},
+	"heartswap": {
+		inherit: true,
+		flags: {protect: 1, mirror: 1, authentic: 1},
+	},
+	"instruct": {
+		inherit: true,
+		flags: {protect: 1, authentic: 1},
+	},
+	"metalsound": {
+		inherit: true,
+		flags: {protect: 1, reflectable: 1, mirror: 1, authentic: 1, sound: 1},
+	},
+	"mimic": {
+		inherit: true,
+		flags: {protect: 1, authentic: 1},
+	},
+	"odorsleuth": {
+		inherit: true,
+		flags: {protect: 1, reflectable: 1, mirror: 1, authentic: 1},
+	},
+	"painsplit": {
+		inherit: true,
+		flags: {protect: 1, mirror: 1},
+	},
+	"powersplit": {
+		inherit: true,
+		flags: {protect: 1, mirror: 1},
+	},
+	"powerswap": {
+		inherit: true,
+		flags: {protect: 1, mirror: 1, authentic: 1},
+	},
+	"psychup": {
+		inherit: true,
+		flags: {authentic: 1},
+	},
+	"reflecttype": {
+		inherit: true,
+		flags: {protect: 1, authentic: 1},
+	},
+	"roar": {
+		inherit: true,
+		flags: {reflectable: 1, mirror: 1, authentic: 1, sound: 1},
+	},
+	"roleplay": {
+		inherit: true,
+		flags: {authentic: 1},
+	},
+	"scaryface": {
+		inherit: true,
+		flags: {protect: 1, reflectable: 1, mirror: 1},
+	},
+	"screech": {
+		inherit: true,
+		flags: {protect: 1, reflectable: 1, mirror: 1, authentic: 1, sound: 1},
+	},
+	"simplebeam": {
+		inherit: true,
+		flags: {protect: 1, reflectable: 1, mirror: 1},
+	},
+	"sketch": {
+		inherit: true,
+		flags: {authentic: 1},
+	},
+	"skillswap": {
+		inherit: true,
+		flags: {protect: 1, mirror: 1, authentic: 1},
+	},
+	"speedswap": {
+		inherit: true,
+		flags: {protect: 1, mirror: 1, authentic: 1},
+	},
+	"soak": {
+		inherit: true,
+		flags: {protect: 1, reflectable: 1, mirror: 1},
+	},
+	"spotlight": {
+		inherit: true,
+		flags: {protect: 1, reflectable: 1},
+	},
+	"swagger": {
+		inherit: true,
+		flags: {protect: 1, reflectable: 1, mirror: 1},
+	},
+	"switcheroo": {
+		inherit: true,
+		flags: {protect: 1, mirror: 1},
+	},
+	"telekinesis": {
+		inherit: true,
+		flags: {protect: 1, reflectable: 1, mirror: 1, gravity: 1},
+	},
+	"tickle": {
+		inherit: true,
+		flags: {protect: 1, reflectable: 1, mirror: 1},
+	},
+	"topsyturvy": {
+		inherit: true,
+		flags: {protect: 1, reflectable: 1, mirror: 1},
+	},
+	"transform": {
+		inherit: true,
+		flags: {},
+	},
+	"trick": {
+		inherit: true,
+		flags: {protect: 1, mirror: 1},
+	},
+	"trickortreat": {
+		inherit: true,
+		flags: {protect: 1, reflectable: 1, mirror: 1},
+	},
+	"whirlwind": {
+		inherit: true,
+		flags: {reflectable: 1, mirror: 1, authentic: 1},
+	},
+	"worryseed": {
+		inherit: true,
+		flags: {protect: 1, reflectable: 1, mirror: 1},
 	},
 	
     "fireball": {
@@ -282,7 +470,7 @@ let BattleMovedex = {
 			name: "Monado Buster",
 			pp: 1,
 			priority: 0,
-			flags: {contact: 1, slash: 1},
+			flags: {contact: 1, mystery: 1},
 			onModifyMove(move, pokemon, target) {
 				if (target.getStat('def', false, true) > target.getStat('spd', false, true)) move.category = 'Special';	
 			},
@@ -375,7 +563,7 @@ let BattleMovedex = {
 		name: "Devilsknife",
 		pp: 10,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1, slash: 1},
+		flags: {contact: 1, protect: 1, mirror: 1, mystery: 1},
 		self: {
 			volatileStatus: 'lockedmove',
 		},
@@ -402,7 +590,7 @@ let BattleMovedex = {
 		name: "Dash Slash",
 		pp: 20,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1, slash: 1},
+		flags: {contact: 1, protect: 1, mirror: 1, mystery: 1},
 		selfSwitch: true,
 		secondary: null,
 		target: "normal",
@@ -616,7 +804,7 @@ let BattleMovedex = {
 		name: "Great Slash",
 		pp: 5,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1, slash: 1},
+		flags: {contact: 1, protect: 1, mirror: 1, mystery: 1},
 		selfBoost: {
 			boosts: {
 				def: -1,
@@ -870,7 +1058,7 @@ let BattleMovedex = {
 		name: "Cyclone Slash",
 		pp: 10,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1, slash: 1},
+		flags: {contact: 1, protect: 1, mirror: 1, mystery: 1},
 		multihit: [2, 5],
 		volatileStatus: 'cycloneslash',
 		effect: {
@@ -928,7 +1116,7 @@ let BattleMovedex = {
 		name: "Demonic Rend",
 		pp: 5,
 		priority: 0,
-		flags: {protect: 1, mirror: 1, contact: 1, slash: 1},
+		flags: {protect: 1, mirror: 1, contact: 1, mystery: 1},
 		secondary: {
 			chance: 40,
 			boosts: {
@@ -1165,7 +1353,7 @@ let BattleMovedex = {
 		name: "Rising Phoenix",
 		pp: 5,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1, slash: 1},
+		flags: {contact: 1, protect: 1, mirror: 1, mystery: 1},
 		secondary: {
 			chance: 30,
 			status: 'brn',
@@ -1489,7 +1677,7 @@ let BattleMovedex = {
 		name: "Sword Rain Beta",
 		pp: 10,
 		priority: 0,
-		flags: {protect: 1, mirror: 1, slash: 1},
+		flags: {protect: 1, mirror: 1, mystery: 1},
 		multihit: 5,
 		secondary: null,
 		target: "normal",
@@ -1508,7 +1696,7 @@ let BattleMovedex = {
 		name: "Thrust Barrage",
 		pp: 10,
 		priority: 0,
-		flags: {protect: 1, mirror: 1, slash: 1},
+		flags: {protect: 1, mirror: 1, mystery: 1},
 		onModifyMove(move, pokemon) {
 			let type = pokemon.types[0];
       if (pokemon.types.length >= pokemon.addedType ? 3 : 2) type = pokemon.types[1];
@@ -1854,7 +2042,7 @@ let BattleMovedex = {
 		name: "Axe Strike",
 		pp: 5,
 		priority: 0,
-		flags: {protect: 1, mirror: 1, slash: 1},
+		flags: {protect: 1, mirror: 1, mystery: 1},
 		secondary: {
 			chance: 30,
 			volatileStatus: 'flinch',
@@ -1875,7 +2063,7 @@ let BattleMovedex = {
 		name: "Invisible Air",
 		pp: 20,
 		priority: 0,
-		flags: {protect: 1, mirror: 1, slash: 1},
+		flags: {protect: 1, mirror: 1, mystery: 1},
 		onModifyMove(move, pokemon) {
 			if (pokemon.getStat('atk', false, true) > pokemon.getStat('spa', false, true)) move.category = 'Physical';
 		},
@@ -2012,7 +2200,7 @@ let BattleMovedex = {
 		name: "Mach Tornado",
 		pp: 15,
 		priority: 0,
-		flags: {slash: 1, protect: 1, mirror: 1},
+		flags: {mystery: 1, protect: 1, mirror: 1},
 		secondary: {
 			chance: 30,
 			boosts: {
@@ -2139,7 +2327,7 @@ let BattleMovedex = {
 		name: "Foil Flourish",
 		pp: 10,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1, slash: 1},
+		flags: {contact: 1, protect: 1, mirror: 1, mystery: 1},
 		secondaries: [
 			{
 				chance: 50,
@@ -2193,7 +2381,7 @@ let BattleMovedex = {
 		name: "Shooter Cutter",
 		pp: 10,
 		priority: 0,
-		flags: {protect: 1, mirror: 1, slash: 1},
+		flags: {protect: 1, mirror: 1, mystery: 1},
 		multihit: 4,
 		secondary: null,
 		target: "normal",
@@ -2514,7 +2702,7 @@ let BattleMovedex = {
 		name: "Life Ender",
 		pp: 5,
 		priority: 0,
-		flags: {contact: 1, recharge: 1, slash: 1, protect: 1, mirror: 1},
+		flags: {contact: 1, recharge: 1, mystery: 1, protect: 1, mirror: 1},
 		self: {
 			volatileStatus: 'mustrecharge',
 		},
@@ -2586,7 +2774,7 @@ let BattleMovedex = {
 		name: "Speed Slice",
 		pp: 10,
 		priority: 1,
-		flags: {contact: 1, protect: 1, mirror: 1, slash: 1},
+		flags: {contact: 1, protect: 1, mirror: 1, mystery: 1},
 		critRatio: 2,
 		secondary: null,
 		target: "normal",
@@ -2886,7 +3074,7 @@ let BattleMovedex = {
 		name: "Warp",
 		pp: 10,
 		priority: 0,
-		flags: {protect: 1, mirror: 1, slash: 1},
+		flags: {protect: 1, mirror: 1, mystery: 1},
 		onHit(pokemon, source) {
 			if (pokemon.hp) {
 				if (pokemon.removeVolatile('carnage')){
@@ -2930,7 +3118,7 @@ let BattleMovedex = {
 		name: "Carnage",
 		pp: 10,
 		priority: 0,
-		flags: {protect: 1, mirror: 1, slash: 1},
+		flags: {protect: 1, mirror: 1, mystery: 1},
 		volatileStatus: 'carnage',
 		effect: {
 			duration: 3,
@@ -3021,6 +3209,48 @@ let BattleMovedex = {
 		type: "Psychic",
 		zMovePower: 175,
 		contestType: "Beautiful",
+	},
+	"diamondpickaxe": {
+		num: 40104,
+		accuracy: 100,
+		basePower: 80,
+		category: "Physical",
+		desc: "Removes entry hazards and binding moves from user's side of the field, except Sticky Web, Magma Storm, Whirlpool and Lingering Potion.",
+		shortDesc: "Free user from hazards/bind/Leech Seed; not including webs/whirlpool/magma storm",
+		id: "diamondpickaxe",
+		isViable: true,
+		name: "Diamond Pickaxe",
+		pp: 10,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		onAfterHit(target, pokemon) {
+			let sideConditions = ['spikes', 'toxicspikes', 'stealthrock', 'gmaxsteelsurge', 'mine'];
+			for (const condition of sideConditions) {
+				if (pokemon.hp && pokemon.side.removeSideCondition(condition)) {
+					this.add('-sideend', pokemon.side, this.dex.getEffect(condition).name, '[from] move: Diamond Pickaxe', '[of] ' + pokemon);
+				}
+			}
+			if (pokemon.hp && pokemon.volatiles['partiallytrapped']) {
+				if (['whirlpool', 'magmastorm'].includes(this.effectData.sourceEffect.id)) return;
+				pokemon.removeVolatile('partiallytrapped');
+			}
+		},
+		onAfterSubDamage(damage, target, pokemon) {
+			let sideConditions = ['spikes', 'toxicspikes', 'stealthrock', 'gmaxsteelsurge', 'mine'];
+			for (const condition of sideConditions) {
+				if (pokemon.hp && pokemon.side.removeSideCondition(condition)) {
+					this.add('-sideend', pokemon.side, this.dex.getEffect(condition).name, '[from] move: Diamond Pickaxe', '[of] ' + pokemon);
+				}
+			}
+			if (pokemon.hp && pokemon.volatiles['partiallytrapped']) {
+				if (['whirlpool', 'magmastorm'].includes(this.effectData.sourceEffect.id)) return;
+				pokemon.removeVolatile('partiallytrapped');
+			}
+		},
+		secondary: null,
+		target: "normal",
+		type: "Rock",
+		contestType: "Cool",
 	},
 	"suicideride": {
 		num: 50001,
