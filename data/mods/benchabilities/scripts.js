@@ -50,6 +50,7 @@ exports.BattleScripts = {
 		this.modData('Pokedex', 'lapras').abilities['S'] = 'Arctic Armor';
 		this.modData('Pokedex', 'rotomfrost').abilities['S'] = 'Arctic Armor';
 		this.modData('Pokedex', 'kyurem').abilities['S'] = 'Arctic Armor';
+		this.modData('Pokedex', 'eiscue').abilities['S'] = 'Arctic Armor';
 		
 		// Heavy Expert: Onix, Steelix, Rhyhorn, Rhydon, Rhyperior, Aron, Lairon, Aggron			
 		this.modData('Pokedex', 'onix').abilities['S'] = 'Heavy Expert';
@@ -60,6 +61,7 @@ exports.BattleScripts = {
 		this.modData('Pokedex', 'aron').abilities['S'] = 'Heavy Expert';
 		this.modData('Pokedex', 'lairon').abilities['S'] = 'Heavy Expert';
 		this.modData('Pokedex', 'aggron').abilities['S'] = 'Heavy Expert';
+		this.modData('Pokedex', 'copperajah').abilities['S'] = 'Heavy Expert';
 		
 		// Ocean's Blessing: Lumineon, Alomomola, Mantine, Manaphy, Phione
 		this.modData('Pokedex', 'lumineon').abilities['S'] = 'Ocean\'s Blessing';
@@ -75,6 +77,9 @@ exports.BattleScripts = {
 		this.modData('Pokedex', 'scrafty').abilities['S'] = 'Spooky Encounter';
 		this.modData('Pokedex', 'pinsir').abilities['S'] = 'Spooky Encounter';
 		this.modData('Pokedex', 'spiritomb').abilities['S'] = 'Spooky Encounter';
+		this.modData('Pokedex', 'impidimp').abilities['S'] = 'Spooky Encounter';
+		this.modData('Pokedex', 'morgrem').abilities['S'] = 'Spooky Encounter';
+		this.modData('Pokedex', 'grimmsnarl').abilities['S'] = 'Spooky Encounter';
 		
 		// Hand Off: Aipom, Ambipom,
 		this.modData('Pokedex', 'aipom').abilities['S'] = 'Hand Off';
@@ -89,6 +94,7 @@ exports.BattleScripts = {
 		this.modData('Pokedex', 'simipour').abilities['S'] = 'Torrential Will';
 		this.modData('Pokedex', 'greninja').abilities['S'] = 'Torrential Will';
 		this.modData('Pokedex', 'primarina').abilities['S'] = 'Torrential Will';
+		this.modData('Pokedex', 'inteleon').abilities['S'] = 'Torrential Will';
 		
 		// Overgrowing Will: Venusaur, Meganium, Sceptile, Torterra, Serperior, Simisage, Chesnaught, Decidueye
 		this.modData('Pokedex', 'venusaur').abilities['S'] = 'Overgrowing Will';
@@ -99,6 +105,7 @@ exports.BattleScripts = {
 		this.modData('Pokedex', 'simisage').abilities['S'] = 'Overgrowing Will';
 		this.modData('Pokedex', 'chesnaught').abilities['S'] = 'Overgrowing Will';
 		this.modData('Pokedex', 'decidueye').abilities['S'] = 'Overgrowing Will';
+		this.modData('Pokedex', 'rillaboom').abilities['S'] = 'Overgrowing Will';
 		
 		// Blazing Will: Charizard, Typhlosion, Blaziken, Infernape, Emboar, Simisear, Delphox, Incineroar
 		this.modData('Pokedex', 'charizard').abilities['S'] = 'Blazing Will';
@@ -109,6 +116,7 @@ exports.BattleScripts = {
 		this.modData('Pokedex', 'emboar').abilities['S'] = 'Blazing Will';
 		this.modData('Pokedex', 'delphox').abilities['S'] = 'Blazing Will';
 		this.modData('Pokedex', 'incineroar').abilities['S'] = 'Blazing Will';
+		this.modData('Pokedex', 'cinderace').abilities['S'] = 'Blazing Will';
 	
 		// Bomb Shelter: Natu, Xatu, Sigilyph, Chespin, Quilladin, Jangmo-o, Hakamo-o, Kommo-o, Octillery
 		this.modData('Pokedex', 'natu').abilities['S'] = 'Bomb Shelter';
@@ -183,6 +191,9 @@ exports.BattleScripts = {
 		this.modData('Pokedex', 'mareep').abilities['S'] = 'Miracle Fluff';
 		this.modData('Pokedex', 'flaaffy').abilities['S'] = 'Miracle Fluff';
 		this.modData('Pokedex', 'ampharos').abilities['S'] = 'Miracle Fluff';
+		this.modData('Pokedex', 'eldegoss').abilities['S'] = 'Miracle Fluff';
+		this.modData('Pokedex', 'wooloo').abilities['S'] = 'Miracle Fluff';
+		this.modData('Pokedex', 'dubwool').abilities['S'] = 'Miracle Fluff';
 		
 		// Knighthood: Hitmonchan, Hitmontop, Hitmonlee, Tyrogue, Throh, Sawk, Riolu
 		this.modData('Pokedex', 'hitmonchan').abilities['S'] = 'Knighthood';
@@ -192,6 +203,9 @@ exports.BattleScripts = {
 		this.modData('Pokedex', 'tyrogue').abilities['S'] = 'Knighthood';
 		this.modData('Pokedex', 'throh').abilities['S'] = 'Knighthood';
 		this.modData('Pokedex', 'sawk').abilities['S'] = 'Knighthood';
+		this.modData('Pokedex', 'sirfetchd').abilities['S'] = 'Knighthood';
+		this.modData('Pokedex', 'corvisquire').abilities['S'] = 'Knighthood';
+		this.modData('Pokedex', 'corviknight').abilities['S'] = 'Knighthood';
 		
 		// Hibernation: Teddiursa, Ursaring, Sentret, Furret, Sandshrew-Alola, Sandslash-Alola, Swinub, Piloswine
 		this.modData('Pokedex', 'teddiursa').abilities['S'] = 'Hibernation';
@@ -202,6 +216,8 @@ exports.BattleScripts = {
 		this.modData('Pokedex', 'sandslashalola').abilities['S'] = 'Hibernation';
 		this.modData('Pokedex', 'swinub').abilities['S'] = 'Hibernation';
 		this.modData('Pokedex', 'piloswine').abilities['S'] = 'Hibernation';
+		this.modData('Pokedex', 'skwovet').abilities['S'] = 'Hibernation';
+		this.modData('Pokedex', 'greedent').abilities['S'] = 'Hibernation';
 		
 		// Sinister Escort: Hydreigon, Misdreavus, Mismagius
 		this.modData('Pokedex', 'hydreigon').abilities['S'] = 'Sinister Escort';
