@@ -337,6 +337,37 @@ exports.BattleScripts = {
 		//Phoneme Fantasy: Ditto, Smeargle
 		// this.modData('Pokedex', 'ditto').abilities['S'] = 'Phoneme Fantasy';
 		// this.modData('Pokedex', 'smeargle').abilities['S'] = 'Phoneme Fantasy';
+		
+		//Antivirus: Porygon, Porygon2, Porygon-Z, Rotom, Rotom-Wash, Rotom-Fan, Rotom-Heat, Rotom-Mow
+		// this.modData('Pokedex', 'porygon').abilities['S'] = 'Antivirus';
+		// this.modData('Pokedex', 'porygon2').abilities['S'] = 'Antivirus';
+		// this.modData('Pokedex', 'porygonz').abilities['S'] = 'Antivirus';
+		// this.modData('Pokedex', 'rotom').abilities['S'] = 'Antivirus';
+		// this.modData('Pokedex', 'rotomwash').abilities['S'] = 'Antivirus';
+		// this.modData('Pokedex', 'rotomfan').abilities['S'] = 'Antivirus';
+		// this.modData('Pokedex', 'rotomheat').abilities['S'] = 'Antivirus';
+		// this.modData('Pokedex', 'rotommow').abilities['S'] = 'Antivirus';
+		
+		// Fountain of Youth: Happiny, Cleffa, Igglybuff, Wynaut, Toxel
+		// this.modData('Pokedex', 'happiny').abilities['S'] = 'Fountain of Youth';
+		// this.modData('Pokedex', 'cleffa').abilities['S'] = 'Fountain of Youth';
+		// this.modData('Pokedex', 'igglybuff').abilities['S'] = 'Fountain of Youth';
+		// this.modData('Pokedex', 'wynaut').abilities['S'] = 'Fountain of Youth';
+		// this.modData('Pokedex', 'toxel').abilities['S'] = 'Fountain of Youth';
+		
+		// Safe Space: Audino, Jigglypuff, Wigglytuff, Bonsly, Sudowoodo, Glameow, Purugly, Hattena, Hattrem, Hatterene, Indeedee (Male and Female)
+		// this.modData('Pokedex', 'audino').abilities['S'] = 'Safe Space';
+		// this.modData('Pokedex', 'jigglypuff').abilities['S'] = 'Safe Space';
+		// this.modData('Pokedex', 'bonsly').abilities['S'] = 'Safe Space';
+		// this.modData('Pokedex', 'sudowoodo').abilities['S'] = 'Safe Space';
+		// this.modData('Pokedex', 'wigglytuff').abilities['S'] = 'Safe Space';
+		// this.modData('Pokedex', 'glameow').abilities['S'] = 'Safe Space';
+		// this.modData('Pokedex', 'purgly').abilities['S'] = 'Safe Space';
+		// this.modData('Pokedex', 'hattena').abilities['S'] = 'Safe Space';
+		// this.modData('Pokedex', 'hattrem').abilities['S'] = 'Safe Space';
+		// this.modData('Pokedex', 'hatterene').abilities['S'] = 'Safe Space';
+		// this.modData('Pokedex', 'indeedee').abilities['S'] = 'Safe Space';
+		// this.modData('Pokedex', 'indeedeef').abilities['S'] = 'Safe Space';
 
 
 	}
