@@ -492,6 +492,52 @@ let BattleAbilities = {
 		name: "Pecking Order",
 	},
 	
+	"deceptiveendurance": { // Ledyba, Ledian, Silcoon, Cascoon, Dustox
+		shortDesc: "Bug type allies with 400 BST or less have both defenses doubled.",
+		onModifyDef(def, source) {
+			if (source.type === 'Bug' && (source.baseStats.hp + source.baseStats.atk + source.baseStats.def + source.baseStats.spa + source.baseStats.spd + source.baseStats.spe) < 400) {
+			return this.chainModify(2);
+			}
+		},
+		onModifySpD(spd, source) {
+			if (source.type === 'Bug' && (source.baseStats.hp + source.baseStats.atk + source.baseStats.def + source.baseStats.spa + source.baseStats.spd + source.baseStats.spe) < 400) {
+			return this.chainModify(2);
+			}
+		},
+		id: "deceptiveendurance",
+		name: "Deceptive Endurance",
+	},
+	
+	"surfacetoair": { // Geodude, Graveler, Golem, Larvitar, Pupitar, Silicobra, Sandaconda
+		shortDesc: "Allied Ground types who use moves 80 BP or lower gain the Smack Down effect. (Ground type moves work like Thousand Arrows)",
+		onModifyMove(move, source) {
+			if (move.basePower < 80 && source.hasType('Ground')) {
+				move.volatileStatus('smackdown')
+			}
+		},
+		onEffectiveness(typeMod, target, type, move, source) {
+			if (move.basePower < 80 && source.hasType('Ground')) {
+			if (move.type !== 'Ground') return;
+			if (!target) return; // avoid crashing when called from a chat plugin
+			// ignore effectiveness if the target is Flying type and immune to Ground
+			if (!target.runImmunity('Ground')) {
+				if (target.hasType('Flying')) return 0;
+			}
+			}
+		},
+		id: "surfacetoair",
+		name: "Surface to Air",
+	},
+	"retroracer": { // Tauros, Dodrio, Aerodactyl
+		shortDesc: "Allies with 110 base speed or more have their crit. ratio augmented by 1 stage if the opponent is slower than them.",
+		onModifyCritRatio(critRatio, source, target) {
+			if (source.baseStats.spe > 110 && source.getStat('spe') > target.getStat('spe')) {
+			return critRatio + 1;
+			}
+		},
+		id: "retroracer",
+		name: "Retro Racer",
+	},
 };
 
 exports.BattleAbilities = BattleAbilities;
