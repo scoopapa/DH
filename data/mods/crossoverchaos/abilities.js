@@ -2263,20 +2263,4 @@ exports.BattleAbilities = {
 		name: "Dimensional Mastery",
 		// implemented in the corresponding move
 	},
-	"zeusthunder": {
-		desc: "When using Thunder, additionally uses Bulk Up.",
-		shortDesc: "When using Thunder, additionally uses Bulk Up.",
-		onAnyDamage(damage, target, source, effect) {
-			if (effect && effect.id === 'thunder' && source.hasAbility('zeusthunder')) {
-                		this.useMove('Bulk Up', source);
-			}
-		},
-		onAnyAfterSubDamage(damage, target, source, effect) {
-			if (effect && effect.id === 'thunder' && source.hasAbility('zeusthunder')) {
-                		this.useMove('Bulk Up', source);
-			}
-		},
-		id: "zeusthunder",
-		name: "Zeus Thunder",
-	},
 };
