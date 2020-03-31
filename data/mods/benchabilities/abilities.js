@@ -2,7 +2,7 @@
 
 /**@type {{[k: string]: AbilityData}} */
 
-let precociousPupae = { 'kakuna', 'metapod', 'silcoon', 'cascoon', 'spewpa' };
+//let precociousPupae = { 'kakuna', 'metapod', 'silcoon', 'cascoon', 'spewpa' };
 let BattleAbilities = {
 
 	"confidenceboost": { // Machamp line, Victini, Plusle, Florges
@@ -394,7 +394,8 @@ let BattleAbilities = {
 		shortDesc: "Allied Flying types set Delta Stream on switch in.",
 		onSwitchIn(source) { 
             
-		},desc: "On switch-in, the weather becomes strong winds that remove the weaknesses of the Flying type from Flying-type Pokemon. This weather remains in effect until this Ability is no longer active for any Pokemon, or the weather is changed by Desolate Land or Primordial Sea.",
+		},
+		desc: "On switch-in, the weather becomes strong winds that remove the weaknesses of the Flying type from Flying-type Pokemon. This weather remains in effect until this Ability is no longer active for any Pokemon, or the weather is changed by Desolate Land or Primordial Sea.",
 		shortDesc: "On switch-in, strong winds begin until this Ability is not active in battle.",
 		onStart(source) {
 			if (source.hasType('Flying')) {
@@ -424,7 +425,7 @@ let BattleAbilities = {
 		id: "windtunnel",
 		name: "Wind Tunnel",
 	},
-	"precociouspupae": {
+	/*"precociouspupae": {
 		desc: "This Pokemon's Speed is raised by 1 stage at the end of each full turn it has been on the field.",
 		shortDesc: "This Pokemon's Speed is raised 1 stage at the end of each full turn on the field.",
 		onResidualOrder: 26,
@@ -444,7 +445,111 @@ let BattleAbilities = {
 		name: "Precocious Pupae",
 		rating: 4.5,
 		num: 3,
+	},*/
+	// NEW
+		"electromagnet": { // Magnemite, Magneton, Magnezone, Nosepass, Probopass, Geodude-Alola, Graveler-Alola, Golem-Alola
+		shortDesc: "Electric types gain a Magnet Rise effect upon switching in.",
+		onSwitchIn(source) { 
+            if (source.hasType('Electric')) {
+				this.useMove("Magnet Rise", source);
+             }
+		},
+		id: "electromagnet",
+		name: "Electro Magnet",
 	},
+	"legendarypresence": { // Moltres, Articuno, Zapdos, Mewtwo
+		shortDesc: "This Pokemon and its allies' moves have their accuracy multiplied by 1.1.",
+		onAllyModifyMove(move) {
+			if (typeof move.accuracy === 'number') {
+				move.accuracy *= 1.1;
+			}
+		},
+		id: "legendarypresence",
+		name: "Legendary Presence",
+	},
+		"comboattacker": { // Shellder, Cloyster, Mincinno, Cincinno, Pikipek, Trumbeak, Toucannon
+		shortDesc: "Allies' Multi-Hit moves gain a 50% increase in power and always hit 3 times (similarly to Battle Bond).",
+		onModifyMove(move) {
+			if (move.multihit && Array.isArray(move.multihit) && move.multihit.length) {
+				move.multihit = 3;
+				move.basePower *= 1.5
+			}
+		},
+		id: "comboattacker",
+		name: "Combo Attacker",
+	},
+	"peckingorder": { // Pidgey, Pidgeotto, Pidgeot, Pidove, Tranquill, Unfezant, Ducklet, Swanna, Vullaby, Mandibuzz, Fletchling, Fletchinder, Talonflame
+		shortDesc: "Drill Peck gains +1 priority and Pluck and Peck gain +2 priority",
+		onModifyMove(move) {
+			if (move.id === 'drillpeck') {
+				move.priority = 1;
+			}
+			else if (move.id === 'pluck' || move.id === 'peck') {
+				move.priority = 2;
+			}
+		},
+		id: "peckingorder",
+		name: "Pecking Order",
+	},
+	
+	"deceptiveendurance": { // Ledyba, Ledian, Silcoon, Cascoon, Dustox
+		shortDesc: "Bug type allies with 400 BST or less have both defenses doubled.",
+		onModifyDef(def, source) {
+			if (source.type === 'Bug' && (source.baseStats.hp + source.baseStats.atk + source.baseStats.def + source.baseStats.spa + source.baseStats.spd + source.baseStats.spe) < 400) {
+			return this.chainModify(2);
+			}
+		},
+		onModifySpD(spd, source) {
+			if (source.type === 'Bug' && (source.baseStats.hp + source.baseStats.atk + source.baseStats.def + source.baseStats.spa + source.baseStats.spd + source.baseStats.spe) < 400) {
+			return this.chainModify(2);
+			}
+		},
+		id: "deceptiveendurance",
+		name: "Deceptive Endurance",
+	},
+	
+	"surfacetoair": { // Geodude, Graveler, Golem, Larvitar, Pupitar, Silicobra, Sandaconda
+		shortDesc: "Allied Ground types who use moves 80 BP or lower gain the Smack Down effect. (Ground type moves work like Thousand Arrows)",
+		onModifyMove(move, source) {
+			if (move.basePower < 80 && source.hasType('Ground')) {
+				move.volatileStatus('smackdown')
+			}
+		},
+		onEffectiveness(typeMod, target, type, move, source) {
+			if (move.basePower < 80 && source.hasType('Ground')) {
+			if (move.type !== 'Ground') return;
+			if (!target) return; // avoid crashing when called from a chat plugin
+			// ignore effectiveness if the target is Flying type and immune to Ground
+			if (!target.runImmunity('Ground')) {
+				if (target.hasType('Flying')) return 0;
+			}
+			}
+		},
+		id: "surfacetoair",
+		name: "Surface to Air",
+	},
+	"retroracer": { // Tauros, Dodrio, Aerodactyl
+		shortDesc: "Allies with 110 base speed or more have their crit. ratio augmented by 1 stage if the opponent is slower than them.",
+		onModifyCritRatio(critRatio, source, target) {
+			if (source.baseStats.spe > 110 && source.getStat('spe') > target.getStat('spe')) {
+			return critRatio + 1;
+			}
+		},
+		id: "retroracer",
+		name: "Retro Racer",
+	},
+	
+	"lunarveil": { // Cresselia
+		shortDesc: "Whenever a Fairy-type ally gets knocked out, Lunar Dance is triggered.",
+		onBeforeFaint: function (pokemon) {
+			if (pokemon.hasType('Fairy')) {
+			this.useMove("Lunar Dance", pokemon);
+			}
+		},
+		id: "lunarveil",
+		name: "Lunar Veil",
+	},
+	
 };
 
 exports.BattleAbilities = BattleAbilities;

@@ -860,7 +860,7 @@ exports.BattleAbilities = {
     onBasePowerPriority: 8,
     onAnyBasePower(basePower, attacker, defender, move) {
       if (
-        move.flags['mystery'] &&
+        move.flags['slash'] &&
         [attacker, defender].includes(this.effectData.target)
       ) {
         this.debug("Sword of Swords - Altering damage taken.");
@@ -2237,15 +2237,22 @@ exports.BattleAbilities = {
 			onStart(target) {
 				this.add('-start', target, 'ability: Hunger');
 			},
-			this.heal(target.baseMaxhp / 16);
+			onResidualOrder: 6,
+			onResidual(pokemon) {
+				this.heal(pokemon.baseMaxhp / 16);
+			},
 			onEnd(target) {
 				this.add('-end', target, 'Hunger');
 			},
 		},
-		if (!pokemon.volatiles['hunger']) {
-			this.add('-activate', pokemon, 'ability: Hunger');
-			this.damage(target.baseMaxhp / 16, target, target);
-		}
+
+		onResidualOrder: 6,
+		onResidual(pokemon) {
+			if (!pokemon.volatiles['hunger']) {
+				this.add('-activate', pokemon, 'ability: Hunger');
+				this.damage(pokemon.baseMaxhp / 16, pokemon, pokemon);
+			}
+		},
 		id: "hunger",
 		name: "Hunger",
 	},
