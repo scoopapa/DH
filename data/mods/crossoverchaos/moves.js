@@ -11,6 +11,7 @@ defrost: Thaws the user if executed successfully while the user is frozen.
 distance: Can target a Pokemon positioned anywhere in a Triple Battle.
 gravity: Prevented from being executed or selected during Gravity's effect.
 heal: Prevented from being executed or selected during Heal Block's effect.
+light: Weakened by Dark Crown, strengthened by the Red Stone of Aja.
 mirror: Can be copied by Mirror Move.
 mystery: Unknown effect.
 nonsky: Prevented from being executed or selected in a Sky Battle.
@@ -161,6 +162,67 @@ let BattleMovedex = {
 	"psychocut": {
 		inherit: true,
 		flags: {protect: 1, mirror: 1, slash: 1},
+	},
+ //Light moves
+	"dazzlinggleam": {
+		inherit: true,
+		flags: {protect: 1, mirror: 1, light: 1},
+	},
+	"flashcannon": {
+		inherit: true,
+		flags: {protect: 1, mirror: 1, light: 1},
+	},
+	"lightofruin": {
+		inherit: true,
+		flags: {protect: 1, mirror: 1, light: 1},
+	},
+	"seedflare": {
+		inherit: true,
+		flags: {protect: 1, mirror: 1, light: 1},
+	},
+	"aurorabeam": {
+		inherit: true,
+		flags: {protect: 1, mirror: 1, light: 1},
+	},
+	"lusterpurge": {
+		inherit: true,
+		flags: {protect: 1, mirror: 1, light: 1},
+	},
+	"mirrorshot": {
+		inherit: true,
+		flags: {protect: 1, mirror: 1, light: 1},
+	},
+	"prismaticlaser": {
+		inherit: true,
+		flags: {recharge: 1, protect: 1, mirror: 1, light: 1},
+	},
+	"moongeistbeam": {
+		inherit: true,
+		flags: {protect: 1, mirror: 1, light: 1},
+	},
+	"searingsunrazesmash": {
+		inherit: true,
+		flags: {contact: 1, light: 1},
+	},
+	"menacingmoonrazemaelstrom": {
+		inherit: true,
+		flags: {light: 1},
+	},
+	"doomdesire": {
+		inherit: true,
+		flags: {light: 1},
+	},
+	"technoblast": {
+		inherit: true,
+		flags: {protect: 1, mirror: 1, light: 1},
+	},
+	"powergem": {
+		inherit: true,
+		flags: {protect: 1, mirror: 1, light: 1},
+	},
+	"signalbeam": {
+		inherit: true,
+		flags: {protect: 1, mirror: 1, light: 1},
 	},
 	
     "fireball": {
