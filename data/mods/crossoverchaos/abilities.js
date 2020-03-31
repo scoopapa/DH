@@ -2237,21 +2237,14 @@ exports.BattleAbilities = {
 			onStart(target) {
 				this.add('-start', target, 'ability: Hunger');
 			},
-			onResidualOrder: 6,
-			onResidual(pokemon) {
-				this.heal(pokemon.baseMaxhp / 16);
-			},
+			this.heal(target.baseMaxhp / 16);
 			onEnd(target) {
 				this.add('-end', target, 'Hunger');
 			},
 		},
-
-		onResidualOrder: 6,
-		onResidual(pokemon) {
-			if (!pokemon.volatiles['hunger']) {
-				this.add('-activate', pokemon, 'ability: Hunger');
-				this.damage(target.baseMaxhp / 16, target, target);
-			},
+		if (!pokemon.volatiles['hunger']) {
+			this.add('-activate', pokemon, 'ability: Hunger');
+			this.damage(target.baseMaxhp / 16, target, target);
 		}
 		id: "hunger",
 		name: "Hunger",

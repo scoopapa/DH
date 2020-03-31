@@ -3210,48 +3210,6 @@ let BattleMovedex = {
 		zMovePower: 175,
 		contestType: "Beautiful",
 	},
-	"diamondpickaxe": {
-		num: 40104,
-		accuracy: 100,
-		basePower: 80,
-		category: "Physical",
-		desc: "Removes entry hazards and binding moves from user's side of the field, except Sticky Web, Magma Storm, Whirlpool and Lingering Potion.",
-		shortDesc: "Free user from hazards/bind/Leech Seed; not including webs/whirlpool/magma storm",
-		id: "diamondpickaxe",
-		isViable: true,
-		name: "Diamond Pickaxe",
-		pp: 10,
-		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1},
-		onAfterHit(target, pokemon) {
-			let sideConditions = ['spikes', 'toxicspikes', 'stealthrock', 'gmaxsteelsurge', 'mine'];
-			for (const condition of sideConditions) {
-				if (pokemon.hp && pokemon.side.removeSideCondition(condition)) {
-					this.add('-sideend', pokemon.side, this.dex.getEffect(condition).name, '[from] move: Diamond Pickaxe', '[of] ' + pokemon);
-				}
-			}
-			if (pokemon.hp && pokemon.volatiles['partiallytrapped']) {
-				if (['whirlpool', 'magmastorm'].includes(this.effectData.sourceEffect.id)) return;
-				pokemon.removeVolatile('partiallytrapped');
-			}
-		},
-		onAfterSubDamage(damage, target, pokemon) {
-			let sideConditions = ['spikes', 'toxicspikes', 'stealthrock', 'gmaxsteelsurge', 'mine'];
-			for (const condition of sideConditions) {
-				if (pokemon.hp && pokemon.side.removeSideCondition(condition)) {
-					this.add('-sideend', pokemon.side, this.dex.getEffect(condition).name, '[from] move: Diamond Pickaxe', '[of] ' + pokemon);
-				}
-			}
-			if (pokemon.hp && pokemon.volatiles['partiallytrapped']) {
-				if (['whirlpool', 'magmastorm'].includes(this.effectData.sourceEffect.id)) return;
-				pokemon.removeVolatile('partiallytrapped');
-			}
-		},
-		secondary: null,
-		target: "normal",
-		type: "Rock",
-		contestType: "Cool",
-	},
 	"suicideride": {
 		num: 50001,
 		accuracy: 100,
