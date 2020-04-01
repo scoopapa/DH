@@ -283,6 +283,7 @@ exports.BattleScripts = {
 		  // If a Fire/Flying type uses Burn Up and Roost, it becomes ???/Flying-type, but it's still grounded.
 		  if (!negateImmunity && this.hasType('Flying') && !('roost' in this.volatiles)) return false;
 		  if (this.hasAbility('levitate') && !this.battle.suppressingAttackEvents()) return null;
+		  if (this.hasAbility('eightgates') && (pokemon.template.speciesid == 'mightguysixthgate' || pokemon.template.speciesid == 'mightguyseventhgate' || pokemon.template.speciesid == 'mightguyeightgate') && !this.battle.suppressingAttackEvents()) return null;
 		  if ('magnetrise' in this.volatiles) return false;
 		  if ('cycloneslash' in this.volatiles) return false;
 		  if ('telekinesis' in this.volatiles) return false;
