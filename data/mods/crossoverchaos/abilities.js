@@ -2320,6 +2320,13 @@ exports.BattleAbilities = {
 				return;
 			}
 		},
+		onBasePowerPriority: 8,
+		onBasePower(basePower, attacker, defender, move) {
+			if ((move.recoil || move.hasCustomRecoil) && (pokemon.template.speciesid == 'mightguyfourthgate' || pokemon.template.speciesid == 'mightguyfifthgate' || pokemon.template.speciesid == 'mightguysixthgate' || pokemon.template.speciesid == 'mightguyseventhgate' || pokemon.template.speciesid == 'mightguyeightgate') {
+				this.debug('Reckless boost');
+				return this.chainModify([0x1333, 0x1000]);
+			}
+		},
 		id: "eightgates",
 		name: "Eight Gates",
 	},
