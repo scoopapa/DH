@@ -7,7 +7,7 @@ let BattlePokedex = {
 		species: "Koatric",
 		types: ["Electric"],
 		baseStats: {hp: 24, atk: 147, def: 63, spa: 133, spd: 86, spe: 147},
-		abilities: {0: "Overgrow", 1: "NA", H: "Tangled Feet"},
+		abilities: {0: "Overgrow", H: "Tangled Feet"},
 		weightkg: 17,
 	},
 	aquazelle: {
@@ -23,7 +23,7 @@ let BattlePokedex = {
 		species: "Salamalix",
 		types: ["Rock", "Dark"],
 		baseStats: {hp: 119, atk: 99, def: 122, spa: 49, spd: 76, spe: 135},
-		abilities: {0: "Forewarn", 1: "NA", H: "Sheer Force"},
+		abilities: {0: "Forewarn", H: "Sheer Force"},
 		weightkg: 75,
 	},
 	brawnkey: {
@@ -75,7 +75,7 @@ let BattlePokedex = {
 		species: "Crazefly",
 		types: ["Bug", "Psychic"],
 		baseStats: {hp: 115, atk: 115, def: 31, spa: 112, spd: 137, spe: 90},
-		abilities: {0: "Galvanize", 1: "NA", H: "Gooey"},
+		abilities: {0: "Galvanize", H: "Gooey"},
 		weightkg: 17,
 	},
 	electritar: {
@@ -123,7 +123,7 @@ let BattlePokedex = {
 		species: "Glacida",
 		types: ["Fighting", "Ice"],
 		baseStats: {hp: 100, atk: 115, def: 157, spa: 46, spd: 146, spe: 36},
-		abilities: {0: "Mega Launcher", 1: "NA", H: "Triage"},
+		abilities: {0: "Mega Launcher", H: "Triage"},
 		weightkg: 17,
 	},
 	pidgeotine: {
@@ -139,7 +139,7 @@ let BattlePokedex = {
 		species: "Gorilax",
 		types: ["Psychic", "Fighting"],
 		baseStats: {hp: 116, atk: 61, def: 101, spa: 83, spd: 117, spe: 122},
-		abilities: {0: "Aroma Veil", 1: "NA", H: "Sniper"},
+		abilities: {0: "Aroma Veil", H: "Sniper"},
 		weightkg: 17,
 	},
 	albatrygon: {
@@ -147,7 +147,7 @@ let BattlePokedex = {
 		species: "Albatrygon",
 		types: ["Flying"],
 		baseStats: {hp: 61, atk: 121, def: 57, spa: 100, spd: 110, spe: 151},
-		abilities: {0: "Chlorophyll", 1: "NA", H: "Iron Barbs"},
+		abilities: {0: "Chlorophyll", H: "Iron Barbs"},
 		weightkg: 300,
 	},
 	chillvark: {
@@ -171,7 +171,7 @@ let BattlePokedex = {
 		species: "Giranium",
 		types: ["Steel", "Rock"],
 		baseStats: {hp: 66, atk: 40, def: 146, spa: 161, spd: 148, spe: 39},
-		abilities: {0: "Minus", 1: "NA", H: "Filter"},
+		abilities: {0: "Minus", H: "Filter"},
 		weightkg: 17,
 	},
 	flamyle: {
@@ -179,7 +179,7 @@ let BattlePokedex = {
 		species: "Flamyle",
 		types: ["Fire"],
 		baseStats: {hp: 103, atk: 99, def: 79, spa: 75, spd: 116, spe: 128},
-		abilities: {0: "Magnet Pull", 1: "NA", H: "Electric Surge"},
+		abilities: {0: "Magnet Pull", H: "Electric Surge"},
 		weightkg: 150,
 	},
 	voltecta: {
@@ -235,7 +235,7 @@ let BattlePokedex = {
 		species: "Hyperoach",
 		types: ["Bug", "Normal"],
 		baseStats: {hp: 136, atk: 114, def: 56, spa: 102, spd: 104, spe: 88},
-		abilities: {0: "Power of Alchemy", 1: "NA", H: "Desolate Land"},
+		abilities: {0: "Power of Alchemy", H: "Desolate Land"},
 		weightkg: 75,
 	},
 	barracoth: {
@@ -243,7 +243,7 @@ let BattlePokedex = {
 		species: "Barracoth",
 		types: ["Water", "Ice"],
 		baseStats: {hp: 75, atk: 85, def: 146, spa: 70, spd: 139, spe: 85},
-		abilities: {0: "Shadow Shield", 1: "NA", H: "Thick Fat"},
+		abilities: {0: "Shadow Shield", H: "Thick Fat"},
 		weightkg: 17,
 	},
 	toados: {
@@ -251,7 +251,7 @@ let BattlePokedex = {
 		species: "Toados",
 		types: ["Poison"],
 		baseStats: {hp: 151, atk: 119, def: 11, spa: 154, spd: 68, spe: 97},
-		abilities: {0: "Grassy Surge", 1: "NA", H: "Unburden"},
+		abilities: {0: "Grassy Surge", H: "Unburden"},
 		weightkg: 5,
 	},
 	voltarak: {
@@ -259,7 +259,7 @@ let BattlePokedex = {
 		species: "Voltarak",
 		types: ["Electric", "Ice"],
 		baseStats: {hp: 100, atk: 75, def: 87, spa: 130, spd: 128, spe: 80},
-		abilities: {0: "Technician", 1: "NA", H: "Gale Wings"},
+		abilities: {0: "Technician", H: "Gale Wings"},
 		weightkg: 150,
 	},
 	mosqung: {
@@ -267,7 +267,7 @@ let BattlePokedex = {
 		species: "Mosqung",
 		types: ["Bug", "Flying"],
 		baseStats: {hp: 149, atk: 37, def: 100, spa: 106, spd: 148, spe: 60},
-		abilities: {0: "Comatose", 1: "NA", H: "Dark Aura"},
+		abilities: {0: "Comatose", H: "Dark Aura"},
 		weightkg: 37,
 	},
 	flamepion: {
@@ -315,7 +315,7 @@ let BattlePokedex = {
 		species: "Beanium",
 		types: ["Rock", "Normal"],
 		baseStats: {hp: 116, atk: 92, def: 90, spa: 123, spd: 138, spe: 41},
-		abilities: {0: "Mummy", 1: "NA", H: "Berserk"},
+		abilities: {0: "Mummy", H: "Berserk"},
 		weightkg: 17,
 	},
 	lemotic: {
@@ -331,7 +331,7 @@ let BattlePokedex = {
 		species: "Biceon",
 		types: ["Ground", "Fairy"],
 		baseStats: {hp: 95, atk: 122, def: 139, spa: 43, spd: 120, spe: 81},
-		abilities: {0: "Sticky Hold", 1: "NA", H: "Leaf Guard"},
+		abilities: {0: "Sticky Hold", H: "Leaf Guard"},
 		weightkg: 37,
 	},
 	skeleray: {
@@ -347,7 +347,7 @@ let BattlePokedex = {
 		species: "Specyte",
 		types: ["Ghost"],
 		baseStats: {hp: 119, atk: 150, def: 45, spa: 124, spd: 45, spe: 117},
-		abilities: {0: "Sniper", 1: "NA", H: "Early Bird"},
+		abilities: {0: "Sniper", H: "Early Bird"},
 		weightkg: 37,
 	},
 	ramron: {
@@ -371,7 +371,7 @@ let BattlePokedex = {
 		species: "Panthee",
 		types: ["Steel", "Fighting"],
 		baseStats: {hp: 78, atk: 83, def: 95, spa: 118, spd: 121, spe: 105},
-		abilities: {0: "Sand Spit", 1: "NA", H: "White Smoke"},
+		abilities: {0: "Sand Spit", H: "White Smoke"},
 		weightkg: 300,
 	},
 	blastora: {
@@ -387,7 +387,7 @@ let BattlePokedex = {
 		species: "Dropacle",
 		types: ["Ghost", "Water"],
 		baseStats: {hp: 170, atk: 125, def: 22, spa: 57, spd: 113, spe: 113},
-		abilities: {0: "Teravolt", 1: "NA", H: "Water Compaction"},
+		abilities: {0: "Teravolt", H: "Water Compaction"},
 		weightkg: 300,
 	},
 };
