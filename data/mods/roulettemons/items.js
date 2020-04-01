@@ -14,6 +14,6 @@ exports.BattleItems = {
 		},
 		num: 673,
 		gen: 8,
-		desc: "If held by a Lucario, this item allows it to Mega Evolve in battle.",
+		desc: "If held by a Chillyte, this item allows it to Mega Evolve in battle.",
 	},
 };
