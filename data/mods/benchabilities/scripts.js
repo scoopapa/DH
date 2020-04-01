@@ -298,8 +298,8 @@ exports.BattleScripts = {
 		//Combo Attacker: Shellder, Cloyster, Mincinno, Cincinno, Pikipek, Trumbeak, Toucannon
 		 this.modData('Pokedex', 'shellder').abilities['S'] = 'Combo Attacker';
 		 this.modData('Pokedex', 'cloyster').abilities['S'] = 'Combo Attacker';
-		 this.modData('Pokedex', 'mincinno').abilities['S'] = 'Combo Attacker';
-		 this.modData('Pokedex', 'cincinno').abilities['S'] = 'Combo Attacker';
+		 this.modData('Pokedex', 'minccino').abilities['S'] = 'Combo Attacker';
+		 this.modData('Pokedex', 'cinccino').abilities['S'] = 'Combo Attacker';
 		 this.modData('Pokedex', 'pikipek').abilities['S'] = 'Combo Attacker';
 		 this.modData('Pokedex', 'trumbeak').abilities['S'] = 'Combo Attacker';
 		 this.modData('Pokedex', 'toucannon').abilities['S'] = 'Combo Attacker';
