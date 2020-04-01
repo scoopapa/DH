@@ -2279,4 +2279,55 @@ exports.BattleAbilities = {
 		id: "zeusthunder",
 		name: "Zeus Thunder",
 	},
+	"eightgates": {
+		desc: "If the user is Might Guy, changes form at the end of each full turn on the field.",
+		shortDesc: "Might Guy: change form at the end of each turn.",
+		onResidualOrder: 26,
+		onResidualSubOrder: 1,
+		onResidual(pokemon) {
+			if (!pokemon.isActive || pokemon.baseTemplate.baseSpecies !== 'Might Guy' || pokemon.transformed) return;
+			if (pokemon.template.speciesid == 'mightguyeightgate') return;
+			if (pokemon.activeTurns && pokemon.template.speciesid == 'mightguyseventhgate') {
+				pokemon.formeChange('Might Guy-Eighth Gate', this.effect, false, '[msg]');
+				return;
+			}
+			if (pokemon.activeTurns && pokemon.template.speciesid == 'mightguysixthgate') {
+				pokemon.formeChange('Might Guy-Seventh Gate', this.effect, false, '[msg]');
+				return;
+			}
+			if (pokemon.activeTurns && pokemon.template.speciesid == 'mightguyfifthgate') {
+				pokemon.formeChange('Might Guy-Sixth Gate', this.effect, false, '[msg]');
+				return;
+			}
+			if (pokemon.activeTurns && pokemon.template.speciesid == 'mightguyfourthgate') {
+				pokemon.formeChange('Might Guy-Fifth Gate', this.effect, false, '[msg]');
+				return;
+			}
+			if (pokemon.activeTurns && pokemon.template.speciesid == 'mightguythirdgate') {
+				pokemon.formeChange('Might Guy-Fourth Gate', this.effect, false, '[msg]');
+				return;
+			}
+			if (pokemon.activeTurns && pokemon.template.speciesid == 'mightguysecondgate') {
+				pokemon.formeChange('Might Guy-Third Gate', this.effect, false, '[msg]');
+				return;
+			}
+			if (pokemon.activeTurns && pokemon.template.speciesid == 'mightguyfirstgate') {
+				pokemon.formeChange('Might Guy-Second Gate', this.effect, false, '[msg]');
+				return;
+			}
+			if (pokemon.activeTurns && pokemon.template.speciesid == 'mightguy') {
+				pokemon.formeChange('Might Guy-First Gate', this.effect, false, '[msg]');
+				return;
+			}
+		},
+		onBasePowerPriority: 8,
+		onBasePower(basePower, attacker, defender, move) {
+			if ((move.recoil || move.hasCustomRecoil) && (pokemon.template.speciesid == 'mightguyfourthgate' || pokemon.template.speciesid == 'mightguyfifthgate' || pokemon.template.speciesid == 'mightguysixthgate' || pokemon.template.speciesid == 'mightguyseventhgate' || pokemon.template.speciesid == 'mightguyeightgate') {
+				this.debug('Reckless boost');
+				return this.chainModify([0x1333, 0x1000]);
+			}
+		},
+		id: "eightgates",
+		name: "Eight Gates",
+	},
 };

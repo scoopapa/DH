@@ -106,7 +106,7 @@ exports.BattleItems = {
 		},
 		onSourceModifyDamage(damage, source, target, move) {
 			if (target.baseTemplate.baseSpecies !== 'King Boo') return;
-			if (['dazzlinggleam', 'flashcannon', 'lightofruin', 'seedflare', 'aurorabeam', 'lusterpurge', 'mirrorshot', 'prismaticlaser', 'photongeyser', 'lightthatburnsthesky', 'sunsteelstrike', 'moongeistbeam', 'searingsunrazesmash', 'menacingmoonrazemaelstrom', 'doomdesire', 'flashlightpulse', 'technoblast', 'powergem', 'signalbeam'].includes(move.id)) return this.chainModify(0.5);
+			if (move.flags['light']) return this.chainModify(0.5);
 		},
 		desc: "If holder is King Boo, he takes halved damage from light-based moves.",
 	},
