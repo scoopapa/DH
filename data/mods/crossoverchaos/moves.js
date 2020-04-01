@@ -3383,6 +3383,85 @@ let BattleMovedex = {
 		type: "Rock",
 		contestType: "Cute",
 	},
+	"morningpeacock": {
+		num: 50011,
+		accuracy: 100,
+		basePower: 15,
+		category: "Physical",
+		desc: "Hits six times. If the first hit breaks the target's substitute, it will take damage for the second hit.",
+		shortDesc: "Hits 6 times in one turn. 10% burn per hit.",
+		id: "morningpeacock",
+		name: "Morning Peacock",
+		pp: 15,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		multihit: 6,
+		secondary: {
+			chance: 10,
+			status: 'brn',
+		},
+		target: "normal",
+		type: "Fire",
+		zMovePower: 175,
+		gmaxPower: 130,
+		contestType: "Cool",
+	},
+	"daytimetiger": {
+		num: 50012,
+		accuracy: 100,
+		basePower: 85,
+		category: "Physical",
+		defensiveCategory: "Special",
+		desc: "Deals damage to the target based on its Defense instead of Special Defense.",
+		shortDesc: "Damages target based on Defense, not Sp. Def.",
+		id: "daytimetiger",
+		isViable: true,
+		name: "Daytime Tiger",
+		pp: 15,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		secondary: null,
+		target: "normal",
+		type: "Fighting",
+		contestType: "Cool",
+	},
+	"nightguy": {
+		num: 50013,
+		accuracy: 100,
+		basePower: 250,
+		category: "Phsyical",
+		desc: "Can only be used by Eight Gate Might Guy. Whether or not this move is successful and even if it would cause fainting, the user loses 1/2 of its maximum HP, rounded up, unless the user has the Magic Guard Ability.",
+		shortDesc: "Might Guy-Eight Gate: User loses 50% max HP.",
+		id: "nightguy",
+		isViable: true,
+		name: "Night Guy",
+		pp: 15,
+		priority: 0,
+		flags: {contact: 1, mirror: 1},
+		breaksProtect: true,
+		mindBlownRecoil: true,
+		onTry(pokemon) {
+			if (pokemon.template.species === 'Might Guy-Eighth Gate') {
+				return;
+			}
+			this.hint("Only a Pokemon whose form is Might Guy-Eight Gate can use this move.");
+			if (pokemon.template.species === 'Might Guy') {
+				this.add('-fail', pokemon, 'move: Night Guy', '[forme]');
+				return null;
+			}
+			this.add('-fail', pokemon, 'move: Night Guy');
+			return null;
+		},
+		onAfterMove(pokemon, target, move) {
+			if (move.mindBlownRecoil && !move.multihit) {
+				this.damage(Math.round(pokemon.maxhp / 2), pokemon, pokemon, this.dex.getEffect('Mind Blown'), true);
+			}
+		},
+		secondary: null,
+		target: "normal",
+		type: "Fighting",
+		contestType: "Cool",
+	},
 	//"Regular" hazard moves are here
 		"gmaxsteelsurge": {
 		num: 1000,
