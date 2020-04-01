@@ -662,7 +662,8 @@ exports.Formats = [
 	},
 	{
 		name: "[Gen 8] Roulettemons",
-		desc: ["&bullet; <a href=https://www.smogon.com/forums/threads/roulettemons.3649106/>Roulettemons</a>",
+		desc: [`A competitive metagame made up of brand new Pokémon that are randomly generated on every competitive aspect (typing, moves, stats, abilities).`],
+		threads: [`&bullet; <a href=https://www.smogon.com/forums/threads/.3649106/>Roulettemons</a>`,
 		      ],
 		ruleset: [ 'Dynamax Clause', 'Obtainable Moves', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause'],
 		banlist: ['All Pokemon'],
