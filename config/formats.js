@@ -726,6 +726,16 @@ exports.Formats = [
 		mod: 'crossoverchaos',
 	}, 
 	{
+		name: "[Gen 8] Crossover Chaos Doubles AG",
+		gameType: 'doubles',
+		desc: [
+				"&bullet; <a href=https://www.smogon.com/forums/threads/crossover-chaos-v2.3636780/>Crossover Chaos</a>",
+		      "&bullet; <a href=https://www.smogon.com/forums/threads/crossover-chaos-expanded-side-project.3647108/>Crossover Chaos</a>"],
+		ruleset: ['Standard Natdex'],
+		banlist: [],
+		mod: 'crossoverchaos',
+	}, 
+	{
 		name: "[Gen 8] Optimons",
 		threads: [
 			`&bullet; <a href="https://www.smogon.com/forums/threads/gen-8-optimons-gen-4-cross-gen-evos.3657509/">OU Thread</a>`,
