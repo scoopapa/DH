@@ -2286,43 +2286,37 @@ exports.BattleAbilities = {
 		onResidualSubOrder: 1,
 		onResidual(pokemon) {
 			if (!pokemon.isActive || pokemon.baseTemplate.baseSpecies !== 'Might Guy' || pokemon.transformed) return;
-			if (pokemon.template.speciesid == 'mightguyeightgate') return;
-			if (pokemon.activeTurns && pokemon.template.speciesid == 'mightguyseventhgate') {
-				pokemon.formeChange('Might Guy-Eighth Gate', this.effect, false, '[msg]');
-				return;
-			}
-			if (pokemon.activeTurns && pokemon.template.speciesid == 'mightguysixthgate') {
-				pokemon.formeChange('Might Guy-Seventh Gate', this.effect, false, '[msg]');
-				return;
-			}
-			if (pokemon.activeTurns && pokemon.template.speciesid == 'mightguyfifthgate') {
-				pokemon.formeChange('Might Guy-Sixth Gate', this.effect, false, '[msg]');
-				return;
-			}
-			if (pokemon.activeTurns && pokemon.template.speciesid == 'mightguyfourthgate') {
-				pokemon.formeChange('Might Guy-Fifth Gate', this.effect, false, '[msg]');
-				return;
-			}
-			if (pokemon.activeTurns && pokemon.template.speciesid == 'mightguythirdgate') {
-				pokemon.formeChange('Might Guy-Fourth Gate', this.effect, false, '[msg]');
-				return;
-			}
-			if (pokemon.activeTurns && pokemon.template.speciesid == 'mightguysecondgate') {
-				pokemon.formeChange('Might Guy-Third Gate', this.effect, false, '[msg]');
-				return;
-			}
-			if (pokemon.activeTurns && pokemon.template.speciesid == 'mightguyfirstgate') {
-				pokemon.formeChange('Might Guy-Second Gate', this.effect, false, '[msg]');
-				return;
-			}
-			if (pokemon.activeTurns && pokemon.template.speciesid == 'mightguy') {
-				pokemon.formeChange('Might Guy-First Gate', this.effect, false, '[msg]');
-				return;
+			if (pokemon.template.speciesid == 'mightguyeighthgate' || !pokemon.activeTurns) return;
+			switch (pokemon.template.speciesid){
+				case 'mightguyseventhgate':	
+					pokemon.formeChange('Might Guy-Eighth Gate', this.effect, false, '[msg]');	
+					break;
+				case 'mightguysixthgate':	
+					pokemon.formeChange('Might Guy-Seventh Gate', this.effect, false, '[msg]');	
+					break;
+				case 'mightguyfifthgate':	
+					pokemon.formeChange('Might Guy-Sixth Gate', this.effect, false, '[msg]');	
+					break;
+				case 'mightguyfourthgate':	
+					pokemon.formeChange('Might Guy-Fifth Gate', this.effect, false, '[msg]');	
+					break;
+				case 'mightguythirdgate':	
+					pokemon.formeChange('Might Guy-Fourth Gate', this.effect, false, '[msg]');	
+					break;
+				case 'mightguysecondgate':	
+					pokemon.formeChange('Might Guy-Third Gate', this.effect, false, '[msg]');	
+					break;
+				case 'mightguyfirstgate':	
+					pokemon.formeChange('Might Guy-Second Gate', this.effect, false, '[msg]');
+					break;
+				default:	//Nothing else.
+					pokemon.formeChange('Might Guy-First Gate', this.effect, false, '[msg]');
+					break;
 			}
 		},
 		onBasePowerPriority: 8,
 		onBasePower(basePower, attacker, defender, move) {
-			if ((move.recoil || move.hasCustomRecoil) && (pokemon.template.speciesid == 'mightguyfourthgate' || pokemon.template.speciesid == 'mightguyfifthgate' || pokemon.template.speciesid == 'mightguysixthgate' || pokemon.template.speciesid == 'mightguyseventhgate' || pokemon.template.speciesid == 'mightguyeightgate') {
+			if ((move.recoil || move.hasCustomRecoil) && ['mightguyfourthgate', 'mightguyfifthgate', 'mightguysixthgate', 'mightguyseventhgate', 'mightguyeightgate'].includes(attacker.template.speciesid)) {
 				this.debug('Reckless boost');
 				return this.chainModify([0x1333, 0x1000]);
 			}
