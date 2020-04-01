@@ -51,9 +51,9 @@ let BattlePokedex = {
 		weightkg: 75,
 		otherFormes: ["megachillyte"],
 	},
-	megachillyte: {
+	chillytemega: {
 		num: 7.5,
-		species: "Mega Chillyte",
+		species: "Chillyte-Mega",
 		baseSpecies: "Chillyte",
 		forme: "Mega",
 		formeLetter: "M",
