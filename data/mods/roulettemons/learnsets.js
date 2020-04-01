@@ -349,6 +349,9 @@ let BattleLearnsets = {
 		sleeptalk: ["7L1"],
 		substitute: ["7L1"],
 		toxic: ["7L1"],
+		defendorder: ["7L1"],
+		spikes: ["7L1"],
+		pursuit: ["7L1"],
 	}},
 	eartharoo: {learnset: {
 		aquatail: ["7L1"],
