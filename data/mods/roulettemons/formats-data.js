@@ -141,4 +141,52 @@ exports.BattleFormatsData = {
 		tier: "OU",
 		doublesTier: "DOU",
 	},
+		bellena: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	falcola: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	beanium: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	lemotic: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	biceon: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	skeleray: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	specyte: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	ramron: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	balar: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	panthee: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	blastora: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	dropacle: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
 };

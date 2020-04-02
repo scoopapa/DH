@@ -48,6 +48,7 @@ let BattleAliases = {
 	"ccv2": "[Gen 8] Crossover Chaos V2",
 	"ccex": "[Gen 8] Crossover Chaos Expanded",
 	"ccubers": "[Gen 8] Crossover Chaos V2 + Expanded Ubers",
+	"roulette": "[Gen 8] Roulettemons",
 
 	// mega evos
 	"fabio": "Ampharos-Mega",
