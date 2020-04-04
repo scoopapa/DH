@@ -1045,6 +1045,48 @@ exports.Formats = [
         },
   	},
 	{
+  		name: "[Gen 7] Fusion Evolution Alpha",
+  		desc: ["&bullet; <a href=https://www.smogon.com/forums/threads/3658502/>Fusion Evolution Alpha</a>",
+  		      ],
+  		ruleset: ['Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause'],
+		banlist: ['Unreleased', /*'Dialcatty', 'Kars', 'Dittsey', 'Diceus', 'Peridot-Mega', 'Kyzor', 'Gonzap', 'Harem', 'Cinshado', 'Enteon', 'Lucashadow-Mega', 'Taiwan', 'Dad', 'Enteon', 'Entir', 'Necrynx-Ultra', 'Shenala', 'Xurkizard-Mega-Y', 'Archedactyl-Mega', 'Miminja', 'Toxicario-Mega', 'Lucasol-Mega-L', 'Alakario-Mega-L', 'Kangorus-Khan-Mega', 'Absoko-Mega', 'Kartaria-Mega', 'Dio', 'Mendoza', 'Deoxurk-Outlet', 'Omneus','Muddy Seed'*/], // Mega Kasukabe Necrozerain-Ultra'
+		mod: 'fealpha',
+		onPrepareHit: function(target, source, move) {
+			if (!move.contestType) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Celebrate", target);
+			}
+		},
+//   		onModifyTemplate: function (template, pokemon, source) {
+//   			//This hack is for something important: The Pokemon's Sprite.
+//   			if (!template.base) return template;
+//   			let temp = Object.assign({}, template);
+//   			temp.species = temp.baseSpecies = template.base;
+// 			pokemon.name = template.species;
+// 			pokemon.fullname = `${pokemon.side.id}: ${pokemon.name}`;
+// 			pokemon.id = pokemon.fullname;
+// 			return temp;
+//   		},
+		onSwitchIn: function (pokemon) {
+			if (pokemon.illusion){
+			this.add('-start', pokemon, 'typechange', pokemon.illusion.template.types.join('/'), '[silent]');
+				let illusionability = this.getAbility(pokemon.illusion.ability);
+				this.add('raw',illusionability,illusionability.shortDesc);
+			} else {
+				let ability = this.getAbility(pokemon.ability);
+				if (pokemon.hasAbility('typeillusionist') || pokemon.hasAbility('sleepingsystem')){
+			 this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');	
+				} else {
+				this.add('-start', pokemon, 'typechange', pokemon.getTypes().join('/'), '[silent]');
+				}
+				this.add('raw',ability,ability.shortDesc);
+			}
+        },
+		checkLearnset: function (move, template, lsetData, set) {
+           return null
+        },
+  	},
+	{
 		name: "[Gen 7] Generation SD",
 		threads: [
 			`&bullet; <a href="https://www.smogon.com/forums/threads/.3641374/">Generation SD</a>`,
