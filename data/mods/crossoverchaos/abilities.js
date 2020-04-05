@@ -2324,4 +2324,18 @@ exports.BattleAbilities = {
 		id: "eightgates",
 		name: "Eight Gates",
 	},
+	"subzero": {
+		desc: "At the end of each turn, this Pokemon restores 1/8 of its maximum HP, rounded down, if the weather is Hail, and loses 1/8 of its maximum HP, rounded down, if the weather is Sunny Day. If this Pokemon is holding Utility Umbrella, the effects of weather are nullified.",
+		shortDesc: "This Pokemon is healed 1/8 by Hail; is hurt 1/8 by Sun.",
+		onWeather(target, source, effect) {
+			if (target.hasItem('utilityumbrella')) return;
+			if (effect.id === 'hail') {
+				this.heal(target.baseMaxhp / 8);
+			} else if (effect.id === 'sunnyday' || effect.id === 'desolateland') {
+				this.damage(target.baseMaxhp / 8, target, target);
+			}
+		},
+		id: "subzero",
+		name: "Sub-Zero",
+	},
 };

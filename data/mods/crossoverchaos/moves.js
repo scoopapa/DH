@@ -3625,6 +3625,43 @@ let BattleMovedex = {
 		zMoveBoost: {spd: 1},
 		contestType: "Cute",
 	},
+	"hotcupofcoffee": {
+		num: 50018,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "The user restores 1/2 of its maximum HP, rounded half up.",
+		shortDesc: "Heals the user by 50% of its max HP.",
+		id: "hotcupofcoffee",
+		isViable: true,
+		name: "Hot Cup of Coffee",
+		pp: 10,
+		priority: -3,
+		flags: {snatch: 1, heal: 1},
+		heal: [1, 2],
+		beforeTurnCallback(pokemon) {
+			pokemon.addVolatile('hotcupofcoffee');
+		},
+		effect: {
+			duration: 1,
+			onStart(pokemon) {
+				this.add('-singleturn', pokemon, 'move: Hot Cup of Coffee');
+			},
+			onHit(pokemon, source, move) {
+				if (move.flags['contact']) {
+					source.trySetStatus('brn', pokemon);
+				}
+			},
+		},
+		onAfterMove(pokemon) {
+			pokemon.removeVolatile('hotcupofcoffee');
+		},
+		secondary: null,
+		target: "self",
+		type: "Water",
+		zMoveEffect: 'clearnegativeboost',
+		contestType: "Cute",
+	},
 	//"Regular" hazard moves are here
 		"gmaxsteelsurge": {
 		num: 1000,
