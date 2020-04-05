@@ -4706,4 +4706,48 @@ does marvel's big ol mutant trex exist? who knows
 		heightm: 18750,
 		weightkg: 200,
 	},
+	maple: {
+		num: 7000091,
+		species: "Maple", /* BOFURI: I Don't Want to Be Hurt, So I'll Max Out My Defense */
+		types: ["Steel", "Poison"],
+		gender: "F",
+		baseStats: {hp: 42, atk: 10, def: 255, spa: 10, spd: 255, spe: 10},
+		abilities: {0: "Oblivious", 1: "Unaware", H: "Filter"},
+		heightm: 1.6,
+		weightkg: 90,
+	},
+	maplemega: {
+		num: 7000091,
+		species: "Maple-Mega",
+		baseSpecies: "Maple",
+		forme: "Mega",
+		formeLetter: "M",
+		types: ["Steel", "Flying"],
+		gender: "F",
+		baseStats: {hp: 42, atk: 10, def: 255, spa: 100, spd: 200, spe: 75},
+		abilities: {0: "Speed Boost"},
+		heightm: 1.6,
+		weightkg: 95,
+	},
+	riofutaba: {
+		num: 7000092,
+		species: "Rio Futaba",
+		types: ["Poison", "Psychic"], /* Rascal Does Not Dream of Bunny Girl Senpai */
+		gender: "F",
+		baseStats: {hp: 80, atk: 40, def: 40, spa: 100, spd: 200, spe: 40},
+		abilities: {0: "Analytic", 1: "Explanatory", H: "Magic Guard"},
+		heightm: 1.6,
+		weightkg: 67,
+	},
+	victorfries: {
+		num: 7000093,
+		species: "Victor Fries",  /* Batman */
+		types: ["Ice"],
+		gender: "M",
+		baseStats: {hp: 100, atk: 70, def: 115, spa: 135, spd: 125, spe: 85},
+		abilities: {0: "Refrigerate", H: "Sub-Zero"},
+		heightm: 1.83,
+		weightkg: 86,
+	},
 };
+
