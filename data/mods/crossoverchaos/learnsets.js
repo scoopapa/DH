@@ -6057,7 +6057,6 @@ TMs/Tutors sorted by last generation they carry that status (for kirby, nero, et
 		taunt: ["7L1"],
 	}},
 	metaknight: {learnset: {
-		//TODO: Add other slash based moves
 		airslash: ["7L1"],
 		bravebird: ["7L1"],
 		extremespeed: ["7L1"],
@@ -6069,6 +6068,14 @@ TMs/Tutors sorted by last generation they carry that status (for kirby, nero, et
 		slash: ["7L1"],
 		smartstrike: ["7L1"],
 		swordsdance: ["7L1"],
+		psychocut: ["7L1"],
+		cut: ["7L1"],
+		nightslash: ["7L1"],
+		leafblade: ["7L1"],
+		xscissor: ["7L1"],
+		crosspoison: ["7L1"],
+		aircutter: ["7L1"],
+		furycutter: ["7L1"],
 	}},
 	pit: {learnset: {
 		acrobatics: ["7L1"],
