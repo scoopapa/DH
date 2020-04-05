@@ -3388,7 +3388,7 @@ let BattleMovedex = {
 		accuracy: 100,
 		basePower: 15,
 		category: "Physical",
-		desc: "Hits six times. If the first hit breaks the target's substitute, it will take damage for the second hit.",
+		desc: "Hits six times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits.",
 		shortDesc: "Hits 6 times in one turn. 10% burn per hit.",
 		id: "morningpeacock",
 		name: "Morning Peacock",
@@ -3412,8 +3412,8 @@ let BattleMovedex = {
 		basePower: 85,
 		category: "Physical",
 		defensiveCategory: "Special",
-		desc: "Deals damage to the target based on its Defense instead of Special Defense.",
-		shortDesc: "Damages target based on Defense, not Sp. Def.",
+		desc: "Deals damage to the target based on its Special Defense instead of Defense.",
+		shortDesc: "Damages target based on Sp. Def, not Defense.",
 		id: "daytimetiger",
 		isViable: true,
 		name: "Daytime Tiger",
@@ -3461,6 +3461,169 @@ let BattleMovedex = {
 		target: "normal",
 		type: "Fighting",
 		contestType: "Cool",
+	},
+	"commenceattack": {
+		num: 50014,
+		accuracy: 100,
+		basePower: 100,
+		category: "Physical",
+		defensiveCategory: "Special",
+		desc: "Damage is calculated using the user's Defense stat instead of Attack, including stat stage changes. The user's Ability is used as normal. Deals damage to the target based on its Special Defense instead of Defense. Unless the user's form is Mega Maple, this attack charges on the first turn and strikes on the second.",
+		shortDesc: "Uses Def instead of Atk, and SpD instead of Def, in damage calculation. If user is not Mega Maple, requires charge turn.",
+		id: "commenceattack",
+		isViable: true,
+		name: "Commence Attack",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onTryMove(attacker, defender, move) {
+			if (attacker.removeVolatile(move.id)) {
+				return;
+			}
+			this.add('-prepare', attacker, move.name, defender);
+			if (pokemon.template.species === 'Maple-Mega') {
+				this.attrLastMove('[still]');
+				this.addMove('-anim', attacker, move.name, defender);
+				return;
+			}
+			if (!this.runEvent('ChargeMove', attacker, defender, move)) {
+				return;
+			}
+			attacker.addVolatile('twoturnmove', defender);
+			return null;
+		},
+		useSourceDefensiveAsOffensive: true,
+		secondary: null,
+		target: "normal",
+		type: "Steel",
+	},
+	"hydra": {
+		num: 50015,
+		accuracy: 100,
+		basePower: 30,
+		category: "Special",
+		desc: "Hits three times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. Each hit has a 30% chance to badly poison.",
+		shortDesc: "Hits 6 times in one turn. 30% chance to badly poison target per hit.",
+		id: "hydra",
+		name: "Hydra",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		multihit: 3,
+		secondary: {
+			chance: 30,
+			status: 'tox',
+		},
+		target: "normal",
+		type: "Poison",
+		zMovePower: 175,
+		gmaxPower: 130,
+		contestType: "Cool",
+	},
+	"devour": {
+		num: 50016,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "The user is protected from most attacks made by other Pokemon during this turn, and Pokemon making contact with the user lose 1/2 of their maximum HP, rounded down. This move cannot be used successfully unless the user's current form, while considering Transform, is Maple (not including Mega Maple). This move has a 1/X chance of being successful, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails, if the user's last move used is not Baneful Bunker, Detect, Endure, King's Shield, Obstruct, Protect, Quick Guard, Spiky Shield, or Wide Guard, or if it was one of those moves and the user's protection was broken. Fails if the user moves last this turn.",
+		shortDesc: "Maple (Base): Protects from moves. Contact: loses 1/2 max HP.",
+		id: "devour",
+		isViable: true,
+		name: "Devour",
+		pp: 5,
+		priority: 4,
+		flags: {},
+		stallingMove: true,
+		onTry(pokemon) {
+			if (pokemon.template.species === 'Maple') {
+				return;
+			}
+			this.hint("Only a Pokemon whose form is Maple can use this move.");
+			if (pokemon.template.species === 'Maple-Mega') {
+				this.add('-fail', pokemon, 'move: Devour', '[forme]');
+				return null;
+			}
+			this.add('-fail', pokemon, 'move: Devour');
+			return null;
+		},
+		volatileStatus: 'devour',
+		onTryHit(target, source, move) {
+			return !!this.queue.willAct() && this.runEvent('StallMove', target);
+		},
+		onHit(pokemon) {
+			pokemon.addVolatile('stall');
+		},
+		effect: {
+			duration: 1,
+			onStart(target) {
+				this.add('-singleturn', target, 'move: Protect');
+			},
+			onTryHitPriority: 3,
+			onTryHit(target, source, move) {
+				if (!move.flags['protect']) {
+					if (move.isZ || move.isMax) target.getMoveHitData(move).zBrokeProtect = true;
+					return;
+				}
+				if (move.smartTarget) {
+					move.smartTarget = false;
+				} else {
+					this.add('-activate', target, 'move: Protect');
+				}
+				let lockedmove = source.getVolatile('lockedmove');
+				if (lockedmove) {
+					// Outrage counter is reset
+					if (source.volatiles['lockedmove'].duration === 2) {
+						delete source.volatiles['lockedmove'];
+					}
+				}
+				if (move.flags['contact']) {
+					this.damage(source.baseMaxhp / 2, source, target);
+				}
+				return this.NOT_FAIL;
+			},
+			onHit(target, source, move) {
+				if (move.isZPowered && move.flags['contact']) {
+					this.damage(source.baseMaxhp / 2, source, target);
+				}
+			},
+		},
+		secondary: null,
+		target: "self",
+		type: "Steel",
+		zMoveBoost: {def: 1},
+		contestType: "Tough",
+	},
+	"paralyzingshout": {
+		num: 50017,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Paralyzes all adjacent targets.",
+		shortDesc: "Maple (Base): Paralyzes all adjacent targets.",
+		id: "paralyzingshout",
+		isViable: true,
+		name: "Paralyzing Shout",
+		pp: 20,
+		priority: 0,
+		flags: {protect: 1, reflectable: 1, mirror: 1},
+		onTry(pokemon) {
+			if (pokemon.template.species === 'Maple') {
+				return;
+			}
+			this.hint("Only a Pokemon whose form is Maple can use this move.");
+			if (pokemon.template.species === 'Maple-Mega') {
+				this.add('-fail', pokemon, 'move: Paralyzing Shout', '[forme]');
+				return null;
+			}
+			this.add('-fail', pokemon, 'move: Paralyzing Shout');
+			return null;
+		},
+		status: 'par',
+		secondary: null,
+		target: "allAdjacent",
+		type: "Steel",
+		zMoveBoost: {spd: 1},
+		contestType: "Cute",
 	},
 	//"Regular" hazard moves are here
 		"gmaxsteelsurge": {

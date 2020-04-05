@@ -1472,4 +1472,17 @@ absolutely FUCK devil dinosaur and everything he stands for, it's such a pain in
 	tenmillionfireflies: {
 		tier: "EX",
 	},
+	maple: {
+		tier: "EX",
+	},
+	maplemega: {
+		requiredItem: "Maplenite",
+		tier: "Uber",
+	},
+	riofutaba: {
+		tier: "EX",
+	},
+	victorfries: {
+		tier: "EX",
+	},
 };
