@@ -3625,6 +3625,111 @@ let BattleMovedex = {
 		zMoveBoost: {spd: 1},
 		contestType: "Cute",
 	},
+	"hotcupofcoffee": {
+		num: 50018,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "The user restores 1/2 of its maximum HP, rounded half up.",
+		shortDesc: "Heals the user by 50% of its max HP.",
+		id: "hotcupofcoffee",
+		isViable: true,
+		name: "Hot Cup of Coffee",
+		pp: 10,
+		priority: -3,
+		flags: {snatch: 1, heal: 1},
+		heal: [1, 2],
+		beforeTurnCallback(pokemon) {
+			pokemon.addVolatile('hotcupofcoffee');
+		},
+		effect: {
+			duration: 1,
+			onStart(pokemon) {
+				this.add('-singleturn', pokemon, 'move: Hot Cup of Coffee');
+			},
+			onHit(pokemon, source, move) {
+				if (move.flags['contact']) {
+					source.trySetStatus('brn', pokemon);
+				}
+			},
+		},
+		onAfterMove(pokemon) {
+			pokemon.removeVolatile('hotcupofcoffee');
+		},
+		secondary: null,
+		target: "self",
+		type: "Water",
+		zMoveEffect: 'clearnegativeboost',
+		contestType: "Cute",
+	},
+	"kamehameha": {
+		num: 50019,
+		accuracy: 90,
+		basePower: 100,
+		category: "Special",
+		desc: "This move's type depends on the user's secondary type. wonder what it'll default to",
+		shortDesc: "Type varies based on the user's secondary type.",
+		id: "kamehameha",
+		isViable: true,
+		name: "Kamehameha",
+		pp: 15,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, dance: 1},
+		onModifyType(move, pokemon) {
+			let type = pokemon.types[1];
+			if (type === "Bird") type = "???";
+			move.type = type;
+		},
+		secondary: null,
+		target: "normal",
+		type: "Fighting",
+		contestType: "Cool",
+	},
+	"instanttransmission": {
+		num: 50020,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "If this move is successful and the user has not fainted, the user switches out even if it is trapped and is replaced immediately by a selected party member. The user does not switch out if there are no unfainted party members.",
+		shortDesc: "User switches out.",
+		id: "instanttransmission",
+		name: "Instant Trasmission",
+		pp: 40,
+		priority: 0,
+		flags: {},
+		selfSwitch: true,
+		onTryHit: true,
+		secondary: null,
+		target: "self",
+		type: "Psychic",
+		zMoveEffect: 'heal',
+		contestType: "Cool",
+	},
+	"dragonfist": {
+		num: 50021,
+		accuracy: 90,
+		basePower: 90,
+		category: "Physical",
+		desc: "Has a 20% chance to raise the user's Attack by 1 stage.",
+		shortDesc: "20% chance to raise the user's Attack by 1.",
+		id: "dragonfist",
+		isViable: true,
+		name: "Dragon Fist",
+		pp: 10,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1, punch: 1},
+		secondary: {
+			chance: 20,
+			self: {
+				boosts: {
+					atk: 1,
+				},
+			},
+		},
+		target: "normal",
+		type: "Dragon",
+		contestType: "Cool",
+	},
 	//"Regular" hazard moves are here
 		"gmaxsteelsurge": {
 		num: 1000,
