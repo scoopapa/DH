@@ -3287,7 +3287,7 @@ smolnozomi: {
 			species: "Smol Nozomi", /* SiIvaGunner */
 			types: ["Ice"],
 		gender: "F",
-			baseStats: {hp: 80, atk: 60, def: 80, spa: 75, spd: 85, spe: 110},
+			baseStats: {hp: 60, atk: 60, def: 60, spa: 75, spd: 65, spe: 100},
 			abilities: {0: "Clear Body", H: "Snow Warning"},
 		heightm: 0.2,
 			weightkg: 1,
