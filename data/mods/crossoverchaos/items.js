@@ -489,4 +489,114 @@ exports.BattleItems = {
 		gen: 3,
 		desc: "Restores 33% max HP at 1/4 max HP or less; confuses if -SpA Nature. Single use.",
 	},
+	 "maplenite": { 
+		  id: "maplenite",
+		  name: "Maplenite",
+		  megaStone: "Maple-Mega",
+		  megaEvolves: "Maple",
+		  onTakeItem(item, source) {
+			  if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			  return true;
+		  },
+		 desc: "If held by the Maple, this item allows her to Mega Evolve in battle."
+	 },
+	 "gokunites": { 
+		  id: "gokunites",
+		  name: "Gokunite S",
+		  megaStone: "Goku-Super Saiyan",
+		  megaEvolves: "Goku",
+		  onTakeItem(item, source) {
+			  if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			  return true;
+		  },
+		 desc: "If held by Goku, this item allows him to Mega Evolve in battle."
+	 },
+	 "gokuniteg": { 
+		  id: "gokuniteg",
+		  name: "Gokunite G",
+		  megaStone: "Goku-Super Saiyan God",
+		  megaEvolves: "Goku",
+		  onTakeItem(item, source) {
+			  if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			  return true;
+		  },
+		 desc: "If held by Goku, this item allows him to Mega Evolve in battle."
+	 },
+	 "gokuniteb": { 
+		  id: "gokuniteb",
+		  name: "Gokunite B",
+		  megaStone: "Goku-Super Saiyan Blue",
+		  megaEvolves: "Goku",
+		  onTakeItem(item, source) {
+			  if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			  return true;
+		  },
+		 desc: "If held by Goku, this item allows him to Mega Evolve in battle."
+	 },
+	 "gokuniteu": { 
+		  id: "gokuniteu",
+		  name: "Gokunite U",
+		  megaStone: "Goku-Ultra Instinct",
+		  megaEvolves: "Goku",
+		  onTakeItem(item, source) {
+			  if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			  return true;
+		  },
+		 desc: "If held by Goku, this item allows him to Mega Evolve in battle."
+	 },
+	 "gokuniteo": { 
+		  id: "gokuniteo",
+		  name: "Gokunite O",
+		  megaStone: "Goku-Super Saiyan 4",
+		  megaEvolves: "Goku",
+		  onTakeItem(item, source) {
+			  if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			  return true;
+		  },
+		 desc: "If held by Goku, this item allows him to Mega Evolve in battle."
+	 },
+	 "vegetanites": { 
+		  id: "vegetanites",
+		  name: "Vegetanite S",
+		  megaStone: "Vegeta-Super Saiyan",
+		  megaEvolves: "Vegeta",
+		  onTakeItem(item, source) {
+			  if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			  return true;
+		  },
+		 desc: "If held by Vegeta, this item allows him to Mega Evolve in battle."
+	 },
+	 "vegetaniteb": { 
+		  id: "vegetaniteb",
+		  name: "Vegetanite B",
+		  megaStone: "Vegeta-Super Saiyan Blue",
+		  megaEvolves: "Vegeta",
+		  onTakeItem(item, source) {
+			  if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			  return true;
+		  },
+		 desc: "If held by Vegeta, this item allows him to Mega Evolve in battle."
+	 },
+	 "vegetanitem": { 
+		  id: "vegetanitem",
+		  name: "Vegetanite M",
+		  megaStone: "Vegeta-Majin",
+		  megaEvolves: "Vegeta",
+		  onTakeItem(item, source) {
+			  if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			  return true;
+		  },
+		 desc: "If held by Vegeta, this item allows him to Mega Evolve in battle."
+	 },
+	 "vegetaniteo": { 
+		  id: "vegetaniteo",
+		  name: "Vegetanite O",
+		  megaStone: "Vegeta-Super Saiyan 4",
+		  megaEvolves: "Vegeta",
+		  onTakeItem(item, source) {
+			  if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			  return true;
+		  },
+		 desc: "If held by Vegeta, this item allows him to Mega Evolve in battle."
+	 },
 };
