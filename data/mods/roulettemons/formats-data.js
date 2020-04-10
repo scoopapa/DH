@@ -1,6 +1,7 @@
 'use strict';
 
-exports.BattleFormatsData = {
+/**@type {{[k: string]: ModdedSpeciesFormatsData}} */
+let BattleFormatsData = {
 	koatric: {
 		tier: "OU",
 		doublesTier: "DOU",
@@ -141,7 +142,7 @@ exports.BattleFormatsData = {
 		tier: "OU",
 		doublesTier: "DOU",
 	},
-		bellena: {
+	bellena: {
 		tier: "OU",
 		doublesTier: "DOU",
 	},
@@ -190,3 +191,5 @@ exports.BattleFormatsData = {
 		doublesTier: "DOU",
 	},
 };
+
+exports.BattleFormatsData = BattleFormatsData;
