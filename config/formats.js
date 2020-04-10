@@ -667,7 +667,7 @@ exports.Formats = [
 		     ], 
 		ruleset: [ '+Past', 'Dynamax Clause', 'Obtainable', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause'],
 
-		banlist: ['All Pokemon', 'Uber', 'Venusaur', 'Charizard', 'Blastoise', 'Alakazam', 'Gengar', 'Kangaskhan', 'Pinsir', 'Gyarados', 'Aerodactyl', 'Mewtwo', 'Ampharos', 'Scizor', 'Heracross', 'Houndoom', 'Tyranitar', 'Blaziken', 'Gardevoir', 'Mawile', 'Aggron', 'Medicham', 'Manectric', 'Banette', 'Absol', 'Garchomp', 'Lucario', 'Abomasnow'],
+		banlist: ['All Pokemon', 'Uber', 'Venusaur-Mega', 'Charizard-MegaX', 'Charizard-MegaY', 'Blastoise-Mega', 'Alakazam-Mega', 'Gengar-Mega', 'Kangaskhan-Mega', 'Pinsir-Mega', 'Gyarados-Mega', 'Aerodactyl-Mega', 'Mewtwo-MegaX', 'Mewtwo-MegaY', 'Ampharos-Mega', 'Scizor-Mega', 'Heracross-Mega', 'Houndoom-Mega', 'Tyranitar-Mega', 'Blaziken-Mega', 'Gardevoir-Mega', 'Mawile-Mega', 'Aggron-Mega', 'Medicham-Mega', 'Manectric-Mega', 'Banette-Mega', 'Absol-Mega', 'Garchomp-Mega', 'Lucario-Mega', 'Abomasnow-Mega'],
 		unbanlist: [
 			'Koatric', 'Aquazelle', 'Salamalix', 'Brawnkey', 'Stuneleon', 'Chillyte', 'Eartharoo', 'Crazefly', 'Electritar', 'Aquatopus', 'Scorpita', 'Baloon', 'Kinesel', 'Glacida', 'Pidgeotine', 'Gorilax', 'Albatrygon', 'Chillvark', 'Komodith', 'Giranium', 'Flamyle', 'Voltecta', 'Ostria', 'Ninjoth', 'Herbigator', 'Anteros', 'Gladiaster', 'Hyperoach', 'Barracoth', 'Toados', 'Voltarak', 'Mosqung', 'Flamepion', 'Hyenix', 'Rhinolite', 'Bellena', 'Falcola', 'Beanium', 'Lemotic', 'Biceon', 'Skeleray', 'Specyte', 'Ramron', 'Panthee', 'Blastora', 'Balar', 'Dropacle',
 		],
