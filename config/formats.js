@@ -661,7 +661,7 @@ exports.Formats = [
 		},
 	},
 	{
-		name: "[Gen 8] Roulettemons",
+		name: "[Gen 8 Pet Mod] Roulettemons",
 		desc: [`A competitive metagame made up of brand new Pokémon that are randomly generated on every competitive aspect (typing, moves, stats, abilities).`],
 		threads: [`&bullet; <a href=https://www.smogon.com/forums/threads/.3649106/>Roulettemons</a>`,
 		     ], 
