@@ -190,6 +190,22 @@ let BattleFormatsData = {
 		tier: "Roulettemons",
 		doublesTier: "DOU",
 	},
+	fluffora: {
+		tier: "Roulettemons",
+		doublesTier: "DOU",
+	},
+	dolphena: {
+		tier: "Roulettemons",
+		doublesTier: "DOU",
+	},
+	tigire: {
+		tier: "Roulettemons",
+		doublesTier: "DOU",
+	},
+	catelax: {
+		tier: "Roulettemons",
+		doublesTier: "DOU",
+	},
 };
 
 exports.BattleFormatsData = BattleFormatsData;
