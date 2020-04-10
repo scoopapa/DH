@@ -665,7 +665,7 @@ exports.Formats = [
 		desc: [`A competitive metagame made up of brand new Pokémon that are randomly generated on every competitive aspect (typing, moves, stats, abilities).`],
 		threads: [`&bullet; <a href=https://www.smogon.com/forums/threads/.3649106/>Roulettemons</a>`,
 		     ], 
-		ruleset: ruleset: [ '+Past', 'Dynamax Clause', 'Obtainable', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause'],
+		ruleset: [ '+Past', 'Dynamax Clause', 'Obtainable', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause'],
 
 		banlist: ['All Pokemon'],
 		unbanlist: [
