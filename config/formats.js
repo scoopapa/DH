@@ -665,10 +665,10 @@ exports.Formats = [
 		desc: [`A competitive metagame made up of brand new Pokémon that are randomly generated on every competitive aspect (typing, moves, stats, abilities).`],
 		threads: [`&bullet; <a href=https://www.smogon.com/forums/threads/.3649106/>Roulettemons</a>`,
 		     ], 
-		ruleset: ['Standard NatDex', 'Dynamax Clause', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Swagger Clause', 'Baton Pass Clause', 'OHKO Clause'],
-		banlist: ['Uber', 'All Pokemon', 'Venusaur-Mega', 'Charizard-MegaX', 'Charizard-MegaY', 'Blastoise-Mega', 'Alakazam-Mega', 'Gengar-Mega', 'Kangaskhan-Mega', 'Pinsir-Mega', 'Gyarados-Mega', 'Aerodactyl-Mega', 'Mewtwo-MegaX', 'Mewtwo-MegaY', 'Ampharos-Mega', 'Scizor-Mega', 'Heracross-Mega', 'Houndoom-Mega', 'Tyranitar-Mega', 'Blaziken-Mega', 'Gardevoir-Mega', 'Mawile-Mega', 'Aggron-Mega', 'Medicham-Mega', 'Manectric-Mega', 'Banette-Mega', 'Absol-Mega', 'Garchomp-Mega', 'Lucario-Mega', 'Abomasnow-Mega', 'Mewtwo'],
+		ruleset: ['Roulettemons Clause', 'Standard NatDex', 'Dynamax Clause', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Swagger Clause', 'Baton Pass Clause', 'OHKO Clause'],
+		banlist: [],
 		unbanlist: [
-			'Koatric', 'Aquazelle', 'Salamalix', 'Brawnkey', 'Stuneleon', 'Chillyte', 'Eartharoo', 'Crazefly', 'Electritar', 'Aquatopus', 'Scorpita', 'Baloon', 'Kinesel', 'Glacida', 'Pidgeotine', 'Gorilax', 'Albatrygon', 'Chillvark', 'Komodith', 'Giranium', 'Flamyle', 'Voltecta', 'Ostria', 'Ninjoth', 'Herbigator', 'Anteros', 'Gladiaster', 'Hyperoach', 'Barracoth', 'Toados', 'Voltarak', 'Mosqung', 'Flamepion', 'Hyenix', 'Rhinolite', 'Bellena', 'Falcola', 'Beanium', 'Lemotic', 'Biceon', 'Skeleray', 'Specyte', 'Ramron', 'Panthee', 'Blastora', 'Balar', 'Dropacle', 'Sacred Fire', 'Normalium Z',
+			'Koatric', 'Aquazelle', 'Salamalix', 'Brawnkey', 'Stuneleon', 'Chillyte', 'Eartharoo', 'Crazefly', 'Electritar', 'Aquatopus', 'Scorpita', 'Baloon', 'Kinesel', 'Glacida', 'Pidgeotine', 'Gorilax', 'Albatrygon', 'Chillvark', 'Komodith', 'Giranium', 'Flamyle', 'Voltecta', 'Ostria', 'Ninjoth', 'Herbigator', 'Anteros', 'Gladiaster', 'Hyperoach', 'Barracoth', 'Toados', 'Voltarak', 'Mosqung', 'Flamepion', 'Hyenix', 'Rhinolite', 'Bellena', 'Falcola', 'Beanium', 'Lemotic', 'Biceon', 'Skeleray', 'Specyte', 'Ramron', 'Panthee', 'Blastora', 'Balar', 'Dropacle', 'Sacred Fire', '
 		],
 		mod: 'roulettemons',
 		onSwitchIn(pokemon) {

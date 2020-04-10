@@ -3,6 +3,7 @@
 /**@type {{[k: string]: ModdedFormatsData}} */
 let BattleFormats = {
 	roulettemonsclause: {
+		name: 'Roulettemons Clause',
 		onBegin() {
 			// The only validator rule this currently modifies is Species Clause, so the added rule is just this
 			this.add('rule', 'Clean Slate: Limit one of each Pokémon');
