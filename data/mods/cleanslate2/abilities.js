@@ -76,6 +76,67 @@ let BattleAbilities = {
 		rating: 2,
 		num: 159,
 	},
+	"migration": {
+		desc: "If this Pokemon is a Vivillon, its secondary type changes to the current weather condition's type. If this Pokemon is holding Utility Umbrella and the weather condition is Sunny Day, Desolate Land, Rain Dance, or Primordial Sea, it will not change types.",
+		shortDesc: "Castform's type changes to the current weather condition's type, except Sandstorm.",
+		onUpdate(pokemon) {
+			let changeType = function( type ){
+				if ( !pokemon.getTypes().includes( type )){
+					pokemon.setType("Flying");
+					if ( type !== "None" ){
+						pokemon.addType(type);
+						let newType = "Flying/";
+						newType += type;
+					}
+					this.add('-start', pokemon, 'typechange', newType || type, '[from] Migration');
+				}
+			}
+			if (pokemon.baseTemplate.baseSpecies !== 'Vivillon' || pokemon.transformed) return;
+			let type = "None";
+			let forme = null;
+			switch (pokemon.effectiveWeather()) {
+			case 'sunnyday':
+			case 'desolateland':
+				if (pokemon.template.speciesid !== 'vivillonsun'){
+					type = 'Fire';
+					forme = 'Vivillon-Sun';
+				}
+				break;
+			case 'raindance':
+			case 'primordialsea':
+				if (pokemon.template.speciesid !== 'vivillonmarine'){
+					type = 'Water';
+					forme = 'Vivillon-Marine';
+				}
+				break;
+			case 'hail':
+				if (pokemon.template.speciesid !== 'vivillonpolar'){
+					type = 'Ice';
+					forme = 'Vivillon-Polar';
+				}
+				break;
+			case 'sandstorm':
+			if (pokemon.template.speciesid !== 'vivillonsandstorm'){
+				type = 'Rock';
+				forme = 'Vivillon-Sandstorm';
+			}
+			break;
+			default:
+				if (pokemon.template.speciesid !== 'vivillon'){
+					forme = 'Vivillon';
+				}
+				break;
+			}
+			if (pokemon.isActive && forme) {
+				pokemon.formeChange(forme, this.effect, false, '[msg]');
+				changeType( type );
+			}
+		},
+		id: "migration",
+		name: "Migration",
+		rating: 2,
+		num: 59,
+	},
 };
 
 exports.BattleAbilities = BattleAbilities;
