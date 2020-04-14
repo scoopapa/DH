@@ -80,17 +80,6 @@ let BattleAbilities = {
 		desc: "If this Pokemon is a Vivillon, its secondary type changes to the current weather condition's type. If this Pokemon is holding Utility Umbrella and the weather condition is Sunny Day, Desolate Land, Rain Dance, or Primordial Sea, it will not change types.",
 		shortDesc: "Castform's type changes to the current weather condition's type, except Sandstorm.",
 		onUpdate(pokemon) {
-			let changeType = function( type ){
-				if ( !pokemon.getTypes().includes( type )){
-					pokemon.setType("Flying");
-					if ( type !== "None" ){
-						pokemon.addType(type);
-						let newType = "Flying/";
-						newType += type;
-					}
-					this.add('-start', pokemon, 'typechange', newType || type, '[from] Migration');
-				}
-			}
 			if (pokemon.baseTemplate.baseSpecies !== 'Vivillon' || pokemon.transformed) return;
 			let type = "None";
 			let forme = null;
@@ -129,7 +118,16 @@ let BattleAbilities = {
 			}
 			if (pokemon.isActive && forme) {
 				pokemon.formeChange(forme, this.effect, false, '[msg]');
-				changeType( type );
+				if ( !pokemon.getTypes().includes( type )){
+					pokemon.setType("Flying");
+					if ( type !== "None" ){
+						pokemon.addType(type);
+						let newType = "Flying/";
+						newType += type;
+					}
+					let battle = pokemon.battle;
+					battle.add('-start', pokemon, 'typechange', newType || type, '[from] Migration');
+				}
 			}
 		},
 		id: "migration",
