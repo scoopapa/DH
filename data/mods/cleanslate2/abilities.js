@@ -120,13 +120,13 @@ let BattleAbilities = {
 				pokemon.formeChange(forme, this.effect, false, '[msg]');
 				if ( !pokemon.getTypes().includes( type )){
 					pokemon.setType("Flying");
+					let newType = "Flying";
 					if ( type !== "None" ){
 						pokemon.addType(type);
-						let newType = "Flying/";
-						newType += type;
+						newType = "/" + type;
 					}
 					let battle = pokemon.battle;
-					battle.add('-start', pokemon, 'typechange', newType || type, '[from] Migration');
+					battle.add('-start', pokemon, 'typechange', newType, '[from] Migration');
 				}
 			}
 		},
