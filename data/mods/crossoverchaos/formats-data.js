@@ -993,6 +993,22 @@ exports.BattleFormatsData = { //
 		requiredMove: "Word of Dispel",
 		tier: "V2", /* tentatively */
 	},
+	medic: {
+		tier: "V2",
+	},
+	vi: {
+		tier: "V2",
+	},
+	kiarasesshouin: {
+		tier: "V2",
+	},
+	kiarasesshouinheavenshole: {
+		tier: "Uber",
+	},
+	kiarasesshouinbeastiiir: {
+		requiredItem: "Crown of the Beast",
+		tier: "Uber",
+	},
 	 walle: {
 		  tier: "EX",
 	 },

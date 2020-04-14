@@ -3106,7 +3106,7 @@ kyokokirigiri: {
 		weightkg: 44,
 	},
 	matt: {
-		num: 60000169,
+		num: 6000169,
 		species: "Matt", /* Wii Sports */
 		types: ["Normal", "Fighting"],
 		gender: "M",
@@ -3116,7 +3116,7 @@ kyokokirigiri: {
 		weightkg: 105,
 	},
 	pandora: {
-		num: 60000170,
+		num: 6000170,
 		species: "Pandora", /* Kid Icarus */
 		types: ["Dark", "Ghost"],
 		gender: "F",
@@ -3126,7 +3126,7 @@ kyokokirigiri: {
 		weightkg: 60,
 	},
 	pandoraamazon: {
-		num: 60000171,
+		num: 6000171,
 		species: "Pandora-Amazon",
 		baseSpecies: "Pandora",
 		forme: "Amazon",
@@ -3139,7 +3139,7 @@ kyokokirigiri: {
 		weightkg: 60,
 	},
 	tamamo: {
-		num: 60000172,
+		num: 6000172,
 		species: "Tamamo", /* Monster Girl Quest */
 		types: ["Ground", "Rock"],
 		gender: "F",
@@ -3147,9 +3147,10 @@ kyokokirigiri: {
 		abilities: {0: "Fluffy", 1: "Breath of the Earth", H: "Skill Link"},
 		heightm: 1.6,
 		weightkg: 65,
+		otherFormes: ["tamamoancestor"],
 	},
 	tamamoancestor: {
-		num: 60000172,
+		num: 6000172,
 		species: "Tamamo-Ancestor",
 		baseSpecies: "Tamamo",
 		forme: "Ancestor",
@@ -3160,6 +3161,63 @@ kyokokirigiri: {
 		abilities: {0: "Skill Link"},
 		heightm: 1.6,
 		weightkg: 65,
+	},
+	medic: {
+		num: 6000173,
+		species: "Medic", /* Team Fortress 2 */
+		types: ["Normal"],
+		gender: "M",
+		baseStats: {hp: 75, atk: 97, def: 80, spa: 80, spd: 85, spe: 92},
+		abilities: {0: "Slow Regeneration", 1: "Healer", H: "Merciless"},
+		heightm: 1.84,
+		weightkg: 77,
+	},
+	vi: {
+		num: 6000174,
+		species: "Vi", /* Bug Fables */
+		types: ["Bug", "Flying"],
+		gender: "F",
+		baseStats: {hp: 78, atk: 117, def: 65, spa: 55, spd: 70, spe: 115},
+		abilities: {0: "Skill Link", 1: "Harvest", H: "Long Reach"},
+		heightm: 0.1,
+		weightkg: 0.1,
+	},
+	kiarasesshouin: {
+		num: 6000175,
+		species: "Kiara Sesshouin", /* Fate/EXTRA CCC */
+		types: ["Psychic", "Fairy"],
+		gender: "F",
+		baseStats: {hp: 115, atk: 100, def: 80, spa: 110, spd: 90, spe: 105},
+		abilities: {0: "Triage", H: "Infiltrator"},
+		heightm: 1.66,
+		weightkg: 53,
+		otherFormes: ["kiarashesshouinheavenshole", "kiarasesshouinbeastiiir"],
+	},
+	kiarasesshouinheavenshole: {
+		num: 6000175,
+		species: "Kiara Sesshouin-Heaven's Hole",
+		baseSpecies: "Kiara Sesshouin",
+		forme: "Heaven's Hole",
+		formeLetter: "H",
+		types: ["Psychic", "Fairy"],
+		gender: "F",
+		baseStats: {hp: 125, atk: 120, def: 90, spa: 150, spd: 90, spe: 105},
+		abilities: {0: "Dazzling"},
+		heightm: 1.66,
+		weightkg: 53,
+	},
+	kiarasesshouinbeastiiir: {
+		num: 6000175,
+		species: "Kiara Sesshouin-Beast III/R",
+		baseSpecies: "Kiara Sesshouin",
+		forme: "Beast III/R",
+		formeLetter: "Beast",
+		types: ["Dark", "Fairy"],
+		gender: "F",
+		baseStats: {hp: 145, atk: 140, def: 100, spa: 150, spd: 120, spe: 125},
+		abilities: {0: "Dazzling"},
+		heightm: 50968000‬,
+		weightkg: 999.9,
 	},
 	walle: {
 			num: 7000001,
@@ -3287,7 +3345,7 @@ smolnozomi: {
 			species: "Smol Nozomi", /* SiIvaGunner */
 			types: ["Ice"],
 		gender: "F",
-			baseStats: {hp: 80, atk: 60, def: 80, spa: 75, spd: 85, spe: 110},
+			baseStats: {hp: 60, atk: 60, def: 60, spa: 75, spd: 65, spe: 100},
 			abilities: {0: "Clear Body", H: "Snow Warning"},
 		heightm: 0.2,
 			weightkg: 1,
