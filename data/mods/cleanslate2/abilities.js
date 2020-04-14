@@ -123,7 +123,7 @@ let BattleAbilities = {
 					let newType = "Flying";
 					if ( type !== "None" ){
 						pokemon.addType(type);
-						newType = "/" + type;
+						newType += "/" + type;
 					}
 					let battle = pokemon.battle;
 					battle.add('-start', pokemon, 'typechange', newType, '[from] Migration');
