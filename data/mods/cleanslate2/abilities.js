@@ -86,32 +86,32 @@ let BattleAbilities = {
 			switch (pokemon.effectiveWeather()) {
 			case 'sunnyday':
 			case 'desolateland':
-				if (pokemon.template.speciesid !== 'vivillonsun'){
+				if (pokemon.template.speciesid !== 'vivillonsun' && !pokemon.getTypes().includes( "Fire" )){
 					type = 'Fire';
 					forme = 'Vivillon-Sun';
 				}
 				break;
 			case 'raindance':
 			case 'primordialsea':
-				if (pokemon.template.speciesid !== 'vivillonmarine'){
+				if (pokemon.template.speciesid !== 'vivillonmarine' && !pokemon.getTypes().includes( "Water" )){
 					type = 'Water';
 					forme = 'Vivillon-Marine';
 				}
 				break;
 			case 'hail':
-				if (pokemon.template.speciesid !== 'vivillonpolar'){
+				if (pokemon.template.speciesid !== 'vivillonpolar' && !pokemon.getTypes().includes( "Ice" )){
 					type = 'Ice';
 					forme = 'Vivillon-Polar';
 				}
 				break;
 			case 'sandstorm':
-			if (pokemon.template.speciesid !== 'vivillonsandstorm'){
+			if (pokemon.template.speciesid !== 'vivillonsandstorm' && !pokemon.getTypes().includes( "Rock" )){
 				type = 'Rock';
 				forme = 'Vivillon-Sandstorm';
 			}
 			break;
 			default:
-				if (pokemon.template.speciesid !== 'vivillon'){
+				if (Object.keys(pokemon.getTypes()).length === 2){
 					forme = 'Vivillon';
 				}
 				break;
