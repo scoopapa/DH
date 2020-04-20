@@ -76,6 +76,65 @@ let BattleAbilities = {
 		rating: 2,
 		num: 159,
 	},
+	"migration": {
+		desc: "If this Pokemon is a Vivillon, its secondary type changes to the current weather condition's type. If this Pokemon is holding Utility Umbrella and the weather condition is Sunny Day, Desolate Land, Rain Dance, or Primordial Sea, it will not change types.",
+		shortDesc: "Castform's type changes to the current weather condition's type, except Sandstorm.",
+		onUpdate(pokemon) {
+			if (pokemon.baseTemplate.baseSpecies !== 'Vivillon' || pokemon.transformed) return;
+			let type = "None";
+			let forme = null;
+			switch (pokemon.effectiveWeather()) {
+			case 'sunnyday':
+			case 'desolateland':
+				if (pokemon.template.speciesid !== 'vivillonsun' && !pokemon.getTypes().includes( "Fire" )){
+					type = 'Fire';
+					forme = 'Vivillon-Sun';
+				}
+				break;
+			case 'raindance':
+			case 'primordialsea':
+				if (pokemon.template.speciesid !== 'vivillonmarine' && !pokemon.getTypes().includes( "Water" )){
+					type = 'Water';
+					forme = 'Vivillon-Marine';
+				}
+				break;
+			case 'hail':
+				if (pokemon.template.speciesid !== 'vivillonpolar' && !pokemon.getTypes().includes( "Ice" )){
+					type = 'Ice';
+					forme = 'Vivillon-Polar';
+				}
+				break;
+			case 'sandstorm':
+			if (pokemon.template.speciesid !== 'vivillonsandstorm' && !pokemon.getTypes().includes( "Rock" )){
+				type = 'Rock';
+				forme = 'Vivillon-Sandstorm';
+			}
+			break;
+			default:
+				if (Object.keys(pokemon.getTypes()).length === 2){
+					forme = 'Vivillon';
+				}
+				break;
+			}
+			if (pokemon.isActive && forme) {
+				pokemon.formeChange(forme, this.effect, false, '[msg]');
+				if ( !pokemon.getTypes().includes( type )){
+					pokemon.setType("Flying");
+					let newType = "Flying";
+					if ( type !== "None" ){
+						pokemon.addType(type);
+						newType += "/" + type;
+					}
+					let battle = pokemon.battle;
+					battle.add('-start', pokemon, 'typechange', newType, '[from] Migration');
+				}
+			}
+		},
+		id: "migration",
+		name: "Migration",
+		rating: 2,
+		num: 59,
+	},
 };
 
 exports.BattleAbilities = BattleAbilities;

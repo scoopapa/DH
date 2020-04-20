@@ -244,6 +244,35 @@ let BattlePokedex = {
 		baseStats: {hp: 115, atk: 140, def: 105, spa: 65, spd: 95, spe: 80},
 		abilities: {0: "Mold Breaker", 1: "Intimidate", H: "Scrappy"},
 	},
+	salamence: {
+		inherit: true,
+		species: "Salamence",
+		types: ["Dragon", "Flying"],
+		baseStats: {hp: 95, atk: 110, def: 135, spa: 100, spd: 80, spe: 80},
+		abilities: {0: "Rock Head", 1: "Intimidate", H: "Gluttony"},
+	},
+	centiskorch: {
+		inherit: true,
+		species: "Centiskorch",
+		types: ["Fire", "Bug"],
+		baseStats: {hp: 117, atk: 100, def: 75, spa: 85, spd: 145, spe: 113},
+		abilities: {0: "Rough Skin", 1: "Sticky Hold", H: "Flash Fire"},
+	},
+	weavile: {
+		inherit: true,
+		species: "Weavile",
+		types: ["Dark", "Ice"],
+		baseStats: {hp: 105, atk: 125, def: 85, spa: 75, spd: 85, spe: 125},
+		abilities: {0: "Pressure", 1: "Merciless", H: "Pickpocket"},
+	},
+	vivillon: {
+		inherit: true,
+		species: "Vivillon",
+		types: ["Flying"],
+		baseStats: {hp: 60, atk: 60, def: 120, spa: 125, spd: 90, spe: 115},
+		abilities: {0: "Migration", 1: "Compound Eyes", H: "Weak Armor"},
+		otherFormes: ["vivillonsun", "vivillonpolar", "vivillonsandstorm", "vivillonmarine"],
+	},
 };
 
 exports.BattlePokedex = BattlePokedex;

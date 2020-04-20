@@ -661,14 +661,13 @@ exports.Formats = [
 		},
 	},
 	{
-		name: "[Gen 8] Roulettemons",
+		name: "[Gen 8 Pet Mod] Roulettemons",
 		desc: [`A competitive metagame made up of brand new Pokémon that are randomly generated on every competitive aspect (typing, moves, stats, abilities).`],
 		threads: [`&bullet; <a href=https://www.smogon.com/forums/threads/.3649106/>Roulettemons</a>`,
 		     ], 
-		ruleset: ['+Past', 'Dynamax Clause', 'Obtainable', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause'],
-		banlist: ['All Pokemon'],
+		ruleset: ['Roulettemons Clause', 'Standard NatDex', 'Dynamax Clause', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Swagger Clause', 'Baton Pass Clause', 'OHKO Clause'],
 		unbanlist: [
-			'Koatric', 'Aquazelle', 'Salamalix', 'Brawnkey', 'Stuneleon', 'Chillyte', 'Chillyte-Mega', 'Eartharoo', 'Crazefly', 'Electritar', 'Aquatopus', 'Scorpita', 'Baloon', 'Kinesel', 'Glacida', 'Pidgeotine', 'Gorilax', 'Albatrygon', 'Chillvark', 'Komodith', 'Giranium', 'Flamyle', 'Voltecta', 'Ostria', 'Ninjoth', 'Herbigator', 'Anteros', 'Gladiaster', 'Hyperoach', 'Barracoth', 'Toados', 'Voltarak', 'Mosqung', 'Flamepion', 'Hyenix', 'Rhinolite', 'Bellena', 'Falcola', 'Beanium', 'Lemotic', 'Biceon', 'Skeleray', 'Specyte', 'Ramron', 'Panthee', 'Blastora', 'Balar', 'Dropacle',
+			'Koatric', 'Aquazelle', 'Salamalix', 'Brawnkey', 'Stuneleon', 'Chillyte', 'Eartharoo', 'Crazefly', 'Electritar', 'Aquatopus', 'Scorpita', 'Baloon', 'Kinesel', 'Glacida', 'Pidgeotine', 'Gorilax', 'Albatrygon', 'Chillvark', 'Komodith', 'Giranium', 'Flamyle', 'Voltecta', 'Ostria', 'Ninjoth', 'Herbigator', 'Anteros', 'Gladiaster', 'Hyperoach', 'Barracoth', 'Toados', 'Voltarak', 'Mosqung', 'Flamepion', 'Hyenix', 'Rhinolite', 'Bellena', 'Falcola', 'Beanium', 'Lemotic', 'Biceon', 'Skeleray', 'Specyte', 'Ramron', 'Panthee', 'Blastora', 'Balar', 'Dropacle', 'Fluffora', 'Dolphena', 'Tigire', 'Catelax',
 		],
 		mod: 'roulettemons',
 		onSwitchIn(pokemon) {
@@ -879,7 +878,7 @@ exports.Formats = [
 		mod: 'cleanslate2',
 		banlist: ['All Pokemon'],
 		unbanlist: [
-			'Weezing-Galar', 'Orbeetle', 'Stonjourner', 'Cherrim-Sunshine', 'Zacian', 'Dubwool', 'Gumshoos', 'Seismitoad', 'Snorlax-Gmax', 'Walrein', 'Dhelmise', 'Togekiss', 'Scolipede', 'Cursola', 'Torkoal', 'Gligar', 'Octillery', 'Necrozma', 'Dunsparce', 'Victreebel', 'Runerigus', 'Aerodactyl', 'Unown-P', 'Unown-S', 'Unown-M', 'Shaymin', 'Shaymin-Sky', 'Scrafty',
+			'Weezing-Galar', 'Orbeetle', 'Stonjourner', 'Cherrim-Sunshine', 'Zacian', 'Dubwool', 'Gumshoos', 'Seismitoad', 'Snorlax-Gmax', 'Walrein', 'Dhelmise', 'Togekiss', 'Scolipede', 'Cursola', 'Torkoal', 'Gligar', 'Octillery', 'Necrozma', 'Dunsparce', 'Victreebel', 'Runerigus', 'Aerodactyl', 'Unown-P', 'Unown-S', 'Unown-M', 'Shaymin', 'Shaymin-Sky', 'Scrafty', 'Weavile', 'Salamence', 'Vivillon', 'Centiskorch',
 		],
 		ruleset: ['Standard NatDex', 'OHKO Clause', 'Evasion Moves Clause', 'Species Clause', 'Dynamax Clause', 'Sleep Clause Mod'],
 		onSwitchIn(pokemon) {
