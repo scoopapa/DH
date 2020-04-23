@@ -72,15 +72,19 @@ machampmega: {
 	baseStats: {hp: 90, atk: 170, def: 100, spa: 65, spd: 95, spe: 85},
 	abilities: {0: "Super Luck"},
 },
-gengarmega: {
+gengarmegax: {
 	num: 8.5,
-	species: "Gengar-Mega",
+	species: "Gengar-Mega-X",
 	baseSpecies: "Gengar",
 	forme: "Mega",
 	formeLetter: "M",
 	types: ["Ghost", "Psychic"],
 	baseStats: {hp: 60, atk: 145, def: 95, spa: 100, spd: 90, spe: 105},
 	abilities: {0: "Psycho Zone"},
+},
+gengarmega: {
+	inherit: true, 
+	species: "Gengar-Mega-Y"
 },
 kinglermega: {
 	num: 9.5,
