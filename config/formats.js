@@ -699,7 +699,7 @@ exports.Formats = [
 	},
 	{
 		name: "[Gen 8] Crossover Chaos Expanded",
-		desc: ["&bullet; <a href=https://www.smogon.com/forums/threads/crossover-chaos-expanded-side-project.3647108/>Crossover Chaos</a>",
+		desc: ["&bullet; <a href=https://www.smogon.com/forums/threads/3647108/>Crossover Chaos</a>",
 		      ],
 		ruleset: [ 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 
 					'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 
@@ -741,6 +741,20 @@ exports.Formats = [
 		banlist: [],
 		mod: 'crossoverchaos',
 	}, 
+		{
+		name: "[Gen 8] Megamax",
+		desc: [
+			"&bullet; Every Gigantamax form introduced in Pokemon Sword and Shield is converted into brand new Mega Evolutions.",
+			],
+		threads: [
+			`&bullet; <a href="https://www.smogon.com/forums/threads/3658623/">Megamax</a>`,
+			`&bullet; <a href="https://docs.google.com/spreadsheets/d/1QoaocY5tzfwpWg0b5feQO1NMgzodznWxylnBAjM9AR0/edit#gid=0">Archive</a>`,
+		],
+
+		mod: 'megamax',
+		//ruleset: ['Standard', 'Dynamax Clause'],
+		//banlist: ['Uber', 'Moody', 'Shadow Tag', 'Baton Pass'],
+	},
 	{
 		name: "[Gen 8] Optimons",
 		threads: [
@@ -898,7 +912,7 @@ exports.Formats = [
 		      ],
   		ruleset: ['Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause'],
 		mod: 'cleanslate',
-		banlist: ['Unreleased', ],
+		banlist: ['Unreleased'],
 		onSwitchIn: function (pokemon) {
             this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');
         },
@@ -939,7 +953,7 @@ exports.Formats = [
 		      ],
   		ruleset: ['Pokemon2', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause'],
 		mod: 'ccam',
-		banlist: ['Unreleased', ],
+		banlist: ['Unreleased'],
 		onSwitchIn: function (pokemon) {
             this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');
         },
@@ -949,7 +963,7 @@ exports.Formats = [
   		desc: ["&bullet; <a href=http://www.smogon.com/forums/threads/eeveed-current-slate-sliggoo-and-sunkern-submissions.3602933/>Eeveed</a>",
 		      ],
   		ruleset: ['Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause'],
-  		banlist: ['Unreleased', ],
+  		banlist: ['Unreleased'],
 		mod: 'eeveed',
   	},
 	{
@@ -958,7 +972,7 @@ exports.Formats = [
 		      ],
   		ruleset: ['Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause'],
 		mod: 'evosforeveryone',
-		banlist: ['Unreleased', ],
+		banlist: ['Unreleased'],
 		onSwitchIn: function (pokemon) {
             this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');
         },
