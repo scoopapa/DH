@@ -14,7 +14,7 @@ let BattleFormatsData = {
 		tier: "OU",
 		doublesTier: "DOU",
 	},
-	mr.gross: {
+	mrgross: {
 		tier: "OU",
 		doublesTier: "DOU",
 	},
@@ -30,7 +30,7 @@ let BattleFormatsData = {
 		tier: "OU",
 		doublesTier: "DOU",
 	},
-	mr.volcano: {
+	mrvolcano: {
 		tier: "OU",
 		doublesTier: "DOU",
 	},
