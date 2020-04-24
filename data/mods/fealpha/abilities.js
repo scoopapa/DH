@@ -47,7 +47,7 @@ let BattleAbilities = {
 			this.add('-activate', target, 'ability: Au Revoir');
 		},
 		id: "aurevoir",
-		name: "Au Revoir,
+		name: "Au Revoir",
 	},
   	"clearcleaner": {
 		shortDesc: "Screen Cleaner	+ Clear Body",
