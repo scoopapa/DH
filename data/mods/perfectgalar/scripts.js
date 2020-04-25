@@ -62,6 +62,11 @@ exports.BattleScripts = {
 		
 		// Gloom
 		this.modData('Learnsets', 'gloom').learnset.toxicspikes = ['8M'];
+		
+		delete this.modData('Learnsets', 'melmetal').learnset.superpower;
+		delete this.modData('Learnsets', 'melmetal').learnset.bodypress;
+		delete this.modData('Learnsets', 'melmetal').learnset.brickbreak;
+		this.modData('Learnsets', 'melmetal').learnset.bulkup = ['8L1'];
 	},
 	//Modded functions
 	canDynamax(pokemon, skipChecks) {
