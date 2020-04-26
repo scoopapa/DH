@@ -474,6 +474,10 @@ exports.BattleFormatsData = { //
         tier: "V2",
 //         doublesTier: "DOU",
     },
+    mariopaper: {
+        tier: "V2",
+//         doublesTier: "DOU",
+    },
     nagitokomaeda: {
         tier: "V2",
 //         doublesTier: "DOU",
@@ -1029,6 +1033,9 @@ exports.BattleFormatsData = { //
 	},
 	heavykingphantom: {
 		requiredItem: "Phantom Ruby",
+		tier: "V2",
+	},
+	minanishizawa: {
 		tier: "V2",
 	},
 	 walle: {

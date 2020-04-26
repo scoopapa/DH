@@ -1370,6 +1370,18 @@ mario: {
 		heightm: 1.55,
 			weightkg: 90,
 },
+	mariopaper: {
+		num: 6000067,
+		species: "Mario-Paper", /* Paper Mario */
+		baseSpecies: "Mario",
+		forme: "Paper",
+		formeLetter: "P",
+		types: ["Normal", "Grass"],
+		gender: "M",
+		baseStats: {hp: 60, atk: 95, def: 95, spa: 110, spd: 105, spe: 120},
+		heightm: 1.55,
+		weightkg: 1,
+	},
 nagitokomaeda: {
 			num: 6000068,
 			species: "Nagito Komaeda", /* Danganronpa 2: Goodbye Despair */
@@ -3297,6 +3309,17 @@ kyokokirigiri: {
 		abilities: {0: "Levitate"},
 		heightm: 4,
 		weightkg: 500,
+	},
+	/* As a variant, Paper Mario is handled at Mario's dex number */
+	minanishizawa: {
+		num: 6000182,
+		species: "Mina Nishizawa", /* Hyperdimension Neptunia */
+		types: ["Ice", "Electric"],
+		gender: "F",
+		baseStats: {hp: 70, atk: 70, def: 100, spa: 120, spd: 150, spe: 70},
+		abilites: {0: "Erudite"},
+		heightm: 1.6,
+		weightkg: 67,
 	},
 	walle: {
 			num: 7000001,
