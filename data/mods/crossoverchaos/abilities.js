@@ -150,6 +150,26 @@ exports.BattleAbilities = {
     id: "forestbreeze",
     name: "Forest Breeze"
   },
+  fiercewings: {
+    shortDesc:
+      "This Pokemon's attacking stat is multiplied by 1.3 while using a Flying-type attack.",
+    onModifyAtkPriority: 5,
+    onModifyAtk(atk, attacker, defender, move) {
+      if (move.type === "Flying") {
+        this.debug("Fierce Wings boost");
+        return this.chainModify(1.3);
+      }
+    },
+    onModifySpAPriority: 5,
+    onModifySpA(atk, attacker, defender, move) {
+      if (move.type === "Flying") {
+        this.debug("Fierce Wings boost");
+        return this.chainModify(1.3);
+      }
+    },
+    id: "fiercewings",
+    name: "Fierce Wings"
+  },
   poisondippedclaws: {
     shortDesc:
       "This Pokemon's attacking stat is multiplied by 1.5 while using a Poison-type attack.",

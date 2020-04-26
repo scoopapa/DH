@@ -474,6 +474,10 @@ exports.BattleFormatsData = { //
         tier: "V2",
 //         doublesTier: "DOU",
     },
+    mariopaper: {
+        tier: "V2",
+//         doublesTier: "DOU",
+    },
     nagitokomaeda: {
         tier: "V2",
 //         doublesTier: "DOU",
@@ -1009,6 +1013,31 @@ exports.BattleFormatsData = { //
 		requiredItem: "Crown of the Beast",
 		tier: "Uber",
 	},
+	eggrobo: {
+		tier: "V2",
+	},
+	heavygunner: {
+		tier: "V2",
+	},
+	heavyshinobi: {
+		tier: "V2",
+	},
+	heavymagician: {
+		tier: "V2",
+	},
+	heavyrider: {
+		tier: "V2",
+	},
+	heavyking: {
+		tier: "V2",
+	},
+	heavykingphantom: {
+		requiredItem: "Phantom Ruby",
+		tier: "V2",
+	},
+	minanishizawa: {
+		tier: "V2",
+	},
 	 walle: {
 		  tier: "EX",
 	 },
@@ -1499,6 +1528,21 @@ absolutely FUCK devil dinosaur and everything he stands for, it's such a pain in
 		tier: "EX",
 	},
 	victorfries: {
+		tier: "EX",
+	},
+	hawks: {
+		tier: "EX",
+	},
+	bloom: {
+		tier: "EX",
+	},
+	bloombutterflix: {
+		tier: "EX",
+	},
+	bloomsirenix: {
+		tier: "EX",
+	},
+	hazers: {
 		tier: "EX",
 	},
 };
