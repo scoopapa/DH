@@ -1009,6 +1009,28 @@ exports.BattleFormatsData = { //
 		requiredItem: "Crown of the Beast",
 		tier: "Uber",
 	},
+	eggrobo: {
+		tier: "V2",
+	},
+	heavygunner: {
+		tier: "V2",
+	},
+	heavyshinobi: {
+		tier: "V2",
+	},
+	heavymagician: {
+		tier: "V2",
+	},
+	heavyrider: {
+		tier: "V2",
+	},
+	heavyking: {
+		tier: "V2",
+	},
+	heavykingphantom: {
+		requiredItem: "Phantom Ruby",
+		tier: "V2",
+	},
 	 walle: {
 		  tier: "EX",
 	 },
