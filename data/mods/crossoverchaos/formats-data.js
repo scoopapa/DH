@@ -1501,4 +1501,19 @@ absolutely FUCK devil dinosaur and everything he stands for, it's such a pain in
 	victorfries: {
 		tier: "EX",
 	},
+	hawks: {
+		tier: "EX",
+	},
+	bloom: {
+		tier: "EX",
+	},
+	bloombutterflix: {
+		tier: "EX",
+	},
+	bloomsirenix: {
+		tier: "EX",
+	},
+	hazers: {
+		tier: "EX",
+	},
 };
