@@ -3216,7 +3216,7 @@ kyokokirigiri: {
 		gender: "F",
 		baseStats: {hp: 145, atk: 140, def: 100, spa: 150, spd: 120, spe: 125},
 		abilities: {0: "Dazzling"},
-		heightm: 50968000‬,
+		heightm: 50968000,
 		weightkg: 999.9,
 	},
 	eggrobo: {
