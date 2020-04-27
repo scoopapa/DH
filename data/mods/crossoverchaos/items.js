@@ -599,4 +599,18 @@ exports.BattleItems = {
 		  },
 		 desc: "If held by Vegeta, this item allows him to Mega Evolve in battle."
 	 },
+	"phantomruby": {
+		id: "phantomruby",
+		name: "Phantom Ruby",
+		onSwitchIn(pokemon) {
+			if (pokemon.isActive && pokemon.baseTemplate.species === 'Heavy King') {
+				this.queue.insertChoice({choice: 'runPrimal', pokemon: pokemon});
+			}
+		},
+		onPrimal(pokemon) {
+			pokemon.formeChange('Heavy King-Phantom', this.effect, true);
+		},
+		itemUser: ["Heavy King"],
+		desc: "If held by the Heavy King, this item triggers its Primal Reversion in battle.",
+	},
 };
