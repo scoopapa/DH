@@ -78,8 +78,8 @@ exports.BattleFormatsData = {
 	},
 	melmetalgmax: {
 		isGigantamax: "G-Max Meltdown",
-		isUnreleased: true,
-		tier: "Unreleased",
+		tier: "OU",
+		doublesTier: "(DUU)",
 	},
 	corviknightgmax: {
 		isGigantamax: "G-Max Wind Rage",
@@ -158,6 +158,11 @@ exports.BattleFormatsData = {
 	},
 	duraludongmax: {
 		isGigantamax: "G-Max Depletion",
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	melmetal: {
+		randomBattleMoves: ["doubleironbash", "earthquake", "substitute", "superpower", "thunderpunch"],
 		tier: "OU",
 		doublesTier: "DOU",
 	},
