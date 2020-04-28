@@ -19,10 +19,10 @@ let BattleAbilities = {
 		shortDesc: "On switch-in, this Pokemon applies the Fairy Lock status to the target.",
 		onStart(pokemon) {
 			pokemon.zephyrTag = false;
-		}
+		},
 		onTryMove(pokemon) {
 			pokemon.zephyrTag = true;
-		}
+		},
 		onFoeTrapPokemon(pokemon) {
 			console.log(pokemon.activeTurns);
 			if (this.isAdjacent(pokemon, this.effectData.target) && !pokemon.zephyrTag) {
