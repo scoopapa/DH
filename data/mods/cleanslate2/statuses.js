@@ -41,4 +41,9 @@ exports.BattleStatuses = {
 			this.add('-weather', 'none');
 		},
 	},
+	zephyr: {
+		name: 'Zephyr',
+		id: 'zephyr',
+		num: 0,
+	},
 };

@@ -17,21 +17,18 @@ let BattleAbilities = {
 	"zephyr": {
 		desc: "On switch-in, this Pokemon lowers the Attack of adjacent opposing Pokemon by 1 stage. Inner Focus, Oblivious, Own Tempo, Scrappy, and Pokemon behind a substitute are immune.",
 		shortDesc: "On switch-in, this Pokemon applies the Fairy Lock status to the target.",
-		onStart(pokemon) {
-			pokemon.zephyrTag = false;
-		},
 		onTryMove(pokemon) {
-			pokemon.zephyrTag = true;
+			pokemon.addVolatile( 'zephyr' );
 		},
 		onFoeTrapPokemon(pokemon) {
 			console.log(pokemon.activeTurns);
-			if (this.isAdjacent(pokemon, this.effectData.target) && !pokemon.zephyrTag) {
+			if (this.isAdjacent(pokemon, this.effectData.target) && !pokemon.volatiles['zephyr']) {
 				pokemon.tryTrap(true);
 			}
 		},
 		onFoeMaybeTrapPokemon(pokemon, source) {
 			if (!source) source = this.effectData.target;
-			if (!source || !this.isAdjacent(pokemon, source) || pokemon.zephyrTag) return;
+			if (!source || !this.isAdjacent(pokemon, source) || pokemon.volatiles['zephyr']) return;
 			pokemon.maybeTrapped = true;
 		},
 		id: "zephyr",
