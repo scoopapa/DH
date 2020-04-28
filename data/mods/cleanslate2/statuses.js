@@ -45,5 +45,7 @@ exports.BattleStatuses = {
 		name: 'Zephyr',
 		id: 'zephyr',
 		num: 0,
+		onStart(battle, source, effect) {
+		},
 	},
 };

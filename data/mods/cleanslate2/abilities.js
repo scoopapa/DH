@@ -22,13 +22,14 @@ let BattleAbilities = {
 		},
 		onFoeTrapPokemon(pokemon) {
 			console.log(pokemon.activeTurns);
-			if (this.isAdjacent(pokemon, this.effectData.target) && !pokemon.volatiles['zephyr']) {
+			let source = this.effectData.target;
+			if (source && this.isAdjacent(pokemon, source) && !source.volatiles['zephyr']) {
 				pokemon.tryTrap(true);
 			}
 		},
 		onFoeMaybeTrapPokemon(pokemon, source) {
 			if (!source) source = this.effectData.target;
-			if (!source || !this.isAdjacent(pokemon, source) || pokemon.volatiles['zephyr']) return;
+			if (!source || !this.isAdjacent(pokemon, source) || source.volatiles['zephyr']) return;
 			pokemon.maybeTrapped = true;
 		},
 		id: "zephyr",
