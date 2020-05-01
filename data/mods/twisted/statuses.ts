@@ -23,18 +23,19 @@ export const BattleStatuses: { [k: string]: ModdedPureEffectData } = {
             if (pokemon.types.length > 1) twistTyping += '/' + this.getTwistedType(pokemon.types[1]);
             if (pokemon.isTwist !== '0'){
                 this.add('-formechange', pokemon, true);
+					 twistTyping += this.getTwistedType(pokemon.types[0]);
+					 this.add('-start', pokemon, 'typechange', twistTyping, twistName);
+					 pokemon.setType(twistTyping);
+					 pokemon.addedType = twistTyping;
+					 pokemon.knownType = twistTyping;
+					 const side = pokemon.side;
+					 side.twist = false;
+					 for (const ally of side.pokemon) {
+					 	 if (ally.isTwist !== '0') ally.isTwist = '0';
+					 }
+					 pokemon.canMegaEvo = false;
             } 
-            twistTyping += this.getTwistedType(pokemon.types[0]);
-            this.add('-start', pokemon, 'typechange', twistTyping, twistName);
-            pokemon.setType(twistTyping);
-				pokemon.addedType = twistTyping;
-				pokemon.knownType = twistTyping;
-            const side = pokemon.side;
-            side.twist = false;
-            for (const ally of side.pokemon) {
-                if (ally.isTwist !== '0') ally.isTwist = '0';
-            }
-            pokemon.canMegaEvo = false;
+            
         },
         onBeforeMove(move, pokemon) {
             if (pokemon.volatiles['twist'] && pokemon.type === move.type) {
@@ -53,9 +54,23 @@ export const BattleStatuses: { [k: string]: ModdedPureEffectData } = {
             pokemon.removeVolatile('twist');
         },
         onEnd(pokemon) {
-            this.add('-end', pokemon, 'Twist');
-            if (pokemon.isTwist != '0') this.add('-formechange', pokemon, pokemon.species.name);
-            pokemon.setTypes(pokemon.species.getTypes());
+			  var twistName;
+            switch (this.twisted) {
+                case 'L':
+                    twistName = 'Left Twist';
+                    break;
+                case 'R':
+                    twistName = 'Right Twist';
+                    break;
+                case '0':
+                default: break;
+
+            }
+            this.add('-end', pokemon, twistName);
+            this.add('-start', pokemon, 'typechange', pokemon.species.types.join('/'), twistName);
+            pokemon.setType(twistTyping);
+				pokemon.addedType = twistTyping;
+				pokemon.knownType = twistTyping;
             pokemon.isTwist = '0';
             pokemon.canMegaEvo = true;
             for (const ally of pokemon.side.pokemon) {
