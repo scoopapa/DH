@@ -68,9 +68,9 @@ export const BattleStatuses: { [k: string]: ModdedPureEffectData } = {
             }
             this.add('-end', pokemon, twistName);
             this.add('-start', pokemon, 'typechange', pokemon.species.types.join('/'), twistName);
-            pokemon.setType(twistTyping);
-				pokemon.addedType = twistTyping;
-				pokemon.knownType = twistTyping;
+            pokemon.setType(pokemon.species.types.join('/'));
+				pokemon.addedType = pokemon.species.types.join('/');
+				pokemon.knownType = pokemon.species.types.join('/');
             pokemon.isTwist = '0';
             pokemon.canMegaEvo = true;
             for (const ally of pokemon.side.pokemon) {
