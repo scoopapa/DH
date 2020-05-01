@@ -1,4 +1,4 @@
-export const BattleStatuses: { [k: string]: ModdedPureEffectData } = {
+export const BattleStatuses = {
     inherit: true,
     twist: {
         name: 'Twist',
@@ -15,7 +15,8 @@ export const BattleStatuses: { [k: string]: ModdedPureEffectData } = {
                 case 'R':
                     twistName = 'Right Twist';
                     break;
-                case '0': default:
+                case '0':
+                default:
                     pokemon.removeVolatile('twist'); return;
 
             }
@@ -66,10 +67,10 @@ export const BattleStatuses: { [k: string]: ModdedPureEffectData } = {
 
             }
             this.add('-end', pokemon, twistName);
-            this.add('-start', pokemon, 'typechange', pokemon.species.types.join('/'), twistName);
+            this.add('-start', pokemon, 'typechange', pokemon.species.types.join('/'));
             pokemon.setType(pokemon.species.types.join('/'));
-				pokemon.addedType = pokemon.species.types.join('/');
-				pokemon.knownType = pokemon.species.types.join('/');
+			pokemon.addedType = pokemon.species.types.join('/');
+			pokemon.knownType = pokemon.species.types.join('/');
             pokemon.isTwist = '0';
             pokemon.canMegaEvo = true;
             for (const ally of pokemon.side.pokemon) {
