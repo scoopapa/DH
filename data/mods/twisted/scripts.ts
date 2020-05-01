@@ -86,7 +86,6 @@ export const BattleScripts: ModdedBattleScriptsData = {
             } else if (i % 2 == 1) {
                 ally.isTwist = 'R';
             } i += 1;
-            ally.addVolatile('twist');
             ally.canMegaEvo = false; // in the case it isn't the same value as the one returned by canMegaEvo() function
         } 
         side.twist = true;
