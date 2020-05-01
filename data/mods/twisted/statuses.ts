@@ -27,6 +27,8 @@ export const BattleStatuses: { [k: string]: ModdedPureEffectData } = {
             twistTyping += this.getTwistedType(pokemon.types[0]);
             this.add('-start', pokemon, 'typechange', twistTyping, twistName);
             pokemon.setType(twistTyping);
+				pokemon.addedType = twistTyping;
+				pokemon.knownType = twistTyping;
             const side = pokemon.side;
             side.twist = false;
             for (const ally of side.pokemon) {
