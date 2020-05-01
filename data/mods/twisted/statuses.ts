@@ -7,7 +7,7 @@ export const BattleStatuses: { [k: string]: ModdedPureEffectData } = {
         duration: 0,
         onStart(pokemon) {
             this.twisted = pokemon.isTwist;
-            var twistName;
+            var twistName, twistTyping = '';
             switch (this.twisted) {
                 case 'L':
                     twistName = 'Left Twist';
@@ -20,11 +20,12 @@ export const BattleStatuses: { [k: string]: ModdedPureEffectData } = {
                     pokemon.removeVolatile('twist'); return;
 
             }
-            this.add('-start', pokemon, twistName);
-            var twistTyping = '';
-            twistTyping += this.getTwistedType(pokemon.types[0]);
             if (pokemon.types.length > 1) twistTyping += '/' + this.getTwistedType(pokemon.types[1]);
-            if (pokemon.isTwist !== '0') this.add('-formechange', pokemon, true);
+            if (pokemon.isTwist !== '0'){
+                this.add('-formechange', pokemon, true);
+            } 
+            twistTyping += this.getTwistedType(pokemon.types[0]);
+            this.add('-start', pokemon, 'typechange', twistTyping, twistName);
             pokemon.setType(twistTyping);
             const side = pokemon.side;
             side.twist = false;
