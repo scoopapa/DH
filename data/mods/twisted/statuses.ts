@@ -15,8 +15,7 @@ export const BattleStatuses: { [k: string]: ModdedPureEffectData } = {
                 case 'R':
                     twistName = 'Right Twist';
                     break;
-                case '0':
-                default:
+                case '0': default:
                     pokemon.removeVolatile('twist'); return;
 
             }
