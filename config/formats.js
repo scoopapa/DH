@@ -905,7 +905,7 @@ exports.Formats = [
 		threads: [
 			`&bullet; <a href="https://www.smogon.com/forums/threads/pet-mods-submission-thread.3657184/post-8446318">Twisted Pokemon</a>`,
 		],		
-		mod: 'gen8',
+		mod: 'twisted',
 		searchShow: false,
 		debug: true,
 		forcedLevel: 50,
