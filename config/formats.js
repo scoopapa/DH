@@ -899,6 +899,36 @@ exports.Formats = [
 			this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');
 		},
 	},
+	{
+		name: "[Gen 8] Twisted Pokemon",
+		desc: `You can Twist the Pokemon switching in, changing its type between two predetermined typings.`,
+		threads: [
+			`&bullet; <a href="https://www.smogon.com/forums/threads/pet-mods-submission-thread.3657184/post-8446318">Twisted Pokemon</a>`,
+		],		
+		mod: 'gen8',
+		searchShow: false,
+		debug: true,
+		forcedLevel: 50,
+		teamLength: {
+			validate: [3, 6],
+			battle: 3,
+		},
+		ruleset: ['Dynamax Clause', 'Team Preview'],
+		banlist: ['Moody', 'Power Construct'],
+		minSourceGen: 8,
+		onChangeSet(set){
+			set.moves.push('twist');
+		},
+		onValidateSet(set){
+			if(set.moves.length > 5 || this.dex.getMove(set.moves[4]).id !== 'twist'){
+				return [`${set.name || set.species} has illegal moves.`, `(Pok\u00e9mon can only have 4 moves)`];
+			}
+		},
+		onBeforeSwitchIn(pokemon) {
+			if (pokemon.side.sideConditions['twist']) 
+				pokemon.addVolatile('twist');
+		}
+	},
 	// Old Pet Mods ///////////////////////////////////////////////////////////////////
 	{
 		section: "Old Pet Mods",
@@ -1821,30 +1851,5 @@ exports.Formats = [
 		ruleset: ['Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause'],
 		banlist: [],
 		mod: 'clovermons',
-	},
-	{
-		name: "[Gen 8] Twisted Pokemon",
-		desc: `You can Twist the Pokemon switching in, changing its type between two predetermined typings.`,
-		threads: [
-			`&bullet; <a href="https://www.smogon.com/forums/threads/pet-mods-submission-thread.3657184/post-8446318">Twisted Pokemon</a>`,
-		],
-
-
-		mod: 'gen8',
-		forcedLevel: 50,
-		teamLength: {
-			validate: [3, 6],
-			battle: 3,
-		},
-		ruleset: ['+Undiscovered', 'Standard GBU', 'Dynamax Clause'],
-		banlist: ['Arceus', 'Darkrai', 'Deoxys-Attack', 'Deoxys-Base', 'Deoxys-Speed', 'Dialga', 'Eternatus', 'Genesect',
-			'Giratina', 'Groudon', 'Ho-Oh', 'Kyogre', 'Kyurem-Black', 'Kyurem-White', 'Landorus-Base',
-			'Lugia', 'Lunala', 'Marshadow', 'Mewtwo', 'Necrozma-Dawn-Wings', 'Necrozma-Dusk-Mane', 'Palkia',
-			'Rayquaza', 'Reshiram', 'Shaymin-Sky', 'Solgaleo', 'Xerneas', 'Yveltal', 'Zacian', 'Zamazenta', 'Zekrom', 'Moody',],
-		minSourceGen: 8,
-		onSwitchInPriority: 1,
-		onSwitchIn: function (pokemon) {
-			if (pokemon.side.twist && pokemon.isTwisted !== '0') pokemon.addVolatile('twist');
-		}
 	},
 ];
