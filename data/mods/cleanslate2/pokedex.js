@@ -273,6 +273,34 @@ let BattlePokedex = {
 		abilities: {0: "Migration", 1: "Compound Eyes", H: "Weak Armor"},
 		otherFormes: ["vivillonsun", "vivillonpolar", "vivillonsandstorm", "vivillonmarine"],
 	},
+	abomasnow: {
+		inherit: true,
+		species: "Abomasnow",
+		types: ["Ice", "Ground"],
+		baseStats: {hp: 120, atk: 90, def: 120, spa: 130, spd: 120, spe: 60},
+		abilities: {0: "Snow Warning", H: "Soundproof"},
+	},
+	duraludon: {
+		inherit: true,
+		species: "Duraludon",
+		types: ["Steel", "Dragon"],
+		baseStats: {hp: 114, atk: 127, def: 98, spa: 131, spd: 123, spe: 32},
+		abilities: {0: "Berserk", 1: "Mirror Armor", H: "Bulletproof"},
+	},
+	cobalion: {
+		inherit: true,
+		species: "Cobalion",
+		types: ["Steel", "Fighting"],
+		baseStats: {hp: 85, atk: 105, def: 110, spa: 115, spd: 120, spe: 112},
+		abilities: {0: "Lightning Rod", 1: "Iron Barbs"},
+	},
+	naganadel: {
+		inherit: true,
+		species: "Naganadel",
+		types: ["Poison", "Ground"],
+		baseStats: {hp: 103, atk: 79, def: 103, spa: 139, spd: 103, spe: 103},
+		abilities: {0: "Mold Breaker", 1: "Beast Boost"},
+	},
 };
 
 exports.BattlePokedex = BattlePokedex;
