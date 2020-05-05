@@ -1065,7 +1065,7 @@ exports.BattleFormatsData = { //
 	 blackrabbit: {
 		  tier: "EX",
 	 },
-	 creati: {
+	 momoyaoyorozu: {
 		  tier: "EX",
 	 },
 	 shaihulud: {
@@ -1238,7 +1238,7 @@ absolutely FUCK devil dinosaur and everything he stands for, it's such a pain in
 		tier: "Uber",
 	},
 */
-	 elmerape: {
+	 elmer: {
 		  tier: "EX",
 	 },
 	everylivingmonkeyexactsrevenge: {
@@ -1527,7 +1527,7 @@ absolutely FUCK devil dinosaur and everything he stands for, it's such a pain in
 	riofutaba: {
 		tier: "EX",
 	},
-	victorfries: {
+	mrfreeze: {
 		tier: "EX",
 	},
 	hawks: {

@@ -3413,9 +3413,9 @@ blackrabbit: {
 		heightm: 1.5,
 			weightkg: 48,
 },
-creati: {
+momoyaoyorozu: {
 			num: 7000010,
-			species: "Creati", /* My Hero Academia */
+			species: "Momo Yaoyorozu", /* My Hero Academia */
 			types: ["Normal"],
 		gender: "F",
 			baseStats: {hp: 100, atk: 80, def: 105, spa: 80, spd: 120, spe: 85},
@@ -3945,9 +3945,9 @@ does marvel's big ol mutant trex exist? who knows
 		weightkg: 999.9,
 	},
 */
-	elmerape: {
+	elmer: {
 		num: 7000035,
-		species: "Elmer Ape", /* Sandsverse */
+		species: "Elmer", /* Sandsverse */
 		types: ["Grass"],
 		gender: "M",
 		baseStats: {hp: 80, atk: 110, def: 80, spa: 110, spd: 80, spe: 120},
@@ -3959,7 +3959,7 @@ does marvel's big ol mutant trex exist? who knows
 	everylivingmonkeyexactsrevenge: {
 		num: 7000035,
 		species: "Every Living Monkey Exacts Revenge",
-		baseSpecies: "Elmer Ape",
+		baseSpecies: "Elmer",
 		forme: "Lent",
 		formeLetter: "L",
 		types: ["Grass", "Psychic"],
@@ -4899,9 +4899,9 @@ does marvel's big ol mutant trex exist? who knows
 		heightm: 1.6,
 		weightkg: 67,
 	},
-	victorfries: {
+	mrfreeze: {
 		num: 7000093,
-		species: "Victor Fries",  /* Batman */
+		species: "Mr. Freeze",  /* Batman */
 		types: ["Ice"],
 		gender: "M",
 		baseStats: {hp: 100, atk: 70, def: 115, spa: 135, spd: 125, spe: 85},

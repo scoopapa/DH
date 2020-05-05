@@ -11812,7 +11812,7 @@ TMs/Tutors sorted by last generation they carry that status (for kirby, nero, et
 		waterpulse: ["7T", "6T", "4M"],
 		workup: ["7M", "5M"],
 	}},
-	creati: {learnset: {
+	momoyaoyorozu: {learnset: {
 		sketch: ["5E"],
 		return: ["7L1"],
 		facade: ["7L1"],
@@ -13221,7 +13221,7 @@ TMs/Tutors sorted by last generation they carry that status (for kirby, nero, et
 		thunderbolt: ["7L1"],
 		nastyplot: ["7L1"],
 	}},
-	elmerape: {learnset: {
+	elmer: {learnset: {
 		naturalgift: ["7L1"],
 		leafblade: ["7L1"],
 		woodhammer: ["7L1"],
@@ -15568,7 +15568,7 @@ TMs/Tutors sorted by last generation they carry that status (for kirby, nero, et
 		willowisp: ["8L1"],
 		confuseray: ["8L1"],
 	}},
-	victorfries: {learnset: {
+	mrfreeze: {learnset: {
 		iceage: ["8L1"],
 		iciclecrash: ["8L1"],
 		icebeam: ["8L1"],
