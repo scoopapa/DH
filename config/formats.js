@@ -917,7 +917,7 @@ exports.Formats = [
 		banlist: ['Moody', 'Power Construct'],
 		minSourceGen: 8,
 		onChangeSet(set){
-			set.moves.push('twist');
+			set.moves.push(this.dex.getMove('twist'));
 		},
 		onValidateSet(set){
 			if(set.moves.length > 5 || this.dex.getMove(set.moves[4]).id !== 'twist'){

@@ -1,19 +1,21 @@
-exports.BattleStatuses = {
-    twist: {
+export const BattleStatuses: {[k: string]: ModdedPureEffectData} = {
+    twisted: {
         noCopy: true,
         onStart(pokemon) {
+            const side = pokemon.side;
             var twistName, twistTyping = '', twisted = pokemon.canMegaEvo;
-            pokemon.canMegaEvo = null;
-            for(const ally of pokemon.side.pokemon) ally.canMegaEvo = null;
-            var twistMove = pokemon.moveSlots[pokemon.moveSlots.length - 1];
-            twistMove.disabled = true;
-            twistMove.disabledSource = 'Twist';
+            const moveSlots = pokemon.moveSlots;
+            var twistMove = moveSlots[moveSlots.length - 1];
             switch (twisted) {
-                case 'L': twistName = 'Left Twist';break;
+                case 'L': twistName = 'Left Twist'; break;
                 case 'R': twistName = 'Right Twist'; break;
-                default: pokemon.removeVolatile('twist'); return;
+                default: pokemon.removeVolatile('twisted'); return;
             }
-            if (pokemon.side.sideConditions['twist']){
+            if (side.sideConditions['twist']) {
+                pokemon.canMegaEvo = null;
+                for(const ally of side.pokemon) ally.canMegaEvo = null;
+                twistMove.disabled = true;
+                twistMove.disabledSource = 'Twist';
                 twistTyping += getTwistedType(pokemon.types[0], twisted);
                 if (pokemon.types.length > 1) 
                     twistTyping += '/' + getTwistedType(pokemon.types[1], twisted);
@@ -21,7 +23,6 @@ exports.BattleStatuses = {
                 pokemon.setType(twistTyping);
                 pokemon.addedType = twistTyping;
                 pokemon.knownType = true;
-                const side = pokemon.side;
                 side.removeSideCondition('twist');
             } 
             
@@ -34,7 +35,7 @@ exports.BattleStatuses = {
             }
 		},
         onSwitchOut(pokemon) {
-            pokemon.removeVolatile('twist');
+            pokemon.removeVolatile('twisted');
         },
         onEnd(pokemon) {
 			var twistName;
@@ -50,8 +51,8 @@ exports.BattleStatuses = {
     },
 };
 
-function getTwistedType(gameType, lr) {
-    let TwistedTypes = {
+function getTwistedType(gameType: string, lr: string): string {
+    let TwistedTypes: {[k: string]: {[k:string]: string}} = {
         Grass: { L: 'Rock', R: 'Electric', prefix: 'Sprouting' },
         Fire: { L: 'Grass', R: 'Fighting', prefix: 'Blazing' },
         Water: { L: 'Fire', R: 'Poison', prefix: 'Soaking' },

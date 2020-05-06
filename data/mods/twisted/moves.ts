@@ -1,4 +1,5 @@
-exports.BattleMovedex = {
+
+export const BattleMovedex: {[k: string]: ModdedMoveData} = {
 	/*
 	// Example
 	"moveid": {
@@ -28,7 +29,6 @@ exports.BattleMovedex = {
 		heal: [1, 2], // recover first num / second num % of the target's HP
 	},	*/
 	'twist': {
-		id: 'twist',
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
@@ -36,7 +36,7 @@ exports.BattleMovedex = {
         shortDesc: "User switches, Twisting the incoming Pokémon.",
 		name: "Twist",		
 		isNonstandard: "Custom",
-		pp: 999,
+		pp: 500,
 		priority: 6,
 		flags: {},
 		sideCondition: 'twist',
@@ -45,7 +45,7 @@ exports.BattleMovedex = {
 			onStart(side){
 				let i = 0;
 				for(const ally of side.pokemon)
-				{ ally.canMegaEvo = (i % 2 == 0) ? 'R' : 'L'; i++; }
+				{ ally.canMegaEvo = (i++ % 2 == 0) ? 'R' : 'L'; }
 			}
 		},
 		selfSwitch: true,
