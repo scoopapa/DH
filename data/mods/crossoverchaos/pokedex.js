@@ -3401,7 +3401,7 @@ siivagunner: {
 			baseStats: {hp: 90, atk: 70, def: 110, spa: 130, spd: 90, spe: 110},
 			abilities: {0: "Illusion", H: "Comatose"},
 		heightm: 1.8,
-			weightkg: 75,
+			weightkg: 287,
 },
 blackrabbit: {
 			num: 7000009,
