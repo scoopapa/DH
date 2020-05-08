@@ -40,13 +40,11 @@ export const BattleMovedex: {[k: string]: ModdedMoveData} = {
 		priority: 6,
 		flags: {},
 		sideCondition: 'twist',
-		effect: {
-			// Side condition
-			onStart(side){
-				let i = 0;
-				for(const ally of side.pokemon)
-				{ ally.canMegaEvo = (i++ % 2 == 0) ? 'R' : 'L'; }
-			}
+		onHit(pokemon){
+			const side = pokemon.side;
+			let i = 0;
+			for(const ally of side.pokemon)
+			{ ally.canMegaEvo = (i++ % 2 == 0) ? 'R' : 'L'; }
 		},
 		selfSwitch: true,
 		secondary: null,
