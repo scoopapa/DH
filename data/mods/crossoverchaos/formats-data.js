@@ -1038,6 +1038,23 @@ exports.BattleFormatsData = { //
 	minanishizawa: {
 		tier: "V2",
 	},
+	wither: {
+		tier: "Uber",
+	},
+	starbreaker: {
+		tier: "V2",
+	},
+	starbreakergmax: {
+		isGigantamax: "G-Max Star Blasting Light",
+		tier: "Uber",
+	},
+	saffron: {
+		tier: "V2",
+	},
+	saffrongmax: {
+		isGigantamax: "G-Max Ragnarok",
+		tier: "Uber",
+	},
 	 walle: {
 		  tier: "EX",
 	 },
