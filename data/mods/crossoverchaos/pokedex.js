@@ -355,7 +355,7 @@ plagueknight: {
 			num: 6000005,
 			species: "Plague Knight", /* Shovel Knight: Treasure Trove */
 			types: ["Poison"],
-		gender: "M",
+		genderRatio: {M: 0.875, F: 0.125},
 			baseStats: {hp: 60, atk: 70, def: 75, spa: 130, spd: 115, spe: 115},
 			abilities: {0: "Prankster", H: "Chemical Burn"},
 			heightm: 1.6,
@@ -414,7 +414,7 @@ specterknight: {
 			num: 6000011,
 			species: "Specter Knight", /* Shovel Knight: Treasure Trove */
 			types: ["Ghost"],
-		gender: "M",
+		genderRatio: {M: 0.875, F: 0.125},
 			baseStats: {hp: 130, atk: 115, def: 105, spa: 70, spd: 60, spe: 85},
 			abilities: {0: "Levitate", 1: "Cursed Body", H: "Incorporeal"},
 		heightm: 1.9,
@@ -573,7 +573,7 @@ propellerknight: {
 			num: 6000017,
 			species: "Propeller Knight", /* Shovel Knight Treasure Trove */
 			types: ["Flying"],
-		gender: "M",
+		genderRatio: {M: 0.875, F: 0.125},
 			baseStats: {hp: 60, atk: 115, def: 70, spa: 105, spd: 85, spe: 130},
 			abilities: {0: "Limber", 1: "Aerilate", H: "Steelworker"},
 		heightm: 1.8,
@@ -678,7 +678,7 @@ shovelknight: {
 			num: 6000025,
 			species: "Shovel Knight", /* Shovel Knight Treasure Trove */
 			types: ["Ground", "Steel"],
-		gender: "M",
+		genderRatio: {M: 0.875, F: 0.125},
 			baseStats: {hp: 90, atk: 125, def: 100, spa: 75, spd: 95, spe: 100},
 			abilities: {0: "Battle Armor", H: "Justified"},
 		heightm: 1.5,
@@ -1628,7 +1628,7 @@ shieldknight: {
 			num: 6000087,
 			species: "Shield Knight", /* Shovel Knight Treasure Trove */
 			types: ["Steel", "Fighting"],
-		gender: "F",
+		genderRatio: {M: 0.125, F: 0.875},
 			baseStats: {hp: 95, atk: 100, def: 130, spa: 65, spd: 100, spe: 100},
 			abilities: {0: "Power Shield", 1: "Justified", H: "Perfect Shield"},
 		heightm: 1.8,
