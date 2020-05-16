@@ -5021,5 +5021,59 @@ does marvel's big ol mutant trex exist? who knows
 		heightm: 0.1,
 		weightkg: 0.1,
 	},
+	tophbeifong: {
+		num: 7000097,
+		species: "Toph Beifong", /* Avatar: The Last Airbender */
+		types: ["Ground", "Rock"],
+		gender: "F",
+		baseStats: {hp: 85, atk: 139, def: 105, spa: 41, spd: 70, spe: 90},
+		abilities: {0: "Mold Breaker", 1: "Sheer Force", H: "Steelworker"},
+		heightm: 1.5,
+		weightkg: 55,
+	},
+	cell: {
+		num: 7000098,
+		species: "Cell", /* Dragon Ball */
+		types: ["Bug", "Fighting"],
+		gender: "M",
+		baseStats: {hp: 80, atk: 75, def: 45, spa: 60, spd: 65, spe: 70},
+		abilities: {0: "Sturdy", 1: "Regenerator", H: "Zenkai Boost"},
+		heightm: 2.13,
+		weightkg: 87,
+		evos: ["semiperfectcell"],
+	},
+	semiperfectcell: {
+		num: 7000099,
+		species: "Semi-Perfect Cell", /* Dragon Ball */
+		types: ["Bug", "Fighting"],
+		gender: "M",
+		baseStats: {hp: 95, atk: 100, def: 65, spa: 70, spd: 75, spe: 75},
+		abilities: {0: "Sturdy", 1: "Regenerator", H: "Zenkai Boost"},
+		prevo: "cell",
+		heightm: 2.46,
+		weightkg: 127,
+		evos: ["perfectcell"],
+	},
+	semiperfectcell: {
+		num: 7000099,
+		species: "Semi-Perfect Cell", /* Dragon Ball */
+		types: ["Bug", "Fighting"],
+		gender: "M",
+		baseStats: {hp: 110, atk: 120, def: 90, spa: 95, spd: 95, spe: 90},
+		abilities: {0: "Sturdy", 1: "Regenerator", H: "Zenkai Boost"},
+		prevo: "semiperfectcell",
+		heightm: 2.13,
+		weightkg: 87,
+	},
+	theresealexandrite: {
+		num: 7000100,
+		species: "Therese Alexandrite", /* Rising of the Shield Hero */
+		types: ["Rock", "Psychic"],
+		gender: "F",
+		baseStats: {hp: 70, atk: 55, def: 100, spa: 145, spd: 90, spe: 60},
+		abilities: {0: "Bejeweled", 1: "Dazzling", H: "Appraisal"},
+		heightm: 1.6,
+		weightkg: 67,
+	},
 };
 

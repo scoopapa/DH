@@ -1562,4 +1562,19 @@ absolutely FUCK devil dinosaur and everything he stands for, it's such a pain in
 	hazers: {
 		tier: "EX",
 	},
+	tophbeifong: {
+		tier: "EX",
+	},
+	cell: {
+		tier: "EX",
+	},
+	semiperfectcell: {
+		tier: "EX",
+	},
+	perfectcell: {
+		tier: "EX",
+	},
+	theresealexandrite: {
+		tier: "EX",
+	},
 };
