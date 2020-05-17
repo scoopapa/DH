@@ -5075,5 +5075,45 @@ does marvel's big ol mutant trex exist? who knows
 		heightm: 1.6,
 		weightkg: 67,
 	},
+	blackknight: {
+		num: 7000101,
+		species: "Black Knight", /* Monty Python and the Holy Grail */
+		types: ["Steel"],
+		gender: "M",
+		baseStats: {hp: 255, atk: 93, def: 119, spa: 27, spd: 20, spe: 81},
+		abilities: {0: "Weak Armor", H: "Just a Flesh Wound"},
+		heightm: 1.9,
+		weightkg: 150,
+	},
+	blackrockshooter: {
+		num: 7000102,
+		species: "Black★Rock Shooter", /* Black★Rock Shooter */
+		types: ["Fire", "Rock"],
+		gender: "F",
+		baseStats: {hp: 160, atk: 110, def: 60, spa: 110, spd: 60, spe: 100},
+		abilities: {0: "Regenerator", H: "Telepathy"},
+		heightm: 1.5,
+		weightkg: 50,
+	},
+	blackrockshooterinsane: {
+		num: 7000103,
+		species: "Black★Rock Shooter-Insane",
+		baseSpecies: "Black★Rock Shooter",
+		forme: "Insane",
+		formeLetter: "I",
+		gender: "F",
+		baseStats: {hp: 200, atk: 120, def: 100, spa: 120, spd: 60, spe: 70},
+		heightm: 1.5,
+		weightkg: 55,
+	},
+	shizouheiwajima: {
+		num: 7000104,
+		species: "Shizou Heijawjima", /* Durarara! */
+		types: ["Fighting"],
+		gender: "M",
+		baseStats: {hp: 85, atk: 150, def: 100, spa: 65, spd: 55, spe: 75},
+		heightm: 1.7,
+		weightkg: 86,
+	},
 };
 

@@ -1577,4 +1577,16 @@ absolutely FUCK devil dinosaur and everything he stands for, it's such a pain in
 	theresealexandrite: {
 		tier: "EX",
 	},
+	blackknight: {
+		tier: "EX",
+	},
+	blackrockshooter: {
+		tier: "EX",
+	},
+	blackrockshooterinsane: {
+		tier: "Uber",
+	},
+	shizouheiwajima: {
+		tier: "EX",
+	},
 };
