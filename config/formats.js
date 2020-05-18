@@ -899,6 +899,7 @@ exports.Formats = [
 			this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');
 		},
 	},
+	
 	{
 		name: "[Gen 8] Twisted Pokemon",
 		desc: `You can Twist the Pokemon switching in, changing its type between two predetermined typings.`,
@@ -916,17 +917,27 @@ exports.Formats = [
 		ruleset: ['Dynamax Clause', 'Team Preview'],
 		banlist: ['Moody', 'Power Construct'],
 		minSourceGen: 8,
-		onChangeSet(set){
-			set.moves.push(this.dex.getMove('twist'));
-		},
-		onValidateSet(set){
-			if(set.moves.length > 5 || this.dex.getMove(set.moves[4]).id !== 'twist'){
-				return [`${set.name || set.species} has illegal moves.`, `(Pok\u00e9mon can only have 4 moves)`];
+		onBegin(){
+			const move = this.dex.getMove('twist');
+			const twistMove = {
+				move: move.name,
+				id: move.id,
+				pp: move.pp,
+				maxpp: move.pp,
+				target: move.target,
+				disabled: false,
+				used: false,
+			};
+			for (const pokemon of this.getAllPokemon()) {
+				pokemon.moveSlots.push(twistMove);
+				pokemon.baseMoveSlots.push(twistMove);
+				pokemon.canMegaEvo = null;
 			}
 		},
-		onBeforeSwitchIn(pokemon) {
-			if (pokemon.side.sideConditions['twist']) 
-				pokemon.addVolatile('twist');
+		onSwitchInPriority: 2,
+		onSwitchIn(pokemon) {
+			if (pokemon.canMegaEvo === 'L' || pokemon.canMegaEvo === 'R') 
+				pokemon.addVolatile('twisted');
 		}
 	},
 	// Old Pet Mods ///////////////////////////////////////////////////////////////////

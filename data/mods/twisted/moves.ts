@@ -36,10 +36,9 @@ export const BattleMovedex: {[k: string]: ModdedMoveData} = {
         shortDesc: "User switches, Twisting the incoming Pokémon.",
 		name: "Twist",		
 		isNonstandard: "Custom",
-		pp: 500,
+		pp: 5,
 		priority: 6,
 		flags: {},
-		sideCondition: 'twist',
 		onHit(pokemon){
 			const side = pokemon.side;
 			let i = 0;
