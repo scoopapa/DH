@@ -4065,7 +4065,7 @@ let BattleMovedex = {
 		contestType: "Cool",
 	},
 	"carthrow": {
-		num: 353,
+		num: 50022,
 		accuracy: 100,
 		basePower: 140,
 		category: "Special",
@@ -4102,6 +4102,27 @@ let BattleMovedex = {
 		target: "normal",
 		type: "Steel",
 		contestType: "Tough",
+	},
+	"rainbowcannon": {
+		num: 50023,
+		accuracy: true,
+		basePower: 170,
+		category: "Special",
+		desc: "Sets a Rainbow on the user's field that doubles the chance of secondary effects.",
+		shortDesc: "Sets Rainbow.",
+		id: "rainbowcannon",
+		name: "Rainbow Cannon",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		isZ: "blackrockiumz",
+		self: {
+			sideCondition: 'waterpledge',
+		},
+		secondary: null,
+		target: "normal",
+		type: "Rock",
+		contestType: "Beautiful",
 	},
 	//"Regular" hazard moves are here
 		"gmaxsteelsurge": {
