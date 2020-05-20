@@ -19,6 +19,6 @@ export const BattleMovedex: {[k: string]: ModdedMoveData} = {
 		selfSwitch: true,
 		secondary: null,
 		target: "self",
-		type: "Normal",
+		type: "???",
     }
 }
