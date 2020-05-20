@@ -1,5 +1,5 @@
 
-export const BattleMovedex: {[k: string]: ModdedMoveData} = {
+export const BattleMovedex = {
 	/*
 	// Example
 	"moveid": {

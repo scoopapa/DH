@@ -1,4 +1,4 @@
-export const BattleStatuses: {[k: string]: ModdedPureEffectData} = {
+export const BattleStatuses = {
 	par: {
 		name: 'par',
 		effectType: 'Status',
@@ -259,8 +259,8 @@ export const BattleStatuses: {[k: string]: ModdedPureEffectData} = {
     },
 };
 
-function getTwistedType(type: string, lr: string){
-	const TwistedType: { [k: string]: { [k: string]: string; }; } = {
+function getTwistedType(type, lr){
+	const TwistedType = {
 		Grass: { L: 'Rock', R: 'Electric', prefix: 'Sprouting' },
 		Fire: { L: 'Grass', R: 'Fighting', prefix: 'Blazing' },
 		Water: { L: 'Fire', R: 'Poison', prefix: 'Soaking' },
