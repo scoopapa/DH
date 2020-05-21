@@ -914,8 +914,15 @@ exports.Formats = [
 			validate: [3, 6],
 			battle: 3,
 		},
-		ruleset: ['Dynamax Clause', 'Team Preview'],
-		banlist: ['Moody', 'Power Construct'],
+		ruleset: ['+Unreleased', 'Dynamax Clause', 'Team Preview'],
+		banlist: ['Moody', 'Power Construct','Mewtwo',
+			'Lugia', 'Ho-Oh',
+			'Kyogre', 'Groudon', 'Rayquaza', 'Deoxys',
+			'Dialga', 'Palkia', 'Giratina', 'Darkrai', 'Shaymin', 'Arceus',
+			'Reshiram', 'Zekrom', 'Kyurem', 'Genesect',
+			'Xerneas', 'Yveltal', 'Zygarde',
+			'Solgaleo', 'Lunala', 'Necrozma', 'Marshadow', 'Zeraora',
+			'Zacian', 'Zamazenta', 'Eternatus',],
 		minSourceGen: 8,
 		onBegin(){
 			const move = this.dex.getMove('twist');
@@ -934,7 +941,6 @@ exports.Formats = [
 				pokemon.canMegaEvo = null;
 			}
 		},
-		onSwitchInPriority: 2,
 		onSwitchIn(pokemon) {
 			if (pokemon.canMegaEvo === 'L' || pokemon.canMegaEvo === 'R') 
 				pokemon.addVolatile('twisted');
