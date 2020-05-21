@@ -899,6 +899,47 @@ exports.Formats = [
 			this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');
 		},
 	},
+	
+	{
+		name: "[Gen 8] Twisted Pokemon",
+		desc: `You can Twist the Pokemon switching in, changing its type between two predetermined typings.`,
+		threads: [
+			`&bullet; <a href="https://www.smogon.com/forums/threads/pet-mods-submission-thread.3657184/post-8446318">Twisted Pokemon</a>`,
+		],		
+		mod: 'twisted',
+		searchShow: false,
+		debug: true,
+		forcedLevel: 50,
+		teamLength: {
+			validate: [3, 6],
+			battle: 3,
+		},
+		ruleset: ['Dynamax Clause', 'Team Preview'],
+		banlist: ['Moody', 'Power Construct'],
+		minSourceGen: 8,
+		onBegin(){
+			const move = this.dex.getMove('twist');
+			const twistMove = {
+				move: move.name,
+				id: move.id,
+				pp: move.pp,
+				maxpp: move.pp,
+				target: move.target,
+				disabled: false,
+				used: false,
+			};
+			for (const pokemon of this.getAllPokemon()) {
+				pokemon.moveSlots.push(twistMove);
+				pokemon.baseMoveSlots.push(twistMove);
+				pokemon.canMegaEvo = null;
+			}
+		},
+		onSwitchInPriority: 2,
+		onSwitchIn(pokemon) {
+			if (pokemon.canMegaEvo === 'L' || pokemon.canMegaEvo === 'R') 
+				pokemon.addVolatile('twisted');
+		}
+	},
 	// Old Pet Mods ///////////////////////////////////////////////////////////////////
 	{
 		section: "Old Pet Mods",
@@ -1821,30 +1862,5 @@ exports.Formats = [
 		ruleset: ['Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause'],
 		banlist: [],
 		mod: 'clovermons',
-	},
-	{
-		name: "[Gen 8] Twisted Pokemon",
-		desc: `You can Twist the Pokemon switching in, changing its type between two predetermined typings.`,
-		threads: [
-			`&bullet; <a href="https://www.smogon.com/forums/threads/pet-mods-submission-thread.3657184/post-8446318">Twisted Pokemon</a>`,
-		],
-
-
-		mod: 'gen8',
-		forcedLevel: 50,
-		teamLength: {
-			validate: [3, 6],
-			battle: 3,
-		},
-		ruleset: ['+Undiscovered', 'Standard GBU', 'Dynamax Clause'],
-		banlist: ['Arceus', 'Darkrai', 'Deoxys-Attack', 'Deoxys-Base', 'Deoxys-Speed', 'Dialga', 'Eternatus', 'Genesect',
-			'Giratina', 'Groudon', 'Ho-Oh', 'Kyogre', 'Kyurem-Black', 'Kyurem-White', 'Landorus-Base',
-			'Lugia', 'Lunala', 'Marshadow', 'Mewtwo', 'Necrozma-Dawn-Wings', 'Necrozma-Dusk-Mane', 'Palkia',
-			'Rayquaza', 'Reshiram', 'Shaymin-Sky', 'Solgaleo', 'Xerneas', 'Yveltal', 'Zacian', 'Zamazenta', 'Zekrom', 'Moody',],
-		minSourceGen: 8,
-		onSwitchInPriority: 1,
-		onSwitchIn: function (pokemon) {
-			if (pokemon.side.twist && pokemon.isTwisted !== '0') pokemon.addVolatile('twist');
-		}
 	},
 ];
