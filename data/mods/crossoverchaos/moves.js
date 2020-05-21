@@ -4064,6 +4064,66 @@ let BattleMovedex = {
 		type: "Dragon",
 		contestType: "Cool",
 	},
+	"carthrow": {
+		num: 50022,
+		accuracy: 100,
+		basePower: 140,
+		category: "Special",
+		desc: "Deals damage two turns after this move is used. At the end of that turn, the damage is calculated at that time and dealt to the Pokemon at the position the target had when the move was used. If the user is no longer active at the time, damage is calculated based on the user's natural Special Attack stat, types, and level, with no boosts from its held item or Ability. Fails if this move or Future Sight is already in effect for the target's position.",
+		shortDesc: "Hits two turns after being used.",
+		id: "carthrow",
+		name: "Car Throw",
+		pp: 5,
+		priority: 0,
+		flags: {},
+		isFutureMove: true,
+		onTry(source, target) {
+			if (!target.side.addSlotCondition(target, 'futuremove')) return false;
+			Object.assign(target.side.slotConditions[target.position]['futuremove'], {
+				move: 'carthrow',
+				source: source,
+				moveData: {
+					id: 'carthrow',
+					name: "Car Throw",
+					accuracy: 100,
+					basePower: 140,
+					category: "Special",
+					priority: 0,
+					flags: {},
+					effectType: 'Move',
+					isFutureMove: true,
+					type: 'Steel',
+				},
+			});
+			this.add('-start', source, 'Car Throw');
+			return null;
+		},
+		secondary: null,
+		target: "normal",
+		type: "Steel",
+		contestType: "Tough",
+	},
+	"rainbowcannon": {
+		num: 50023,
+		accuracy: true,
+		basePower: 170,
+		category: "Special",
+		desc: "Sets a Rainbow on the user's field that doubles the chance of secondary effects.",
+		shortDesc: "Sets Rainbow.",
+		id: "rainbowcannon",
+		name: "Rainbow Cannon",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		isZ: "blackrockiumz",
+		self: {
+			sideCondition: 'waterpledge',
+		},
+		secondary: null,
+		target: "normal",
+		type: "Rock",
+		contestType: "Beautiful",
+	},
 	//"Regular" hazard moves are here
 		"gmaxsteelsurge": {
 		num: 1000,

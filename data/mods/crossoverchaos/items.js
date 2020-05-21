@@ -613,4 +613,13 @@ exports.BattleItems = {
 		itemUser: ["Heavy King"],
 		desc: "If held by the Heavy King, this item triggers its Primal Reversion in battle.",
 	},
+    "blackrockiumz": {
+        id: "blackrockiumz",
+        name: "Blackrockium Z",
+        onTakeItem: false,
+        zMove: "Rainbow Cannon",
+        zMoveFrom: "Power Gem",
+        zMoveUser: ["Black★Rock Shooter"],
+        desc: "If held by Black★Rock Shooter with Power Gem, she can use Rainbow Cannon.",
+    },
 };

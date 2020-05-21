@@ -1038,6 +1038,23 @@ exports.BattleFormatsData = { //
 	minanishizawa: {
 		tier: "V2",
 	},
+	wither: {
+		tier: "Uber",
+	},
+	starbreaker: {
+		tier: "V2",
+	},
+	starbreakergmax: {
+		isGigantamax: "G-Max Star Blasting Light",
+		tier: "Uber",
+	},
+	saffron: {
+		tier: "V2",
+	},
+	saffrongmax: {
+		isGigantamax: "G-Max Ragnarok",
+		tier: "Uber",
+	},
 	 walle: {
 		  tier: "EX",
 	 },
@@ -1065,7 +1082,7 @@ exports.BattleFormatsData = { //
 	 blackrabbit: {
 		  tier: "EX",
 	 },
-	 creati: {
+	 momoyaoyorozu: {
 		  tier: "EX",
 	 },
 	 shaihulud: {
@@ -1238,7 +1255,7 @@ absolutely FUCK devil dinosaur and everything he stands for, it's such a pain in
 		tier: "Uber",
 	},
 */
-	 elmerape: {
+	 elmer: {
 		  tier: "EX",
 	 },
 	everylivingmonkeyexactsrevenge: {
@@ -1527,7 +1544,7 @@ absolutely FUCK devil dinosaur and everything he stands for, it's such a pain in
 	riofutaba: {
 		tier: "EX",
 	},
-	victorfries: {
+	mrfreeze: {
 		tier: "EX",
 	},
 	hawks: {
@@ -1543,6 +1560,33 @@ absolutely FUCK devil dinosaur and everything he stands for, it's such a pain in
 		tier: "EX",
 	},
 	hazers: {
+		tier: "EX",
+	},
+	tophbeifong: {
+		tier: "EX",
+	},
+	cell: {
+		tier: "EX",
+	},
+	semiperfectcell: {
+		tier: "EX",
+	},
+	perfectcell: {
+		tier: "EX",
+	},
+	theresealexandrite: {
+		tier: "EX",
+	},
+	blackknight: {
+		tier: "EX",
+	},
+	blackrockshooter: {
+		tier: "EX",
+	},
+	blackrockshooterinsane: {
+		tier: "Uber",
+	},
+	shizouheiwajima: {
 		tier: "EX",
 	},
 };

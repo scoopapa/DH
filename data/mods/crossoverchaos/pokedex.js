@@ -355,7 +355,7 @@ plagueknight: {
 			num: 6000005,
 			species: "Plague Knight", /* Shovel Knight: Treasure Trove */
 			types: ["Poison"],
-		gender: "M",
+		genderRatio: {M: 0.875, F: 0.125},
 			baseStats: {hp: 60, atk: 70, def: 75, spa: 130, spd: 115, spe: 115},
 			abilities: {0: "Prankster", H: "Chemical Burn"},
 			heightm: 1.6,
@@ -414,7 +414,7 @@ specterknight: {
 			num: 6000011,
 			species: "Specter Knight", /* Shovel Knight: Treasure Trove */
 			types: ["Ghost"],
-		gender: "M",
+		genderRatio: {M: 0.875, F: 0.125},
 			baseStats: {hp: 130, atk: 115, def: 105, spa: 70, spd: 60, spe: 85},
 			abilities: {0: "Levitate", 1: "Cursed Body", H: "Incorporeal"},
 		heightm: 1.9,
@@ -573,7 +573,7 @@ propellerknight: {
 			num: 6000017,
 			species: "Propeller Knight", /* Shovel Knight Treasure Trove */
 			types: ["Flying"],
-		gender: "M",
+		genderRatio: {M: 0.875, F: 0.125},
 			baseStats: {hp: 60, atk: 115, def: 70, spa: 105, spd: 85, spe: 130},
 			abilities: {0: "Limber", 1: "Aerilate", H: "Steelworker"},
 		heightm: 1.8,
@@ -678,7 +678,7 @@ shovelknight: {
 			num: 6000025,
 			species: "Shovel Knight", /* Shovel Knight Treasure Trove */
 			types: ["Ground", "Steel"],
-		gender: "M",
+		genderRatio: {M: 0.875, F: 0.125},
 			baseStats: {hp: 90, atk: 125, def: 100, spa: 75, spd: 95, spe: 100},
 			abilities: {0: "Battle Armor", H: "Justified"},
 		heightm: 1.5,
@@ -1628,7 +1628,7 @@ shieldknight: {
 			num: 6000087,
 			species: "Shield Knight", /* Shovel Knight Treasure Trove */
 			types: ["Steel", "Fighting"],
-		gender: "F",
+		genderRatio: {M: 0.125, F: 0.875},
 			baseStats: {hp: 95, atk: 100, def: 130, spa: 65, spd: 100, spe: 100},
 			abilities: {0: "Power Shield", 1: "Justified", H: "Perfect Shield"},
 		heightm: 1.8,
@@ -3321,6 +3321,62 @@ kyokokirigiri: {
 		heightm: 1.6,
 		weightkg: 67,
 	},
+	wither: {
+		num: 6000183,
+		species: "Wither", /* Minecraft */
+		types: ["Ghost", "Ground"],
+		gender: "N",
+		baseStats: {hp: 200, atk: 130, def: 80, spa: 90, spd: 80, spe: 90},
+		abilities: {0: "Levitate", 1: "Magic Guard", H: "Withering"},
+		heightm: 3.5,
+		weightkg: 120,
+	},
+	starbreaker: {
+		num: 6000184,
+		species: "Star Breaker", /* SUGURI series */
+		types: ["Fire"],
+		gender: "F",
+		baseStats: {hp: 90, atk: 115, def: 75, spa: 140, spd: 85, spe: 70},
+		abilities: {0: "Conflagrate", H: "Blaze"},
+		heightm: 1.6,
+		weightkg: 67,
+	},
+	starbreakergmax: {
+		num: 6000184,
+		species: "Star Breaker-GMax",
+		baseSpecies: "Star Breaker",
+		forme: "GMax",
+		formeLetter: "G",
+		types: ["Fire"],
+		gender: "F",
+		baseStats: {hp: 90, atk: 115, def: 75, spa: 140, spd: 85, spe: 70},
+		abilities: {0: "Conflagrate", H: "Blaze"},
+		heightm: 20,
+		weightkg: 0,
+	},
+	saffron: {
+		num: 6000185,
+		species: "Saffron", /* One Step From Eden */
+		types: ["Normal"],
+		gender: "F",
+		baseStats: {hp: 100, atk: 100, def: 100, spa: 100, spd: 100, spe: 100},
+		abilities: {0: "Simple", H: "Drawing Dead"},
+		heightm: 1.6,
+		weightkg: 65,
+	},
+	saffrongmax: {
+		num: 6000185,
+		species: "Saffron-GMax",
+		baseSpecies: "Saffron",
+		forme: "Gmax",
+		formeLetter: "G",
+		types: ["Normal"],
+		gender: "F",
+		baseStats: {hp: 100, atk: 100, def: 100, spa: 100, spd: 100, spe: 100},
+		abilities: {0: "Simple", H: "Drawing Dead"},
+		heightm: 16,
+		weightkg: 0,
+	},
 	walle: {
 			num: 7000001,
 			species: "WALL-E", /* WALL-E */
@@ -3401,7 +3457,7 @@ siivagunner: {
 			baseStats: {hp: 90, atk: 70, def: 110, spa: 130, spd: 90, spe: 110},
 			abilities: {0: "Illusion", H: "Comatose"},
 		heightm: 1.8,
-			weightkg: 75,
+			weightkg: 287,
 },
 blackrabbit: {
 			num: 7000009,
@@ -3413,9 +3469,9 @@ blackrabbit: {
 		heightm: 1.5,
 			weightkg: 48,
 },
-creati: {
+momoyaoyorozu: {
 			num: 7000010,
-			species: "Creati", /* My Hero Academia */
+			species: "Momo Yaoyorozu", /* My Hero Academia */
 			types: ["Normal"],
 		gender: "F",
 			baseStats: {hp: 100, atk: 80, def: 105, spa: 80, spd: 120, spe: 85},
@@ -3945,9 +4001,9 @@ does marvel's big ol mutant trex exist? who knows
 		weightkg: 999.9,
 	},
 */
-	elmerape: {
+	elmer: {
 		num: 7000035,
-		species: "Elmer Ape", /* Sandsverse */
+		species: "Elmer", /* Sandsverse */
 		types: ["Grass"],
 		gender: "M",
 		baseStats: {hp: 80, atk: 110, def: 80, spa: 110, spd: 80, spe: 120},
@@ -3959,7 +4015,7 @@ does marvel's big ol mutant trex exist? who knows
 	everylivingmonkeyexactsrevenge: {
 		num: 7000035,
 		species: "Every Living Monkey Exacts Revenge",
-		baseSpecies: "Elmer Ape",
+		baseSpecies: "Elmer",
 		forme: "Lent",
 		formeLetter: "L",
 		types: ["Grass", "Psychic"],
@@ -4899,9 +4955,9 @@ does marvel's big ol mutant trex exist? who knows
 		heightm: 1.6,
 		weightkg: 67,
 	},
-	victorfries: {
+	mrfreeze: {
 		num: 7000093,
-		species: "Victor Fries",  /* Batman */
+		species: "Mr. Freeze",  /* Batman */
 		types: ["Ice"],
 		gender: "M",
 		baseStats: {hp: 100, atk: 70, def: 115, spa: 135, spd: 125, spe: 85},
@@ -4964,6 +5020,100 @@ does marvel's big ol mutant trex exist? who knows
 		abilities: {0: "Marble Team", 1: "Mountaineer", H: "White Smoke"},
 		heightm: 0.1,
 		weightkg: 0.1,
+	},
+	tophbeifong: {
+		num: 7000097,
+		species: "Toph Beifong", /* Avatar: The Last Airbender */
+		types: ["Ground", "Rock"],
+		gender: "F",
+		baseStats: {hp: 85, atk: 139, def: 105, spa: 41, spd: 70, spe: 90},
+		abilities: {0: "Mold Breaker", 1: "Sheer Force", H: "Steelworker"},
+		heightm: 1.5,
+		weightkg: 55,
+	},
+	cell: {
+		num: 7000098,
+		species: "Cell", /* Dragon Ball */
+		types: ["Bug", "Fighting"],
+		gender: "M",
+		baseStats: {hp: 80, atk: 75, def: 45, spa: 60, spd: 65, spe: 70},
+		abilities: {0: "Sturdy", 1: "Regenerator", H: "Zenkai Boost"},
+		heightm: 2.13,
+		weightkg: 87,
+		evos: ["semiperfectcell"],
+	},
+	semiperfectcell: {
+		num: 7000099,
+		species: "Semi-Perfect Cell", /* Dragon Ball */
+		types: ["Bug", "Fighting"],
+		gender: "M",
+		baseStats: {hp: 95, atk: 100, def: 65, spa: 70, spd: 75, spe: 75},
+		abilities: {0: "Sturdy", 1: "Regenerator", H: "Zenkai Boost"},
+		prevo: "cell",
+		heightm: 2.46,
+		weightkg: 127,
+		evos: ["perfectcell"],
+	},
+	semiperfectcell: {
+		num: 7000099,
+		species: "Semi-Perfect Cell", /* Dragon Ball */
+		types: ["Bug", "Fighting"],
+		gender: "M",
+		baseStats: {hp: 110, atk: 120, def: 90, spa: 95, spd: 95, spe: 90},
+		abilities: {0: "Sturdy", 1: "Regenerator", H: "Zenkai Boost"},
+		prevo: "semiperfectcell",
+		heightm: 2.13,
+		weightkg: 87,
+	},
+	theresealexandrite: {
+		num: 7000100,
+		species: "Therese Alexandrite", /* Rising of the Shield Hero */
+		types: ["Rock", "Psychic"],
+		gender: "F",
+		baseStats: {hp: 70, atk: 55, def: 100, spa: 145, spd: 90, spe: 60},
+		abilities: {0: "Bejeweled", 1: "Dazzling", H: "Appraisal"},
+		heightm: 1.6,
+		weightkg: 67,
+	},
+	blackknight: {
+		num: 7000101,
+		species: "Black Knight", /* Monty Python and the Holy Grail */
+		types: ["Steel"],
+		gender: "M",
+		baseStats: {hp: 255, atk: 93, def: 119, spa: 27, spd: 20, spe: 81},
+		abilities: {0: "Weak Armor", H: "Just a Flesh Wound"},
+		heightm: 1.9,
+		weightkg: 150,
+	},
+	blackrockshooter: {
+		num: 7000102,
+		species: "Black★Rock Shooter", /* Black★Rock Shooter */
+		types: ["Fire", "Rock"],
+		gender: "F",
+		baseStats: {hp: 160, atk: 110, def: 60, spa: 110, spd: 60, spe: 100},
+		abilities: {0: "Regenerator", H: "Telepathy"},
+		heightm: 1.5,
+		weightkg: 50,
+	},
+	blackrockshooterinsane: {
+		num: 7000103,
+		species: "Black★Rock Shooter-Insane",
+		baseSpecies: "Black★Rock Shooter",
+		forme: "Insane",
+		formeLetter: "I",
+		gender: "F",
+		baseStats: {hp: 200, atk: 120, def: 100, spa: 120, spd: 60, spe: 70},
+		heightm: 1.5,
+		weightkg: 55,
+	},
+	shizouheiwajima: {
+		num: 7000104,
+		species: "Shizou Heijawjima", /* Durarara! */
+		types: ["Fighting"],
+		gender: "M",
+		baseStats: {hp: 85, atk: 150, def: 100, spa: 65, spd: 55, spe: 75},
+		heightm: 1.7,
+		weightkg: 86,
 	},
 };
 
