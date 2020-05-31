@@ -910,6 +910,10 @@ let BattleLearnsets = {
 		foresight: ["7E", "7V", "6E", "5E", "4E", "3E"],
 		morningsun: ["8E", "7E", "6E", "5E"],
 		secretpower: ["7E", "6M", "6E", "5E", "4M", "3M"],
+		thunderbolt: ["8M"],
+		voltswitch: ["8M"],
+		discharge: ["8M"],
+		thunder: ["8M"],
 	}},
 	scolipede: {learnset: {
 		agility: ["7L32", "6L32", "5L32"],
