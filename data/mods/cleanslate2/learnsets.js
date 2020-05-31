@@ -1050,6 +1050,10 @@ let BattleLearnsets = {
 		toxic: ["7L1"],
 		waterpulse: ["8E"],
 		whirlpool: ["8M"],
+		shadowclaw: ["8M"],
+		thunderwave: ["8M"],
+		earthpower: ["8M"],
+		icebeam: ["8M"],
 	}},
 	torkoal: {learnset: {
 		afteryou: ["7T", "6T", "5T"],
