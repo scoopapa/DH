@@ -6,7 +6,7 @@ let BattlePokedex = {
 		inherit: true,
 		species: "Weezing-Galar",
 		types: ["Poison", "Fairy"],
-		baseStats: {hp: 89, atk: 113, def: 154, spa: 106, spd: 76, spe: 82},
+		baseStats: {hp: 69, atk: 103, def: 178, spa: 116, spd: 92, spe: 87},
 		abilities: {0: "Neutralizing Gas", H: "Misty Surge"},
 		prevo: null,
 	},
@@ -105,9 +105,9 @@ let BattlePokedex = {
 	togekiss: {
 		num: 468,
 		species: "Togekiss",
-		types: ["Flying"],
+		types: ["Flying", "Electric"],
 		baseStats: {hp: 110, atk: 70, def: 100, spa: 120, spd: 100, spe: 90},
-		abilities: {0: "Zephyr"},
+		abilities: {0: "Immunity", 1: "Cloud Nine", H: "Competitive"},
 		height: 1.5,
 		weightkg: 38,
 		prevo: null,
@@ -149,8 +149,8 @@ let BattlePokedex = {
 	octillery: {
 		inherit: true,
 		species: "Octillery",
-		types: ["Ice"],
-		baseStats: {hp: 88, atk: 88, def: 88, spa: 118, spd: 118, spe: 100},
+		types: ["Ice", "Electric"],
+		baseStats: {hp: 88, atk: 91, def: 91, spa: 118, spd: 118, spe: 114},
 		abilities: {0: "Suction Cups", 1: "Sniper", H: "Rain Dish"},
 		prevo: null,
 	},
@@ -230,7 +230,7 @@ let BattlePokedex = {
 	shaymin: {
 		inherit: true,
 		types: ["Grass", "Fairy"],
-		baseStats: {hp: 100, atk: 60, def: 120, spa: 100, spd: 120, spe: 100},
+		baseStats: {hp: 100, atk: 99, def: 97, spa: 100, spd: 104, spe: 100},
 		abilities: {0: "Natural Cure", H: "Regenerator"},
 	},
 	shayminsky: {
@@ -262,7 +262,7 @@ let BattlePokedex = {
 		inherit: true,
 		species: "Weavile",
 		types: ["Dark", "Ice"],
-		baseStats: {hp: 105, atk: 125, def: 85, spa: 75, spd: 85, spe: 125},
+		baseStats: {hp: 105, atk: 140, def: 85, spa: 75, spd: 85, spe: 125},
 		abilities: {0: "Pressure", 1: "Merciless", H: "Pickpocket"},
 	},
 	vivillon: {
@@ -284,8 +284,8 @@ let BattlePokedex = {
 		inherit: true,
 		species: "Duraludon",
 		types: ["Steel", "Dragon"],
-		baseStats: {hp: 114, atk: 127, def: 98, spa: 131, spd: 123, spe: 32},
-		abilities: {0: "Berserk", 1: "Mirror Armor", H: "Bulletproof"},
+		baseStats: {hp: 104, atk: 112, def: 98, spa: 116, spd: 113, spe: 32},
+		abilities: {0: "Berserk", 1: "Light Metal", H: "Bulletproof"},
 	},
 	cobalion: {
 		inherit: true,

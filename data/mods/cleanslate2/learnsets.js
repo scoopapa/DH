@@ -1308,6 +1308,9 @@ let BattleLearnsets = {
 		whirlpool: ["8M", "7V", "4M"],
 		wrap: ["8L1"],
 		wringout: ["7L28", "6L28", "5L36", "4L36"],
+		voltswitch: ["8L1"],
+		thunderbolt: ["8L1"],
+		thunder: ["8L1"],
 	}},
 	necrozma: {learnset: {
 		aerialace: ["7M"],
@@ -2194,6 +2197,7 @@ let BattleLearnsets = {
 		surf: ["8M", "7M", "7V", "6M", "5M", "4M", "3M"],
 		swagger: ["7M", "7V", "6M", "5M", "4M", "3T"],
 		swift: ["8M", "7V", "4T", "3T"],
+		swordsdance: ["8M", "7V", "4T", "3T"],
 		taunt: ["8M", "8L6", "7M", "7L1", "6M", "6L1", "5D", "5M", "5L1", "4M", "4L1", "3M", "3L1", "3S0"],
 		thief: ["8M", "7M", "7V", "6M", "5M", "4M", "3M"],
 		throatchop: ["8M", "7T", "7E"],
