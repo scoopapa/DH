@@ -128,7 +128,7 @@ let BattlePokedex = {
 		inherit: true,
 		species: "Cursola",
 		types: ["Ghost"],
-		baseStats: {hp: 60, atk: 95, def: 80, spa: 95, spd: 210, spe: 30},
+		baseStats: {hp: 80, atk: 95, def: 80, spa: 95, spd: 220, spe: 30},
 		abilities: {0: "Cloud Nine", 1: "Cursed Body", H: "Natural Cure"},
 		prevo: null,
 	},
@@ -151,7 +151,7 @@ let BattlePokedex = {
 		species: "Octillery",
 		types: ["Ice", "Electric"],
 		baseStats: {hp: 88, atk: 91, def: 91, spa: 118, spd: 118, spe: 114},
-		abilities: {0: "Suction Cups", 1: "Sniper", H: "Rain Dish"},
+		abilities: {0: "Super Luck", 1: "Filter", H: "Neuroforce"},
 		prevo: null,
 	},
 	necrozma: {
