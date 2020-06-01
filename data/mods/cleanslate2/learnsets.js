@@ -624,6 +624,9 @@ let BattleLearnsets = {
 		yawn: ["8L12", "8L20", "6L20", "5L20", "4L20", "3L21"],
 		zapcannon: ["8V"],
 		zenheadbutt: ["8M", "8T", "6T", "5T", "4T"],
+		thousandwaves: ["8M"],
+		gigadrain: ["8M"],
+		earthpower: ["8M"],
 	}},
 	walrein: {learnset: {
 		anchorshot: ["7L1"],

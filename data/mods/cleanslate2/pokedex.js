@@ -74,7 +74,7 @@ let BattlePokedex = {
 		num: 143,
 		species: "Snorlax-Gmax",
 		types: ["Grass", "Ground"],
-		baseStats: {hp: 150, atk: 100, def: 90, spa: 70, spd: 90, spe: 40},
+		baseStats: {hp: 150, atk: 115, def: 100, spa: 105, spd: 100, spe: 40},
 		abilities: {0: "Harvest", 1: "Ripen", H: "Thick Fat"},
 		genderRatio: {M: 0.875, F: 0.125},
 		heightm: 2.1,
@@ -173,7 +173,7 @@ let BattlePokedex = {
 		species: "Victreebel",
 		types: ["Grass", "Dragon"],
 		baseStats: {hp: 100, atk: 135, def: 80, spa: 130, spd: 80, spe: 95},
-		abilities: {0: "Chlorophyll", 1: "Mold Breaker", H: "Stench"},
+		abilities: {0: "Chlorophyll", 1: "Mold Breaker", H: "Malware"},
 	},
 	runerigus: {
 		inherit: true,
