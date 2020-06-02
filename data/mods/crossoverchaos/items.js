@@ -622,4 +622,15 @@ exports.BattleItems = {
         zMoveUser: ["Black★Rock Shooter"],
         desc: "If held by Black★Rock Shooter with Power Gem, she can use Rainbow Cannon.",
     },
+	 "overhaulite": { 
+		  id: "overhaulite",
+		  name: "Overhaulite",
+		  megaStone: "Overhaul-Mega",
+		  megaEvolves: "Overhaul",
+		  onTakeItem(item, source) {
+			  if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			  return true;
+		  },
+		 desc: "If held by Overhaul, this item allows her to Mega Evolve in battle."
+	 },
 };
