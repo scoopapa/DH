@@ -1055,6 +1055,15 @@ exports.BattleFormatsData = { //
 		isGigantamax: "G-Max Ragnarok",
 		tier: "Uber",
 	},
+	2b: {
+		tier: "V2",
+	},
+	monika: {
+		tier: "V2",
+	},
+	kikuri: {
+		tier: "V2",
+	},
 	 walle: {
 		  tier: "EX",
 	 },
@@ -1511,7 +1520,7 @@ absolutely FUCK devil dinosaur and everything he stands for, it's such a pain in
 		tier: "EX",
 	},
 	dio: {
-		tier: "EX",
+		tier: "Uber",
 	},
 	slimerimuru: {
 		tier: "EX",
@@ -1587,6 +1596,23 @@ absolutely FUCK devil dinosaur and everything he stands for, it's such a pain in
 		tier: "Uber",
 	},
 	shizouheiwajima: {
+		tier: "EX",
+	},
+	overhaul: {
+		tier: "EX",
+	},
+	overhaulmega: {
+		requiredItem: "Overhaulite",
+		tier: "EX",
+	},
+	overhaulgmax: {
+		isGmax: "G-Max Life Drain",
+		tier: "Uber",
+	},
+	jotarokujo: {
+		tier: "Uber",
+	},
+	waldo: {
 		tier: "EX",
 	},
 };
