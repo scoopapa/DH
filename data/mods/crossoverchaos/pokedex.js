@@ -3377,6 +3377,36 @@ kyokokirigiri: {
 		heightm: 16,
 		weightkg: 0,
 	},
+	2b: {
+		num: 6000186,
+		species: "2B", /* NieR: Automata */
+		types: ["Steel", "Fighting"],
+		gender: "F",
+		baseStats: {hp: 90, atk: 90, def: 90, spa: 90, spd: 90, spe: 140},
+		abilities: {0: "Frisk", 1: "Download", H: "Regenerator"},
+		heightm: 1.6,
+		weightkg: 75,
+	},
+	monika: {
+		num: 6000187,
+		species: "Monika", /* Doki Doki Literature Club */
+		types: ["Normal"],
+		gender: "F",
+		baseStats: {hp: 70, atk: 70, def: 60, spa: 140, spd: 60, spe: 100},
+		abilities: {0: "Perish Body", 1: "Adaptability", H: "Download"},
+		heightm: 1.6,
+		weightkg: 70,
+	},
+	kikuri: {
+		num: 6000188,
+		species: "Kikuri", /* Touhou Project */
+		types: ["Steel", "Fire"],
+		gender: "F",
+		baseStats: {hp: 100, atk: 70, def: 110, spa: 100, spd: 120, spe: 70},
+		abilities: {0: "Serene Grace", 1: "Magic Bounce", H: "Levitate"},
+		heightm: 5,
+		weightkg: 600,
+	},
 	walle: {
 			num: 7000001,
 			species: "WALL-E", /* WALL-E */
@@ -5101,8 +5131,10 @@ does marvel's big ol mutant trex exist? who knows
 		baseSpecies: "Black★Rock Shooter",
 		forme: "Insane",
 		formeLetter: "I",
+		types: ["Fire", "Rock"],
 		gender: "F",
 		baseStats: {hp: 200, atk: 120, def: 100, spa: 120, spd: 60, spe: 70},
+		abilities: {0: "Regenerator", H: "Telepathy"},
 		heightm: 1.5,
 		weightkg: 55,
 	},
@@ -5112,8 +5144,62 @@ does marvel's big ol mutant trex exist? who knows
 		types: ["Fighting"],
 		gender: "M",
 		baseStats: {hp: 85, atk: 150, def: 100, spa: 65, spd: 55, spe: 75},
+		abilities: {0: "Anger Point", 1: "Stamina", H: "Sheer Force"},
 		heightm: 1.7,
 		weightkg: 86,
 	},
+	overhaul: {
+		num: 7000105,
+		species: "Overhaul", /* My Hero Academia */
+		types: ["Poison", "Dark"],
+		gender: "M",
+		baseStats: {hp: 104, atk: 129, def: 83, spa: 67, spd: 76, spe: 101},
+		abilities: {0: "Regenerator", 1: "Poison Touch", H: "Healer"},
+		heightm: 1.7,
+		weightkg: 84,
+	},
+	overhaulmega: {
+		num: 7000105,
+		species: "Overhaul-Mega",
+		baseSpecies: "Overhaul",
+		forme: "Mega",
+		formeLetter: "M",
+		types: ["Poison", "Dark"],
+		baseStats: {hp: 104, atk: 169, def: 113, spa: 97, spd: 96, spe: 81},
+		abilities: {0: "Mold Breaker"},
+		heightm: 1.9,
+		weightkg: 99,
+	},
+	overhaulgmax: {
+		num: 7000105,
+		species: "Overhaul-GMax",
+		baseSpecies: "Overhaul",
+		forme: "GMax",
+		formeLetter: "G",
+		types: ["Poison", "Dark"],
+		baseStats: {hp: 104, atk: 129, def: 83, spa: 67, spd: 76, spe: 101},
+		abilities: {0: "Regenerator", 1: "Poison Touch", H: "Healer"},
+		heightm: 50,
+		weightkg: 0,
+	},
+	jotarokujo: {
+		num: 7000106,
+		species: "Jotaro Kujo", /* JoJo's Bizarre Adventure */
+		types: ["Fighting", "Ghost"],
+		baseStats: {hp: 75, atk: 139, def: 115, spa: 60, spd: 75, spe: 121},
+		abilities: {0: "Iron Fist", 1: "Scrappy", H: "Keen Eye"},
+		heightm: 1.95,
+		weightkg: 82
+	},
+	waldo: {
+		num: 7000107,
+		species: "Waldo", /* Where's Waldo? */
+		types: ["Normal"],
+		baseStats: {hp: 117, atk: 80, def: 80, spa: 58, spd: 58, spe: 127},
+		abilities: {0: "Where's Waldo?", H: "Technician"},
+		heightm: 1.7,
+		weightkg: 67,
+	},
+		
 };
 
