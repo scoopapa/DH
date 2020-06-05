@@ -660,7 +660,6 @@ exports.Formats = [
 		},
 		onValidateTeam(team, format){
 			/**@type {{[k: string]: true}} */
-			let abilityTable = [];
 			for (const set of team) {
 				if (set.species == 'Zacian-Crowned' && set.ability != 'Intrepid Sword')
 					 return ["Zacian-Crowned can only have Intrepid Sword as its ability."]
