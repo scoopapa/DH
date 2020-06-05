@@ -612,7 +612,7 @@ exports.Formats = [
 					'Endless Battle Clause', 'Team Preview', 'HP Percentage Mod', 'Cancel Mod', 
 					'Species Clause', '+Past'],
 		banlist: ['Groudon-Primal', 'Eternatus-Eternamax', 'Arena Trap', 'Huge Power', 'Illusion', 'Innards Out', 'Magnet Pull', 
-					'Moody', 'Parental Bond', 'Protean', 'Psychic Surge', 'Pure Power', 'Shadow Tag', 
+					'Moody', 'Parental Bond', 'Protean', 'Octolock', 'Pure Power', 'Shadow Tag',
 					'Stakeout', 'Water Bubble', 'Wonder Guard', 'Gengarite', 'Chatter', 'Comatose + Sleep Talk',
 					'Libero', 'Neutralizing Gas', 'Gorilla Tactics', 'Contrary'],
 		onChangeSet(set) {
@@ -649,14 +649,8 @@ exports.Formats = [
 				let template = this.dex.getTemplate(set.species);
 				if (template.species == 'Zacian-Crowned' && template.ability != 'Intrepid Sword')
 					 return ["Zacian-Crowned can only have Intrepid Sword as its ability."]
-				if (template.species != 'Zacian-Crowned' && template.ability == 'Intrepid Sword')
+				if ((template.species !== 'Zacian-Crowned' && template.species !== 'Zacian') && template.ability == 'Intrepid Sword')
 					 return ["Only Zacian-Crowned can have Intrepid Sword as its ability."]
-				if (!abilityTable.includes( set.ability )){
-					abilityTable.push( set.ability );
-				}
-				else {
-					return [`You have more than one pokemon with the ability ${set.ability}.`];
-				}
 			}
 		},
 	},
