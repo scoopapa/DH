@@ -628,7 +628,7 @@ exports.Formats = [
 					'Endless Battle Clause', 'Team Preview', 'HP Percentage Mod', 'Cancel Mod', 
 					'Species Clause', '+Past'],
 		banlist: ['Groudon-Primal', 'Eternatus-Eternamax', 'Arena Trap', 'Huge Power', 'Illusion', 'Innards Out', 'Magnet Pull', 
-					'Moody', 'Parental Bond', 'Protean', 'Octolock', 'Pure Power', 'Shadow Tag',
+					'Moody', 'Parental Bond', 'Protean', 'Octolock', 'Pure Power', 'Shadow Tag', 'Intrepid Sword',
 					'Stakeout', 'Water Bubble', 'Wonder Guard', 'Gengarite', 'Chatter', 'Comatose + Sleep Talk',
 					'Libero', 'Neutralizing Gas', 'Gorilla Tactics', 'Contrary'],
 		onChangeSet(set) {
@@ -662,10 +662,9 @@ exports.Formats = [
 			/**@type {{[k: string]: true}} */
 			let abilityTable = [];
 			for (const set of team) {
-				let template = this.dex.getTemplate(set.species);
-				if (template.species == 'Zacian-Crowned' && template.ability != 'Intrepid Sword')
+				if (set.species == 'Zacian-Crowned' && set.ability != 'Intrepid Sword')
 					 return ["Zacian-Crowned can only have Intrepid Sword as its ability."]
-				if ((template.species !== 'Zacian-Crowned' && template.species !== 'Zacian') && template.ability == 'Intrepid Sword')
+				if ((set.species !== 'Zacian-Crowned' && set.species !== 'Zacian') && set.ability == 'Intrepid Sword')
 					 return ["Only Zacian-Crowned can have Intrepid Sword as its ability."]
 			}
 		},
