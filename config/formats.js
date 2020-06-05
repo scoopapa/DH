@@ -661,7 +661,7 @@ exports.Formats = [
 		onValidateTeam(team, format){
 			/**@type {{[k: string]: true}} */
 			for (const set of team) {
-				if (set.species == 'Zacian-Crowned' && set.ability != 'Intrepid Sword')
+				if (set.species == 'Zacian-Crowned' && set.ability !== 'Intrepid Sword')
 					 return ["Zacian-Crowned can only have Intrepid Sword as its ability."]
 				if ((set.species !== 'Zacian-Crowned' && set.species !== 'Zacian') && set.ability === 'Intrepid Sword')
 					 return ["Only Zacian-Crowned can have Intrepid Sword as its ability."]
