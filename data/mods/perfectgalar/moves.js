@@ -351,7 +351,7 @@ exports.BattleMovedex = {
 			onHit(target, source, move) {
 				if (!source.volatiles['dynamax']) return;
 				this.field.setTerrain('grassyterrain');
-				source.addVolatile( 'leechseed', target );
+				source.addVolatile('tarshot');
 			},
 		},
 	},
