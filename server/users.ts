@@ -34,11 +34,11 @@ const THROTTLE_BUFFER_LIMIT = 6;
 const THROTTLE_MULTILINE_WARN = 3;
 const THROTTLE_MULTILINE_WARN_STAFF = 6;
 
-const PERMALOCK_CACHE_TIME = 30 * 24 * 60 * 60 * 1000;
+const PERMALOCK_CACHE_TIME = 30 * 24 * 60 * 60 * 1000; // 30 days
 
 const DEFAULT_TRAINER_SPRITES = [1, 2, 101, 102, 169, 170, 265, 266];
 
-import { FS } from '../lib/fs';
+import {FS} from '../lib/fs';
 
 const MINUTES = 60 * 1000;
 const IDLE_TIMER = 60 * MINUTES;
@@ -191,8 +191,7 @@ function exportUsergroups() {
 	}
 	return FS('config/usergroups.csv').write(buffer);
 }
-// tslint:disable-next-line:no-floating-promises
-importUsergroups();
+void importUsergroups();
 
 function cacheGroupData() {
 	if (Config.groups) {
@@ -415,8 +414,9 @@ type ChatQueueEntry = [string, RoomID, Connection];
 const SETTINGS = [
 	'isSysop', 'isStaff', 'blockChallenges', 'blockPMs',
 	'ignoreTickets', 'lastConnected', 'lastDisconnected',
-	'inviteOnlyNextBattle',
-];
+	'inviteOnlyNextBattle', 'statusType',
+] as const;
+type UserSetting = typeof SETTINGS[number];
 
 // User
 export class User extends Chat.MessageContext {
@@ -464,6 +464,7 @@ export class User extends Chat.MessageContext {
 	lastDisconnected: number;
 	lastConnected: number;
 	inviteOnlyNextBattle: boolean;
+	foodfight?: {generatedTeam: string[], dish: string, ingredients: string[], timestamp: number};
 
 	chatQueue: ChatQueueEntry[] | null;
 	chatQueueTimeout: NodeJS.Timeout | null;
@@ -588,10 +589,10 @@ export class User extends Chat.MessageContext {
 	popup(message: string) {
 		this.send(`|popup|` + message.replace(/\n/g, '||'));
 	}
-	getIdentity(roomid = '' as RoomID) {
+	getIdentity(roomid: RoomID = '') {
+		const punishgroups = Config.punishgroups || {locked: null, muted: null};
 		if (this.locked || this.namelocked) {
-			const lockedSymbol = (Config.punishgroups && Config.punishgroups.locked ? Config.punishgroups.locked.symbol
-				: '\u203d');
+			const lockedSymbol = (punishgroups.locked && punishgroups.locked.symbol || '\u203d');
 			return lockedSymbol + this.name;
 		}
 		if (roomid && roomid !== 'global') {
@@ -600,18 +601,18 @@ export class User extends Chat.MessageContext {
 				throw new Error(`Room doesn't exist: ${roomid}`);
 			}
 			if (room.isMuted(this)) {
-				const mutedSymbol = (Config.punishgroups && Config.punishgroups.muted ? Config.punishgroups.muted.symbol : '!');
+				const mutedSymbol = (punishgroups.muted && punishgroups.muted.symbol || '!');
 				return mutedSymbol + this.name;
 			}
 			return room.getAuth(this) + this.name;
 		}
 		if (this.semilocked) {
-			const mutedSymbol = (Config.punishgroups && Config.punishgroups.muted ? Config.punishgroups.muted.symbol : '!');
+			const mutedSymbol = (punishgroups.muted && punishgroups.muted.symbol || '!');
 			return mutedSymbol + this.name;
 		}
 		return this.group + this.name;
 	}
-	getIdentityWithStatus(roomid = '' as RoomID) {
+	getIdentityWithStatus(roomid: RoomID = '') {
 		const identity = this.getIdentity(roomid);
 		const status = this.statusType === 'online' ? '' : '@!';
 		return `${identity}${status}`;
@@ -638,7 +639,7 @@ export class User extends Chat.MessageContext {
 		if (this.hasSysopAccess()) return true;
 
 		let groupData = Config.groups[this.group];
-		if (groupData && groupData['root']) {
+		if (groupData?.['root']) {
 			return true;
 		}
 
@@ -671,7 +672,7 @@ export class User extends Chat.MessageContext {
 			}
 		}
 
-		if (groupData && groupData[permission]) {
+		if (groupData?.[permission]) {
 			const jurisdiction = groupData[permission];
 			if (!targetUser && !targetGroup) {
 				return !!jurisdiction;
@@ -904,9 +905,9 @@ export class User extends Chat.MessageContext {
 				this.autoconfirmed = userid;
 			} else if (userType === '5') {
 				this.permalocked = userid;
-				Punishments.lock(this, Date.now() + PERMALOCK_CACHE_TIME, userid, true, `Permalocked as ${name}`);
+				void Punishments.lock(this, Date.now() + PERMALOCK_CACHE_TIME, userid, true, `Permalocked as ${name}`);
 			} else if (userType === '6') {
-				Punishments.lock(this, Date.now() + PERMALOCK_CACHE_TIME, userid, true, `Permabanned as ${name}`);
+				void Punishments.lock(this, Date.now() + PERMALOCK_CACHE_TIME, userid, true, `Permabanned as ${name}`);
 				this.disconnectAll();
 			}
 		}
@@ -923,7 +924,7 @@ export class User extends Chat.MessageContext {
 
 		let user = users.get(userid);
 		const possibleUser = Users.get(userid);
-		if (possibleUser && possibleUser.namelocked) {
+		if (possibleUser?.namelocked) {
 			// allows namelocked users to be merged
 			user = possibleUser;
 		}
@@ -1018,12 +1019,11 @@ export class User extends Chat.MessageContext {
 	/**
 	 * @param updated the settings which have been updated or none for all settings.
 	 */
-	getUpdateuserText(...updated: string[]) {
+	getUpdateuserText(...updated: UserSetting[]) {
 		const named = this.named ? 1 : 0;
-		const diff = {};
+		const diff: AnyObject = {};
 		const settings = updated.length ? updated : SETTINGS;
 		for (const setting of settings) {
-			// @ts-ignore - dynamic lookup
 			diff[setting] = this[setting];
 		}
 		return `|updateuser|${this.getIdentityWithStatus()}|${named}|${this.avatar}|${JSON.stringify(diff)}`;
@@ -1031,7 +1031,7 @@ export class User extends Chat.MessageContext {
 	/**
 	 * @param updated the settings which have been updated or none for all settings.
 	 */
-	update(...updated: string[]) {
+	update(...updated: UserSetting[]) {
 		this.send(this.getUpdateuserText(...updated));
 	}
 	merge(oldUser: User) {
@@ -1173,7 +1173,7 @@ export class User extends Chat.MessageContext {
 		this.isStaff = Config.groups[this.group] && (Config.groups[this.group].lock || Config.groups[this.group].root);
 		if (!this.isStaff) {
 			const staffRoom = Rooms.get('staff');
-			this.isStaff = !!(staffRoom && staffRoom.auth && staffRoom.auth[this.id]);
+			this.isStaff = !!staffRoom?.auth?.[this.id];
 		}
 		if (this.trusted) {
 			if (this.locked && this.permalocked) {
@@ -1204,7 +1204,7 @@ export class User extends Chat.MessageContext {
 		this.isStaff = Config.groups[this.group] && (Config.groups[this.group].lock || Config.groups[this.group].root);
 		if (!this.isStaff) {
 			const staffRoom = Rooms.get('staff');
-			this.isStaff = !!(staffRoom && staffRoom.auth && staffRoom.auth[this.id]);
+			this.isStaff = !!(staffRoom?.auth?.[this.id]);
 		}
 		if (wasStaff !== this.isStaff) this.update('isStaff');
 		Rooms.global.checkAutojoin(this);
@@ -1383,7 +1383,7 @@ export class User extends Chat.MessageContext {
 				// only join full clients, not pop-out single-room
 				// clients
 				// (...no, pop-out rooms haven't been implemented yet)
-				if (curConnection.inRooms.has('global' as RoomID)) {
+				if (curConnection.inRooms.has('global')) {
 					this.joinRoom(room, curConnection);
 				}
 			}
@@ -1401,7 +1401,7 @@ export class User extends Chat.MessageContext {
 	leaveRoom(
 		room: Room | string,
 		connection: Connection | null = null,
-		force: boolean = false
+		force = false
 	) {
 		room = Rooms.get(room)!;
 		if (room.roomid === 'global') {
@@ -1475,8 +1475,9 @@ export class User extends Chat.MessageContext {
 		if (this.chatQueueTimeout) {
 			if (!this.chatQueue) this.chatQueue = []; // this should never happen
 			if (this.chatQueue.length >= THROTTLE_BUFFER_LIMIT - 1) {
-				connection.sendTo(room, `|raw|` +
-					`<strong class="message-throttle-notice">Your message was not sent because you've been typing too quickly.</strong>`
+				connection.sendTo(
+					room,
+					`|raw|<strong class="message-throttle-notice">Your message was not sent because you've been typing too quickly.</strong>`
 				);
 				return false;
 			} else {
@@ -1539,8 +1540,7 @@ export class User extends Chat.MessageContext {
 		const throttleDelay = this.trusted ? THROTTLE_DELAY_TRUSTED : THROTTLE_DELAY;
 
 		if (this.chatQueue.length) {
-			this.chatQueueTimeout = setTimeout(
-				() => this.processChatQueue(), throttleDelay);
+			this.chatQueueTimeout = setTimeout(() => this.processChatQueue(), throttleDelay);
 		} else {
 			this.chatQueue = null;
 		}
@@ -1562,10 +1562,10 @@ export class User extends Chat.MessageContext {
 		this.updateIdentity();
 	}
 	getAccountStatusString() {
-		return this.trusted === this.id ? `[trusted]`
-			: this.autoconfirmed === this.id ? `[ac]`
-			: this.registered ? `[registered]`
-			: ``;
+		return this.trusted === this.id ? `[trusted]` :
+			this.autoconfirmed === this.id ? `[ac]` :
+			this.registered ? `[registered]` :
+			``;
 	}
 	destroy() {
 		// deallocate user
@@ -1628,9 +1628,9 @@ function logGhostConnections(threshold: number): Promise<unknown> {
 			buffer.push(log);
 		}
 	}
-	return buffer.length
-		? FS(`logs/ghosts-${process.pid}.log`).append(buffer.join('\r\n') + '\r\n')
-		: Promise.resolve();
+	return buffer.length ?
+		FS(`logs/ghosts-${process.pid}.log`).append(buffer.join('\r\n') + '\r\n') :
+		Promise.resolve();
 }
 
 /*********************************************************
@@ -1677,7 +1677,7 @@ function socketConnect(
 		}
 	});
 
-	user.joinRoom('global' as RoomID, connection);
+	user.joinRoom('global', connection);
 }
 function socketDisconnect(worker: Worker, workerid: number, socketid: string) {
 	const id = '' + workerid + '-' + socketid;
@@ -1722,9 +1722,9 @@ function socketReceive(worker: Worker, workerid: number, socketid: string, messa
 
 	const lines = message.split('\n');
 	if (!lines[lines.length - 1]) lines.pop();
-	if (lines.length > (user.isStaff ||
-		(room.auth && room.auth[user.id] && room.auth[user.id] !== '+') ? THROTTLE_MULTILINE_WARN_STAFF
-			: THROTTLE_MULTILINE_WARN)) {
+	const maxLineCount = user.isStaff || (room.auth && room.auth[user.id] && room.auth[user.id] !== '+') ?
+		THROTTLE_MULTILINE_WARN_STAFF : THROTTLE_MULTILINE_WARN;
+	if (lines.length > maxLineCount) {
 		connection.popup(`You're sending too many lines at once. Try using a paste service like [[Pastebin]].`);
 		return;
 	}
@@ -1775,8 +1775,8 @@ export const Users = {
 		pruneInactive(Config.inactiveuserthreshold || 60 * MINUTES);
 	}, 30 * MINUTES),
 	logGhostConnections,
-	logGhostConnectionsTimer: setInterval(async () => {
-		await logGhostConnections(7 * 24 * 60 * MINUTES);
+	logGhostConnectionsTimer: setInterval(() => {
+		void logGhostConnections(7 * 24 * 60 * MINUTES);
 	}, 7 * 24 * 60 * MINUTES),
 	socketConnect,
 };

@@ -37,6 +37,8 @@ export class Tools {
 	 * Dex.getId is generally assigned to the global toID, because of how
 	 * commonly it's used.
 	 */
+	/* The sucrase transformation of optional chaining is too expensive to be used in a hot function like this. */
+	/* eslint-disable @typescript-eslint/prefer-optional-chain */
 	static getId(text: any): ID {
 		if (text && text.id) {
 			text = text.id;
@@ -48,6 +50,7 @@ export class Tools {
 		if (typeof text !== 'string' && typeof text !== 'number') return '';
 		return ('' + text).toLowerCase().replace(/[^a-z0-9]+/g, '') as ID;
 	}
+	/* eslint-enable @typescript-eslint/prefer-optional-chain */
 }
 const toID = Tools.getId;
 
@@ -312,7 +315,7 @@ export class Format extends BasicEffect implements Readonly<BasicEffect & Format
 		super(data, ...moreData);
 		data = this;
 
-		this.mod = Tools.getString(data.mod) || 'gen7';
+		this.mod = Tools.getString(data.mod) || 'gen8';
 		this.effectType = Tools.getString(data.effectType) as FormatEffectType || 'Format';
 		this.debug = !!data.debug;
 		this.rated = (data.rated !== false);
@@ -508,6 +511,9 @@ export class Template extends BasicEffect implements Readonly<BasicEffect & Temp
 	readonly name: string;
 	/**
 	 * Base species. Species, but without the forme name.
+	 *
+	 * DO NOT ASSUME A POKEMON CAN TRANSFORM FROM `baseSpecies` TO
+	 * `species`. USE `inheritsFrom` FOR THAT.
 	 */
 	readonly baseSpecies: string;
 	/**
@@ -605,8 +611,16 @@ export class Template extends BasicEffect implements Readonly<BasicEffect & Temp
 	 * form moveid:sources[].
 	 */
 	readonly learnset?: {[moveid: string]: MoveSource[]};
-	/** Source of learnsets for Pokemon that lack their own */
-	readonly inheritsFrom: string | string[];
+	/**
+	 * Formes that can transform into this Pokemon, to inherit learnsets
+	 * from. (Like `prevo`, but for transformations that aren't
+	 * technically evolution. Includes in-battle transformations like
+	 * Zen Mode and out-of-battle transformations like Rotom.)
+	 *
+	 * Not filled out for megas/primals - fall back to baseSpecies
+	 * for in-battle formes.
+	 */
+	readonly inheritsFrom: ID;
 	/** True if the only way to get this pokemon is from events. */
 	readonly eventOnly: boolean;
 	/** List of event data for each event. */
@@ -627,6 +641,7 @@ export class Template extends BasicEffect implements Readonly<BasicEffect & Temp
 	readonly exclusiveMoves?: readonly ID[];
 	readonly comboMoves?: readonly ID[];
 	readonly essentialMove?: ID;
+	readonly randomSets?: readonly RandomTeamsTypes.Gen2RandomSet[];
 
 	constructor(data: AnyObject, ...moreData: (AnyObject | null)[]) {
 		super(data, ...moreData);
@@ -659,8 +674,8 @@ export class Template extends BasicEffect implements Readonly<BasicEffect & Temp
 		this.gender = data.gender || '';
 		this.genderRatio = data.genderRatio || (this.gender === 'M' ? {M: 1, F: 0} :
 			this.gender === 'F' ? {M: 0, F: 1} :
-				this.gender === 'N' ? {M: 0, F: 0} :
-					{M: 0.5, F: 0.5});
+			this.gender === 'N' ? {M: 0, F: 0} :
+			{M: 0.5, F: 0.5});
 		this.requiredItem = data.requiredItem || undefined;
 		this.requiredItems = this.requiredItems || (this.requiredItem ? [this.requiredItem] : undefined);
 		this.baseStats = data.baseStats || {hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0};
@@ -891,7 +906,7 @@ export class Move extends BasicEffect implements Readonly<BasicEffect & MoveData
 					this.gmaxPower = 80;
 				} else if (this.basePower >= 45) {
 					this.gmaxPower = 75;
-				} else  {
+				} else {
 					this.gmaxPower = 70;
 				}
 			} else {
@@ -907,7 +922,7 @@ export class Move extends BasicEffect implements Readonly<BasicEffect & MoveData
 					this.gmaxPower = 110;
 				} else if (this.basePower >= 45) {
 					this.gmaxPower = 100;
-				} else  {
+				} else {
 					this.gmaxPower = 90;
 				}
 			}
@@ -935,7 +950,7 @@ export class Move extends BasicEffect implements Readonly<BasicEffect & MoveData
 				this.zMovePower = 140;
 			} else if (basePower >= 60) {
 				this.zMovePower = 120;
-			} else  {
+			} else {
 				this.zMovePower = 100;
 			}
 		}

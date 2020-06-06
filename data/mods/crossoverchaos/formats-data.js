@@ -97,7 +97,7 @@ exports.BattleFormatsData = { //
     },
     dededemasked: {
 		  requiredItem: "Dedede Mask",
-        tier: "V2",
+        tier: "Uber",
 //         doublesTier: "DOU",
     },
     plagueknight: {
@@ -133,11 +133,11 @@ exports.BattleFormatsData = { //
 //         doublesTier: "DOU",
     },
     titandweevil: {
-        tier: "V2",
+        tier: "Uber",
 //         doublesTier: "DOU",
     },
     lordfredrik: {
-        tier: "V2",
+        tier: "Uber",
 //         doublesTier: "DOU",
     },
     stardream: {
@@ -380,11 +380,11 @@ exports.BattleFormatsData = { //
 //         doublesTier: "DOU",
     },
     chaoskin: {
-        tier: "V2",
+        tier: "Uber",
 //         doublesTier: "DOU",
     },
     chaoskinash: {
-        tier: "V2",
+        tier: "Uber",
 //         doublesTier: "DOU",
     },
     captainfalcon: {
@@ -451,12 +451,15 @@ exports.BattleFormatsData = { //
         tier: "V2",
 //         doublesTier: "DOU",
     },
+	 galeemultimate: {
+		  tier: "Uber",
+	 },
     isabelle: {
         tier: "V2",
 //         doublesTier: "DOU",
     },
     joker: {
-        tier: "V2",
+        tier: "Uber",
 //         doublesTier: "DOU",
     },
     riki: {
@@ -468,6 +471,10 @@ exports.BattleFormatsData = { //
 //         doublesTier: "DOU",
     },
     mario: {
+        tier: "V2",
+//         doublesTier: "DOU",
+    },
+    mariopaper: {
         tier: "V2",
 //         doublesTier: "DOU",
     },
@@ -548,8 +555,8 @@ exports.BattleFormatsData = { //
         tier: "V2",
 //         doublesTier: "DOU",
     },
-    mokou: {
-        tier: "V2",
+    fujiwaranomokou: {
+        tier: "Uber",
 //         doublesTier: "DOU",
     },
     link: {
@@ -569,7 +576,7 @@ exports.BattleFormatsData = { //
 //         doublesTier: "DOU",
     },
     landia: {
-        tier: "V2",
+        tier: "Uber",
 //         doublesTier: "DOU",
     },
     landiaone: {
@@ -692,16 +699,19 @@ exports.BattleFormatsData = { //
 		  tier: "V2",
 	 },
 	 flandrescarlet: {
-		  tier: "V2",
+		  tier: "Uber",
 	 },
 	 zeromus: {
 		  tier: "V2",
 	 },
 	 truezeromus: {
-		  tier: "V2",
+		  tier: "Uber",
 	 },
 	 dharkon: {
 		  tier: "V2",
+	 },
+	 dharkonultimate: {
+		  tier: "Uber",
 	 },
 	 deliciousfruit: {
 		  tier: "V2",
@@ -821,10 +831,10 @@ exports.BattleFormatsData = { //
 		  tier: "V2",
 	 },
 	 biolizard: {
-		  tier: "V2",
+		  tier: "Uber",
 	 },
 	 finalhazard: {
-		  tier: "V2",
+		  tier: "Uber",
 	 },
 	 whambamrock: {
 		  tier: "V2",
@@ -857,81 +867,203 @@ exports.BattleFormatsData = { //
 		  tier: "LC",
 	 },
 	 greyprincezote: {
-		  tier: "G8",
+		  tier: "V2",
 	 },
 	 ghast: {
-		  tier: "G8",
+		  tier: "V2",
 	 },
 	 undyne: {
-		  tier: "G8",
+		  tier: "V2",
 	 },
 	 undyneundying: {
-		  tier: "G8",
+		  tier: "V2",
 	 },
 	 rebel: {
-		  tier: "G8",
+		  tier: "V2",
 	 },
 	 drawcia: {
-		  tier: "G8",
+		  tier: "V2",
 	 },
 	 drawciasoul: {
 		  requiredItem: "Soul Orb",
 		  tier: "Uber",
 	 },
 	 whispywoods: {
-		  tier: "G8",
+		  tier: "V2",
 	 },
 	 whispywoodsrevenge: {
-		  tier: "G8",
+		  tier: "V2",
 	 },
-	 mewtwoshadow: {
-		  tier: "V1",
+	 melting: {
+		  tier: "V2",
 	 },
-	 mewtwoshadowburst: {
-		  tier: "V1",
+	 trouppleking: {
+		  tier: "V2",
 	 },
-	 marisakirisame: {
-		  tier: "V1",
+	 kyokokirigiri: {
+		  tier: "V2",
 	 },
-	 deathwing: {
-		  tier: "V1",
-	 },
-	 niko: {
-		  tier: "V1",
-	 },
-	 sayori: {
-		  tier: "V1",
-	 },
-	 sayorihanged: {
-		  tier: "V1",
-	 },
-	 demigodofrock: {
-		  tier: "V1",
-	 },
-	 sora: {
-		  tier: "V1",
-	 },
-	 bigrig: {
-		  tier: "V1",
-	 },
-	 bigrigforwards: {
-		  tier: "V1",
-	 },
-	 norn: {
-		  tier: "V1",
-	 },
-	 pepsiman: {
-		  tier: "V1",
-	 },
-	 heavy: {
-		  tier: "V1",
-	 },
-	 reimuhakurei: {
-		  tier: "V1",
-	 },
-	 crow: {
-		  tier: "V1",
-	 },
+	guardian: {
+		tier: "V2",
+	},
+	elderguardian: {
+		tier: "V2",
+	},
+	ridley: {
+		tier: "V2",
+	},
+	batter: {
+		tier: "V2",
+	},
+	batterbad: {
+		tier: "V2",
+	},
+	bigrig: {
+		tier: "V2",
+	},
+	bigrighyperspeed: {
+		tier: "V2",
+	},
+	shantae: {
+		tier: "V2",
+	},
+	shantaeelephant: {
+		requiredAbility: 'Belly Dances',
+		battleOnly: true,
+		tier: "V2",
+	},
+	shantaespider: {
+		requiredAbility: 'Belly Dances',
+		battleOnly: true,
+		tier: "V2",
+	},
+	shantaeharpy: {
+		requiredAbility: 'Belly Dances',
+		battleOnly: true,
+		tier: "V2",
+	},
+	kingprotea: {
+		tier: "AG",
+	},
+	reimuhakurei: {
+		tier: "V2",
+	},
+	orochi: {
+		tier: "V2",
+	},
+	orochitrue: {
+		tier: "Uber",
+	},
+	vortexpillar: {
+		tier: "V2",
+	},
+	stardustpillar: {
+		tier: "V2",
+	},
+	nebulapillar: {
+		tier: "V2",
+	},
+	solarpillar: {
+		tier: "V2",
+	},
+	chromedino: {
+		tier: "V2",
+	},
+	ori: {
+		tier: "V2",
+	},
+	orion: {
+		tier: "V2",
+	},
+	oriongrand: {
+		tier: "Uber",
+	},
+	orionartemis: {
+		tier: "V2",
+	},
+	matt: {
+		tier: "Uber",
+	},
+	pandora: {
+		tier: "V2",
+	},
+	pandoraamazon: {
+		tier: "V2",
+	},
+	tamamo: {
+		tier: "V2",
+	},
+	tamamoancestor: {
+		requiredMove: "Word of Dispel",
+		tier: "V2", /* tentatively */
+	},
+	medic: {
+		tier: "V2",
+	},
+	vi: {
+		tier: "V2",
+	},
+	kiarasesshouin: {
+		tier: "V2",
+	},
+	kiarasesshouinheavenshole: {
+		tier: "Uber",
+	},
+	kiarasesshouinbeastiiir: {
+		requiredItem: "Crown of the Beast",
+		tier: "Uber",
+	},
+	eggrobo: {
+		tier: "V2",
+	},
+	heavygunner: {
+		tier: "V2",
+	},
+	heavyshinobi: {
+		tier: "V2",
+	},
+	heavymagician: {
+		tier: "V2",
+	},
+	heavyrider: {
+		tier: "V2",
+	},
+	heavyking: {
+		tier: "V2",
+	},
+	heavykingphantom: {
+		requiredItem: "Phantom Ruby",
+		tier: "V2",
+	},
+	minanishizawa: {
+		tier: "V2",
+	},
+	wither: {
+		tier: "Uber",
+	},
+	starbreaker: {
+		tier: "V2",
+	},
+	starbreakergmax: {
+		isGigantamax: "G-Max Star Blasting Light",
+		tier: "Uber",
+	},
+	saffron: {
+		tier: "V2",
+	},
+	saffrongmax: {
+		isGigantamax: "G-Max Ragnarok",
+		tier: "Uber",
+	},
+	2b: {
+		tier: "V2",
+	},
+	monika: {
+		tier: "V2",
+	},
+	kikuri: {
+		tier: "V2",
+	},
 	 walle: {
 		  tier: "EX",
 	 },
@@ -959,7 +1091,7 @@ exports.BattleFormatsData = { //
 	 blackrabbit: {
 		  tier: "EX",
 	 },
-	 creati: {
+	 momoyaoyorozu: {
 		  tier: "EX",
 	 },
 	 shaihulud: {
@@ -991,24 +1123,38 @@ exports.BattleFormatsData = { //
 		  tier: "Uber",
 	 },
 	 beelzebub: {
+		requiredAbility: 'Devil\'s Disguise',
+		battleOnly: true,
 		  tier: "Uber",
 	 },
 	 satan: {
+		requiredAbility: 'Devil\'s Disguise',
+		battleOnly: true,
 		  tier: "Uber",
 	 },
 	 asmodeus: {
+		requiredAbility: 'Devil\'s Disguise',
+		battleOnly: true,
 		  tier: "Uber",
 	 },
 	 lucifer: {
+		requiredAbility: 'Devil\'s Disguise',
+		battleOnly: true,
 		  tier: "Uber",
 	 },
 	 leviathan: {
+		requiredAbility: 'Devil\'s Disguise',
+		battleOnly: true,
 		  tier: "Uber",
 	 },
 	 mammon: {
+		requiredAbility: 'Devil\'s Disguise',
+		battleOnly: true,
 		  tier: "Uber",
 	 },
 	 belphegor: {
+		requiredAbility: 'Devil\'s Disguise',
+		battleOnly: true,
 		  tier: "Uber",
 	 },
 	 kars: {
@@ -1016,7 +1162,7 @@ exports.BattleFormatsData = { //
 	 },
 	 karsultimate: {
 		  requiredItem: "Red Stone of Aja",
-		  tier: "EX",
+		  tier: "Uber",
 	 },
 	 shelob: {
 		  tier: "EX",
@@ -1025,7 +1171,7 @@ exports.BattleFormatsData = { //
 		  tier: "EX",
 	 },
 	 gigan: {
-		  tier: "EX",
+		  tier: "Uber",
 	 },
 	 anguirus: {
 		  tier: "EX",
@@ -1058,6 +1204,14 @@ exports.BattleFormatsData = { //
 		  requiredItem: "Gokunite U",
 		  tier: "EX",
 	 },
+	gokuoozaru: {
+		isGigantamax: "G-Max Oozaru Frenzy",
+		tier: "Uber",
+	},
+	gokusupersaiyan4: {
+		requiredItem: "Gokunite O",
+		tier: "EX",
+	},
 	 jonathanjoestar: {
 		  tier: "EX",
 	 },
@@ -1104,9 +1258,20 @@ exports.BattleFormatsData = { //
 	 moongirl: {
 		  tier: "EX",
 	 },
-	 elmerape: {
+/*
+absolutely FUCK devil dinosaur and everything he stands for, it's such a pain in the ass to figure out whether or not he "counts"
+	devildinosaur: {
+		tier: "Uber",
+	},
+*/
+	 elmer: {
 		  tier: "EX",
 	 },
+	everylivingmonkeyexactsrevenge: {
+		requiredAbility: 'Sublime Lent Accident',
+		battleOnly: true,
+		tier: "Uber",
+	},
 	 gregheffley: {
 		  tier: "EX",
 	 },
@@ -1119,4 +1284,335 @@ exports.BattleFormatsData = { //
 	 elphaba: {
 		  tier: "EX",
 	 },
+	trashman: {
+		tier: "EX",
+	},
+	pelones: {
+		tier: "EX",
+	},
+	tamatoa: {
+		tier: "EX",
+	},
+	vegeta: {
+		tier: "EX",
+	},
+	vegetasupersaiyan: {
+		requiredItem: "Vegetanite S",
+		tier: "EX",
+	},
+	vegetasupersaiyanblue: {
+		requiredItem: "Vegetanite B",
+		tier: "EX",
+	},
+	vegetamajin: {
+		requiredItem: "Vegetanite M",
+		tier: "EX",
+	},
+	vegetaoozaru: {
+		isGigantamax: "G-Max Oozaru Fury",
+		tier: "Uber",
+	},
+	vegetasupersaiyan4: {
+		requiredItem: "Vegetanite O",
+		tier: "EX",
+	},
+	shark: {
+		tier: "EX",
+	},
+	megamind: {
+		tier: "EX",
+	},
+	milesmorales: {
+		tier: "EX",
+	},
+	shrek: {
+		tier: "EX",
+	},
+	siren: {
+		tier: "EX",
+	},
+	calcifer: {
+		tier: "EX",
+	},
+	petshop: {
+		tier: "EX",
+	},
+	tama: {
+		tier: "EX",
+	},
+	theasset: {
+		tier: "EX",
+	},
+	motokoaoyama: {
+		tier: "EX",
+	},
+	normanbates: {
+		tier: "EX",
+	},
+	tomcat: {
+		tier: "EX",
+	},
+	mickeymouse: {
+		tier: "EX",
+	},
+	achilles: {
+		tier: "EX",
+	},
+	killerrabbit: {
+		tier: "EX",
+	},
+	superman: {
+		tier: "EX",
+	},
+	nicorobin: {
+		tier: "EX",
+	},
+	moonknight: {
+		tier: "EX",
+	},
+	twilightsparkle: {
+		tier: "EX",
+	},
+	twilightsparklemega: {
+		requiredItem: "Twilightsparknite",
+		tier: "EX",
+	},
+	josephjoestar: {
+		tier: "EX",
+	},
+	josephjoestarold: {
+		tier: "EX",
+	},
+	psylocke: {
+		tier: "EX",
+	},
+	toatahu: {
+		tier: "EX",
+	},
+	toatahushielding: {
+		requiredItem: "Mask Of Shielding",
+		tier: "EX",
+	},
+	toatahushielding2: {
+		requiredAbility: 'Force Barrier',
+		battleOnly: true,
+		tier: "EX",
+	},
+	toatahuxray: {
+		requiredItem: "Mask Of X-Ray Vision",
+		tier: "EX",
+	},
+	toatahuspeed: {
+		requiredItem: "Mask Of Speed",
+		tier: "EX",
+	},
+	toatahulevitation: {
+		requiredItem: "Mask Of Levitation",
+		tier: "EX",
+	},
+	toatahustrength: {
+		requiredItem: "Mask Of Strength",
+		tier: "Uber",
+	},
+	toatahuwaterbreathing: {
+		requiredItem: "Mask Of Water Breathing",
+		tier: "EX",
+	},
+	azula: {
+		tier: "EX",
+	},
+	santaclaus: {
+		tier: "EX",
+	},
+	rudolph: {
+		tier: "EX",
+	},
+	jackskellington: {
+		tier: "EX",
+	},
+	drdoofenshmirtz: {
+		tier: "EX",
+	},
+	kenshiro: {
+		tier: "EX",
+	},
+	sailormoon: {
+		tier: "EX",
+	},
+	sailormoonsuper: {
+		tier: "EX",
+	},
+	sailormooneternal: {
+		tier: "Uber",
+	},
+	neoqueenserenity: {
+		requiredItem: "Silver Crystal",
+		tier: "Uber",
+	},
+	froppy: {
+		tier: "EX",
+	},
+	mightguy: {
+		tier: "EX",
+	},
+	mightguyfirstgate: {
+		requiredAbility: 'Eight Gates',
+		battleOnly: true,
+		tier: "EX",
+	},
+	mightguysecondgate: {
+		requiredAbility: 'Eight Gates',
+		battleOnly: true,
+		tier: "EX",
+	},
+	mightguythirdgate: {
+		requiredAbility: 'Eight Gates',
+		battleOnly: true,
+		tier: "EX",
+	},
+	mightguyfourthgate: {
+		requiredAbility: 'Eight Gates',
+		battleOnly: true,
+		tier: "EX",
+	},
+	mightguyfifthgate: {
+		requiredAbility: 'Eight Gates',
+		battleOnly: true,
+		tier: "EX",
+	},
+	mightguysixthgate: {
+		requiredAbility: 'Eight Gates',
+		battleOnly: true,
+		tier: "EX",
+	},
+	mightguyseventhgate: {
+		requiredAbility: 'Eight Gates',
+		battleOnly: true,
+		tier: "EX",
+	},
+	mightguyeightgate: {
+		requiredAbility: 'Eight Gates',
+		battleOnly: true,
+		tier: "EX",
+	},
+	yoda: {
+		tier: "EX",
+	},
+	thechild: {
+		tier: "EX",
+	},
+	scp743: {
+		tier: "EX",
+	},
+	beatricerappacini: {
+		tier: "EX",
+	},
+	naofumiiwatani: {
+		tier: "EX",
+	},
+	orc: {
+		tier: "EX",
+	},
+	orceyeofgruumsh: {
+		tier: "EX",
+	},
+	diobrando: {
+		tier: "EX",
+	},
+	dio: {
+		tier: "Uber",
+	},
+	slimerimuru: {
+		tier: "EX",
+	},
+	humanrimuru: {
+		tier: "EX",
+	},
+	demonlordrimuru: {
+		tier: "Uber",
+	},
+	earthchan: {
+		tier: "EX",
+	},
+	alexanderthegreat: {
+		tier: "EX",
+	},
+	iskandar: {
+		tier: "EX",
+	},
+	tenmillionfireflies: {
+		tier: "EX",
+	},
+	maple: {
+		tier: "EX",
+	},
+	maplemega: {
+		requiredItem: "Maplenite",
+		tier: "Uber",
+	},
+	riofutaba: {
+		tier: "EX",
+	},
+	mrfreeze: {
+		tier: "EX",
+	},
+	hawks: {
+		tier: "EX",
+	},
+	bloom: {
+		tier: "EX",
+	},
+	bloombutterflix: {
+		tier: "EX",
+	},
+	bloomsirenix: {
+		tier: "EX",
+	},
+	hazers: {
+		tier: "EX",
+	},
+	tophbeifong: {
+		tier: "EX",
+	},
+	cell: {
+		tier: "EX",
+	},
+	semiperfectcell: {
+		tier: "EX",
+	},
+	perfectcell: {
+		tier: "EX",
+	},
+	theresealexandrite: {
+		tier: "EX",
+	},
+	blackknight: {
+		tier: "EX",
+	},
+	blackrockshooter: {
+		tier: "EX",
+	},
+	blackrockshooterinsane: {
+		tier: "Uber",
+	},
+	shizouheiwajima: {
+		tier: "EX",
+	},
+	overhaul: {
+		tier: "EX",
+	},
+	overhaulmega: {
+		requiredItem: "Overhaulite",
+		tier: "EX",
+	},
+	overhaulgmax: {
+		isGmax: "G-Max Life Drain",
+		tier: "Uber",
+	},
+	jotarokujo: {
+		tier: "Uber",
+	},
+	waldo: {
+		tier: "EX",
+	},
 };

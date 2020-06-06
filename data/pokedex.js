@@ -5907,6 +5907,7 @@ let BattlePokedex = {
 		weightkg: 0.8,
 		color: "Red",
 		eggGroups: ["Fairy", "Amorphous"],
+		inheritsFrom: "castform",
 	},
 	castformrainy: {
 		num: 351,
@@ -5920,6 +5921,7 @@ let BattlePokedex = {
 		weightkg: 0.8,
 		color: "Blue",
 		eggGroups: ["Fairy", "Amorphous"],
+		inheritsFrom: "castform",
 	},
 	castformsnowy: {
 		num: 351,
@@ -5933,6 +5935,7 @@ let BattlePokedex = {
 		weightkg: 0.8,
 		color: "White",
 		eggGroups: ["Fairy", "Amorphous"],
+		inheritsFrom: "castform",
 	},
 	kecleon: {
 		num: 352,
@@ -7083,6 +7086,7 @@ let BattlePokedex = {
 		prevo: "cherubi",
 		evoLevel: 25,
 		eggGroups: ["Fairy", "Grass"],
+		inheritsFrom: "cherrim",
 	},
 	shellos: {
 		num: 422,
@@ -10721,6 +10725,7 @@ let BattlePokedex = {
 		weightkg: 6.5,
 		color: "White",
 		eggGroups: ["Undiscovered"],
+		inheritsFrom: "meloetta",
 	},
 	genesect: {
 		num: 649,
@@ -10935,6 +10940,7 @@ let BattlePokedex = {
 		weightkg: 40,
 		color: "Blue",
 		eggGroups: ["Undiscovered"],
+		inheritsFrom: "greninja",
 	},
 	bunnelby: {
 		num: 659,
@@ -11321,6 +11327,7 @@ let BattlePokedex = {
 		evoType: "useItem",
 		evoItem: "Dusk Stone",
 		eggGroups: ["Mineral"],
+		inheritsFrom: "aegislash",
 	},
 	spritzee: {
 		num: 682,
@@ -12451,6 +12458,7 @@ let BattlePokedex = {
 		weightkg: 78.6,
 		color: "Blue",
 		eggGroups: ["Water 2"],
+		inheritsFrom: "wishiwashi",
 	},
 	mareanie: {
 		num: 747,
@@ -13155,6 +13163,7 @@ let BattlePokedex = {
 		weightkg: 40,
 		color: "Brown",
 		eggGroups: ["Mineral"],
+		inheritsFrom: "minior",
 	},
 	komala: {
 		num: 775,
@@ -14326,6 +14335,7 @@ let BattlePokedex = {
 		weightkg: 18,
 		color: "Blue",
 		eggGroups: ["Water 1", "Flying"],
+		inheritsFrom: "cramorant",
 	},
 	cramorantgorging: {
 		num: 845,
@@ -14339,6 +14349,7 @@ let BattlePokedex = {
 		weightkg: 18,
 		color: "Blue",
 		eggGroups: ["Water 1", "Flying"],
+		inheritsFrom: "cramorant",
 	},
 	arrokuda: {
 		num: 846,
@@ -14406,6 +14417,7 @@ let BattlePokedex = {
 		prevo: "toxel",
 		evoLevel: 30,
 		eggGroups: ["Human-Like"],
+		otherFormes: ["toxtricitylowkeygmax"],
 	},
 	toxtricitygmax: {
 		num: 849,
@@ -14415,12 +14427,25 @@ let BattlePokedex = {
 		types: ["Electric", "Poison"],
 		baseStats: {hp: 75, atk: 98, def: 70, spa: 114, spd: 70, spe: 75},
 		abilities: {0: "Punk Rock", 1: "Plus", H: "Technician"},
-		// TODO
 		heightm: 0,
 		weightkg: 0,
 		color: "Purple",
 		eggGroups: ["Human-Like"],
 		inheritsFrom: "toxtricity",
+	},
+	toxtricitylowkeygmax: {
+		num: 849,
+		species: "Toxtricity-Low-Key-Gmax",
+		baseSpecies: "Toxtricity-Low-Key",
+		forme: "Gmax",
+		types: ["Electric", "Poison"],
+		baseStats: {hp: 75, atk: 98, def: 70, spa: 114, spd: 70, spe: 75},
+		abilities: {0: "Punk Rock", 1: "Minus", H: "Technician"},
+		heightm: 0,
+		weightkg: 0,
+		color: "Purple",
+		eggGroups: ["Human-Like"],
+		inheritsFrom: "toxtricitylowkey",
 	},
 	sizzlipede: {
 		num: 850,
@@ -14492,6 +14517,7 @@ let BattlePokedex = {
 	sinistea: {
 		num: 854,
 		species: "Sinistea",
+		baseForme: "Phony",
 		types: ["Ghost"],
 		gender: "N",
 		baseStats: {hp: 40, atk: 45, def: 45, spa: 74, spd: 54, spe: 50},
@@ -14501,11 +14527,28 @@ let BattlePokedex = {
 		color: "Purple",
 		evos: ["polteageist"],
 		eggGroups: ["Mineral", "Amorphous"],
-		otherForms: ["sinisteachipped"],
+		otherFormes: ["sinisteaantique"],
+	},
+	sinisteaantique: {
+		num: 854,
+		species: "Sinistea-Antique",
+		baseSpecies: "Sinistea",
+		forme: "Antique",
+		types: ["Ghost"],
+		gender: "N",
+		baseStats: {hp: 40, atk: 45, def: 45, spa: 74, spd: 54, spe: 50},
+		abilities: {0: "Weak Armor", H: "Cursed Body"},
+		heightm: 0.1,
+		weightkg: 0.2,
+		color: "Purple",
+		evos: ["polteageistantique"],
+		eggGroups: ["Undiscovered"],
+		inheritsFrom: "sinistea",
 	},
 	polteageist: {
 		num: 855,
 		species: "Polteageist",
+		baseForme: "Phony",
 		types: ["Ghost"],
 		gender: "N",
 		baseStats: {hp: 60, atk: 65, def: 65, spa: 134, spd: 114, spe: 70},
@@ -14517,7 +14560,25 @@ let BattlePokedex = {
 		evoType: "useItem",
 		evoItem: "Cracked Pot",
 		eggGroups: ["Mineral", "Amorphous"],
-		otherForms: ["polteageistchipped"],
+		otherFormes: ["polteageistantique"],
+	},
+	polteageistantique: {
+		num: 855,
+		species: "Polteageist-Antique",
+		baseSpecies: "Polteageist",
+		forme: "Antique",
+		types: ["Ghost"],
+		gender: "N",
+		baseStats: {hp: 60, atk: 65, def: 65, spa: 134, spd: 114, spe: 70},
+		abilities: {0: "Weak Armor", H: "Cursed Body"},
+		heightm: 0.2,
+		weightkg: 0.4,
+		color: "Purple",
+		prevo: "sinisteaantique",
+		evoType: "useItem",
+		evoItem: "Chipped Pot",
+		eggGroups: ["Undiscovered"],
+		inheritsFrom: "polteageist",
 	},
 	hatenna: {
 		num: 856,
@@ -14735,6 +14796,7 @@ let BattlePokedex = {
 	alcremie: {
 		num: 869,
 		species: "Alcremie",
+		baseForme: "Vanilla Cream",
 		types: ["Fairy"],
 		gender: "F",
 		baseStats: {hp: 65, atk: 60, def: 75, spa: 110, spd: 121, spe: 64},
@@ -14747,7 +14809,7 @@ let BattlePokedex = {
 		evoCondition: "spin while holding a Sweet",
 		eggGroups: ["Fairy", "Amorphous"],
 		otherFormes: ["alcremiegmax"],
-		otherForms: ["alcremierubycream", "alcremiematcha", "alcremiemint", "alcremielemon", "alcremiesalted", "alcremierubyswirl", "alcremiecaramel", "alcremierainbow"],
+		otherForms: ["alcremierubycream", "alcremiematchacream", "alcremiemintcream", "alcremielemoncream", "alcremiesaltedcream", "alcremierubyswirl", "alcremiecaramelswirl", "alcremierainbowswirl"],
 	},
 	alcremiegmax: {
 		num: 869,
@@ -14848,6 +14910,7 @@ let BattlePokedex = {
 		weightkg: 89,
 		color: "Blue",
 		eggGroups: ["Water 1", "Field"],
+		inheritsFrom: "eiscue",
 	},
 	indeedee: {
 		num: 876,
@@ -14901,6 +14964,7 @@ let BattlePokedex = {
 		weightkg: 3,
 		color: "Yellow",
 		eggGroups: ["Field", "Fairy"],
+		inheritsFrom: "morpeko",
 	},
 	cufant: {
 		num: 878,

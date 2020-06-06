@@ -50,6 +50,7 @@ exports.BattleScripts = {
 		this.modData('Pokedex', 'lapras').abilities['S'] = 'Arctic Armor';
 		this.modData('Pokedex', 'rotomfrost').abilities['S'] = 'Arctic Armor';
 		this.modData('Pokedex', 'kyurem').abilities['S'] = 'Arctic Armor';
+		this.modData('Pokedex', 'eiscue').abilities['S'] = 'Arctic Armor';
 		
 		// Heavy Expert: Onix, Steelix, Rhyhorn, Rhydon, Rhyperior, Aron, Lairon, Aggron			
 		this.modData('Pokedex', 'onix').abilities['S'] = 'Heavy Expert';
@@ -60,6 +61,7 @@ exports.BattleScripts = {
 		this.modData('Pokedex', 'aron').abilities['S'] = 'Heavy Expert';
 		this.modData('Pokedex', 'lairon').abilities['S'] = 'Heavy Expert';
 		this.modData('Pokedex', 'aggron').abilities['S'] = 'Heavy Expert';
+		this.modData('Pokedex', 'copperajah').abilities['S'] = 'Heavy Expert';
 		
 		// Ocean's Blessing: Lumineon, Alomomola, Mantine, Manaphy, Phione
 		this.modData('Pokedex', 'lumineon').abilities['S'] = 'Ocean\'s Blessing';
@@ -75,6 +77,9 @@ exports.BattleScripts = {
 		this.modData('Pokedex', 'scrafty').abilities['S'] = 'Spooky Encounter';
 		this.modData('Pokedex', 'pinsir').abilities['S'] = 'Spooky Encounter';
 		this.modData('Pokedex', 'spiritomb').abilities['S'] = 'Spooky Encounter';
+		this.modData('Pokedex', 'impidimp').abilities['S'] = 'Spooky Encounter';
+		this.modData('Pokedex', 'morgrem').abilities['S'] = 'Spooky Encounter';
+		this.modData('Pokedex', 'grimmsnarl').abilities['S'] = 'Spooky Encounter';
 		
 		// Hand Off: Aipom, Ambipom,
 		this.modData('Pokedex', 'aipom').abilities['S'] = 'Hand Off';
@@ -89,6 +94,7 @@ exports.BattleScripts = {
 		this.modData('Pokedex', 'simipour').abilities['S'] = 'Torrential Will';
 		this.modData('Pokedex', 'greninja').abilities['S'] = 'Torrential Will';
 		this.modData('Pokedex', 'primarina').abilities['S'] = 'Torrential Will';
+		this.modData('Pokedex', 'inteleon').abilities['S'] = 'Torrential Will';
 		
 		// Overgrowing Will: Venusaur, Meganium, Sceptile, Torterra, Serperior, Simisage, Chesnaught, Decidueye
 		this.modData('Pokedex', 'venusaur').abilities['S'] = 'Overgrowing Will';
@@ -99,6 +105,7 @@ exports.BattleScripts = {
 		this.modData('Pokedex', 'simisage').abilities['S'] = 'Overgrowing Will';
 		this.modData('Pokedex', 'chesnaught').abilities['S'] = 'Overgrowing Will';
 		this.modData('Pokedex', 'decidueye').abilities['S'] = 'Overgrowing Will';
+		this.modData('Pokedex', 'rillaboom').abilities['S'] = 'Overgrowing Will';
 		
 		// Blazing Will: Charizard, Typhlosion, Blaziken, Infernape, Emboar, Simisear, Delphox, Incineroar
 		this.modData('Pokedex', 'charizard').abilities['S'] = 'Blazing Will';
@@ -109,6 +116,7 @@ exports.BattleScripts = {
 		this.modData('Pokedex', 'emboar').abilities['S'] = 'Blazing Will';
 		this.modData('Pokedex', 'delphox').abilities['S'] = 'Blazing Will';
 		this.modData('Pokedex', 'incineroar').abilities['S'] = 'Blazing Will';
+		this.modData('Pokedex', 'cinderace').abilities['S'] = 'Blazing Will';
 	
 		// Bomb Shelter: Natu, Xatu, Sigilyph, Chespin, Quilladin, Jangmo-o, Hakamo-o, Kommo-o, Octillery
 		this.modData('Pokedex', 'natu').abilities['S'] = 'Bomb Shelter';
@@ -129,7 +137,7 @@ exports.BattleScripts = {
 		this.modData('Pokedex', 'togetic').abilities['S'] = 'Guardian Angel';
 		this.modData('Pokedex', 'togekiss').abilities['S'] = 'Guardian Angel';
 		
-		// Retro Racer: Tauros, Dodrio, Aerodactyl
+		//Retro Racer: Tauros, Dodrio, Aerodactyl
 		this.modData('Pokedex', 'tauros').abilities['S'] = 'Retro Racer';
 		this.modData('Pokedex', 'dodrio').abilities['S'] = 'Retro Racer';
 		this.modData('Pokedex', 'aerodactyl').abilities['S'] = 'Retro Racer';
@@ -183,6 +191,9 @@ exports.BattleScripts = {
 		this.modData('Pokedex', 'mareep').abilities['S'] = 'Miracle Fluff';
 		this.modData('Pokedex', 'flaaffy').abilities['S'] = 'Miracle Fluff';
 		this.modData('Pokedex', 'ampharos').abilities['S'] = 'Miracle Fluff';
+		this.modData('Pokedex', 'eldegoss').abilities['S'] = 'Miracle Fluff';
+		this.modData('Pokedex', 'wooloo').abilities['S'] = 'Miracle Fluff';
+		this.modData('Pokedex', 'dubwool').abilities['S'] = 'Miracle Fluff';
 		
 		// Knighthood: Hitmonchan, Hitmontop, Hitmonlee, Tyrogue, Throh, Sawk, Riolu
 		this.modData('Pokedex', 'hitmonchan').abilities['S'] = 'Knighthood';
@@ -192,6 +203,9 @@ exports.BattleScripts = {
 		this.modData('Pokedex', 'tyrogue').abilities['S'] = 'Knighthood';
 		this.modData('Pokedex', 'throh').abilities['S'] = 'Knighthood';
 		this.modData('Pokedex', 'sawk').abilities['S'] = 'Knighthood';
+		this.modData('Pokedex', 'sirfetchd').abilities['S'] = 'Knighthood';
+		this.modData('Pokedex', 'corvisquire').abilities['S'] = 'Knighthood';
+		this.modData('Pokedex', 'corviknight').abilities['S'] = 'Knighthood';
 		
 		// Hibernation: Teddiursa, Ursaring, Sentret, Furret, Sandshrew-Alola, Sandslash-Alola, Swinub, Piloswine
 		this.modData('Pokedex', 'teddiursa').abilities['S'] = 'Hibernation';
@@ -202,6 +216,8 @@ exports.BattleScripts = {
 		this.modData('Pokedex', 'sandslashalola').abilities['S'] = 'Hibernation';
 		this.modData('Pokedex', 'swinub').abilities['S'] = 'Hibernation';
 		this.modData('Pokedex', 'piloswine').abilities['S'] = 'Hibernation';
+		this.modData('Pokedex', 'skwovet').abilities['S'] = 'Hibernation';
+		this.modData('Pokedex', 'greedent').abilities['S'] = 'Hibernation';
 		
 		// Sinister Escort: Hydreigon, Misdreavus, Mismagius
 		this.modData('Pokedex', 'hydreigon').abilities['S'] = 'Sinister Escort';
@@ -229,24 +245,24 @@ exports.BattleScripts = {
 		// this.modData('Pokedex', 'clobbopus').abilities['S'] = 'Eviofite';
 		
 		// Deceptive Endurance: Ledyba, Ledian, Silcoon, Cascoon, Dustox
-		// this.modData('Pokedex', 'ledyba').abilities['S'] = 'Deceptive Endurance';
-		// this.modData('Pokedex', 'ledian').abilities['S'] = 'Deceptive Endurance';
-		// this.modData('Pokedex', 'silcoon').abilities['S'] = 'Deceptive Endurance';
-		// this.modData('Pokedex', 'cascoon').abilities['S'] = 'Deceptive Endurance';
-		// this.modData('Pokedex', 'dustox').abilities['S'] = 'Deceptive Endurance';
+		 this.modData('Pokedex', 'ledyba').abilities['S'] = 'Deceptive Endurance';
+		 this.modData('Pokedex', 'ledian').abilities['S'] = 'Deceptive Endurance';
+		 this.modData('Pokedex', 'silcoon').abilities['S'] = 'Deceptive Endurance';
+		 this.modData('Pokedex', 'cascoon').abilities['S'] = 'Deceptive Endurance';
+		 this.modData('Pokedex', 'dustox').abilities['S'] = 'Deceptive Endurance';
 		
 		//Pecking Order: Pidgey, Pidgeotto, Pidgeot, Pidove, Tranquill, Unfezant, Vullaby, Mandibuzz, Fletchling, Fletchinder, Talonflame
-		// this.modData('Pokedex', 'pidgey').abilities['S'] = 'Pecking Order';
-		// this.modData('Pokedex', 'pidgeotto').abilities['S'] = 'Pecking Order';
-		// this.modData('Pokedex', 'pidgeot').abilities['S'] = 'Pecking Order';
-		// this.modData('Pokedex', 'pidove').abilities['S'] = 'Pecking Order';
-		// this.modData('Pokedex', 'tranquill').abilities['S'] = 'Pecking Order';
-		// this.modData('Pokedex', 'unfezant').abilities['S'] = 'Pecking Order';
-		// this.modData('Pokedex', 'vullaby').abilities['S'] = 'Pecking Order';
-		// this.modData('Pokedex', 'mandibuzz').abilities['S'] = 'Pecking Order';
-		// this.modData('Pokedex', 'fletchling').abilities['S'] = 'Pecking Order';
-		// this.modData('Pokedex', 'fletchinder').abilities['S'] = 'Pecking Order';
-		// this.modData('Pokedex', 'talonflame').abilities['S'] = 'Pecking Order';
+		 this.modData('Pokedex', 'pidgey').abilities['S'] = 'Pecking Order';
+		 this.modData('Pokedex', 'pidgeotto').abilities['S'] = 'Pecking Order';
+		 this.modData('Pokedex', 'pidgeot').abilities['S'] = 'Pecking Order';
+		 this.modData('Pokedex', 'pidove').abilities['S'] = 'Pecking Order';
+		 this.modData('Pokedex', 'tranquill').abilities['S'] = 'Pecking Order';
+		 this.modData('Pokedex', 'unfezant').abilities['S'] = 'Pecking Order';
+		 this.modData('Pokedex', 'vullaby').abilities['S'] = 'Pecking Order';
+		 this.modData('Pokedex', 'mandibuzz').abilities['S'] = 'Pecking Order';
+		 this.modData('Pokedex', 'fletchling').abilities['S'] = 'Pecking Order';
+		 this.modData('Pokedex', 'fletchinder').abilities['S'] = 'Pecking Order';
+		 this.modData('Pokedex', 'talonflame').abilities['S'] = 'Pecking Order';
 		
 		//Instinctive Adjustment: Sneasel
 		// this.modData('Pokedex', 'sneasel').abilities['S'] = 'Instinctive Adjustment';
@@ -271,22 +287,22 @@ exports.BattleScripts = {
 		// this.modData('Pokedex', 'wishiwashi').abilities['S'] = 'Surround';
 		
 		//Surface to Air: Geodude, Graveler, Golem, Larvitar, Pupitar, Silicobra, Sandaconda
-		// this.modData('Pokedex', 'geodude').abilities['S'] = 'Surface to Air';
-		// this.modData('Pokedex', 'graveler').abilities['S'] = 'Surface to Air';
-		// this.modData('Pokedex', 'golem').abilities['S'] = 'Surface to Air';
-		// this.modData('Pokedex', 'larvitar').abilities['S'] = 'Surface to Air';
-		// this.modData('Pokedex', 'pupitar').abilities['S'] = 'Surface to Air';
-		// this.modData('Pokedex', 'silicobra').abilities['S'] = 'Surface to Air';
-		// this.modData('Pokedex', 'sandaconda').abilities['S'] = 'Surface to Air';
+		 this.modData('Pokedex', 'geodude').abilities['S'] = 'Surface to Air';
+		 this.modData('Pokedex', 'graveler').abilities['S'] = 'Surface to Air';
+		 this.modData('Pokedex', 'golem').abilities['S'] = 'Surface to Air';
+		 this.modData('Pokedex', 'larvitar').abilities['S'] = 'Surface to Air';
+		 this.modData('Pokedex', 'pupitar').abilities['S'] = 'Surface to Air';
+		 this.modData('Pokedex', 'silicobra').abilities['S'] = 'Surface to Air';
+		 this.modData('Pokedex', 'sandaconda').abilities['S'] = 'Surface to Air';
 		
 		//Combo Attacker: Shellder, Cloyster, Mincinno, Cincinno, Pikipek, Trumbeak, Toucannon
-		// this.modData('Pokedex', 'shellder').abilities['S'] = 'Combo Attacker';
-		// this.modData('Pokedex', 'cloyster').abilities['S'] = 'Combo Attacker';
-		// this.modData('Pokedex', 'mincinno').abilities['S'] = 'Combo Attacker';
-		// this.modData('Pokedex', 'cincinno').abilities['S'] = 'Combo Attacker';
-		// this.modData('Pokedex', 'pikipek').abilities['S'] = 'Combo Attacker';
-		// this.modData('Pokedex', 'trumbeak').abilities['S'] = 'Combo Attacker';
-		// this.modData('Pokedex', 'toucannon').abilities['S'] = 'Combo Attacker';
+		 this.modData('Pokedex', 'shellder').abilities['S'] = 'Combo Attacker';
+		 this.modData('Pokedex', 'cloyster').abilities['S'] = 'Combo Attacker';
+		 this.modData('Pokedex', 'minccino').abilities['S'] = 'Combo Attacker';
+		 this.modData('Pokedex', 'cinccino').abilities['S'] = 'Combo Attacker';
+		 this.modData('Pokedex', 'pikipek').abilities['S'] = 'Combo Attacker';
+		 this.modData('Pokedex', 'trumbeak').abilities['S'] = 'Combo Attacker';
+		 this.modData('Pokedex', 'toucannon').abilities['S'] = 'Combo Attacker';
 		
 		//Fertilizer: Miltank, Mudbray, Mudsdale, Bouffalant, Comfey
 		// this.modData('Pokedex', 'miltank').abilities['S'] = 'Fertilizer';
@@ -299,20 +315,20 @@ exports.BattleScripts = {
 		// this.modData('Pokedex', 'cresselia').abilities['S'] = 'Lunar Veil';
 		
 		//Electro Magnet: Magnemite, Magneton, Magnezone, Nosepass, Probopass, Geodude-Alola, Graveler-Alola, Golem-Alola
-		// this.modData('Pokedex', 'magnemite').abilities['S'] = 'Electro Magnet';
-		// this.modData('Pokedex', 'magneton').abilities['S'] = 'Electro Magnet';
-		// this.modData('Pokedex', 'magnezone').abilities['S'] = 'Electro Magnet';
-		// this.modData('Pokedex', 'nosepass').abilities['S'] = 'Electro Magnet';
-		// this.modData('Pokedex', 'probopass').abilities['S'] = 'Electro Magnet';
-		// this.modData('Pokedex', 'geodudealola').abilities['S'] = 'Electro Magnet';
-		// this.modData('Pokedex', 'graveleralola').abilities['S'] = 'Electro Magnet';
-		// this.modData('Pokedex', 'golemalola').abilities['S'] = 'Electro Magnet';
+		 this.modData('Pokedex', 'magnemite').abilities['S'] = 'Electro Magnet';
+		 this.modData('Pokedex', 'magneton').abilities['S'] = 'Electro Magnet';
+		 this.modData('Pokedex', 'magnezone').abilities['S'] = 'Electro Magnet';
+		 this.modData('Pokedex', 'nosepass').abilities['S'] = 'Electro Magnet';
+		 this.modData('Pokedex', 'probopass').abilities['S'] = 'Electro Magnet';
+		 this.modData('Pokedex', 'geodudealola').abilities['S'] = 'Electro Magnet';
+		 this.modData('Pokedex', 'graveleralola').abilities['S'] = 'Electro Magnet';
+		 this.modData('Pokedex', 'golemalola').abilities['S'] = 'Electro Magnet';
 		
 		//Legendary Presence: Moltres, Articuno, Zapdos, Mewtwo
-		// this.modData('Pokedex', 'moltres').abilities['S'] = 'Legendary Presence';
-		// this.modData('Pokedex', 'articuno').abilities['S'] = 'Legendary Presence';
-		// this.modData('Pokedex', 'zapdos').abilities['S'] = 'Legendary Presence';
-		// this.modData('Pokedex', 'mewtwo').abilities['S'] = 'Legendary Presence';
+		 this.modData('Pokedex', 'moltres').abilities['S'] = 'Legendary Presence';
+		 this.modData('Pokedex', 'articuno').abilities['S'] = 'Legendary Presence';
+		 this.modData('Pokedex', 'zapdos').abilities['S'] = 'Legendary Presence';
+		 this.modData('Pokedex', 'mewtwo').abilities['S'] = 'Legendary Presence';
 		
 		//Ancestry: Horsea, Drampa
 		// this.modData('Pokedex', 'horsea').abilities['S'] = 'Ancestry';
@@ -321,6 +337,37 @@ exports.BattleScripts = {
 		//Phoneme Fantasy: Ditto, Smeargle
 		// this.modData('Pokedex', 'ditto').abilities['S'] = 'Phoneme Fantasy';
 		// this.modData('Pokedex', 'smeargle').abilities['S'] = 'Phoneme Fantasy';
+		
+		//Antivirus: Porygon, Porygon2, Porygon-Z, Rotom, Rotom-Wash, Rotom-Fan, Rotom-Heat, Rotom-Mow
+		// this.modData('Pokedex', 'porygon').abilities['S'] = 'Antivirus';
+		// this.modData('Pokedex', 'porygon2').abilities['S'] = 'Antivirus';
+		// this.modData('Pokedex', 'porygonz').abilities['S'] = 'Antivirus';
+		// this.modData('Pokedex', 'rotom').abilities['S'] = 'Antivirus';
+		// this.modData('Pokedex', 'rotomwash').abilities['S'] = 'Antivirus';
+		// this.modData('Pokedex', 'rotomfan').abilities['S'] = 'Antivirus';
+		// this.modData('Pokedex', 'rotomheat').abilities['S'] = 'Antivirus';
+		// this.modData('Pokedex', 'rotommow').abilities['S'] = 'Antivirus';
+		
+		// Fountain of Youth: Happiny, Cleffa, Igglybuff, Wynaut, Toxel
+		// this.modData('Pokedex', 'happiny').abilities['S'] = 'Fountain of Youth';
+		// this.modData('Pokedex', 'cleffa').abilities['S'] = 'Fountain of Youth';
+		// this.modData('Pokedex', 'igglybuff').abilities['S'] = 'Fountain of Youth';
+		// this.modData('Pokedex', 'wynaut').abilities['S'] = 'Fountain of Youth';
+		// this.modData('Pokedex', 'toxel').abilities['S'] = 'Fountain of Youth';
+		
+		// Safe Space: Audino, Jigglypuff, Wigglytuff, Bonsly, Sudowoodo, Glameow, Purugly, Hattena, Hattrem, Hatterene, Indeedee (Male and Female)
+		// this.modData('Pokedex', 'audino').abilities['S'] = 'Safe Space';
+		// this.modData('Pokedex', 'jigglypuff').abilities['S'] = 'Safe Space';
+		// this.modData('Pokedex', 'bonsly').abilities['S'] = 'Safe Space';
+		// this.modData('Pokedex', 'sudowoodo').abilities['S'] = 'Safe Space';
+		// this.modData('Pokedex', 'wigglytuff').abilities['S'] = 'Safe Space';
+		// this.modData('Pokedex', 'glameow').abilities['S'] = 'Safe Space';
+		// this.modData('Pokedex', 'purgly').abilities['S'] = 'Safe Space';
+		// this.modData('Pokedex', 'hattena').abilities['S'] = 'Safe Space';
+		// this.modData('Pokedex', 'hattrem').abilities['S'] = 'Safe Space';
+		// this.modData('Pokedex', 'hatterene').abilities['S'] = 'Safe Space';
+		// this.modData('Pokedex', 'indeedee').abilities['S'] = 'Safe Space';
+		// this.modData('Pokedex', 'indeedeef').abilities['S'] = 'Safe Space';
 
 
 	}
