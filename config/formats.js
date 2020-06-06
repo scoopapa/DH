@@ -948,6 +948,16 @@ exports.Formats = [
 				pokemon.addVolatile('twisted');
 		}
 	},
+
+	{
+        name: "[Gen 8 Pet Mod] ViAbilities",
+        threads: [
+            `&bullet; <a href="https://www.smogon.com/forums/threads/viabilities-slate-2-ability-submissions-stage.3664169/">ViAbilities</a>`,
+        ],
+ 
+        mod: 'viabilities',
+        ruleset: ['Standard', 'OHKO Clause', 'Evasion Moves Clause', 'Species Clause', 'Dynamax Clause', 'Sleep Clause Mod']
+	},
 	// Old Pet Mods ///////////////////////////////////////////////////////////////////
 	{
 		section: "Old Pet Mods",
