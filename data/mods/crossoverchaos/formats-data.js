@@ -1064,6 +1064,18 @@ exports.BattleFormatsData = { //
 	kikuri: {
 		tier: "V2",
 	},
+	sora: {
+		tier: "V2",
+	},
+	soramilitary: {
+		tier: "V2",
+	},
+	paleking: {
+		tier: "Uber",
+	},
+	lucca: {
+		tier: "V2",
+	},
 	 walle: {
 		  tier: "EX",
 	 },
