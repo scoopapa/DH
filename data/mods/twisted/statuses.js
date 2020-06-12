@@ -293,7 +293,7 @@ export const BattleStatuses = {
 				maxpp: 1,
 				target: move.target,
 				disabled: false,
-				used: false,
+				used: false
             };
             
             pokemon.moveSlots.push(twistMove);
