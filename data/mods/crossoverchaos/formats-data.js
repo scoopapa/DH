@@ -1055,7 +1055,7 @@ exports.BattleFormatsData = { //
 		isGigantamax: "G-Max Ragnarok",
 		tier: "Uber",
 	},
-	2b: {
+	yorhano2typeb: {
 		tier: "V2",
 	},
 	monika: {

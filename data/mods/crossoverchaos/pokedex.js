@@ -3377,9 +3377,9 @@ kyokokirigiri: {
 		heightm: 16,
 		weightkg: 0,
 	},
-	2b: {
+	yorhano2typeb: {
 		num: 6000186,
-		species: "2B", /* NieR: Automata */
+		species: "YoRHa No.2 Type B", /* NieR: Automata */
 		types: ["Steel", "Fighting"],
 		gender: "F",
 		baseStats: {hp: 90, atk: 90, def: 90, spa: 90, spd: 90, spe: 140},

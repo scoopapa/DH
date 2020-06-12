@@ -11647,7 +11647,7 @@ TMs/Tutors sorted by last generation they carry that status (for kirby, nero, et
 		stoneedge: ["8L1"],
 		rocktomb: ["8L1"],
 	}},
-	2b: {learnset: {
+	yorhano2typeb: {learnset: {
 		sacredsword: ["8L1"],
 		bodypress: ["8L1"],
 		hammerarm: ["8L1"],
