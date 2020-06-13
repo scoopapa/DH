@@ -628,7 +628,7 @@ exports.Formats = [
 					'Endless Battle Clause', 'Team Preview', 'HP Percentage Mod', 'Cancel Mod', 
 					'Species Clause', '+Past'],
 		banlist: ['Groudon-Primal', 'Eternatus-Eternamax', 'Arena Trap', 'Huge Power', 'Illusion', 'Innards Out', 'Magnet Pull', 
-					'Moody', 'Parental Bond', 'Protean', 'Psychic Surge', 'Pure Power', 'Shadow Tag', 
+					'Moody', 'Parental Bond', 'Protean', 'Octolock', 'Pure Power', 'Shadow Tag',
 					'Stakeout', 'Water Bubble', 'Wonder Guard', 'Gengarite', 'Chatter', 'Comatose + Sleep Talk',
 					'Libero', 'Neutralizing Gas', 'Gorilla Tactics', 'Contrary'],
 		onChangeSet(set) {
@@ -660,19 +660,11 @@ exports.Formats = [
 		},
 		onValidateTeam(team, format){
 			/**@type {{[k: string]: true}} */
-			let abilityTable = [];
 			for (const set of team) {
-				let template = this.dex.getTemplate(set.species);
-				if (template.species == 'Zacian-Crowned' && template.ability != 'Intrepid Sword')
+				if (set.species == 'Zacian-Crowned' && set.ability !== 'Intrepid Sword')
 					 return ["Zacian-Crowned can only have Intrepid Sword as its ability."]
-				if (template.species != 'Zacian-Crowned' && template.ability == 'Intrepid Sword')
+				if ((set.species !== 'Zacian-Crowned' && set.species !== 'Zacian') && set.ability === 'Intrepid Sword')
 					 return ["Only Zacian-Crowned can have Intrepid Sword as its ability."]
-				if (!abilityTable.includes( set.ability )){
-					abilityTable.push( set.ability );
-				}
-				else {
-					return [`You have more than one pokemon with the ability ${set.ability}.`];
-				}
 			}
 		},
 	},
@@ -956,8 +948,9 @@ exports.Formats = [
 				pokemon.addVolatile('twisted');
 		}
 	},
+
 	{
-		name: "[Gen 1] Rose Red / Iris Blue",
+	  name: "[Gen 1] Rose Red / Iris Blue",
 		desc: `A balance mod for Gen 1 that aims to make every fully-evolved Pokémon a viable pick.`,
 		threads: [
 			`<a href="https://www.smogon.com/forums/threads/gen-1-rose-red-iris-blue.3652237/">Rose Red / Iris Blue</a>`,
@@ -967,6 +960,16 @@ exports.Formats = [
 		onSwitchIn(pokemon) {
 			this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');
 		},
+
+	{
+     name: "[Gen 8 Pet Mod] ViAbilities",
+     threads: [
+         `&bullet; <a href="https://www.smogon.com/forums/threads/viabilities-slate-2-ability-submissions-stage.3664169/">ViAbilities</a>`,
+     ],
+ 
+     mod: 'viabilities',
+     ruleset: ['Standard', 'OHKO Clause', 'Evasion Moves Clause', 'Species Clause', 'Dynamax Clause', 'Sleep Clause Mod']
+
 	},
 	// Old Pet Mods ///////////////////////////////////////////////////////////////////
 	{

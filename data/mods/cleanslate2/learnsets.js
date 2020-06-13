@@ -982,6 +982,11 @@ let BattleLearnsets = {
 		venomdrench: ["7L43", "6L43"],
 		venoshock: ["7M", "7L28", "6M", "6L28", "5M", "5L28"],
 		xscissor: ["7M", "6M", "5M"],
+		spikes: ["7M", "6M", "5M"],
+		firstimpression: ["7M", "6M", "5M"],
+		xscissor: ["7M", "6M", "5M"],
+		closecombat: ["7M", "6M", "5M"],
+		highhorsepower: ["7M", "6M", "5M"],
 	}},
 	cursola: {learnset: {
 		amnesia: ["8M"],
