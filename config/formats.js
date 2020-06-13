@@ -946,9 +946,8 @@ exports.Formats = [
 		onSwitchIn(pokemon) {
 			if (pokemon.canMegaEvo === 'L' || pokemon.canMegaEvo === 'R') 
 				pokemon.addVolatile('twisted');
-		}
+		},
 	},
-
 	{
 	  name: "[Gen 1] Rose Red / Iris Blue",
 		desc: `A balance mod for Gen 1 that aims to make every fully-evolved Pokémon a viable pick.`,
