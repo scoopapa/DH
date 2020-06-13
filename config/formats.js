@@ -960,7 +960,7 @@ exports.Formats = [
 		onSwitchIn(pokemon) {
 			this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');
 		},
-
+	},
 	{
      name: "[Gen 8 Pet Mod] ViAbilities",
      threads: [
