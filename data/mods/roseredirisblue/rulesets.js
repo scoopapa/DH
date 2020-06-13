@@ -1,79 +1,27 @@
-'use strict';
-
-/**@type {{[k: string]: ModdedFormatsData}} */
-let BattleFormats = {
-	pokemon: {
-		effectType: 'ValidatorRule',
-		name: 'Pokemon',
-		onValidateSet: function (set, format) {
-			let template = this.getTemplate(set.species);
-			let problems = [];
-			if (set.species === set.name) delete set.name;
-
-			/* if (template.gen > this.gen) {
-				problems.push(set.species + ' does not exist in gen ' + this.gen + '.');
-			} else  */if (template.isNonstandard) {
-				problems.push(set.species + ' is not a real Pokemon.');
-			}
-			if (set.moves) {
-				for (const setMoveid of set.moves) {
-					let move = this.getMove(setMoveid);
-					if (move.gen > this.gen) {
-						problems.push(move.name + ' does not exist in gen ' + this.gen + '.');
-					} else if (move.isNonstandard) {
-						problems.push(move.name + ' is not a real move.');
-					}
-				}
-			}
-			if (set.moves && set.moves.length > 4) {
-				problems.push((set.name || set.species) + ' has more than four moves.');
-			}
-
-			// Let's manually delete items.
-			set.item = '';
-
-			// Automatically set ability to None
-			set.ability = 'None';
-
-			// They also get a useless nature, since that didn't exist
-			set.nature = 'Serious';
-
-			// No shinies
-			set.shiny = false;
-
-			return problems;
-		},
-	},
+export const BattleFormats: {[k: string]: ModdedFormatsData} = {
 	standard: {
 		effectType: 'ValidatorRule',
 		name: 'Standard',
-		ruleset: ['Sleep Clause Mod', 'Freeze Clause Mod', 'Species Clause', 'OHKO Clause', 'Evasion Moves Clause', 'HP Percentage Mod', 'Cancel Mod'],
-		banlist: ['Unreleased', 'Illegal', 'Dig', 'Fly',
-			'Kakuna + Poison Sting + Harden', 'Kakuna + String Shot + Harden',
-			'Beedrill + Poison Sting + Harden', 'Beedrill + String Shot + Harden',
-			'Nidoking + Fury Attack + Thrash',
-			'Exeggutor + Poison Powder + Stomp', 'Exeggutor + Sleep Powder + Stomp', 'Exeggutor + Stun Spore + Stomp',
-			'Eevee + Tackle + Growl',
-			'Vaporeon + Tackle + Growl',
-			'Jolteon + Tackle + Growl', 'Jolteon + Focus Energy + Thunder Shock',
-			'Flareon + Tackle + Growl', 'Flareon + Focus Energy + Ember',
-		],
-		onValidateSet: function (set) {
-			// limit one of each move in Standard
-			let moves = [];
-			if (set.moves) {
-				let hasMove = {};
-				for (const setMoveid of set.moves) {
-					let move = this.getMove(setMoveid);
-					let moveid = move.id;
-					if (hasMove[moveid]) continue;
-					hasMove[moveid] = true;
-					moves.push(setMoveid);
-				}
+		ruleset: ['Obtainable', 'Sleep Clause Mod', 'Freeze Clause Mod', 'Species Clause', 'OHKO Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod'],
+		banlist: ['Dig', 'Fly'],
+	},
+	scalemonsmod: {
+		effectType: 'Rule',
+		name: 'Scalemons Mod',
+		desc: "Every Pok&eacute;mon's stats, barring HP, are scaled to give them a BST as close to 500 as possible",
+		onBegin() {
+			this.add('rule', 'Scalemons Mod: Every Pokemon\'s stats, barring HP, are scaled to come as close to a BST of 500 as possible');
+		},
+		onModifySpecies(species, target, source) {
+			const newSpecies = this.dex.deepClone(species);
+			newSpecies.baseStats = this.dex.deepClone(newSpecies.baseStats);
+			const stats: StatName[] = ['atk', 'def', 'spa', 'spe'];
+			const pst: number = stats.map(stat => newSpecies.baseStats[stat]).reduce((x, y) => x + y);
+			const scale = 500 - newSpecies.baseStats['hp'];
+			for (const stat of stats) {
+				newSpecies.baseStats[stat] = this.clampIntRange(newSpecies.baseStats[stat] * scale / pst, 1, 255);
 			}
-			set.moves = moves;
+			return newSpecies;
 		},
 	},
 };
-
-exports.BattleFormats = BattleFormats;
