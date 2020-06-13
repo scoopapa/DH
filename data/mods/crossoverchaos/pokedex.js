@@ -3377,9 +3377,9 @@ kyokokirigiri: {
 		heightm: 16,
 		weightkg: 0,
 	},
-	2b: {
+	yorhano2typeb: {
 		num: 6000186,
-		species: "2B", /* NieR: Automata */
+		species: "YoRHa No.2 Type B", /* NieR: Automata */
 		types: ["Steel", "Fighting"],
 		gender: "F",
 		baseStats: {hp: 90, atk: 90, def: 90, spa: 90, spd: 90, spe: 140},
@@ -3406,6 +3406,49 @@ kyokokirigiri: {
 		abilities: {0: "Serene Grace", 1: "Magic Bounce", H: "Levitate"},
 		heightm: 5,
 		weightkg: 600,
+	},
+	sora: {
+		num: 6000189,
+		species: "Sora", /* SUGURI series */
+		types: ["Fighting", "Flying"],
+		gender: "F",
+		baseStats: {hp: 70, atk: 110, def: 80, spa: 100, spd: 80, spe: 110},
+		abilities: {0: "Motor Drive", H: "Extraordinary Specs"},
+		heightm: 1.6,
+		weightkg: 67,
+	},
+	soramilitary: {
+		num: 6000189,
+		species: "Sora-Military",
+		baseSpecies: "Sora",
+		forme: "Military",
+		formeLetter: "M",
+		types: ["Fighting", "Flying"],
+		gender: "F",
+		baseStats: {hp: 70, atk: 110, def: 80, spa: 100, spd: 80, spe: 110},
+		abilities: {0: "Motor Drive", H: "Sturdy"},
+		heightm: 1.6,
+		weightkg: 67,
+	},
+	paleking: {
+		num: 6000190,
+		name: "Pale King", /* Hollow Knight */
+		types: ["Dragon", "Bug"],
+		gender: "M",
+		baseStats: {hp: 120, atk: 130, def: 120, spa: 110, spd: 90, spe: 90},
+		abilities: {0: "Steelworker", H: "Kingly Majesty"},
+		heightm: 1,
+		weightkg: 33,
+	},
+	lucca: {
+		num: 6000191,
+		name: "Lucca", /* Chrono Trigger */
+		types: ["Fire", "Steel"],
+		gender: "F",
+		baseStats: {hp: 94, atk: 42, def: 116, spa: 137, spd: 88, spe: 63},
+		abilities: {0: "Technician"},
+		heightm: 0.1,
+		weightkg: 999.9,
 	},
 	walle: {
 			num: 7000001,

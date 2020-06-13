@@ -950,13 +950,26 @@ exports.Formats = [
 	},
 
 	{
-        name: "[Gen 8 Pet Mod] ViAbilities",
-        threads: [
-            `&bullet; <a href="https://www.smogon.com/forums/threads/viabilities-slate-2-ability-submissions-stage.3664169/">ViAbilities</a>`,
-        ],
+	  name: "[Gen 1] Rose Red / Iris Blue",
+		desc: `A balance mod for Gen 1 that aims to make every fully-evolved Pokémon a viable pick.`,
+		threads: [
+			`<a href="https://www.smogon.com/forums/threads/gen-1-rose-red-iris-blue.3652237/">Rose Red / Iris Blue</a>`,
+		],
+		mod: 'roseredirisblue',
+		ruleset: ['Standard'],
+		onSwitchIn(pokemon) {
+			this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');
+		},
+
+	{
+     name: "[Gen 8 Pet Mod] ViAbilities",
+     threads: [
+         `&bullet; <a href="https://www.smogon.com/forums/threads/viabilities-slate-2-ability-submissions-stage.3664169/">ViAbilities</a>`,
+     ],
  
-        mod: 'viabilities',
-        ruleset: ['Standard', 'OHKO Clause', 'Evasion Moves Clause', 'Species Clause', 'Dynamax Clause', 'Sleep Clause Mod']
+     mod: 'viabilities',
+     ruleset: ['Standard', 'OHKO Clause', 'Evasion Moves Clause', 'Species Clause', 'Dynamax Clause', 'Sleep Clause Mod']
+
 	},
 	// Old Pet Mods ///////////////////////////////////////////////////////////////////
 	{

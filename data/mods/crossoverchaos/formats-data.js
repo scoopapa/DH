@@ -1055,13 +1055,25 @@ exports.BattleFormatsData = { //
 		isGigantamax: "G-Max Ragnarok",
 		tier: "Uber",
 	},
-	2b: {
+	yorhano2typeb: {
 		tier: "V2",
 	},
 	monika: {
 		tier: "V2",
 	},
 	kikuri: {
+		tier: "V2",
+	},
+	sora: {
+		tier: "V2",
+	},
+	soramilitary: {
+		tier: "V2",
+	},
+	paleking: {
+		tier: "Uber",
+	},
+	lucca: {
 		tier: "V2",
 	},
 	 walle: {
