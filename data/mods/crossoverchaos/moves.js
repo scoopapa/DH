@@ -4124,6 +4124,31 @@ let BattleMovedex = {
 		type: "Rock",
 		contestType: "Beautiful",
 	},
+	"decayingwave": {
+		num: 50024,
+		accuracy: 100,
+		basePower: 80,
+		category: "Physical",
+		desc: "Damages non-Fire-type opponent(s) by 1/6 of their maximum HP for four turns. Base Power scales with the base move's Base Power.",
+		shortDesc: "Damages foes for 4 turns. BP scales w/ base move.",
+		id: "decayingwave",
+		name: "Decaying Wave",
+		pp: 15,
+		priority: 0,
+		flags: {},
+		self: {
+			onHit(source) {
+				source.side.foe.addSideCondition('gmaxwildfire');
+			},
+		},
+		onEffectiveness(typeMod, target, type) {
+			if (!target.isGrounded()) return 3;
+		},
+		secondary: null,
+		target: "allAdjacent",
+		type: "Ghost",
+		contestType: "Cool",
+	},
 	//"Regular" hazard moves are here
 		"gmaxsteelsurge": {
 		num: 1000,
