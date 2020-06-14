@@ -3447,8 +3447,8 @@ kyokokirigiri: {
 		gender: "F",
 		baseStats: {hp: 94, atk: 42, def: 116, spa: 137, spd: 88, spe: 63},
 		abilities: {0: "Technician"},
-		heightm: 0.1,
-		weightkg: 999.9,
+		heightm: 1.5,
+		weightkg: 45,
 	},
 	walle: {
 			num: 7000001,
