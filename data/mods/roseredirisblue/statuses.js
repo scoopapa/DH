@@ -10,31 +10,30 @@
 
 'use strict';
 
-/**@type {{[k: string]: ModdedEffectData}} */
+/**@type {{[k: string]: ModdedPureEffectData}} */
 let BattleStatuses = {
 	brn: {
 		name: 'brn',
 		id: 'brn',
 		num: 0,
 		effectType: 'Status',
-		onStart: function (target) {
+		onStart(target) {
 			this.add('-status', target, 'brn');
 			target.addVolatile('brnattackdrop');
 		},
 		onAfterMoveSelfPriority: 2,
-		onAfterMoveSelf: function (pokemon) {
-			let toxicCounter = 1;
+		onAfterMoveSelf(pokemon) {
+			let toxicCounter = pokemon.volatiles['residualdmg'] ? pokemon.volatiles['residualdmg'].counter : 1;
+			this.damage(this.dex.clampIntRange(Math.floor(pokemon.maxhp / 16), 1) * toxicCounter, pokemon);
 			if (pokemon.volatiles['residualdmg']) {
-				pokemon.volatiles['residualdmg'].counter++;
-				toxicCounter = pokemon.volatiles['residualdmg'].counter;
+				this.hint("In Gen 1, Toxic's counter is retained after Rest and applies to PSN/BRN.", true);
 			}
-			this.damage(this.clampIntRange(Math.floor(pokemon.maxhp / 16), 1) * toxicCounter, pokemon);
 		},
-		onSwitchIn: function (pokemon) {
+		onSwitchIn(pokemon) {
 			pokemon.addVolatile('brnattackdrop');
 		},
-		onAfterSwitchInSelf: function (pokemon) {
-			this.damage(this.clampIntRange(Math.floor(pokemon.maxhp / 16), 1));
+		onAfterSwitchInSelf(pokemon) {
+			this.damage(this.dex.clampIntRange(Math.floor(pokemon.maxhp / 16), 1));
 		},
 	},
 	par: {
@@ -42,12 +41,12 @@ let BattleStatuses = {
 		id: 'par',
 		num: 0,
 		effectType: 'Status',
-		onStart: function (target) {
+		onStart(target) {
 			this.add('-status', target, 'par');
 			target.addVolatile('parspeeddrop');
 		},
 		onBeforeMovePriority: 2,
-		onBeforeMove: function (pokemon) {
+		onBeforeMove(pokemon) {
 			if (this.randomChance(63, 256)) {
 				this.add('cant', pokemon, 'par');
 				pokemon.removeVolatile('bide');
@@ -60,7 +59,7 @@ let BattleStatuses = {
 				return false;
 			}
 		},
-		onSwitchIn: function (pokemon) {
+		onSwitchIn(pokemon) {
 			pokemon.addVolatile('parspeeddrop');
 		},
 	},
@@ -69,14 +68,18 @@ let BattleStatuses = {
 		id: 'slp',
 		num: 0,
 		effectType: 'Status',
-		onStart: function (target) {
-			this.add('-status', target, 'slp');
-			// 1-5 turns
+		onStart(target, source, sourceEffect) {
+			if (sourceEffect && sourceEffect.effectType === 'Move') {
+				this.add('-status', target, 'slp', '[from] move: ' + sourceEffect.name);
+			} else {
+				this.add('-status', target, 'slp');
+			}
+			// 1-7 turns
 			this.effectData.startTime = this.random(1, 5);
 			this.effectData.time = this.effectData.startTime;
 		},
 		onBeforeMovePriority: 10,
-		onBeforeMove: function (pokemon, target, move) {
+		onBeforeMove(pokemon, target, move) {
 			pokemon.statusData.time--;
 			if (pokemon.statusData.time > 0) {
 				this.add('cant', pokemon, 'slp');
@@ -84,7 +87,7 @@ let BattleStatuses = {
 			pokemon.lastMove = null;
 			return false;
 		},
-		onAfterMoveSelf: function (pokemon) {
+		onAfterMoveSelf(pokemon) {
 			if (pokemon.statusData.time <= 0) pokemon.cureStatus();
 		},
 	},
@@ -93,26 +96,23 @@ let BattleStatuses = {
 		id: 'frz',
 		num: 0,
 		effectType: 'Status',
-		onStart: function (target) {
+		onStart(target) {
 			this.add('-status', target, 'frz');
-			// 1-5 turns
+			//1-5 turns
 			this.effectData.startTime = this.random(1, 5);
 			this.effectData.time = this.effectData.startTime;
 		},
 		onBeforeMovePriority: 10,
-		onBeforeMove: function (pokemon, target, move) {
+		onBeforeMove(pokemon, target, move) {
 			pokemon.statusData.time--;
 			if (pokemon.statusData.time > 0) {
-			this.add('cant', pokemon, 'frz');
+				this.add('cant', pokemon, 'frz');
 			}
 			pokemon.lastMove = null;
 			return false;
 		},
-		onAfterMoveSelf: function (pokemon) {
-			if (pokemon.statusData.time <= 0) pokemon.cureStatus();
-		},
-		onAfterMoveSecondary: function (target, source, move) {
-			if (move.secondary && move.secondary !== true && move.secondary.status === 'brn') {
+		onAfterMoveSecondary(target, source, move) {
+			if (move.secondary && move.secondary.status === 'brn') {
 				target.cureStatus();
 			}
 		},
@@ -122,51 +122,31 @@ let BattleStatuses = {
 		id: 'psn',
 		num: 0,
 		effectType: 'Status',
-		onStart: function (target) {
+		onStart(target) {
 			this.add('-status', target, 'psn');
 		},
 		onAfterMoveSelfPriority: 2,
-		onAfterMoveSelf: function (pokemon) {
-			let toxicCounter = 1;
+		onAfterMoveSelf(pokemon) {
+			let toxicCounter = pokemon.volatiles['residualdmg'] ? pokemon.volatiles['residualdmg'].counter : 1;
+			this.damage(this.dex.clampIntRange(Math.floor(pokemon.maxhp / 16), 1) * toxicCounter, pokemon);
 			if (pokemon.volatiles['residualdmg']) {
-				pokemon.volatiles['residualdmg'].counter++;
-				toxicCounter = pokemon.volatiles['residualdmg'].counter;
+				this.hint("In Gen 1, Toxic's counter is retained after Rest and applies to PSN/BRN.", true);
 			}
-			this.damage(this.clampIntRange(Math.floor(pokemon.maxhp / 16), 1) * toxicCounter, pokemon);
 		},
-		onAfterSwitchInSelf: function (pokemon) {
-			this.damage(this.clampIntRange(Math.floor(pokemon.maxhp / 16), 1));
+		onAfterSwitchInSelf(pokemon) {
+			this.damage(this.dex.clampIntRange(Math.floor(pokemon.maxhp / 16), 1));
 		},
 	},
 	tox: {
-		name: 'tox',
-		id: 'tox',
-		num: 0,
-		effectType: 'Status',
-		onStart: function (target) {
-			this.add('-status', target, 'tox');
-			if (!target.volatiles['residualdmg']) target.addVolatile('residualdmg');
-			target.volatiles['residualdmg'].counter = 0;
-		},
+		inherit: true,
 		onAfterMoveSelfPriority: 2,
-		onAfterMoveSelf: function (pokemon) {
-			pokemon.volatiles['residualdmg'].counter++;
-			this.damage(this.clampIntRange(Math.floor(pokemon.maxhp / 16), 1) * pokemon.volatiles['residualdmg'].counter, pokemon, pokemon);
-		},
-		onSwitchIn: function (pokemon) {
-			// Regular poison status and damage after a switchout -> switchin.
-			pokemon.setStatus('psn');
-		},
-		onAfterSwitchInSelf: function (pokemon) {
-			this.damage(this.clampIntRange(Math.floor(pokemon.maxhp / 16), 1));
-		},
 	},
 	confusion: {
 		name: 'confusion',
 		id: 'confusion',
 		num: 0,
 		// this is a volatile status
-		onStart: function (target, source, sourceEffect) {
+		onStart(target, source, sourceEffect) {
 			if (sourceEffect && sourceEffect.id === 'lockedmove') {
 				this.add('-start', target, 'confusion', '[silent]');
 			} else {
@@ -174,11 +154,11 @@ let BattleStatuses = {
 			}
 			this.effectData.time = this.random(2, 6);
 		},
-		onEnd: function (target) {
+		onEnd(target) {
 			this.add('-end', target, 'confusion');
 		},
 		onBeforeMovePriority: 3,
-		onBeforeMove: function (pokemon, target) {
+		onBeforeMove(pokemon, target) {
 			pokemon.volatiles.confusion.time--;
 			if (!pokemon.volatiles.confusion.time) {
 				pokemon.removeVolatile('confusion');
@@ -186,18 +166,8 @@ let BattleStatuses = {
 			}
 			this.add('-activate', pokemon, 'confusion');
 			if (!this.randomChance(128, 256)) {
-				// We check here to implement the substitute bug since otherwise we need to change directDamage to take target.
 				let damage = Math.floor(Math.floor(((Math.floor(2 * pokemon.level / 5) + 2) * pokemon.getStat('atk') * 40) / pokemon.getStat('def', false)) / 50) + 2;
-				if (pokemon.volatiles['substitute']) {
-					// If there is Substitute, we check for opposing substitute.
-					if (target.volatiles['substitute']) {
-						// Damage that one instead.
-						this.directDamage(damage, target);
-					}
-				} else {
-					// No substitute, direct damage to itself.
-					this.directDamage(damage);
-				}
+				this.directDamage(damage, pokemon, target);
 				pokemon.removeVolatile('bide');
 				pokemon.removeVolatile('twoturnmove');
 				pokemon.removeVolatile('fly');
@@ -216,7 +186,7 @@ let BattleStatuses = {
 		num: 0,
 		duration: 1,
 		onBeforeMovePriority: 4,
-		onBeforeMove: function (pokemon) {
+		onBeforeMove(pokemon) {
 			if (!this.runEvent('Flinch', pokemon)) {
 				return;
 			}
@@ -229,7 +199,7 @@ let BattleStatuses = {
 		id: 'trapped',
 		num: 0,
 		noCopy: true,
-		onTrapPokemon: function (pokemon) {
+		onTrapPokemon(pokemon) {
 			if (!this.effectData.source || !this.effectData.source.isActive) {
 				delete pokemon.volatiles['trapped'];
 				return;
@@ -243,7 +213,7 @@ let BattleStatuses = {
 		num: 0,
 		duration: 2,
 		onBeforeMovePriority: 4,
-		onBeforeMove: function (pokemon) {
+		onBeforeMove(pokemon) {
 			this.add('cant', pokemon, 'partiallytrapped');
 			return false;
 		},
@@ -252,19 +222,19 @@ let BattleStatuses = {
 		name: 'partialtrappinglock',
 		id: 'partialtrappinglock',
 		num: 0,
-		durationCallback: function () {
+		durationCallback() {
 			let duration = this.sample([2, 2, 2, 2, 3, 3, 3, 3]);
 			return duration;
 		},
-		onResidual: function (target) {
+		onResidual(target) {
 			if (target.lastMove && target.lastMove.id === 'struggle' || target.status === 'slp') {
 				delete target.volatiles['partialtrappinglock'];
 			}
 		},
-		onStart: function (target, source, effect) {
+		onStart(target, source, effect) {
 			this.effectData.move = effect.id;
 		},
-		onDisableMove: function (pokemon) {
+		onDisableMove(pokemon) {
 			if (!pokemon.hasMove(this.effectData.move)) {
 				return;
 			}
@@ -275,10 +245,14 @@ let BattleStatuses = {
 			}
 		},
 	},
+	mustrecharge: {
+		inherit: true,
+		onStart() {},
+	},
 	lockedmove: {
 		// Outrage, Thrash, Petal Dance...
 		inherit: true,
-		durationCallback: function () {
+		durationCallback() {
 			return this.random(3, 5);
 		},
 	},
@@ -289,10 +263,10 @@ let BattleStatuses = {
 		// Protect, Detect, Endure counter
 		duration: 2,
 		counterMax: 256,
-		onStart: function () {
+		onStart() {
 			this.effectData.counter = 2;
 		},
-		onStallMove: function () {
+		onStallMove() {
 			// this.effectData.counter should never be undefined here.
 			// However, just in case, use 1 if it is undefined.
 			let counter = this.effectData.counter || 1;
@@ -303,7 +277,7 @@ let BattleStatuses = {
 			this.debug("Success chance: " + Math.round(100 / counter) + "%");
 			return this.randomChance(1, counter);
 		},
-		onRestart: function () {
+		onRestart() {
 			// @ts-ignore
 			if (this.effectData.counter < this.effect.counterMax) {
 				this.effectData.counter *= 2;
