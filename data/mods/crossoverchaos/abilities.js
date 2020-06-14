@@ -2386,6 +2386,6 @@ exports.BattleAbilities = {
 			}
 		},
 		id: "allforone",
-		name: "All for One",
+		name: "All For One",
 	},
 };
