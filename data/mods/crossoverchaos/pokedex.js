@@ -3447,8 +3447,8 @@ kyokokirigiri: {
 		gender: "F",
 		baseStats: {hp: 94, atk: 42, def: 116, spa: 137, spd: 88, spe: 63},
 		abilities: {0: "Technician"},
-		heightm: 0.1,
-		weightkg: 999.9,
+		heightm: 1.5,
+		weightkg: 45,
 	},
 	walle: {
 			num: 7000001,
@@ -5242,6 +5242,33 @@ does marvel's big ol mutant trex exist? who knows
 		abilities: {0: "Where's Waldo?", H: "Technician"},
 		heightm: 1.7,
 		weightkg: 67,
+	},
+	shototodoroki: {
+		num: 7000108,
+		species: "Shoto Todoroki", /* My Hero Academia */
+		types: ["Ice", "Fire"],
+		baseStats: {hp: 90, atk: 65, def: 75, spa: 130, spd: 80, spe: 100},
+		abilities: {0: "Ice Body", H: "Flame Body"},
+		heightm: 1.7,
+		weightkg: 67,
+	},
+	wadeld: {
+		num: 7000109,
+		species: "Wade L. D.", /* SiIvaGunner */
+		types: ["Normal"],
+		baseStats: {hp: 100, atk: 100, def: 60, spa: 60, spd: 60, spe: 100},
+		abilities: {0: "Skill Link", 1: "Anger Point", H: "Friend Guard"},
+		heightm: 0.2,
+		weightkg: 2,
+	},
+	tomurashigaraki: {
+		num: 7000110,
+		species: "Tomura Shigaraki", /* My Hero Academia */
+		types: ["Dark", "Ghost"],
+		baseStats: {hp: 85, atk: 125, def: 85, spa: 75, spd: 85, spe: 105},
+		abilities: {0: "Decay", H: "All For One"},
+		heightkg: 1.7,
+		weightkg: 60,
 	},
 		
 };

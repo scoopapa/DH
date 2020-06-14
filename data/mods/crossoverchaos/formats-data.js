@@ -1627,4 +1627,14 @@ absolutely FUCK devil dinosaur and everything he stands for, it's such a pain in
 	waldo: {
 		tier: "EX",
 	},
+	shototodoroki: {
+		tier: "EX",
+	},
+	wadeld: {
+		tier: "EX",
+	},
+	tomurashigaraki: {
+		tier: "EX",
+	},
+	
 };
