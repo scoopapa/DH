@@ -487,7 +487,7 @@ exports.BattlePokedex = {
 		inherit: true,
 		otherFormes: ["dodriomystical"],
 	},
-	  dodriomystical: {
+	dodriomystical: {
 		num: 85,
 		species: "Dodrio-Mystical",
 		baseSpecies: "Dodrio",
@@ -505,7 +505,7 @@ exports.BattlePokedex = {
 	  }, 
 	rapidashgalar: {
 		inherit: true,
-		otherFormes: ["dodriomystical"],
+		otherFormes: ["rapidashgalarmeow"],
 	  },
 	rapidashgalar: {
 		num: ,
@@ -514,7 +514,11 @@ exports.BattlePokedex = {
 		baseStats: {hp: 65, atk: 100, def: 85, spa: 80, spd: 80, spe: 105},
 		abilities: {0: "Tough Claws", 1: " Pastel Veil", H: " Anticipation"},
 	},
-	mr.rime: {
+	mrrime: {
+		inherit: true,
+		otherFormes: ["mrrimespoon"],
+	},
+	mrrimespoon: {
 		num: ,
 		species: "Mr. Rime",
 		types: ["Ice", "Psychic"],
@@ -522,6 +526,10 @@ exports.BattlePokedex = {
 		abilities: {0: "Magic Guard", 1: " Screen Cleaner", H: " Ice Body"},
 	},
 	thievul: {
+		inherit: true,
+		otherFormes: ["thievulbananas"],
+	},
+	thievulbananas: {
 		num: 828,
 		species: "Thievul",
 		types: ["Dark", "Ice"],
@@ -533,6 +541,10 @@ exports.BattlePokedex = {
 		eggGroups: ["Field"],
 	},
 	stonjourner: {
+		inherit: true,
+		otherFormes: ["stonjournercastle"],
+	},
+	stonjournercastle: {
 		num: 874,
 		species: "Stonjourner",
 		types: ["Rock", "Bug"],
@@ -543,6 +555,10 @@ exports.BattlePokedex = {
 		eggGroups: ["Mineral"],
 	},
 	copperajah: {
+		inherit: true,
+		otherFormes: ["copperajahforge"],
+	},
+	copperajahforge: {
 		num: 879,
 		species: "Copperajah",
 		types: ["Steel", "Fire"],
@@ -554,6 +570,10 @@ exports.BattlePokedex = {
 		eggGroups: ["Field", "Mineral"],
 	},
 	grapploct: {
+		inherit: true,
+		otherFormes: ["grapploctray"],
+	},
+	grapploctray: {
 		num: 853,
 		species: "Grapploct",
 		types: ["Fighting", "Water"],
@@ -565,6 +585,10 @@ exports.BattlePokedex = {
 		eggGroups: ["Water1", "Human-Like"],
 	},
 	appletun: {
+		inherit: true,
+		otherFormes: ["appletunburned"],
+	},
+	appletunburned: {
 		num: 842,
 		species: "Appletun",
 		types: ["Grass", "Fire"],
@@ -576,6 +600,10 @@ exports.BattlePokedex = {
 		eggGroups: ["Grass", "Dragon"],
 	},
 	vespiquen: {
+		inherit: true,
+		otherFormes: ["vespiquenterra"],
+	},
+	vespiquenterra: {
 		num: 416,
 		species: "Vespiquen ",
 		types: ["Bug", "Ground"],
@@ -588,6 +616,10 @@ exports.BattlePokedex = {
 		eggGroups: ["Bug"],
 	},
 	cursola: {
+		inherit: true,
+		otherFormes: ["cursolashock"],
+	},
+	cursolashock: {
 		num: 864,
 		species: "Cursola",
 		types: ["Ghost", "Electric"],
@@ -599,6 +631,10 @@ exports.BattlePokedex = {
 		eggGroups: ["Water1", "Water3"],
 	},
 	machamp: {
+		inherit: true,
+		otherFormes: ["machamplucha"],
+	},
+	machamplucha: {
 		num: 68,
 		species: "Machamp",
 		types: ["Fighting", "Flying"],
@@ -610,6 +646,10 @@ exports.BattlePokedex = {
 		eggGroups: ["Human-Like"],
 	},
 	roserade: {
+		inherit: true,
+		otherFormes: ["roseradescarfed"],
+	},
+	roseradescarfed: {
 		num: 407,
 		species: "Roserade",
 		types: ["Poison", "Fairy"],
