@@ -708,6 +708,7 @@ exports.BattleLearnsets = {
 		rest: ["1M", "2M"],
 		return: ["2M"],
 		sandattack: ["1L1", "1L5", "2L1", "2L5"],
+		sing: ["1M"],
 		skyattack: ["1M"],
 		sleeptalk: ["2M"],
 		snore: ["2M"],
@@ -1778,6 +1779,7 @@ exports.BattleLearnsets = {
 		swift: ["1M", "2M"],
 		tailwhip: ["1L1"],
 		takedown: ["1M"],
+		thunderwave: ["1M"],
 		toxic: ["1M", "2M"],
 	}},
 	jigglypuff: {learnset: {
@@ -6743,6 +6745,7 @@ exports.BattleLearnsets = {
 		protect: ["2L37", "2M"],
 		rage: ["1M"],
 		raindance: ["2M"],
+		recover: ["1M"],
 		reflect: ["1M"],
 		rest: ["1M", "2M"],
 		return: ["2M"],
