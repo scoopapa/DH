@@ -802,6 +802,18 @@ let BattleFormatsData = {
 		randomBattleMoves: ["thunderbolt", "thunderwave", "hyperfang", "firepunch"],
 		tier: "Uber",
 	},
+	forretress: {
+		randomBattleMoves: ["leechlife", "rockslide", "explosion", "megadrain"],
+		tier: "Uber",
+	},
+	zangoose: {
+		randomBattleMoves: ["slash","submission","thunderwave","seismictoss"],
+		tier: "Uber",
+	},
+	seviper: {
+		randomBattleMoves: ["swordsdance","glare","poisonsting","earthquake"],
+		tier: "Uber",
+	},
 };
 
 exports.BattleFormatsData = BattleFormatsData;
