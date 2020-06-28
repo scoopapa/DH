@@ -1,7 +1,4 @@
-'use strict';
-
-/**@type {{[k: string]: ModdedTemplateData}} */
-let BattlePokedex = {
+export const BattlePokedex: {[k: string]: ModdedSpeciesData} = {
 	butterfree: {
 		inherit: true,
 		baseStats: {hp: 80, atk: 35, def: 70, spa: 95, spd: 80, spe: 85},
@@ -85,5 +82,3 @@ let BattlePokedex = {
 		abilities: {0: "Psychic Surge", 1: "Infiltrator", H: "Competitive"},
 	},
 };
-
-exports.BattlePokedex = BattlePokedex;

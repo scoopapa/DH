@@ -1,6 +1,4 @@
-'use strict';
-
-exports.BattleStatuses = {
+export const BattleStatuses: = {
 	dynamax: {
 		name: 'Dynamax',
 		id: 'dynamax',

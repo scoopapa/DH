@@ -1,6 +1,4 @@
-'use strict';
-
-exports.BattleItems = {
+export const BattleItems: {[k: string]: ModdedItemData} = {
   	"leftovers": {
 		inherit: true,
 		onResidual(pokemon) {

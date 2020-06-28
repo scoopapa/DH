@@ -1,6 +1,4 @@
-'use strict';
-
-exports.BattleFormatsData = {
+export const BattleFormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 	charizardgmax: {
 		isGigantamax: "G-Max Wildfire",
 		tier: "OU",

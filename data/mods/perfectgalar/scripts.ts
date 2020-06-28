@@ -1,7 +1,4 @@
-'use strict';
-
-/**@type {ModdedBattleScriptsData} */
-exports.BattleScripts = {
+export const BattleScripts: {[k: string]: ModdedBattleScriptsData} = {
 	init() {
 		// Butterfree
 		this.modData('Learnsets', 'butterfree').learnset.dazzlinggleam = ['8L1'];
