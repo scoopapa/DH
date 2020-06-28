@@ -1,7 +1,4 @@
-'use strict';
-
-exports.BattleFormatsData = { //
-
+export const BattleFormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
     kirby: {
         tier: "V2",
 //         doublesTier: "DOU",

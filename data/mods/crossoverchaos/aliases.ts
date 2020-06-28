@@ -1,7 +1,4 @@
-'use strict';
-
-/**@type {{[k: string]: string}} */
-let BattleAliases = {
+export const BattleAliases = {
 	// basically a bunch of names
 	"seiba": "Saber",
 	"artoriapendragon": "Saber",
@@ -86,5 +83,3 @@ let BattleAliases = {
 	"clarkkent": "Superman",
 	"spiderman": "Miles Morales",
 };
-
-exports.BattleAliases = BattleAliases;

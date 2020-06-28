@@ -1,8 +1,4 @@
-'use strict';
-
-exports.BattleLearnsets = {
-
-
+export const BattleLearnsets = {
 /*
 TMs/Tutors sorted by last generation they carry that status (for kirby, nero, etc.)
 	Gen 8:

@@ -1,6 +1,4 @@
-'use strict';
-
-exports.BattleScripts = {
+export const BattleScripts: {[k: string]: ModdedBattleScriptsData} = {
 
 	useMoveInner(moveOrMoveName, pokemon, target, sourceEffect, zMove, maxMove) {
 		if (!sourceEffect && this.effect.id) sourceEffect = this.effect;

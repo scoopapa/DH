@@ -1,6 +1,4 @@
-'use strict';
-
-exports.BattlePokedex = {
+export const BattlePokedex: {[k: string]: ModdedSpeciesData} = {
 	/* For pokemon with two abilities use
 		  abilities: {0: "Ability1Name", H: "Ability2Name"},
 		  For a pokemon with three abilities use
