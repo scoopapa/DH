@@ -3548,7 +3548,7 @@ kyokokirigiri: {
 		species: "Void Soul",
 		baseSpecies: "Void",
 		forme: "Soul",
-		formeLetter "S",
+		formeLetter: "S",
 		types: ["Water", "Ghost"],
 		baseStats: {hp: 120, atk: 140, def: 130, spa: 140, spd: 130, spe: 90},
 		abilities: {0: "Protean"},
@@ -3578,47 +3578,47 @@ kyokokirigiri: {
 		weightkg: 100,
 	},
 	walle: {
-			num: 7000001,
-			species: "WALL-E", /* WALL-E */
-			types: ["Steel", "Normal"],
-			gender: "M",
-			baseStats: {hp: 100, atk: 70, def: 100, spa: 70, spd: 100, spe: 100},
-			abilities: {0: "Sturdy", H: "Trash Compactor"},
-			heightm: 0.5,
-			weightkg: 5,
+		num: 7000001,
+		species: "WALL-E", /* WALL-E */
+		types: ["Steel", "Normal"],
+		gender: "M",
+		baseStats: {hp: 100, atk: 70, def: 100, spa: 70, spd: 100, spe: 100},
+		abilities: {0: "Sturdy", H: "Trash Compactor"},
+		heightm: 0.5,
+		weightkg: 5,
 	},
 	shaggy: {
-			num: 7000002,
-			species: "Shaggy", /* Scooby-Doo */
-			types: ["Normal"],
+		num: 7000002,
+		species: "Shaggy", /* Scooby-Doo */
+		types: ["Normal"],
 		gender: "M",
-			baseStats: {hp: 80, atk: 95, def: 100, spa: 75, spd: 75, spe: 124},
-			abilities: {0: "Wimp Out", H: "Hypnotic Confidence"},
+		baseStats: {hp: 80, atk: 95, def: 100, spa: 75, spd: 75, spe: 124},
+		abilities: {0: "Wimp Out", H: "Hypnotic Confidence"},
 		heightm: 1.8,
-			weightkg: 55,
-},
-sayakamiki: {
-			num: 7000003,
-			species: "Sayaka Miki", /* Puella Magi Madoka Magica */
-			types: ["Fighting"],
+		weightkg: 55,
+	},
+	sayakamiki: {
+		num: 7000003,
+		species: "Sayaka Miki", /* Puella Magi Madoka Magica */
+		types: ["Fighting"],
 		gender: "F",
-			baseStats: {hp: 80, atk: 105, def: 80, spa: 50, spd: 70, spe: 100},
-			abilities: {0: "Regenerator", H: "Unaware"},
+		baseStats: {hp: 80, atk: 105, def: 80, spa: 50, spd: 70, spe: 100},
+		abilities: {0: "Regenerator", H: "Unaware"},
 		heightm: 1.6,
-			weightkg: 48,
+		weightkg: 48,
 		evos: ["oktaviavonseckendorff"]
-},
-oktaviavonseckendorff: {
-			num: 7000004,
-			species: "Oktavia von Seckendorff", /* Puella Magi Madoka Magica */
-			types: ["Fighting"],
+	},
+	oktaviavonseckendorff: {
+		num: 7000004,
+		species: "Oktavia von Seckendorff", /* Puella Magi Madoka Magica */
+		types: ["Fighting"],
 		gender: "F",
-			baseStats: {hp: 110, atk: 135, def: 110, spa: 80, spd: 90, spe: 30},
-			abilities: {0: "Regenerator", H: "Unaware"},
+		baseStats: {hp: 110, atk: 135, def: 110, spa: 80, spd: 90, spe: 30},
+		abilities: {0: "Regenerator", H: "Unaware"},
 		heightm: 10,
-			weightkg: 480,
+		weightkg: 480,
 		prevo: "sayakamiki"
-},
+	},
 skipper: {
 			num: 7000005,
 			species: "Skipper", /* Madagascar */
@@ -3856,16 +3856,16 @@ belphegor: {
 		heightm: 1.9,
 			weightkg: 69,
 },
-kars: {
-			num: 7000019,
-			species: "Kars", /* JoJo's Bizzare Adventure */
-			types: ["Dark", "Rock"],
+	kars: {
+		num: 7000019,
+		species: "Kars", /* JoJo's Bizzare Adventure */
+		types: ["Dark", "Rock"],
 		gender: "M",
-			baseStats: {hp: 80, atk: 130, def: 80, spa: 90, spd: 90, spe: 130},
-			abilities: {0: "Tough Claws", 1: "Regenerator", H: "Corrosive Skin"},
+		baseStats: {hp: 80, atk: 130, def: 80, spa: 90, spd: 90, spe: 130},
+		abilities: {0: "Tough Claws", 1: "Regenerator", H: "Corrosive Skin"},
 		heightm: 2,
-			weightkg: 90,
-},
+		weightkg: 90,
+	},
 karsultimate: {
 			num: 7000019,
 			species: "Kars-Ultimate",
