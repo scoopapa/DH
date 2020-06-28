@@ -66,7 +66,7 @@ export class ReadStream {
 				this.push(data);
 			});
 			nodeStream.on('end', () => {
-				this.pushEnd();
+				this.push(null);
 			});
 
 			options.read = function (this: ReadStream, unusedBytes: number) {
@@ -84,7 +84,7 @@ export class ReadStream {
 		if (options.encoding) this.encoding = options.encoding;
 		if (options.buffer !== undefined) {
 			this.push(options.buffer);
-			this.pushEnd();
+			this.push(null);
 		}
 	}
 
@@ -119,10 +119,14 @@ export class ReadStream {
 		this.expandBuf(newCapacity);
 	}
 
-	push(buf: Buffer | string, encoding: BufferEncoding = this.encoding) {
+	push(buf: Buffer | string | null, encoding: BufferEncoding = this.encoding) {
 		let size;
 		if (this.atEOF) return;
-		if (typeof buf === 'string') {
+		if (buf === null) {
+			this.atEOF = true;
+			this.resolvePush();
+			return;
+		} else if (typeof buf === 'string') {
 			size = Buffer.byteLength(buf, encoding);
 			this.ensureCapacity(size);
 			this.buf.write(buf, this.bufEnd);
@@ -136,15 +140,9 @@ export class ReadStream {
 		this.resolvePush();
 	}
 
-	pushEnd() {
-		this.atEOF = true;
-		this.resolvePush();
-	}
-
-	pushError(err: Error, recoverable?: boolean) {
+	pushError(err: Error) {
 		if (!this.errorBuf) this.errorBuf = [];
 		this.errorBuf.push(err);
-		if (!recoverable) this.atEOF = true;
 		this.resolvePush();
 	}
 
@@ -323,16 +321,16 @@ export class ReadStream {
 	async pipeTo(outStream: WriteStream, options: {noEnd?: boolean} = {}) {
 		let value, done;
 		while (({value, done} = await this.next(), !done)) {
-			await outStream.write(value!);
+			await outStream.write(value);
 		}
-		if (!options.noEnd) return outStream.writeEnd();
+		if (!options.noEnd) return outStream.end();
 	}
 }
 
 interface WriteStreamOptions {
 	nodeStream?: NodeJS.WritableStream;
 	write?: (this: WriteStream, data: string | Buffer) => (Promise<undefined> | undefined);
-	writeEnd?: (this: WriteStream) => Promise<any>;
+	end?: (this: WriteStream) => Promise<any>;
 }
 
 export class WriteStream {
@@ -371,7 +369,7 @@ export class WriteStream {
 			};
 			// Prior to Node v10.12.0, attempting to close STDOUT or STDERR will throw
 			if (nodeStream !== process.stdout && nodeStream !== process.stderr) {
-				options.writeEnd = function () {
+				options.end = function () {
 					return new Promise(resolve => {
 						this.nodeWritableStream!.end(() => resolve());
 					});
@@ -380,16 +378,19 @@ export class WriteStream {
 		}
 
 		if (options.write) this._write = options.write;
-		if (options.writeEnd) this._writeEnd = options.writeEnd;
+		if (options.end) this._end = options.end;
 	}
 
-	write(chunk: Buffer | string): void | Promise<void> {
+	write(chunk: Buffer | string | null): void | Promise<void> {
+		if (chunk === null) {
+			return this.end();
+		}
 		return this._write(chunk);
 	}
 
-	writeLine(chunk: string): void | Promise<void> {
+	writeLine(chunk: string | null): void | Promise<void> {
 		if (chunk === null) {
-			return this.writeEnd();
+			return this.end();
 		}
 		return this.write(chunk + '\n');
 	}
@@ -398,13 +399,13 @@ export class WriteStream {
 		throw new Error(`WriteStream needs to be subclassed and the _write function needs to be implemented.`);
 	}
 
-	_writeEnd(): void | Promise<void> {}
+	_end(): void | Promise<void> {}
 
-	async writeEnd(chunk?: string): Promise<void> {
+	async end(chunk: string | null = null): Promise<void> {
 		if (chunk) {
 			await this.write(chunk);
 		}
-		return this._writeEnd();
+		return this._end();
 	}
 }
 
@@ -414,40 +415,12 @@ export class ReadWriteStream extends ReadStream implements WriteStream {
 	nodeWritableStream: NodeJS.WritableStream | null;
 	drainListeners: (() => void)[];
 
-	constructor(options: AnyObject = {}) {
+	constructor(options = {}) {
 		super(options);
 		this.isReadable = true;
 		this.isWritable = true;
 		this.nodeWritableStream = null;
 		this.drainListeners = [];
-
-		if (options.nodeStream) {
-			const nodeStream: NodeJS.WritableStream = options.nodeStream;
-			this.nodeWritableStream = nodeStream;
-			options.write = function (data: string | Buffer) {
-				const result = this.nodeWritableStream!.write(data);
-				if (result !== false) return undefined;
-				if (!this.drainListeners.length) {
-					this.nodeWritableStream!.once('drain', () => {
-						for (const listener of this.drainListeners) listener();
-						this.drainListeners = [];
-					});
-				}
-				return new Promise(resolve => {
-					this.drainListeners.push(resolve);
-				});
-			};
-			// Prior to Node v10.12.0, attempting to close STDOUT or STDERR will throw
-			if (nodeStream !== process.stdout && nodeStream !== process.stderr) {
-				options.writeEnd = function () {
-					return new Promise(resolve => {
-						this.nodeWritableStream!.end(() => resolve());
-					});
-				};
-			}
-		}
-		if (options.write) this._write = options.write;
-		if (options.writeEnd) this._writeEnd = options.writeEnd;
 	}
 
 	write(chunk: Buffer | string): Promise<void> | void {
@@ -467,12 +440,12 @@ export class ReadWriteStream extends ReadStream implements WriteStream {
 	 * because it's valid for the read stream buffer to be filled only by
 	 * `_write`.
 	 */
-	_read(size?: number) {}
+	_read() {}
 
-	_writeEnd(): void | Promise<void> {}
+	_end(): void | Promise<void> {}
 
-	async writeEnd() {
-		return this._writeEnd();
+	async end() {
+		return this._end();
 	}
 }
 
@@ -517,14 +490,14 @@ export class ObjectReadStream<T> {
 				this.push(data);
 			});
 			nodeStream.on('end', () => {
-				this.pushEnd();
+				this.push(null);
 			});
 
 			options.read = function (this: ReadStream, unusedBytes: number) {
 				this.nodeReadableStream!.resume();
 			};
 
-			options.pause = function (this: ReadStream) {
+			options.pause = function (this: ReadStream, unusedBytes: number) {
 				this.nodeReadableStream!.pause();
 			};
 		}
@@ -534,26 +507,26 @@ export class ObjectReadStream<T> {
 		if (options.destroy) this._destroy = options.read;
 		if (options.buffer !== undefined) {
 			this.buf = options.buffer.slice();
-			this.pushEnd();
+			this.push(null);
 		}
 	}
 
-	push(elem: T) {
+	push(elem: T | null) {
 		if (this.atEOF) return;
-		this.buf.push(elem);
+		if (elem === null) {
+			this.atEOF = true;
+			this.resolvePush();
+			return;
+		} else {
+			this.buf.push(elem);
+		}
 		if (this.buf.length > this.readSize && this.buf.length >= 16) this._pause();
 		this.resolvePush();
 	}
 
-	pushEnd() {
-		this.atEOF = true;
-		this.resolvePush();
-	}
-
-	pushError(err: Error, recoverable?: boolean) {
+	pushError(err: Error) {
 		if (!this.errorBuf) this.errorBuf = [];
 		this.errorBuf.push(err);
-		if (!recoverable) this.atEOF = true;
 		this.resolvePush();
 	}
 
@@ -662,7 +635,7 @@ export class ObjectReadStream<T> {
 			await outStream.write(value!);
 		}
 		/* tslint:enable */
-		if (!options.noEnd) return outStream.writeEnd();
+		if (!options.noEnd) return outStream.end();
 	}
 }
 
@@ -670,7 +643,7 @@ interface ObjectWriteStreamOptions<T> {
 	_writableState?: any;
 	nodeStream?: NodeJS.WritableStream;
 	write?: (this: ObjectWriteStream<T>, data: T) => Promise<any> | undefined;
-	writeEnd?: (this: ObjectWriteStream<T>) => Promise<any>;
+	end?: (this: ObjectWriteStream<T>) => Promise<any>;
 }
 
 export class ObjectWriteStream<T> {
@@ -704,7 +677,7 @@ export class ObjectWriteStream<T> {
 
 			// Prior to Node v10.12.0, attempting to close STDOUT or STDERR will throw
 			if (nodeStream !== process.stdout && nodeStream !== process.stderr) {
-				options.writeEnd = function () {
+				options.end = function () {
 					return new Promise(resolve => {
 						this.nodeWritableStream!.end(() => resolve());
 					});
@@ -713,12 +686,12 @@ export class ObjectWriteStream<T> {
 		}
 
 		if (options.write) this._write = options.write;
-		if (options.writeEnd) this._writeEnd = options.writeEnd;
+		if (options.end) this._end = options.end;
 	}
 
 	write(elem: T | null): void | Promise<void> {
 		if (elem === null) {
-			return this.writeEnd();
+			return this.end();
 		}
 		return this._write(elem);
 	}
@@ -727,19 +700,19 @@ export class ObjectWriteStream<T> {
 		throw new Error(`WriteStream needs to be subclassed and the _write function needs to be implemented.`);
 	}
 
-	_writeEnd(): void | Promise<void> {}
+	_end(): void | Promise<void> {}
 
-	async writeEnd(elem?: T): Promise<void> {
-		if (elem !== undefined) {
+	async end(elem: T | null = null): Promise<void> {
+		if (elem) {
 			await this.write(elem);
 		}
-		return this._writeEnd();
+		return this._end();
 	}
 }
 
 interface ObjectReadWriteStreamOptions<T> {
 	write?: (this: ObjectWriteStream<T>, elem: T) => Promise<any> | undefined | void;
-	writeEnd?: () => Promise<any> | undefined | void;
+	end?: () => Promise<any> | undefined | void;
 }
 
 export class ObjectReadWriteStream<T> extends ObjectReadStream<T> implements ObjectWriteStream<T> {
@@ -753,7 +726,7 @@ export class ObjectReadWriteStream<T> extends ObjectReadStream<T> implements Obj
 		this.isWritable = true;
 		this.nodeWritableStream = null;
 		if (options.write) this._write = options.write;
-		if (options.writeEnd) this._writeEnd = options.writeEnd;
+		if (options.end) this._end = options.end;
 	}
 
 	write(elem: T): void | Promise<void> {
@@ -766,32 +739,13 @@ export class ObjectReadWriteStream<T> extends ObjectReadStream<T> implements Obj
 	/** In a ReadWriteStream, _read does not need to be implemented. */
 	_read() {}
 
-	_writeEnd(): void | Promise<void> {}
+	_end(): void | Promise<void> {}
 
-	async writeEnd() {
-		return this._writeEnd();
+	async end() {
+		return this._end();
 	}
 }
 
 export function readAll(nodeStream: NodeJS.ReadableStream, encoding?: any) {
 	return new ReadStream(nodeStream).readAll(encoding);
-}
-
-export function stdin() {
-	return new ReadStream(process.stdin);
-}
-
-export function stdout() {
-	return new WriteStream(process.stdout);
-}
-
-export function stdpipe(stream: WriteStream | ReadStream | ReadWriteStream) {
-	const promises = [];
-	if ((stream as ReadStream | WriteStream & {pipeTo: undefined}).pipeTo) {
-		promises.push((stream as ReadStream).pipeTo(stdout()));
-	}
-	if ((stream as WriteStream | ReadStream & {write: undefined}).write) {
-		promises.push(stdin().pipeTo(stream as WriteStream));
-	}
-	return Promise.all(promises);
 }

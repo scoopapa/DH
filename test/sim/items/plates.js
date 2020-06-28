@@ -4,7 +4,7 @@ const assert = require('./../../assert');
 const common = require('./../../common');
 
 let battle;
-const plates = [
+let plates = [
 	'Draco Plate', 'Dread Plate', 'Earth Plate', 'Fist Plate', 'Flame Plate', 'Icicle Plate',
 	'Insect Plate', 'Iron Plate', 'Meadow Plate', 'Mind Plate', 'Pixie Plate', 'Sky Plate',
 	'Splash Plate', 'Spooky Plate', 'Stone Plate', 'Toxic Plate', 'Zap Plate',
@@ -13,7 +13,7 @@ const plates = [
 describe('Plates', function () {
 	for (const plate of plates) {
 		describe(plate, function () {
-			const id = plate.replace(/\W+/g, '').toLowerCase();
+			let id = plate.replace(/\W+/g, '').toLowerCase();
 
 			afterEach(function () {
 				battle.destroy();

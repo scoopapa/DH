@@ -47,10 +47,10 @@ describe('Rooms features', function () {
 		});
 
 		it('should allow two users to join the battle', function () {
-			const p1 = new User();
-			const p2 = new User();
-			const options = [{rated: false, tour: false}, {rated: false, tour: {onBattleWin() {}}}, {rated: true, tour: false}, {rated: true, tour: {onBattleWin() {}}}];
-			for (const option of options) {
+			let p1 = new User();
+			let p2 = new User();
+			let options = [{rated: false, tour: false}, {rated: false, tour: {onBattleWin() {}}}, {rated: true, tour: false}, {rated: true, tour: {onBattleWin() {}}}];
+			for (let option of options) {
 				room = Rooms.createBattle('customgame', Object.assign({
 					p1,
 					p2,
@@ -63,7 +63,7 @@ describe('Rooms features', function () {
 
 		it('should copy auth from tournament', function () {
 			parent = Rooms.createChatRoom('parentroom', '', {});
-			parent.auth.get = () => '%';
+			parent.getAuth = () => '%';
 			const p1 = new User();
 			const p2 = new User();
 			const options = {
@@ -79,12 +79,12 @@ describe('Rooms features', function () {
 				},
 			};
 			room = Rooms.createBattle('customgame', options);
-			assert.equal(room.auth.get(new User().id), '%');
+			assert.equal(room.getAuth(new User()), '%');
 		});
 
 		it('should prevent overriding tournament room auth by a tournament player', function () {
 			parent = Rooms.createChatRoom('parentroom2', '', {});
-			parent.auth.get = () => '%';
+			parent.getAuth = () => '%';
 			const p1 = new User();
 			const p2 = new User();
 			const roomStaff = new User();
@@ -107,11 +107,11 @@ describe('Rooms features', function () {
 			room = Rooms.createBattle('customgame', options);
 			roomStaff.joinRoom(room);
 			administrator.joinRoom(room);
-			assert.equal(room.auth.get(roomStaff), '%', 'before promotion attempt');
+			assert.equal(room.getAuth(roomStaff), '%', 'before promotion attempt');
 			Chat.parse("/roomvoice Room auth", room, p1, p1.connections[0]);
-			assert.equal(room.auth.get(roomStaff), '%', 'after promotion attempt');
+			assert.equal(room.getAuth(roomStaff), '%', 'after promotion attempt');
 			Chat.parse("/roomvoice Room auth", room, administrator, administrator.connections[0]);
-			assert.equal(room.auth.get(roomStaff), '%', 'after being promoted by an administrator');
+			assert.equal(room.getAuth(roomStaff), '+', 'after being promoted by an administrator');
 		});
 	});
 

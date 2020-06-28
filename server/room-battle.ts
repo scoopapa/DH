@@ -13,7 +13,6 @@
 
 import {execSync} from "child_process";
 import {FS} from "../lib/fs";
-import {Utils} from '../lib/utils';
 import {StreamProcessManager} from "../lib/process-manager";
 import {Repl} from "../lib/repl";
 import {BattleStream} from "../sim/battle-stream";
@@ -135,7 +134,6 @@ export class RoomBattlePlayer extends RoomGames.RoomGamePlayer {
 			user.games.delete(this.game.roomid);
 			user.updateSearch();
 		}
-		this.id = '';
 		this.connected = false;
 		this.active = false;
 	}
@@ -246,7 +244,7 @@ export class RoomBattleTimer {
 		this.nextRequest();
 		return true;
 	}
-	stop(requester?: User) {
+	stop(requester: User) {
 		if (requester) {
 			if (!this.timerRequesters.has(requester.id)) return false;
 			this.timerRequesters.delete(requester.id);
@@ -256,7 +254,7 @@ export class RoomBattleTimer {
 			this.timerRequesters.clear();
 		}
 		if (this.timerRequesters.size) {
-			this.battle.room.add(`|inactive|${requester!.name} no longer wants the timer on, but the timer is staying on because ${[...this.timerRequesters].join(', ')} still does.`).update();
+			this.battle.room.add(`|inactive|${requester.name} no longer wants the timer on, but the timer is staying on because ${[...this.timerRequesters].join(', ')} still does.`).update();
 			return false;
 		}
 		if (this.end()) {
@@ -608,6 +606,7 @@ export class RoomBattle extends RoomGames.RoomGame {
 			player.sendRoom(`|error|[Invalid choice] Sorry, too late to make a different move; the next turn has already started`);
 			return;
 		}
+		user.lastDecision = Date.now();
 		request.isWait = true;
 		request.choice = choice;
 
@@ -692,7 +691,7 @@ export class RoomBattle extends RoomGames.RoomGame {
 		}
 
 		this.updatePlayer(player, null);
-		this.room.auth.set(user.id, '+');
+		this.room.auth[user.id] = '+';
 		this.room.update();
 		return true;
 	}
@@ -715,7 +714,7 @@ export class RoomBattle extends RoomGames.RoomGame {
 			}
 		}
 		if (!this.ended) {
-			this.room.add(`|bigerror|The simulator process crashed. We've been notified and will fix this ASAP.`);
+			this.room.add(`|bigerror|The simulator process has crashed. We've been notified and will fix this ASAP.`);
 			if (!disconnected) Monitor.crashlog(new Error(`Sim stream interrupted`), `A sim stream`);
 			this.started = true;
 			this.ended = true;
@@ -732,9 +731,6 @@ export class RoomBattle extends RoomGames.RoomGame {
 					this.turn = parseInt(line.slice(6));
 				}
 				this.room.add(line);
-				if (line.startsWith(`|bigerror|You will auto-tie if `)) {
-					if (Config.allowrequestingties) this.room.add(`|-hint|If you want to tie earlier, consider using \`/offertie\`.`);
-				}
 			}
 			this.room.update();
 			if (!this.ended) this.timer.nextRequest();
@@ -836,8 +832,8 @@ export class RoomBattle extends RoomGames.RoomGame {
 		}
 		// If the room's replay was hidden, disable users from joining after the game is over
 		if (this.room.hideReplay) {
-			this.room.settings.modjoin = '%';
-			this.room.settings.isPrivate = 'hidden';
+			this.room.modjoin = '%';
+			this.room.isPrivate = 'hidden';
 		}
 		this.room.update();
 	}
@@ -1014,7 +1010,7 @@ export class RoomBattle extends RoomGames.RoomGame {
 			void this.stream.write(`>player ${slot} ${JSON.stringify(options)}`);
 		}
 
-		if (user) this.room.auth.set(player.id, Users.PLAYER_SYMBOL);
+		if (user) this.room.auth[user.id] = Users.PLAYER_SYMBOL;
 		if (user?.inRooms.has(this.roomid)) this.onConnect(user);
 		return player;
 	}
@@ -1123,7 +1119,7 @@ export class RoomBattleStream extends BattleStream {
 	_write(chunk: string) {
 		const startTime = Date.now();
 		if (this.battle && Config.debugsimprocesses && process.send) {
-			process.send('DEBUG\n' + this.battle.inputLog.join('\n') + '\n' + chunk);
+			process.send('DEBUG\n' + this.battle.inputLog.join('\n'));
 		}
 		try {
 			this._writeLines(chunk);
@@ -1173,7 +1169,7 @@ export class RoomBattleStream extends BattleStream {
 
 				if (result?.then) {
 					result.then((unwrappedResult: any) => {
-						unwrappedResult = Utils.visualize(unwrappedResult);
+						unwrappedResult = Chat.stringify(unwrappedResult);
 						battle.add('', 'Promise -> ' + unwrappedResult);
 						battle.sendUpdates();
 					}, (error: Error) => {
@@ -1181,7 +1177,7 @@ export class RoomBattleStream extends BattleStream {
 						battle.sendUpdates();
 					});
 				} else {
-					result = Utils.visualize(result);
+					result = Chat.stringify(result);
 					result = result.replace(/\n/g, '\n||');
 					battle.add('', '<<< ' + result);
 				}

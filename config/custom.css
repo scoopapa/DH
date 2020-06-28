@@ -1,0 +1,647 @@
+/**************
+  * GENERAL CSS *
+  **************/
+body {
+    background: #EEE url("http://i.imgur.com/JYUBwQr.jpg") no-repeat left fixed;
+}
+.button {
+    color: black;
+    background: #ff9966!important;
+    border: solid 1px black!important
+}
+.menugroup .button:hover,
+.menugroup .button:active {
+    color: white;
+    background: #ff9966!important;
+    border: solid 1px black!important
+}
+.astext {
+    border: none;
+    background: none;
+}
+.broadcast-blue {
+    background-color: #054270;
+    border: 5px solid #13d858;
+    font-size: 24px;
+    color: #01ba76;
+    font-weight: bold;
+    font-family: sans-serif;
+    padding: 20px;
+    text-align: center;
+    margin: 5px;
+    text-shadow: 0px -1px 0px #e6e6e6;
+}
+.broadcast-blue a {
+    color: #0B1361;
+}
+.broadcast-red {
+    background-color: #FFB3B3;
+    border: 1px solid #610B0B;
+    color: #610B0B;
+    font-family: sans-serif;
+    padding: 5px;
+    text-align: center;
+    margin: 5px;
+    text-shadow: 0px -1px 0px #FFD7D7;
+}
+.broadcast-red a {
+    color: #610B0B;
+}
+.broadcast-green {
+    background-color: #C3FFB3;
+    border: 1px solid #19610B;
+    color: #19610B;
+    font-family: sans-serif;
+    padding: 5px;
+    text-align: center;
+    margin: 5px;
+    text-shadow: 0px -1px 0px #D8FFD7;
+}
+.broadcast-green a {
+    color: #19610B;
+}
+.rainbow {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    cursor: pointer;
+    border: none;
+    font-size: 60px;
+    color: rgba(0, 0, 0, 0);
+    text-align: center;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    text-shadow: 3px 0 0, 6px 0 0 black, 9px 0 0 rgb(245, 221, 8), 12px 0 0 rgb(5, 148, 68), 15px 0 0 rgb(2, 135, 206), 18px 0 0, 21px 0 0;
+    transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55)
+}
+.rainbow:hover {
+    text-shadow: -3px 0 0 rgb(217, 31, 38), -6px 0 0 rgb(226, 91, 14), -9px 0 0 rgb(245, 221, 8), -12px 0 0 rgb(5, 148, 68), -15px 0 0 rgb(2, 135, 206), -18px 0 0 rgb(4, 77, 145), -21px 0 0 rgb(42, 21, 113);
+    transition: all 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55)
+}
+.flash {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    padding: 20px;
+    cursor: pointer;
+    border: none;
+    font-family: Jokerman;
+    font-size: 64px;
+    color: rgba(255, 255, 255, 1);
+    text-align: center;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    text-shadow: 0 0 10px#f4aa42, 0 0 20px#f4aa42, 0 0 30px#f4aa42, 0 0 40px#f4aa42, 0 0 70px#f4aa42, 0 0 80px#f4aa42, 0 0 100px#f4aa42, 0 0 150px#f4aa42;
+    transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1)10ms
+}
+.flash:hover {
+    text-shadow: 0 0 5px #d35656, 0 0 10px #d35656, 0 0 15px #d35656, 0 0 20px #d35656, 0 0 35px #d35656, 0 0 40px #d35656, 0 0 50px #d35656, 0 0 75px #d35656;
+}
+@keyframes blur {
+    from {
+        text-shadow: 0px 0px 10px #fff, 0px 0px 10px #FFA000, 0px 0px 25px #FFA000, 0px 0px 25px #FFA000, 0px 0px 25px #FFA000, 0px 0px 25px #FFA000, 0px 0px 25px #FFA000, 0px 0px 25px #FFA000, 0px 0px 50px #FFA000, 0px 0px 50px #FFA000, 0px 0px 50px #7B96B8, 0px 0px 150px #7B96B8, 0px 10px 100px #7B96B8, 0px 10px 100px #7B96B8, 0px 10px 100px #7B96B8, 0px 10px 100px #7B96B8, 0px -10px 100px #7B96B8, 0px -10px 100px #7B96B8;
+    }
+}
+.utilichart .itemdesccol,
+.utilichart .abilitydesccol,
+.utilichart .movedesccol {
+    white-space: nowrap;
+    padding-top: 8px;
+    font-size: 8pt;
+    width: 1200px;
+    height: 21px;
+    overflow: hidden;
+    color: #777;
+}
+.textbox,
+.textbox:hover,
+.textbox:focus {
+    border: 1px solid #252F3F;
+    box-shadow: none !important;
+}
+.closebutton,
+.minimizebutton {
+    color: #413B45;
+}
+.closebutton:hover,
+.minimizebutton:hover {
+    color: #000;
+}
+.ps-room.ps-room-light {
+    background: rgba(255, 204, 153, 0.79);
+    border-color: black;
+}
+.ps-room.ps-room-light.scrollable {
+    background: rgba(255, 204, 153, 0.79);
+    border-color: black;
+}
+.dark .ps-room.ps-room-light {
+    border-color: #a2745f;
+}
+.dark .ps-room.ps-room-light.scrollable {
+    background: rgba(120, 70, 50, 0.7);
+    border-color: black;
+}
+.roomlist a.ilink,
+.roomcounters button {
+    border-color: black;
+    color: black;
+    background: white;
+}
+.roomlist a.ilink:hover,
+.roomcounters button:hover {
+    border-color: black;
+    color: orange;
+    background: white;
+}
+.dark a.roomtab.button.closable {
+    color: black;
+}
+.dark a.roomtab.button.cur {
+    color: black;
+}
+button:hover {
+    border: 1px solid #ffa500;
+}
+button {
+    background: #ffa500;
+    border-radius: 5px;
+    color: #000000;
+    border: 1px solid #ffa500;
+}
+button {
+    background: #ffa500;
+    border-radius: 5px;
+    color: #000000;
+    border: 1px solid #ffa500;
+}
+button.button.mainmenu1 {
+    color: #373b3d;
+}
+button.button.mainmenu2 {
+    color: black;
+}
+button.button.mainmenu3 {
+    color: black;
+}
+button.button.mainmenu4 {
+    color: black;
+}
+button.button.mainmenu5 {
+    color: black;
+}
+.dark button.button {
+    color: black;
+}
+.infobox {
+    border: 1px solid #0B1361;
+    padding: 6px 6px;
+    background: rgba(255, 204, 153, 0.4);
+}
+.dark .chat-log a,
+.dark .pm-log a {
+    color: #ffc107;
+}
+.dark .chat-log a:visited,
+.dark .pm-log a:visited {
+    color: #d2a008;
+}
+.chat-log a,
+.pm-log a {
+    color: #0500A5;
+}
+.chat-log a:visited,
+.pm-log a:visited {
+    color: #162055;
+}
+.dark .userlist {
+    background: rgba(191, 112, 80, 0.24);
+    border-right: 1px solid#a2745f;
+}
+.dark .userlist strong, .dark .userlist span {
+    text-shadow: 1px 1px 2px #000;
+}
+.userlist {
+    background: rgba(183, 93, 57, 0.54);
+    border-right: 1px solid #252F3F;
+}
+.userlist li {
+    background-color: rgba(244, 244, 244, 0.8);
+    border-bottom-color: #AAA;
+}
+.userlist li button:hover {
+    background: rgba(255, 255, 255, 0.8);
+}
+.userlist li em.group {
+    color: #252F3F;
+}
+.dark .userlist li {
+    background-color: rgba(204, 129, 105, 0.5098039215686274);
+    border-bottom-color: #AAA;
+}
+.dark .userlist li button:hover {
+    background: rgba(255, 255, 255, 0.8);
+}
+.dark .chat-log {
+    background: rgba(47, 15, 2, 0.471);
+}
+.chat-log {
+    background: rgba(235, 235, 235, 0.785);
+}
+.chat-log-add {
+    background: rgba(178, 223, 247, 0.45);
+    border-top: 1px solid #252F3F;
+}
+.dark .chat-log-add {
+    background: rgba(47,15,2,0.471);
+	 border-top: 1px solid #a2745f;
+}
+#header {
+    background: rgba(255, 187, 153, 0.45) url("http://i.imgur.com/QbFNFD9.png") no-repeat 0 0;
+}
+.dark #header {
+    background: rgba(183, 93, 57, 0.54) url("http://i.imgur.com/QbFNFD9.png") no-repeat 0 0;
+}
+.header .logo {
+    opacity: 0;
+}
+.a.button.minilogo {
+    background: url("http://i.imgur.com/PKhofj0.png") no-repeat 0 0;
+}
+.dark .menugroup {
+    background: rgba(50, 30, 0, 0.4);
+}
+.menugroup {
+    border: 1px solid #d9d9d9;
+    background: rgba(255, 187, 153, 0.45);
+}
+.label {
+    text-shadow: none !important;
+    font-style: italic;
+}
+.maintabbarbottom {
+    background: #ff9966;
+    border: 1px solid #808080;
+}
+.dark .maintabbarbottom {
+    background: #ff9966;
+    border: 1px solid #808080;
+}
+.tabbar a.button.notifying {
+    background: #00E2DB;
+    border-color: #00FFFF;
+    color: #FFA000;
+    text-shadow: none;
+}
+.tabbar a.button.notifying:hover {
+    background: #00DAD2;
+    border-color: #00FFFF;
+    color: black;
+}
+.tabbar a.button.cur,
+.tabbar a.button.cur:hover {
+    background: #808080;
+    border: 1px solid #413B45;
+    color: #413B45;
+    text-shadow: none;
+}
+.tabbar a.button {
+    border: 1px solid #413B45;
+    background: #a6a6a6;
+    color: #413B45;
+    text-shadow: none;
+}
+.tabbar a.button:hover {
+    border: 1px solid #413B45;
+    background: #808080;
+    color: #413B45;
+    text-shadow: none;
+}
+.tabbar a.button.subtle-notifying {
+    color: #990000;
+}
+.userbar button.icon {
+    background: #EEE;
+    border: 1px solid #AAA;
+    padding: 0px 4px 2px 4px;
+}
+.userbar button.icon:hover {
+    background: #EEE;
+    border: 1px solid #777;
+}
+.dark .ps-popup {
+    background: rgba(8, 34, 64, 0.859) !important
+}
+.ps-popup {
+    background: #DDD;
+    border: 1px solid #AAA;
+}
+.credits h2 {
+    color: #2D3459;
+}
+.mainmenufooter a a.subtle,
+.credits ul li p,
+.credits ul {
+    color: #37348E;
+}
+.popupmenu h3 {
+    color: #1E2C28;
+}
+.ps-popup {
+    background-color: #ffe4ad;
+    color: black;
+}
+.dark .ps-popup a,
+.dark .ps-popup a.ilink {
+    color: #ffc107;
+}
+.dark .ps-popup a.ilink:hover {
+    color: #433FB9;
+}
+.ps-popup a,
+.ps-popup a.ilink {
+    color: #37348E;
+}
+.ps-popup a.ilink:hover {
+    color: #433FB9;
+}
+.avatarlist button {
+    border: 1px solid #ff6600;
+}
+.avatarlist button:hover {
+    border: 1px solid #ff6600;
+    background-color: rgb(255, 153, 102);
+}
+.ps-popup .buttonbar button:hover {
+    background: #6AE68B;
+}
+.ps-overlay {
+    background: rgba(0, 0, 0, 0.5);
+}
+.ps-popup a {
+    color: black;
+}
+.ps-popup a.ilink {
+    color: black;
+}
+.ps-popup a.ilink:hover {
+    color: blue;
+}
+.ps-popup hr {
+    border: none;
+    border-bottom: 1px solid #7C000C;
+}
+.ps-popup .buttonbar button {
+    background: #EEE;
+    border: 1px solid #AAA;
+    padding: 2px 4px;
+}
+.ps-popup .buttonbar button:hover {
+    background: #EEE;
+    border: 1px solid #777;
+}
+.ps-room.ps-room-opaque {
+    background: rgba(178, 223, 247, 0.7);
+}
+.ps-room .battle-controls {
+    background: rgba(0, 0, 0, 0);
+}
+.battle-log {
+    background: url("");
+    border-color: #413B45;
+}
+.message-error {
+    border: 1px solid #413B45;
+    background: #ECB3B4;
+    color: #413B45;
+    margin-bottom: 1px;
+}
+
+/*Battle CSS*/
+.backdrop {
+    background: url(http://cdn.wallpapersafari.com/31/60/sFZiGV.jpg) !important;
+    opacity: 0.6;
+}
+.battle-log .chat {
+    padding: 3px 1px;
+}
+.battle-log h2 {
+    text-align: right;
+    font-style: italic;
+    border-color: #000000;
+    background: #ff9966;
+    color: #000000;
+}
+.battle-log-add {
+    background: #ff9966;
+    border: 1px solid #000000;
+    color: #000000;
+}
+.battle {
+    border-color: #413B45;
+}
+.battle-log .rated strong {
+    background: #2D3459;
+}
+.battle-log .chat strong {
+    color: #2D3459;
+}
+.rightbar,
+.leftbar {
+    border-color: #413B45;
+    background: rgba(206, 234, 250, 0.5);
+}
+.trainer strong {
+    color: #413B45;
+}
+.trainer div {
+    opacity: 1;
+}
+.turnstatus-protect {
+    background: url(http://i.imgur.com/RVxCoHz.png);
+    opacity: 1!important;
+    height: 103px!important;
+    width: 150px!important;
+    border-radius: 0;
+    border-width: 0;
+    box-shadow: none;
+}
+.sidecondition-safeguard {
+    background: url(http://i.imgur.com/FrCoWCW.png);
+    opacity: 0.6!important;
+    height: 90px!important;
+    width: 130px!important;
+    border-radius: 0;
+    border-width: 0;
+    box-shadow: none;
+}
+.sidecondition-reflect {
+    background: url(http://i.imgur.com/X1XDxVB.png);
+    opacity: 0.7!important;
+    height: 90px!important;
+    width: 130px!important;
+    border-radius: 0;
+    border-width: 0;
+    box-shadow: none;
+}
+.sidecondition-lightscreen {
+    background: url(http://i.imgur.com/8eLftNA.png);
+    opacity: 0.6!important;
+    height: 90px!important;
+    width: 130px!important;
+    border-radius: 0;
+    border-width: 0;
+    box-shadow: none;
+}
+.pm-window h3 {
+    border-color: #000000;
+    background: rgb(255, 102, 0);
+    background-position: 200px;
+    color: #000000;
+    text-shadow: 0px -1px 0px #000000;
+}
+.pm-window h3:hover {
+    background: rgb(255, 163, 102);
+    background-position: 200px;
+    color: #000000;
+}
+.pm-window h3 small {
+    color: #000000;
+}
+.pm-window.focused h3,
+.pm-window.focused h3:hover {
+    border-color: #0033CC;
+    background: rgb(0, 153, 204);
+    background-position: 200px;
+    color: #0033CC;
+    text-shadow: 0px -1px 0px #0033CC;
+}
+.pm-window h3:hover .minimizebutton,
+.pm-window h3 .closebutton,
+.pm-window h3 .minimizebutton {
+    color: #CCFFFF;
+}
+.pm-window h3 .closebutton:hover {
+    color: #CCFFFF;
+}
+.pm-window h3 .minimizebutton:hover {
+    color: #CCFFFF;
+}
+.pm-window h3 .closebutton:hover + .minimizebutton {
+    color: #CCFFFF !important;
+}
+.message-pm {
+    color: #000000;
+}
+.pm-window h3.pm-notifying {
+    border-color: #000000;
+    background: #10ffe9;
+    color: #002bff;
+    text-shadow: none;
+}
+.pm-window h3.pm-notifying:hover {
+    background: #99ccff;
+}
+.pm-window h3.pm-notifying small {
+    color: #000000;
+}
+.pm-window h3.pm-notifying .closebutton,
+.pm-window h3.pm-notifying .minimizebutton {
+    color: #000000;
+}
+.pm-window h3.pm-notifying .closebutton:hover {
+    color: #000000;
+}
+.pm-window h3.pm-notifying .minimizebutton:hover {
+    color: #000000;
+}
+.pm-window h3.pm-notifying .closebutton:hover + .minimizebutton {
+    color: #000000 !important;
+}
+.dark .pm-log {
+    background: rgba(47, 15, 2, 0.729);
+}
+.pm-log,
+.pm-window.focused .pm-log {
+    border-color: #000000;
+}
+.pmnote {
+    color: #36688D;
+    font-weight: bold
+}
+.message-pm {
+    color: #36688D;
+    font-weight: bold;
+}
+.userlist li button:hover {
+    background: rgba(244, 244, 244, 0.5);
+}
+
+
+/******************
+  * Battle CSS ~end *
+  ******************/
+.ladder table,
+.ladder td,
+.ladder th {
+    border: 1px solid #DDD;
+}
+.ladder th {
+    background: #fff;
+}
+.closebutton,
+.minimizebutton {
+    color: #EEE;
+}
+.closebutton:hover {
+    color: #E04942;
+}
+.minimizebutton:hover {
+    color: #F9CA6C;
+}
+.ps-room .battle-controls {
+    background: transparent !important;
+}
+.lobby-userlist-users {
+    background: url("http://pldh.net/media/pokecons_action/484.gif") right no-repeat;
+    background: url("http://www.pokestadium.com/assets/img/sprites/misc/icons/old/reshiram.png") left no-repeat;
+}
+
+/*************************************
+  * Userlist Icons *
+  ************************************/
+/* ICONS START */
+li[id*="xprienzo"] {
+    background: rgba(244, 244, 244, 0.8) url("http://media.pldh.net/pokexycons/643.png") no-repeat right
+}
+li[id*="charizard8888"] {
+    background: rgba(244, 244, 244, 0.8) url("http://www.pokestadium.com/assets/img/sprites/misc/icons/charizard-mega-x.png") no-repeat right
+}
+li[id*="ggdaca"] {
+    background: rgba(244, 244, 244, 0.8) url("https://pldh.net/media/pokexycons/384-mega.png") no-repeat right
+}
+li[id*="winona"] {
+    background: rgba(244, 244, 244, 0.8) url("http://i.imgur.com/joKdbXU.gif") no-repeat right
+}
+li[id*="aquaticpanic"] {
+    background: rgba(244, 244, 244, 0.8) url("https://www.serebii.net/pokedex-sm/icon/103-a.png") no-repeat right
+}
+li[id*="bbgun999"] {
+    background: rgba(244, 244, 244, 0.8) url("http://www.pokestadium.com/assets/img/sprites/misc/icons/goodra.png") no-repeat right
+}
+li[id*="flufi"] {
+    background: rgba(244, 244, 244, 0.8) url("https://pldh.net/media/pokemon/ranger2/026.png") no-repeat right
+}
+li[id*="zapmaster2010"] {
+    background: rgba(244, 244, 244, 0.8) url("http://www.pokestadium.com/assets/img/sprites/misc/icons/mewtwo-mega-y.png") no-repeat right
+}
+li[id*="flurbel"] {
+    background: rgba(244, 244, 244, 0.8) url("http://orig10.deviantart.net/f057/f/2011/133/1/5/lillipup_by_mixer26-d3g9gpg.gif") no-repeat right
+}
+li[id*="zygten"] {
+    background: rgba(244, 244, 244, 0.8) url("http://www.pokestadium.com/assets/img/sprites/misc/icons/greninja.png") no-repeat right
+}
+li[id*="baneofall"] {
+    background: rgba(244, 244, 244, 0.8) url("http://sprites.pokecheck.org/sicon/384.png") no-repeat right
+}
+/* ICONS END */

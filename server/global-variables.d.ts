@@ -6,7 +6,9 @@ import * as TeamValidatorAsyncType from './team-validator-async';
 import * as UsersType from './users';
 import * as VerifierType from './verifier';
 
-import {ConfigType} from "../server/config-loader";
+import * as ConfigType from "../config/config-example";
+
+import * as StreamsType from '../lib/streams';
 
 import {IPTools as IPToolsType} from './ip-tools';
 import {LadderStore as LadderStoreType} from './ladders-remote';
@@ -28,7 +30,7 @@ declare global {
 			__version: {head: string, origin?: string, tree?: string};
 		}
 	}
-	const Config: ConfigType;
+	const Config: typeof ConfigType & AnyObject;
 	const Chat: typeof ChatType.Chat;
 	const IPTools: typeof IPToolsType;
 	const Ladders: typeof LaddersType;
@@ -36,7 +38,7 @@ declare global {
 	const LoginServer: typeof LoginServerType;
 	const Monitor: typeof MonitorType;
 	const Punishments: typeof PunishmentsType;
-	const Sockets: typeof SocketsType.Sockets;
+	const Sockets: typeof SocketsType;
 	const TeamValidatorAsync: typeof TeamValidatorAsyncType;
 	const Rooms: typeof RoomsType.Rooms;
 	const Tournaments: typeof TournamentsType;

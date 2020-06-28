@@ -6,22 +6,19 @@
  */
 
 import {State} from './state';
-import {EffectState} from './pokemon';
 
 export class Field {
 	readonly battle: Battle;
 	readonly id: ID;
 
 	weather: ID;
-	weatherData: EffectState;
+	weatherData: AnyObject;
 	terrain: ID;
-	terrainData: EffectState;
-	pseudoWeather: {[id: string]: EffectState};
+	terrainData: AnyObject;
+	pseudoWeather: AnyObject;
 
 	constructor(battle: Battle) {
 		this.battle = battle;
-		const fieldScripts = this.battle.format.field || this.battle.dex.data.Scripts.field;
-		if (fieldScripts) Object.assign(this, fieldScripts);
 		this.id = '';
 
 		this.weather = '';
@@ -54,7 +51,7 @@ export class Field {
 			const result = this.battle.runEvent('SetWeather', source, source, status);
 			if (!result) {
 				if (result === false) {
-					if ((sourceEffect as Move)?.weather) {
+					if (sourceEffect?.weather) {
 						this.battle.add('-fail', source, sourceEffect, '[from] ' + this.weather);
 					} else if (sourceEffect && sourceEffect.effectType === 'Ability') {
 						this.battle.add('-ability', source, sourceEffect, '[from] ' + this.weather, '[fail]');

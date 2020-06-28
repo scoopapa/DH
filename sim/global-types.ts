@@ -1,5 +1,4 @@
 type Battle = import('./battle').Battle;
-type BattleQueue = import('./battle-queue').BattleQueue;
 type Field = import('./field').Field;
 type Action = import('./battle-queue').Action;
 type ModdedDex = import('./dex').ModdedDex;
@@ -70,13 +69,13 @@ interface PokemonSet {
  * First character is a generation number, 1-7.
  * Second character is a source ID, one of:
  *
+ * - L = start or level-up, 3rd char+ is the level
  * - M = TM/HM
  * - T = tutor
- * - L = start or level-up, 3rd char+ is the level
  * - R = restricted (special moves like Rotom moves)
  * - E = egg
+ * - S = event, 3rd char+ is the index in .eventPokemon
  * - D = Dream World, only 5D is valid
- * - S = event, 3rd char+ is the index in .eventData
  * - V = Virtual Console or Let's Go transfer, only 7V/8V is valid
  * - C = NOT A REAL SOURCE, see note, only 3C/4C is valid
  *
@@ -91,13 +90,11 @@ type MoveSource = string;
 interface EventInfo {
 	generation: number;
 	level?: number;
-	/** true: always shiny, 1: sometimes shiny, false | undefined: never shiny */
 	shiny?: boolean | 1;
 	gender?: GenderName;
 	nature?: string;
 	ivs?: SparseStatsTable;
 	perfectIVs?: number;
-	/** true: has hidden ability, false | undefined: never has hidden ability */
 	isHidden?: boolean;
 	abilities?: string[];
 	maxEggMoves?: number;
@@ -106,7 +103,31 @@ interface EventInfo {
 	from?: string;
 }
 
-type Effect = Ability | Item | ActiveMove | Species | PureEffect | Format;
+type Effect = Ability | Item | ActiveMove | Template | PureEffect | Format;
+
+interface SelfEffect {
+	boosts?: SparseBoostsTable;
+	chance?: number;
+	pseudoWeather?: string;
+	sideCondition?: string;
+	slotCondition?: string;
+	terrain?: string;
+	volatileStatus?: string;
+	weather?: string;
+	onHit?: MoveEventMethods['onHit'];
+}
+
+interface SecondaryEffect {
+	chance?: number;
+	ability?: Ability;
+	boosts?: SparseBoostsTable;
+	dustproof?: boolean;
+	kingsrock?: boolean;
+	self?: SelfEffect;
+	status?: string;
+	volatileStatus?: string;
+	onHit?: MoveEventMethods['onHit'];
+}
 
 interface CommonHandlers {
 	ModifierEffect: (this: Battle, relayVar: number, target: Pokemon, source: Pokemon, effect: Effect) => number | void;
@@ -152,7 +173,6 @@ interface ItemEventMethods {
 }
 
 interface MoveEventMethods {
-	basePowerCallback?: (this: Battle, pokemon: Pokemon, target: Pokemon, move: ActiveMove) => number | false | null;
 	/** Return true to stop the move from being used */
 	beforeMoveCallback?: (this: Battle, pokemon: Pokemon, target: Pokemon | null, move: ActiveMove) => boolean | void;
 	beforeTurnCallback?: (this: Battle, pokemon: Pokemon, target: Pokemon) => void;
@@ -174,7 +194,6 @@ interface MoveEventMethods {
 	onHitField?: CommonHandlers['ResultMove'];
 	onHitSide?: (this: Battle, side: Side, source: Pokemon, move: ActiveMove) => boolean | null | "" | void;
 	onModifyMove?: (this: Battle, move: ActiveMove, pokemon: Pokemon, target: Pokemon) => void;
-	onModifyPriority?: CommonHandlers['ModifierSourceMove'];
 	onMoveFail?: CommonHandlers['VoidMove'];
 	onModifyType?: (this: Battle, move: ActiveMove, pokemon: Pokemon, target: Pokemon) => void;
 	onPrepareHit?: CommonHandlers['ResultMove'];
@@ -191,7 +210,7 @@ interface PureEffectEventMethods {
 	durationCallback?: (this: Battle, target: Pokemon, source: Pokemon, effect: Effect | null) => number;
 	onCopy?: (this: Battle, pokemon: Pokemon) => void;
 	onEnd?: (this: Battle, target: Pokemon & Side & Field) => void;
-	onRestart?: (this: Battle, target: Pokemon & Side & Field, source: Pokemon, sourceEffect: Effect) => void;
+	onRestart?: (this: Battle, target: Pokemon & Side & Field, source: Pokemon) => void;
 	onStart?: (this: Battle, target: Pokemon & Side & Field, source: Pokemon, sourceEffect: Effect) => void;
 }
 
@@ -205,7 +224,6 @@ interface EventMethods {
 	onAfterSwitchInSelf?: (this: Battle, pokemon: Pokemon) => void;
 	onAfterUseItem?: (this: Battle, item: Item, pokemon: Pokemon) => void;
 	onAfterBoost?: (this: Battle, boost: SparseBoostsTable, target: Pokemon, source: Pokemon, effect: Effect) => void;
-	onAfterFaint?: (this: Battle, length: number, target: Pokemon, source: Pokemon, effect: Effect) => void;
 	onAfterMoveSecondarySelf?: MoveEventMethods['onAfterMoveSecondarySelf'];
 	onAfterMoveSecondary?: MoveEventMethods['onAfterMoveSecondary'];
 	onAfterMove?: MoveEventMethods['onAfterMove'];
@@ -307,7 +325,6 @@ interface EventMethods {
 	onAllyAfterSwitchInSelf?: (this: Battle, pokemon: Pokemon) => void;
 	onAllyAfterUseItem?: (this: Battle, item: Item, pokemon: Pokemon) => void;
 	onAllyAfterBoost?: (this: Battle, boost: SparseBoostsTable, target: Pokemon, source: Pokemon, effect: Effect) => void;
-	onAllyAfterFaint?: (this: Battle, length: number, target: Pokemon, source: Pokemon, effect: Effect) => void;
 	onAllyAfterMoveSecondarySelf?: MoveEventMethods['onAfterMoveSecondarySelf'];
 	onAllyAfterMoveSecondary?: MoveEventMethods['onAfterMoveSecondary'];
 	onAllyAfterMove?: MoveEventMethods['onAfterMove'];
@@ -409,7 +426,6 @@ interface EventMethods {
 	onFoeAfterSwitchInSelf?: (this: Battle, pokemon: Pokemon) => void;
 	onFoeAfterUseItem?: (this: Battle, item: Item, pokemon: Pokemon) => void;
 	onFoeAfterBoost?: (this: Battle, boost: SparseBoostsTable, target: Pokemon, source: Pokemon, effect: Effect) => void;
-	onFoeAfterFaint?: (this: Battle, length: number, target: Pokemon, source: Pokemon, effect: Effect) => void;
 	onFoeAfterMoveSecondarySelf?: MoveEventMethods['onAfterMoveSecondarySelf'];
 	onFoeAfterMoveSecondary?: MoveEventMethods['onAfterMoveSecondary'];
 	onFoeAfterMove?: MoveEventMethods['onAfterMove'];
@@ -511,7 +527,6 @@ interface EventMethods {
 	onSourceAfterSwitchInSelf?: (this: Battle, pokemon: Pokemon) => void;
 	onSourceAfterUseItem?: (this: Battle, item: Item, pokemon: Pokemon) => void;
 	onSourceAfterBoost?: (this: Battle, boost: SparseBoostsTable, target: Pokemon, source: Pokemon, effect: Effect) => void;
-	onSourceAfterFaint?: (this: Battle, length: number, target: Pokemon, source: Pokemon, effect: Effect) => void;
 	onSourceAfterMoveSecondarySelf?: MoveEventMethods['onAfterMoveSecondarySelf'];
 	onSourceAfterMoveSecondary?: MoveEventMethods['onAfterMoveSecondary'];
 	onSourceAfterMove?: MoveEventMethods['onAfterMove'];
@@ -615,7 +630,6 @@ interface EventMethods {
 	onAnyAfterSwitchInSelf?: (this: Battle, pokemon: Pokemon) => void;
 	onAnyAfterUseItem?: (this: Battle, item: Item, pokemon: Pokemon) => void;
 	onAnyAfterBoost?: (this: Battle, boost: SparseBoostsTable, target: Pokemon, source: Pokemon, effect: Effect) => void;
-	onAnyAfterFaint?: (this: Battle, length: number, target: Pokemon, source: Pokemon, effect: Effect) => void;
 	onAnyAfterMoveSecondarySelf?: MoveEventMethods['onAfterMoveSecondarySelf'];
 	onAnyAfterMoveSecondary?: MoveEventMethods['onAfterMoveSecondary'];
 	onAnyAfterMove?: MoveEventMethods['onAfterMove'];
@@ -728,7 +742,6 @@ interface EventMethods {
 	onBoostPriority?: number;
 	onDamagePriority?: number;
 	onDragOutPriority?: number;
-	onEffectivenessPriority?: number;
 	onFoeBasePowerPriority?: number;
 	onFoeBeforeMovePriority?: number;
 	onFoeModifyDefPriority?: number;
@@ -764,17 +777,47 @@ interface EventMethods {
 }
 
 interface EffectData {
-	name?: string;
+	id: string;
+	name: string;
+	num: number;
+	affectsFainted?: boolean;
+	counterMax?: number;
 	desc?: string;
+	drain?: [number, number];
 	duration?: number;
 	durationCallback?: (this: Battle, target: Pokemon, source: Pokemon, effect: Effect | null) => number;
+	effect?: Partial<PureEffect>;
 	effectType?: string;
 	infiltrates?: boolean;
 	isNonstandard?: Nonstandard | null;
+	isUnreleased?: boolean | 'Past';
+	/**
+	 * `true` for generic Z-moves like Gigavolt Havoc.
+	 * Also `true` for Z-powered status moves like Z-Encore.
+	 * Move ID of the base move, for specific Z-moves like Stoked
+	 * Sparksurfer.
+	 */
+	isZ?: boolean | string;
+	/**
+	 * `true` for Max moves like Max Airstream. If its a G-Max moves, this is
+	 * the species ID of the Gigantamax Pokemon that can use this G-Max move.
+	 */
+	isMax?: boolean | string;
+	noCopy?: boolean;
+	recoil?: [number, number];
+	secondary?: SecondaryEffect | null;
+	secondaries?: SecondaryEffect[] | null;
+	self?: SelfEffect | null;
 	shortDesc?: string;
+	status?: string;
+	weather?: string;
+
+	onRestart?: (this: Battle, target: Pokemon & Side & Field, source: Pokemon) => void;
 }
 
-type ModdedEffectData = EffectData | Partial<EffectData> & {inherit: true};
+interface ModdedEffectData extends Partial<EffectData> {
+	inherit?: boolean;
+}
 
 type EffectType =
 	'Effect' | 'Pokemon' | 'Move' | 'Item' | 'Ability' | 'Format' |
@@ -782,6 +825,8 @@ type EffectType =
 
 interface BasicEffect extends EffectData {
 	id: ID;
+	weather?: ID;
+	status?: ID;
 	effectType: EffectType;
 	exists: boolean;
 	fullname: string;
@@ -790,33 +835,27 @@ interface BasicEffect extends EffectData {
 	toString: () => string;
 }
 
-interface PureEffectData extends EffectData, PureEffectEventMethods, EventMethods {
-	noCopy?: boolean;
-	affectsFainted?: boolean;
-	counterMax?: number;
+interface PureEffectData extends EffectData, PureEffectEventMethods, EventMethods, EffectData {
 }
 
-type ModdedPureEffectData = PureEffectData | Partial<PureEffectData> & {inherit: true};
+interface ModdedPureEffectData extends Partial<PureEffectData>, ModdedEffectData {}
 
 interface PureEffect extends Readonly<BasicEffect & PureEffectData> {
 	readonly effectType: 'Status' | 'Effect' | 'Weather';
 }
 
 interface AbilityData extends EffectData, AbilityEventMethods, EventMethods {
-	name: string;
-	/** internal index number */
-	num?: number;
-	effect?: Partial<PureEffectData>;
-	rating?: number;
+	rating: number;
 	isUnbreakable?: boolean;
 	suppressWeather?: boolean;
 }
 
-type ModdedAbilityData = AbilityData | Partial<AbilityData> & {inherit: true};
+interface ModdedAbilityData extends Partial<AbilityData>, ModdedEffectData {
+	onAfterMega?: (this: Battle, pokemon: Pokemon) => void;
+}
 
 interface Ability extends Readonly<BasicEffect & AbilityData> {
 	readonly effectType: 'Ability';
-	rating: number;
 }
 
 interface FlingData {
@@ -827,10 +866,6 @@ interface FlingData {
 }
 
 interface ItemData extends EffectData, ItemEventMethods, EventMethods {
-	name: string;
-	/** just controls location on the item spritesheet */
-	num?: number;
-	effect?: Partial<PureEffectData>;
 	gen: number;
 	fling?: FlingData;
 	forcedForme?: string;
@@ -853,128 +888,36 @@ interface ItemData extends EffectData, ItemEventMethods, EventMethods {
 	boosts?: SparseBoostsTable | false;
 }
 
-type ModdedItemData = ItemData | Partial<Omit<ItemData, 'name'>> & {
-	inherit: true,
-	onCustap?: (this: Battle, pokemon: Pokemon) => void,
-};
+interface ModdedItemData extends Partial<ItemData>, ModdedEffectData {
+	onCustap?: (this: Battle, pokemon: Pokemon) => void;
+}
 
 interface Item extends Readonly<BasicEffect & ItemData> {
 	readonly effectType: 'Item';
 }
 
-interface HitEffect {
-	onHit?: MoveEventMethods['onHit'];
-
-	// set pokemon conditions
-	boosts?: SparseBoostsTable | null;
-	status?: string;
-	volatileStatus?: string;
-
-	// set side/slot conditions
-	sideCondition?: string;
-	slotCondition?: string;
-
-	// set field conditions
-	pseudoWeather?: string;
-	terrain?: string;
-	weather?: string;
-}
-
-interface SecondaryEffect extends HitEffect {
-	chance?: number;
-	/** Used to flag a secondary effect as added by Poison Touch */
-	ability?: Ability;
-	/**
-	 * Applies to Sparkling Aria's secondary effect: Affected by
-	 * Sheer Force but not Shield Dust.
-	 */
-	dustproof?: boolean;
-	/**
-	 * Gen 2 specific mechanics: Bypasses Substitute only on Twineedle,
-	 * and allows it to flinch sleeping/frozen targets
-	 */
-	kingsrock?: boolean;
-	self?: HitEffect;
-}
-
-interface MoveData extends EffectData, MoveEventMethods, HitEffect {
-	name: string;
-	/** move index number, used for Metronome rolls */
-	num?: number;
-	effect?: Partial<PureEffectData>;
-	basePower: number;
+interface MoveData extends EffectData, MoveEventMethods {
 	accuracy: true | number;
-	pp: number;
+	basePower: number;
 	category: 'Physical' | 'Special' | 'Status';
-	type: string;
+	flags: AnyObject;
+	pp: number;
 	priority: number;
 	target: MoveTarget;
-	flags: AnyObject;
-	/** Hidden Power */
-	realMove?: string;
-
-	damage?: number | 'level' | false | null;
-	contestType?: string;
-	noPPBoosts?: boolean;
-
-	// Z-move data
-	// -----------
-	/**
-	 * ID of the Z-Crystal that calls the move.
-	 * `true` for Z-Powered status moves like Z-Encore.
-	 */
-	isZ?: boolean | string;
-	zMove?: {
-		basePower?: number,
-		effect?: string,
-		boost?: SparseBoostsTable,
-	};
-
-	// Max move data
-	// -------------
-	/**
-	 * `true` for Max moves like Max Airstream. If its a G-Max moves, this is
-	 * the species ID of the Gigantamax Pokemon that can use this G-Max move.
-	 */
-	isMax?: boolean | string;
-	maxMove?: {
-		basePower: number,
-	};
-
-	// Hit effects
-	// -----------
-	ohko?: boolean | string;
-	thawsTarget?: boolean;
-	heal?: number[] | null;
-	forceSwitch?: boolean;
-	selfSwitch?: string | boolean;
-	selfBoost?: {boosts?: SparseBoostsTable};
-	selfdestruct?: string | boolean;
-	breaksProtect?: boolean;
-	/**
-	 * Note that this is only "true" recoil. Other self-damage, like Struggle,
-	 * crash (High Jump Kick), Mind Blown, Life Orb, and even Substitute and
-	 * Healing Wish, are sometimes called "recoil" by the community, but don't
-	 * count as "real" recoil.
-	 */
-	recoil?: [number, number];
-	drain?: [number, number];
-	mindBlownRecoil?: boolean;
-	stealsBoosts?: boolean;
-	struggleRecoil?: boolean;
-	secondary?: SecondaryEffect | null;
-	secondaries?: SecondaryEffect[] | null;
-	self?: HitEffect | null;
-
-	// Hit effect modifiers
-	// --------------------
-	alwaysHit?: boolean; // currently unused
+	type: string;
+	alwaysHit?: boolean;
 	baseMoveType?: string;
 	basePowerModifier?: number;
+	boosts?: SparseBoostsTable | false;
+	breaksProtect?: boolean;
+	contestType?: string;
 	critModifier?: number;
 	critRatio?: number;
+	damage?: number | 'level' | false | null;
 	defensiveCategory?: 'Physical' | 'Special' | 'Status';
-	forceSTAB?: boolean;
+	forceSwitch?: boolean;
+	hasCustomRecoil?: boolean;
+	heal?: number[] | null;
 	ignoreAbility?: boolean;
 	ignoreAccuracy?: boolean;
 	ignoreDefensive?: boolean;
@@ -984,41 +927,70 @@ interface MoveData extends EffectData, MoveEventMethods, HitEffect {
 	ignoreOffensive?: boolean;
 	ignorePositiveDefensive?: boolean;
 	ignorePositiveEvasion?: boolean;
+	isSelfHit?: boolean;
+	isFutureMove?: boolean;
+	isViable?: boolean;
+	isMax?: boolean | string;
+	mindBlownRecoil?: boolean;
 	multiaccuracy?: boolean;
 	multihit?: number | number[];
 	multihitType?: string;
 	noDamageVariance?: boolean;
-	/** False Swipe */
 	noFaint?: boolean;
+	noMetronome?: string[];
 	nonGhostTarget?: string;
+	noPPBoosts?: boolean;
+	noSketch?: boolean;
+	ohko?: boolean | string;
 	pressureTarget?: string;
-	spreadModifier?: number;
+	pseudoWeather?: string;
+	selfBoost?: {boosts?: SparseBoostsTable};
+	selfdestruct?: string | boolean;
+	selfSwitch?: string | boolean;
+	sideCondition?: string;
 	sleepUsable?: boolean;
-	/**
-	 * Will change target if current target is unavailable. (Dragon Darts)
-	 */
-	smartTarget?: boolean;
+	slotCondition?: string;
+	spreadModifier?: number;
+	stallingMove?: boolean;
+	stealsBoosts?: boolean;
+	struggleRecoil?: boolean;
+	terrain?: string;
+	thawsTarget?: boolean;
 	/**
 	 * Tracks the original target through Ally Switch and other switch-out-and-back-in
 	 * situations, rather than just targeting a slot. (Stalwart, Snipe Shot)
 	 */
 	tracksTarget?: boolean;
+	/**
+	 * Will change target if current target is unavailable. (Dragon Darts)
+	 */
+	smartTarget?: boolean;
 	useTargetOffensive?: boolean;
 	useSourceDefensiveAsOffensive?: boolean;
+	volatileStatus?: string;
+	weather?: string;
 	willCrit?: boolean;
-
-	// Mechanics flags
-	// ---------------
-	hasCrashDamage?: boolean;
-	isConfusionSelfHit?: boolean;
-	isFutureMove?: boolean;
-	noMetronome?: string[];
-	noSketch?: boolean;
-	stallingMove?: boolean;
+	forceSTAB?: boolean;
+	zMovePower?: number;
+	zMoveEffect?: string;
+	zMoveBoost?: SparseBoostsTable;
+	gmaxPower?: number;
+	basePowerCallback?: (this: Battle, pokemon: Pokemon, target: Pokemon, move: ActiveMove) => number | false | null;
 	baseMove?: string;
+	/**
+	 * Has this move been boosted by a Z-crystal? Usually the same as
+	 * `isZ`, but hacked moves will have this be `false` and `isZ` be
+	 * truthy.
+	 */
+	isZPowered?: boolean;
+	/**
+	 * Same idea has `isZPowered`. Hacked Max moves will have this be
+	 * `false` and `isMax` be truthy.
+	 */
+	maxPowered?: boolean;
 }
 
-type ModdedMoveData = MoveData | Partial<Omit<MoveData, 'name'>> & {inherit: true};
+interface ModdedMoveData extends Partial<MoveData>, ModdedEffectData {}
 
 interface Move extends Readonly<BasicEffect & MoveData> {
 	readonly effectType: 'Move';
@@ -1039,10 +1011,8 @@ interface MoveHitData {
 }
 
 interface ActiveMove extends BasicEffect, MoveData {
-	readonly name: string;
 	readonly effectType: 'Move';
-	readonly id: ID;
-	num: number;
+	id: ID;
 	weather?: ID;
 	status?: ID;
 	hit: number;
@@ -1074,35 +1044,26 @@ interface ActiveMove extends BasicEffect, MoveData {
 	totalDamage?: number | false;
 	willChangeForme?: boolean;
 	infiltrates?: boolean;
-
-	/**
-	 * Has this move been boosted by a Z-crystal or used by a Dynamax Pokemon? Usually the same as
-	 * `isZ` or `isMax`, but hacked moves will have this be `false` and `isZ` / `isMax` be truthy.
-	 */
-	isZOrMaxPowered?: boolean;
 }
 
-interface SpeciesAbility {
+interface TemplateAbility {
 	0: string;
 	1?: string;
 	H?: string;
 	S?: string;
 }
 
-interface SpeciesData {
-	name: string;
-	/** National Dex number */
-	num: number;
-
-	types: string[];
-	abilities: SpeciesAbility;
+interface TemplateData {
+	abilities: TemplateAbility;
 	baseStats: StatsTable;
-	eggGroups: string[];
-	weightkg: number;
-	color?: string;
-	heightm?: number;
-
 	canHatch?: boolean;
+	color: string;
+	eggGroups: string[];
+	heightm: number;
+	num: number;
+	species: string;
+	types: string[];
+	weightkg: number;
 	baseForme?: string;
 	baseSpecies?: string;
 	evoLevel?: number;
@@ -1115,50 +1076,46 @@ interface SpeciesData {
 	gender?: GenderName;
 	genderRatio?: {[k: string]: number};
 	maxHP?: number;
-	cosmeticFormes?: string[];
+	otherForms?: string[];
 	otherFormes?: string[];
-	formeOrder?: string[];
 	prevo?: string;
+	inheritsFrom?: string;
+}
+
+interface ModdedTemplateData extends Partial<TemplateData> {
+	inherit?: true;
+}
+
+interface TemplateFormatsData {
+	battleOnly?: boolean;
+	comboMoves?: readonly string[];
+	doublesTier?: string;
+	encounters?: EventInfo[];
+	essentialMove?: string;
+	eventOnly?: boolean;
+	eventPokemon?: EventInfo[];
+	exclusiveMoves?: readonly string[];
 	gen?: number;
+	isGigantamax?: string;
+	isNonstandard?: Nonstandard | null;
+	isUnreleased?: boolean | 'Past';
+	maleOnlyHidden?: boolean;
+	randomBattleMoves?: readonly string[];
+	randomDoubleBattleMoves?: readonly string[];
+	randomSets?: readonly RandomTeamsTypes.Gen2RandomSet[];
 	requiredAbility?: string;
 	requiredItem?: string;
 	requiredItems?: string[];
 	requiredMove?: string;
-	battleOnly?: string | string[];
-	isGigantamax?: string;
-	changesFrom?: string;
-	maleOnlyHidden?: boolean;
+	tier?: string;
 	unreleasedHidden?: boolean | 'Past';
 }
 
-type ModdedSpeciesData = SpeciesData | Partial<Omit<SpeciesData, 'name'>> & {inherit: true};
-
-interface SpeciesFormatsData {
-	comboMoves?: readonly string[];
-	doublesTier?: string;
-	essentialMove?: string;
-	exclusiveMoves?: readonly string[];
-	isNonstandard?: Nonstandard | null;
-	randomBattleMoves?: readonly string[];
-	randomBattleLevel?: number;
-	randomDoubleBattleMoves?: readonly string[];
-	randomSets?: readonly RandomTeamsTypes.Gen2RandomSet[];
-	tier?: string;
+interface ModdedTemplateFormatsData extends Partial<TemplateFormatsData> {
+	inherit?: true;
 }
 
-type ModdedSpeciesFormatsData = SpeciesFormatsData & {inherit?: true};
-
-interface LearnsetData {
-	learnset?: {[moveid: string]: MoveSource[]};
-	eventData?: EventInfo[];
-	eventOnly?: boolean;
-	encounters?: EventInfo[];
-	exists?: boolean;
-}
-
-type ModdedLearnsetData = LearnsetData & {inherit?: true};
-
-type Species = import('./dex-data').Species;
+type Template = import('./dex-data').Template;
 
 type GameType = 'singles' | 'doubles' | 'triples' | 'rotation' | 'multi' | 'free-for-all';
 type SideID = 'p1' | 'p2' | 'p3' | 'p4';
@@ -1177,12 +1134,9 @@ interface GameTimerSettings {
 
 interface FormatsData extends EventMethods {
 	name: string;
-
 	banlist?: string[];
 	battle?: ModdedBattleScriptsData;
 	pokemon?: ModdedBattlePokemon;
-	// queue?: ModdedBattleQueue;
-	field?: ModdedField;
 	cannotMega?: string[];
 	challengeShow?: boolean;
 	debug?: boolean;
@@ -1203,6 +1157,7 @@ interface FormatsData extends EventMethods {
 	restricted?: string[];
 	ruleset?: string[];
 	searchShow?: boolean;
+	allowMultisearch?: boolean;
 	team?: string;
 	teamLength?: {validate?: [number, number], battle?: number};
 	threads?: string[];
@@ -1210,17 +1165,16 @@ interface FormatsData extends EventMethods {
 	tournamentShow?: boolean;
 	unbanlist?: string[];
 	checkLearnset?: (
-		this: TeamValidator, move: Move, species: Species, setSources: PokemonSources, set: PokemonSet
+		this: TeamValidator, move: Move, template: Template, setSources: PokemonSources, set: PokemonSet
 	) => {type: string, [any: string]: any} | null;
-	getSharedPower?: (this: Format, pokemon: Pokemon) => Set<string>;
 	onAfterMega?: (this: Battle, pokemon: Pokemon) => void;
 	onBegin?: (this: Battle) => void;
 	onChangeSet?: (
 		this: TeamValidator, set: PokemonSet, format: Format, setHas?: AnyObject, teamHas?: AnyObject
 	) => string[] | void;
-	onModifySpecies?: (
-		this: Battle, species: Species, target?: Pokemon, source?: Pokemon, effect?: Effect
-	) => Species | void;
+	onModifyTemplate?: (
+		this: Battle, template: Template, target?: Pokemon, source?: Pokemon, effect?: Effect
+	) => Template | void;
 	onStart?: (this: Battle) => void;
 	onTeamPreview?: (this: Battle) => void;
 	onValidateSet?: (
@@ -1232,11 +1186,14 @@ interface FormatsData extends EventMethods {
 		removeNicknames?: boolean,
 		skipSets?: {[name: string]: {[key: string]: boolean}},
 	}) => string[] | void;
+	trunc?: (n: number) => number;
 	section?: string;
 	column?: number;
 }
 
-type ModdedFormatsData = FormatsData | Omit<FormatsData, 'name'> & {inherit: true};
+interface ModdedFormatsData extends Partial<FormatsData> {
+	inherit?: boolean;
+}
 
 interface Format extends Readonly<BasicEffect & FormatsData> {
 	readonly effectType: 'Format' | 'Ruleset' | 'Rule' | 'ValidatorRule';
@@ -1280,7 +1237,7 @@ interface BattleScriptsData {
 		this: Battle, damage: SpreadMoveDamage, targets: SpreadMoveTargets, source: Pokemon,
 		move: ActiveMove, moveData: ActiveMove, isSecondary?: boolean, isSelf?: boolean
 	) => SpreadMoveDamage;
-	getZMove?: (this: Battle, move: Move, pokemon: Pokemon, skipChecks?: boolean) => string | true | undefined;
+	getZMove?: (this: Battle, move: Move, pokemon: Pokemon, skipChecks?: boolean) => string | undefined;
 	hitStepAccuracy?: (this: Battle, targets: Pokemon[], pokemon: Pokemon, move: ActiveMove) => boolean[];
 	hitStepBreakProtect?: (this: Battle, targets: Pokemon[], pokemon: Pokemon, move: ActiveMove) => undefined;
 	hitStepMoveHitLoop?: (this: Battle, targets: Pokemon[], pokemon: Pokemon, move: ActiveMove) => SpreadMoveDamage;
@@ -1338,8 +1295,7 @@ interface ModdedBattleSide {
 }
 
 interface ModdedBattlePokemon {
-	/** TODO: remove, completely meaningless */
-	inherit?: true;
+	inherit?: boolean;
 	boostBy?: (this: Pokemon, boost: SparseBoostsTable) => boolean | number;
 	calculateStat?: (this: Pokemon, statName: StatNameExceptHP, boost: number, modifier?: number) => number;
 	getAbility?: (this: Pokemon) => Ability;
@@ -1369,12 +1325,6 @@ interface ModdedBattlePokemon {
 	ignoringAbility?: (this: Pokemon) => boolean;
 }
 
-// interface ModdedBattleQueue extends Partial<BattleQueue> {}
-
-interface ModdedField extends Partial<Field> {
-	suppressingWeather?: (this: Field) => boolean;
-}
-
 interface ModdedBattleScriptsData extends Partial<BattleScriptsData> {
 	inherit?: string;
 	lastDamage?: number;
@@ -1396,12 +1346,11 @@ interface ModdedBattleScriptsData extends Partial<BattleScriptsData> {
 	natureModify?: (this: Battle, stats: StatsTable, set: PokemonSet) => StatsTable;
 	spreadModify?: (this: Battle, baseStats: StatsTable, set: PokemonSet) => StatsTable;
 	suppressingWeather?: (this: Battle) => boolean;
-	trunc?: (n: number) => number;
 
 	// oms
-	doGetMixedSpecies?: (this: Battle, species: Species, deltas: AnyObject) => Species;
-	getMegaDeltas?: (this: Battle, megaSpecies: Species) => AnyObject;
-	getMixedSpecies?: (this: Battle, originalName: string, megaName: string) => Species;
+	doGetMixedTemplate?: (this: Battle, template: Template, deltas: AnyObject) => Template;
+	getMegaDeltas?: (this: Battle, megaSpecies: Template) => AnyObject;
+	getMixedTemplate?: (this: Battle, originalSpecies: string, megaSpecies: string) => Template;
 	getAbility?: (this: Battle, name: string | Ability) => Ability;
 	getZMove?: (this: Battle, move: Move, pokemon: Pokemon, skipChecks?: boolean) => string | undefined;
 	getActiveZMove?: (this: Battle, move: Move, pokemon: Pokemon) => ActiveMove;
@@ -1414,7 +1363,9 @@ interface TypeData {
 	HPivs?: SparseStatsTable;
 }
 
-type ModdedTypeData = TypeData | Partial<Omit<TypeData, 'name'>> & {inherit: true};
+interface ModdedTypeData extends Partial<TypeData> {
+	inherit?: boolean;
+}
 
 interface TypeInfo extends Readonly<TypeData> {
 	readonly effectType: 'Type' | 'EffectType';
@@ -1450,7 +1401,6 @@ namespace RandomTeamsTypes {
 		rapidSpin?: number;
 		defog?: number;
 		illusion?: number;
-		statusCure?: number;
 	}
 	export interface FactoryTeamDetails {
 		megaCount: number;
@@ -1496,7 +1446,7 @@ namespace RandomTeamsTypes {
 	}
 	export interface Gen2RandomSet {
 		chance: number;
-		item?: string[];
+		item: string[];
 		baseMove1?: string;
 		baseMove2?: string;
 		baseMove3?: string;

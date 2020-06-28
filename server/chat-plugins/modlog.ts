@@ -19,7 +19,6 @@ import * as util from 'util';
 import * as Dashycode from '../../lib/dashycode';
 
 import {FS} from '../../lib/fs';
-import {Utils} from '../../lib/utils';
 import {QueryProcessManager} from '../../lib/process-manager';
 import {Repl} from '../../lib/repl';
 import {Dex} from '../../sim/dex';
@@ -53,7 +52,6 @@ const PUNISHMENTS = [
 	'KICKBATTLE', 'TICKETBAN', 'UNTICKETBAN', 'HIDETEXT', 'HIDEALTSTEXT', 'REDIRECT',
 	'NOTE', 'MAFIAHOSTBAN', 'MAFIAUNHOSTBAN', 'GIVEAWAYBAN', 'GIVEAWAYUNBAN',
 	'TOUR BAN', 'TOUR UNBAN', 'AUTOLOCK', 'AUTONAMELOCK', 'NAMELOCK', 'UNNAMELOCK',
-	'AUTOBAN', 'MONTHLOCK',
 ];
 const PUNISHMENTS_REGEX_STRING = `\\b(${PUNISHMENTS.join('|')}):.*`;
 
@@ -123,7 +121,7 @@ function getMoreButton(
 	if (!newLines || lines < maxLines) {
 		return ''; // don't show a button if no more pre-set increments are valid or if the amount of results is already below the max
 	} else {
-		if (useExactSearch) search = Utils.escapeHTML(`"${search}"`);
+		if (useExactSearch) search = Chat.escapeHTML(`"${search}"`);
 		return `<br /><div style="text-align:center"><button class="button" name="send" value="/${onlyPunishments ? 'punish' : 'mod'}log ${roomid}, ${search} ${LINES_SEPARATOR}${newLines}" title="View more results">Older results<br />&#x25bc;</button></div>`;
 	}
 }
@@ -160,7 +158,7 @@ async function runModlog(
 		regexString = searchString.replace(/[\\.+*?()|[\]{}^$]/g, '\\$&');
 	} else {
 		searchString = toID(searchString);
-		regexString = `[^a-zA-Z0-9]${[...searchString].join('[^a-zA-Z0-9]*')}([^a-zA-Z0-9]|\\z)`;
+		regexString = `[^a-zA-Z0-9]${searchString.split('').join('[^a-zA-Z0-9]*')}([^a-zA-Z0-9]|\\z)`;
 	}
 	if (onlyPunishments) regexString = `${PUNISHMENTS_REGEX_STRING}${regexString}`;
 
@@ -219,7 +217,7 @@ function prettifyResults(
 	addModlogLinks: boolean, hideIps: boolean, maxLines: number, onlyPunishments: boolean
 ) {
 	if (resultArray === null) {
-		return "|popup|The modlog query crashed.";
+		return "|popup|The modlog query has crashed.";
 	}
 	let roomName;
 	switch (roomid) {
@@ -247,7 +245,7 @@ function prettifyResults(
 		if (line) {
 			if (hideIps) line = line.replace(/[([][0-9]+\.[0-9]+\.[0-9]+\.[0-9]+[)\]]/g, '');
 			bracketIndex = line.indexOf(']');
-			if (bracketIndex < 0) return Utils.escapeHTML(line);
+			if (bracketIndex < 0) return Chat.escapeHTML(line);
 			time = new Date(line.slice(1, bracketIndex));
 		} else {
 			time = new Date();
@@ -268,13 +266,12 @@ function prettifyResults(
 			const url = Config.modloglink(time, thisRoomID);
 			if (url) timestamp = `<a href="${url}">${timestamp}</a>`;
 		}
-		return `${date}<small>[${timestamp}] (${thisRoomID})</small>${Utils.escapeHTML(line.slice(parenIndex + 1))}`;
+		return `${date}<small>[${timestamp}] (${thisRoomID})</small>${Chat.escapeHTML(line.slice(parenIndex + 1))}`;
 	}).join(`<br />`);
 	let preamble;
 	const modlogid = roomid + (searchString ? '-' + Dashycode.encode(searchString) : '');
 	if (searchString) {
-		const searchStringDescription = exactSearch ?
-			Utils.html`containing the string "${searchString}"` : Utils.html`matching the username "${searchString}"`;
+		const searchStringDescription = `${exactSearch ? `containing the string "${searchString}"` : `matching the username "${searchString}"`}`;
 		preamble = `>view-modlog-${modlogid}\n|init|html\n|title|[Modlog]${title}\n` +
 			`|pagehtml|<div class="pad"><p>The last ${scope}${Chat.count(lines, "logged actions")} ${searchStringDescription} on ${roomName}.` +
 			(exactSearch ? "" : " Add quotes to the search parameter to search for a phrase, rather than a user.");
@@ -291,7 +288,7 @@ async function getModlog(
 	maxLines = 20, onlyPunishments = false, timed = false
 ) {
 	const startTime = Date.now();
-	const targetRoom = Rooms.search(roomid);
+	const targetRoom = Rooms.search(roomid) as BasicChatRoom;
 	const user = connection.user;
 
 	// permission checking
@@ -306,13 +303,8 @@ async function getModlog(
 	}
 
 	const hideIps = !user.can('lock');
-	const addModlogLinks = !!(
-		Config.modloglink && (user.group !== ' ' || (targetRoom && targetRoom.settings.isPrivate !== true))
-	);
-	if (hideIps && /^\[?[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+\]?$/.test(searchString)) {
-		connection.popup(`You cannot search for IPs.`);
-		return;
-	}
+	const addModlogLinks = Config.modloglink && (user.group !== ' ' || (targetRoom && targetRoom.isPrivate !== true));
+
 	if (searchString.length > MAX_QUERY_LENGTH) {
 		connection.popup(`Your search query must be shorter than ${MAX_QUERY_LENGTH} characters.`);
 		return;
@@ -327,9 +319,11 @@ async function getModlog(
 	let roomidList;
 	// handle this here so the child process doesn't have to load rooms data
 	if (roomid === 'public') {
-		roomidList = [...Rooms.rooms.values()].filter(
-			room => !(room.settings.isPrivate || room.battle || room.settings.isPersonal || room.roomid === 'global')
-		).map(room => room.roomid);
+		const isPublicRoom = (
+			(room: Room) =>
+				!(room.isPrivate || room.battle || room.isPersonal || room.roomid === 'global')
+		);
+		roomidList = [...Rooms.rooms.values()].filter(isPublicRoom).map(room => room.roomid);
 	} else {
 		roomidList = [roomid];
 	}
@@ -378,7 +372,7 @@ async function runBattleSearch(userid: ID, turnLimit: number, month: string, tie
 	if (useRipgrep) {
 		// Matches non-word (including _ which counts as a word) characters between letters/numbers
 		// in a user's name so the userid can case-insensitively be matched to the name.
-		const regexString = `("p1":"${[...userid].join('[^a-zA-Z0-9]*')}[^a-zA-Z0-9]*"|"p2":"${[...userid].join('[^a-zA-Z0-9]*')}[^a-zA-Z0-9]*")`;
+		const regexString = `("p1":"${userid.split('').join('[^a-zA-Z0-9]*')}[^a-zA-Z0-9]*"|"p2":"${userid.split('').join('[^a-zA-Z0-9]*')}[^a-zA-Z0-9]*")`;
 		let output;
 		try {
 			output = await execFile('rg', ['-i', regexString, '--no-filename', '--no-line-number', '-tjson', pathString]);
@@ -621,7 +615,7 @@ export const commands: ChatCommands = {
 	modloghelp: [
 		`/modlog OR /ml [roomid], [search] - Searches the moderator log - defaults to the current room unless specified otherwise.`,
 		`If you set [roomid] as [all], it searches for [search] on all rooms' moderator logs.`,
-		`If you set [roomid] as [public], it searches for [search] in all public rooms' moderator logs, excluding battles. Requires: % @ # &`,
+		`If you set [roomid] as [public], it searches for [search] in all public rooms' moderator logs, excluding battles. Requires: % @ # & ~`,
 	],
 
 	battlesearch(target, room, user, connection) {
@@ -642,7 +636,7 @@ export const commands: ChatCommands = {
 		return this.parse(`/join view-battlesearch-${userid}-${turnLimit}`);
 	},
 	battlesearchhelp: [
-		'/battlesearch [user], (turn limit) - Searches a users rated battle history and returns information on battles that ended in less than (turn limit or 1) turns. Requires &',
+		'/battlesearch [user], (turn limit) - Searches a users rated battle history and returns information on battles that ended in less than (turn limit or 1) turns. Requires & ~',
 	],
 };
 

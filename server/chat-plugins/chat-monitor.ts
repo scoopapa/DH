@@ -1,5 +1,4 @@
 import {FS} from '../../lib/fs';
-import {Utils} from '../../lib/utils';
 
 type FilterWord = [RegExp, string, string, string | null, number];
 
@@ -74,7 +73,7 @@ const filterWords: {[k: string]: FilterWord[]} = Chat.filterWords;
 
 function constructEvasionRegex(str: string) {
 	const buf = "\\b" +
-		[...str].map(letter => (EVASION_DETECTION_SUB_STRINGS[letter] || letter) + '+').join('\\.?') +
+		str.split('').map(letter => (EVASION_DETECTION_SUB_STRINGS[letter] || letter) + '+').join('\\.?') +
 		"\\b";
 	return new RegExp(buf, 'i');
 }
@@ -306,9 +305,7 @@ export const chatfilter: ChatFilter = function (message, user, room) {
 		.replace(/\u039d/g, 'e');
 	lcMessage = lcMessage.replace(/__|\*\*|``|\[\[|\]\]/g, '');
 
-	const isStaffRoom = room && (
-		(room.persist && room.roomid.endsWith('staff')
-		) || room.roomid.startsWith('help-'));
+	const isStaffRoom = room && ((room.chatRoomData && room.roomid.endsWith('staff')) || room.roomid.startsWith('help-'));
 	const isStaff = isStaffRoom || user.isStaff || !!(this.pmTarget && this.pmTarget.isStaff);
 
 	for (const list in Chat.monitors) {
@@ -316,7 +313,7 @@ export const chatfilter: ChatFilter = function (message, user, room) {
 		if (!monitor) continue;
 		// Ignore challenge games, which are unrated and not part of roomtours.
 		if (location === 'BATTLES' && !(room && room.battle && room.battle.challengeType !== 'challenge')) continue;
-		if (location === 'PUBLIC' && room && room.settings.isPrivate === true) continue;
+		if (location === 'PUBLIC' && room && room.isPrivate === true) continue;
 
 		switch (condition) {
 		case 'notTrusted':
@@ -389,7 +386,7 @@ export const loginfilter: LoginFilter = user => {
 		const manualForceRename = Chat.forceRenames.get(toID(user.trackRename));
 		Rooms.global.notifyRooms(
 			['staff'],
-			Utils.html`|html|[NameMonitor] Username used: <span class="username">${user.name}</span> ${user.getAccountStatusString()} (${!manualForceRename ? 'automatically ' : ''}forcerenamed from <span class="username">${user.trackRename}</span>)`
+			Chat.html`|html|[NameMonitor] Username used: <span class="username">${user.name}</span> ${user.getAccountStatusString()} (${!manualForceRename ? 'automatically ' : ''}forcerenamed from <span class="username">${user.trackRename}</span>)`
 		);
 		user.trackRename = '';
 	}
@@ -398,7 +395,7 @@ export const loginfilter: LoginFilter = user => {
 		const count = forceRenamed ? ` (forcerenamed ${forceRenamed} time${Chat.plural(forceRenamed)})` : '';
 		Rooms.global.notifyRooms(
 			['staff'],
-			Utils.html`|html|[NameMonitor] Reused name${count}: <span class="username">${user.name}</span> ${user.getAccountStatusString()}`
+			Chat.html`|html|[NameMonitor] Reused name${count}: <span class="username">${user.name}</span> ${user.getAccountStatusString()}`
 		);
 	}
 };
@@ -606,9 +603,9 @@ export const commands: ChatCommands = {
 		},
 	},
 	filterhelp: [
-		`- /filter add list, word, reason - Adds a word to the given filter list. Requires: &`,
-		`- /filter remove list, words - Removes words from the given filter list. Requires: &`,
-		`- /filter view - Opens the list of filtered words. Requires: % @ &`,
+		`- /filter add list, word, reason - Adds a word to the given filter list. Requires: & ~`,
+		`- /filter remove list, words - Removes words from the given filter list. Requires: & ~`,
+		`- /filter view - Opens the list of filtered words. Requires: % @ & ~`,
 	],
 	allowname(target, room, user) {
 		if (!this.can('forcerename')) return false;

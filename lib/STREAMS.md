@@ -42,7 +42,7 @@ Writes to the stream. `writeStream.write(null)` is equivalent to `writeStream.en
 
 Writes a line to the stream. Equivalent to `writeStream.write(chunk + '\n')`.
 
-### writeStream.writeEnd()
+### writeStream.end()
 
 * Returns: {Promise<void>} for when the stream finishes.
 

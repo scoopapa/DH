@@ -5,7 +5,7 @@ const common = require('./../../common');
 
 let battle;
 
-const adderMoves = [
+let adderMoves = [
 	{name: 'Trick-or-Treat', type: 'Ghost'},
 	{name: 'Forest\'s Curse', type: 'Grass'},
 ];
@@ -15,7 +15,7 @@ describe('Type addition', function () {
 		battle.destroy();
 	});
 
-	for (const moveData of adderMoves) {
+	for (let moveData of adderMoves) {
 		describe(moveData.name, function () {
 			it('should add ' + moveData.type + ' type to its target', function () {
 				battle = common.createBattle();
@@ -41,7 +41,7 @@ describe('Type addition', function () {
 				assert.sets(() => target.getTypes().join('/'), `Normal/${moveData.type}`, () => battle.makeChoices('move ' + moveData.name, 'move extremespeed'));
 			});
 
-			for (const moveData2 of adderMoves) {
+			for (let moveData2 of adderMoves) {
 				if (moveData.name === moveData2.name) {
 					it('should fail on repeated use', function () {
 						battle = common.createBattle();

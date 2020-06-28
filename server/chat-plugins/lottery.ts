@@ -1,7 +1,6 @@
 const LOTTERY_FILE = 'config/chat-plugins/lottery.json';
 
 import {FS} from '../../lib/fs';
-import {Utils} from '../../lib/utils';
 
 const lotteriesContents = FS(LOTTERY_FILE).readIfExistsSync();
 const lotteries: {
@@ -97,17 +96,17 @@ export const commands: ChatCommands = {
 		edit: 'create',
 		create(target, room, user, connection, cmd) {
 			if (!this.can('declare', null, room)) return;
-			if (room.battle || !room.persist) {
+			if (room.battle || !room.chatRoomData) {
 				return this.errorReply('This room does not support the creation of lotteries.');
 			}
 			const lottery = lotteries[room.roomid];
 			const edited = lottery?.running;
 			if (cmd === 'edit' && !target && lottery) {
 				this.sendReply('Source:');
-				const markup = Utils.html`${lottery.markup}`.replace(/\n/g, '<br />');
+				const markup = Chat.html`${lottery.markup}`.replace(/\n/g, '<br />');
 				return this.sendReplyBox(`<code style="white-space: pre-wrap">/lottery edit ${lottery.maxWinners}, ${lottery.name}, ${markup}</code>`);
 			}
-			const [maxWinners, name, markup] = Utils.splitFirst(target, ',', 2).map(val => val.trim());
+			const [maxWinners, name, markup] = Chat.splitFirst(target, ',', 2).map(val => val.trim());
 			if (!(maxWinners && name && markup.length)) {
 				return this.errorReply("You're missing a command parameter - see /help lottery for this command's syntax.");
 			}
@@ -129,7 +128,7 @@ export const commands: ChatCommands = {
 			this.sendReply(`The lottery was successfully ${edited ? 'edited' : 'created'}.`);
 			if (!edited) {
 				this.add(
-					Utils.html`|raw|<div class="broadcast-blue"><b>${user.name} created the` +
+					Chat.html`|raw|<div class="broadcast-blue"><b>${user.name} created the` +
 					` "<a href="/view-lottery-${room.roomid}">${name}</a>" lottery!</b></div>`
 				);
 			}
@@ -171,7 +170,7 @@ export const commands: ChatCommands = {
 			const winners = getWinnersInLottery(room.roomid);
 			if (!winners) return this.errorReply(`An error occured while getting the winners.`);
 			this.add(
-				Utils.html`|raw|<div class="broadcast-blue"><b>${Chat.toListString(winners)} won the "<a href="/view-lottery-${room.roomid}">${lottery.name}</a>" lottery!</b></div>`
+				Chat.html`|raw|<div class="broadcast-blue"><b>${Chat.toListString(winners)} won the "<a href="/view-lottery-${room.roomid}">${lottery.name}</a>" lottery!</b></div>`
 			);
 			this.modlog(`LOTTERY END ${lottery.name}`);
 			endLottery(room.roomid, winners);
@@ -236,11 +235,11 @@ export const commands: ChatCommands = {
 			}
 			const canSeeIps = user.can('ban');
 			const participants = Object.entries(lottery.participants).map(([ip, participant]) => {
-				return `- ${participant}${canSeeIps ? ' (IP: ' + ip + ')' : ''}`;
+				return `${participant}${canSeeIps ? ' (IP: ' + ip + ')' : ''}`;
 			});
 			let buf = '';
 			if (user.can('declare', null, room)) {
-				buf += `<details class="readmore"><summary><b>List of participants (${participants.length}):</b></summary><p>${participants.join('\n')}</p></details>`;
+				buf += `<b>List of participants (${participants.length}):</b><p>${participants.join(', ')}</p>`;
 			} else {
 				buf += `${participants.length} participant(s) joined this lottery.`;
 			}
@@ -252,10 +251,10 @@ export const commands: ChatCommands = {
 	},
 	lotteryhelp: [
 		`/lottery - opens the current lottery, if it exists.`,
-		`/lottery create max winners, name, html - creates a new lottery with [name] as the header and [html] as body. Max winners is the amount of people that will win the lottery. Requires # &`,
-		`/lottery delete - deletes the current lottery without declaring a winner. Requires # &`,
-		`/lottery end - ends the current lottery, declaring a random participant as the winner. Requires # &`,
-		`/lottery edit max winners, name, html - edits the lottery with the provided parameters. Requires # &`,
+		`/lottery create max winners, name, html - creates a new lottery with [name] as the header and [html] as body. Max winners is the amount of people that will win the lottery. Requires # & ~`,
+		`/lottery delete - deletes the current lottery without declaring a winner. Requires # & ~`,
+		`/lottery end - ends the current lottery, declaring a random participant as the winner. Requires # & ~`,
+		`/lottery edit max winners, name, html - edits the lottery with the provided parameters. Requires # & ~`,
 		`/lottery join - joins the current lottery, if it exists, you need to be not currently punished in any public room, not locked and be autoconfirmed.`,
 		`/lottery leave - leaves the current lottery, if it exists.`,
 		`/lottery participants - shows the current participants in the lottery.`,

@@ -18,7 +18,8 @@
 		"% <strong>Global Driver</strong> - The above, and they can also lock users and check for alts": "",
 		"@ <strong>Global Moderator</strong> - The above, and they can globally ban users": "",
 		"* <strong>Global Bot</strong> - Like Moderator, but makes it clear that this user is a bot": "",
-		"&amp; <strong>Global Administrator</strong> -  They can do anything, like change what this message says and promote users globally": "",
+		"&amp; <strong>Global Leader</strong> - The above, and they can promote to global moderator and force ties": "",
+		"~ <strong>Global Administrator</strong> -  They can do anything, like change what this message says": "",
 
 		"<strong>Room ranks</strong>": "",
 		"+ <strong>Voice</strong> - They can use ! commands like !groups": "",
@@ -38,9 +39,9 @@
 		"DATA COMMANDS": "",
 		"DRIVER COMMANDS": "",
 		"MODERATOR COMMANDS": "",
-		"ADMIN COMMANDS": "",
+		"LEADER COMMANDS": "",
 
-		"(replace / with ! to broadcast. Broadcasting requires: + % @ # &)": "",
+		"(replace / with ! to broadcast. Broadcasting requires: + % @ # & ~)": "",
 
 		"<strong>Room punishments</strong>:": "",
 		"<strong>warn</strong> - Displays a popup with the rules.": "",

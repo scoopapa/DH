@@ -18,7 +18,7 @@ import {Battle} from './battle';
  *
  * `"1 2 3 4".split(" ", 2) => ["1", "2"]`
  *
- * `Utils.splitFirst("1 2 3 4", " ", 1) => ["1", "2 3 4"]`
+ * `Chat.splitFirst("1 2 3 4", " ", 1) => ["1", "2 3 4"]`
  *
  * Returns an array of length exactly limit + 1.
  */
@@ -56,7 +56,7 @@ export class BattleStream extends Streams.ObjectReadWriteStream<string> {
 		try {
 			this._writeLines(chunk);
 		} catch (err) {
-			this.pushError(err, true);
+			this.pushError(err);
 			return;
 		}
 		if (this.battle) this.battle.sendUpdates();
@@ -88,7 +88,7 @@ export class BattleStream extends Streams.ObjectReadWriteStream<string> {
 			options.send = (t: string, data: any) => {
 				if (Array.isArray(data)) data = data.join("\n");
 				this.pushMessage(t, data);
-				if (t === 'end' && !this.keepAlive) this.pushEnd();
+				if (t === 'end' && !this.keepAlive) this.push(null);
 			};
 			if (this.debug) options.debug = true;
 			this.battle = new Battle(options);
@@ -117,9 +117,9 @@ export class BattleStream extends Streams.ObjectReadWriteStream<string> {
 		}
 	}
 
-	_writeEnd() {
-		// if battle already ended, we don't need to pushEnd.
-		if (!this.atEOF) this.pushEnd();
+	_end() {
+		// this is in theory synchronous...
+		this.push(null);
 		this._destroy();
 	}
 
@@ -138,11 +138,11 @@ export function getPlayerStreams(stream: BattleStream) {
 			write(data: string) {
 				void stream.write(data);
 			},
-			writeEnd() {
-				return stream.writeEnd();
+			end() {
+				return stream.end();
 			},
 		}),
-		spectator: new Streams.ObjectReadStream<string>({
+		spectator: new Streams.ObjectReadStream({
 			read() {},
 		}),
 		p1: new Streams.ObjectReadWriteStream({
@@ -190,11 +190,11 @@ export function getPlayerStreams(stream: BattleStream) {
 			}
 		}
 		for (const s of Object.values(streams)) {
-			s.pushEnd();
+			s.push(null);
 		}
 	})().catch(err => {
 		for (const s of Object.values(streams)) {
-			s.pushError(err, true);
+			s.pushError(err);
 		}
 	});
 	return streams;
@@ -262,7 +262,7 @@ export class BattleTextStream extends Streams.ReadWriteStream {
 			if (!message.endsWith('\n')) message += '\n';
 			this.push(message + '\n');
 		}
-		this.pushEnd();
+		this.push(null);
 	}
 
 	_write(message: string | Buffer) {
@@ -274,7 +274,7 @@ export class BattleTextStream extends Streams.ReadWriteStream {
 		}
 	}
 
-	_writeEnd() {
-		return this.battleStream.writeEnd();
+	_end() {
+		return this.battleStream.end();
 	}
 }

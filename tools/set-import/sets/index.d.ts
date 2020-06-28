@@ -1,19 +1,21 @@
 export declare type StatName = 'hp' | 'atk' | 'def' | 'spa' | 'spd' | 'spe';
-export type StatsTable<T = number> = {[stat in StatName]: T};
-export interface PokemonSet<T = string> {
+export declare type StatsTable<T> = {
+	[stat in StatName]: T;
+};
+export interface PokemonSet {
 	name: string;
-	species: T;
-	item: T;
-	ability: T;
-	moves: T[];
-	nature: T;
+	species: string;
+	item: string;
+	ability: string;
+	moves: string[];
+	nature: string;
 	gender: string;
-	evs: StatsTable;
-	ivs: StatsTable;
+	evs: StatsTable<number>;
+	ivs: StatsTable<number>;
 	level: number;
 	shiny?: boolean;
 	happiness?: number;
-	pokeball?: T;
+	pokeball?: string;
 	hpType?: string;
 }
 export declare type DeepPartial<T> = {
@@ -29,8 +31,7 @@ export interface FormatData {
 		};
 	};
 }
-export type GenerationNum = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
-export type Generation = {num: GenerationNum};
-export declare function forGen(gen: Generation | GenerationNum): Promise<GenerationData> | undefined;
+export declare type Generation = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
+export declare function forGen(gen: Generation): Promise<GenerationData> | undefined;
 export declare function forFormat(format: string): Promise<FormatData> | undefined;
 export {};

@@ -10,9 +10,12 @@
 const LOGIN_SERVER_TIMEOUT = 30000;
 const LOGIN_SERVER_BATCH_TIME = 1000;
 
-import {Net} from '../lib/net';
+// tslint:disable-next-line no-var-requires
+const http = Config.loginserver.startsWith('http:') ? require('http') : require('https');
+import * as url from 'url';
 
 import {FS} from '../lib/fs';
+import * as Streams from '../lib/streams';
 
 /**
  * A custom error type used when requests to the login server take too long.
@@ -31,7 +34,11 @@ function parseJSON(json: string) {
 	return data;
 }
 
-type LoginServerResponse = [AnyObject, null] | [null, Error];
+type LoginServerResponse = [AnyObject | null, number, Error | null];
+
+interface IncomingMessage extends NodeJS.ReadableStream {
+	statusCode: number;
+}
 
 class LoginServerInstance {
 	readonly uri: string;
@@ -52,42 +59,47 @@ class LoginServerInstance {
 		this.disabled = false;
 	}
 
-	async instantRequest(action: string, data: AnyObject | null = null): Promise<LoginServerResponse> {
+	instantRequest(action: string, data: AnyObject | null = null): Promise<LoginServerResponse> {
 		if (this.openRequests > 5) {
 			return Promise.resolve(
-				[null, new RangeError("Request overflow")]
+				[null, 0, new RangeError("Request overflow")]
 			);
 		}
 		this.openRequests++;
-
-		try {
-			const request = Net(this.uri);
-			const buffer = await request.get({
-				query: {
-					...data,
-					act: action,
-					serverid: Config.serverid,
-					servertoken: Config.servertoken,
-					nocache: new Date().getTime(),
-				},
-			});
-			const json = parseJSON(buffer);
-			this.openRequests--;
-			if (json.error) {
-				return [null, new Error(json.error!)];
+		let dataString = '';
+		if (data) {
+			for (const i in data) {
+				dataString += '&' + i + '=' + encodeURIComponent('' + data[i]);
 			}
-			this.openRequests--;
-			return [json.json!, null];
-		} catch (error) {
-			this.openRequests--;
-			return [null, error];
 		}
+
+		const actionUrl = url.parse(this.uri + 'action.php' +
+			'?act=' + action + '&serverid=' + Config.serverid +
+			'&servertoken=' + encodeURIComponent(Config.servertoken) +
+			'&nocache=' + new Date().getTime() + dataString);
+
+		return new Promise((resolve, reject) => {
+			const req = http.get(actionUrl, (res: IncomingMessage) => {
+				void Streams.readAll(res).then((buffer: string) => {
+					const result = parseJSON(buffer).json || null;
+					resolve([result, res.statusCode || 0, null]);
+					this.openRequests--;
+				});
+			});
+
+			req.on('error', (error: Error) => {
+				resolve([null, 0, error]);
+				this.openRequests--;
+			});
+
+			req.end();
+		});
 	}
 
 	request(action: string, data: AnyObject | null = null): Promise<LoginServerResponse> {
 		if (this.disabled) {
 			return Promise.resolve(
-				[null, new Error(`Login server connection disabled.`)]
+				[null, 0, new Error(`Login server connection disabled.`)]
 			);
 		}
 
@@ -113,9 +125,9 @@ class LoginServerInstance {
 		// if we already have it going or the request queue is empty no need to do anything
 		if (this.openRequests || this.requestTimer || !this.requestQueue.length) return;
 
-		this.requestTimer = setTimeout(() => void this.makeRequests(), LOGIN_SERVER_BATCH_TIME);
+		this.requestTimer = setTimeout(() => this.makeRequests(), LOGIN_SERVER_BATCH_TIME);
 	}
-	async makeRequests() {
+	makeRequests() {
 		this.requestTimer = null;
 		const requests = this.requestQueue;
 		this.requestQueue = [];
@@ -130,38 +142,59 @@ class LoginServerInstance {
 		}
 
 		this.requestStart(requests.length);
+		const postData = 'serverid=' + Config.serverid +
+			'&servertoken=' + encodeURIComponent(Config.servertoken) +
+			'&nocache=' + new Date().getTime() +
+			'&json=' + encodeURIComponent(JSON.stringify(dataList)) + '\n';
 
-		try {
-			const request = Net(`${this.uri}action.php`);
-			let buffer = await request.post({
-				body: {
-					serverid: Config.serverid,
-					servertoken: Config.servertoken,
-					nocache: new Date().getTime(),
-					json: JSON.stringify(dataList),
-				},
-				timeout: LOGIN_SERVER_TIMEOUT,
+		const requestOptions: AnyObject = url.parse(`${this.uri}action.php`);
+		requestOptions.method = 'post';
+		requestOptions.headers = {
+			'Content-Type': 'application/x-www-form-urlencoded',
+			'Content-Length': postData.length,
+		};
+
+		let response: AnyObject | null = null;
+
+		const req = http.request(requestOptions, (res: IncomingMessage) => {
+			response = res;
+			void Streams.readAll(res).then((buffer: string) => {
+				// console.log('RESPONSE: ' + buffer);
+				const data = parseJSON(buffer).json;
+				if (buffer.startsWith(`[{"actionsuccess":true,`)) {
+					buffer = 'stream interrupt';
+				}
+				for (const [i, resolve] of resolvers.entries()) {
+					if (data) {
+						resolve([data[i], res.statusCode || 0, null]);
+					} else {
+						if (buffer.includes('<')) buffer = 'invalid response';
+						resolve([null, res.statusCode || 0, new Error(buffer)]);
+					}
+				}
+				this.requestEnd();
 			});
-			// console.log('RESPONSE: ' + buffer);
-			const data = parseJSON(buffer).json;
-			if (buffer.startsWith(`[{"actionsuccess":true,`)) {
-				buffer = 'stream interrupt';
-			}
-			if (!data) {
-				if (buffer.includes('<')) buffer = 'invalid response';
-				throw new Error(buffer);
-			}
-			for (const [i, resolve] of resolvers.entries()) {
-				resolve([data[i], null]);
-			}
+		});
 
-			this.requestEnd();
-		} catch (error) {
+		req.on('close', () => {
+			if (response) return;
+			const error = new TimeoutError("Response not received");
 			for (const resolve of resolvers) {
-				resolve([null, error]);
+				resolve([null, 0, error]);
 			}
 			this.requestEnd(error);
-		}
+		});
+
+		req.on('error', (error: Error) => {
+			// ignore; will be handled by the 'close' handler
+		});
+
+		req.setTimeout(LOGIN_SERVER_TIMEOUT, () => {
+			req.abort();
+		});
+
+		req.write(postData);
+		req.end();
 	}
 	requestStart(size: number) {
 		this.lastRequest = Date.now();

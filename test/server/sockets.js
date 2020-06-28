@@ -1,17 +1,12 @@
 'use strict';
 
-// These tests have not been updated to reflect the latest version of Sockets
-// Anyone should feel free to try to rewrite them to work
-
-/*
-
 const assert = require('assert').strict;
 const cluster = require('cluster');
 
-describe('Sockets', function () {
+describe.skip('Sockets', function () {
 	const spawnWorker = () => (
 		new Promise(resolve => {
-			const worker = Sockets.spawnWorker();
+			let worker = Sockets.spawnWorker();
 			worker.removeAllListeners('message');
 			resolve(worker);
 		})
@@ -78,8 +73,8 @@ describe('Sockets', function () {
 
 		it('should allow sockets to connect', function () {
 			return spawnSocket(worker => data => {
-				const cmd = data.charAt(0);
-				const [sid, ip, protocol] = data.substr(1).split('\n');
+				let cmd = data.charAt(0);
+				let [sid, ip, protocol] = data.substr(1).split('\n');
 				assert.equal(cmd, '*');
 				assert.equal(sid, '1');
 				assert.equal(ip, '127.0.0.1');
@@ -90,7 +85,7 @@ describe('Sockets', function () {
 		it('should allow sockets to disconnect', function () {
 			let querySocket;
 			return spawnSocket(worker => data => {
-				const sid = data.substr(1, data.indexOf('\n'));
+				let sid = data.substr(1, data.indexOf('\n'));
 				querySocket = `$
 					let socket = sockets.get(${sid});
 					process.send(!socket);`;
@@ -101,10 +96,10 @@ describe('Sockets', function () {
 		});
 
 		it('should allow sockets to send messages', function () {
-			const msg = 'ayy lmao';
+			let msg = 'ayy lmao';
 			let socketSend;
 			return spawnSocket(worker => data => {
-				const sid = data.substr(1, data.indexOf('\n'));
+				let sid = data.substr(1, data.indexOf('\n'));
 				socketSend = `>${sid}\n${msg}`;
 			}).then(chain(worker => data => {
 				assert.equal(data, msg);
@@ -122,8 +117,8 @@ describe('Sockets', function () {
 					let socket = sockets.get(${sid});
 					socket.emit('data', ${msg});`;
 			}).then(chain(worker => data => {
-				const cmd = data.charAt(0);
-				const params = data.substr(1).split('\n');
+				let cmd = data.charAt(0);
+				let params = data.substr(1).split('\n');
 				assert.equal(cmd, '<');
 				assert.equal(sid, params[0]);
 				assert.equal(msg, params[1]);
@@ -133,8 +128,8 @@ describe('Sockets', function () {
 		it('should create a room for the first socket to get added to it', function () {
 			let queryChannel;
 			return spawnSocket(worker => data => {
-				const sid = data.substr(1, data.indexOf('\n'));
-				const cid = 'global';
+				let sid = data.substr(1, data.indexOf('\n'));
+				let cid = 'global';
 				queryChannel = `$
 					let room = rooms.get(${cid});
 					process.send(room && room.has(${sid}));`;
@@ -147,8 +142,8 @@ describe('Sockets', function () {
 		it('should remove a room if the last socket gets removed from it', function () {
 			let queryChannel;
 			return spawnSocket(worker => data => {
-				const sid = data.substr(1, data.indexOf('\n'));
-				const cid = 'global';
+				let sid = data.substr(1, data.indexOf('\n'));
+				let cid = 'global';
 				queryChannel = `$
 					process.send(!sockets.has(${sid}) && !rooms.has(${cid}));`;
 				Sockets.roomAdd(worker, cid, sid);
@@ -159,11 +154,11 @@ describe('Sockets', function () {
 		});
 
 		it('should send to all sockets in a room', function () {
-			const msg = 'ayy lmao';
-			const cid = 'global';
-			const roomSend = `#${cid}\n${msg}`;
+			let msg = 'ayy lmao';
+			let cid = 'global';
+			let roomSend = `#${cid}\n${msg}`;
 			return spawnSocket(worker => data => {
-				const sid = data.substr(1, data.indexOf('\n'));
+				let sid = data.substr(1, data.indexOf('\n'));
 				Sockets.roomAdd(worker, cid, sid);
 			}).then(chain(worker => data => {
 				assert.equal(data, msg);
@@ -173,9 +168,9 @@ describe('Sockets', function () {
 		it('should create a channel when moving a socket to it', function () {
 			let queryChannel;
 			return spawnSocket(worker => data => {
-				const sid = data.substr(1, data.indexOf('\n'));
-				const cid = 'battle-ou-1';
-				const scid = '1';
+				let sid = data.substr(1, data.indexOf('\n'));
+				let cid = 'battle-ou-1';
+				let scid = '1';
 				queryChannel = `$
 					let channel = roomChannels[${cid}];
 					process.send(!!channel && (channel.get(${sid}) === ${scid}));`;
@@ -188,9 +183,9 @@ describe('Sockets', function () {
 		it('should remove a channel when removing its last socket', function () {
 			let queryChannel;
 			return spawnSocket(worker => data => {
-				const sid = data.substr(1, data.indexOf('\n'));
-				const cid = 'battle-ou-1';
-				const scid = '1';
+				let sid = data.substr(1, data.indexOf('\n'));
+				let cid = 'battle-ou-1';
+				let scid = '1';
 				queryChannel = `$
 					let channel = roomChannels.get(${cid});
 					process.send(!!channel && (channel.get(${sid}) === ${scid}));`;
@@ -202,12 +197,12 @@ describe('Sockets', function () {
 		});
 
 		it('should send to sockets in a channel', function () {
-			const cid = 'battle-ou-1';
-			const msg = 'ayy lmao';
-			const buf = `.${cid}\n\n|split\n\n${msg}\n\n`;
+			let cid = 'battle-ou-1';
+			let msg = 'ayy lmao';
+			let buf = `.${cid}\n\n|split\n\n${msg}\n\n`;
 			return spawnSocket(worker => data => {
-				const sid = data.substr(1, data.indexOf('\n'));
-				const scid = '1';
+				let sid = data.substr(1, data.indexOf('\n'));
+				let scid = '1';
 				Sockets.channelMove(worker, cid, scid, sid);
 			}).then(chain(worker => data => {
 				assert.equal(data, msg);
@@ -215,5 +210,3 @@ describe('Sockets', function () {
 		});
 	});
 });
-
-*/

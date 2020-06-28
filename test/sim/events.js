@@ -39,7 +39,7 @@ describe('Battle#on', function () {
 			[{species: 'Talonflame', ability: 'galewings', moves: ['peck']}],
 		]);
 		let eventCount = 0;
-		const modHandler = function (count) {
+		let modHandler = function (count) {
 			return function () {
 				assert.equal(eventCount, count);
 				eventCount++;

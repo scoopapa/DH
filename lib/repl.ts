@@ -14,7 +14,7 @@ import * as path from 'path';
 import * as repl from 'repl';
 import {crashlogger} from './crashlogger';
 
-export const Repl = new class ReplSingleton {
+export const Repl = new class {
 	/**
 	 * Contains the pathnames of all active REPL sockets.
 	 */
@@ -54,6 +54,7 @@ export const Repl = new class ReplSingleton {
 
 		// TODO: Windows does support the REPL when using named pipes. For now,
 		// this only supports UNIX sockets.
+		if (process.platform === 'win32') return;
 
 		Repl.setupListeners();
 
@@ -90,32 +91,28 @@ export const Repl = new class ReplSingleton {
 		});
 
 		const pathname = path.resolve(__dirname, '..', Config.replsocketprefix || 'logs/repl', filename);
-		try {
-			server.listen(pathname, () => {
-				fs.chmodSync(pathname, Config.replsocketmode || 0o600);
-				Repl.socketPathnames.add(pathname);
-			});
+		server.listen(pathname, () => {
+			fs.chmodSync(pathname, Config.replsocketmode || 0o600);
+			Repl.socketPathnames.add(pathname);
+		});
 
-			server.once('error', (err: NodeJS.ErrnoException) => {
+		server.once('error', (err: NodeJS.ErrnoException) => {
+			if (err.code === "EADDRINUSE") {
+				fs.unlink(pathname, _err => {
+					if (_err && _err.code !== "ENOENT") {
+						crashlogger(_err, `REPL: ${filename}`);
+					}
+					server.close();
+				});
+			} else {
+				crashlogger(err, `REPL: ${filename}`);
 				server.close();
-				if (err.code === "EADDRINUSE") {
-					fs.unlink(pathname, _err => {
-						if (_err && _err.code !== "ENOENT") {
-							crashlogger(_err, `REPL: ${filename}`);
-						}
-					});
-				} else if (err.code === "EACCES") {
-					console.error(`Could not start REPL server "${filename}": Your OS doesn't support Unix sockets (everything else will still work)`);
-				} else {
-					crashlogger(err, `REPL: ${filename}`);
-				}
-			});
+			}
+		});
 
-			server.once('close', () => {
-				Repl.socketPathnames.delete(pathname);
-			});
-		} catch (err) {
-			console.error(`Could not start REPL server "${filename}": ${err}`);
-		}
+		server.once('close', () => {
+			Repl.socketPathnames.delete(pathname);
+			Repl.start(filename, evalFunction);
+		});
 	}
 };

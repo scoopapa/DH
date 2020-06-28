@@ -32,7 +32,7 @@ describe('Misty Terrain', function () {
 		battle.setPlayer('p2', {team: [{species: "Shaymin-Sky", ability: 'serenegrace', moves: ['leechseed']}]});
 		battle.makeChoices('move mistyterrain', 'move leechseed');
 		let basePower;
-		const move = Dex.getMove('dragonpulse');
+		let move = Dex.getMove('dragonpulse');
 		basePower = battle.runEvent('BasePower', battle.p2.active[0], battle.p1.active[0], move, move.basePower, true);
 		assert.equal(basePower, battle.modify(move.basePower, 0.5));
 		basePower = battle.runEvent('BasePower', battle.p1.active[0], battle.p2.active[0], move, move.basePower, true);
@@ -64,7 +64,7 @@ describe('Misty Terrain', function () {
 		battle.makeChoices('move mistyterrain', 'move yawn');
 		battle.makeChoices('move yawn', 'move yawn');
 		assert.equal(battle.p1.active[0].status, '');
-		const dataLine = battle.log[battle.lastMoveLine + 1].split('|');
+		let dataLine = battle.log[battle.lastMoveLine + 1].split('|');
 		assert.equal(dataLine[1], '-start');
 		assert.ok(toID(dataLine[3]).endsWith('yawn'));
 	});
@@ -94,7 +94,7 @@ describe('Misty Terrain', function () {
 		battle.setPlayer('p1', {team: [{species: "Whimsicott", ability: 'prankster', moves: ['mistyterrain']}]});
 		battle.setPlayer('p2', {team: [{species: "Shuckle", ability: 'sturdy', moves: ['naturepower']}]});
 		battle.makeChoices('move mistyterrain', 'move naturepower');
-		const resultMove = toID(battle.log[battle.lastMoveLine].split('|')[3]);
+		let resultMove = toID(battle.log[battle.lastMoveLine].split('|')[3]);
 		assert.equal(resultMove, 'moonblast');
 	});
 });

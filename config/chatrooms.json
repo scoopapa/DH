@@ -1,0 +1,4 @@
+[
+{"title":"Lobby","isOfficial":true,"autojoin":true,"logTimes":true,"autoTruncate":true,"reportJoins":true,"batchJoins":0,"auth":{"octavial":"#"},"toursEnabled":"%","modchat":false},
+{"title":"Staff","isPrivate":true,"staffRoom":true,"staffAutojoin":true,"logTimes":true,"autoTruncate":true,"reportJoins":true,"batchJoins":0}
+]

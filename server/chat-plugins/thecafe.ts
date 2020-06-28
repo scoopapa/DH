@@ -45,36 +45,36 @@ function stringifyTeam(team: PokemonSet[], ingredients: string[]) {
 
 function generateTeam(generator = '') {
 	let potentialPokemon = Object.keys(Dex.data.Pokedex).filter(mon => {
-		const species = Dex.getSpecies(mon);
-		return species.baseSpecies === species.name;
+		const template = Dex.getTemplate(mon);
+		return template.baseSpecies === template.species;
 	});
 	let speciesClause = true;
 	switch (generator) {
 	case 'ou':
 		potentialPokemon = potentialPokemon.filter(mon => {
-			const species = Dex.getSpecies(mon);
-			return species.tier === 'OU';
+			const template = Dex.getTemplate(mon);
+			return template.tier === 'OU';
 		}).concat(potentialPokemon.filter(mon => {
 			// There is probably a better way to get the ratios right, oh well.
-			const species = Dex.getSpecies(mon);
-			return species.tier === 'OU' || species.tier === 'UU';
+			const template = Dex.getTemplate(mon);
+			return template.tier === 'OU' || template.tier === 'UU';
 		}));
 		break;
 	case 'ag':
 		potentialPokemon = potentialPokemon.filter(mon => {
-			const species = Dex.getSpecies(mon);
-			const unviable = species.tier === 'NFE' || species.tier === 'PU' ||
-				species.tier === '(PU)' || species.tier.startsWith("LC");
-			const illegal = species.tier === 'Unreleased' || species.tier === 'Illegal' || species.tier.startsWith("CAP");
+			const template = Dex.getTemplate(mon);
+			const unviable = template.tier === 'NFE' || template.tier === 'PU' ||
+				template.tier === '(PU)' || template.tier.startsWith("LC");
+			const illegal = template.tier === 'Unreleased' || template.tier === 'Illegal' || template.tier.startsWith("CAP");
 			return !(unviable || illegal);
 		});
 		speciesClause = false;
 		break;
 	default:
 		potentialPokemon = potentialPokemon.filter(mon => {
-			const species = Dex.getSpecies(mon);
-			const op = species.tier === 'AG' || species.tier === 'Uber' || species.tier.slice(1, -1) === 'Uber';
-			const unviable = species.tier === 'Illegal' || species.tier.includes("LC");
+			const template = Dex.getTemplate(mon);
+			const op = template.tier === 'AG' || template.tier === 'Uber' || template.tier.slice(1, -1) === 'Uber';
+			const unviable = template.tier === 'Illegal' || template.tier.includes("LC");
 			return !(op || unviable);
 		});
 		potentialPokemon.push('miltank', 'miltank', 'miltank', 'miltank'); // 5x chance for miltank for flavor purposes.
@@ -90,7 +90,7 @@ function generateTeam(generator = '') {
 		if (speciesClause) potentialPokemon.splice(randIndex, 1);
 	}
 
-	return team.map(mon => Dex.getSpecies(mon).name);
+	return team.map(mon => Dex.getTemplate(mon).species);
 }
 
 function generateDish(): [string, string[]] {
@@ -198,11 +198,11 @@ export const commands: ChatCommands = {
 	},
 	foodfighthelp: [
 		`/foodfight <generator> - Gives you a randomly generated Foodfight dish, ingredient list and team. Generator can be either 'random', 'ou', 'ag', or left blank. If left blank, uses Battle Factory to generate an importable team.`,
-		`/checkfoodfight <username> - Gives you the last team and dish generated for the entered user, or your own if left blank. Anyone can check their own info, checking other people requires: % @ # &`,
-		`/adddish <dish>, <ingredient>, <ingredient>, ... - Adds a dish to the database. Requires: % @ # &`,
-		`/addingredients <dish>, <ingredient>, <ingredient>, ... - Adds extra ingredients to a dish in the database. Requires: % @ # &`,
-		`/removedish <dish> - Removes a dish from the database. Requires: % @ # &`,
-		`/viewdishes - Shows the entire database of dishes. Requires: % @ # &`,
+		`/checkfoodfight <username> - Gives you the last team and dish generated for the entered user, or your own if left blank. Anyone can check their own info, checking other people requires: % @ # & ~`,
+		`/adddish <dish>, <ingredient>, <ingredient>, ... - Adds a dish to the database. Requires: % @ # & ~`,
+		`/addingredients <dish>, <ingredient>, <ingredient>, ... - Adds extra ingredients to a dish in the database. Requires: % @ # & ~`,
+		`/removedish <dish> - Removes a dish from the database. Requires: % @ # & ~`,
+		`/viewdishes - Shows the entire database of dishes. Requires: % @ # & ~`,
 	],
 };
 
