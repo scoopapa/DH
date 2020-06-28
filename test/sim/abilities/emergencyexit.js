@@ -81,6 +81,18 @@ describe(`Emergency Exit`, function () {
 		assert(!battle.p2.activeRequest.forceSwitch);
 	});
 
+	it.skip(`should request switch-out before end-of-turn fainted Pokemon`, function () {
+		battle = common.createBattle([
+			[{species: "Golisopod", ability: 'emergencyexit', item: 'toxicorb', moves: ['substitute', 'sleeptalk', 'liquidation']}, {species: "Magikarp", moves: ['splash']}],
+			[{species: "Charizard", item: 'rockyhelmet', moves: ['bellydrum', 'sleeptalk', 'dragonclaw']}, {species: "Mew", moves: ['sleeptalk']}],
+		]);
+		battle.makeChoices('move substitute', 'move bellydrum');
+		battle.makeChoices('move sleeptalk', 'move sleeptalk');
+		battle.makeChoices('move liquidation', 'move dragonclaw');
+		assert(battle.p1.activeRequest.forceSwitch);
+		assert(!battle.p2.activeRequest.forceSwitch);
+	});
+
 	it(`should request switch-out after taking hazard damage`, function () {
 		battle = common.createBattle([
 			[{species: "Golisopod", ability: 'emergencyexit', moves: ['uturn', 'sleeptalk']}, {species: "Magikarp", ability: 'swiftswim', moves: ['splash']}],
@@ -96,6 +108,17 @@ describe(`Emergency Exit`, function () {
 		assert.equal(battle.requestState, 'switch');
 	});
 
+	it('should request switch-out after taking Life Orb recoil', function () {
+		battle = common.createBattle([[
+			{species: "Golisopod", item: "lifeorb", ability: 'emergencyexit', moves: ['peck']},
+			{species: "Wynaut", moves: ['sleeptalk']},
+		], [
+			{species: "stufful", ability: 'compoundeyes', moves: ['superfang']},
+		]]);
+		battle.makeChoices();
+		assert.equal(battle.requestState, 'switch');
+	});
+
 	it(`should not request switch-out after taking residual damage and getting healed by berry`, function () {
 		battle = common.createBattle([
 			[{species: "Golisopod", ability: 'emergencyexit', moves: ['uturn', 'sleeptalk'], item: 'sitrusberry'}, {species: "Magikarp", ability: 'swiftswim', moves: ['splash']}],
@@ -107,6 +130,17 @@ describe(`Emergency Exit`, function () {
 		battle.makeChoices('move splash', 'move spikes');
 		battle.makeChoices('move splash', 'move spikes');
 		battle.makeChoices('switch 2', 'move protect');
+		assert.equal(battle.requestState, 'move');
+	});
+
+	it.skip(`should not request switch-out after taking poison damage and getting healed by berry`, function () {
+		battle = common.createBattle([
+			[{species: "Golisopod", ability: 'emergencyexit', moves: ['substitute', 'sleeptalk'], item: 'sitrusberry'}, {species: "Magikarp", moves: ['splash']}],
+			[{species: "Gengar", moves: ['toxic', 'nightshade', 'protect']}],
+		]);
+		battle.makeChoices('move substitute', 'move toxic');
+		battle.makeChoices('move sleeptalk', 'move nightshade');
+		battle.makeChoices('move sleeptalk', 'move protect');
 		assert.equal(battle.requestState, 'move');
 	});
 
@@ -182,5 +216,37 @@ describe(`Emergency Exit`, function () {
 		battle.makeChoices('move sleeptalk', 'move thunder');
 		assert.atMost(eePokemon.hp, eePokemon.maxhp / 2);
 		assert.equal(battle.requestState, 'move');
+	});
+
+	it('should not request switchout if its HP is already below 50%', function () {
+		battle = common.createBattle([[
+			{species: "Golisopod", evs: {hp: 4}, ability: 'emergencyexit', moves: ['sleeptalk', 'tackle']},
+			{species: "Wynaut", moves: ['sleeptalk']},
+		], [
+			{species: "stufful", ability: 'compoundeyes', moves: ['superfang', 'sleeptalk']},
+		]]);
+		battle.makeChoices();
+		battle.makeChoices('switch 2');
+
+		// Switch Goliosopod back in
+		battle.makeChoices('switch 2', 'auto');
+		battle.makeChoices('move tackle', 'move sleeptalk');
+		assert.equal(battle.requestState, 'move');
+	});
+
+	it('should request switchout if its HP was restored to above 50% and brought down again', function () {
+		battle = common.createBattle([[
+			{species: "Golisopod", evs: {hp: 4}, ability: 'emergencyexit', moves: ['sleeptalk']},
+			{species: "Wynaut", moves: ['sleeptalk']},
+		], [
+			{species: "stufful", ability: 'compoundeyes', moves: ['superfang', 'healpulse']},
+		]]);
+		battle.makeChoices();
+		battle.makeChoices('switch 2');
+
+		// Switch Goliosopod back in and heal it before switching it back out again
+		battle.makeChoices('switch 2', 'move healpulse');
+		battle.makeChoices('auto', 'move superfang');
+		assert.equal(battle.requestState, 'switch');
 	});
 });

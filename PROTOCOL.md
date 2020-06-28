@@ -150,7 +150,7 @@ represented by a space), and the rest of the string being their username.
 
 > Changes the HTML display of the `|uhtml|` message named (NAME).
 
-`|join|USER`, |j|USER`, or `|J|USER`
+`|join|USER`, `|j|USER`, or `|J|USER`
 
 > `USER` joined the room. Optionally, `USER` may be appended with `@!` to
 > indicate that the user is away or busy.
@@ -169,6 +169,17 @@ represented by a space), and the rest of the string being their username.
 
 > `USER` said `MESSAGE`. Note that `MESSAGE` can contain `|` characters,
 > so you can't just split by `|` and take the fourth string.
+
+`|notify|TITLE|MESSAGE`
+
+> Send a notification with `TITLE` and `MESSAGE` (usually, `TITLE` will be
+> bold, and `MESSAGE` is optional).
+
+`|notify|TITLE|MESSAGE|HIGHLIGHTTOKEN`
+
+> Send a notification as above, but only if the user would be notified
+> by a chat message containing `HIGHLIGHTTOKEN` (i.e. if `HIGHLIGHTTOKEN`
+> contains words added to `/highlight`, or their username by default.)
 
 `|:|TIMESTAMP`
 

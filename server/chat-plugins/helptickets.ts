@@ -1,4 +1,5 @@
 import {FS} from '../../lib/fs';
+import {Utils} from '../../lib/utils';
 
 const TICKET_FILE = 'config/tickets.json';
 const TICKET_CACHE_TIME = 24 * 60 * 60 * 1000; // 24 hours
@@ -181,8 +182,8 @@ export class HelpTicket extends Rooms.RoomGame {
 			'help', 'yes',
 		];
 		if ((!user.isStaff || this.ticket.userid === user.id) && blockedMessages.includes(toID(message))) {
-			this.room.add(`|c|~Staff|Hello! The global staff team would be happy to help you, but you need to explain what's going on first.`);
-			this.room.add(`|c|~Staff|Please post the information I requested above so a global staff member can come to help.`);
+			this.room.add(`|c|&Staff|Hello! The global staff team would be happy to help you, but you need to explain what's going on first.`);
+			this.room.add(`|c|&Staff|Please post the information I requested above so a global staff member can come to help.`);
 			this.room.update();
 			return false;
 		}
@@ -191,7 +192,7 @@ export class HelpTicket extends Rooms.RoomGame {
 			this.activationTime = Date.now();
 			if (!this.ticket.claimed) this.lastUnclaimedStart = Date.now();
 			notifyStaff();
-			this.room.add(`|c|~Staff|Thank you for the information, global staff will be here shortly. Please stay in the room.`).update();
+			this.room.add(`|c|&Staff|Thank you for the information, global staff will be here shortly. Please stay in the room.`).update();
 		}
 	}
 
@@ -223,7 +224,7 @@ export class HelpTicket extends Rooms.RoomGame {
 			const user = entry.shift();
 			let message = entry.join('|');
 			message = message.startsWith('/log ') ? message.slice(5) : `${user}: ${message}`;
-			hoverText.push(Chat.html`${message}`);
+			hoverText.push(Utils.html`${message}`);
 			if (hoverText.length >= 3) break;
 		}
 		if (!hoverText.length) return `title="The ticket creator has not spoken yet."`;
@@ -360,13 +361,13 @@ function pokeUnclaimedTicketTimer(hasUnclaimed: boolean, hasAssistRequest: boole
 	}
 }
 function notifyUnclaimedTicket(hasAssistRequest: boolean) {
-	const room = Rooms.get('staff') as BasicChatRoom;
+	const room = Rooms.get('staff');
 	if (!room) return;
 	clearTimeout(unclaimedTicketTimer[room.roomid]!);
 	unclaimedTicketTimer[room.roomid] = null;
 	timerEnds[room.roomid] = 0;
 	for (const i in room.users) {
-		const user = room.users[i];
+		const user: User = room.users[i];
 		if (user.can('mute', null, room) && !user.ignoreTickets) {
 			user.sendTo(
 				room,
@@ -377,7 +378,7 @@ function notifyUnclaimedTicket(hasAssistRequest: boolean) {
 }
 
 function notifyStaff() {
-	const room = Rooms.get('staff') as BasicChatRoom;
+	const room = Rooms.get('staff');
 	if (!room) return;
 	let buf = ``;
 	const keys = Object.keys(tickets).sort((aKey, bKey) => {
@@ -415,10 +416,10 @@ function notifyStaff() {
 				continue;
 			}
 		}
-		const creator = ticket.claimed ? Chat.html`${ticket.creator}` : Chat.html`<strong>${ticket.creator}</strong>`;
+		const creator = ticket.claimed ? Utils.html`${ticket.creator}` : Utils.html`<strong>${ticket.creator}</strong>`;
 		const notifying = ticket.claimed ? `` : ` notifying`;
 		// should always exist
-		const ticketRoom = Rooms.get(`help-${ticket.userid}`) as Room;
+		const ticketRoom = Rooms.get(`help-${ticket.userid}`) as ChatRoom;
 		const ticketGame = ticketRoom.getGame(HelpTicket)!;
 		if (!ticket.claimed) {
 			hasUnclaimed = true;
@@ -447,7 +448,8 @@ function notifyStaff() {
 		buf = `${buf}|${hasAssistRequest ? 'Public Room Staff need help' : 'There are unclaimed Help tickets'}`;
 	}
 	for (const i in room.users) {
-		const user = room.users[i];
+		// FIXME: TypeScript bug: I have no clue why TypeScript can't figure out this type
+		const user: User = room.users[i];
 		if (user.can('mute', null, room)) user.sendTo(room, buf);
 	}
 	pokeUnclaimedTicketTimer(hasUnclaimed, hasAssistRequest);
@@ -502,9 +504,9 @@ function checkTicketBanned(user: User) {
 
 // Prevent a desynchronization issue when hotpatching
 for (const room of Rooms.rooms.values()) {
-	if (!room.isHelp || !room.game) continue;
+	if (!room.settings.isHelp || !room.game) continue;
 	const game = room.getGame(HelpTicket)!;
-	game.ticket = tickets[game.ticket.userid];
+	if (game.ticket) game.ticket = tickets[game.ticket.userid];
 }
 
 const ticketTitles: {[k: string]: string} = Object.assign(Object.create(null), {
@@ -577,10 +579,7 @@ export const pages: PageTable = {
 					tickets[ticket.userid].open = false;
 					writeTickets();
 				} else {
-					if (!helpRoom.auth) {
-						helpRoom.auth = {};
-					}
-					if (!helpRoom.auth[user.id]) helpRoom.auth[user.id] = '+';
+					if (!helpRoom.auth.has(user.id)) helpRoom.auth.set(user.id, '+');
 					connection.popup(`You already have a Help ticket.`);
 					user.joinRoom(`help-${ticket.userid}` as RoomID);
 					return this.close();
@@ -733,7 +732,7 @@ export const pages: PageTable = {
 						break;
 					}
 					buf += `<p><b>Are you sure you want to submit a${ticketTitles[page.slice(7)].charAt(0) === 'A' ? 'n' : ''} ${ticketTitles[page.slice(7)]} report?</b></p>`;
-					const submitMeta = Chat.splitFirst(meta, '-', 2).join('|'); // change the delimiter as some ticket titles include -
+					const submitMeta = Utils.splitFirst(meta, '-', 2).join('|'); // change the delimiter as some ticket titles include -
 					buf += `<p><button class="button notifying" name="send" value="/helpticket submit ${ticketTitles[page.slice(7)]} ${submitMeta}">Yes, Contact global staff</button> <a href="/view-help-request-${query.slice(0, i).join('-')}${meta}" target="replace"><button class="button">No, cancel</button></a></p>`;
 					break;
 				}
@@ -788,9 +787,9 @@ export const pages: PageTable = {
 					}
 				}
 				buf += `<tr><td>${icon}</td>`;
-				buf += Chat.html`<td>${ticket.creator}</td>`;
+				buf += Utils.html`<td>${ticket.creator}</td>`;
 				buf += `<td>${ticket.type}</td>`;
-				buf += Chat.html`<td>${ticket.claimed ? ticket.claimed : `-`}</td>`;
+				buf += Utils.html`<td>${ticket.claimed ? ticket.claimed : `-`}</td>`;
 				buf += `<td>`;
 				const roomid = 'help-' + ticket.userid;
 				let logUrl = '';
@@ -828,8 +827,8 @@ export const pages: PageTable = {
 					break;
 				}
 				buf += `<tr><td><span style="color:gray"><i class="fa fa-ban"></i> Banned</td>`;
-				buf += Chat.html`<td>${ticket.name}</td>`;
-				buf += Chat.html`<td>${ticket.by}</td>`;
+				buf += Utils.html`<td>${ticket.name}</td>`;
+				buf += Utils.html`<td>${ticket.by}</td>`;
 				buf += `<td>${Chat.toDurationString(ticket.expires - Date.now(), {precision: 1})}</td>`;
 				buf += `<td>`;
 				const roomid = 'help-' + ticket.userid;
@@ -1094,10 +1093,7 @@ export const commands: ChatCommands = {
 					tickets[ticket.userid].open = false;
 					writeTickets();
 				} else {
-					if (!helpRoom.auth) {
-						helpRoom.auth = {};
-					}
-					if (!helpRoom.auth[user.id]) helpRoom.auth[user.id] = '+';
+					if (!helpRoom.auth.has(user.id)) helpRoom.auth.set(user.id, '+');
 					this.parse(`/join help-${ticket.userid}`);
 					return this.popupReply(`You already have an open ticket; please wait for global staff to respond.`);
 				}
@@ -1105,8 +1101,8 @@ export const commands: ChatCommands = {
 			if (Monitor.countTickets(user.latestIp)) {
 				return this.popupReply(`Due to high load, you are limited to creating ${Punishments.sharedIps.has(user.latestIp) ? `50` : `5`} tickets every hour.`);
 			}
-			let [ticketType, reportTargetType, reportTarget] = Chat.splitFirst(target, '|', 2).map(s => s.trim());
-			reportTarget = Chat.escapeHTML(reportTarget);
+			let [ticketType, reportTargetType, reportTarget] = Utils.splitFirst(target, '|', 2).map(s => s.trim());
+			reportTarget = Utils.escapeHTML(reportTarget);
 			if (!Object.values(ticketTitles).includes(ticketType)) return this.parse('/helpticket');
 			const contexts: {[k: string]: string} = {
 				'PM Harassment': `Hi! Who was harassing you in private messages?`,
@@ -1169,7 +1165,7 @@ export const commands: ChatCommands = {
 			if (ticket.type === 'Appeal') {
 				staffIntroButtons += `<button class="button" name="send" value="/modlog global, ${user.name}">Global Modlog for ${user.name}</button>`;
 			}
-			const introMsg = Chat.html`<h2 style="margin-top:0">Help Ticket - ${user.name}</h2>` +
+			const introMsg = Utils.html`<h2 style="margin-top:0">Help Ticket - ${user.name}</h2>` +
 				`<p><b>Issue</b>: ${ticket.type}<br />A Global Staff member will be with you shortly.</p>`;
 			const staffMessage = `<p>${closeButtons} <details><summary class="button">More Options</summary> ${staffIntroButtons}<button class="button" name="send" value="/helpticket ban ${user.id}"><small>Ticketban</small></button></details></p>`;
 			const staffHint = staffContexts[ticketType] || '';
@@ -1197,8 +1193,8 @@ export const commands: ChatCommands = {
 				helpRoom.game = new HelpTicket(helpRoom, ticket);
 			} else {
 				helpRoom.pokeExpireTimer();
-				helpRoom.introMessage = introMsg;
-				helpRoom.staffMessage = staffMessage + staffHint + reportTargetInfo;
+				helpRoom.settings.introMessage = introMsg;
+				helpRoom.settings.staffMessage = staffMessage + staffHint + reportTargetInfo;
 				if (helpRoom.game) helpRoom.game.destroy();
 				helpRoom.game = new HelpTicket(helpRoom, ticket);
 			}
@@ -1210,7 +1206,7 @@ export const commands: ChatCommands = {
 				ticketGame.addPlayer(user);
 			}
 			if (contexts[ticket.type]) {
-				helpRoom.add(`|c|~Staff|${contexts[ticket.type]}`);
+				helpRoom.add(`|c|&Staff|${contexts[ticket.type]}`);
 				helpRoom.update();
 			}
 			if (pmRequestButton) {
@@ -1228,14 +1224,14 @@ export const commands: ChatCommands = {
 			if (!this.can('lock')) return;
 			this.parse('/join view-help-tickets');
 		},
-		listhelp: [`/helpticket list - Lists all tickets. Requires: % @ & ~`],
+		listhelp: [`/helpticket list - Lists all tickets. Requires: % @ &`],
 
 		'!stats': true,
 		stats(target, room, user) {
 			if (!this.can('lock')) return;
 			this.parse('/join view-help-stats');
 		},
-		statshelp: [`/helpticket stats - List the stats for help tickets. Requires: % @ & ~`],
+		statshelp: [`/helpticket stats - List the stats for help tickets. Requires: % @ &`],
 
 		'!close': true,
 		close(target, room, user) {
@@ -1260,7 +1256,7 @@ export const commands: ChatCommands = {
 			ticket.claimed = user.name;
 			this.sendReply(`You closed ${ticket.creator}'s ticket.`);
 		},
-		closehelp: [`/helpticket close [user] - Closes an open ticket. Requires: % @ & ~`],
+		closehelp: [`/helpticket close [user] - Closes an open ticket. Requires: % @ &`],
 
 		ban(target, room, user) {
 			if (!target) return this.parse('/help helpticket ban');
@@ -1362,7 +1358,7 @@ export const commands: ChatCommands = {
 			this.globalModlog(`TICKETBAN`, targetUser || userid, ` by ${user.name}${(target ? `: ${target}` : ``)}`);
 			return true;
 		},
-		banhelp: [`/helpticket ban [user], (reason) - Bans a user from creating tickets for 2 days. Requires: % @ & ~`],
+		banhelp: [`/helpticket ban [user], (reason) - Bans a user from creating tickets for 2 days. Requires: % @ &`],
 
 		unban(target, room, user) {
 			if (!target) return this.parse('/help helpticket unban');
@@ -1394,7 +1390,7 @@ export const commands: ChatCommands = {
 			this.globalModlog("UNTICKETBAN", target, ` by ${user.id}`);
 			if (targetUser) targetUser.popup(`${user.name} has ticket unbanned you.`);
 		},
-		unbanhelp: [`/helpticket unban [user] - Ticket unbans a user. Requires: % @ & ~`],
+		unbanhelp: [`/helpticket unban [user] - Ticket unbans a user. Requires: % @ &`],
 
 		ignore(target, room, user) {
 			if (!this.can('lock')) return;
@@ -1405,7 +1401,7 @@ export const commands: ChatCommands = {
 			user.update('ignoreTickets');
 			this.sendReply(`You are now ignoring help ticket notifications.`);
 		},
-		ignorehelp: [`/helpticket ignore - Ignore notifications for unclaimed help tickets. Requires: % @ & ~`],
+		ignorehelp: [`/helpticket ignore - Ignore notifications for unclaimed help tickets. Requires: % @ &`],
 
 		unignore(target, room, user) {
 			if (!this.can('lock')) return;
@@ -1416,11 +1412,11 @@ export const commands: ChatCommands = {
 			user.update('ignoreTickets');
 			this.sendReply(`You will now receive help ticket notifications.`);
 		},
-		unignorehelp: [`/helpticket unignore - Stop ignoring notifications for help tickets. Requires: % @ & ~`],
+		unignorehelp: [`/helpticket unignore - Stop ignoring notifications for help tickets. Requires: % @ &`],
 
 		delete(target, room, user) {
 			// This is a utility only to be used if something goes wrong
-			if (!this.can('declare')) return;
+			if (!this.can('makeroom')) return;
 			if (!target) return this.parse(`/help helpticket delete`);
 			const ticket = tickets[toID(target)];
 			if (!ticket) return this.errorReply(`${target} does not have a ticket.`);
@@ -1434,18 +1430,18 @@ export const commands: ChatCommands = {
 			}
 			this.sendReply(`You deleted ${target}'s ticket.`);
 		},
-		deletehelp: [`/helpticket delete [user] - Deletes a users ticket. Requires: & ~`],
+		deletehelp: [`/helpticket delete [user] - Deletes a users ticket. Requires: &`],
 
 	},
 	helptickethelp: [
 		`/helpticket create - Creates a new ticket, requesting help from global staff.`,
-		`/helpticket list - Lists all tickets. Requires: % @ & ~`,
-		`/helpticket close [user] - Closes an open ticket. Requires: % @ & ~`,
-		`/helpticket ban [user], (reason) - Bans a user from creating tickets for 2 days. Requires: % @ & ~`,
-		`/helpticket unban [user] - Ticket unbans a user. Requires: % @ & ~`,
-		`/helpticket ignore - Ignore notifications for unclaimed help tickets. Requires: % @ & ~`,
-		`/helpticket unignore - Stop ignoring notifications for help tickets. Requires: % @ & ~`,
-		`/helpticket delete [user] - Deletes a user's ticket. Requires: & ~`,
+		`/helpticket list - Lists all tickets. Requires: % @ &`,
+		`/helpticket close [user] - Closes an open ticket. Requires: % @ &`,
+		`/helpticket ban [user], (reason) - Bans a user from creating tickets for 2 days. Requires: % @ &`,
+		`/helpticket unban [user] - Ticket unbans a user. Requires: % @ &`,
+		`/helpticket ignore - Ignore notifications for unclaimed help tickets. Requires: % @ &`,
+		`/helpticket unignore - Stop ignoring notifications for help tickets. Requires: % @ &`,
+		`/helpticket delete [user] - Deletes a user's ticket. Requires: &`,
 	],
 };
 exports.commands = commands;

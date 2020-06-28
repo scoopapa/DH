@@ -7,7 +7,7 @@ Navigation: [Website][1] | **Server repository** | [Client repository][2] | [Dex
   [2]: https://github.com/smogon/pokemon-showdown-client
   [3]: https://github.com/Zarel/Pokemon-Showdown-Dex
 
-[![Build Status](https://travis-ci.com/smogon/pokemon-showdown.svg?branch=master)](https://travis-ci.com/smogon/pokemon-showdown)
+[![Build Status](https://github.com/smogon/pokemon-showdown/workflows/Node.js%20CI/badge.svg)](https://github.com/smogon/pokemon-showdown/actions?query=workflow%3A%22Node.js+CI%22)
 [![Dependency Status](https://david-dm.org/zarel/Pokemon-Showdown.svg)](https://david-dm.org/zarel/Pokemon-Showdown)
 [![devDependency Status](https://david-dm.org/zarel/Pokemon-Showdown/dev-status.svg)](https://david-dm.org/zarel/Pokemon-Showdown?type=dev)
 [![Total Alerts](https://img.shields.io/lgtm/alerts/g/Zarel/Pokemon-Showdown.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/Zarel/Pokemon-Showdown/alerts)
@@ -84,19 +84,19 @@ If you truly want to host the client yourself, there is [a repository for the Po
 Setting up an Administrator account
 ------------------------------------------------------------------------
 
-Once your server is up, you probably want to make yourself an Administrator (~) on it.
+Once your server is up, you probably want to make yourself an Administrator (&) on it.
 
 ### config/usergroups.csv
 
 To become an Administrator, create a file named `config/usergroups.csv` containing
 
-    USER,~
+    USER,&
 
-Replace `USER` with the username that you would like to become an Administrator. Do not put a space between the comma and the tilde.
+Replace `USER` with the username that you would like to become an Administrator. Do not put a space between the comma and the ampersand.
 
 This username must be registered. If you do not have a registered account, you can create one using the Register button in the settings menu (it looks like a gear) in the upper-right of Pokémon Showdown.
 
-Once you're an administrator, you can promote/demote others easily with the `/globaladmin`, `/globalleader`, `/globalmod`, etc commands.
+Once you're an administrator, you can promote/demote others easily with the `/globaladmin`, `/globalmod`, `/globaldriver`, etc commands.
 
 
 Browser support
@@ -150,7 +150,7 @@ Owner
 
 Staff
 
-- Astrid Halberkamp [Asheviere, bumbadadabum] - Development
+- Andrew Werner [HoeenHero] - Development
 - Chris Monsanto [chaos] - Sysadmin
 - Kirk Scheibelhut [pre] - Development, Sysadmin
 - Mathieu Dias-Martins [Marty-D] - Research (game mechanics), Development
@@ -158,6 +158,7 @@ Staff
 
 Retired Staff
 
+- Astrid Halberkamp [Asheviere, bumbadadabum] - Development
 - Bill Meltsner [bmelts] - Development, Sysadmin
 - Cathy J. Fitzpatrick [cathyjf] - Development, Sysadmin
 - Hugh Gordon [V4] - Research (game mechanics), Development
@@ -166,10 +167,11 @@ Retired Staff
 
 Major Contributors
 
-- Andrew Werner [HoeenHero] - Development
+- [Anubis, Lusamine] - Research (game mechanics), Sysadmin
 - Austin Couturier [Austin] - Development (damage calculator)
 - Kevin Lau [Ascriptmaster] - Development, Art (battle animations)
 - Konrad Borowski [xfix] - Development
+- Kris Johnson [Kris] - Development
 - Leonard Craft III [DaWoblefet] - Research (game mechanics)
 - Neil Rashbrook [urkerab] - Development
 - [peach] - Development
@@ -191,7 +193,6 @@ Contributors
 - Ian Clail [Layell] - Art (battle graphics, sprites)
 - Jacob McLemore [McLemore] - Development
 - Jeremy Piemonte [panpawn] - Development
-- Kris Johnson [Kris] - Development
 - Luke Harmon-Vellotti [moo, CheeseMuffin] - Development
 - Russell Jones [SadisticMystic] - Research (game mechanics)
 - Spandan Punwatkar [spandan]- Development

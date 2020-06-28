@@ -4,8 +4,8 @@ const assert = require('./../../assert');
 const common = require('./../../common');
 
 let battle;
-let trappers = ['Block', 'Mean Look', 'Spider Web', 'Thousand Waves', 'Anchor Shot', 'Spirit Shackle'];
-let partialtrappers = ['Bind', 'Clamp', 'Fire Spin', 'Infestation', 'Magma Storm', 'Sand Tomb', 'Whirlpool', 'Wrap'];
+const trappers = ['Block', 'Mean Look', 'Spider Web', 'Thousand Waves', 'Anchor Shot', 'Spirit Shackle'];
+const partialtrappers = ['Bind', 'Clamp', 'Fire Spin', 'Infestation', 'Magma Storm', 'Sand Tomb', 'Whirlpool', 'Wrap'];
 
 describe('Trapping Moves', function () {
 	afterEach(function () {
@@ -22,7 +22,7 @@ describe('Trapping Moves', function () {
 			]});
 			battle.makeChoices('move ' + toID(move), 'move swordsdance');
 			assert.trapped(() => battle.makeChoices('move ' + toID(move), 'switch 2'));
-			assert.equal(battle.p2.active[0].template.speciesid, 'tangrowth');
+			assert.equal(battle.p2.active[0].species.id, 'tangrowth');
 		});
 
 		it('should not prevent Pokemon from switching out using moves', function () {
@@ -34,7 +34,7 @@ describe('Trapping Moves', function () {
 			]});
 			battle.makeChoices('move ' + toID(move), 'move batonpass');
 			battle.makeChoices('', 'switch 2');
-			assert.equal(battle.p2.active[0].template.speciesid, 'starmie');
+			assert.equal(battle.p2.active[0].species.id, 'starmie');
 		});
 
 		it('should not prevent Pokemon immune to trapping from switching out', function () {
@@ -46,7 +46,7 @@ describe('Trapping Moves', function () {
 			]});
 			battle.makeChoices('move ' + toID(move), 'move synthesis');
 			battle.makeChoices('move ' + toID(move), 'switch 2');
-			assert.equal(battle.p2.active[0].template.speciesid, 'starmie');
+			assert.equal(battle.p2.active[0].species.id, 'starmie');
 		});
 
 		it('should stop trapping the Pokemon if the user is no longer active', function () {
@@ -61,7 +61,7 @@ describe('Trapping Moves', function () {
 			]});
 			battle.makeChoices('move ' + toID(move), 'move roar');
 			battle.makeChoices('move rest', 'switch 2');
-			assert.equal(battle.p2.active[0].template.speciesid, 'starmie');
+			assert.equal(battle.p2.active[0].species.id, 'starmie');
 		});
 
 		it('should free all trapped Pokemon if the user is no longer active', function () {
@@ -83,8 +83,8 @@ describe('Trapping Moves', function () {
 				battle.makeChoices('move ' + toID(move) + ', move closecombat -1', 'move synthesis, move recover');
 			}
 			battle.makeChoices('move swordsdance', 'switch 3, switch 4');
-			assert.equal(battle.p2.active[0].template.speciesid, 'cradily');
-			assert.equal(battle.p2.active[1].template.speciesid, 'hippowdon');
+			assert.equal(battle.p2.active[0].species.id, 'cradily');
+			assert.equal(battle.p2.active[1].species.id, 'hippowdon');
 		});
 
 		if (trappers.indexOf(move) < 3) {
@@ -102,10 +102,10 @@ describe('Trapping Moves', function () {
 				battle.makeChoices('move ' + toID(move), 'move synthesis');
 				battle.makeChoices('move batonpass', 'move synthesis');
 				battle.makeChoices('switch 2', '');
-				assert.equal(battle.p2.active[0].template.speciesid, 'tangrowth');
+				assert.equal(battle.p2.active[0].species.id, 'tangrowth');
 				battle.makeChoices('move rest', 'move roar');
 				battle.makeChoices('move batonpass', 'switch 2');
-				assert.equal(battle.p2.active[0].template.speciesid, 'starmie');
+				assert.equal(battle.p2.active[0].species.id, 'starmie');
 			});
 		}
 	}
@@ -122,7 +122,7 @@ describe('Partial Trapping Moves', function () {
 			battle.setPlayer('p1', {team: [{species: "Smeargle", ability: 'noguard', moves: [toID(move), 'rest']}]});
 			battle.setPlayer('p2', {team: [{species: "Blissey", ability: 'naturalcure', moves: ['healbell']}]});
 			battle.makeChoices('move ' + toID(move), 'move healbell');
-			let pokemon = battle.p2.active[0];
+			const pokemon = battle.p2.active[0];
 			pokemon.heal(pokemon.maxhp);
 			battle.makeChoices('move rest', 'move healbell');
 			assert.equal(pokemon.maxhp - pokemon.hp, battle.modify(pokemon.maxhp, 1 / 8));
@@ -137,7 +137,7 @@ describe('Partial Trapping Moves', function () {
 			]});
 			battle.makeChoices('move ' + toID(move), 'move healbell');
 			assert.trapped(() => battle.makeChoices('move ' + toID(move), 'switch 2'));
-			assert.equal(battle.p2.active[0].template.speciesid, 'blissey');
+			assert.equal(battle.p2.active[0].species.id, 'blissey');
 		});
 
 		it('should not prevent Pokemon from switching out using moves', function () {
@@ -149,7 +149,7 @@ describe('Partial Trapping Moves', function () {
 			]});
 			battle.makeChoices('move ' + toID(move), 'move batonpass');
 			battle.makeChoices('', 'switch 2');
-			assert.equal(battle.p2.active[0].template.speciesid, 'starmie');
+			assert.equal(battle.p2.active[0].species.id, 'starmie');
 		});
 
 		it('should not prevent Pokemon immune to trapping from switching out', function () {
@@ -161,7 +161,7 @@ describe('Partial Trapping Moves', function () {
 			]});
 			battle.makeChoices('move ' + toID(move), 'move sleeptalk');
 			battle.makeChoices('move ' + toID(move), 'switch 2');
-			assert.equal(battle.p2.active[0].template.speciesid, 'starmie');
+			assert.equal(battle.p2.active[0].species.id, 'starmie');
 		});
 
 		it('should stop trapping the Pokemon if the user is no longer active', function () {
@@ -176,7 +176,7 @@ describe('Partial Trapping Moves', function () {
 			]});
 			battle.makeChoices('move ' + toID(move), 'move roar');
 			battle.makeChoices('move rest', 'switch 2');
-			assert.equal(battle.p2.active[0].template.speciesid, 'starmie');
+			assert.equal(battle.p2.active[0].species.id, 'starmie');
 		});
 
 		it('should stop trapping the Pokemon if the target uses Rapid Spin', function () {
@@ -191,7 +191,7 @@ describe('Partial Trapping Moves', function () {
 			]});
 			battle.makeChoices('move ' + toID(move), 'move rapidspin');
 			battle.makeChoices('move ' + toID(move), 'switch 2');
-			assert.equal(battle.p2.active[0].template.speciesid, 'starmie');
+			assert.equal(battle.p2.active[0].species.id, 'starmie');
 		});
 	}
 });

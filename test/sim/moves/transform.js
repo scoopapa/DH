@@ -10,12 +10,12 @@ describe('Transform', function () {
 		battle.destroy();
 	});
 
-	it('should copy the Pokemon\'s template', function () {
+	it('should copy the Pokemon\'s species', function () {
 		battle = common.createBattle();
 		battle.setPlayer('p1', {team: [{species: "Ditto", ability: 'limber', moves: ['transform']}]});
 		battle.setPlayer('p2', {team: [{species: "Hoopa-Unbound", ability: 'magician', moves: ['rest']}]});
 		battle.makeChoices('move transform', 'move rest');
-		assert.equal(battle.p1.active[0].template, battle.p2.active[0].template);
+		assert.equal(battle.p1.active[0].species, battle.p2.active[0].species);
 	});
 
 	it('should copy all stats except HP', function () {
@@ -23,9 +23,9 @@ describe('Transform', function () {
 		battle.setPlayer('p1', {team: [{species: "Ditto", ability: 'limber', moves: ['transform']}]});
 		battle.setPlayer('p2', {team: [{species: "Mewtwo", ability: 'pressure', moves: ['rest']}]});
 		battle.makeChoices('move transform', 'move rest');
-		let p1poke = battle.p1.active[0];
-		let p2poke = battle.p2.active[0];
-		for (let stat in p1poke.stats) {
+		const p1poke = battle.p1.active[0];
+		const p2poke = battle.p2.active[0];
+		for (const stat in p1poke.stats) {
 			assert.equal(p1poke.stats[stat], p2poke.stats[stat]);
 		}
 		assert.notStrictEqual(p1poke.hp, p2poke.hp);
@@ -39,9 +39,9 @@ describe('Transform', function () {
 		for (let i = 1; i <= 3; i++) {
 			battle.makeChoices('move ' + i, 'move ' + i);
 		}
-		let p1poke = battle.p1.active[0];
-		let p2poke = battle.p2.active[0];
-		for (let stat in p1poke.boosts) {
+		const p1poke = battle.p1.active[0];
+		const p2poke = battle.p2.active[0];
+		for (const stat in p1poke.boosts) {
 			assert.equal(p1poke.boosts[stat], p2poke.boosts[stat]);
 		}
 	});
@@ -58,15 +58,15 @@ describe('Transform', function () {
 		battle = common.createBattle();
 		battle.setPlayer('p1', {team: [{species: "Ditto", ability: 'limber', moves: ['transform']}]});
 		battle.setPlayer('p2', {team: [{species: "Mew", ability: 'synchronize', moves: ['rest', 'psychic', 'energyball', 'hyperbeam']}]});
-		let p1poke = battle.p1.active[0];
-		let p2poke = battle.p2.active[0];
+		const p1poke = battle.p1.active[0];
+		const p2poke = battle.p2.active[0];
 		battle.makeChoices('move transform', 'move rest');
 		assert.equal(p1poke.moves.length, p2poke.moves.length);
 		for (let i = 0; i < p1poke.moves.length; i++) {
 			let move = p1poke.moves[i];
 			assert.equal(move, p2poke.moves[i]);
 			move = battle.dex.getMove(move);
-			let movepp = p1poke.getMoveData(move);
+			const movepp = p1poke.getMoveData(move);
 			assert.equal(movepp.pp, 5);
 		}
 	});
@@ -92,7 +92,7 @@ describe('Transform', function () {
 		battle.setPlayer('p1', {team: [{species: "Ditto", ability: 'limber', moves: ['transform']}]});
 		battle.setPlayer('p2', {team: [{species: "Mewtwo", ability: 'pressure', moves: ['substitute']}]});
 		battle.makeChoices('move transform', 'move substitute');
-		assert.notStrictEqual(battle.p1.active[0].template, battle.p2.active[0].template);
+		assert.notStrictEqual(battle.p1.active[0].species, battle.p2.active[0].species);
 	});
 
 	it('should fail against Pokemon with Illusion active', function () {
@@ -103,7 +103,7 @@ describe('Transform', function () {
 			{species: "Mewtwo", ability: 'pressure', moves: ['rest']},
 		]});
 		battle.makeChoices('move transform', 'move rest');
-		assert.notStrictEqual(battle.p1.active[0].template, battle.p2.active[0].template);
+		assert.notStrictEqual(battle.p1.active[0].species, battle.p2.active[0].species);
 	});
 
 	it('should fail against tranformed Pokemon', function () {
@@ -114,10 +114,10 @@ describe('Transform', function () {
 			{species: "Mew", ability: 'synchronize', moves: ['transform']},
 		]});
 		battle.makeChoices('move transform', 'move splash');
-		assert.equal(battle.p1.active[0].template, battle.p2.active[0].template);
+		assert.equal(battle.p1.active[0].species, battle.p2.active[0].species);
 		battle.makeChoices('move splash', 'switch 2');
 		battle.makeChoices('move splash', 'move transform');
-		assert.notStrictEqual(battle.p1.active[0].template, battle.p2.active[0].template);
+		assert.notStrictEqual(battle.p1.active[0].species, battle.p2.active[0].species);
 	});
 
 	it(`should copy the target's real type, even if the target is an Arceus`, function () {
@@ -164,7 +164,7 @@ describe('Transform [Gen 4]', function () {
 			[{species: "Giratina-Origin", ability: 'levitate', item: 'griseousorb', moves: ['rest']}],
 		]);
 		battle.makeChoices('move transform', 'move rest');
-		assert.equal(battle.p1.active[0].template.species, 'Giratina');
+		assert.equal(battle.p1.active[0].species.name, 'Giratina');
 	});
 
 	it('should cause Pokemon transformed into Giratina-Alternate to become Giratina-Origin if holding a Griseous Orb', function () {
@@ -173,7 +173,7 @@ describe('Transform [Gen 4]', function () {
 			[{species: "Giratina", ability: 'pressure', moves: ['rest']}],
 		]);
 		battle.makeChoices('move transform', 'move rest');
-		assert.equal(battle.p1.active[0].template.species, 'Giratina-Origin');
+		assert.equal(battle.p1.active[0].species.name, 'Giratina-Origin');
 	});
 
 	it('should cause Pokemon transformed into Arceus to become an Arceus forme corresponding to its held Plate', function () {
@@ -182,7 +182,7 @@ describe('Transform [Gen 4]', function () {
 			[{species: "Arceus-Steel", ability: 'multitype', item: 'ironplate', moves: ['rest']}],
 		]);
 		battle.makeChoices('move transform', 'move rest');
-		assert.equal(battle.p1.active[0].template.species, 'Arceus-Fire');
+		assert.equal(battle.p1.active[0].species.name, 'Arceus-Fire');
 		assert.deepEqual(battle.p1.active[0].getTypes(), ["Fire"]);
 	});
 
@@ -192,7 +192,7 @@ describe('Transform [Gen 4]', function () {
 			[{species: "Mewtwo", ability: 'pressure', moves: ['substitute']}],
 		]);
 		battle.makeChoices('move transform', 'move substitute');
-		assert.equal(battle.p1.active[0].template, battle.p2.active[0].template);
+		assert.equal(battle.p1.active[0].species, battle.p2.active[0].species);
 	});
 });
 

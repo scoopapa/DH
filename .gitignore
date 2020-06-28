@@ -1,9 +1,9 @@
 /config/*
-!/config/formats.js
+!/config/formats.ts
 /logs/*
 /node_modules
 /eslint-cache
-/server/chat-plugins/private/*
+/server/chat-plugins/private
 /server/chat-plugins/private.js
 /server/chat-plugins/*-private.js
 npm-debug.log
