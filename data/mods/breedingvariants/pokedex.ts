@@ -505,7 +505,7 @@ export const BattlePokedex: {[k: string]: ModdedSpeciesData} = {
 		inherit: true,
 		otherFormes: ["rapidashgalarmeow"],
 	  },
-	rapidashgalar: {
+	rapidashgalarmeow: {
 		num: ,
 		species: "Rapidash-Galar",
 		types: ["Fairy", "Steel"],
