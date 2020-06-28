@@ -33,6 +33,7 @@ exports.BattleScripts = {
 		
 		// Appletun
 		this.modData('Learnsets', 'appletun').learnset.calmmind = ['8L1'];
+		this.modData('Learnsets', 'appletun').learnset.toxic = ['8L1'];
 		
 		// Qwilfish
 		this.modData('Learnsets', 'qwilfish').learnset.recover = ['8L1'];
@@ -63,10 +64,24 @@ exports.BattleScripts = {
 		// Gloom
 		this.modData('Learnsets', 'gloom').learnset.toxicspikes = ['8M'];
 		
+		// Melmetal
 		delete this.modData('Learnsets', 'melmetal').learnset.superpower;
 		delete this.modData('Learnsets', 'melmetal').learnset.bodypress;
 		delete this.modData('Learnsets', 'melmetal').learnset.brickbreak;
 		this.modData('Learnsets', 'melmetal').learnset.bulkup = ['8L1'];
+		
+		// Persian-Kanto
+		this.modData('Learnsets', 'persian').learnset.crunch = ['8L1'];
+		this.modData('Learnsets', 'persian').learnset.flamewheel = ['8L1'];
+		
+		// Meowstic
+		this.modData('Learnsets', 'meowstic').learnset.defog = ['8L1'];
+		this.modData('Learnsets', 'meowstic').learnset.taunt = ['8L1'];
+		
+		// Meowstic F
+		this.modData('Learnsets', 'meowsticf').learnset.aurasphere = ['8L1'];
+		this.modData('Learnsets', 'meowsticf').learnset.taunt = ['8L1'];
+		
 	},
 	//Modded functions
 	canDynamax(pokemon, skipChecks) {

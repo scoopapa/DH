@@ -35,6 +35,10 @@ let BattlePokedex = {
 		inherit: true,
 		baseStats: {hp: 80, atk: 110, def: 85, spa: 95, spd: 65, spe: 70},
 	},
+	appletun: {
+		inherit: true,
+		baseStats: {hp: 120, atk: 85, def: 85, spa: 100, spd: 85, spe: 30},
+	},
 	drapion: {
 		inherit: true,
 		abilities: {0: "Tough Claws", 1: "Sniper", H: "Keen Eye"},
@@ -60,6 +64,25 @@ let BattlePokedex = {
 	melmetal: {
 		inherit: true,
 		baseStats: {hp: 125, atk: 123, def: 123, spa: 80, spd: 65, spe: 84},
+	},
+	persian: {
+		inherit: true,
+		baseStats: {hp: 65, atk: 95, def: 65, spa: 65, spd: 65, spe: 135},
+		abilities: {0: "Limber", 1: "Technician", H: "Scrappy"},
+	},
+	persianalola: {
+		inherit: true,
+		baseStats: {hp: 95, atk: 60, def: 60, spa: 85, spd: 70, spe: 125},
+	},
+	meowstic: {
+		inherit: true,
+		baseStats: {hp: 84, atk: 48, def: 91, spa: 83, spd: 91, spe: 104},
+		abilities: {0: "Screen Cleaner", 1: "Infiltrator", H: "Prankster"},
+	},
+	meowsticf: {
+		inherit: true,
+		baseStats: {hp: 74, atk: 48, def: 76, spa: 98, spd: 81, spe: 124},
+		abilities: {0: "Psychic Surge", 1: "Infiltrator", H: "Competitive"},
 	},
 };
 

@@ -6,6 +6,16 @@ exports.BattleFormatsData = {
 		tier: "OU",
 		doublesTier: "DOU",
 	},
+	venusaurgmax: {
+		isGigantamax: "G-Max Vine Lash",
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	blastoisegmax: {
+		isGigantamax: "G-Max Cannonade",
+		tier: "OU",
+		doublesTier: "DOU",
+	},
 	butterfreegmax: {
 		randomBattleMoves: ["airslash", "bugbuzz", "quiverdance", "sleeppowder"],
 		isGigantamax: "G-Max Befuddle",
@@ -163,6 +173,32 @@ exports.BattleFormatsData = {
 	},
 	melmetal: {
 		randomBattleMoves: ["doubleironbash", "earthquake", "substitute", "superpower", "thunderpunch"],
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	cinderacegmax: {
+		isGigantamax: "G-Max Fireball",
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	rillaboomgmax: {
+		isGigantamax: "G-Max Drum Solo",
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	intelleongmax: {
+		isGigantamax: "G-Max Hydrosnipe",
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	urshifugmax: {
+		randomBattleMoves: ["bulkup", "drainpunch", "substitute", "wickedblow"],
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	urshifurapidstrikegmax: {
+		randomBattleMoves: ["bulkup", "drainpunch", "substitute", "surgingstrikes"],
+		randomBattleLevel: 82,
 		tier: "OU",
 		doublesTier: "DOU",
 	},
