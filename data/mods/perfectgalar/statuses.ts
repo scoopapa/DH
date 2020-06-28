@@ -1,4 +1,4 @@
-export const BattleStatuses: = {
+export const BattleStatuses: {[k: string]: ModdedStatusData} = {
 	dynamax: {
 		name: 'Dynamax',
 		id: 'dynamax',
