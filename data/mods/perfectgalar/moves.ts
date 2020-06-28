@@ -1,4 +1,4 @@
-export const BattleMoveDex: {[k: string]: ModdedMoveData} = {
+export const BattleMoveDex = {
 	"doubleironbash": {
 		num: 742,
 		accuracy: 100,
