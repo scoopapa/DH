@@ -506,7 +506,7 @@ export const BattlePokedex: {[k: string]: ModdedSpeciesData} = {
 		otherFormes: ["rapidashgalarmeow"],
 	  },
 	rapidashgalarmeow: {
-		num: ,
+		num: 78,
 		species: "Rapidash-Galar",
 		types: ["Fairy", "Steel"],
 		baseStats: {hp: 65, atk: 100, def: 85, spa: 80, spd: 80, spe: 105},
@@ -517,7 +517,7 @@ export const BattlePokedex: {[k: string]: ModdedSpeciesData} = {
 		otherFormes: ["mrrimespoon"],
 	},
 	mrrimespoon: {
-		num: ,
+		num: 866,
 		species: "Mr. Rime",
 		types: ["Ice", "Psychic"],
 		baseStats: {hp: 80, atk: 85, def: 75, spa: 110, spd: 100, spe: 95},
