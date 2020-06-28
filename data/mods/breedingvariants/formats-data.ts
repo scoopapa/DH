@@ -1,6 +1,4 @@
-'use strict';
-
-exports.BattleFormatsData = {
+export const BattleFormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 	goodraflame: {
 		tier: "OU",
 		doublesTier: "DOU",
