@@ -103,10 +103,15 @@ class Ladder extends LadderStore {
 			return null;
 		}
 
-		const regex = /(?:^|])([^|]*)\|/g;
+		const regex = /(?:^|])([^|]*)\|([^|]*)\|/g;
 		let match = regex.exec(team);
+		let unownWord = '';
 		while (match) {
 			let nickname = match[1];
+			const speciesid = toID(match[2] || match[1]);
+			if (speciesid.length <= 6 && speciesid.startsWith('unown')) {
+				unownWord += speciesid.charAt(5) || 'a';
+			}
 			if (nickname) {
 				nickname = Chat.nicknamefilter(nickname, user);
 				if (!nickname || nickname !== match[1]) {
@@ -118,6 +123,16 @@ class Ladder extends LadderStore {
 				}
 			}
 			match = regex.exec(team);
+		}
+		if (unownWord) {
+			const filtered = Chat.nicknamefilter(unownWord, user);
+			if (!filtered || filtered !== unownWord) {
+				connection.popup(
+					`Your team was rejected for the following reason:\n\n` +
+					`- Your Unowns spell out a banned word: ${unownWord.toUpperCase()}`
+				);
+				return null;
+			}
 		}
 
 		let rating = 0;
@@ -406,17 +421,6 @@ class Ladder extends LadderStore {
 			return;
 		}
 
-		const roomid = this.needsToMove(user);
-		if (roomid) {
-			connection.popup(`Error: You need to make a move in <<${roomid}>> before you can look for another battle.\n\n(This restriction doesn't apply in the first five turns of a battle.)`);
-			return;
-		}
-
-		if (roomid === null && Date.now() < user.lastDecision + 3 * SECONDS) {
-			connection.popup(`Error: You need to wait until after making a move before you can look for another battle.\n\n(This restriction doesn't apply in the first five turns of a battle.)`);
-			return;
-		}
-
 		const oldUserid = user.id;
 		const search = await this.prepBattle(connection, format.rated ? 'rated' : 'unrated', null, format.rated !== false);
 
@@ -424,31 +428,6 @@ class Ladder extends LadderStore {
 		if (!search) return;
 
 		this.addSearch(search, user);
-	}
-
-	/**
-	 * null = all battles ok
-	 * undefined = not in any battle
-	 */
-	needsToMove(user: User) {
-		let out;
-		for (const roomid of user.games) {
-			const room = Rooms.get(roomid);
-			if (!room || !room.battle || !room.battle.playerTable[user.id]) continue;
-			const battle: RoomBattle = room.battle;
-			if (battle.requestCount <= 16) {
-				// it's fine as long as it's before turn 5
-				// to be safe, we count off 8 requests for Team Preview, U-turn, and faints
-				continue;
-			}
-			if (Dex.getFormat(battle.format).allowMultisearch) {
-				continue;
-			}
-			const player = battle.playerTable[user.id];
-			if (!player.request.isWait) return roomid;
-			out = null;
-		}
-		return out;
 	}
 
 	/**

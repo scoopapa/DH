@@ -2,7 +2,7 @@
 
 const assert = require('./../assert');
 const common = require('./../common');
-
+const Utils = require('../../.lib-dist/utils').Utils;
 const BASE_TEAM_ORDER = [1, 2, 3, 4, 5, 6];
 
 const SINGLES_TEAMS = {
@@ -270,6 +270,34 @@ describe('Choices', function () {
 			}
 		});
 
+		it('should shift the Pokémon as a standard priority move action', function () {
+			battle = common.gen(5).createBattle({gameType: 'triples'});
+			battle.setPlayer('p1', {team: [
+				{species: "Pineco", ability: 'sturdy', moves: ['harden']},
+				{species: "Geodude", ability: 'sturdy', moves: ['suckerpunch']},
+				{species: "Gastly", ability: 'levitate', moves: ['spite']},
+			]});
+			battle.setPlayer('p2', {team: [
+				{species: "Skarmory", ability: 'sturdy', moves: ['roost']},
+				{species: "Aggron", ability: 'sturdy', moves: ['earthquake']},
+				{species: "Golem", ability: 'sturdy', moves: ['defensecurl']},
+			]});
+			battle.makeChoices('shift, move suckerpunch 2, shift', 'shift, move earthquake, shift');
+
+			for (const [index, species] of ['Gastly', 'Pineco', 'Geodude'].entries()) {
+				assert.species(battle.p1.active[index], species);
+			}
+			for (const [index, species] of ['Aggron', 'Golem', 'Skarmory'].entries()) {
+				assert.species(battle.p2.active[index], species);
+			}
+			// Geodude's sucker punch should have processed first,
+			// while Aggron was still in slot 2.
+			assert.notStrictEqual(battle.p2.active[0].hp, battle.p2.active[0].maxhp);
+			// Aggron's Earthquake should process after Skarmory shifted
+			// but before Golem shifted, so it didn't hit Golem.
+			assert.equal(battle.p2.active[1].hp, battle.p2.active[1].maxhp);
+		});
+
 		it('should force Struggle usage on move attempt for no valid moves', function () {
 			battle = common.createBattle();
 			battle.setPlayer('p1', {team: [{species: "Mew", ability: 'synchronize', moves: ['recover']}]});
@@ -471,7 +499,7 @@ describe('Choices', function () {
 			]];
 
 			for (let i = 0; i < 10; i++) {
-				const teamOrder = [BASE_TEAM_ORDER, BASE_TEAM_ORDER].map(teamOrder => Dex.shuffle(teamOrder.slice(0, 4)));
+				const teamOrder = [BASE_TEAM_ORDER, BASE_TEAM_ORDER].map(teamOrder => Utils.shuffle(teamOrder.slice(0, 4)));
 				battle = common.createBattle({preview: true}, TEAMS);
 				battle.makeChoices(`team ${teamOrder[0].join('')}`, `team ${teamOrder[1].join('')}`);
 				for (const [index, pokemon] of battle.p1.pokemon.entries()) {
@@ -489,7 +517,7 @@ describe('Choices', function () {
 			// Backwards-compatibility with the client. It should be useful for 3rd party bots/clients (Android?)
 			for (let i = 0; i < 5; i++) {
 				battle = common.createBattle({preview: true}, SINGLES_TEAMS.full);
-				const teamOrder = Dex.shuffle(BASE_TEAM_ORDER.slice()).slice(0, 1);
+				const teamOrder = Utils.shuffle(BASE_TEAM_ORDER.slice()).slice(0, 1);
 				const fullTeamOrder = teamOrder.concat(BASE_TEAM_ORDER.filter(elem => !teamOrder.includes(elem)));
 
 				battle.makeChoices(`team ${teamOrder.join('')}`, 'default');
@@ -505,7 +533,7 @@ describe('Choices', function () {
 		it('should allow specifying the team order in a slot-per-slot basis in Singles with Illusion', function () {
 			for (let i = 0; i < 5; i++) {
 				battle = common.createBattle({preview: true}, SINGLES_TEAMS.illusion);
-				const teamOrder = Dex.shuffle(BASE_TEAM_ORDER.slice());
+				const teamOrder = Utils.shuffle(BASE_TEAM_ORDER.slice());
 
 				battle.makeChoices(`team ${teamOrder.join('')}`, 'default');
 
@@ -520,7 +548,7 @@ describe('Choices', function () {
 		it('should allow specifying the team order in a slot-per-slot basis in Doubles', function () {
 			for (let i = 0; i < 5; i++) {
 				battle = common.createBattle({preview: true, gameType: 'doubles'}, DOUBLES_TEAMS.full);
-				const teamOrder = Dex.shuffle(BASE_TEAM_ORDER.slice());
+				const teamOrder = Utils.shuffle(BASE_TEAM_ORDER.slice());
 
 				battle.makeChoices(`team ${teamOrder.join('')}`, 'default');
 
@@ -535,7 +563,7 @@ describe('Choices', function () {
 		it('should allow specifying the team order in a slot-per-slot basis in Triples', function () {
 			for (let i = 0; i < 5; i++) {
 				battle = common.gen(5).createBattle({preview: true, gameType: 'triples'}, TRIPLES_TEAMS.full);
-				const teamOrder = Dex.shuffle(BASE_TEAM_ORDER.slice());
+				const teamOrder = Utils.shuffle(BASE_TEAM_ORDER.slice());
 
 				battle.makeChoices(`team ${teamOrder.join('')}`, 'default');
 
@@ -550,7 +578,7 @@ describe('Choices', function () {
 		it('should autocomplete multi-slot decisions', function () {
 			for (let i = 0; i < 5; i++) {
 				battle = common.createBattle({preview: true}, SINGLES_TEAMS.full);
-				const teamOrder = Dex.shuffle(BASE_TEAM_ORDER.slice()).slice(0, 2);
+				const teamOrder = Utils.shuffle(BASE_TEAM_ORDER.slice()).slice(0, 2);
 				const fullTeamOrder = teamOrder.concat(BASE_TEAM_ORDER.filter(elem => !teamOrder.includes(elem)));
 
 				battle.makeChoices(`team ${teamOrder.slice(0, 2).join('')}`, 'default');
@@ -585,10 +613,10 @@ describe('Choices', function () {
 				{species: "Charmander", ability: 'blaze', moves: ['scratch']},
 				{species: "Charizard", ability: 'blaze', moves: ['scratch']},
 			]]);
-			battle.makeChoices('move tackle 1, move tackle 2', 'move scratch 2, move scratch 1');
+			battle.makeChoices('move tackle +1, move tackle +2', 'move scratch +2, move scratch +1');
 
 			const logText = battle.inputLog.join('\n');
-			const subString = '>p1 move tackle 1, move tackle 2\n>p2 move scratch 2, move scratch 1';
+			const subString = '>p1 move tackle +1, move tackle +2\n>p2 move scratch +2, move scratch +1';
 			assert(logText.includes(subString), `${logText} does not include ${subString}`);
 		});
 
@@ -600,10 +628,10 @@ describe('Choices', function () {
 				{species: "Charmander", ability: 'blaze', moves: ['scratch']},
 				{species: "Charizard", ability: 'blaze', moves: ['scratch']},
 			]]);
-			battle.makeChoices('move magnitude, move rockslide', 'move scratch 1, move scratch 1');
+			battle.makeChoices('move magnitude, move rockslide', 'move scratch +1, move scratch +1');
 
 			const logText = battle.inputLog.join('\n');
-			const subString = '>p1 move magnitude, move rockslide\n>p2 move scratch 1, move scratch 1';
+			const subString = '>p1 move magnitude, move rockslide\n>p2 move scratch +1, move scratch +1';
 			assert(logText.includes(subString), `${logText} does not include ${subString}`);
 		});
 
@@ -998,8 +1026,8 @@ describe('Choice extensions', function () {
 				battle.makeChoices('switch 3', 'switch 2');
 
 				assert.equal(battle.turn, 2);
-				assert.equal(battle.p1.active[0].template.species, 'Chikorita');
-				assert.equal(battle.p2.active[0].template.species, 'Charmander');
+				assert.equal(battle.p1.active[0].species.name, 'Chikorita');
+				assert.equal(battle.p2.active[0].species.name, 'Charmander');
 			});
 
 			it(`should support to ${mode} pass decisions on double switch requests`, function () {

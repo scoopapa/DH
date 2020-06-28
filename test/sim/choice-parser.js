@@ -171,8 +171,20 @@ describe('Choice parser', function () {
 					assert.throws(() => battle.choose('p1', choice));
 				}
 
-				assert(battle.choose('p1', `move 1 1 mega, move tackle 1`));
+				assert(battle.choose('p1', `move 1 +1 mega, move tackle 1`));
 				assert(battle.choose('p2', `move Blaze Kick zmove 1, move irondefense`));
+			});
+
+			it('should allow Dynamax use in multiple possible formats', function () {
+				battle = common.createBattle([[
+					{species: "Mew", moves: ['psychic']},
+				], [
+					{species: "Mew", moves: ['psychic']},
+				]]);
+
+				battle.makeChoices(`move max mindstorm`, `move psychic max`);
+				assert(battle.p1.active[0].volatiles['dynamax']);
+				assert(battle.p2.active[0].volatiles['dynamax']);
 			});
 
 			it('should handle Conversion 2', function () {
@@ -187,14 +199,14 @@ describe('Choice parser', function () {
 				]});
 
 				assert(battle.choose('p1', `move 1, move Conversion 2 2`));
-				assert.equal(battle.p1.getChoice(), `move conversion, move conversion2 2`);
+				assert.equal(battle.p1.getChoice(), `move conversion, move conversion2 +2`);
 				battle.p1.clearChoice();
 
 				assert.throws(() => battle.choose('p1', `move 1, move Conversion -2`));
 				battle.p1.clearChoice();
 
 				assert(battle.choose('p1', `move Conversion 2 zmove 2, move 1`));
-				assert.equal(battle.p1.getChoice(), `move conversion2 2 zmove, move conversion`);
+				assert.equal(battle.p1.getChoice(), `move conversion2 +2 zmove, move conversion`);
 				battle.p1.clearChoice();
 			});
 		});
@@ -245,7 +257,7 @@ describe('Choice parser', function () {
 				assert.false.fainted(p1.active[1]);
 
 				assert(battle.choose('p1', 'move smog 2'));
-				assert.equal(battle.p1.getChoice(), `pass, move smog 2`, `Choice mismatch`);
+				assert.equal(battle.p1.getChoice(), `pass, move smog +2`, `Choice mismatch`);
 			});
 		});
 
