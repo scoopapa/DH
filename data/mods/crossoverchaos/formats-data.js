@@ -311,6 +311,10 @@ exports.BattleFormatsData = { //
         tier: "V2",
 //         doublesTier: "DOU",
     },
+	megamanexe: {
+        tier: "V2",
+//         doublesTier: "DOU",
+    },
     stonetalus: {
         tier: "V2",
 //         doublesTier: "DOU",
@@ -1075,6 +1079,41 @@ exports.BattleFormatsData = { //
 	},
 	lucca: {
 		tier: "V2",
+	},
+	void: {
+		tier: "Uber",
+		requiredItem: "Shimmering Star",
+	},
+	voidtermina: {
+		tier: "Uber",
+	},
+	voidterminatrue: {
+		tier: "Uber",
+		requiredItem: "Jamba Heart",
+	},
+	voidterminafirstcore: {
+		tier: "V2",
+	},
+	voidterminaangel: {
+		tier: "Uber",
+	},
+	voidterminaangeltrue: {
+		tier: "Uber",
+		requiredItem: "Jamba Heart",
+	},
+	voidterminafinalcore: {
+		tier: "Uber",
+	},
+	voidsoul: {
+		tier: "Uber",
+		requiredItem: "Soul Orb",
+	},
+	naraku: {
+		tier: "OU",
+	},
+	narakushinobi: {
+		requiredItem: "Secret Ninja Art Scroll",
+		tier: "OU",
 	},
 	 walle: {
 		  tier: "EX",
