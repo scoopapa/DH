@@ -3536,7 +3536,7 @@ kyokokirigiri: {
 		species: "Void Termina-Final Core",
 		baseSpecies: "Void",
 		forme: "Final Core",
-		formeLetter "F",
+		formeLetter: "F",
 		types: ["Water"],
 		baseStats: {hp: 120, atk: 110, def: 110, spa: 110, spd: 110, spe: 90},
 		abilities: {0: "Protean"},
