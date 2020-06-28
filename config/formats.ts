@@ -637,7 +637,6 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 					'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 
 					'Baton Pass Clause', 'Standard Natdex'],
 		mod: 'breedingvariants',
-		banlist: ['Unreleased', ],
 		onSwitchIn: function (pokemon) {
             this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');
         },
