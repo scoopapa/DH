@@ -2,6 +2,9 @@ export const BattleFormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 	cherrimsunshine: {
 		tier: "CS2",
 	},
+	unown: {
+		tier: "unreleased",
+	}
 	unownp: {
 		tier: "CS2",
 	},
