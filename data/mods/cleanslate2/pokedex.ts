@@ -187,6 +187,15 @@ export const BattlePokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 100, atk: 60, def: 105, spa: 135, spd: 105, spe: 110},
 		abilities: {0: "Sand Stream", 1: "Pressure", H: "Sand Force"},
 	},
+	unown: {
+		num: 201,
+		species: "Unown",
+		types: ["Psychic"],
+		baseStats: {hp: 57, atk: 93, def: 42, spa: 123, spd: 82, spe: 103},
+		abilities: {0: "Psychic Surge"},
+		weightkg: 5,
+		otherForms: ["unownm", "unowns", "unownp"],
+	},
 	unownp: {
 		num: 201,
 		species: "Unown-P",
@@ -194,7 +203,7 @@ export const BattlePokedex: {[k: string]: ModdedSpeciesData} = {
 		types: ["Bug", "Dark"],
 		baseStats: {hp: 70, atk: 70, def: 115, spa: 140, spd: 70, spe: 115},
 		abilities: {0: "Punk Rock"},
-		otherForms: ["unownm", "unowns"],
+		otherForms: ["unownm", "unowns", "unown"],
 		heightm: 0.5,
 		weightkg: 5,
 		gender: "N",
@@ -206,7 +215,7 @@ export const BattlePokedex: {[k: string]: ModdedSpeciesData} = {
 		types: ["Bug", "Dark"],
 		baseStats: {hp: 70, atk: 115, def: 115, spa: 70, spd: 70, spe: 140},
 		abilities: {0: "Sheer Force"},
-		otherForms: ["unownm", "unownp"],
+		otherForms: ["unownm", "unownp", "unown"],
 		heightm: 0.5,
 		weightkg: 5,
 		gender: "N",
@@ -219,7 +228,7 @@ export const BattlePokedex: {[k: string]: ModdedSpeciesData} = {
 		types: ["Bug", "Dark"],
 		baseStats: {hp: 70, atk: 115, def: 140, spa: 70, spd: 115, spe: 70},
 		abilities: {0: "Magic Guard"},
-		otherForms: ["unownp", "unowns"],
+		otherForms: ["unownp", "unowns", "unown"],
 		heightm: 0.5,
 		weightkg: 5,
 		gender: "N",
@@ -298,4 +307,5 @@ export const BattlePokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 103, atk: 79, def: 103, spa: 139, spd: 103, spe: 103},
 		abilities: {0: "Mold Breaker", 1: "Beast Boost"},
 	},
+	
 };
