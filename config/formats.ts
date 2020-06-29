@@ -991,9 +991,9 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
   		ruleset: ['Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause'],
 		mod: 'cleanslate',
 		banlist: ['Unreleased'],
-		onSwitchIn: function (pokemon) {
-            this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');
-        },
+		onSwitchIn(pokemon) {
+			console.log( pokemon );
+		},
   	},
 	{
   		name: "[Gen 7] Clean Slate: Micro",
@@ -1006,9 +1006,9 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 					'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Dynamax Clause', 'Standard NatDex'],
 		mod: 'cleanslatemicro',
 		banlist: ['Baton Pass'],
-		onSwitchIn: function (pokemon) {
-            this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');
-        },
+		onSwitchIn(pokemon) {
+			console.log( pokemon );
+		},
 		onValidateTeam(team, format) {
 			/**@type {{[k: string]: true}} */
 			let speciesTable = {};
