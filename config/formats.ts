@@ -914,7 +914,7 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 		],
 		ruleset: ['Standard NatDex', 'OHKO Clause', 'Evasion Moves Clause', 'Species Clause', 'Dynamax Clause', 'Sleep Clause Mod'],
 		onSwitchIn(pokemon) {
-			this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');
+			console.log( pokemon );
 		},
 	},
 	
