@@ -638,7 +638,7 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 					'Baton Pass Clause', 'Standard Natdex'],
 		mod: 'breedingvariants',
 		onSwitchIn: function (pokemon) {
-            this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');
+            this.add('-start', pokemon, 'typechange', pokemon.types.join('/'), '[silent]');
         },
   	},
 	{
@@ -914,7 +914,7 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 		],
 		ruleset: ['Standard NatDex', 'OHKO Clause', 'Evasion Moves Clause', 'Species Clause', 'Dynamax Clause', 'Sleep Clause Mod'],
 		onSwitchIn(pokemon) {
-			console.log( pokemon );
+			this.add('-start', pokemon, 'typechange', pokemon.types.join('/'), '[silent]');
 		},
 	},
 	
@@ -991,9 +991,9 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
   		ruleset: ['Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause'],
 		mod: 'cleanslate',
 		banlist: ['Unreleased'],
-		onSwitchIn(pokemon) {
-			console.log( pokemon );
-		},
+		onSwitchIn: function (pokemon) {
+            this.add('-start', pokemon, 'typechange', pokemon.types.join('/'), '[silent]');
+        },
   	},
 	{
   		name: "[Gen 7] Clean Slate: Micro",
@@ -1006,9 +1006,9 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 					'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Dynamax Clause', 'Standard NatDex'],
 		mod: 'cleanslatemicro',
 		banlist: ['Baton Pass'],
-		onSwitchIn(pokemon) {
-			console.log( pokemon );
-		},
+		onSwitchIn: function (pokemon) {
+            this.add('-start', pokemon, 'typechange', pokemon.types.join('/'), '[silent]');
+        },
 		onValidateTeam(team, format) {
 			/**@type {{[k: string]: true}} */
 			let speciesTable = {};
@@ -1033,7 +1033,7 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 		mod: 'ccam',
 		banlist: ['Unreleased'],
 		onSwitchIn: function (pokemon) {
-            this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');
+            this.add('-start', pokemon, 'typechange', pokemon.types.join('/'), '[silent]');
         },
   	},
 	{
@@ -1052,7 +1052,7 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 		mod: 'evosforeveryone',
 		banlist: ['Unreleased'],
 		onSwitchIn: function (pokemon) {
-            this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');
+            this.add('-start', pokemon, 'typechange', pokemon.types.join('/'), '[silent]');
         },
   	},
 	{
@@ -1067,7 +1067,7 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 			'Eevium Z', 'Dragon Rage', 'Sonic Boom',
 		],
 		onSwitchIn: function (pokemon) {
-            this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');
+            this.add('-start', pokemon, 'typechange', pokemon.types.join('/'), '[silent]');
         },
   	},
 	{
@@ -1078,7 +1078,7 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 		mod: 'freshtakes',
 		banlist: ['Unreleased', ],
 		onSwitchIn: function (pokemon) {
-            this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');
+            this.add('-start', pokemon, 'typechange', pokemon.types.join('/'), '[silent]');
         },
   	},
 	{
@@ -1089,7 +1089,7 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 		mod: 'fromuntieredtoubers',
 		banlist: ['Unreleased', ],
 		onSwitchIn: function (pokemon) {
-            this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');
+            this.add('-start', pokemon, 'typechange', pokemon.types.join('/'), '[silent]');
         },
   	},
 	{
@@ -1124,7 +1124,7 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 			} else {
 				let ability = this.getAbility(pokemon.ability);
 				if (pokemon.hasAbility('typeillusionist') || pokemon.hasAbility('sleepingsystem')){
-			 this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');	
+			 this.add('-start', pokemon, 'typechange', pokemon.types.join('/'), '[silent]');	
 				} else {
 				this.add('-start', pokemon, 'typechange', pokemon.getTypes().join('/'), '[silent]');
 				}
@@ -1166,7 +1166,7 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 			} else {
 				let ability = this.getAbility(pokemon.ability);
 				if (pokemon.hasAbility('typeillusionist') || pokemon.hasAbility('sleepingsystem')){
-			 this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');	
+			 this.add('-start', pokemon, 'typechange', pokemon.types.join('/'), '[silent]');	
 				} else {
 				this.add('-start', pokemon, 'typechange', pokemon.getTypes().join('/'), '[silent]');
 				}
@@ -1296,7 +1296,7 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 			'Battle Bond', 'Shadow Tag', 'Damp Rock', 'Gengarite', 'Kangaskhanite', 'Lucarionite', 'Mawilite', 'Medichamite', 'Metagrossite', 'Salamencite', 'Smooth Rock', 'Terrain Extender', 'Baton Pass', , 'Unreleased'
 		],
 		onSwitchIn: function (pokemon) {
-            this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');
+            this.add('-start', pokemon, 'typechange', pokemon.types.join('/'), '[silent]');
         },
 	},
 	
@@ -1379,7 +1379,7 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 		ruleset: ['Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause'],
 		//banlist: [],
 		onSwitchIn: function (pokemon) {
-            this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');
+            this.add('-start', pokemon, 'typechange', pokemon.types.join('/'), '[silent]');
         },
 		onBegin: function () {
 			this.zMoveTable.Space = 'Event Horizon'
