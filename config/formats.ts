@@ -910,7 +910,7 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 		mod: 'cleanslate2',
 		banlist: ['All Pokemon'],
 		unbanlist: [
-			'Weezing-Galar', 'Orbeetle', 'Stonjourner', 'Cherrim-Sunshine', 'Zacian', 'Dubwool', 'Gumshoos', 'Seismitoad', 'Snorlax-Gmax', 'Walrein', 'Dhelmise', 'Togekiss', 'Scolipede', 'Cursola', 'Torkoal', 'Gligar', 'Octillery', 'Necrozma', 'Dunsparce', 'Victreebel', 'Runerigus', 'Aerodactyl', 'Unown-P', 'Unown-S', 'Unown-M', 'Shaymin', 'Shaymin-Sky', 'Scrafty', 'Weavile', 'Salamence', 'Vivillon', 'Centiskorch', 'Abomasnow', 'Duraludon', 'Cobalion', 'Naganadel',
+			'Weezing-Galar', 'Orbeetle', 'Stonjourner', 'Cherrim-Sunshine', 'Zacian', 'Dubwool', 'Gumshoos', 'Seismitoad', 'Snorlax-Gmax', 'Walrein', 'Dhelmise', 'Togekiss', 'Scolipede', 'Cursola', 'Torkoal', 'Gligar', 'Octillery', 'Necrozma', 'Dunsparce', 'Victreebel', 'Runerigus', 'Aerodactyl', 'Unown', 'Shaymin', 'Shaymin-Sky', 'Scrafty', 'Weavile', 'Salamence', 'Vivillon', 'Centiskorch', 'Abomasnow', 'Duraludon', 'Cobalion', 'Naganadel',
 		],
 		ruleset: ['Standard NatDex', 'OHKO Clause', 'Evasion Moves Clause', 'Species Clause', 'Dynamax Clause', 'Sleep Clause Mod'],
 		onSwitchIn(pokemon) {
