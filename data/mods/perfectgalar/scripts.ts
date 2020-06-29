@@ -79,6 +79,12 @@ export const BattleScripts: {[k: string]: ModdedBattleScriptsData} = {
 		this.modData('Learnsets', 'meowsticf').learnset.aurasphere = ['8L1'];
 		this.modData('Learnsets', 'meowsticf').learnset.taunt = ['8L1'];
 		
+		// Luxray
+		this.modData('Learnsets', 'luxray').learnset.zingzap = ['8L1'];
+		this.modData('Learnsets', 'luxray').learnset.bulkup = ['8L1'];
+		
+		// Bouffalant
+		this.modData('Learnsets', 'bouffalant').learnset.flareblitz = ['8L1'];
 	},
 	//Modded functions
 	canDynamax(pokemon, skipChecks) {

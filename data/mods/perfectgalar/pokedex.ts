@@ -81,4 +81,16 @@ export const BattlePokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 74, atk: 48, def: 76, spa: 98, spd: 81, spe: 124},
 		abilities: {0: "Psychic Surge", 1: "Infiltrator", H: "Competitive"},
 	},
+	luxray: {
+		inherit: true,
+		baseStats: {hp: 80, atk: 126, def: 80, spa: 95, spd: 80, spe: 75},
+	},
+	bouffalant: {
+		inherit: true,
+		baseStats: {hp: 95, atk: 130, def: 95, spa: 40, spd: 95, spe: 65},
+	},
+	exploud: {
+		inherit: true,
+		baseStats: {hp: 109, atk: 91, def: 75, spa: 111, spd: 81, spe: 68},
+	},
 };
