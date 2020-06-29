@@ -1,7 +1,4 @@
-'use strict';
-
-/**@type {{[k: string]: ModdedFormatsData}} */
-let BattleFormats = {
+export const BattleFormats: {[k: string]: ModdedFormatsData} = {
 	standardpetmod: {
 		inherit: true,
 		ruleset: ['[Gen 7] OU', '!Species Clause'],
@@ -23,5 +20,3 @@ let BattleFormats = {
 		},
 	},
 };
-
-exports.BattleFormats = BattleFormats;

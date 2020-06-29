@@ -1,7 +1,4 @@
-'use strict';
-
-/**@type {{[k: string]: TemplateData}} */
-let BattlePokedex = {
+export const BattlePokedex: {[k: string]: ModdedSpeciesData} = {
 	cofagrigus: {
         num: 563,
         species: "Cofagrigus",
@@ -499,5 +496,3 @@ let BattlePokedex = {
 		eggGroups: ["Dragon"],
 	},
 };
-
-exports.BattlePokedex = BattlePokedex;

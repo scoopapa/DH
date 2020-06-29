@@ -1,6 +1,4 @@
-'use strict';
-
-exports.BattlePokedex = {
+export const BattlePokedex: {[k: string]: ModdedSpeciesData} = {
 	typenull: {
 		inherit: true,
 		species: "Type: Null",

@@ -1,6 +1,4 @@
-'use strict';
-
-exports.BattleFormatsData = {
+export const BattleFormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 	typenull: {
 		tier: "CSM",
 		doublesTier: "DOU",

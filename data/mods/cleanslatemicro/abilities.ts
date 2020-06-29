@@ -1,6 +1,4 @@
-'use strict';
-
-exports.BattleAbilities = {
+export const BattleAbilities: {[k: string]: ModdedAbilityData} = {
 	"flowergift": {
 		inherit: true,
 		onAllyModifyAtk: function (atk) {

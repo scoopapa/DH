@@ -1,7 +1,4 @@
-'use strict';
-
-/**@type {{[k: string]: ModdedAbilityData}} */
-let BattleAbilities = {
+export const BattleAbilities: {[k: string]: ModdedAbilityData} = {
 	"powerspot": {
 		shortDesc: "This Pokemon and it's allies have the base power of their moves multiplied by 1.3.",
 		onAllyBasePowerPriority: 8,
@@ -162,5 +159,3 @@ let BattleAbilities = {
 		num: 22,
 	},
 };
-
-exports.BattleAbilities = BattleAbilities;

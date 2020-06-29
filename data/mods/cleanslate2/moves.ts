@@ -1,6 +1,4 @@
-'use strict';
-
-exports.BattleMovedex = {
+export const BattleMovedex: {[k: string]: ModdedMoveData} = {
 	"sheepiousrend": {
 		num: 755,
 		accuracy: 100,

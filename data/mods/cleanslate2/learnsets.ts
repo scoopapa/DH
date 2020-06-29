@@ -1,7 +1,4 @@
-'use strict';
-
-/**@type {{[k: string]: {learnset: {[k: string]: MoveSource[]}}}} */
-let BattleLearnsets = {
+export const BattleLearnsets = {
 	weezinggalar: {learnset: {
 		aromatherapy: ["8L24"],
 		aromaticmist: ["8L1"],
@@ -2570,7 +2567,4 @@ let BattleLearnsets = {
 		whirlwind: ["7L1"],
 		xscissor: ["7M"],
 	}},
-
 };
-
-exports.BattleLearnsets = BattleLearnsets;

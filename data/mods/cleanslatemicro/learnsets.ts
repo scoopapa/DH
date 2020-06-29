@@ -1,6 +1,4 @@
-'use strict';
-
-exports.BattleLearnsets = {
+export const BattleLearnsets = {
 	typenull: {learnset: {
 		aerialace: ["7M", "7L20"],
 		airslash: ["7L60"],

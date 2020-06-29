@@ -1,7 +1,4 @@
-'use strict';
-
-/**@type {{[k: string]: EffectData}} */
-let BattleStatuses = {
+export const BattleStatuses: {[k: string]: EffectData} = {
 	raindance: {
 		name: 'RainDance',
 		id: 'raindance',
@@ -251,6 +248,4 @@ let BattleStatuses = {
 			this.add('-weather', 'none');
 		},
 	},
-    };
-
-exports.BattleStatuses = BattleStatuses;
+};

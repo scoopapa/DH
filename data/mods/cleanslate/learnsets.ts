@@ -1,7 +1,4 @@
-'use strict';
-
-/**@type {{[k: string]: {learnset: {[k: string]: MoveSource[]}}}} */
-let BattleLearnsets = {
+export const BattleLearnsets = {
 	cofagrigus: {learnset: {
         afteryou: ["7T", "6T", "5T"],
         allyswitch: ["7T"],
@@ -3139,5 +3136,3 @@ kommoo: {learnset: {
 		uturn: ["7L1"],
 	}},
 };
-
-exports.BattleLearnsets = BattleLearnsets;
