@@ -4,7 +4,7 @@ export const BattleFormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 	},
 	unown: {
 		tier: "unreleased",
-	}
+	},
 	unownp: {
 		tier: "CS2",
 	},
