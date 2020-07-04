@@ -683,5 +683,3 @@ exports.BattleMovedex = {
         contestType: "Beautiful",
     },
 };    
-
-exports.BattleMovedex = BattleMovedex;
