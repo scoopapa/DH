@@ -945,7 +945,6 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 		},
 		mod: 'pkmnyb',
 	},
-	},
 	{
 		name: "[Gen 8] Twisted Pokemon",
 		desc: `You can Twist the Pokemon switching in, changing its type between two predetermined typings.`,
