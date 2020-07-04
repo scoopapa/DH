@@ -194,7 +194,7 @@ exports.BattleAbilities = {
         rating: 3.5,
         num: 178,
     },
-    royalpresence: {
+    "royalpresence": {
         desc: "While this Pokemon is active, priority moves from opposing Pokemon targeted at allies are prevented from having an effect.",
         shortDesc: "While this Pokemon is active, allies are protected from opposing priority moves.",
         onFoeTryMove(target, source, move) {
@@ -210,5 +210,19 @@ exports.BattleAbilities = {
                 return false;
             }
         },
+        id: "royalpresence",
         name: "Royal Presence",
     },
+	 "solidify": {
+		  shortDesc: "This Pokemon's Defense is boosted by 1.5x but its Speed is halved.",
+		  onModifyDefPriority: 6,
+		  onModifyDef(def) {
+			  return this.chainModify(2);
+		  },
+		  onModifySpe(spe, pokemon) {
+			  return this.chainModify(0.5);
+		  },
+        id: "solidify",
+        name: "Solidify",
+	 },	 
+	 };
