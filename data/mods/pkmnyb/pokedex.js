@@ -127,7 +127,7 @@ exports.BattlePokedex = {
     },
    dewgong: {
         inherit: true,
-        types: ["Ice", Water"],
+        types: ["Ice", "Water"],
         abilities: {0: "Thick Fat", 1: "Hydration", H: "Technician"},
     },
    drowzee: {
@@ -2504,3 +2504,5 @@ exports.BattlePokedex = {
     },
 
 };
+
+exports.BattlePokedex = BattlePokedex;
