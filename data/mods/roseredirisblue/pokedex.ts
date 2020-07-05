@@ -1,6 +1,4 @@
-'use strict';
-
-exports.BattlePokedex = {
+export const BattlePokedex: {[k: string]: ModdedSpeciesData} = {
 	missingno: {
 		num: 0,
 		species: "Missingno.",

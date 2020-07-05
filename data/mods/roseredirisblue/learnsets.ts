@@ -1,7 +1,4 @@
-'use strict';
-
-/**@type {{[k: string]: {learnset: {[k: string]: MoveSource[]}}}} */
-exports.BattleLearnsets = {
+export const BattleLearnsets: {[speciesid: string]: LearnsetData} = {
 	bulbasaur: {learnset: {
 		ancientpower: ["2S0"],
 		attract: ["2M"],
@@ -7632,4 +7629,3 @@ exports.BattleLearnsets = {
 		wrap: ["1M"],
 	}},
 };
-//exports.BattleLearnsets = BattleLearnsets;

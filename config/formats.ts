@@ -966,6 +966,7 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
         ],
         mod: 'roseredirisblue',
         ruleset: ['Standard', 'Team Preview'],
+		unbanlist: ['Ampharos', 'Forretress', 'Seviper', 'Zangoose'],
     },
 	{
      name: "[Gen 8 Pet Mod] ViAbilities",
