@@ -94,7 +94,9 @@ export const BattleStatuses: {[k: string]: ModdedPureEffectData} = {
 		onBeforeMovePriority: 10,
 		onBeforeMove(pokemon, target, move) {
 			pokemon.statusData.time--;
-			this.add('cant', pokemon, 'frz');
+			if (pokemon.statusData.time > 0) {
+				this.add('cant', pokemon, 'frz');
+			}
 			pokemon.lastMove = null;
 			return false;
 		},
