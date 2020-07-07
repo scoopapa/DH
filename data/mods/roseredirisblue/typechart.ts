@@ -6,10 +6,7 @@
  * Psychic was immune to ghost
  */
 
-'use strict';
-
-/**@type {{[k: string]: ModdedTypeData | null}} */
-let BattleTypeChart = {
+export const BattleTypeChart: {[k: string]: ModdedTypeData | null} = {
 	"Bug": {
 		damageTaken: {
 			"Bug": 0,
@@ -132,5 +129,3 @@ let BattleTypeChart = {
 	"Dark": null,
 	"Steel": null,
 };
-
-exports.BattleTypeChart = BattleTypeChart;

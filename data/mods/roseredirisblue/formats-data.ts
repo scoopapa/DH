@@ -1,7 +1,4 @@
-'use strict';
-
-/**@type {{[k: string]: TemplateFormatsData}} */
-let BattleFormatsData = {
+export const BattleFormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 	bulbasaur: {
 		randomBattleMoves: ["sleeppowder", "bodyslam"],
 		essentialMove: "razorleaf",
@@ -814,6 +811,16 @@ let BattleFormatsData = {
 		randomBattleMoves: ["swordsdance","glare","poisonsting","earthquake"],
 		tier: "Uber",
 	},
+	gogoat: {
+		randomBattleMoves: ["razorleaf","earthquake","rockslide","bodyslam"],
+		tier: "Uber",
+	},
+	sceptile: {
+		randomBattleMoves: ["razorleaf","swordsdance","hyperbeam","earthquake"],
+		tier: "Uber",
+	},
+	breloom: {
+		randomBattleMoves: ["spore","swordsdance","submission","rockslide"],
+		tier: "Uber",
+	},
 };
-
-exports.BattleFormatsData = BattleFormatsData;
