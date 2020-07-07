@@ -122,7 +122,7 @@ exports.BattleAbilities = {
 		shortDesc: "Boosts Bullet Seed, Seed Bomb, and Seed Flare by 1.2x power, and Leech Seed deals 20% more damage and heals 30% more HP each turn.",
 		onBasePowerPriority: 8,
 		onBasePower(basePower, attacker, defender, move) {
-			if (move.name === 'Bullet Seed' || move.name === 'Seed Bomb' || move.name === 'Seed Flare') {
+			if (move.name === 'Bullet Seed' || move.name === 'Seed Bomb' || move.name === 'Seed Flare' || move.name === 'Grav Apple' || move.name === 'Apple Acid') {
 				return this.chainModify(1.2);
 			}
 		},
@@ -147,7 +147,7 @@ exports.BattleAbilities = {
 		shortDesc: "This Pokemon's pulse moves have 1.5x power. Heal Pulse heals 3/4 target's max HP.",
 		onBasePowerPriority: 8,
 		onBasePower(basePower, attacker, defender, move) {
-			if (move.flags['pulse'] || move.name === 'Steam Eruption' || move.name === 'Flash Cannon' || move.name === 'Techno Blast' || move.name === 'Fire Blast' || move.name === 'Moonblast' || move.name === 'Aeroblast' || move.name === 'Bullet Fire' || move.name === 'Twineedle' || move.name === 'Plume Cannon' || move.name === 'Draco Meteor' || move.name === 'Bullet Punch' || move.name === 'Spike Cannon' || move.name === 'Fleur Cannon' || move.name === 'Meteor Shower' || move.name === 'Hydro Cannon' || move.name === 'Blast Burn') {
+			if (move.flags['pulse'] || move.name === 'Steam Eruption' || move.name === 'Flash Cannon' || move.name === 'Techno Blast' || move.name === 'Fire Blast' || move.name === 'Moonblast' || move.name === 'Aeroblast' || move.name === 'Bullet Fire' || move.name === 'Twineedle' || move.name === 'Plume Cannon' || move.name === 'Draco Meteor' || move.name === 'Bullet Punch' || move.name === 'Spike Cannon' || move.name === 'Fleur Cannon' || move.name === 'Meteor Shower' || move.name === 'Hydro Cannon' || move.name === 'Blast Burn' || move.name === 'Dynamax Cannon' || move.name === 'Snipe Shot') {
 				return this.chainModify(1.5);
 			}
 		},
@@ -572,7 +572,7 @@ exports.BattleAbilities = {
 		shortDesc: "This Pokemon's kick-based attacks have 1.2x power.",
 		onBasePowerPriority: 8,
 		onBasePower(basePower, attacker, defender, move) {
-			if (move.name === 'Jump Kick' || move.name === 'High Jump Kick' || move.name === 'Mega Kick' || move.name === 'Double Kick' || move.name === 'Trop Kick' || move.name === 'Blaze Kick' || move.name === 'Low Kick' || move.name === 'Low Sweep' || move.name === 'Rolling Kick' || move.name === 'Triple Kick' || move.name === 'Stomp' || move.name === 'High Horsepower') {
+			if (move.name === 'Jump Kick' || move.name === 'High Jump Kick' || move.name === 'Mega Kick' || move.name === 'Double Kick' || move.name === 'Trop Kick' || move.name === 'Blaze Kick' || move.name === 'Low Kick' || move.name === 'Low Sweep' || move.name === 'Rolling Kick' || move.name === 'Triple Kick' || move.name === 'Stomp' || move.name === 'High Horsepower' || move.name === 'Behemoth Blade' || move.name === 'Meteor Assault' || move.name === 'Guillotine') {
 				return this.chainModify(1.2);
 			}
 		},
@@ -933,4 +933,100 @@ exports.BattleAbilities = {
 		rating: -1,
 		num: 161,
 	},
+	
+	 "magician": {
+       shortDesc: "On switch-in, this Pokemon switches its item with the opponent's.",
+       onStart(source) {
+           this.useMove("Switcheroo", source);
+       },
+       id: "magician",
+       name: "Magician",
+       rating: 1.5,
+       num: 170,
+    },
+	
+    "cursedbody": {
+        shortDesc: "On switch-in, the opposing Pokemon is taunted.",
+        onStart(source) {
+            this.useMove("Taunt", source);
+        },
+        id: "cursedbody",
+        name: "Cursed Body",
+        rating: 2,
+        num: 130,
+    },
+	
+    "loudspeaker": {
+        desc: "Boosts the power of sound-based moves.",
+        shortDesc: "Boosts sound move power.",
+        onBasePowerPriority: 8,
+        onBasePower(basePower, attacker, defender, move) {
+            if (move.flags['sound']) {
+                this.debug('Punk Rock boost');
+                return this.chainModify([0x14CD, 0x1000]);
+            }
+        },
+        id: "loudspeaker",
+        name: "Loudspeaker",
+    },
+	
+    "coldblood": {
+        desc: "This Pokemon is immune to Fire-type moves and restores 1/4 of its maximum HP, rounded down, when hit by a Fire-type move. The power of Ice-type moves is multiplied by 1.25 when used on this Pokemon. At the end of each turn, this Pokemon restores 1/8 of its maximum HP, rounded down, if the weather is Sunny Day, and loses 1/8 of its maximum HP, rounded down, if the weather is Hail. If this Pokemon is holding Utility Umbrella, the effects of weather are nullified.",
+        shortDesc: "This Pokemon is healed 1/4 by Fire, 1/8 by Sun; is hurt 1.25x by Ice, 1/8 by Hail.",
+        onTryHit(target, source, move) {
+            if (target !== source && move.type === 'Fire') {
+                if (!this.heal(target.baseMaxhp / 4)) {
+                    this.add('-immune', target, '[from] ability: Cold Blood');
+                }
+                return null;
+            }
+        },
+        onFoeBasePowerPriority: 7,
+        onFoeBasePower(basePower, attacker, defender, move) {
+            if (this.effectData.target !== defender) return;
+            if (move.type === 'Ice') {
+                return this.chainModify(1.25);
+            }
+        },
+        onWeather(target, source, effect) {
+            if (target.hasItem('utilityumbrella')) return;
+            if (effect.id === 'sunnyday' || effect.id === 'desolateland') {
+                this.heal(target.baseMaxhp / 8);
+            } else if (effect.id === 'hail') {
+                this.damage(target.baseMaxhp / 8, target, target);
+            }
+        },
+        id: "coldblood",
+        name: "Cold Blood",
+    },
+	
+    "shellarmor": {
+        shortDesc: "This Pokemon's Defense and Special Defense is boosted by 20%.",
+        onModifyDefPriority: 6,
+        onModifyDef(def) {
+            return this.chainModify(1.2);
+        },
+        onModifyDef(spd) {
+            return this.chainModify(1.2);
+        },
+        id: "shellarmor",
+        name: "Shell Armor",
+        rating: 3,
+        num: 75,
+    },
+ 
+    "battlearmor": {
+        shortDesc: "This Pokemon's Defense and Special Defense is boosted by 20%.",
+        onModifyDefPriority: 6,
+        onModifyDef(def) {
+            return this.chainModify(1.2);
+        },
+        onModifyDef(spd) {
+            return this.chainModify(1.2);
+        },
+        id: "battlearmor",
+        name: "Battle Armor",
+        rating: 3,
+        num: 4,
+    },
 };
