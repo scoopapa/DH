@@ -22,10 +22,7 @@ reflectable: Bounced back to the original user by Magic Coat or the Ability Magi
 snatch: Can be stolen from the original user and instead used by another Pokemon using Snatch.
 sound: Has no effect on Pokemon with the Ability Soundproof.
 */
-
-'use strict';
-exports.BattleMovedex = {
-
+export const BattleMovedex: {[k: string]: ModdedMoveData} = {
     "firepunch": {
         num: 7,
         accuracy: 100,
