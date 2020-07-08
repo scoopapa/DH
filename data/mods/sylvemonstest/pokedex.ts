@@ -1,7 +1,4 @@
-'use strict';
-
-exports.BattlePokedex = {
-
+export const BattlePokedex: {[k: string]: ModdedSpeciesData} = {
     torterra: {
         inherit: true,
         types: ["Grass", "Rock"],
