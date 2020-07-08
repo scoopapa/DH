@@ -1,7 +1,4 @@
-'use strict';
-
-exports.BattlePokedex = {
-
+export const BattlePokedex: {[k: string]: ModdedSpeciesData} = {
    butterfree: {
         inherit: true,
         types: ["Bug", "Psychic"],
@@ -2504,5 +2501,3 @@ exports.BattlePokedex = {
     },
 
 };
-
-exports.BattlePokedex = BattlePokedex;
