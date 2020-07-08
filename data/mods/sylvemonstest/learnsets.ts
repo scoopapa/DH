@@ -1,9 +1,5 @@
-'use strict';
-
-/**@type {{[k: string]: {learnset: {[k: string]: MoveSource[]}}}} */
-let BattleLearnsets = {
-
-scyther: {learnset: {
+export const BattleLearnsets = {
+	scyther: {learnset: {
 		aerialace: ["7M", "6M", "5M", "4M", "3M"],
 		agility: ["7L17", "7V", "7V", "6L17", "5L17", "5S2", "4L17", "3L21"],
 		airslash: ["7L50", "6L50", "5L53", "4L53"],
@@ -156,5 +152,3 @@ scyther: {learnset: {
 	}},
  
  };
-
-exports.BattleLearnsets = BattleLearnsets;
