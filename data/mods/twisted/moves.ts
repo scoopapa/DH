@@ -1,5 +1,5 @@
 
-export const BattleMovedex = {
+export const BattleMovedex: {[k: string]: ModdedMoveData} = {
 	/*
 	// Example
 	"moveid": {
@@ -32,7 +32,7 @@ export const BattleMovedex = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		desc: "The user is replaced with another Pokemon in its party. The selected Pokemon will become twisted",
+		desc: "The user is replaced with another Pokemon in its party. The selected Pokemon will become Twisted",
         shortDesc: "User switches, Twisting the incoming Pokémon.",
 		name: "Twist",		
 		isNonstandard: "Custom",

@@ -1,4 +1,4 @@
-export const BattleStatuses = {
+export const BattleStatuses: {[k: string]: ModdedPureEffectData} = {
 	par: {
 		name: 'par',
 		effectType: 'Status',
@@ -126,46 +126,6 @@ export const BattleStatuses = {
 			return false;
 		},
 	},
-	choicelock: {
-		name: 'choicelock',
-		id: 'choicelock',
-		num: 0,
-		noCopy: true,
-		onStart(pokemon) {
-			if (!this.activeMove) throw new Error("Battle.activeMove is null");
-			if (!this.activeMove.id || this.activeMove.hasBounced) return false;
-			this.effectData.move = this.activeMove.id;
-		},
-		onBeforeMove(pokemon, target, move) {
-			if(move.id === 'twist') return;
-			if (!pokemon.getItem().isChoice) {
-				pokemon.removeVolatile('choicelock');
-				return;
-			}
-			if (!pokemon.ignoringItem() && !pokemon.volatiles['dynamax'] && move.id !== this.effectData.move && move.id !== 'struggle') {
-				// Fails unless the Choice item is being ignored, and no PP is lost
-				this.addMove('move', pokemon, move.name);
-				this.attrLastMove('[still]');
-				this.debug("Disabled by Choice item lock");
-				this.add('-fail', pokemon);
-				return false;
-			}
-		},
-		onDisableMove(pokemon) {
-			if (!pokemon.getItem().isChoice || !pokemon.hasMove(this.effectData.move)) {
-				pokemon.removeVolatile('choicelock');
-				return;
-			}
-			if (pokemon.ignoringItem() || pokemon.volatiles['dynamax']) {
-				return;
-			}
-			for (const moveSlot of pokemon.moveSlots) {
-				if (moveSlot.id !== this.effectData.move) {
-					pokemon.disableMove(moveSlot.id, false, this.effectData.sourceEffect);
-				}
-			}
-		},
-	},
 	flinch: {
 		name: 'flinch',
 		duration: 1,
@@ -248,28 +208,26 @@ export const BattleStatuses = {
 	},
     twisted: {
         onStart(pokemon) {
-			const hasTwist = ["Sudowoodo"];
             const side = pokemon.side;
-            const twistlr = pokemon.canMegaEvo;
-            var twistedSpecies, twistTyping = null, t;
-			if(hasTwist.includes(pokemon.baseSpecies.name)){
-				twistedSpecies = this.dex.getTemplate(pokemon.baseSpecies.name + "-" + twistlr + "T");
-				pokemon.formeChange(twistedSpecies, this.effect, false, pokemon.name + 'twisted ' + twistlr);
-			}
-			else{
-				twistedSpecies = this.dex.deepClone(pokemon.species);
-				if (pokemon.types.length === 1 && pokemon.types[0] !== '???')
-					twistedSpecies.types = [ getTwistedType(pokemon.types[0], twistlr as string ) ];
-				else {
-					twistTyping = [ getTwistedType(pokemon.types[0], twistlr as string ), getTwistedType( pokemon.types[1], twistlr as string) ];
-					if(twistTyping[0] === twistTyping[1]) twistedSpecies.types = [ twistTyping[0] ];
-					else twistedSpecies.types = twistTyping;
-				}
-				pokemon.canMegaEvo = null;
-				for(const ally of side.pokemon) ally.canMegaEvo = null;
-				pokemon.moveSlots.pop();
-				pokemon.formeChange(twistedSpecies, this.effect, false, pokemon.name + 'twisted ' + twistlr);
-			}
+            const twistedSpecies = this.dex.deepClone(pokemon.species); 
+            const twistlr = pokemon.canMegaEvo; 
+			var twistTyping = null;
+			
+			if (pokemon.baseSpecies.num === 493){
+				twistedSpecies.types = [ getTwistedType(pokemon.types[0], twistlr as string ) ];
+			} else if (pokemon.baseSpecies.num === 773){
+				
+			}else if (pokemon.types.length === 1 && pokemon.types[0] !== '???')
+                twistedSpecies.types = [ getTwistedType(pokemon.types[0], twistlr as string ) ];
+            else {
+                twistTyping = [ getTwistedType(pokemon.types[0], twistlr as string ), getTwistedType( pokemon.types[1], twistlr as string) ];
+                if(twistTyping[0] === twistTyping[1]) twistedSpecies.types = [ twistTyping[0] ];
+                else twistedSpecies.types = twistTyping;
+            }
+            pokemon.canMegaEvo = null;
+            for(const ally of side.pokemon) ally.canMegaEvo = null;
+			pokemon.moveSlots.pop();
+            pokemon.formeChange(twistedSpecies, this.effect, false, pokemon.name + 'twisted ' + twistlr);
 			this.add('-start', pokemon, twistlr + '-Twist', '[silent]');
             this.add('-start', pokemon, 'typechange', pokemon.species.types.join('/'), '[silent]');
 		},
@@ -293,7 +251,7 @@ export const BattleStatuses = {
 				maxpp: 1,
 				target: move.target,
 				disabled: false,
-				used: false
+				used: false,
             };
             
             pokemon.moveSlots.push(twistMove);
@@ -305,8 +263,8 @@ export const BattleStatuses = {
     },
 };
 
-function getTwistedType(type, lr){
-	const TwistedType = {
+function getTwistedType(type: string, lr: string){
+	const TwistedType: { [k: string]: { [k: string]: string; }; } = {
 		Grass: { L: 'Rock', R: 'Electric', prefix: 'Sprouting' },
 		Fire: { L: 'Grass', R: 'Fighting', prefix: 'Blazing' },
 		Water: { L: 'Fire', R: 'Poison', prefix: 'Soaking' },
