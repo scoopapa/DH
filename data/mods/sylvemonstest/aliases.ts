@@ -1,7 +1,5 @@
-'use strict';
+export const BattleAliases = {
 
-/**@type {{[k: string]: string}} */
-let BattleAliases = {
 	// basically deerling & sawsbuck formes
 	"deerlingspring": "Deerling-Spring",
 	"deerlingsummer": "Deerling-Summer",
@@ -12,5 +10,3 @@ let BattleAliases = {
 	"sawsbuckautumn": "Sawsbuck-Autmn",
 	"sawsbuckwinter": "Sawsbuck-Winter",
 };
-
-exports.BattleAliases = BattleAliases;
