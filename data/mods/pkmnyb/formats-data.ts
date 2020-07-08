@@ -1,6 +1,4 @@
-'use strict';
-
-let BattleFormatsData = {
+export const BattleFormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 mienshaomega: {
     randomBattleMoves: [],
     randomDoublesBattleMoves: [],
@@ -146,4 +144,3 @@ primadillomega: {
     tier: "OU",
 },
 };
-exports.BattleFormatsData =  BattleFormatsData;
