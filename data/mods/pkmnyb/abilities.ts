@@ -1,5 +1,4 @@
-'use strict';
-exports.BattleAbilities = {
+export const BattleAbilities: {[k: string]: ModdedAbilityData} = {
     "cacophony": {
         desc: "Boosts the power of sound-based moves.",
         shortDesc: "Boosts sound move power.",
@@ -31,7 +30,7 @@ exports.BattleAbilities = {
         name: "Burning Echoes",
     },
     "moonlightboost": {
-        shortDesc: "Moves with the word "Moon" in their name deal 1.3x more damage; Moonlight heals 66.7% HP in clear weather",
+        shortDesc: "Moves with the word Moon in their name deal 1.3x more damage; Moonlight heals 66.7% HP in clear weather",
         onBasePowerPriority: 8,
         onBasePower(basePower, attacker, defender, move) {
             if (move.name === 'Full Moon Crash' || 'Moonblast' || 'Moongeist Beam' || 'Menacing Moonraze Maelstrom' || 'Malicious Moonsault') {
