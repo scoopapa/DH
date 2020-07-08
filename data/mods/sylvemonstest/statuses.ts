@@ -1,6 +1,4 @@
-'use strict';
-
-exports.BattleStatuses = {
+export const BattleStatuses: {[k: string]: ModdedStatusData} = {
 	hail: {
 		effectType: 'Weather',
 		duration: 5,
