@@ -1,5 +1,4 @@
-'use strict';
-exports.BattleItems = {
+export const BattleItems: {[k: string]: ModdedItemData} = {
     "waterstone": {
         id: "waterstone",
         name: "Water Stone",
