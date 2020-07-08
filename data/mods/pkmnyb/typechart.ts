@@ -1,6 +1,4 @@
-'use strict';
-
-exports.BattleTypeChart = {
+export const BattleTypeChart: {[k: string]: ModdedTypeData} = {
 	"Bug": {
 		damageTaken: {
 			"Bug": 0,
