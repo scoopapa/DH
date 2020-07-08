@@ -213,11 +213,7 @@ export const BattleStatuses: {[k: string]: ModdedPureEffectData} = {
             const twistlr = pokemon.canMegaEvo; 
 			var twistTyping = null;
 			
-			if (pokemon.baseSpecies.num === 493){
-				twistedSpecies.types = [ getTwistedType(pokemon.types[0], twistlr as string ) ];
-			} else if (pokemon.baseSpecies.num === 773){
-				
-			}else if (pokemon.types.length === 1 && pokemon.types[0] !== '???')
+			if (pokemon.types.length === 1 && pokemon.types[0] !== '???')
                 twistedSpecies.types = [ getTwistedType(pokemon.types[0], twistlr as string ) ];
             else {
                 twistTyping = [ getTwistedType(pokemon.types[0], twistlr as string ), getTwistedType( pokemon.types[1], twistlr as string) ];
