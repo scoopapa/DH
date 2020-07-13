@@ -679,4 +679,32 @@ export const BattleMovedex: {[k: string]: ModdedMoveData} = {
         type: "Flying",
         contestType: "Beautiful",
     },
+	 "fullmooncrash": {
+		  accuracy: 100,
+		  basePower: 120,
+		  category: "Physical",
+		  desc: "The user receives 1/3 damage inflicted in recoil. Has a 10% chance to decrease the target's Atk by 1 stage.",
+		  shortDesc: "33% recoil. Has a 10% chance to decrease the target's Atk by 1 stage.",
+		  id: "fullmooncrash",
+		  isViable: true,
+		  name: "Full Moon Crash",
+		  pp: 10,
+		  priority: 0,
+		  flags: {
+			  contact: 1,
+			  protect: 1,
+			  mirror: 1
+		  },
+		  recoil: [1, 3],
+		  secondary: null
+		  },
+		  onPrepareHit: function(target, source, move) {
+			  this.attrLastMove('[still]');
+			  this.add('-anim', source, "Double Edge", target);
+		  },
+		  target: "normal",
+		  type: "Fairy",
+		  zMovePower: 180,
+		  contestType: "Cute",
+	 },	
 };    
