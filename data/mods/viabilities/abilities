@@ -94,4 +94,60 @@ exports.BattleAbilities = {
 		rating: 0,
 		num: 222,
 	},
+        "healer": {
+        id: "healer",
+        name: "Healer",
+        onResidualOrder: 5,
+        onResidualSubOrder: 2,
+        onResidual(pokemon) {
+            if (this.field.isTerrain('grassyterrain')) return;
+            this.heal(pokemon.maxhp / 16);
+        },
+        onTerrain(pokemon) {
+            if (!this.field.isTerrain('grassyterrain')) return;
+            this.heal(pokemon.maxhp / 16);
+        },
+        desc: "At the end of every turn, this Pokemon and its allies restore 1/16 of their max HP.",
+        num: 131,
+    },
+    "illuminate": {
+        desc: "If a Pokemon uses a Ghost- or Dark-type attack against this Pokemon, that Pokemon's attacking stat is halved when calculating the damage to this Pokemon.",
+        shortDesc: "Ghost/Dark-type moves against this Pokemon deal damage with a halved attacking stat.",
+        onSourceModifyAtkPriority: 6,
+        onSourceModifyAtk(atk, attacker, defender, move) {
+            if (move.type === 'Ghost' || move.type === 'Dark') {
+                this.debug('Thick Fat weaken');
+                return this.chainModify(0.5);
+            }
+        },
+        onSourceModifySpAPriority: 5,
+        onSourceModifySpA(atk, attacker, defender, move) {
+            if (move.type === 'Ghost' || move.type === 'Dark') {
+                this.debug('Thick Fat weaken');
+                return this.chainModify(0.5);
+            }
+        },
+        name: "Illuminate",
+        rating: 3.5,
+        num: 35,
+    },
+    "telepathy": {
+        desc: "This Pokemon's Normal-type moves become Psychic-type moves and have their power multiplied by 1.2. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
+        shortDesc: "This Pokemon's Normal-type moves become Psychic type and have 1.2x power.",
+        onModifyTypePriority: -1,
+        onModifyType(move, pokemon) {
+            if (move.type === 'Normal' && !['judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'weatherball'].includes(move.id) && !(move.isZ && move.category !== 'Status')) {
+                move.type = 'Psychic';
+                move.telepathyBoosted = true;
+            }
+        },
+        onBasePowerPriority: 8,
+        onBasePower(basePower, pokemon, target, move) {
+            if (move.telepathyBoosted) return this.chainModify([0x1333, 0x1000]);
+        },
+        id: "telepathy",
+        name: "Telepathy",
+        rating: 4,
+        num: 140,
+    },
 };
