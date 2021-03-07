@@ -209,8 +209,8 @@ export const Formats: FormatList = [
 		ruleset: ['Team Preview', 'Cancel Mod'],
 	},
 	{
-		name: "[Gen 8]Metagame Madness",
-		mod: 'mategamemadness',
+		name: "[Gen 8] Metagame Madness",
+		mod: 'metagamemadness',
 		ruleset: ['Standard'],
 		banlist: ['Uber', 'Shadow Tag', 'Baton Pass','Teleport','Hidden Power'],
 	},
