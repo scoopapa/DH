@@ -208,6 +208,12 @@ export const Formats: FormatList = [
 		// no restrictions, for serious (other than team preview)
 		ruleset: ['Team Preview', 'Cancel Mod'],
 	},
+	{
+		name: "[Gen 8]Metagame Madness",
+		mod: 'mategamemadness',
+		ruleset: ['Standard'],
+		banlist: ['Uber', 'Shadow Tag', 'Baton Pass','Teleport','Hidden Power'],
+	},
 
 	// Sw/Sh Doubles
 	///////////////////////////////////////////////////////////////////
@@ -745,8 +751,10 @@ export const Formats: FormatList = [
 
 		mod: 'doubletrouble',
 		gameType: 'doubles',
+		ruleset: ['Standard Doubles', 'Dynamax Clause'],
+		banlist: ['DUber', 'Beat Up'],
+		teambuilderFormat: 'Doubles OU',
 		searchShow: false,
-		ruleset: ['[Gen 8] Doubles OU'],
 		// Dumb hack because Mawile has 5 abilities for some reason
 		validateSet(set, teamHas) {
 			const species = this.dex.getSpecies(set.species);
@@ -766,7 +774,7 @@ export const Formats: FormatList = [
 			}
 	},
 	},
-	{
+		{
 		name: "[Gen 7] DLCmons",
 		threads: [
 			`&bullet; <a href="https://www.smogon.com/forums/threads/dlcmons-ultra-ultra-beast-movepool-and-design-slate.3673357/">Thread in Pet Mods</a>`,
@@ -918,13 +926,14 @@ export const Formats: FormatList = [
 		],
 		ruleset: ['Standard NatDex', 'OHKO Clause', 'Evasion Moves Clause', 'Species Clause', 'Dynamax Clause', 'Sleep Clause Mod', 'Z-Move Clause', 'Data Mod', 'Mega Data Mod'],
 		banlist: [
-			'All Pokemon', 'Tapu Lopunnite', 'Tapu Lop-Mega',
+			'All Pokemon', 'Tapu Lopunnite', 'Tapu Lop-Mega', 'Red Orb', 'Grousle-Primal',
 		],
 		unbanlist: [
 			'Volquag', 'Toxalure', 'Kingtsar', 'Tanette', 'Slowton', 
 			'Flaant', 'Umbat', 'Chomplim', 'Chomplim-Mega', 'Xotalion', 'Miemie', 'Dusking', 'Jelliswine',
 			'Pigapult', 'Lycanserker-Dusk', 'Tapu Lop', 'Dragontler', 'Eternabat',
 			'Grimmlurk', 'Manicuno-Galar', 'Yacian-Crowned', 'Cryogolem', 'Stoudrago',
+			'Grousle', 'Dongoro', 'Slurpum', 
 			
 			'Silvino-Bug', 'Silvino-Dark', 'Silvino-Dragon', 'Silvino-Electric', 'Silvino-Fairy', 'Silvino-Fighting',
 			'Silvino-Fire', 'Silvino-Flying', 'Silvino-Ghost', 'Silvino-Grass', 'Silvino-Ground', 'Silvino-Ice', 
@@ -950,6 +959,7 @@ export const Formats: FormatList = [
 			'Palkia', 'Pheromosa', 'Rayquaza', 'Reshiram', 'Salamencite', 'Shaymin-Sky', 'Solgaleo', 'Spectrier', 'Tornadus-Therian', 'Urshifu-Base', 'Xerneas', 'Yveltal',
 			'Zacian', 'Zamazenta', 'Zekrom', 'Zygarde-Base', 'Zygarde-Complete',  'Calyrex-Ice', 'Calyrex-Shadow', 'Arena Trap', 'Moody', 'Power Construct', 'Shadow Tag',
 			'Baton Pass',
+			'Dragonitite', // temporary
 		],
 		mod: 'm4av6',
 	},
@@ -1003,7 +1013,6 @@ export const Formats: FormatList = [
 			}
 		},
 	},
-/*
 	{
 		name: "[Gen 8] M4A Submission Sandbox",
 		desc: ["&bullet; Megas for All v7",
@@ -1019,7 +1028,6 @@ export const Formats: FormatList = [
 		],
 		mod: 'm4asandbox',
 	},
-*/
 	{
 		name: "[Gen 8] Mix and M4A",
 		desc: `Mega Evolve any Pokémon with any Mega Stone and no limit. Boosts based on Mega Evolution from Megas for All v7.`,
@@ -1661,6 +1669,16 @@ export const Formats: FormatList = [
 		},
 	},
 	{
+		name: "[Gen 8] SylveMons Random Battle",
+		mod: 'sylvemonstest',
+		team: 'random',
+		ruleset: ['Dynamax Clause', 'Obtainable', 'Species Clause', 'HP Percentage Mod', 'Cancel Mod', 'Sleep Clause Mod'],
+		onSwitchIn(pokemon) {
+			this.add('-start', pokemon, 'typechange', pokemon.species.types.join('/'), '[silent]');
+		},
+	},
+	/*
+	{
 		name: "[Gen 8] Ink's Winter Wonderland",
 		desc: `Play around both your opponent and the treacherous weather conditions in this randomized micrometa!`,
 		mod: 'inksrandbats',
@@ -1669,7 +1687,7 @@ export const Formats: FormatList = [
 		searchShow: false,
 		challengeShow: false,
 	},
-
+	*/
 	// Past Gens OU
 	///////////////////////////////////////////////////////////////////
 
@@ -1956,4 +1974,3 @@ export const Formats: FormatList = [
 		ruleset: ['HP Percentage Mod', 'Cancel Mod'],
 	},
 ];
-    
