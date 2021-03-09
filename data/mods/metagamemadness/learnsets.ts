@@ -22996,6 +22996,8 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 			whirlpool: ["8M", "7V", "4M"],
 			wildcharge: ["8M", "7M", "6M", "5M"],
 			zapcannon: ["7V"],
+			wish: ["8L1"],
+			flipturn: ["8L1"],
 		},
 		encounters: [
 			{generation: 4, level: 20},
@@ -41930,7 +41932,6 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 			wrap: ["7L1", "6L1", "5L1", "4L1", "4S8", "3L1"],
 			zapcannon: ["7L61", "6L61", "5L81", "4L81", "4S4", "3L40"],
 			zenheadbutt: ["7T", "7L49", "6T", "6L49", "5T", "5L65", "4T", "4L65"],
-			glare: ["8L1"],
 		},
 		eventData: [
 			{generation: 3, level: 30, shiny: 1, moves: ["taunt", "pursuit", "psychic", "superpower"]},
@@ -73125,9 +73126,6 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 			thundershock: ["8L1", "8V", "7L27"],
 			thunderwave: ["8M", "8L24", "8V", "7M", "7L1"],
 			toxic: ["8V", "7M"],
-			bulletpunch: ["8L1"],
-			rapidspin: ["8L1"],
-			drainpunch: ["8L1"],
 		},
 		eventData: [
 			{generation: 8, level: 100, nature: "Brave", ivs: {hp: 31, atk: 31, def: 31, spa: 31, spd: 31, spe: 0}, moves: ["doubleironbash", "hyperbeam", "dynamicpunch", "thunderpunch"], pokeball: "cherishball"},
