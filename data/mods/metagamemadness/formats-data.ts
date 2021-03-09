@@ -3080,7 +3080,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "OU",
 	},
 	darkrai: {
-		tier: "Uber",
+		tier: "OU",
 	},
 	shaymin: {
 		tier: "OU",
@@ -5255,7 +5255,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		randomBattleLevel: 76,
 		randomDoubleBattleMoves: ["dracometeor", "flamethrower", "nastyplot", "sludgebomb", "uturn"],
 		randomDoubleBattleLevel: 76,
-		tier: "Uber",
+		tier: "OU",
 		doublesTier: "(DUU)",
 	},
 	stakataka: {
