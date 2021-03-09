@@ -5855,7 +5855,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		randomBattleLevel: 74,
 		randomDoubleBattleMoves: ["behemothbash", "closecombat", "crunch", "howl", "protect", "psychicfangs"],
 		randomDoubleBattleLevel: 72,
-		tier: "Uber",
+		tier: "OU",
 		doublesTier: "DUber",
 	},
 	eternatus: {
