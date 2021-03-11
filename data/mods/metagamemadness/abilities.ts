@@ -4389,9 +4389,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		num: -3,
 	},
 	persistent: {
-		isNonstandard: "CAP",
 		name: "Persistent",
-		// implemented in the corresponding move
 		rating: 3,
 		num: -4,
 	},

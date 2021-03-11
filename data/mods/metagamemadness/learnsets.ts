@@ -53472,6 +53472,7 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 			trickroom: ["8M", "7M", "6M", "5M"],
 			whirlwind: ["8L25", "7L14", "6L14", "5L14"],
 			zenheadbutt: ["8M", "7T", "6T", "5T"],
+			uturn: ["8L1"],
 		},
 	},
 	yamask: {
@@ -56275,7 +56276,6 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 			toxic: ["7M", "6M", "5M"],
 			worryseed: ["7T", "6T", "5T"],
 			synthesis: ["8L1"],
-			recover: ["8L1"],
 		},
 	},
 	klink: {
@@ -76585,6 +76585,9 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 			thunder: ["8M"],
 			thunderbolt: ["8M"],
 			thunderwave: ["8M"],
+			autotomize: ["8L1"],
+			flamethrower: ["8L1"],
+			fireblast: ["8L1"],
 		},
 	},
 	dreepy: {
