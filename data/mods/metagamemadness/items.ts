@@ -5061,13 +5061,13 @@ export const Items: {[itemid: string]: ItemData} = {
 		},
 		onModifySpAPriority: 1,
 		onModifySpA(spa, pokemon) {
-			if (pokemon.baseSpecies.num === 380 || pokemon.baseSpecies.num === 381) {
+			if (pokemon.baseSpecies.num === 381) {
 				return this.chainModify(1.5);
 			}
 		},
 		onModifySpDPriority: 2,
 		onModifySpD(spd, pokemon) {
-			if (pokemon.baseSpecies.num === 380 || pokemon.baseSpecies.num === 381) {
+			if (pokemon.baseSpecies.num === 380) {
 				return this.chainModify(1.5);
 			}
 		},
