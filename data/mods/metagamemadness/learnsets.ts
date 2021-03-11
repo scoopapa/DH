@@ -15768,7 +15768,6 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 			safeguard: ["8M", "7M", "7V", "6M", "5M", "4E", "3E"],
 			sandstorm: ["8M", "7M", "7V", "6M", "5M", "4M", "3M"],
 			secretpower: ["6M", "4M", "3M"],
-			seismictoss: ["8V", "7V", "3T"],
 			shadowball: ["8M", "8V", "7M", "7V", "6M", "5M", "4M", "3M"],
 			shadowclaw: ["8M", "7M", "6M", "5M", "4M"],
 			shockwave: ["7T", "6T", "4M", "3M"],
@@ -21614,6 +21613,8 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 			growth: ["8L1"],
 			earthpower: ["8L1"],
 			weatherball: ["8L1"],
+			softboiled: ["8L1"],
+			calmmind: ["8L1"],
 		},
 		eventData: [
 			{generation: 6, level: 50, isHidden: true, moves: ["solarbeam", "sunnyday", "synthesis", "bodyslam"], pokeball: "pokeball"},
@@ -60300,6 +60301,7 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 			waterpulse: ["7T", "6T"],
 			workup: ["8M", "8L1", "7M", "7L61", "6L61", "5M", "5L61"],
 			xscissor: ["8M", "7M", "6M", "5M"],
+			highhorsepower: ["8L1"],
 		},
 		eventData: [
 			{generation: 5, level: 15, moves: ["aquajet", "leer", "doublekick", "bubblebeam"], pokeball: "cherishball"},
@@ -65791,7 +65793,6 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 			focusblast: ["8M", "7M", "6M"],
 			frustration: ["7M", "6M"],
 			gigaimpact: ["8M", "7M", "6M"],
-			glare: ["8L56", "7L1", "7S5", "7S6", "6L1", "6S1"],
 			grassknot: ["8M", "7M", "6M"],
 			haze: ["8L8", "7L44", "7S3", "7S4", "6L44"],
 			hiddenpower: ["7M", "6M"],

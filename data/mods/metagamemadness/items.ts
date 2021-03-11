@@ -5054,21 +5054,18 @@ export const Items: {[itemid: string]: ItemData} = {
 		gen: 7,
 	},
 	souldew: {
-	iname: "Soul Dew",
+		name: "Soul Dew",
 		spritenum: 459,
 		fling: {
 			basePower: 30,
 		},
-		onModifySpAPriority: 1,
-		onModifySpA(spa, pokemon) {
-			if (pokemon.baseSpecies.num === 381) {
-				return this.chainModify(1.5);
-			}
-		},
-		onModifySpDPriority: 2,
-		onModifySpD(spd, pokemon) {
-			if (pokemon.baseSpecies.num === 380) {
-				return this.chainModify(1.5);
+		onBasePowerPriority: 15,
+		onBasePower(basePower, user, target, move) {
+			if (
+				move && (user.baseSpecies.num === 380 || user.baseSpecies.num === 381) &&
+				(move.type === 'Psychic' || move.type === 'Dragon')
+			) {
+				return this.chainModify([0x1333, 0x1000]);
 			}
 		},
 		itemUser: ["Latios", "Latias"],
