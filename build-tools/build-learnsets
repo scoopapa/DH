@@ -1,0 +1,141 @@
+#!/usr/bin/env node
+
+/**
+ * This script parses index.html and sets the version query string of each
+ * resource to be the MD5 hash of that resource.
+ * It also updates news and the learnsets-g6.js file.
+ *
+ * On the live web server, this script is set as the following git hooks:
+ *   post-commit, post-checkout, post-merge, post-rewrite
+ */
+
+"use strict";
+
+const path = require('path');
+const fs = require('fs');
+
+const thisFile = __filename;
+const thisDir = __dirname;
+const rootDir = path.resolve(thisDir, '..');
+
+const Dex = require('../data/pokemon-showdown/.sim-dist/dex').Dex;
+const toID = Dex.toID;
+
+function updateLearnsets(callback) {
+	const numberRegExp = /^[0-9]*/;
+	const reservedRegExp = /^(return|\d.*)$/g; // `return` is the only ES3+ reserved keyword that (currently) raises conflicts
+	const alphabetize = (a, b) => a.localeCompare(b);
+
+	const formatLset = function (lset) {
+		const secondChar = lset.charAt(1);
+		if (secondChar !== 'L') return lset;
+		const firstFragment = lset.substr(0, 2);
+		const levelFragment = lset.substr(2).match(numberRegExp)[0];
+		const sortFragment = lset.substr(2 + levelFragment.length);
+		return firstFragment + levelFragment.padStart(3, '0') + sortFragment;
+	};
+
+	const Pokedex = Dex.data.Pokedex;
+	const Learnsets = Dex.data.Learnsets;
+	const newLearnsetsG6 = {};
+
+	for (const speciesid in Learnsets) {
+		const newLearnset = {};
+		const fullLearnset = Learnsets[speciesid].learnset;
+
+		for (const moveid in fullLearnset) {
+			newLearnset[moveid] = fullLearnset[moveid].filter(
+				learned => "87".includes(learned.charAt(0))
+			).map(
+				formatLset
+			).sort(
+				alphabetize
+			);
+		}
+
+		newLearnsetsG6[speciesid] = {learnset: newLearnset};
+	}
+
+	const buf = [];
+	const pokemonList = Object.keys(Pokedex).map(speciesId => Pokedex[speciesId]).sort(function (a, b) {
+		// Missingno. goes first (zeroth); afterwards, CAP in descending dex order (increasingly negative)
+		// Finally, standard Pokémon in ascending dex order
+		if (a.num <= 0 && b.num > 0) return -1;
+		if (b.num <= 0 && a.num > 0) return 1;
+		if (a.num <= 0 && b.num <= 0) return b.num - a.num;
+		return a.num - b.num;
+	}).map(species => toID(species.name));
+
+	for (const speciesid of pokemonList) {
+		const entry = newLearnsetsG6[speciesid];
+		if (!entry || !entry.learnset) continue;
+		const lsetSerialized = '{' + Object.keys(entry.learnset).sort(alphabetize).map(
+			moveid => moveid.replace(reservedRegExp, '"$1"') + ':' + JSON.stringify(entry.learnset[moveid])
+		).join(',') + '}';
+		buf.push(speciesid + ':{learnset:' + lsetSerialized + '}');
+	}
+
+	const writeStream = fs.createWriteStream(path.join(rootDir, 'data', 'learnsets-g6.js')).on('error', callback);
+	writeStream.write('exports.BattleLearnsets = {\n\t' + buf.join(',\n\t') + '\n};\n');
+	writeStream.end(callback);
+}
+
+let indexStats, updateStats, indexMTime, updateMTime;
+try {
+	indexStats = fs.statSync(path.join(rootDir, 'index.html'));
+	indexMTime = indexStats.mtime.getTime();
+} catch (err) {
+	if (err.code !== 'ENOENT') throw err;
+	// It doesn't exist currently, but it will by the end of the script execution.
+	// Any other error is unacceptable and will throw.
+}
+try {
+	updateStats = fs.statSync(thisFile);
+	updateMTime = updateStats.mtime.getTime();
+} catch (err) {
+	throw err; // !!
+}
+
+// update learnsets-g6
+process.stdout.write("Updating file `data/learnsets-g6`... ");
+
+let learnsetsStats;
+let learnsetsG6Stats;
+let learnsetsG6ToUpdate = true;
+
+try {
+	learnsetsStats = fs.statSync(path.join(rootDir, 'data', 'learnsets.js'));
+} catch (err) {
+	// Couldn't find learnsets.js, but that's not the end of the world: skip to next task.
+	console.error("Couldn't find `data/learnsets.js`. Task aborted.");
+	learnsetsG6ToUpdate = false;
+}
+if (learnsetsG6ToUpdate) {
+	try {
+		learnsetsG6Stats = fs.statSync(path.join(rootDir, 'data', 'learnsets-g6.js'));
+	} catch (err) {
+		if (err.code === 'ENOENT') {
+			// It doesn't exist currently, but it will by the end of the script execution.
+		} else {
+			// Any other error is unacceptable for learnsets-g6.js update: skip to next task.
+			console.error("Failed to read `data/learnsets-g6.js`. Task aborted.");
+			learnsetsG6ToUpdate = false;
+		}
+	}
+}
+
+if (learnsetsG6ToUpdate && (!indexStats || !learnsetsG6Stats || indexMTime < updateMTime || indexMTime < learnsetsStats.mtime.getTime() || indexMTime < learnsetsG6Stats.mtime.getTime())) {
+	// Only merge learnsets.js with learnsets-g6.js if any of those files, or this one, have been modified recently (or if we don't know what "recently" means)
+
+	updateLearnsets(function (err) {
+		if (err) {
+			let stack = err.stack || '';
+			stack = "File `data/learnsets-g6` failed to update.\n" + stack;
+			console.error(stack);
+		} else {
+			console.log("DONE");
+		}
+	});
+} else {
+	console.log("CACHED");
+}
