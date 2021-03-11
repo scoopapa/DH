@@ -208,20 +208,6 @@ export const Formats: FormatList = [
 		// no restrictions, for serious (other than team preview)
 		ruleset: ['Team Preview', 'Cancel Mod'],
 	},
-	{
-		name: "[Gen 8] Metagame Madness",
-		mod: 'metagamemadness',
-		teambuilderFormat: "NatDex", 	
-		ruleset: ['Standard'],
-		banlist: ['Uber', 'Shadow Tag', 'Baton Pass', 'Teleport', 'Hidden Power', 'Power Construct'],
-	},
-	{
-		name: "[Gen 8] Nostalgic Feeling",
-		mod: 'nostalgicfeeling',
-		teambuilderFormat: "OU",
-		ruleset: ['Standard', 'Dynamax Clause'],
-		banlist: ['Uber', 'Shadow Tag', 'Baton Pass','Arena Trap'],
-	},
 
 	// Sw/Sh Doubles
 	///////////////////////////////////////////////////////////////////
