@@ -213,7 +213,7 @@ export const Formats: FormatList = [
 		mod: 'metagamemadness',
 		teambuilderFormat: "NatDex", 	
 		ruleset: ['Standard'],
-		banlist: ['Uber', 'Shadow Tag', 'Baton Pass','Teleport','Hidden Power'],
+		banlist: ['Uber', 'Shadow Tag', 'Baton Pass', 'Teleport', 'Hidden Power', 'Power Construct'],
 	},
 	{
 		name: "[Gen 8] Nostalgic Feeling",
