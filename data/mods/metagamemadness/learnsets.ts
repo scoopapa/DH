@@ -71331,6 +71331,9 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 			withdraw: ["8L5", "7L1"],
 			workup: ["8M", "7M"],
 			risingvoltage: ["8L1"],
+			closecombat: ["8L1"],
+			playrough: ["8L1"],
+			shadowclaw: ["8L1"],
 		},
 		eventData: [
 			{generation: 7, level: 60, moves: ["naturesmadness", "discharge", "agility", "electroball"]},
@@ -76587,6 +76590,7 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 			autotomize: ["8L1"],
 			flamethrower: ["8L1"],
 			fireblast: ["8L1"],
+			acidspray: ["8L1"],
 		},
 	},
 	dreepy: {
