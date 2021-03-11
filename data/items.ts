@@ -595,8 +595,6 @@ export const Items: {[itemid: string]: ItemData} = {
 			}
 			return true;
 		},
-		forcedForme: "Silvally-Bug",
-		itemUser: ["Silvally-Bug"],
 		num: 909,
 		gen: 7,
 	},
