@@ -214,6 +214,12 @@ export const Formats: FormatList = [
 		ruleset: ['Standard'],
 		banlist: ['Uber', 'Shadow Tag', 'Baton Pass','Teleport','Hidden Power'],
 	},
+	{
+		name: "[Gen 8] Nostalgic Feeling",
+		mod: 'nostalgicfeeling',
+		ruleset: ['Standard', 'Dynamax Clause'],
+		banlist: ['Uber', 'Shadow Tag', 'Baton Pass','Arena Trap'],
+	},
 
 	// Sw/Sh Doubles
 	///////////////////////////////////////////////////////////////////
