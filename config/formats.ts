@@ -211,7 +211,7 @@ export const Formats: FormatList = [
 	{
 		name: "[Gen 8] Metagame Madness",
 		mod: 'metagamemadness',
-		teambuilderFormat: "OU", 	
+		teambuilderFormat: "NatDex", 	
 		ruleset: ['Standard'],
 		banlist: ['Uber', 'Shadow Tag', 'Baton Pass','Teleport','Hidden Power'],
 	},
