@@ -56162,7 +56162,6 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 			irondefense: ["8M", "8L35", "7T", "7L26", "6T", "6L26", "5T", "5L26"],
 			ironhead: ["8M", "8L25", "7T", "7L43", "6T", "6L43", "5T", "5L43"],
 			knockoff: ["8E", "7T", "6T"],
-			leechseed: ["8E", "7E", "6E", "5E"],
 			magnetrise: ["7T", "6T", "5T"],
 			metalclaw: ["8L5", "7L14", "6L14", "5L14"],
 			mirrorshot: ["7L30", "6L30", "5L30"],
