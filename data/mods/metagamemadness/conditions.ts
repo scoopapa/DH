@@ -624,6 +624,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 				this.debug('hail ice boost');
 				return this.chainModify(1.5);
 			}
+		},
 		onStart(battle, source, effect) {
 			if (effect?.effectType === 'Ability') {
 				if (this.gen <= 5) this.effectData.duration = 0;
