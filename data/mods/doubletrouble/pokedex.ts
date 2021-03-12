@@ -1,3 +1,4 @@
+  
 export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	arcanine: {
 		inherit: true,
