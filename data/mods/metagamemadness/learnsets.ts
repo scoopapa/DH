@@ -25557,6 +25557,11 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 			workup: ["7M", "5M"],
 			zapcannon: ["7V"],
 			zenheadbutt: ["7T", "7L32", "6T", "6L32", "5T", "5L41", "4T", "4L41"],
+			hex: ["8L1"],
+			poltergeist: ["8L1"],
+			shadowsneak: ["8L1"],
+			destinybond: ["8L1"],
+			highjumpkick: ["8L1"],
 		},
 	},
 	pineco: {
@@ -75256,6 +75261,10 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 			waterfall: ["8M"],
 			whirlpool: ["8M"],
 			workup: ["8M"],
+			recover: ["8L1"],
+			flipturn: ["8L1"],
+			knockoff: ["8L1"],
+			machpunch: ["8L1"],
 		},
 	},
 	sinistea: {
@@ -76869,6 +76878,7 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 			wideguard: ["8L1"],
 			wildcharge: ["8M"],
 			workup: ["8M"],
+			bodypress: ["8L1"],
 		},
 		eventData: [
 			{generation: 8, level: 70, perfectIVs: 3, moves: ["slash", "crunch", "ironhead", "irondefense"]},
@@ -77350,6 +77360,7 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 			throatchop: ["8M"],
 			torment: ["8L24"],
 			uproar: ["8M"],
+			slackoff: ["8L1"],
 		},
 		eventData: [
 			{generation: 8, level: 75, moves: ["taunt", "doubleedge", "swordsdance", "iciclecrash"]},

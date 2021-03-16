@@ -1582,8 +1582,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		doublesTier: "(DUU)",
 	},
 	girafarig: {
-		isNonstandard: "Past",
-		tier: "Illegal",
+		isNonstandard: "PU",
 	},
 	pineco: {
 		isNonstandard: "Past",
