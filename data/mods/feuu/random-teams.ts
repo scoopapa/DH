@@ -1227,45 +1227,45 @@ export class RandomTeams {
 				ability = 'Sap Sipper';
 			} else if (forme === 'Copperajah' && gmax) {
 				ability = 'Heavy Metal';
-			} else if (forme === 'Silvino') {
+			} else if (forme === 'Silvino' || forme === 'Silvino-Mega') {
 				ability = 'Null System';
-			} else if (forme === 'Silvino-Bug') {
+			} else if (forme === 'Silvino-Bug' || forme === 'Silvino-Bug-Mega') {
 				ability = 'Null System';
-			} else if (forme === 'Silvino-Dark') {
+			} else if (forme === 'Silvino-Dark' || forme === 'Silvino-Dark-Mega') {
 				ability = 'Null System';
-			} else if (forme === 'Silvino-Dragon') {
+			} else if (forme === 'Silvino-Dragon' || forme === 'Silvino-Dragon-Mega') {
 				ability = 'Null System';
-			} else if (forme === 'Silvino-Electric') {
+			} else if (forme === 'Silvino-Electric' || forme === 'Silvino-Electric-Mega') {
 				ability = 'Null System';
-			} else if (forme === 'Silvino-Fairy') {
+			} else if (forme === 'Silvino-Fairy' || forme === 'Silvino-Fairy-Mega') {
 				ability = 'Null System';
-			} else if (forme === 'Silvino-Fighting') {
+			} else if (forme === 'Silvino-Fighting' || forme === 'Silvino-Fighting-Mega') {
 				ability = 'Null System';
-			} else if (forme === 'Silvino-Fire') {
+			} else if (forme === 'Silvino-Fire' || forme === 'Silvino-Fire-Mega') {
 				ability = 'Null System';
-			} else if (forme === 'Silvino-Flying') {
+			} else if (forme === 'Silvino-Flying' || forme === 'Silvino-Flying-Mega') {
 				ability = 'Null System';
-			} else if (forme === 'Silvino-Ghost') {
+			} else if (forme === 'Silvino-Ghost' || forme === 'Silvino-Ghost-Mega') {
 				ability = 'Null System';
-			} else if (forme === 'Silvino-Grass') {
+			} else if (forme === 'Silvino-Grass' || forme === 'Silvino-Grass-Mega') {
 				ability = 'Null System';
-			} else if (forme === 'Silvino-Ground') {
+			} else if (forme === 'Silvino-Ground' || forme === 'Silvino-Ground-Mega') {
 				ability = 'Null System';
-			} else if (forme === 'Silvino-Ice') {
+			} else if (forme === 'Silvino-Ice' || forme === 'Silvino-Ice-Mega') {
 				ability = 'Null System';
-			} else if (forme === 'Silvino-Poison') {
+			} else if (forme === 'Silvino-Poison' || forme === 'Silvino-Poison-Mega') {
 				ability = 'Null System';
-			} else if (forme === 'Silvino-Psychic') {
+			} else if (forme === 'Silvino-Psychic' || forme === 'Silvino-Psychic-Mega') {
 				ability = 'Null System';
-			} else if (forme === 'Silvino-Rock') {
+			} else if (forme === 'Silvino-Rock' || forme === 'Silvino-Rock-Mega') {
 				ability = 'Null System';
-			} else if (forme === 'Silvino-Steel') {
+			} else if (forme === 'Silvino-Steel' || forme === 'Silvino-Steel-Mega') {
 				ability = 'Null System';
-			} else if (forme === 'Silvino-Water') {
+			} else if (forme === 'Silvino-Water' || forme === 'Silvino-Water-Mega') {
 				ability = 'Null System';
-			} else if (forme === 'Chomplim') {
+			} else if (forme === 'Chomplim' || forme === 'Chomplim-Mega') {
 				ability = 'Rough Result';
-			} else if (forme === 'Corveot') {
+			} else if (forme === 'Corveot' || forme === 'Corveot-Mega') {
 				ability = 'Big Pressure';
 			} else if (hasAbility['Guts'] && (hasMove['facade'] || (hasMove['rest'] && hasMove['sleeptalk']))) {
 				ability = 'Guts';
