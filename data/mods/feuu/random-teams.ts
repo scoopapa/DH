@@ -587,10 +587,6 @@ export class RandomTeams {
 		}
 		if (species.cosmeticFormes) {
 			forme = this.sample([species.name].concat(species.cosmeticFormes));
-		}
-		if (species.name.endsWith('-Mega')) {
- 			forme = species.name.slice(0, -5);
- 			mega = true;
  		}
 		if (species.name.endsWith('-Gmax')) {
 			forme = species.name.slice(0, -5);
