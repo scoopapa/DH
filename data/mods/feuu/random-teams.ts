@@ -1532,8 +1532,6 @@ export class RandomTeams {
 			potd = this.dex.getSpecies(Config.potd);
 		}
 
-		const baseFormes: {[k: string]: number} = {};
-
 		const tierCount: {[k: string]: number} = {};
 		const typeCount: {[k: string]: number} = {};
 		const typeComboCount: {[k: string]: number} = {};
