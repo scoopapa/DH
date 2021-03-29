@@ -1700,6 +1700,9 @@ export const Formats: FormatList = [
 				set.species = 'Silvino-Water';
 				set.ability = 'Null System';
 			}
+			if (set.species === 'Corveot-Mega') {
+				set.species = 'Corveot';
+				set.ability = 'Big Pressure';
 		},	
 	},
 	{
