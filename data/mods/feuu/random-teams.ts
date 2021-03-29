@@ -1556,10 +1556,7 @@ export class RandomTeams {
 				// Limit to one of each species (Species Clause)
 				if (baseFormes[species.baseSpecies]) continue;
 				
-				// Limit the number of Megas to one
-				if (!teamData.megaCount) teamData.megaCount = 0;
-				if (teamData.megaCount >= 1 && speciesFlags.megaOnly) continue;
-
+				
 				// Adjust rate for species with multiple sets
 				switch (species.baseSpecies) {
 				case 'Arceus': case 'Silvally': case 'Silvino':
