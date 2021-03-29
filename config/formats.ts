@@ -1703,6 +1703,7 @@ export const Formats: FormatList = [
 			if (set.species === 'Corveot-Mega') {
 				set.species = 'Corveot';
 				set.ability = 'Big Pressure';
+			}
 		},	
 	},
 	{
