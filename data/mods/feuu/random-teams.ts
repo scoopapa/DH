@@ -1648,7 +1648,7 @@ export class RandomTeams {
 				}
 
 				// Track what the team has
-				if (item.megaStone) hasMega = true;
+				if (set.item.megaStone) hasMega = true;
 				if (set.ability === 'Drizzle' || set.moves.includes('raindance')) teamDetails['rain'] = 1;
 				if (set.ability === 'Drought' || set.moves.includes('sunnyday')) teamDetails['sun'] = 1;
 				if (set.ability === 'Sand Stream') teamDetails['sand'] = 1;
