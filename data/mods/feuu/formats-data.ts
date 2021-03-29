@@ -217,9 +217,9 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		doublesTier: "(Fusion Evolution UU Doubles)",
 	},
 	yaciancrowned: {
-		randomBattleMoves: ["earthquake", "swordsdance", "ironhead", "rockslide", "stealthrock", "toxicspikes"],
+		randomBattleMoves: ["earthquake", "swordsdance", "behemothblade", "rockslide", "stealthrock", "toxicspikes"],
 		randomBattleLevel: 100,
-		randomDoubleBattleMoves: ["protect", "behemothbash", "rockslide", "earthquake", "stealthrock", "swordsdance"],
+		randomDoubleBattleMoves: ["protect", "behemothblade", "rockslide", "earthquake", "stealthrock", "swordsdance"],
 		randomDoubleBattleLevel: 100,
 		tier: "Fusion Evolution UU",
 		doublesTier: "(Fusion Evolution UU Doubles)",
@@ -335,7 +335,6 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		randomBattleLevel: 100,
 		randomDoubleBattleMoves: ["protect", "heatwave", "dazzlinggleam", "fireblast", "calmmind", "trickroom"],
 		randomDoubleBattleLevel: 100,
-
 		tier: "Fusion Evolution UU",
 		doublesTier: "(Fusion Evolution UU Doubles)",
 	},
