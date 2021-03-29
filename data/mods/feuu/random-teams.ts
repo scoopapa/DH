@@ -1182,8 +1182,6 @@ export class RandomTeams {
 					rejectAbility = (hasMove['fakeout'] && !isDoubles);
 				} else if (ability === 'Sturdy') {
 					rejectAbility = (hasMove['bulkup'] || !!counter['recoil'] || hasAbility['Solid Rock']);
-	         } else if (ability === 'Sturdy Mold') {
- 					rejectAbility = (hasMove['bulkup'] || !!counter['recoil']);
 				} else if (ability === 'Swarm') {
 					rejectAbility = (!counter['Bug'] || !!counter['recovery']);
 				} else if (ability === 'Sweet Veil') {
@@ -1297,6 +1295,8 @@ export class RandomTeams {
 			} else {
 				item = (counter.Physical > counter.Special) ? 'Choice Band' : 'Choice Specs';
 			}
+		} else if (ability === 'Magic Surge') {
+			item = '';
 		} else if (species.evos.length && !hasMove['uturn']) {
 			item = 'Eviolite';
 		} else if (hasMove['bellydrum']) {
