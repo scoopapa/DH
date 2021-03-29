@@ -1581,12 +1581,6 @@ export class RandomTeams {
 					if (this.gen >= 8 && this.randomChance(1, 2)) continue;
 					break;
 				}
-					if (species.otherFormes && !hasMega && (
-					species.otherFormes.includes(species.name + '-Mega') ||
-					species.otherFormes.includes(species.name + '-Mega-X')
-				)) {
-					continue;
-				}
 
 				// Illusion shouldn't be on the last slot
 				if (species.name === 'Zoroark' && pokemon.length > 4) continue;
@@ -1600,12 +1594,7 @@ export class RandomTeams {
 					if (species.tier !== "Fusion Evolution UU") {
 						continue;
 					}
-					if (restrict && !species.isMega) {
-					// Limit one Pokemon per tier, two for Monotype
-					if ((tierCount[tier] >= (isMonotype ? 2 : 1)) && !this.randomChance(1, Math.pow(5, tierCount[tier]))) {
-						continue;
-					}
-
+					
 					if (!isMonotype) {
 						// Limit two of any type
 						let skip = false;
