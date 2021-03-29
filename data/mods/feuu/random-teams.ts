@@ -1227,6 +1227,46 @@ export class RandomTeams {
 				ability = 'Sap Sipper';
 			} else if (forme === 'Copperajah' && gmax) {
 				ability = 'Heavy Metal';
+			} else if (forme === 'Silvino') {
+				ability = 'Null System';
+			} else if (forme === 'Silvino-Bug') {
+				ability = 'Null System';
+			} else if (forme === 'Silvino-Dark') {
+				ability = 'Null System';
+			} else if (forme === 'Silvino-Dragon') {
+				ability = 'Null System';
+			} else if (forme === 'Silvino-Electric') {
+				ability = 'Null System';
+			} else if (forme === 'Silvino-Fairy') {
+				ability = 'Null System';
+			} else if (forme === 'Silvino-Fighting') {
+				ability = 'Null System';
+			} else if (forme === 'Silvino-Fire') {
+				ability = 'Null System';
+			} else if (forme === 'Silvino-Flying') {
+				ability = 'Null System';
+			} else if (forme === 'Silvino-Ghost') {
+				ability = 'Null System';
+			} else if (forme === 'Silvino-Grass') {
+				ability = 'Null System';
+			} else if (forme === 'Silvino-Ground') {
+				ability = 'Null System';
+			} else if (forme === 'Silvino-Ice') {
+				ability = 'Null System';
+			} else if (forme === 'Silvino-Poison') {
+				ability = 'Null System';
+			} else if (forme === 'Silvino-Psychic') {
+				ability = 'Null System';
+			} else if (forme === 'Silvino-Rock') {
+				ability = 'Null System';
+			} else if (forme === 'Silvino-Steel') {
+				ability = 'Null System';
+			} else if (forme === 'Silvino-Water') {
+				ability = 'Null System';
+			} else if (forme === 'Chomplim') {
+				ability = 'Rough Result';
+			} else if (forme === 'Corveot') {
+				ability = 'Big Pressure';
 			} else if (hasAbility['Guts'] && (hasMove['facade'] || (hasMove['rest'] && hasMove['sleeptalk']))) {
 				ability = 'Guts';
 			} else if (hasAbility['Moxie'] && (counter.Physical > 3 || hasMove['bounce']) && !isDoubles) {
@@ -1482,6 +1522,9 @@ export class RandomTeams {
 		const isMonotype = ruleTable.has('sametypeclause');
 		const typePool = Object.keys(this.dex.data.TypeChart);
 		const type = this.sample(typePool);
+		
+		const baseFormes: {[k: string]: number} = {};
+		let hasMega = false;
 
 		// PotD stuff
 		let potd: Species | false = false;
@@ -1514,6 +1557,10 @@ export class RandomTeams {
 
 				// Limit to one of each species (Species Clause)
 				if (baseFormes[species.baseSpecies]) continue;
+				
+				// Limit the number of Megas to one
+				if (!teamData.megaCount) teamData.megaCount = 0;
+				if (teamData.megaCount >= 1 && speciesFlags.megaOnly) continue;
 
 				// Adjust rate for species with multiple sets
 				switch (species.baseSpecies) {
@@ -1534,6 +1581,12 @@ export class RandomTeams {
 					if (this.gen >= 8 && this.randomChance(1, 2)) continue;
 					break;
 				}
+					if (species.otherFormes && !hasMega && (
+					species.otherFormes.includes(species.name + '-Mega') ||
+					species.otherFormes.includes(species.name + '-Mega-X')
+				)) {
+					continue;
+				}
 
 				// Illusion shouldn't be on the last slot
 				if (species.name === 'Zoroark' && pokemon.length > 4) continue;
@@ -1545,6 +1598,11 @@ export class RandomTeams {
 				if (restrict) {
 					// Make sure only Fusion Evolution UU Pokemon are used
 					if (species.tier !== "Fusion Evolution UU") {
+						continue;
+					}
+					if (restrict && !species.isMega) {
+					// Limit one Pokemon per tier, two for Monotype
+					if ((tierCount[tier] >= (isMonotype ? 2 : 1)) && !this.randomChance(1, Math.pow(5, tierCount[tier]))) {
 						continue;
 					}
 
@@ -1606,6 +1664,7 @@ export class RandomTeams {
 				}
 
 				// Track what the team has
+				if (item.megaStone) hasMega = true;
 				if (set.ability === 'Drizzle' || set.moves.includes('raindance')) teamDetails['rain'] = 1;
 				if (set.ability === 'Drought' || set.moves.includes('sunnyday')) teamDetails['sun'] = 1;
 				if (set.ability === 'Sand Stream') teamDetails['sand'] = 1;
