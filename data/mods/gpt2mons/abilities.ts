@@ -171,14 +171,9 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		"Confuses foes and raises their Sp. Atk by 1 upon entering battle.",
 		shortDesc:
 		"Confuses foes and raises their Sp. Atk by 1 upon entering battle.",
-		onStart(pokemon, target) {
-			let activated = false;
+		onStart(pokemon) {
 			for (const target of pokemon.side.foe.active) {
-				if (!target || !this.isAdjacent(target, pokemon)) continue;
-				if (!activated) {
-					this.add('-ability', pokemon, 'Flatter', 'boost');
-					activated = true;
-				}
+				if (!target || target.fainted)) continue;
 				if (target.volatiles['substitute']) {
 					this.add('-immune', target);
 				} else {
