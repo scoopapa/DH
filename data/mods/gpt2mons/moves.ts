@@ -337,7 +337,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		priority: 0,
 		flags: {snatch: 1, dance: 1, protect: 1, mirror: 1, mystery: 1},
 		onTryHit(pokemon) {
-			if (pokemon.getAbility().isPermanent || pokemon.ability === 'moxie' || pokemon.ability === 'truant') {
+			if (pokemon.getAbility().isPermanent || pokemon.ability === 'truant') {
 				return false;
 			}
 		},
@@ -403,7 +403,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			if (source?.hasItem('gripclaw')) return 8;
 			return this.random(5, 7);
 		},
-		onStart(pokemon, source) {
+		onStart(source) {
 			this.add('-activate', pokemon, 'move: ' + this.effectData.sourceEffect, '[of] ' + source);
 			this.effectData.boundDivisor = source.hasItem('bindingband') ? 6 : 8;
 		},
@@ -950,8 +950,10 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		pp: 5,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
+		onHit(target, source) {
+			this.directDamage(source.maxhp, source, source);
+		},
 		forceSwitch: true,
-		selfdestruct: "always",
 		secondary: null,
 		target: "normal",
 		type: "Steel",
@@ -1012,7 +1014,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		priority: 0,
 		flags: {snatch: 1, protect: 1, mirror: 1, mystery: 1},
 		onTryHit(pokemon) {
-			if (pokemon.getAbility().isPermanent || pokemon.ability === 'magicguard' || pokemon.ability === 'truant') {
+			if (pokemon.ability === 'truant') {
 				return false;
 			}
 		},
@@ -1033,7 +1035,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		type: "Psychic",
 		zMove: {boost: {spa: 1}},
 		contestType: "Cute",
-	},
+	},			
 	"leafclub": {
 		num: 7840,
 		accuracy: 100,
@@ -1119,7 +1121,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		zMove: {effect: 'crit2'},
 		contestType: "Tough",
 	},
-	blaze: {
+	"blaze": {
 		num: 7843,
 		accuracy: 100,
 		basePower: 65,
@@ -1302,8 +1304,8 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				return false;
 			}
 			this.useMove(randomMove, target);
+			this.directDamage(target.maxhp);
 		},
-		selfdestruct: "always",
 		secondary: null,
 		target: "self",
 		type: "Normal",
