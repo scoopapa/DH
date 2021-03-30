@@ -1158,18 +1158,21 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	"levelupgust": {
 		num: 7844,
 		accuracy: 100,
-		basePower: 140,
+		basePower: 90,
 		category: "Special",
-		desc: "The Pokemon it hits gains one level.",
-		shortDesc: "The Pokemon it hits gains one level.",
+		desc: "The Pokemon it hits loses one level, and the user gains one if it's under level 100.",
+		shortDesc: "The Pokemon it hits loses one level, and the user gains one.",
 		id: "levelupgust",
 		isViable: true,
 		name: "Level Up Gust",
 		pp: 20,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
-		onHit(target) {
+		onHit(target, source) {
 				if (target.level >= 1) {
+				target.level = Math.max(1, target.level - 1);
+			}
+				if (source.level >= 1) {
 				target.level = Math.max(1, target.level + 1);
 			}
 		},
