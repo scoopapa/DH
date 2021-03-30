@@ -165,7 +165,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		"Confuses foes and raises their Sp. Atk by 1 upon entering battle.",
 		shortDesc:
 		"Confuses foes and raises their Sp. Atk by 1 upon entering battle.",
-		onStart(pokemon) {
+		onStart(pokemon, target) {
 			let activated = false;
 			for (const target of pokemon.side.foe.active) {
 				if (!target || !this.isAdjacent(target, pokemon)) continue;
