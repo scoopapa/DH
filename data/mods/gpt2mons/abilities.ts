@@ -78,13 +78,19 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		name: "Cherish Coat",
 		onTryHitPriority: 1,
 		onTryHit(target, source, move) {
-			if (move.category === 'status') {
+ 			if (target === source) {
+				return;
+			}
+			else if (move.category === 'status') {
 				this.boost({spe: 1}, target);
 			}
 			return null;
 		},
 		onAllyTryHitSide(target, source, move) {
-			if (move.category === 'status') {
+ 			if (target === source) {
+				return;
+			}
+			else if (move.category === 'status') {
 				this.boost({spe: 1}, target);
 			}
 			return null;
