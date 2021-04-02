@@ -1976,7 +1976,6 @@ export const Formats: FormatList = [
 		ruleset: ['HP Percentage Mod', 'Cancel Mod'],
 	},
 ];
-=======
 // Note: This is the list of formats
 // The rules that formats use are stored in data/rulesets.ts
 /*
