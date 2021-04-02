@@ -14,6 +14,9 @@ export const FormatsData: {[k: string]: ModdedFormatsData} = {
 	pocketwatch: {
 		tier: "NEW",
 	}, 
+	finneonalola: {
+		tier: "NEW",
+	},
 	lumineonalola: {
 		tier: "NEW", 
 	},
@@ -24,6 +27,24 @@ export const FormatsData: {[k: string]: ModdedFormatsData} = {
 		tier: "NEW",
 	},
 	spectriersoul: {
+		tier: "NEW",
+	},
+	falinks: {
+		tier: "NEW",
+	},
+	decidueyemega: {
+		tier: "NEW",
+	},
+	teravole: {
+		tier: "NEW",
+	},
+	dugtriomega: {
+		tier: "NEW",
+	},
+	emblob: {
+		tier: "NEW",
+	},
+	bunslinger: {
 		tier: "NEW",
 	},
 }; 

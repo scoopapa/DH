@@ -975,12 +975,12 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	meloetta: {
 		inherit: true,
 		types: ["Normal", "Psychic"],
-      abilities: {0: "Serene Grace", 1: "Loudspeaker", H: "Technician"},
+      abilities: {0: "Serene Grace", 1: "Loudspeaker", H: "Dancer"},
 	},
 	meloettapirouette: {
 		inherit: true,
 		types: ["Normal", "Fighting"],
-      abilities: {0: "Serene Grace", 1: "Loudspeaker", H: "Technician"},
+      abilities: {0: "Serene Grace", 1: "Loudspeaker", H: "Dancer"},
 	},
 	tauros: {
 		inherit: true,
@@ -1749,7 +1749,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	bisharp: {
 		inherit: true,
-      abilities: {0: "Defiant", 1: "Inner Focus", H: "Dark Rising"},
+      abilities: {0: "Defiant", 1: "Knight's Blade", H: "Dark Rising"},
 	},
 	pangoro: {
 		inherit: true,
@@ -2799,5 +2799,13 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	decidueye: {
       inherit: true,
       abilities: {0: "Overgrow", H: "Shadow Tag"},
+	},
+	cinderace: {
+      inherit: true,
+      abilities: {0: "Blaze", H: "Sole Caliber"},
+	},
+	raichualola: {
+      inherit: true,
+      abilities: {0: "Levitate"},
 	},
 };

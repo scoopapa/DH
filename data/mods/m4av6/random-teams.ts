@@ -601,8 +601,8 @@ export class RandomTeams {
 			forme = species.name.slice(0, -7);
 			mega = true;
 		}
-		else if (species.name.endsWith('-Mega-Festive-Rider')) {
-			forme = species.name.slice(0, -19); 
+		else if (species.name.endsWith('-Mega-Legion')) {
+			forme = species.name.slice(0, -12); 
 			mega = true; 
 		}
 
