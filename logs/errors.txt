@@ -2541,3 +2541,53 @@ Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
     at ChildProcess.EventEmitter.emit (domain.js:483:12)
     at finish (internal/child_process.js:861:14)
     at processTicksAndRejections (internal/process/task_queues.js:79:11)
+
+Error: Cannot find module './chat-commands/admin'
+Require stack:
+- C:\Users\home\Desktop\DH\.server-dist\chat.js
+- C:\Users\home\Desktop\DH\.server-dist\index.js
+- C:\Users\home\Desktop\DH\pokemon-showdown
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:725:27)
+    at Module.require (internal/modules/cjs/loader.js:952:19)
+    at require (internal/modules/cjs/helpers.js:88:18)
+    at _class.loadPlugin (C:\Users\home\Desktop\DH\.server-dist\chat.js:1615:13)
+    at _class.loadPlugins (C:\Users\home\Desktop\DH\.server-dist\chat.js:1708:9)
+    at _class.parse (C:\Users\home\Desktop\DH\.server-dist\chat.js:1596:16)
+    at User.chat (C:\Users\home\Desktop\DH\.server-dist\users.js:1403:9)
+    at Object.socketReceive (C:\Users\home\Desktop\DH\.server-dist\users.js:1675:12)
+    at Object.onSpawn (C:\Users\home\Desktop\DH\.server-dist\sockets.js:55:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at StreamProcessWrapper.destroy (C:\Users\home\Desktop\DH\.lib-dist\process-manager.js:288:16)
+    at StreamProcessWrapper.release (C:\Users\home\Desktop\DH\.lib-dist\process-manager.js:274:14)
+    at StreamProcessManager.releaseCrashed (C:\Users\home\Desktop\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\home\Desktop\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\home\Desktop\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\home\Desktop\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\home\Desktop\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\home\Desktop\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error: Process sockets.js 80192 crashed and had to be restarted
+    at RawProcessManager.releaseCrashed (C:\Users\home\Desktop\DH\.lib-dist\process-manager.js:437:4)
+    at Worker.<anonymous> (C:\Users\home\Desktop\DH\.lib-dist\process-manager.js:468:48)
+    at Worker.emit (events.js:315:20)
+    at Worker.EventEmitter.emit (domain.js:467:12)
+    at ChildProcess.<anonymous> (internal/cluster/master.js:220:12)
+    at Object.onceWrapper (events.js:421:28)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
