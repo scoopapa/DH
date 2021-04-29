@@ -1777,6 +1777,14 @@ export const Formats: FormatList = [
 	{
 		section: "Solomods",
 		column: 4,
+	},	
+	{	
+		name: "[Gen 8] Abismons",
+		desc: 'The result of "What if we let abismal make his own metagame?"'
+		mod: 'abismons',
+		teambuilderFormat: 'OU',
+		ruleset: ['Standard NatDex', 'Dynamax Clause'],
+		banlist: ['Uber', 'Arena Trap', 'Moody', 'Shadow Tag', 'Baton Pass'],
 	},
 	{
 		name: "[Gen 8] GPT2mons",
