@@ -6428,7 +6428,27 @@
 		tier: "Illegal",
 	},
 	terravia: {
-		tier: "UU",
-		doublesTier: "DUU",
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+		qiracle: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+		gohng: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	gaogao: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	spinni: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	emperard: {
+		tier: "Uber",
+		doublesTier: "DUber",
 	},
 }; exports.FormatsData = FormatsData;

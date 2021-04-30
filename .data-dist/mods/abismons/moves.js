@@ -1,4 +1,4 @@
-/*
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }/*
 
 List of flags and their descriptions:
 
@@ -26,7 +26,7 @@ sound: Has no effect on Pokemon with the Soundproof Ability.
 
 */
 
-export const Moves: {[moveid: string]: MoveData} = {
+ const Moves = {
 	ultimatesonata: {
 		num: 891,
 		accuracy: true,
@@ -40,18 +40,18 @@ export const Moves: {[moveid: string]: MoveData} = {
 			"After You", "Assist", "Aura Wheel", "Baneful Bunker", "Beak Blast",, "Belch", "Bestow", "Branch Poke", "Celebrate", "Chatter", "Copycat", "Counter", "Covet", "Crafty Shield", "Decorate", "Destiny Bond", "Detect", "Double Iron Bash", "Endure", "Eternabeam", "Feint", "Focus Punch", "Follow Me", "Freeze Shock", "Helping Hand", "Hold Hands", "Hyperspace Fury", "Hyperspace Hole", "Ice Burn", "Instruct", "Jungle Healing", "King's Shield", "Mat Block", "Me First", "Meteor Assault", "Metronome", "Mimic", "Mirror Coat", "Mirror Move", "Nature Power", "Nature's Madness", "Protect", "Quash", "Quick Guard", "Rage Powder", "Relic Song", "Shell Trap", "Sketch", "Sleep Talk", "Snap Trap", "Snatch", "Snore", "Spiky Shield", "Spotlight", "Steel Beam", "Struggle", "Switcheroo", "Techno Blast", "Thief", "Transform", "Trick", "Wide Guard",
 		],
 		onHit(target, source, effect) {
-			const moves: MoveData[] = [];
-			for (const id in Moves) {
-				const move = Moves[id];
+			const moves = [];
+			for (const id in exports.Moves) {
+				const move = exports.Moves[id];
 				if (move.realMove) continue;
 				if (move.isZ || move.isMax || move.isNonstandard) continue;
-				if (effect.noMetronome!.includes(move.name)) continue;
+				if (effect.noMetronome.includes(move.name)) continue;
 				if (this.dex.getMove(id).gen > this.gen) continue;
 				moves.push(move);
 			}
 			let randomMove = '';
 			if (moves.length) {
-				moves.sort((a, b) => a.num! - b.num!);
+				moves.sort((a, b) => a.num - b.num);
 				randomMove = this.sample(moves).name;
 			}
 			if (!randomMove) {
@@ -214,8 +214,8 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {},
 		onHit(target) {
-			const stats: BoostName[] = [];
-			let stat: BoostName;
+			const stats = [];
+			let stat;
 			for (stat in target.boosts) {
 				if (target.boosts[stat] < 6) {
 					stats.push(stat);
@@ -223,7 +223,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			}
 			if (stats.length) {
 				const randomStat = this.sample(stats);
-				const boost: SparseBoostsTable = {};
+				const boost = {};
 				boost[randomStat] = 2;
 				this.boost(boost);
 			} else {
@@ -817,7 +817,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		condition: {
 			duration: 5,
 			durationCallback(target, source, effect) {
-				if (source?.hasItem('lightclay')) {
+				if (_optionalChain([source, 'optionalAccess', _ => _.hasItem, 'call', _2 => _2('lightclay')])) {
 					return 8;
 				}
 				return 5;
@@ -1086,7 +1086,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 0,
 		basePowerCallback(pokemon, target, move) {
-			return 5 + Math.floor(move.allies!.shift()!.species.baseStats.atk / 10);
+			return 5 + Math.floor(move.allies.shift().species.baseStats.atk / 10);
 		},
 		category: "Physical",
 		name: "Beat Up",
@@ -1238,8 +1238,8 @@ export const Moves: {[moveid: string]: MoveData} = {
 						}
 						target = possibleTarget;
 					}
-					const moveData: Partial<ActiveMove> = {
-						id: 'bide' as ID,
+					const moveData = {
+						id: 'bide' ,
 						name: "Bide",
 						accuracy: true,
 						damage: this.effectData.totalDamage * 2,
@@ -1249,7 +1249,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 						effectType: 'Move',
 						type: 'Normal',
 					};
-					this.tryMoveHit(target, pokemon, moveData as ActiveMove);
+					this.tryMoveHit(target, pokemon, moveData );
 					return false;
 				}
 				this.add('-activate', pokemon, 'move: Bide');
@@ -1914,7 +1914,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		secondary: {
 			chance: 100,
 			onHit(target, source, move) {
-				if (target?.statsRaisedThisTurn) {
+				if (_optionalChain([target, 'optionalAccess', _3 => _3.statsRaisedThisTurn])) {
 					target.trySetStatus('brn', source, move);
 				}
 			},
@@ -2245,7 +2245,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			if (pokemon.hp <= (pokemon.maxhp * 33 / 100) || pokemon.maxhp === 1) {
 				return false;
 			}
-			if (!this.boost(move.boosts as SparseBoostsTable)) return null;
+			if (!this.boost(move.boosts )) return null;
 			delete move.boosts;
 		},
 		onHit(pokemon) {
@@ -2537,7 +2537,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			const noCopycat = [
 				'assist', 'banefulbunker', 'beakblast', 'behemothbash', 'behemothblade', 'belch', 'bestow', 'celebrate', 'chatter', 'circlethrow', 'copycat', 'counter', 'covet', 'craftyshield', 'destinybond', 'detect', 'dragontail', 'dynamaxcannon', 'endure', 'feint', 'focuspunch', 'followme', 'helpinghand', 'holdhands', 'kingsshield', 'matblock', 'mefirst', 'metronome', 'mimic', 'mirrorcoat', 'mirrormove', 'naturepower', 'obstruct', 'protect', 'ragepowder', 'roar', 'shelltrap', 'sketch', 'sleeptalk', 'snatch', 'spikyshield', 'spotlight', 'struggle', 'switcheroo', 'thief', 'transform', 'trick', 'whirlwind',
 			];
-			let move: Move | ActiveMove | null = this.lastMove;
+			let move = this.lastMove;
 			if (!move) return;
 
 			if (move.isMax && move.baseMove) move = this.dex.getMove(move.baseMove);
@@ -2943,7 +2943,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		volatileStatus: 'curse',
 		onModifyMove(move, source, target) {
 			if (!source.hasType('Ghost')) {
-				move.target = move.nonGhostTarget as MoveTarget;
+				move.target = move.nonGhostTarget ;
 			}
 		},
 		onTryHit(target, source, move) {
@@ -4123,7 +4123,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		condition: {
 			duration: 5,
 			durationCallback(source, effect) {
-				if (source?.hasItem('terrainextender')) {
+				if (_optionalChain([source, 'optionalAccess', _4 => _4.hasItem, 'call', _5 => _5('terrainextender')])) {
 					return 8;
 				}
 				return 5;
@@ -4151,7 +4151,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				}
 			},
 			onStart(battle, source, effect) {
-				if (effect?.effectType === 'Ability') {
+				if (_optionalChain([effect, 'optionalAccess', _6 => _6.effectType]) === 'Ability') {
 					this.add('-fieldstart', 'move: Electric Terrain', '[from] ability: ' + effect, '[of] ' + source);
 				} else {
 					this.add('-fieldstart', 'move: Electric Terrain');
@@ -4305,7 +4305,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				const noEncore = [
 					'assist', 'copycat', 'encore', 'mefirst', 'metronome', 'mimic', 'mirrormove', 'naturepower', 'sketch', 'sleeptalk', 'struggle', 'transform',
 				];
-				let move: Move | ActiveMove | null = target.lastMove;
+				let move = target.lastMove;
 				if (!move || target.volatiles['dynamax']) return false;
 
 				if (move.isMax && move.baseMove) move = this.dex.getMove(move.baseMove);
@@ -4397,7 +4397,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			},
 			onDamagePriority: -10,
 			onDamage(damage, target, source, effect) {
-				if (effect?.effectType === 'Move' && damage >= target.hp) {
+				if (_optionalChain([effect, 'optionalAccess', _7 => _7.effectType]) === 'Move' && damage >= target.hp) {
 					this.add('-activate', target, 'move: Endure');
 					return target.hp - 1;
 				}
@@ -4921,7 +4921,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1, nonsky: 1},
 		onPrepareHit(target, source, move) {
-			for (const action of this.queue.list as MoveAction[]) {
+			for (const action of this.queue.list ) {
 				if (
 					!action.move || !action.pokemon || !action.pokemon.isActive ||
 					action.pokemon.fainted || action.maxMove || action.zmove
@@ -5406,7 +5406,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {distance: 1},
 		onHitField(t, source, move) {
-			const targets: Pokemon[] = [];
+			const targets = [];
 			for (const pokemon of this.getAllActive()) {
 				if (pokemon.hasType('Grass')) {
 					// This move affects every Grass-type Pokemon in play.
@@ -5513,7 +5513,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		volatileStatus: 'focusenergy',
 		condition: {
 			onStart(target, source, effect) {
-				if (effect?.id === 'zpower') {
+				if (_optionalChain([effect, 'optionalAccess', _8 => _8.id]) === 'zpower') {
 					this.add('-start', target, 'move: Focus Energy', '[zeffect]');
 				} else if (effect && (['imposter', 'psychup', 'transform'].includes(effect.id))) {
 					this.add('-start', target, 'move: Focus Energy', '[silent]');
@@ -5581,7 +5581,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		condition: {
 			duration: 1,
 			onStart(target, source, effect) {
-				if (effect?.id === 'zpower') {
+				if (_optionalChain([effect, 'optionalAccess', _9 => _9.id]) === 'zpower') {
 					this.add('-singleturn', target, 'move: Follow Me', '[zeffect]');
 				} else {
 					this.add('-singleturn', target, 'move: Follow Me');
@@ -6326,14 +6326,14 @@ export const Moves: {[moveid: string]: MoveData} = {
 			noCopy: true,
 			onStart(target, source, effect) {
 				this.effectData.layers = 1;
-				if (!['imposter', 'psychup', 'transform'].includes(effect?.id)) {
+				if (!['imposter', 'psychup', 'transform'].includes(_optionalChain([effect, 'optionalAccess', _10 => _10.id]))) {
 					this.add('-start', target, 'move: G-Max Chi Strike');
 				}
 			},
 			onRestart(target, source, effect) {
 				if (this.effectData.layers >= 3) return false;
 				this.effectData.layers++;
-				if (!['imposter', 'psychup', 'transform'].includes(effect?.id)) {
+				if (!['imposter', 'psychup', 'transform'].includes(_optionalChain([effect, 'optionalAccess', _11 => _11.id]))) {
 					this.add('-start', target, 'move: G-Max Chi Strike');
 				}
 			},
@@ -7140,7 +7140,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1, nonsky: 1},
 		onPrepareHit(target, source, move) {
-			for (const action of this.queue.list as MoveAction[]) {
+			for (const action of this.queue.list ) {
 				if (
 					!action.move || !action.pokemon || !action.pokemon.isActive ||
 					action.pokemon.fainted || action.maxMove || action.zmove
@@ -7232,7 +7232,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		condition: {
 			duration: 5,
 			durationCallback(source, effect) {
-				if (source?.hasItem('terrainextender')) {
+				if (_optionalChain([source, 'optionalAccess', _12 => _12.hasItem, 'call', _13 => _13('terrainextender')])) {
 					return 8;
 				}
 				return 5;
@@ -7250,7 +7250,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				}
 			},
 			onStart(battle, source, effect) {
-				if (effect?.effectType === 'Ability') {
+				if (_optionalChain([effect, 'optionalAccess', _14 => _14.effectType]) === 'Ability') {
 					this.add('-fieldstart', 'move: Grassy Terrain', '[from] ability: ' + effect, '[of] ' + source);
 				} else {
 					this.add('-fieldstart', 'move: Grassy Terrain');
@@ -7314,7 +7314,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		condition: {
 			duration: 5,
 			durationCallback(source, effect) {
-				if (source?.hasAbility('persistent')) {
+				if (_optionalChain([source, 'optionalAccess', _15 => _15.hasAbility, 'call', _16 => _16('persistent')])) {
 					this.add('-activate', source, 'ability: Persistent', effect);
 					return 7;
 				}
@@ -7437,7 +7437,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			onFaint(target, source, effect) {
 				if (!source || source.fainted || !effect) return;
 				if (effect.effectType === 'Move' && !effect.isFutureMove && source.lastMove) {
-					let move: Move = source.lastMove;
+					let move = source.lastMove;
 					if (move.isMax && move.baseMove) move = this.dex.getMove(move.baseMove);
 
 					for (const moveSlot of source.moveSlots) {
@@ -7521,10 +7521,10 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1, authentic: 1, mystery: 1},
 		onHit(target, source) {
-			const targetBoosts: SparseBoostsTable = {};
-			const sourceBoosts: SparseBoostsTable = {};
+			const targetBoosts = {};
+			const sourceBoosts = {};
 
-			const defSpd: BoostName[] = ['def', 'spd'];
+			const defSpd = ['def', 'spd'];
 			for (const stat of defSpd) {
 				targetBoosts[stat] = target.boosts[stat];
 				sourceBoosts[stat] = source.boosts[stat];
@@ -7789,7 +7789,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		condition: {
 			duration: 5,
 			durationCallback(target, source, effect) {
-				if (source?.hasAbility('persistent')) {
+				if (_optionalChain([source, 'optionalAccess', _17 => _17.hasAbility, 'call', _18 => _18('persistent')])) {
 					this.add('-activate', source, 'ability: Persistent', effect);
 					return 7;
 				}
@@ -7817,7 +7817,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				this.add('-end', pokemon, 'move: Heal Block');
 			},
 			onTryHeal(damage, target, source, effect) {
-				if ((effect?.id === 'zpower') || this.effectData.isZ) return damage;
+				if ((_optionalChain([effect, 'optionalAccess', _19 => _19.id]) === 'zpower') || this.effectData.isZ) return damage;
 				return false;
 			},
 		},
@@ -7932,10 +7932,10 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1, authentic: 1, mystery: 1},
 		onHit(target, source) {
-			const targetBoosts: SparseBoostsTable = {};
-			const sourceBoosts: SparseBoostsTable = {};
+			const targetBoosts = {};
+			const sourceBoosts = {};
 
-			let i: BoostName;
+			let i;
 			for (i in target.boosts) {
 				targetBoosts[i] = target.boosts[i];
 				sourceBoosts[i] = source.boosts[i];
@@ -8532,7 +8532,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1, distance: 1},
 		onModifyMove(move, pokemon, target) {
-			switch (target?.effectiveWeather()) {
+			switch (_optionalChain([target, 'optionalAccess', _20 => _20.effectiveWeather, 'call', _21 => _21()])) {
 			case 'raindance':
 			case 'primordialsea':
 				move.accuracy = true;
@@ -9092,7 +9092,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				return false;
 			}
 			this.add('-singleturn', target, 'move: Instruct', '[of] ' + source);
-			this.runMove(target.lastMove.id, target, target.lastMoveTargetLoc!);
+			this.runMove(target.lastMove.id, target, target.lastMoveTargetLoc);
 		},
 		secondary: null,
 		target: "normal",
@@ -9704,7 +9704,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		condition: {
 			duration: 5,
 			durationCallback(target, source, effect) {
-				if (source?.hasItem('lightclay')) {
+				if (_optionalChain([source, 'optionalAccess', _22 => _22.hasItem, 'call', _23 => _23('lightclay')])) {
 					return 8;
 				}
 				return 5;
@@ -10051,7 +10051,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			duration: 1,
 			onStart(target, source, effect) {
 				this.add('-singleturn', target, 'move: Magic Coat');
-				if (effect?.effectType === 'Move') {
+				if (_optionalChain([effect, 'optionalAccess', _24 => _24.effectType]) === 'Move') {
 					this.effectData.pranksterBoosted = effect.pranksterBoosted;
 				}
 			},
@@ -10113,7 +10113,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		condition: {
 			duration: 5,
 			durationCallback(source, effect) {
-				if (source?.hasAbility('persistent')) {
+				if (_optionalChain([source, 'optionalAccess', _25 => _25.hasAbility, 'call', _26 => _26('persistent')])) {
 					this.add('-activate', source, 'ability: Persistent', effect);
 					return 7;
 				}
@@ -11096,18 +11096,18 @@ export const Moves: {[moveid: string]: MoveData} = {
 			"After You", "Apple Acid", "Assist", "Astral Barrage", "Aura Wheel", "Baneful Bunker", "Beak Blast", "Behemoth Bash", "Behemoth Blade", "Belch", "Bestow", "Body Press", "Branch Poke", "Breaking Swipe", "Celebrate", "Chatter", "Clangorous Soul", "Copycat", "Counter", "Covet", "Crafty Shield", "Decorate", "Destiny Bond", "Detect", "Diamond Storm", "Double Iron Bash", "Dragon Ascent", "Dragon Energy", "Drum Beating", "Dynamax Cannon", "Endure", "Eternabeam", "False Surrender", "Feint", "Fiery Wrath", "Fleur Cannon", "Focus Punch", "Follow Me", "Freeze Shock", "Freezing Glare", "Glacial Lance", "Grav Apple", "Helping Hand", "Hold Hands", "Hyperspace Fury", "Hyperspace Hole", "Ice Burn", "Instruct", "Jungle Healing", "King's Shield", "Life Dew", "Light of Ruin", "Mat Block", "Me First", "Meteor Assault", "Metronome", "Mimic", "Mind Blown", "Mirror Coat", "Mirror Move", "Moongeist Beam", "Nature Power", "Nature's Madness", "Obstruct", "Origin Pulse", "Overdrive", "Photon Geyser", "Plasma Fists", "Precipice Blades", "Protect", "Pyro Ball", "Quash", "Quick Guard", "Rage Powder", "Relic Song", "Secret Sword", "Shell Trap", "Sketch", "Sleep Talk", "Snap Trap", "Snarl", "Snatch", "Snore", "Spectral Thief", "Spiky Shield", "Spirit Break", "Spotlight", "Steam Eruption", "Steel Beam", "Strange Steam", "Struggle", "Sunsteel Strike", "Surging Strikes", "Switcheroo", "Techno Blast", "Thief", "Thousand Arrows", "Thousand Waves", "Thunder Cage", "Thunderous Kick", "Transform", "Trick", "V-create", "Wicked Blow", "Wide Guard",
 		],
 		onHit(target, source, effect) {
-			const moves: MoveData[] = [];
-			for (const id in Moves) {
-				const move = Moves[id];
+			const moves = [];
+			for (const id in exports.Moves) {
+				const move = exports.Moves[id];
 				if (move.realMove) continue;
 				if (move.isZ || move.isMax || move.isNonstandard) continue;
-				if (effect.noMetronome!.includes(move.name)) continue;
+				if (effect.noMetronome.includes(move.name)) continue;
 				if (this.dex.getMove(id).gen > this.gen) continue;
 				moves.push(move);
 			}
 			let randomMove = '';
 			if (moves.length) {
-				moves.sort((a, b) => a.num! - b.num!);
+				moves.sort((a, b) => a.num - b.num);
 				randomMove = this.sample(moves).name;
 			}
 			if (!randomMove) {
@@ -11392,14 +11392,14 @@ export const Moves: {[moveid: string]: MoveData} = {
 				if (effect.effectType === 'Move' && effect.infiltrates && target.side !== source.side) return;
 				if (source && target !== source) {
 					let showMsg = false;
-					let i: BoostName;
+					let i;
 					for (i in boost) {
-						if (boost[i]! < 0) {
+						if (boost[i] < 0) {
 							delete boost[i];
 							showMsg = true;
 						}
 					}
-					if (showMsg && !(effect as ActiveMove).secondaries) {
+					if (showMsg && !(effect ).secondaries) {
 						this.add('-activate', target, 'move: Mist');
 					}
 				}
@@ -11471,14 +11471,14 @@ export const Moves: {[moveid: string]: MoveData} = {
 		condition: {
 			duration: 5,
 			durationCallback(source, effect) {
-				if (source?.hasItem('terrainextender')) {
+				if (_optionalChain([source, 'optionalAccess', _27 => _27.hasItem, 'call', _28 => _28('terrainextender')])) {
 					return 8;
 				}
 				return 5;
 			},
 			onSetStatus(status, target, source, effect) {
 				if (!target.isGrounded() || target.isSemiInvulnerable()) return;
-				if (effect && ((effect as Move).status || effect.id === 'yawn')) {
+				if (effect && ((effect ).status || effect.id === 'yawn')) {
 					this.add('-activate', target, 'move: Misty Terrain');
 				}
 				return false;
@@ -11498,7 +11498,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				}
 			},
 			onStart(battle, source, effect) {
-				if (effect?.effectType === 'Ability') {
+				if (_optionalChain([effect, 'optionalAccess', _29 => _29.effectType]) === 'Ability') {
 					this.add('-fieldstart', 'move: Misty Terrain', '[from] ability: ' + effect, '[of] ' + source);
 				} else {
 					this.add('-fieldstart', 'move: Misty Terrain');
@@ -12932,10 +12932,10 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1, authentic: 1, mystery: 1},
 		onHit(target, source) {
-			const targetBoosts: SparseBoostsTable = {};
-			const sourceBoosts: SparseBoostsTable = {};
+			const targetBoosts = {};
+			const sourceBoosts = {};
 
-			const atkSpa: BoostName[] = ['atk', 'spa'];
+			const atkSpa = ['atk', 'spa'];
 			for (const stat of atkSpa) {
 				targetBoosts[stat] = target.boosts[stat];
 				sourceBoosts[stat] = source.boosts[stat];
@@ -13180,7 +13180,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {authentic: 1, mystery: 1},
 		onHit(target, source) {
-			let i: BoostName;
+			let i;
 			for (i in target.boosts) {
 				source.boosts[i] = target.boosts[i];
 			}
@@ -13255,7 +13255,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		condition: {
 			duration: 5,
 			durationCallback(source, effect) {
-				if (source?.hasItem('terrainextender')) {
+				if (_optionalChain([source, 'optionalAccess', _30 => _30.hasItem, 'call', _31 => _31('terrainextender')])) {
 					return 8;
 				}
 				return 5;
@@ -13284,7 +13284,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				}
 			},
 			onStart(battle, source, effect) {
-				if (effect?.effectType === 'Ability') {
+				if (_optionalChain([effect, 'optionalAccess', _32 => _32.effectType]) === 'Ability') {
 					this.add('-fieldstart', 'move: Psychic Terrain', '[from] ability: ' + effect, '[of] ' + source);
 				} else {
 					this.add('-fieldstart', 'move: Psychic Terrain');
@@ -13496,7 +13496,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			}
 		},
 		onModifyMove(move, source, target) {
-			if (target?.beingCalledBack) move.accuracy = true;
+			if (_optionalChain([target, 'optionalAccess', _33 => _33.beingCalledBack])) move.accuracy = true;
 		},
 		onTryHit(target, pokemon) {
 			target.side.removeSideCondition('pursuit');
@@ -13899,7 +13899,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		condition: {
 			duration: 5,
 			durationCallback(target, source, effect) {
-				if (source?.hasItem('lightclay')) {
+				if (_optionalChain([source, 'optionalAccess', _34 => _34.hasItem, 'call', _35 => _35('lightclay')])) {
 					return 8;
 				}
 				return 5;
@@ -14488,7 +14488,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {distance: 1, nonsky: 1},
 		onHitField(target, source) {
-			const targets: Pokemon[] = [];
+			const targets = [];
 			let anyAirborne = false;
 			for (const pokemon of this.getAllActive()) {
 				if (!pokemon.runImmunity('Ground')) {
@@ -14528,7 +14528,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1, sound: 1, authentic: 1},
 		onTry(target, source, move) {
-			for (const action of this.queue.list as MoveAction[]) {
+			for (const action of this.queue.list ) {
 				if (!action.pokemon || !action.move || action.maxMove || action.zmove) continue;
 				if (action.move.id === 'round') {
 					this.queue.prioritizeAction(action, move);
@@ -14587,7 +14587,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		condition: {
 			duration: 5,
 			durationCallback(target, source, effect) {
-				if (source?.hasAbility('persistent')) {
+				if (_optionalChain([source, 'optionalAccess', _36 => _36.hasAbility, 'call', _37 => _37('persistent')])) {
 					this.add('-activate', source, 'ability: Persistent', effect);
 					return 7;
 				}
@@ -16849,7 +16849,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			},
 			onEnd(target) {
 				if (this.effectData.def || this.effectData.spd) {
-					const boosts: SparseBoostsTable = {};
+					const boosts = {};
 					if (this.effectData.def) boosts.def = this.effectData.def;
 					if (this.effectData.spd) boosts.spd = this.effectData.spd;
 					this.boost(boosts, target, target);
@@ -17179,7 +17179,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 					return damage;
 				}
 				if (damage > target.volatiles['substitute'].hp) {
-					damage = target.volatiles['substitute'].hp as number;
+					damage = target.volatiles['substitute'].hp ;
 				}
 				target.volatiles['substitute'].hp -= damage;
 				source.lastDamage = damage;
@@ -17235,7 +17235,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		flags: {contact: 1, protect: 1, mirror: 1},
 		onTry(source, target) {
 			const action = this.queue.willMove(target);
-			const move = action?.choice === 'move' ? action.move : null;
+			const move = _optionalChain([action, 'optionalAccess', _38 => _38.choice]) === 'move' ? action.move : null;
 			if (!move || (move.category === 'Status' && move.id !== 'mefirst') || target.volatiles['mustrecharge']) {
 				this.add('-fail', source);
 				this.attrLastMove('[still]');
@@ -17665,7 +17665,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		condition: {
 			duration: 4,
 			durationCallback(target, source, effect) {
-				if (source?.hasAbility('persistent')) {
+				if (_optionalChain([source, 'optionalAccess', _39 => _39.hasAbility, 'call', _40 => _40('persistent')])) {
 					this.add('-activate', source, 'ability: Persistent', effect);
 					return 6;
 				}
@@ -18123,7 +18123,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
 		onModifyMove(move, pokemon, target) {
-			switch (target?.effectiveWeather()) {
+			switch (_optionalChain([target, 'optionalAccess', _41 => _41.effectiveWeather, 'call', _42 => _42()])) {
 			case 'raindance':
 			case 'primordialsea':
 				move.accuracy = true;
@@ -18294,7 +18294,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		flags: {protect: 1, reflectable: 1, mirror: 1, mystery: 1},
 		onHit(target) {
 			let success = false;
-			let i: BoostName;
+			let i;
 			for (i in target.boosts) {
 				if (target.boosts[i] === 0) continue;
 				target.boosts[i] = -target.boosts[i];
@@ -18554,7 +18554,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		condition: {
 			duration: 5,
 			durationCallback(source, effect) {
-				if (source?.hasAbility('persistent')) {
+				if (_optionalChain([source, 'optionalAccess', _43 => _43.hasAbility, 'call', _44 => _44('persistent')])) {
 					this.add('-activate', source, 'ability: Persistent', effect);
 					return 7;
 				}
@@ -19074,7 +19074,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 					for (const secondary of move.secondaries) {
 						if (secondary.chance) secondary.chance *= 2;
 					}
-					if (move.self?.chance) move.self.chance *= 2;
+					if (_optionalChain([move, 'access', _45 => _45.self, 'optionalAccess', _46 => _46.chance])) move.self.chance *= 2;
 				}
 			},
 		},
@@ -19293,7 +19293,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			onTryHitPriority: 4,
 			onTryHit(target, source, move) {
 				// Wide Guard blocks all spread moves
-				if (move?.target !== 'allAdjacent' && move.target !== 'allAdjacentFoes') {
+				if (_optionalChain([move, 'optionalAccess', _47 => _47.target]) !== 'allAdjacent' && move.target !== 'allAdjacentFoes') {
 					return;
 				}
 				if (move.isZ || move.isMax) {
@@ -19423,7 +19423,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		condition: {
 			duration: 5,
 			durationCallback(source, effect) {
-				if (source?.hasAbility('persistent')) {
+				if (_optionalChain([source, 'optionalAccess', _48 => _48.hasAbility, 'call', _49 => _49('persistent')])) {
 					this.add('-activate', source, 'ability: Persistent', effect);
 					return 7;
 				}
@@ -19674,4 +19674,4 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Electric",
 		contestType: "Cool",
 	},
-};
+}; exports.Moves = Moves;

@@ -2596,3 +2596,1003 @@ Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
     at ChildProcess.EventEmitter.emit (domain.js:467:12)
     at finish (internal/child_process.js:888:14)
     at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at StreamProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:288:16)
+    at StreamProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:274:14)
+    at StreamProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at StreamProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:288:16)
+    at StreamProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:274:14)
+    at StreamProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at StreamProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:288:16)
+    at StreamProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:274:14)
+    at StreamProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at StreamProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:288:16)
+    at StreamProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:274:14)
+    at StreamProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at StreamProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:288:16)
+    at StreamProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:274:14)
+    at StreamProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error: Process sockets.js 26200 crashed and had to be restarted
+    at RawProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:437:4)
+    at Worker.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at Worker.emit (events.js:315:20)
+    at Worker.EventEmitter.emit (domain.js:467:12)
+    at ChildProcess.<anonymous> (internal/cluster/master.js:220:12)
+    at Object.onceWrapper (events.js:421:28)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at StreamProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:288:16)
+    at StreamProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:274:14)
+    at StreamProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at StreamProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:288:16)
+    at StreamProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:274:14)
+    at StreamProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error: Process sockets.js 45572 crashed and had to be restarted
+    at RawProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:437:4)
+    at Worker.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at Worker.emit (events.js:315:20)
+    at Worker.EventEmitter.emit (domain.js:467:12)
+    at ChildProcess.<anonymous> (internal/cluster/master.js:220:12)
+    at Object.onceWrapper (events.js:421:28)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at StreamProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:288:16)
+    at StreamProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:274:14)
+    at StreamProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at StreamProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:288:16)
+    at StreamProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:274:14)
+    at StreamProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at StreamProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:288:16)
+    at StreamProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:274:14)
+    at StreamProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at StreamProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:288:16)
+    at StreamProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:274:14)
+    at StreamProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+TypeError: Cannot read property 'hasBounced' of undefined
+    at Battle.onResidual (C:\Users\mstoi\Documents\GitHub\DH\.data-dist\mods\abismons\abilities.js:2784:13)
+    at Battle.singleEvent (C:\Users\mstoi\Documents\GitHub\DH\.sim-dist\battle.js:487:25)
+    at Battle.residualEvent (C:\Users\mstoi\Documents\GitHub\DH\.sim-dist\battle.js:416:9)
+    at Battle.runAction (C:\Users\mstoi\Documents\GitHub\DH\.sim-dist\battle.js:2653:9)
+    at Battle.go (C:\Users\mstoi\Documents\GitHub\DH\.sim-dist\battle.js:2761:9)
+    at Battle.commitDecisions (C:\Users\mstoi\Documents\GitHub\DH\.sim-dist\battle.js:2827:8)
+    at Battle.choose (C:\Users\mstoi\Documents\GitHub\DH\.sim-dist\battle.js:2783:35)
+    at RoomBattleStream._writeLine (C:\Users\mstoi\Documents\GitHub\DH\.sim-dist\battle-stream.js:119:17)
+    at RoomBattleStream._writeLine (C:\Users\mstoi\Documents\GitHub\DH\.server-dist\room-battle.js:1255:18)
+    at RoomBattleStream._writeLines (C:\Users\mstoi\Documents\GitHub\DH\.sim-dist\battle-stream.js:77:10)
+
+Additional information:
+  chunk = >p2 move 4
+  inputLog = 
+>start {"formatid":"gen8abismons","seed":[6443,4325,53295,11948]}
+>player p1 {"name":"gredsgreg","avatar":"silver","team":"Bulbasaur||leftovers|tetramorph|knockoff,charm,gigadrain,rocksmash|Brave|252,252,,4,,|||||","rating":0}
+>player p2 {"name":"trfdgg","avatar":"silver","team":"Blissey||choicespecs|serenegrace|flamethrower,icebeam,psychic,hypervoice|Modest|252,,,252,4,|F|,0,,,,|||]Landorus|landorustherian|choicespecs|intimidate|earthpower,sludgewave,uturn,weatherball|Timid|,,,252,4,252|M||||]Zapdos||heavydutyboots|static|uturn,wildcharge,roost,defog|Adamant|248,252,,,8,|N||||]Melmetal||choicespecs|ironfist|icebeam,flashcannon,thunderbolt,solarbeam|Modest|252,,,252,4,|N|,0,,,,|||]Torkoal||heatrock|drought|earthquake,superpower,rapidspin,stealthrock|Adamant|248,252,,,8,|||||]Venusaur||choiceband|chlorophyll|knockoff,powerwhip,earthquake,outrage|Adamant|,252,,,4,252|||||","rating":0}
+>p1 team 1
+>p2 team 5, 2, 3, 4, 1, 6
+>p1 move knockoff
+>p2 move stealthrock
+  log = 
+|t:|1619797888
+|player|p1|gredsgreg|silver|
+|player|p2|trfdgg|silver|
+|teamsize|p1|1
+|teamsize|p2|6
+|gametype|singles
+|gen|8
+|tier|[Gen 8] Abismons
+|clearpoke
+|poke|p1|Bulbasaur, F|
+|poke|p2|Blissey, F|
+|poke|p2|Landorus-Therian, M|
+|poke|p2|Zapdos|
+|poke|p2|Melmetal|
+|poke|p2|Torkoal, M|
+|poke|p2|Venusaur, M|
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Endless Battle Clause: Forcing endless battles is banned
+|rule|Dynamax Clause: You cannot dynamax
+|teampreview
+|
+|t:|1619797894
+|start
+|switch|p1a: Bulbasaur|Bulbasaur, F|294/294
+|switch|p2a: Torkoal|Torkoal, M|343/343
+|-weather|SunnyDay|[from] ability: Drought|[of] p2a: Torkoal
+|turn|1
+|
+|t:|1619797897
+|move|p1a: Bulbasaur|Knock Off|p2a: Torkoal
+|-damage|p2a: Torkoal|294/343
+|-enditem|p2a: Torkoal|Heat Rock|[from] move: Knock Off|[of] p1a: Bulbasaur
+|move|p2a: Torkoal|Stealth Rock|p1a: Bulbasaur
+|-sidestart|p1: gredsgreg|move: Stealth Rock
+|
+|-weather|SunnyDay|[upkeep]
+
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error: Process sockets.js 39332 crashed and had to be restarted
+    at RawProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:437:4)
+    at Worker.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at Worker.emit (events.js:315:20)
+    at Worker.EventEmitter.emit (domain.js:467:12)
+    at ChildProcess.<anonymous> (internal/cluster/master.js:220:12)
+    at Object.onceWrapper (events.js:421:28)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at StreamProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:288:16)
+    at StreamProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:274:14)
+    at StreamProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at StreamProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:288:16)
+    at StreamProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:274:14)
+    at StreamProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at StreamProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:288:16)
+    at StreamProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:274:14)
+    at StreamProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at StreamProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:288:16)
+    at StreamProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:274:14)
+    at StreamProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at StreamProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:288:16)
+    at StreamProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:274:14)
+    at StreamProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+TypeError: Cannot read property 'then' of null
+    at RawProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:25)
+    at Worker.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at Worker.emit (events.js:315:20)
+    at Worker.EventEmitter.emit (domain.js:467:12)
+    at ChildProcess.<anonymous> (internal/cluster/master.js:220:12)
+    at Object.onceWrapper (events.js:421:28)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\mstoi\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)

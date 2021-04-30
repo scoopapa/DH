@@ -6443,4 +6443,12 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "OU",
 		doublesTier: "DOU",
 	},
+	spinni: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	emperard: {
+		tier: "Uber",
+		doublesTier: "DUber",
+	},
 };
