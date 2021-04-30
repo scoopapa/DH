@@ -16951,7 +16951,34 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		abilities: {0: "Run Away", H: "Sap Sipper"},
 		heightm: 1.1,
 		weightkg: 5,
-		color: "Brown"
-		eggGroups: ["Field"]
+		color: "Brown",
+		eggGroups: ["Field"],
+	},
+	qiracle: {
+		num: 1245,
+		name: "Qiracle",
+		types: ["Dragon", "Fairy"],
+		baseStats: {hp: 90, atk: 95, def: 115, spa: 80, spd: 61, spe: 81},
+		abilities: {0: "Super Luck", 1: "Illuminate", H: "Long Reach"},
+		heightm: 1.1,
+		weightkg: 5,
+	},
+	gohng: {
+		num: 1246,
+		name: "Gohng",
+		types: ["Fighting"],
+		baseStats: {hp: 40, atk: 100, def: 40, spa: 40, spd: 40, spe: 40},
+		abilities: {0: "Huge Power"},
+		heightm: 0.5,
+		weightkg: 13,
+	},
+	gaogao: {
+		num: 1247,
+		name: "Gao Gao",
+		types: ["Normal"],
+		baseStats: {hp: 97, atk: 100, def: 114, spa: 88, spd: 95, spe: 106},
+		abilities: {0: "Tangled Feet", 1: "Sniper", H: "Tough Claws"},
+		heightm: 1.0,
+		weightkg: 55,
 	},
 };

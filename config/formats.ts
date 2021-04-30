@@ -1780,8 +1780,8 @@ export const Formats: FormatList = [
 	},	
 	{	
 		name: "[Gen 8] Abismons",
-		desc: 'The result of "What if we let abismal make his own metagame?"'
-		mod: 'abismons',
+		desc: 'The result of "What if we let abismal make his own metagame?"',
+		mod: "abismons",
 		teambuilderFormat: 'OU',
 		ruleset: ['Standard NatDex', 'Dynamax Clause'],
 		banlist: ['Uber', 'Arena Trap', 'Moody', 'Shadow Tag', 'Baton Pass'],

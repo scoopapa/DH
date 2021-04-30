@@ -6428,7 +6428,19 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Illegal",
 	},
 	terravia: {
-		tier: "UU",
-		doublesTier: "DUU",
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+		qiracle: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+		gohng: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	gaogao: {
+		tier: "OU",
+		doublesTier: "DOU",
 	},
 };
