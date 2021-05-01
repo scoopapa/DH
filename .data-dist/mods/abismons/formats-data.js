@@ -6451,4 +6451,16 @@
 		tier: "Uber",
 		doublesTier: "DUber",
 	},
+	valkune: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	sculpsicle: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	yukaji: {
+		tier: "OU",
+		doublesTier: "DUU",
+	},
 }; exports.FormatsData = FormatsData;

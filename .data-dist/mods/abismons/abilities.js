@@ -1213,6 +1213,44 @@ Ratings and how they work:
 		rating: 4,
 		num: 206,
 	},
+	infernalice: {
+		onModifyTypePriority: -1,
+		onModifyType(move, pokemon) {
+			const noModifyType = [
+				'judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'terrainpulse', 'weatherball', 'icepledge'
+			];
+			if (move.type === 'Ice' && !noModifyType.includes(move.id) && !(move.isZ && move.category !== 'Status')) {
+				move.type = 'Fire';
+				move.infernaliceBoosted = true;
+			}
+		},
+		onBasePowerPriority: 23,
+		onBasePower(basePower, pokemon, target, move) {
+			if (move.infernaliceBoosted) return this.chainModify([0x1333, 0x1000]);
+		},
+		name: "Infernal Ice",
+		rating: 4,
+		num: 1445,
+	},
+	freezingflames: {
+		onModifyTypePriority: -1,
+		onModifyType(move, pokemon) {
+			const noModifyType = [
+				'judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'terrainpulse', 'weatherball', 'firepledge'
+			];
+			if (move.type === 'Fire' && !noModifyType.includes(move.id) && !(move.isZ && move.category !== 'Status')) {
+				move.type = 'Ice';
+				move.freezingflamesBoosted = true;
+			}
+		},
+		onBasePowerPriority: 23,
+		onBasePower(basePower, pokemon, target, move) {
+			if (move.freezingflamesBoosted) return this.chainModify([0x1333, 0x1000]);
+		},
+		name: "Freezing Flames",
+		rating: 4,
+		num: 1446,
+	},
 	gluttony: {
 		name: "Gluttony",
 		rating: 1.5,
@@ -1614,7 +1652,7 @@ Ratings and how they work:
 		},
 		name: "Imposter",
 		rating: 5,
-		num: 150,
+		num: 150,	
 	},
 	infiltrator: {
 		onModifyMove(move) {
