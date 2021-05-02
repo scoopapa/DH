@@ -82715,6 +82715,7 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 			bide: ["8L1"],
 			attract: ["8L1"],
 			hiddenpower: ["8L1"],
+			recover: ["8L1"],
 		},
 	},
 	rayleep: {

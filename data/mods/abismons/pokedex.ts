@@ -17155,7 +17155,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		num: 1266,
 		name: "Nemirror",
 		types: ["Psychic"],
-		baseStats: {hp: 60, atk: 40, def: 85, spa: 60, spd: 85, spe: 100},
+		baseStats: {hp: 60, atk: 40, def: 95, spa: 60, spd: 95, spe: 100},
 		abilities: {0: "Magic Bounce", 1: "Skill Issue", H: "Screen Cleaner"},
 	},
 };
