@@ -331,7 +331,7 @@
 		desc: "If the user is hit by a contact move this turn before it can execute this move, the attacker is burned.",
 		shortDesc: "Burns on contact with the user before it moves.",
 
-		start: "  [POKEMON] started heating up its beak!",	
+		start: "  [POKEMON] started heating up its beak!",
 	},
 	beatup: {
 		name: "Beat Up",
@@ -1027,6 +1027,11 @@
 		name: "Cross Chop",
 		desc: "Has a higher chance for a critical hit.",
 		shortDesc: "High critical hit ratio.",
+	},
+	crosscutter: {
+		name: "Cross Cutter",
+		desc: "Lowers the user's attack 2 stages.",
+		shortDesc: "Lowers the user's attack 2 stages.",	
 	},
 	crosspoison: {
 		name: "Cross Poison",
@@ -2079,6 +2084,13 @@
 		desc: "If this move is successful, the user must recharge on the following turn and cannot select a move.",
 		shortDesc: "User cannot move next turn.",
 	},
+	friendshipflurry: {
+		name: "Friendship Flurry",
+		desc: "100% to burn the target.",
+		shortDesc: "Burns the target.",
+
+		prepare: "  With the power of friendship!",
+	},
 	frostbreath: {
 		name: "Frost Breath",
 		desc: "This move is always a critical hit unless the target is under the effect of Lucky Chant or has the Battle Armor or Shell Armor Abilities.",
@@ -2180,6 +2192,13 @@
 		shortDesc: "Charges, then raises SpA, SpD, Spe by 2 turn 2.",
 
 		prepare: "[POKEMON] is absorbing power!",
+	},
+	ghostlywail: {
+		name: "Ghostly wail",
+		desc: "This move will hit 2 turns after being used.",
+		shortDesc: "Htis 2 turns after being used.",
+
+		prepare: "[POKEMON] is absorbing power!",	
 	},
 	gigadrain: {
 		name: "Giga Drain",
@@ -2950,6 +2969,11 @@
 		desc: "Lowers the user's Speed by 1 stage.",
 		shortDesc: "Lowers the user's Speed by 1.",
 	},
+	icepledge: {
+		name: "Ice Pledge",
+		desc: "No additional effect.",
+		shortDesc: "No additional effect.",	
+	},
 	icepunch: {
 		name: "Ice Punch",
 		desc: "Has a 10% chance to freeze the target.",
@@ -3127,6 +3151,11 @@
 		name: "Karate Chop",
 		desc: "Has a higher chance for a critical hit.",
 		shortDesc: "High critical hit ratio.",
+	},
+	kelvinskindle: {
+		name: "Kelvin's Kindle",
+		desc: "Raises the user's speed 1 stage.",
+		shortDesc: "Raises the user's speed 1 stage.",	
 	},
 	kinesis: {
 		name: "Kinesis",
@@ -3363,6 +3392,11 @@
 		name: "Luster Purge",
 		desc: "Has a 50% chance to lower the target's Special Defense by 1 stage.",
 		shortDesc: "50% chance to lower the target's Sp. Def by 1.",
+	},
+	luminousascent: {
+		name: "Luminous Ascent",
+		desc: "Lowers the user's attack and defense 1 stage.",
+		shortDesc: "Lowers the user's attack and defense 1 stage.",	
 	},
 	machpunch: {
 		name: "Mach Punch",
@@ -6258,6 +6292,11 @@
 			shortDesc: "10% chance to paralyze the target.",
 		},
 	},
+	thunderblitz: {
+		name: "Thunder Blitz",
+		desc: "Has a 10% chance to paralyze the target. +1 priority.",
+		shortDesc: "10% chance to paralyze the target. +1 priority.",
+	},
 	thunderbolt: {
 		name: "Thunderbolt",
 		desc: "Has a 10% chance to paralyze the target.",
@@ -6340,6 +6379,11 @@
 		name: "Toxic Thread",
 		desc: "Lowers the target's Speed by 1 stage and poisons it.",
 		shortDesc: "Lowers the target's Speed by 1 and poisons it.",
+	},
+	trackbolt: {
+		name: "Track-Bolt",
+		desc: "Bypasses substitute and ignores stat changes.",
+		shortDesc: "Bypasses substitute and ignores stat changes.",	
 	},
 	transform: {
 		name: "Transform",

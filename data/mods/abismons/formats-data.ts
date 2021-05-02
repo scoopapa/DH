@@ -6463,4 +6463,56 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "OU",
 		doublesTier: "DUU",
 	},
+	deliriee: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	gun: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	turbann: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	raitora: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	tactenark: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	rayleep: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	eternaean: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	antherion: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	stratoclysm: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	sunnee: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	plux: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	jaranra: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	nemirror: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
 };

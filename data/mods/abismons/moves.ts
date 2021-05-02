@@ -927,7 +927,6 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 95,
 		basePower: 80,
 		category: "Special",
-		isNonstandard: "LGPE",
 		name: "Baddy Bad",
 		pp: 15,
 		priority: 0,
@@ -2855,6 +2854,27 @@ export const Moves: {[moveid: string]: MoveData} = {
 		target: "normal",
 		type: "Fighting",
 		contestType: "Cool",
+	},
+	crosscutter: {
+		num: 1444,
+		accuracy: 90,
+		basePower: 130,
+		category: "Physical",
+		name: "Cross Cutter",
+		pp: 5,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		self: {
+			boosts: {
+				atk: -2,
+			},
+		},
+		secondary: null,
+		target: "normal",
+		type: "Bug",
+		contestType: "Cool",	
+		desc: "Lowers the users attack 2 stages.",
+		shortDesc: "Lowers the users attack 2 stages.",
 	},
 	crosspoison: {
 		num: 440,
@@ -6145,6 +6165,47 @@ export const Moves: {[moveid: string]: MoveData} = {
 		target: "normal",
 		type: "Electric",
 		contestType: "Cool",
+	},
+	ghostlywail: {
+		num: 1478,
+		accuracy: 100,
+		basePower: 120,
+		category: "Special",
+		name: "Ghostly Wail",
+		pp: 10,
+		priority: 0,
+		flags: {},
+		ignoreImmunity: true,
+		isFutureMove: true,
+		onTry(source, target) {
+			if (!target.side.addSlotCondition(target, 'futuremove')) return false;
+			Object.assign(target.side.slotConditions[target.position]['futuremove'], {
+				duration: 3,
+				move: 'ghostlywail',
+				source: source,
+				moveData: {
+					id: 'ghostlywail',
+					name: "Ghostly Wail",
+					accuracy: 100,
+					basePower: 120,
+					category: "Special",
+					priority: 0,
+					flags: {},
+					ignoreImmunity: false,
+					effectType: 'Move',
+					isFutureMove: true,
+					type: 'ghost',
+				},
+			});
+			this.add('-start', source, 'move: Ghostly Wail');
+			return null;
+		},
+		secondary: null,
+		target: "normal",
+		type: "Ghost",
+		contestType: "Tough",
+		shortdesc: "Hits 2 turns after being used.",
+		desc: "Hits 2 turns after being used.",
 	},
 	glaciallance: {
 		num: 824,
@@ -9928,7 +9989,9 @@ export const Moves: {[moveid: string]: MoveData} = {
 		secondary: null,
 		target: "any",
 		type: "Flying",
-		contestType: "Beautiful",	
+		contestType: "Beautiful",
+		shortdesc: "Lowers the users Attack and Defense 1 stage.",
+		desc: "Lowers the users Attack and Defense 1 stage.",
 	},
 	lunardance: {
 		num: 461,
@@ -12897,6 +12960,8 @@ export const Moves: {[moveid: string]: MoveData} = {
 		target: "normal",
 		type: "Ice",
 		contestType: "Tough",	
+		shortdesc: "No additional effect.",
+		desc: "No additional effect.",
 	},
 	powergem: {
 		num: 408,
@@ -15450,6 +15515,8 @@ export const Moves: {[moveid: string]: MoveData} = {
 		target: "normal",
 		type: "Ice",
 		contestType: "Beautiful",
+		desc: "With the power of friendship! 100% chance to burn!",
+		shortdesc: "With the power of friendship! 100% chance to burn",
 	},
 	kelvinskindle: {
 		num: 1447,
@@ -15462,12 +15529,16 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {},
 		isZ: "kajiumz",
-		boosts: {
-			spe: 1,
+		self: {
+			boosts: {
+				spe: 1,
+			},	
 		},
 		target: "normal",
 		type: "Fire",
-		contestType: "Tough",	
+		contestType: "Tough",
+		shortdesc: "Raises the users speed.",
+		desc: "Raises the user's speed 1 stage.",
 	},
 	sizzlyslide: {
 		num: 735,
@@ -16740,6 +16811,51 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Rock",
 		zMove: {boost: {def: 1}},
 		contestType: "Cool",
+	},
+	lavacarpet: {
+		num: 1446,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		name: "Lava Carpet",
+		pp: 10,
+		priority: 0,
+		flags: {reflectable: 1},
+		sideCondition: 'lavacarpet',
+		condition: {
+			// this is a side condition
+			onStart(side) {
+				this.add('-sidestart', side, 'move: Lava Carpet');
+			},
+			onSwitchIn(pokemon) {
+				if (pokemon.hasItem('heavydutyboots')) return;
+				const typeMod = this.clampIntRange(pokemon.runEffectiveness(this.dex.getActiveMove('lavacarpet')), -6, 6);
+				this.damage(pokemon.maxhp * Math.pow(2, typeMod) / 8);
+			},	
+			duration: 4,
+			durationCallback(target, source, effect) {
+				if (source?.hasAbility('persistent')) {
+					this.add('-activate', source, 'ability: Persistent', effect);
+					return 6;
+				}
+				return 4;	
+			},
+			onStart(side) {
+				this.add('-sidestart', side, 'move: Lava Carpet');
+			},
+			onResidualOrder: 21,
+			onResidualSubOrder: 4,
+			onEnd(side) {
+				this.add('-sideend', side, 'move: Lava Carpet');
+			},
+		},
+		secondary: null,
+		target: "foeSide",
+		type: "Fire",
+		zMove: {boost: {def: 1}},
+		contestType: "Cool",	
+		desc: "Sets a Fire-type Entry hazard for 4 turns.",
+		shortDesc: "Sets a Fire-type entry hazard for 4 turns.",
 	},
 	steameruption: {
 		num: 592,
@@ -18193,6 +18309,25 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Electric",
 		contestType: "Cool",
 	},
+	thunderblitz: {
+		num: 2450,
+		accuracy: 100,
+		basePower: 60,
+		category: "Physical",
+		name: "Thunder Blitz",
+		pp: 10,
+		priority: 1,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		secondary: {
+			chance: 10,
+			status: 'par',
+		},
+		target: "normal",
+		type: "electric",
+		contestType: "Cool",	
+		shortdesc: "+1 Priority. 10% chance to paralyze.",
+		desc: "Usually goes first. Has a 10% chance to paralyze the target.",
+	},
 	thunderbolt: {
 		num: 85,
 		accuracy: 100,
@@ -18469,6 +18604,22 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Poison",
 		zMove: {boost: {spe: 1}},
 		contestType: "Tough",
+	},
+	trackbolt: {
+		num: 1449,
+		accuracy: 80,
+		basePower: 120,
+		category: "Special",
+		name: "Track-Bolt",
+		pp: 5,
+		priority: 0,
+		flags: {protect: 1},
+		secondary: null,
+		target: "normal",
+		type: "Electric",
+		contestType: "Clever",	
+		shortdesc: "Ignores stat changes. Bypasses substitute.",
+		desc: "Ignores stat changes. Bypasses substitute.",
 	},
 	transform: {
 		num: 144,

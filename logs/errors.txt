@@ -3905,3 +3905,1727 @@ Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
     at ChildProcess.EventEmitter.emit (domain.js:467:12)
     at finish (internal/child_process.js:888:14)
     at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at StreamProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:288:16)
+    at StreamProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:274:14)
+    at StreamProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error: Process sockets.js 28872 crashed and had to be restarted
+    at RawProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:437:4)
+    at Worker.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at Worker.emit (events.js:315:20)
+    at Worker.EventEmitter.emit (domain.js:467:12)
+    at ChildProcess.<anonymous> (internal/cluster/master.js:220:12)
+    at Object.onceWrapper (events.js:421:28)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at StreamProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:288:16)
+    at StreamProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:274:14)
+    at StreamProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at StreamProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:288:16)
+    at StreamProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:274:14)
+    at StreamProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at StreamProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:288:16)
+    at StreamProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:274:14)
+    at StreamProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at StreamProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:288:16)
+    at StreamProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:274:14)
+    at StreamProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at StreamProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:288:16)
+    at StreamProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:274:14)
+    at StreamProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+ReferenceError: pokemon is not defined
+    at Battle.onSourceHit (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.data-dist\mods\abismons\abilities.js:1974:26)
+    at Battle.runEvent (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.sim-dist\battle.js:741:34)
+    at Battle.runMoveEffects (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.data-dist\scripts.js:1006:12)
+    at Battle.spreadMoveHit (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.data-dist\scripts.js:821:17)
+    at Battle.hitStepMoveHitLoop (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.data-dist\scripts.js:686:37)
+    at Battle.trySpreadMoveHit (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.data-dist\scripts.js:361:28)
+    at Battle.useMoveInner (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.data-dist\scripts.js:274:22)
+    at Battle.useMove (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.data-dist\scripts.js:145:27)
+    at Battle.runMove (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.data-dist\scripts.js:100:33)
+    at Battle.runAction (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.sim-dist\battle.js:2572:9)
+
+Additional information:
+  chunk = >p2 move 3
+  inputLog = 
+>start {"formatid":"gen8abismons","seed":[32996,38987,59294,33934]}
+>player p1 {"name":"retth54yh","avatar":"camper","team":"Furfrou|furfroupharaoh|leftovers|furcoat|cottonguard,rest,hypervoice,workup|Bold|252,,252,4,,||,0,,,,|S||]Golem||rockyhelmet|sturdy|stealthrock,explosion,toxic,earthquake|Impish|252,4,252,,,|||||]Jellicent||leftovers|waterabsorb|scald,taunt,shadowball,recover|Bold|252,,252,4,,|M|,0,,,,|S||]Mandibuzz||heavydutyboots|overcoat|defog,toxic,knockoff,roost|Impish|248,8,252,,,|F||||]Breloom||leftovers|technician|machpunch,spore,swordsdance,bulletseed|Jolly|,252,,,4,252|||||]Electrode||electrodite|aftermath|voltswitch,rapidspin,sleeptalk,rest|Calm|252,,172,,84,|N|,0,,,,|||","rating":0}
+>player p2 {"name":"hrththy","avatar":"camper","team":"Azumarill||sitrusberry|hugepower|bellydrum,aquajet,playrough,knockoff|Jolly|,252,,,8,248|||||]Yukaji||heavydutyboots|infernalice|swordsdance,wildcharge,tripleaxel,earthquake|Jolly|,252,,,,252|||||]Rillaboom||choiceband|grassysurge|woodhammer,drainpunch,grassyglide,uturn|Jolly|,252,,,4,252|||||]Kommo-o||rockyhelmet|bulletproof|clangingscales,aurasphere,toxic,stealthrock|Timid|128,,,124,4,252||,0,,,,|||]Excadrill||lifeorb|sandrush|ironhead,earthquake,rapidspin,shadowclaw|Adamant|,252,,,4,252|||||]Tyranitar||heavydutyboots|sandstream|stealthrock,stoneedge,crunch,firepunch|Brave|252,252,,,4,|||||","rating":0}
+>p1 team 6, 2, 3, 4, 5, 1
+>p2 team 1, 2, 3, 4, 5, 6
+>p1 move voltswitch mega
+>p2 move playrough
+  log = 
+|t:|1619886922
+|player|p1|retth54yh|camper|
+|player|p2|hrththy|camper|
+|teamsize|p1|6
+|teamsize|p2|6
+|gametype|singles
+|gen|8
+|tier|[Gen 8] Abismons
+|clearpoke
+|poke|p1|Furfrou-Pharaoh, F|
+|poke|p1|Golem, F|
+|poke|p1|Jellicent, M|
+|poke|p1|Mandibuzz, F|
+|poke|p1|Breloom, F|
+|poke|p1|Electrode|
+|poke|p2|Azumarill, F|
+|poke|p2|Yukaji, M|
+|poke|p2|Rillaboom, F|
+|poke|p2|Kommo-o, F|
+|poke|p2|Excadrill, F|
+|poke|p2|Tyranitar, M|
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Endless Battle Clause: Forcing endless battles is banned
+|rule|Dynamax Clause: You cannot dynamax
+|teampreview
+|
+|t:|1619886929
+|start
+|switch|p1a: Electrode|Electrode|324/324
+|switch|p2a: Azumarill|Azumarill, F|341/341
+|turn|1
+|
+|t:|1619886932
+|detailschange|p1a: Electrode|Electrode-Mega
+|-mega|p1a: Electrode|Electrode|Electrodite
+|move|p1a: Electrode|Volt Switch|p2a: Azumarill
+|-supereffective|p2a: Azumarill
+|-damage|p2a: Azumarill|161/341
+
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at StreamProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:288:16)
+    at StreamProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:274:14)
+    at StreamProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+ReferenceError: pokemon is not defined
+    at Battle.onSourceHit (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.data-dist\mods\abismons\abilities.js:1975:17)
+    at Battle.runEvent (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.sim-dist\battle.js:741:34)
+    at Battle.runMoveEffects (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.data-dist\scripts.js:1006:12)
+    at Battle.spreadMoveHit (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.data-dist\scripts.js:821:17)
+    at Battle.hitStepMoveHitLoop (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.data-dist\scripts.js:686:37)
+    at Battle.trySpreadMoveHit (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.data-dist\scripts.js:361:28)
+    at Battle.useMoveInner (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.data-dist\scripts.js:274:22)
+    at Battle.useMove (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.data-dist\scripts.js:145:27)
+    at Battle.runMove (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.data-dist\scripts.js:100:33)
+    at Battle.runAction (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.sim-dist\battle.js:2572:9)
+
+Additional information:
+  chunk = >p2 move 4
+  inputLog = 
+>start {"formatid":"gen8abismons","seed":[20431,17519,61898,63083]}
+>player p1 {"name":"erhtrhthy","avatar":"camper","team":"Furfrou|furfroupharaoh|leftovers|furcoat|cottonguard,rest,hypervoice,workup|Bold|252,,252,4,,||,0,,,,|S||]Golem||rockyhelmet|sturdy|stealthrock,explosion,toxic,earthquake|Impish|252,4,252,,,|||||]Jellicent||leftovers|waterabsorb|scald,taunt,shadowball,recover|Bold|252,,252,4,,|M|,0,,,,|S||]Mandibuzz||heavydutyboots|overcoat|defog,toxic,knockoff,roost|Impish|248,8,252,,,|F||||]Breloom||leftovers|technician|machpunch,spore,swordsdance,bulletseed|Jolly|,252,,,4,252|||||]Electrode||electrodite|aftermath|voltswitch,rapidspin,sleeptalk,rest|Calm|252,,172,,84,|N|,0,,,,|||","rating":0}
+>player p2 {"name":"6ruhfggjty","avatar":"camper","team":"Azumarill||sitrusberry|hugepower|bellydrum,aquajet,playrough,knockoff|Jolly|,252,,,8,248|||||]Yukaji||heavydutyboots|infernalice|swordsdance,wildcharge,tripleaxel,earthquake|Jolly|,252,,,,252|||||]Rillaboom||choiceband|grassysurge|woodhammer,drainpunch,grassyglide,uturn|Jolly|,252,,,4,252|||||]Kommo-o||rockyhelmet|bulletproof|clangingscales,aurasphere,toxic,stealthrock|Timid|128,,,124,4,252||,0,,,,|||]Excadrill||lifeorb|sandrush|ironhead,earthquake,rapidspin,shadowclaw|Adamant|,252,,,4,252|||||]Tyranitar||heavydutyboots|sandstream|stealthrock,stoneedge,crunch,firepunch|Brave|252,252,,,4,|||||","rating":0}
+>p1 team 6, 2, 3, 4, 5, 1
+>p2 team 1, 2, 3, 4, 5, 6
+>p1 move voltswitch mega
+>p2 move knockoff
+  log = 
+|t:|1619887119
+|player|p1|erhtrhthy|camper|
+|player|p2|6ruhfggjty|camper|
+|teamsize|p1|6
+|teamsize|p2|6
+|gametype|singles
+|gen|8
+|tier|[Gen 8] Abismons
+|clearpoke
+|poke|p1|Furfrou-Pharaoh, F|
+|poke|p1|Golem, M|
+|poke|p1|Jellicent, M|
+|poke|p1|Mandibuzz, F|
+|poke|p1|Breloom, M|
+|poke|p1|Electrode|
+|poke|p2|Azumarill, F|
+|poke|p2|Yukaji, M|
+|poke|p2|Rillaboom, F|
+|poke|p2|Kommo-o, F|
+|poke|p2|Excadrill, M|
+|poke|p2|Tyranitar, F|
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Endless Battle Clause: Forcing endless battles is banned
+|rule|Dynamax Clause: You cannot dynamax
+|teampreview
+|
+|t:|1619887123
+|start
+|switch|p1a: Electrode|Electrode|324/324
+|switch|p2a: Azumarill|Azumarill, F|341/341
+|turn|1
+|
+|t:|1619887126
+|detailschange|p1a: Electrode|Electrode-Mega
+|-mega|p1a: Electrode|Electrode|Electrodite
+|move|p1a: Electrode|Volt Switch|p2a: Azumarill
+|-supereffective|p2a: Azumarill
+|-damage|p2a: Azumarill|149/341
+|-activate|p1a: Electrode|move: Heal Bell
+
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at StreamProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:288:16)
+    at StreamProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:274:14)
+    at StreamProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+ReferenceError: pokemon is not defined
+    at Battle.onSourceHit (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.data-dist\mods\abismons\abilities.js:1975:17)
+    at Battle.runEvent (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.sim-dist\battle.js:741:34)
+    at Battle.runMoveEffects (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.data-dist\scripts.js:1006:12)
+    at Battle.spreadMoveHit (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.data-dist\scripts.js:821:17)
+    at Battle.hitStepMoveHitLoop (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.data-dist\scripts.js:686:37)
+    at Battle.trySpreadMoveHit (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.data-dist\scripts.js:361:28)
+    at Battle.useMoveInner (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.data-dist\scripts.js:274:22)
+    at Battle.useMove (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.data-dist\scripts.js:145:27)
+    at Battle.runMove (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.data-dist\scripts.js:100:33)
+    at Battle.runAction (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.sim-dist\battle.js:2572:9)
+
+Additional information:
+  chunk = >p2 move 3
+  inputLog = 
+>start {"formatid":"gen8abismons","seed":[31952,52852,6337,36950]}
+>player p1 {"name":"y56tgftj","avatar":"camper","team":"Furfrou|furfroupharaoh|leftovers|furcoat|cottonguard,rest,hypervoice,workup|Bold|252,,252,4,,||,0,,,,|S||]Golem||rockyhelmet|sturdy|stealthrock,explosion,toxic,earthquake|Impish|252,4,252,,,|||||]Jellicent||leftovers|waterabsorb|scald,taunt,shadowball,recover|Bold|252,,252,4,,|M|,0,,,,|S||]Mandibuzz||heavydutyboots|overcoat|defog,toxic,knockoff,roost|Impish|248,8,252,,,|F||||]Breloom||leftovers|technician|machpunch,spore,swordsdance,bulletseed|Jolly|,252,,,4,252|||||]Electrode||electrodite|aftermath|voltswitch,rapidspin,sleeptalk,rest|Calm|252,,172,,84,|N|,0,,,,|||","rating":0}
+>player p2 {"name":"ihjkhjh","avatar":"camper","team":"Azumarill||sitrusberry|hugepower|bellydrum,aquajet,playrough,knockoff|Jolly|,252,,,8,248|||||]Yukaji||heavydutyboots|infernalice|swordsdance,wildcharge,tripleaxel,earthquake|Jolly|,252,,,,252|||||]Rillaboom||choiceband|grassysurge|woodhammer,drainpunch,grassyglide,uturn|Jolly|,252,,,4,252|||||]Kommo-o||rockyhelmet|bulletproof|clangingscales,aurasphere,toxic,stealthrock|Timid|128,,,124,4,252||,0,,,,|||]Excadrill||lifeorb|sandrush|ironhead,earthquake,rapidspin,shadowclaw|Adamant|,252,,,4,252|||||]Tyranitar||heavydutyboots|sandstream|stealthrock,stoneedge,crunch,firepunch|Brave|252,252,,,4,|||||","rating":0}
+>p1 team 6, 2, 3, 4, 5, 1
+>p2 team 1, 2, 3, 4, 5, 6
+>p1 move voltswitch mega
+>p2 move playrough
+  log = 
+|t:|1619887225
+|player|p1|y56tgftj|camper|
+|player|p2|ihjkhjh|camper|
+|teamsize|p1|6
+|teamsize|p2|6
+|gametype|singles
+|gen|8
+|tier|[Gen 8] Abismons
+|clearpoke
+|poke|p1|Furfrou-Pharaoh, M|
+|poke|p1|Golem, F|
+|poke|p1|Jellicent, M|
+|poke|p1|Mandibuzz, F|
+|poke|p1|Breloom, F|
+|poke|p1|Electrode|
+|poke|p2|Azumarill, M|
+|poke|p2|Yukaji, M|
+|poke|p2|Rillaboom, M|
+|poke|p2|Kommo-o, M|
+|poke|p2|Excadrill, F|
+|poke|p2|Tyranitar, M|
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Endless Battle Clause: Forcing endless battles is banned
+|rule|Dynamax Clause: You cannot dynamax
+|teampreview
+|
+|t:|1619887228
+|start
+|switch|p1a: Electrode|Electrode|324/324
+|switch|p2a: Azumarill|Azumarill, M|341/341
+|turn|1
+|
+|t:|1619887231
+|detailschange|p1a: Electrode|Electrode-Mega
+|-mega|p1a: Electrode|Electrode|Electrodite
+|move|p1a: Electrode|Volt Switch|p2a: Azumarill
+|-supereffective|p2a: Azumarill
+|-damage|p2a: Azumarill|159/341
+|-activate|p1a: Electrode|move: Heal Bell
+
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at StreamProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:288:16)
+    at StreamProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:274:14)
+    at StreamProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error: write EPIPE
+    at ChildProcess.target._send (internal/child_process.js:832:20)
+    at ChildProcess.target.send (internal/child_process.js:703:19)
+    at Worker.send (internal/cluster/worker.js:46:10)
+    at RawSubprocessStream._write (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:92:24)
+    at RawSubprocessStream.write (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\streams.js:836:15)
+    at Object.roomBroadcast (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.server-dist\sockets.js:109:23)
+    at BasicRoom.send (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.server-dist\rooms.js:312:31)
+    at BasicRoom.update (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.server-dist\rooms.js:405:8)
+    at C:\Users\oofma\OneDrive\Documents\GitHub\DH\.server-dist\rooms.js:1:613
+    at C:\Users\oofma\OneDrive\Documents\GitHub\DH\.server-dist\rooms.js:1513:169
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at StreamProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:288:16)
+    at StreamProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:274:14)
+    at StreamProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at StreamProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:288:16)
+    at StreamProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:274:14)
+    at StreamProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at StreamProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:288:16)
+    at StreamProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:274:14)
+    at StreamProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error: Process sockets.js 8932 crashed and had to be restarted
+    at RawProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:437:4)
+    at Worker.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at Worker.emit (events.js:315:20)
+    at Worker.EventEmitter.emit (domain.js:467:12)
+    at ChildProcess.<anonymous> (internal/cluster/master.js:220:12)
+    at Object.onceWrapper (events.js:421:28)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at StreamProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:288:16)
+    at StreamProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:274:14)
+    at StreamProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at StreamProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:288:16)
+    at StreamProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:274:14)
+    at StreamProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at StreamProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:288:16)
+    at StreamProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:274:14)
+    at StreamProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at StreamProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:288:16)
+    at StreamProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:274:14)
+    at StreamProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at StreamProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:288:16)
+    at StreamProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:274:14)
+    at StreamProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at StreamProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:288:16)
+    at StreamProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:274:14)
+    at StreamProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at StreamProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:288:16)
+    at StreamProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:274:14)
+    at StreamProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error: Process sockets.js 19844 crashed and had to be restarted
+    at RawProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:437:4)
+    at Worker.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at Worker.emit (events.js:315:20)
+    at Worker.EventEmitter.emit (domain.js:467:12)
+    at ChildProcess.<anonymous> (internal/cluster/master.js:220:12)
+    at Object.onceWrapper (events.js:421:28)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at StreamProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:288:16)
+    at StreamProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:274:14)
+    at StreamProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at StreamProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:288:16)
+    at StreamProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:274:14)
+    at StreamProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at StreamProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:288:16)
+    at StreamProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:274:14)
+    at StreamProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at StreamProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:288:16)
+    at StreamProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:274:14)
+    at StreamProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at StreamProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:288:16)
+    at StreamProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:274:14)
+    at StreamProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at StreamProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:288:16)
+    at StreamProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:274:14)
+    at StreamProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:858:26)
+    at QueryProcessWrapper.destroy (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:421:16)
+    at ChildProcess.<anonymous> (C:\Users\oofma\OneDrive\Documents\GitHub\DH\.lib-dist\process-manager.js:468:48)
+    at ChildProcess.emit (events.js:315:20)
+    at ChildProcess.EventEmitter.emit (domain.js:467:12)
+    at finish (internal/child_process.js:888:14)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)

@@ -1513,6 +1513,20 @@
 		gen: 7,
 		isNonstandard: "Past",
 	},
+	electrodite: {
+		name: "Electrodite",
+		spritenum: 576,
+		megaStone: "Electrode-Mega",
+		megaEvolves: "Electrode",
+		itemUser: ["Electrode"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: 677,
+		gen: 6,
+		isNonstandard: "Past",	
+	},
 	energypowder: {
 		name: "Energy Powder",
 		spritenum: 123,

@@ -331,7 +331,7 @@ export const MovesText: {[k: string]: MoveText} = {
 		desc: "If the user is hit by a contact move this turn before it can execute this move, the attacker is burned.",
 		shortDesc: "Burns on contact with the user before it moves.",
 
-		start: "  [POKEMON] started heating up its beak!",
+		start: "  [POKEMON] started heating up its beak!",	
 	},
 	beatup: {
 		name: "Beat Up",

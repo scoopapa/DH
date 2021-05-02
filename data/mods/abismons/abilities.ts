@@ -1231,6 +1231,12 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		name: "Infernal Ice",
 		rating: 4,
 		num: 1445,
+		shortdesc: "Ice moves become Fire type and deal 1.2x damage.",
+		desc: "Ice moves become fire and deal 1.2x damage.",
+		onStart(pokemon) {
+			this.add('-ability', pokemon, 'Infernal Ice'); 
+			this.add('message', `${pokemon.name}'s ice moves are set ablaze!`);
+		},
 	},
 	freezingflames: {
 		onModifyTypePriority: -1,
@@ -1250,6 +1256,12 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		name: "Freezing Flames",
 		rating: 4,
 		num: 1446,
+		shortdesc: "Fire moves become Ice type and deal 1.2x damage.",
+		desc: "Fire moves become Ice and deal 1.2x damage.",
+		onStart(pokemon) {
+			this.add('-ability', pokemon, 'Freezing Flames'); 
+			this.add('message', `${pokemon.name}'s fire moves are very chilling!`);
+		},
 	},
 	gluttony: {
 		name: "Gluttony",
@@ -1966,6 +1978,19 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		name: "Magician",
 		rating: 1.5,
 		num: 170,
+	},
+	defibrillator: {
+		onSourceHit(target, source, move) {
+			if (!move || !target) return;
+			if (target !== source && move.category !== 'Status'  && move.type === 'Electric') {
+			this.useMove("Heal Bell", source);	
+			}
+		},
+		name: "Defibrillator",
+		rating: 5,
+		num: 1498,	
+		shortdesc: "This pokemon uses Heal Bell after using a damaging electric move.",
+		desc: "Uses Heal Bell after using a damaging electric move.",
 	},
 	magmaarmor: {
 		onUpdate(pokemon) {
@@ -2831,6 +2856,8 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		name: "Tetramorph",
 		rating: 4.5,
 		num: 997,
+		shortdesc: "Changes the user's type after using a move.",
+		desc: "The user's type is changed after using a move.",
 	},
 	psychicsurge: {
 		onStart(source) {
@@ -3397,6 +3424,18 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		name: "Skill Link",
 		rating: 3,
 		num: 92,
+	},
+	skillissue: {
+		shortDesc: "On switch-in, this Pokemon uses Conversion 2.",
+		onStart(source) {
+			this.useMove("Conversion 2", source);
+		},
+		rating: 5,
+		shortdesc: "The user uses Conversion 2 on entry.",
+		desc: "The user uses Conversion 2 on entry.",
+		num: 9909,
+		id: "skillissue",
+		name: "Skill Issue",	
 	},
 	slowstart: {
 		onStart(pokemon) {
