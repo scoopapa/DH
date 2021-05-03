@@ -6515,4 +6515,12 @@
 		tier: "OU",
 		doublesTier: "DOU",
 	},
+	ulteus: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	swampog: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
 }; exports.FormatsData = FormatsData;

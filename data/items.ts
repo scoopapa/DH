@@ -12,6 +12,17 @@ export const Items: {[itemid: string]: ItemData} = {
 		num: 674,
 		gen: 6,
 		isNonstandard: "Past",
+	},	
+	swalotite: {
+		name: "Swalotite",
+		megaStone: "Swalot-Mega",
+		megaEvolves: "Swalot",
+		itemUser: ["Swalot"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -674,
 	},
 	absolite: {
 		name: "Absolite",
@@ -2220,6 +2231,23 @@ export const Items: {[itemid: string]: ItemData} = {
 		itemUser: ["Giratina-Origin"],
 		num: 112,
 		gen: 4,
+	},
+	plotdevice: {
+		name: "Plot Device",
+		spritenum: 442,
+		fling: {
+			basePower: 60,
+		},
+		onTakeItem(item, pokemon, source) {
+			if ((source && source.baseSpecies.num === 1267) || pokemon.baseSpecies.num === 1267) {
+				return false;
+			}
+			return true;
+		},
+		forcedForme: "Ulteus-Machina",
+		itemUser: ["Ulteus-Machina"],
+		num: -112,
+		gen: 4,	
 	},
 	groundgem: {
 		name: "Ground Gem",

@@ -4429,7 +4429,28 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		rating: 0,
 		num: 161,
 	},
-
+	universalsolvent: {
+		desc: "This pokemon can hit Steel types with Poison moves.",
+		onModifyMove(move, source, target) {
+			if (move.type === 'Poison' && !target.isSemiInvulnerable() && target.hasType('Steel')) {
+				if (!move.ignoreImmunity) move.ignoreImmunity = {};
+				if (move.ignoreImmunity !== true) {
+					move.ignoreImmunity['Poison'] = true;
+				}
+			}
+		},
+		name: "Universal Solvent",
+		rating: 5,
+		num: -44
+	},
+	swampland: {
+		shortDesc: "On switch-in, this Pokemon summons Mud Sport and Water Sport.",
+		onStart(source) {
+			this.field.addPseudoWeather('mudsport');
+			this.field.addPseudoWeather('watersport');
+		},              
+		name: "Swampland",
+	},
 	// CAP
 	mountaineer: {
 		onDamage(damage, target, source, effect) {
