@@ -477,7 +477,7 @@ var _dex = require('./dex');
 		let stat = this.storedStats[statName];
 
 		// Wonder Room swaps defenses before calculating anything else
-		if ('wonderroom' in this.battle.field.pseudoWeather) {
+		if ('wonderroom', 'arcanaroom' in this.battle.field.pseudoWeather) {
 			if (statName === 'def') {
 				stat = this.storedStats['spd'];
 			} else if (statName === 'spd') {

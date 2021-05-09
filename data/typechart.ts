@@ -294,6 +294,7 @@ export const TypeChart: {[k: string]: TypeData} = {
 	},
 	Normal: {
 		damageTaken: {
+			radiation: 1,
 			Bug: 0,
 			Dark: 0,
 			Dragon: 0,

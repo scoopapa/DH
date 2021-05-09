@@ -1901,6 +1901,23 @@ export const Moves: {[moveid: string]: MoveData} = {
 		maxMove: {basePower: 130},
 		contestType: "Cool",
 	},
+	stellarshower: {
+		num: -331,
+		accuracy: 80,
+		basePower: 50,
+		category: "Special",
+		name: "Stellar Shower",
+		pp: 10,
+		priority: 0,
+		flags: {bullet: 1, protect: 1, mirror: 1},
+		multihit: [3, 3],
+		secondary: null,
+		target: "normal",
+		type: "Psychic",
+		zMove: {basePower: 140},
+		maxMove: {basePower: 130},
+		contestType: "Cool",	
+	},
 	burningjealousy: {
 		num: 807,
 		accuracy: 100,
@@ -4528,8 +4545,10 @@ export const Moves: {[moveid: string]: MoveData} = {
 		pp: 10,
 		priority: 0,
 		flags: {recharge: 1, protect: 1, mirror: 1},
-		self: {
-			volatileStatus: 'mustrecharge',
+		onHit(target, source) {
+			if (target.hp) {
+				source.addVolatile('mustrecharge');
+			}
 		},
 		secondary: null,
 		target: "normal",
@@ -5708,6 +5727,26 @@ export const Moves: {[moveid: string]: MoveData} = {
 		zMove: {boost: {atk: 1, def: 1, spa: 1, spd: 1, spe: 1}},
 		contestType: "Clever",
 	},
+	firetyp: {
+		num: 571,
+		accuracy: 100,
+		basePower: 0,
+		category: "Status",
+		name: "Fire Type",
+		pp: 20,
+		priority: 0,
+		flags: {protect: 1, reflectable: 1, mirror: 1, mystery: 1},
+		onHit(target) {
+			if (target.hasType('Fire')) return false;
+			if (!target.addType('Fire')) return false;
+			this.add('-start', pokemon, 'typeadd', 'Fire', '[from] move: Fire Type');
+		},
+		secondary: null,
+		target: "self",
+		type: "Fire",
+		zMove: {boost: {atk: 1, def: 1, spa: 1, spd: 1, spe: 1}},
+		contestType: "Clever",	
+	},
 	foulplay: {
 		num: 492,
 		accuracy: 100,
@@ -5824,6 +5863,46 @@ export const Moves: {[moveid: string]: MoveData} = {
 		target: "normal",
 		type: "Grass",
 		contestType: "Cool",
+	},
+	supershredder: {
+		num: 1001,
+		accuracy: 90,
+		basePower: 150,
+		category: "Physical",
+		name: "Super Shredder",
+		pp: 5,
+		priority: 0,
+		flags: {recharge: 1, protect: 1, mirror: 1, nonsky: 1, contact: 1},
+		onHit(target, source) {
+			if (target.hp) {
+				source.addVolatile('mustrecharge');
+			}
+		},
+		secondary: null,
+		target: "normal",
+		type: "Bug",
+		contestType: "Tough",
+		shortdesc: "The user must recharge next turn."
+	},
+	mindcrush: {
+		num: 1003,
+		accuracy: 90,
+		basePower: 150,
+		category: "Special",
+		name: "Mind Crush",
+		pp: 5,
+		priority: 0,
+		flags: {recharge: 1, protect: 1, mirror: 1, nonsky: 1},
+		onHit(target, source) {
+			if (target.hp) {
+				source.addVolatile('mustrecharge');
+			}
+		},
+		secondary: null,
+		target: "normal",
+		type: "Psychic",
+		contestType: "Tough",
+		shortdesc: "The user must recharge next turn."
 	},
 	frostbreath: {
 		num: 524,
@@ -10007,6 +10086,10 @@ export const Moves: {[moveid: string]: MoveData} = {
 		contestType: "Beautiful",
 		shortdesc: "Lowers the users Attack and Defense 1 stage.",
 		desc: "Lowers the users Attack and Defense 1 stage.",
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Twinkle Tackle", target);
+		},	
 	},
 	lunardance: {
 		num: 461,
@@ -10516,6 +10599,27 @@ export const Moves: {[moveid: string]: MoveData} = {
 		target: "adjacentFoe",
 		type: "Water",
 		contestType: "Cool",
+	},
+	gmaxthunderstorm: {
+		num: -765,
+		accuracy: true,
+		basePower: 10,
+		category: "Physical",
+		name: "G-Max Thunderstorm",
+		pp: 5,
+		priority: 0,
+		flags: {},
+		isMax: "Zapdos",
+		self: {
+			onHit(source) {
+				if (!source.volatiles['dynamax']) return;
+				this.field.setWeather('raindance');
+				this.field.setTerrain('electricterrain');
+			},
+		},
+		target: "adjacentFoe",
+		type: "Electric",
+		contestType: "Cool",	
 	},
 	maxguard: {
 		num: 743,
@@ -14191,6 +14295,29 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Normal",
 		contestType: "Beautiful",
 	},
+	galaxycannon: {
+		num: -686,
+		accuracy: 90,
+		basePower: 110,
+		category: "Special",
+		name: "Galaxy Cannon",
+		pp: 5,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, pulse: 1},
+		onModifyType(move, pokemon) {
+			let type = pokemon.types[0];
+			if (type === "Bird") type = "???";
+			move.type = type;
+		},
+		secondary: null,
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Prismatic Laser", target);
+		},	
+		target: "normal",
+		type: "Normal",
+		contestType: "Beautiful",	
+	},
 	revenge: {
 		num: 279,
 		accuracy: 100,
@@ -14294,8 +14421,10 @@ export const Moves: {[moveid: string]: MoveData} = {
 		pp: 5,
 		priority: 0,
 		flags: {recharge: 1, protect: 1, mirror: 1},
-		self: {
-			volatileStatus: 'mustrecharge',
+		onHit(target, source) {
+			if (target.hp) {
+				source.addVolatile('mustrecharge');
+			}
 		},
 		secondary: null,
 		target: "normal",
@@ -14422,6 +14551,58 @@ export const Moves: {[moveid: string]: MoveData} = {
 		},
 		target: "normal",
 		type: "Rock",
+		contestType: "Clever",
+	},
+	cavein: {
+		num: -317,
+		accuracy: 100,
+		basePower: 60,
+		category: "Physical",
+		name: "Cave-In",
+		pp: 80,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		secondary: {
+			chance: 100,
+			boosts: {
+				spe: -1,
+			},
+		},
+		target: "normal",
+		type: "Rock",
+		onTry(source, target) {
+			if (!target.side.addSlotCondition(target, 'futuremove')) return false;
+			Object.assign(target.side.slotConditions[target.position]['futuremove'], {
+				duration: 3,
+				move: 'cavein',
+				source: source,
+				moveData: {
+					id: 'cavein',
+					name: "Cave-In",
+					accuracy: 100,
+					basePower: 60,
+					category: "Physical",
+					priority: 0,
+					flags: {},
+					secondary: {
+						chance: 100,
+						boosts: {
+							spe: -1,
+						},
+					},
+					ignoreImmunity: false,
+					effectType: 'Move',
+					isFutureMove: true,
+					type: 'Rock',
+					onPrepareHit: function(target, source, move) {
+						this.attrLastMove('[still]');
+						this.add('-anim', source, "Earthquake", target);
+					},	
+				},
+			});
+			this.add('-start', source, 'move: Cave-In');
+			return null;
+		},
 		contestType: "Clever",
 	},
 	rockwrecker: {
@@ -18431,6 +18612,25 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Electric",
 		contestType: "Cool",
 	},
+	gauntletgash: {
+		num: 9,
+		accuracy: 100,
+		basePower: 70,
+		category: "Physical",
+		name: "Gauntlet Gash",
+		pp: 15,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1, punch: 1},
+		secondary: {
+			chance: 20,
+			status: 'par',
+		},
+		target: "normal",
+		type: "Rock",
+		contestType: "Cool",
+		shortdesc: "20% chance to paralyze.",
+		desc: "20% chance to paralyze.",
+	},
 	thundershock: {
 		num: 84,
 		accuracy: 100,
@@ -19414,6 +19614,9 @@ export const Moves: {[moveid: string]: MoveData} = {
 			case 'hail':
 				move.type = 'Ice';
 				break;
+			case 'radiation':
+				move.type = 'Poison';
+				break;
 			}
 		},
 		onModifyMove(move, pokemon) {
@@ -19432,6 +19635,9 @@ export const Moves: {[moveid: string]: MoveData} = {
 			case 'hail':
 				move.basePower *= 2;
 				break;
+			case 'radiation':
+				move.basePower *= 2;
+				break;	
 			}
 		},
 		secondary: null,
@@ -19663,6 +19869,36 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Psychic",
 		zMove: {boost: {spd: 1}},
 		contestType: "Clever",
+	},
+	arcanaroom: {
+		num: -472,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		name: "Arcana Room",
+		pp: 10,
+		priority: 0,
+		flags: {mirror: 1},
+		pseudoWeather: 'arcanaroom',
+		condition: {
+			duration: 0,
+			onStart(side, source) {
+				this.add('-fieldstart', 'move: Arcana Room', '[of] ' + source);
+			},
+			onRestart(target, source) {
+				this.field.removePseudoWeather('arcanaroom');
+			},
+			// Swapping defenses implemented in sim/pokemon.js:Pokemon#calculateStat and Pokemon#getStat
+			onResidualOrder: 24,
+			onEnd() {
+				this.add('-fieldend', 'move: Arcana Room');
+			},
+		},
+		secondary: null,
+		target: "all",
+		type: "Psychic",
+		zMove: {boost: {spd: 1}},
+		contestType: "Clever",	
 	},
 	woodhammer: {
 		num: 452,

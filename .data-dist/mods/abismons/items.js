@@ -27,6 +27,114 @@
 		gen: 6,
 		isNonstandard: "Past",
 	},
+	machite: {
+		name: "Machite",
+		spritenum: 576,
+		megaStone: "Machamp-Mega",
+		megaEvolves: "Machamp",
+		itemUser: ["Machamp"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -678,
+	},
+	ariadosite: {
+		name: "Ariadosite",
+		spritenum: 576,
+		megaStone: "Ariados-Mega",
+		megaEvolves: "Ariados",
+		itemUser: ["Ariados"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -678,
+	},
+	typhlosite: {
+		name: "Typhlosite",
+		spritenum: 576,
+		megaStone: "Typhlosion-Mega",
+		megaEvolves: "Typhlosion",
+		itemUser: ["Typhlosion"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -678,			
+	},
+	tyrantrumite: {
+		name: "Tyrantrumite",
+		spritenum: 576,
+		megaStone: "Tyrantrum-Mega",
+		megaEvolves: "Tyrantrum",
+		itemUser: ["Tyrantrum"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -678,	
+	},
+	aurorite: {
+		name: "Aurorite",
+		spritenum: 576,
+		megaStone: "Aurorus-Mega",
+		megaEvolves: "Aurorus",
+		itemUser: ["Aurorus"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -678,	
+	},
+	dewgongite: {
+		name: "Dewgongite",
+		spritenum: 576,
+		megaStone: "Dewgong-Mega",
+		megaEvolves: "Dewgong",
+		itemUser: ["Dewgong"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -678,	
+	},
+	luminite: {
+		name: "Luminite",
+		spritenum: 576,
+		megaStone: "Lumineon-Mega",
+		megaEvolves: "Lumineon",
+		itemUser: ["Lumineon"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -680,	
+	},
+	claydolite: {
+		name: "Claydolite",
+		spritenum: 576,
+		megaStone: "Claydol-Mega",
+		megaEvolves: "Claydol",
+		itemUser: ["Claydol"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -679,	
+	},
+	furrite: {
+		name: "Furrite",
+		spritenum: 576,
+		megaStone: "Furret-Mega",
+		megaEvolves: "Furret",
+		itemUser: ["Furret"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -677,	
+	},
 	absorbbulb: {
 		name: "Absorb Bulb",
 		spritenum: 2,

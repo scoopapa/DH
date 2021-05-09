@@ -1756,6 +1756,20 @@ Ratings and how they work:
 		rating: 2.5,
 		num: 160,
 	},
+	shadowprison: {
+		shortDesc: "Imprisons foes on Entry.",
+		onStart(source) {
+			this.useMove("Imprison", source);
+		},
+		name: "Shadow Prison",	
+	},
+	scavenger: {
+		shortDesc: "Uses Snatch on entry.",
+		onStart(source) {
+			this.useMove("Snatch", source);
+		},
+		name: "Scavenger",		
+	},
 	ironfist: {
 		onBasePowerPriority: 23,
 		onBasePower(basePower, attacker, defender, move) {
@@ -4079,6 +4093,14 @@ Ratings and how they work:
 		rating: 3.5,
 		num: 205,
 	},
+	lightningfists: {
+		onModifyPriority(priority, pokemon, target, move) {
+			if (_optionalChain([move, 'optionalAccess', _22 => _22.flags, 'access', _23 => _23['punch']]) && pokemon.hp > pokemon.maxhp / 1.75) return priority + 1;
+		},
+		name: "Lightning Fists",
+		rating: 3.5,
+		num: -205,	
+	},
 	truant: {
 		onStart(pokemon) {
 			pokemon.removeVolatile('truant');
@@ -4188,7 +4210,7 @@ Ratings and how they work:
 		},
 		onSetStatus(status, target, source, effect) {
 			if (status.id !== 'slp') return;
-			if (_optionalChain([(effect ), 'optionalAccess', _22 => _22.status])) {
+			if (_optionalChain([(effect ), 'optionalAccess', _24 => _24.status])) {
 				this.add('-immune', target, '[from] ability: Vital Spirit');
 			}
 			return false;
@@ -4278,7 +4300,7 @@ Ratings and how they work:
 		},
 		onSetStatus(status, target, source, effect) {
 			if (status.id !== 'brn') return;
-			if (_optionalChain([(effect ), 'optionalAccess', _23 => _23.status])) {
+			if (_optionalChain([(effect ), 'optionalAccess', _25 => _25.status])) {
 				this.add('-immune', target, '[from] ability: Water Bubble');
 			}
 			return false;
@@ -4306,7 +4328,7 @@ Ratings and how they work:
 		},
 		onSetStatus(status, target, source, effect) {
 			if (status.id !== 'brn') return;
-			if (_optionalChain([(effect ), 'optionalAccess', _24 => _24.status])) {
+			if (_optionalChain([(effect ), 'optionalAccess', _26 => _26.status])) {
 				this.add('-immune', target, '[from] ability: Water Veil');
 			}
 			return false;
@@ -4451,6 +4473,121 @@ Ratings and how they work:
 		},              
 		name: "Swampland",
 	},
+	celestialshift: {
+		onResidual(pokemon) {
+			if (pokemon.species.baseSpecies !== 'Dark Nebula' || pokemon.transformed) return;
+			let targetForme;
+			if (pokemon.species.name === 'Dark Nebula') targetForme = 'Dark Nebula-Frost';
+			if (pokemon.species.name === 'Dark Nebula-Frost') targetForme = 'Dark Nebula-Tesla';
+			if (pokemon.species.name === 'Dark Nebula-Tesla') targetForme = 'Dark Nebula';
+			pokemon.formeChange(targetForme);
+		},
+		name: "Celestial Shift",
+		rating: 1,
+		num: -258,
+	},
+	earthshaker: {
+		shortDesc: "Two turns after Switch-In, The user summons Rock Tomb.",
+		onStart(source) {
+			this.useMove("Cave-In", source);
+		},
+		name: "Earthshaker",
+	},
+	rebirth: {
+		name: "Rebirth",
+		onDamagePriority: -100,
+		onDamage(damage, target, source, effect) {
+			if (damage >= target.hp && effect && effect.effectType === 'Move') {
+				this.useMove("Healing Wish", target);
+			}
+		},
+		rating: 2.5,
+		num: 106,	
+		shortdesc: "The user uses healing wish upon fainting.",
+		desc: "The user uses healing wish upon fainting.",
+	},
+	exmachina: {
+		shortDesc: "The user gains the Fire type.",
+		onStart(pokemon) {
+            if (pokemon.hasType('Fire')) return;
+            if (!pokemon.addType('Fire')) return;
+            this.add('-start', pokemon, 'typeadd', 'Fire', '[from] Ability: Ex Machina');
+		},
+		name: "Ex-Machina",		
+	},	
+	fallout: {
+		onStart(source) {
+			this.field.setWeather('radiation');
+		},
+		name: "Fallout",
+		rating: 4,
+		num: -117,
+	},
+	arcana: {
+		shortDesc: "Sets Wonder Room indefinitely until replaced by another room, or if Wonder Room is activated again.",
+		onStart(source) {
+			this.useMove("Arcana Room", source);
+		},
+		name: "Arcana",	
+	},	
+	deepfreeze: {
+		onResidualOrder: 5,
+		onResidualSubOrder: 5,
+		onResidual(pokemon) {
+			if (this.field.isTerrain('grassyterrain')) return;
+			if (pokemon.hasType('Ice')) {
+				this.heal(pokemon.baseMaxhp / 8);
+			} else {
+				this.damage(pokemon.baseMaxhp / 8);
+			}
+		},
+		onTerrain(pokemon) {
+			if (!this.field.isTerrain('grassyterrain')) return;
+			if (pokemon.hasType('Ice')) {
+				this.heal(pokemon.baseMaxhp / 8);
+			} else {
+				this.damage(pokemon.baseMaxhp / 8);
+			}
+		},
+		name: "Deep Freeze",
+		rating: 3.5,
+		num: -44,
+		shortdesc: "Restores 1/8th HP if this pokemon is an Ice type. Takes away 1/8th if otherwise.",
+	},	
+	crystalize: {
+		onModifyAtkPriority: 5,
+		onModifyAtk(atk, attacker, defender, move) {
+			if (move.type === 'Rock' && attacker.hp <= attacker.maxhp / 3) {
+				this.debug('Crystalize boost');
+				return this.chainModify(1.5);
+			}
+		},
+		onModifySpAPriority: 5,
+		onModifySpA(atk, attacker, defender, move) {
+			if (move.type === 'Rock' && attacker.hp <= attacker.maxhp / 3) {
+				this.debug('Crystalize boost');
+				return this.chainModify(1.5);
+			}
+		},
+		name: "Crystalize",
+		rating: 2,
+		num: -66,
+		desc: "Boosts rock moves damage at 1/3 maximum HP or less.",
+		shortdesc: "Rock moves deal 1.5x damage at 1/3 maximum HP or less.",
+	},
+	malice: {
+		onAfterMoveSecondarySelfPriority: -1,
+		onAfterMoveSecondarySelf(pokemon, target, move) {
+			if (move.category !== 'Status') {
+				this.heal(pokemon.lastDamage / 8, pokemon);
+			}
+		},
+		name: "Malice",
+		rating: 4,
+		num: 1000,
+		shortdesc: "Restores 1/4th of damage dealt.",
+		desc: "Restores 1/4th of the users HP after dealing damage.",
+	},	
 	// CAP
 	mountaineer: {
 		onDamage(damage, target, source, effect) {

@@ -6516,11 +6516,47 @@
 		doublesTier: "DOU",
 	},
 	ulteus: {
-		tier: "OU",
+		tier: "Uber",
 		doublesTier: "DOU",
 	},
 	swampog: {
 		tier: "OU",
 		doublesTier: "DOU",
+	},
+	darknebula: {
+		tier: "Uber",
+		doublesTier: "DUber",
+	},
+	metalunk: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	bluumesis: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	entoraze: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	crystallibrium: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	noormiee: {
+		tier: "AG",
+		doublesTier: "DUber",
+	},
+	yanteron: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	thorwark: {
+		tier: "OU",
+		doublesTier: "DOU",
+	},
+	tikitong: {
+		tier: "Uber",
+		doublesTier: "DUber",
 	},
 }; exports.FormatsData = FormatsData;

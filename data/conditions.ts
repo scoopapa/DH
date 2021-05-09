@@ -638,6 +638,30 @@ export const Conditions: {[k: string]: ConditionData} = {
 			this.add('-weather', 'none');
 		},
 	},
+	radiation: {
+		name: 'Radiation',
+		effectType: 'Weather',
+		duration: 0,
+		onStart(battle, source, effect) {
+			if (effect?.effectType === 'Ability') {
+				if (this.gen <= 5) this.effectData.duration = 0;
+				this.add('-weather', 'Radiation', '[from] ability: ' + effect, '[of] ' + source);
+			} else {
+				this.add('-weather', 'Radiation');
+			}
+		},
+		onResidualOrder: 1,
+		onResidual() {
+			this.add('-weather', 'Radiation', '[upkeep]');
+			if (this.field.isWeather('Radiation')) this.eachEvent('Weather');
+		},
+		onWeather(target) {
+			this.damage(target.baseMaxhp / 10);
+		},
+		onEnd() {
+			this.add('-weather', 'none');
+		},
+	},
 	deltastream: {
 		name: 'DeltaStream',
 		effectType: 'Weather',
