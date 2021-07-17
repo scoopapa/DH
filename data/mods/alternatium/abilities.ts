@@ -34,10 +34,12 @@ Ratings and how they work:
 
 export const Abilities: {[abilityid: string]: AbilityData} = {
 	/*powerofalchemy: {
-		onSourceAfterFaint(source, target) {
-			let newType = target.types;
-			if (target.fainted) {
-				newType = source.setType;
+		onSourceAfterFaint(source, target, types) {
+			const type1 = source.baseSpecies.types;
+			const type2 = target.baseSpecies.types;
+			if (type1 !== type2) {
+				if (!type1(type2)) return;
+				this.add('-start', source, 'typechange', '[from] ability: Power of Alchemy');
 			}
 		},
 		name: "Power of Alchemy",
@@ -250,8 +252,6 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 				this.debug('Pack Leader boost');
 				return this.chainModify(1.3);
 			}
-			this.debug('Pack Leader NOT boosted');
-			return this.chainModify(1);
 		},
 		name: "Pack Leader",
 		shortDesc: "If this Pokemon goes first, it deals 1.3x damage.",
