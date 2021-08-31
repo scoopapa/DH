@@ -697,14 +697,14 @@ export const Moves: {[moveid: string]: MoveData} = {
 	},
 	aurasphere: {
 		num: 396,
-		accuracy: true,
-		basePower: 80,
+		accuracy: 95,
+		basePower: 75,
 		category: "Special",
 		name: "Aura Sphere",
-		pp: 20,
+		pp: 10,
 		priority: 0,
-		flags: {bullet: 1, protect: 1, pulse: 1, mirror: 1, distance: 1},
-		onBasePower(basePower, pokemon) {
+		flags: {protect: 1, mirror: 1},
+		onBasePower(basePower, pokemon, target, move) {
 			const move = moveLastTurnResult;
 			if (pokemon.getMoveHitData(move).typeMod < 0) {
 				this.debug('double power');
@@ -712,7 +712,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			}
 		},
 		secondary: null,
-		target: "any",
+		target: "normal",
 		type: "Fighting",
 		contestType: "Beautiful",
 	},
