@@ -704,7 +704,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		pp: 10,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
-		onBasePower(basePower, pokemon, target) {
+		onBasePower(basePower, pokemon, target, typeMod) {
 			const move = pokemon.moveLastTurnResult;
 			if (pokemon.getMoveData(move).typeMod < 0) {
 				this.debug('double power');
@@ -18635,20 +18635,21 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Dragon",
 		contestType: "Cool",
 	},
-	uturn: {
+	hivemind: {
 		num: 369,
 		accuracy: 100,
 		basePower: 0,
 		category: "Special",
-		name: "U-turn",
+		shortDesc: "User switches out. Replacement uses a 70 power move.",
+		name: "Hive Mind",
 		pp: 15,
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1},
-		slotCondition: 'uturn',
+		slotCondition: 'hivemind',
 		condition: { 
 			onSwap(target) {
 				if (!target.fainted) {
-					this.useMove('uturnattack', target);
+					this.useMove('hivemindattack', target);
 				}
 			},
 		},
@@ -18662,12 +18663,12 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Bug",
 		contestType: "Cute",
 	},
-	uturnattack: {
+	hivemind: {
 		num: 369,
 		accuracy: 100,
 		basePower: 70,
 		category: "Special",
-		name: "U-turn",
+		name: "Hive Mind",
 		pp: 15,
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1},
@@ -18680,7 +18681,6 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Bug",
 		contestType: "Cute",
 	},
-	
 	uproar: {
 		num: 253,
 		accuracy: 100,
