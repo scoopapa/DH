@@ -705,8 +705,8 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
 		onBasePower(basePower, pokemon, target, move) {
-			const move = moveLastTurnResult;
-			if (pokemon.getMoveHitData(move).typeMod < 0) {
+			const movelast = moveLastTurnResult;
+			if (pokemon.getMoveHitData(movelast).typeMod < 0) {
 				this.debug('double power');
 				return this.chainModify(2);
 			}
