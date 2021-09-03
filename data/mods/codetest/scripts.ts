@@ -237,7 +237,7 @@ export const Scripts: BattleScriptsData = {
 				}
 			}
 			if (move.useSourceHighestAsOffensive) {
-				attackStat = statName;
+				attackStat = ([statName], source);
 			}
 
 			const statTable = {atk: 'Atk', def: 'Def', spa: 'SpA', spd: 'SpD', spe: 'Spe'};
