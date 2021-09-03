@@ -226,8 +226,9 @@ export const Scripts: BattleScriptsData = {
 					}
 				}
 			}
-			let statName = 'atk';
-			let bestStat = 0;
+			
+			const statName = 'atk';
+			const bestStat = 0;
 			let s: StatIDExceptHP;
 			for (s in source.storedStats) {
 				if (source.storedStats[s] > bestStat) {
