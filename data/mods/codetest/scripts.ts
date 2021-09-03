@@ -210,7 +210,7 @@ export const Scripts: BattleScriptsData = {
 			const defender = target;
 			let attackStat: StatNameExceptHP = category === 'Physical' ? 'atk' : 'spa';
 			const defenseStat: StatNameExceptHP = defensiveCategory === 'Physical' ? 'def' : 'spd';
-				if (move.useSourceDefensiveAsOffensive) {
+			if (move.useSourceDefensiveAsOffensive) {
 				attackStat = defenseStat;
 				// Body press really wants to use the def stat,
 				// so it switches stats to compensate for Wonder Room.
@@ -226,9 +226,6 @@ export const Scripts: BattleScriptsData = {
 					}
 				}
 			}
-			const attacker = pokemon;
-			const defender = target;
-			let attackStat: StatNameExceptHP = category === 'Physical' ? 'atk' : 'spa';
 			let statName = 'atk';
 			let bestStat = 0;
 			let s: StatIDExceptHP;
