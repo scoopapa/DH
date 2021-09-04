@@ -1452,7 +1452,7 @@ export const Scripts: BattleScriptsData = {
 			
 			const attacker2 = pokemon;
 			const defender2 = target;
-			let attackStat: StatNameExceptHP = category === 'Physical' ? 'atk' : 'spa';
+			let attackStat2: StatNameExceptHP = category === 'Physical' ? 'atk' : 'spa';
 			const statName = 'atk';
 			const bestStat = 0;
 			let s: StatIDExceptHP;
@@ -1464,7 +1464,7 @@ export const Scripts: BattleScriptsData = {
 			}
 			const highestStat = ([statName], source);
 			if (move.useSourceHighestAsOffensive) {
-				attackStat = highestStat;
+				attackStat2 = highestStat;
 			}
 
 			const statTable = {atk: 'Atk', def: 'Def', spa: 'SpA', spd: 'SpD', spe: 'Spe'};
