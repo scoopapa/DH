@@ -1450,8 +1450,8 @@ export const Scripts: BattleScriptsData = {
 				}
 			}
 			
-			const attacker = pokemon;
-			const defender = target;
+			const attacker2 = pokemon;
+			const defender2 = target;
 			let attackStat: StatNameExceptHP = category === 'Physical' ? 'atk' : 'spa';
 			const statName = 'atk';
 			const bestStat = 0;
