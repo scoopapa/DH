@@ -1353,7 +1353,7 @@ export const Scripts: BattleScriptsData = {
 		return CHOOSABLE_TARGETS.has(targetType);
 	},
 	
-	pokemon: {
+	battle: {
 		getDamage(
 			pokemon: Pokemon, target: Pokemon, move: string | number | ActiveMove,
 			suppressMessages = false
