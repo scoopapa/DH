@@ -1459,8 +1459,9 @@ export const Scripts: BattleScriptsData = {
 					bestStat = source.storedStats[s];
 				}
 			}
+			const highestStat = ([statName], source);
 			if (move.useSourceHighestAsOffensive) {
-				attackStat = ([statName], source);
+				attackStat = highestStat;
 			}
 
 			const statTable = {atk: 'Atk', def: 'Def', spa: 'SpA', spd: 'SpD', spe: 'Spe'};
