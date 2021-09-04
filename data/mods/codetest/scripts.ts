@@ -1448,8 +1448,11 @@ export const Scripts: BattleScriptsData = {
 						this.hint("Body Press uses Sp. Def boosts when Wonder Room is active.");
 					}
 				}
-			}
+			},
 			
+			const attacker = pokemon;
+			const defender = target;
+			let attackStat: StatNameExceptHP = category === 'Physical' ? 'atk' : 'spa';
 			const statName = 'atk';
 			const bestStat = 0;
 			let s: StatIDExceptHP;
@@ -1462,7 +1465,7 @@ export const Scripts: BattleScriptsData = {
 			const highestStat = ([statName], source);
 			if (move.useSourceHighestAsOffensive) {
 				attackStat = highestStat;
-			}
+			},
 
 			const statTable = {atk: 'Atk', def: 'Def', spa: 'SpA', spd: 'SpD', spe: 'Spe'};
 			let attack;
