@@ -13119,7 +13119,9 @@ export const Moves: {[moveid: string]: MoveData} = {
 		pp: 10,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
-		onModifyMove(move, pokemon) {
+		onModifyMove(move, pokemon, target, category) {
+			let attackStat: StatNameExceptHP = category === 'Physical' ? 'atk' : 'spa';
+			let atkBoosts = move.useTargetOffensive ? target.boosts[attackStat] : pokemon.boosts[attackStat];
 			const atk = pokemon.getStat('atk', false, true);
 			const def = pokemon.getStat('def', false, true);
 			const spa = pokemon.getStat('spa', false, true);
