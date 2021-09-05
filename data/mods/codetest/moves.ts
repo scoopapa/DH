@@ -5838,7 +5838,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			}
 		},
 		secondary: {
-			chance: 100,
+			chance: 20,
 			onHit(target, pokemon, move) {
 				for (const ally of pokemon.side.pokemon) {
 					if (!ally || ally.fainted) continue;
@@ -5875,7 +5875,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			}
 		},
 		secondary: {
-			chance: 100,
+			chance: 20,
 			onHit(target, pokemon, move) {
 				for (const ally of pokemon.side.pokemon) {
 					if (!ally || ally.fainted) continue;
