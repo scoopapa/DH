@@ -13119,22 +13119,28 @@ export const Moves: {[moveid: string]: MoveData} = {
 		pp: 10,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
-		onModifyMove(move, defender, attacker, category) {
-			let attackStat: StatNameExceptHP = category === 'Physical' ? 'atk' : 'spa';
-			let atkBoosts = move.useTargetOffensive ? defender.boosts[attackStat] : attacker.boosts[attackStat];
-			if (attacker.getStat('atk', false, true) > attacker.getStat('def', false, true) && attacker.getStat('spa', false, true) && attacker.getStat('spd', false, true) && attacker.getStat('spe', false, true)) {
+		onModifyMove(move, pokemon) {
+			const atk = pokemon.getStat('atk', false, true);
+			const spa = pokemon.getStat('spa', false, true);
+			const def = target.getStat('def', false, true);
+			const spd = target.getStat('spd', false, true);
+			if (atk > def && spa && spd && spe) {
 				attackStat === 'atk';
 				atkBoosts = attacker.boosts['atk'];
-			} else if (attacker.getStat('def', false, true) > attacker.getStat('atk', false, true) && attacker.getStat('spa', false, true) && attacker.getStat('spd', false, true) && attacker.getStat('spe', false, true)) {
+			}
+			else if (def > atk && spa && spd && spe) {
 				attackStat === 'def';
 				atkBoosts = attacker.boosts['def'];
-			} else if (attacker.getStat('spa', false, true) > attacker.getStat('atk', false, true) && attacker.getStat('def', false, true) && attacker.getStat('spd', false, true) && attacker.getStat('spe', false, true)) {
+			}
+			else if (spa > atk && def && spd && spe) {
 				attackStat === 'spa';
 				atkBoosts = attacker.boosts['spa'];
-			} else if (attacker.getStat('spd', false, true) > attacker.getStat('atk', false, true) && attacker.getStat('def', false, true) && attacker.getStat('spa', false, true) && attacker.getStat('spe', false, true)) {
+			}
+			else if (spd > atk && def && spa && spe) {
 				attackStat === 'spd';
 				atkBoosts = attacker.boosts['spd'];
-			} else if (attacker.getStat('spe', false, true) > attacker.getStat('atk', false, true) && attacker.getStat('def', false, true) && attacker.getStat('spa', false, true) && attacker.getStat('spd', false, true)) {
+			}
+			else if (spe > atk && def && spa && spd) {
 				attackStat === 'spe';
 				atkBoosts = attacker.boosts['spe'];
 			}
