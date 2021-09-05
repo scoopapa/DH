@@ -5844,7 +5844,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				for (const moveSlot of ally.moveSlots) {
 					const move = this.dex.getMove(moveSlot.move);
 					if (move.id === 'fusionflare') continue;
-					move.secondaries.push({
+					move.secondaries({
 						chance: 100,
 						status: 'brn',
 					});
@@ -5883,7 +5883,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				for (const moveSlot of ally.moveSlots) {
 					const move = this.dex.getMove(moveSlot.move);
 					if (move.id === 'fusionbolt') continue;
-					move.secondaries.push({
+					move.secondaries({
 						chance: 100,
 						status: 'par',
 					});
