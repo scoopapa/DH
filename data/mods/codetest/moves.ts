@@ -5820,7 +5820,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 	fusionbolt: {
 		num: 559,
 		accuracy: 100,
-		basePower: 100,
+		basePower: 85,
 		category: "Physical",
 		name: "Fusion Bolt",
 		pp: 5,
@@ -5833,7 +5833,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 					const move = this.dex.getMove(moveSlot.move);
 					if (move.id === 'fusionflare') continue;
 					this.debug('double power');
-					return this.chainModify(2);
+					return this.chainModify(1.3);
 				}
 			}
 		},
@@ -5845,7 +5845,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 	fusionflare: {
 		num: 558,
 		accuracy: 100,
-		basePower: 100,
+		basePower: 85,
 		category: "Special",
 		name: "Fusion Flare",
 		pp: 5,
@@ -5858,7 +5858,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 					const move = this.dex.getMove(moveSlot.move);
 					if (move.id === 'fusionbolt') continue;
 					this.debug('double power');
-					return this.chainModify(2);
+					return this.chainModify(1.3);
 				}
 			}
 		},
