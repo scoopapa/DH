@@ -5826,10 +5826,15 @@ export const Moves: {[moveid: string]: MoveData} = {
 		pp: 5,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
-		onBasePower(basePower, pokemon) {
-			if (this.lastSuccessfulMoveThisTurn === 'fusionflare') {
-				this.debug('double power');
-				return this.chainModify(2);
+		onBasePower(basePower, pokemon, move) {
+			for (const ally of pokemon.side.pokemon) {
+				if (!ally || ally.fainted) continue;
+				for (const moveSlot of ally.moveSlots) {
+					const move = this.dex.getMove(moveSlot.move);
+					if (move.id === 'fusionflare') continue;
+					this.debug('double power');
+					return this.chainModify(2);
+				}
 			}
 		},
 		secondary: null,
@@ -5846,10 +5851,15 @@ export const Moves: {[moveid: string]: MoveData} = {
 		pp: 5,
 		priority: 0,
 		flags: {protect: 1, mirror: 1, defrost: 1},
-		onBasePower(basePower, pokemon) {
-			if (this.lastSuccessfulMoveThisTurn === 'fusionbolt') {
-				this.debug('double power');
-				return this.chainModify(2);
+		onBasePower(basePower, pokemon, move) {
+			for (const ally of pokemon.side.pokemon) {
+				if (!ally || ally.fainted) continue;
+				for (const moveSlot of ally.moveSlots) {
+					const move = this.dex.getMove(moveSlot.move);
+					if (move.id === 'fusionbolt') continue;
+					this.debug('double power');
+					return this.chainModify(2);
+				}
 			}
 		},
 		secondary: null,
