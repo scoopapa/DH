@@ -13119,7 +13119,23 @@ export const Moves: {[moveid: string]: MoveData} = {
 		pp: 10,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
-		useSourceHighestAsOffensive: true,
+		onModifyMove(move, pokemon) {
+			if (pokemon.getStat('atk', false, true) > pokemon.getStat('def', false, true) && pokemon.getStat('spa', false, true) pokemon.getStat('spd', false, true) pokemon.getStat('spe', false, true)) {
+				(move as any).egoAtk = true;
+			}
+			else if (pokemon.getStat('def', false, true) > pokemon.getStat('atk', false, true) && pokemon.getStat('spa', false, true) pokemon.getStat('spd', false, true) pokemon.getStat('spe', false, true)) {
+				(move as any).egoDef = true;
+			}
+			else if (pokemon.getStat('spa', false, true) > pokemon.getStat('atk', false, true) && pokemon.getStat('def', false, true) pokemon.getStat('spd', false, true) pokemon.getStat('spe', false, true)) {
+				(move as any).egoSpA = true;
+			}
+			else if (pokemon.getStat('spd', false, true) > pokemon.getStat('atk', false, true) && pokemon.getStat('def', false, true) pokemon.getStat('spa', false, true) pokemon.getStat('spe', false, true)) {
+				(move as any).egoSpD = true;
+			}
+			else if (pokemon.getStat('spe', false, true) > pokemon.getStat('atk', false, true) && pokemon.getStat('def', false, true) pokemon.getStat('spa', false, true) pokemon.getStat('spd', false, true)) {
+				(move as any).egoSpe = true;
+			}
+		},
 		target: "normal",
 		type: "Psychic",
 		contestType: "Clever",
