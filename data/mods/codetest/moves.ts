@@ -5823,7 +5823,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 85,
 		category: "Physical",
 		name: "Fusion Bolt",
-		pp: 5,
+		pp: 10,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
 		onBasePower(basePower, pokemon, move) {
@@ -5834,6 +5834,20 @@ export const Moves: {[moveid: string]: MoveData} = {
 					if (move.id === 'fusionflare') continue;
 					this.debug('double power');
 					return this.chainModify(1.3);
+				}
+			}
+		},
+		onModifyMove(move, pokemon) {
+			move.secondaries = [];
+			for (const ally of pokemon.side.pokemon) {
+				if (!ally || ally.fainted) continue;
+				for (const moveSlot of ally.moveSlots) {
+					const move = this.dex.getMove(moveSlot.move);
+					if (move.id === 'fusionflare') continue;
+					move.secondaries.push({
+						chance: 100,
+						status: 'brn',
+					});
 				}
 			}
 		},
@@ -5848,7 +5862,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 85,
 		category: "Special",
 		name: "Fusion Flare",
-		pp: 5,
+		pp: 10,
 		priority: 0,
 		flags: {protect: 1, mirror: 1, defrost: 1},
 		onBasePower(basePower, pokemon, move) {
@@ -5859,6 +5873,20 @@ export const Moves: {[moveid: string]: MoveData} = {
 					if (move.id === 'fusionbolt') continue;
 					this.debug('double power');
 					return this.chainModify(1.3);
+				}
+			}
+		},
+		onModifyMove(move, pokemon) {
+			move.secondaries = [];
+			for (const ally of pokemon.side.pokemon) {
+				if (!ally || ally.fainted) continue;
+				for (const moveSlot of ally.moveSlots) {
+					const move = this.dex.getMove(moveSlot.move);
+					if (move.id === 'fusionbolt') continue;
+					move.secondaries.push({
+						chance: 100,
+						status: 'par',
+					});
 				}
 			}
 		},
