@@ -32,6 +32,7 @@ export const Formats: FormatList = [
 		mod: 'codetest',
 		ruleset: ['Standard', 'Dynamax Clause'],
 		banlist: ['Uber', 'Arena Trap', 'Moody', 'Shadow Tag', 'Baton Pass'],
+		unbanlist: ['Reshiram', 'Zekrom'],
 	},
 	{
 		name: "[Gen 8] Ubers",
