@@ -13119,7 +13119,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		pp: 10,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
-		onModifyMove(move, defender, attacker) {
+		onModifyMove(move, defender, attacker, category) {
 			let attackStat: StatNameExceptHP = category === 'Physical' ? 'atk' : 'spa';
 			let atkBoosts = move.useTargetOffensive ? defender.boosts[attackStat] : attacker.boosts[attackStat];
 			if (attacker.getStat('atk', false, true) > attacker.getStat('def', false, true) && attacker.getStat('spa', false, true) && attacker.getStat('spd', false, true) && attacker.getStat('spe', false, true)) {
