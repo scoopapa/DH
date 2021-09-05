@@ -5839,13 +5839,13 @@ export const Moves: {[moveid: string]: MoveData} = {
 		},
 		secondary: {
 			chance: 100,
-			onHit(source, target, pokemon, move) {
+			onHit(target, pokemon, move) {
 				for (const ally of pokemon.side.pokemon) {
 					if (!ally || ally.fainted) continue;
 					for (const moveSlot of ally.moveSlots) {
 						const move = this.dex.getMove(moveSlot.move);
 						if (move.id === 'fusionflare') continue;
-						target.trySetStatus('brn', source);
+						target.trySetStatus('brn');
 					}
 				}
 			},
@@ -5876,13 +5876,13 @@ export const Moves: {[moveid: string]: MoveData} = {
 		},
 		secondary: {
 			chance: 100,
-			onHit(source, target, pokemon, move) {
+			onHit(target, pokemon, move) {
 				for (const ally of pokemon.side.pokemon) {
 					if (!ally || ally.fainted) continue;
 					for (const moveSlot of ally.moveSlots) {
 						const move = this.dex.getMove(moveSlot.move);
 						if (move.id === 'fusionbolt') continue;
-						target.trySetStatus('par', source);
+						target.trySetStatus('par');
 					}
 				}
 			},
