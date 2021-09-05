@@ -116,7 +116,7 @@ export const Scripts: BattleScriptsData = {
 		let defense;
 
 		let atkBoosts = move.useTargetOffensive ? defender.boosts[attackStat] : attacker.boosts[attackStat];
-		if ((move as any).egoAtkboosted) {
+		/*if ((move as any).egoAtkboosted) {
 			attackStat === 'atk';
 			atkBoosts = attacker.boosts['atk'];
 		} else if ((move as any).egoDefboosted) {
@@ -131,7 +131,7 @@ export const Scripts: BattleScriptsData = {
 		} else if ((move as any).egoSpeboosted) {
 			attackStat === 'spe';
 			atkBoosts = attacker.boosts['spe'];
-		}
+		}*/
 		let defBoosts = defender.boosts[defenseStat];
 
 		let ignoreNegativeOffensive = !!move.ignoreNegativeOffensive;
