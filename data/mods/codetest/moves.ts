@@ -13121,28 +13121,29 @@ export const Moves: {[moveid: string]: MoveData} = {
 		flags: {protect: 1, mirror: 1},
 		onModifyMove(move, pokemon) {
 			const atk = pokemon.getStat('atk', false, true);
+			const def = pokemon.getStat('def', false, true);
 			const spa = pokemon.getStat('spa', false, true);
-			const def = target.getStat('def', false, true);
-			const spd = target.getStat('spd', false, true);
+			const spd = pokemon.getStat('spd', false, true);
+			const spe = pokemon.getStat('spd', false, true);
 			if (atk > def && spa && spd && spe) {
 				attackStat === 'atk';
-				atkBoosts = attacker.boosts['atk'];
+				atkBoosts = pokemon.boosts['atk'];
 			}
 			else if (def > atk && spa && spd && spe) {
 				attackStat === 'def';
-				atkBoosts = attacker.boosts['def'];
+				atkBoosts = pokemon.boosts['def'];
 			}
 			else if (spa > atk && def && spd && spe) {
 				attackStat === 'spa';
-				atkBoosts = attacker.boosts['spa'];
+				atkBoosts = pokemon.boosts['spa'];
 			}
 			else if (spd > atk && def && spa && spe) {
 				attackStat === 'spd';
-				atkBoosts = attacker.boosts['spd'];
+				atkBoosts = pokemon.boosts['spd'];
 			}
 			else if (spe > atk && def && spa && spd) {
 				attackStat === 'spe';
-				atkBoosts = attacker.boosts['spe'];
+				atkBoosts = pokemon.boosts['spe'];
 			}
 		},
 		target: "normal",
