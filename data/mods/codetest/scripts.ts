@@ -116,23 +116,21 @@ export const Scripts: BattleScriptsData = {
 		let defense;
 
 		let atkBoosts = move.useTargetOffensive ? defender.boosts[attackStat] : attacker.boosts[attackStat];
-		if (move.id === 'psychic') {
-			if ((move as any).egoAtkboosted) {
-				attackStat === 'atk';
-				atkBoosts = attacker.boosts['atk'];
-			} else if ((move as any).egoDefboosted) {
-				attackStat === 'def';
-				atkBoosts = attacker.boosts['def'];
-			} else if ((move as any).egoSpAboosted) {
-				attackStat === 'spa';
-				atkBoosts = attacker.boosts['spa'];
-			} else if ((move as any).egoSpDboosted) {
-				attackStat === 'spd';
-				atkBoosts = attacker.boosts['spd'];
-			} else if ((move as any).egoSpeboosted) {
-				attackStat === 'spe';
-				atkBoosts = attacker.boosts['spe'];
-			}
+		if ((move as any).egoAtkboosted) {
+			attackStat === 'atk';
+			atkBoosts = attacker.boosts['atk'];
+		} else if ((move as any).egoDefboosted) {
+			attackStat === 'def';
+			atkBoosts = attacker.boosts['def'];
+		} else if ((move as any).egoSpAboosted) {
+			attackStat === 'spa';
+			atkBoosts = attacker.boosts['spa'];
+		} else if ((move as any).egoSpDboosted) {
+			attackStat === 'spd';
+			atkBoosts = attacker.boosts['spd'];
+		} else if ((move as any).egoSpeboosted) {
+			attackStat === 'spe';
+			atkBoosts = attacker.boosts['spe'];
 		}
 		let defBoosts = defender.boosts[defenseStat];
 
