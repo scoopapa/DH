@@ -5837,21 +5837,19 @@ export const Moves: {[moveid: string]: MoveData} = {
 				}
 			}
 		},
-		onModifyMove(move, pokemon) {
-			move.secondaries = [];
-			for (const ally of pokemon.side.pokemon) {
-				if (!ally || ally.fainted) continue;
-				for (const moveSlot of ally.moveSlots) {
-					const move = this.dex.getMove(moveSlot.move);
-					if (move.id === 'fusionflare') continue;
-					move.secondaries({
-						chance: 100,
-						status: 'brn',
-					});
+		secondary: {
+			chance: 100,
+			onHit(target, pokemon, move) {
+				for (const ally of pokemon.side.pokemon) {
+					if (!ally || ally.fainted) continue;
+					for (const moveSlot of ally.moveSlots) {
+						const move = this.dex.getMove(moveSlot.move);
+						if (move.id === 'fusionflare') continue;
+						target.trySetStatus('brn', source);
+					}
 				}
-			}
+			},
 		},
-		secondary: null,
 		target: "normal",
 		type: "Electric",
 		contestType: "Cool",
@@ -5876,21 +5874,19 @@ export const Moves: {[moveid: string]: MoveData} = {
 				}
 			}
 		},
-		onModifyMove(move, pokemon) {
-			move.secondaries = [];
-			for (const ally of pokemon.side.pokemon) {
-				if (!ally || ally.fainted) continue;
-				for (const moveSlot of ally.moveSlots) {
-					const move = this.dex.getMove(moveSlot.move);
-					if (move.id === 'fusionbolt') continue;
-					move.secondaries({
-						chance: 100,
-						status: 'par',
-					});
+		secondary: {
+			chance: 100,
+			onHit(target, pokemon, move) {
+				for (const ally of pokemon.side.pokemon) {
+					if (!ally || ally.fainted) continue;
+					for (const moveSlot of ally.moveSlots) {
+						const move = this.dex.getMove(moveSlot.move);
+						if (move.id === 'fusionbolt') continue;
+						target.trySetStatus('par', source);
+					}
 				}
-			}
+			},
 		},
-		secondary: null,
 		target: "normal",
 		type: "Fire",
 		contestType: "Beautiful",
