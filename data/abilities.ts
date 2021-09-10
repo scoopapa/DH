@@ -2898,7 +2898,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 	reckless: {
 		onDamagePriority: 23,
 		onDamage(damage, target, source, effect) {
-			const recoilDamage = this.damage(this.actions.calcRecoilDamage(damage, move), source, target, 'recoil');
+			const recoilDamage = (this.damage(this.actions.calcRecoilDamage(damage, move), source, target, 'recoil'));
 			if (target.hp <= recoilDamage) {
 				return target.hp - 1;
 			}
