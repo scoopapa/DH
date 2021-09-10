@@ -186,7 +186,7 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 			let lemegeton = false;
 			for (const pokemon of this.battle.getAllActive()) {
 				// can't use hasAbility because it would lead to infinite recursion
-				if (pokemon.ability === ('lemegeton' as ID) && !pokemon.volatiles['gastroacid'] &&
+				if (pokemon.ability === ('lemegeton') && !pokemon.volatiles['gastroacid'] &&
 					!pokemon.abilityState.ending) {
 					lemegeton = true;
 					break;
@@ -195,7 +195,7 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 
 			return !!(
 				(this.battle.gen >= 5 && !this.isActive) ||
-				((this.volatiles['gastroacid'] || (lemegeton && this.ability !== ('lemegeton' as ID))) &&
+				((this.volatiles['gastroacid'] || (lemegeton && this.ability !== ('lemegeton'))) &&
 				!this.getAbility().isPermanent
 				)
 			);
