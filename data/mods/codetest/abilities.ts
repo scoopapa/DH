@@ -2896,11 +2896,11 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		num: 222,
 	},
 	reckless: {
-		onBasePowerPriority: 23,
-		onBasePower(basePower, attacker, defender, move) {
-			if (move.recoil || move.hasCrashDamage) {
-				this.debug('Reckless boost');
-				return this.chainModify([0x1333, 0x1000]);
+		onDamagePriority: 23,
+		onDamage(damage, target, source, effect) {
+			const recoilDamage = (this.damage(this.actions.calcRecoilDamage(damage, move), source, target, 'recoil'));
+			if (target.hp <= recoilDamage) {
+				return target.hp - 1;
 			}
 		},
 		name: "Reckless",
