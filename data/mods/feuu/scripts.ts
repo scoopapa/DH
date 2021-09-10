@@ -181,25 +181,26 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 		},
 		
 		
-		ignoringAbility() {
-		// Check if any active pokemon have the ability Lemegeton
-			let lemegeton = false;
-			for (const pokemon of this.battle.getAllActive()) {
-				// can't use hasAbility because it would lead to infinite recursion
-				if (pokemon.ability === ('lemegeton') && !pokemon.volatiles['gastroacid'] &&
-					!pokemon.abilityState.ending) {
-					lemegeton = true;
-					break;
-				}
-			}
+        ignoringAbility() {
+            // Check if any active pokemon have the ability Neutralizing Gas
+            let neutralizinggas = false;
+            let lemegeton = false;
+            for (const pokemon of this.battle.getAllActive()) {
+                // can't use hasAbility because it would lead to infinite recursion
+                if (pokemon.ability === ('neutralizinggas' as ID) || (pokemon.ability === ('lemegeton' as ID) && !pokemon.volatiles['gastroacid'] && !pokemon.abilityData.ending)) {
+                    neutralizinggas = true;
+                    lemegeton = true;
+                    break;
+                }
+            }
 
-			return !!(
-				(this.battle.gen >= 5 && !this.isActive) ||
-				((this.volatiles['gastroacid'] || (lemegeton && this.ability !== ('lemegeton'))) &&
-				!this.getAbility().isPermanent
-				)
-			);
-		}
+            return !!(
+                (this.battle.gen >= 5 && !this.isActive) ||
+                ((this.volatiles['gastroacid'] || (neutralizinggas && this.ability !== ('neutralizinggas' as ID)) || (lemegeton && this.ability !== ('lemegeton' as ID)) ) &&
+                !this.getAbility().isPermanent
+                )
+            );
+        }
     },
 	
 	
