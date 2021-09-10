@@ -1395,7 +1395,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		// Ability suppression implemented in sim/pokemon.ts:Pokemon#ignoringAbility
 		onPreStart(pokemon) {
 			this.add('-ability', pokemon, 'Lemegeton');
-			pokemon.abilityState.ending = false;
+			pokemon.abilityState = false;
 			for (const target of this.getAllActive()) {
 				if (target.illusion) {
 					this.singleEvent('End', this.dex.abilities.get('Illusion'), target.abilityState, target, pokemon, 'lemegeton');
@@ -1420,8 +1420,8 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			// (If you're tackling this, do note extreme weathers have the same issue)
 
 			// Mark this pokemon's ability as ending so Pokemon#ignoringAbility skips it
-			if (source.abilityState.ending) return;
-			source.abilityState.ending = true;
+			if (source.abilityState) return;
+			source.abilityState = true;
 			const sortedActive = this.getAllActive();
 			this.speedSort(sortedActive);
 			for (const pokemon of sortedActive) {
