@@ -344,16 +344,16 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 				return this.chainModify(1.5);
 			}
 		},*/
-		onBeforeMove(target, source, move) {
-			if (move.category !== 'Status') {
-				this.boost({atk: 1}, source);
-				this.boost({def: 1}, target);
+		onBeforeMove(attacker, target, source, move) {
+			if (move.category !== 'Status' && attacker === target) {
+				this.boost({atk: 1}, target);
+				this.boost({def: 1}, source);
 			}	
 		},
-		onAfterMoveSecondary(target, source, move) {
-			if (move.category !== 'Status') {
-				this.boost({atk: 1}, source);
-				this.boost({def: 1}, target);
+		onAfterMoveSecondary(attacker, target, source, move) {
+			if (move.category !== 'Status' && attacker === target) {
+				this.boost({atk: -1}, target);
+				this.boost({def: -1}, source);
 			}
 		},
 		name: "Blaze",
