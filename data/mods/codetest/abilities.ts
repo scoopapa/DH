@@ -2137,11 +2137,6 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 	motordrive: {
 		onTryHitPriority: 1,
 		onTryHit(target, source, move) {
-			if (!target.hasType('Electric')) {
-				this.add('-fail', target, 'ability: Motor Drive');
-				this.attrLastMove('[still]');
-				return null;
-			}
 			if (target === source && move.type !== 'Electric') {
 				return;
 			}
@@ -2150,13 +2145,13 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 			target.setType(target.getTypes(true).map(type => type === "Electric" ? "???" : type));
 			this.add('-start', target, 'typechange', target.types.join('/'), '[from] ability: Motor Drive');
 			return null;
-		},
-		onAllyTryHitSide(target, source, move) {
 			if (!target.hasType('Electric')) {
 				this.add('-fail', target, 'ability: Motor Drive');
 				this.attrLastMove('[still]');
 				return null;
 			}
+		},
+		onAllyTryHitSide(target, source, move) {
 			if (target === source && move.type !== 'Electric') {
 				return;
 			}
@@ -2165,6 +2160,11 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 			target.setType(target.getTypes(true).map(type => type === "Electric" ? "???" : type));
 			this.add('-start', target, 'typechange', target.types.join('/'), '[from] ability: Motor Drive');
 			return null;
+			if (!target.hasType('Electric')) {
+				this.add('-fail', target, 'ability: Motor Drive');
+				this.attrLastMove('[still]');
+				return null;
+			}
 		},
 		name: "Motor Drive",
 		rating: 3,
