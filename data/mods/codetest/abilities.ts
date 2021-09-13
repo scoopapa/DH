@@ -2164,6 +2164,12 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 			else if (!target.hasType('Electric')) {
 			}
 		},
+		onHit(target, source, move) {
+			if (target.hasType('???') && move.type === 'Electric') {
+				target.setType(target.getTypes(true).map(type => type === "???" ? "Electric" : type));
+				this.add('-start', target, 'typechange', target.types.join('/'), '[from] ability: Motor Drive');
+			}
+		},
 		name: "Motor Drive",
 		rating: 3,
 		num: 78,
