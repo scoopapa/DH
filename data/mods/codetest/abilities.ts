@@ -344,8 +344,8 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 				return this.chainModify(1.5);
 			}
 		},*/
-		onBeforeMove(attacker, target, source, move) {
-			if (attacker === target) {
+		onPrepareHit(attacker, source, target, move) {
+			if (attacker.hasAbility('Blaze') {
 				if (move.category !== 'Status') {
 					this.boost({atk: 1}, target);
 					this.boost({def: 1}, source);
@@ -353,7 +353,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 			}
 		},
 		onAfterMoveSecondary(attacker, target, source, move) {
-			if (attacker === target) {
+			if (attacker.hasAbility('Blaze') {
 				if (move.category !== 'Status') {
 					this.boost({atk: -1}, target);
 					this.boost({def: -1}, source);
