@@ -2148,7 +2148,6 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 				return null;
 			}
 			else if (!target.hasType('Electric')) {
-				return null;
 			}
 		},
 		onAllyTryHitSide(target, source, move) {
@@ -2163,7 +2162,6 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 				return null;
 			}
 			else if (!target.hasType('Electric')) {
-				return null;
 			}
 		},
 		name: "Motor Drive",
