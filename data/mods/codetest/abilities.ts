@@ -2137,9 +2137,12 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 	motordrive: {
 		onTryHitPriority: 1,
 		onTryHit(target, source, move) {
-			if (target.hasType('Electric')) return;
-			this.add('-fail', pokemon, 'ability: Motor Drive');
-			if (target === source && move.type !== 'Electric' && !target.hasType('Electric')) {
+			if (target.hasType('Electric')) {
+				this.add('-fail', pokemon, 'ability: Motor Drive');
+				this.attrLastMove('[still]');
+				return null;
+			}
+			if (target === source && move.type !== 'Electric') {
 				return;
 			}
 			const newMove = this.dex.getActiveMove(move.id);
@@ -2149,9 +2152,12 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 			return null;
 		},
 		onAllyTryHitSide(target, source, move) {
-			if (target.hasType('Electric')) return;
-			this.add('-fail', pokemon, 'ability: Motor Drive');
-			if (target === source && move.type !== 'Electric' && !target.hasType('Electric')) {
+			if (target.hasType('Electric')) {
+				this.add('-fail', pokemon, 'ability: Motor Drive');
+				this.attrLastMove('[still]');
+				return null;
+			}
+			if (target === source && move.type !== 'Electric') {
 				return;
 			}
 			const newMove = this.dex.getActiveMove(move.id);
