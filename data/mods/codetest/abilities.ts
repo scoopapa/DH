@@ -2135,13 +2135,26 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		num: 141,
 	},
 	motordrive: {
+		onTryHitPriority: 1,
 		onTryHit(target, source, move) {
-			if (target !== source && move.type === 'Electric') {
-				if (!this.boost({spe: 1})) {
-					this.add('-immune', target, '[from] ability: Motor Drive');
-				}
-				return null;
+			if (target === source && move.type !== 'Electric' && !source.hasType('Electric')) {
+				return;
 			}
+			const newMove = this.dex.getActiveMove(move.id);
+			this.useMove(newMove, target, source);
+			pokemon.setType(pokemon.getTypes(true).map(type => type === "Electric" ? "???" : type));
+			this.add('-start', pokemon, 'typechange', pokemon.types.join('/'), '[from] ability: Motor Drive');
+			return null;
+		},
+		onAllyTryHitSide(target, source, move) {
+			if (target === source && move.type !== 'Electric' && !source.hasType('Electric')) {
+				return;
+			}
+			const newMove = this.dex.getActiveMove(move.id);
+			this.useMove(newMove, this.effectData.target, source);
+			pokemon.setType(pokemon.getTypes(true).map(type => type === "Electric" ? "???" : type));
+			this.add('-start', pokemon, 'typechange', pokemon.types.join('/'), '[from] ability: Motor Drive');
+			return null;
 		},
 		name: "Motor Drive",
 		rating: 3,
