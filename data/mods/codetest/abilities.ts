@@ -2137,7 +2137,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 	motordrive: {
 		onTryHitPriority: 1,
 		onTryHit(target, source, move) {
-			if (target === source && move.type !== 'Electric' && !target.hasType('Electric')) {
+			if (target === source && move.type !== 'Electric' && !target.hasType('Electric') && target.hasType('???')) {
 				return;
 			}
 			const newMove = this.dex.getActiveMove(move.id);
