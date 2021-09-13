@@ -2140,11 +2140,13 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 			if (target === source && move.type !== 'Electric') {
 				return;
 			}
-			const newMove = this.dex.getActiveMove(move.id);
-			this.useMove(newMove, target, source);
-			target.setType(target.getTypes(true).map(type => type === "Electric" ? "???" : type));
-			this.add('-start', target, 'typechange', target.types.join('/'), '[from] ability: Motor Drive');
-			return null;
+			if (target.hasType('Electric')) {
+				const newMove = this.dex.getActiveMove(move.id);
+				this.useMove(newMove, target, source);
+				target.setType(target.getTypes(true).map(type => type === "Electric" ? "???" : type));
+				this.add('-start', target, 'typechange', target.types.join('/'), '[from] ability: Motor Drive');
+				return null;
+			}
 			if (!target.hasType('Electric')) {
 				this.add('-fail', target, 'ability: Motor Drive');
 				this.attrLastMove('[still]');
@@ -2155,11 +2157,13 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 			if (target === source && move.type !== 'Electric') {
 				return;
 			}
-			const newMove = this.dex.getActiveMove(move.id);
-			this.useMove(newMove, this.effectData.target, source);
-			target.setType(target.getTypes(true).map(type => type === "Electric" ? "???" : type));
-			this.add('-start', target, 'typechange', target.types.join('/'), '[from] ability: Motor Drive');
-			return null;
+			if (target.hasType('Electric')) {
+				const newMove = this.dex.getActiveMove(move.id);
+				this.useMove(newMove, target, source);
+				target.setType(target.getTypes(true).map(type => type === "Electric" ? "???" : type));
+				this.add('-start', target, 'typechange', target.types.join('/'), '[from] ability: Motor Drive');
+				return null;
+			}
 			if (!target.hasType('Electric')) {
 				this.add('-fail', target, 'ability: Motor Drive');
 				this.attrLastMove('[still]');
