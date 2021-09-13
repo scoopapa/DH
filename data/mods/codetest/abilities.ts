@@ -2148,8 +2148,6 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 				return null;
 			}
 			else if (!target.hasType('Electric')) {
-				const newMove = this.dex.getActiveMove(move.id);
-				!this.useMove(newMove, target, source);
 				this.add('-fail', target, 'ability: Motor Drive');
 				return null;
 			}
@@ -2166,8 +2164,6 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 				return null;
 			}
 			else if (!target.hasType('Electric')) {
-				const newMove = this.dex.getActiveMove(move.id);
-				!this.useMove(newMove, target, source);
 				this.add('-fail', target, 'ability: Motor Drive');
 				return null;
 			}
