@@ -330,7 +330,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		num: 145,
 	},
 	blaze: {
-		onModifyAtkPriority: 5,
+		/*onModifyAtkPriority: 5,
 		onModifyAtk(atk, attacker, defender, move) {
 			if (move.type === 'Fire' && attacker.hp <= attacker.maxhp / 3) {
 				this.debug('Blaze boost');
@@ -342,6 +342,18 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 			if (move.type === 'Fire' && attacker.hp <= attacker.maxhp / 3) {
 				this.debug('Blaze boost');
 				return this.chainModify(1.5);
+			}
+		},*/
+		onBeforeMove(target, source, move) {
+			if (move.category !== 'Status') {
+				this.boost({atk: 1}, source);
+				this.boost({def: 1}, target);
+			}	
+		},
+		onAfterMoveSecondary(target, source, move) {
+			if (move.category !== 'Status') {
+				this.boost({atk: 1}, source);
+				this.boost({def: 1}, target);
 			}
 		},
 		name: "Blaze",
