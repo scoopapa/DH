@@ -2142,8 +2142,8 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 			}
 			const newMove = this.dex.getActiveMove(move.id);
 			this.useMove(newMove, target, source);
-			source.setType(source.getTypes(true).map(type => type === "Electric" ? "???" : type));
-			this.add('-start', source, 'typechange', source.types.join('/'), '[from] ability: Motor Drive');
+			target.setType(target.getTypes(true).map(type => type === "Electric" ? "???" : type));
+			this.add('-start', target, 'typechange', target.types.join('/'), '[from] ability: Motor Drive');
 			return null;
 		},
 		onAllyTryHitSide(target, source, move) {
@@ -2152,8 +2152,8 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 			}
 			const newMove = this.dex.getActiveMove(move.id);
 			this.useMove(newMove, this.effectData.target, source);
-			source.setType(source.getTypes(true).map(type => type === "Electric" ? "???" : type));
-			this.add('-start', source, 'typechange', source.types.join('/'), '[from] ability: Motor Drive');
+			target.setType(target.getTypes(true).map(type => type === "Electric" ? "???" : type));
+			this.add('-start', target, 'typechange', target.types.join('/'), '[from] ability: Motor Drive');
 			return null;
 		},
 		name: "Motor Drive",
