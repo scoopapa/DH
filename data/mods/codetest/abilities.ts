@@ -2138,7 +2138,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		onTryHitPriority: 1,
 		onTryHit(target, source, move) {
 			if (target.hasType('Electric')) {
-				this.add('-fail', pokemon, 'ability: Motor Drive');
+				this.add('-fail', target, 'ability: Motor Drive');
 				this.attrLastMove('[still]');
 				return null;
 			}
@@ -2153,7 +2153,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		},
 		onAllyTryHitSide(target, source, move) {
 			if (target.hasType('Electric')) {
-				this.add('-fail', pokemon, 'ability: Motor Drive');
+				this.add('-fail', target, 'ability: Motor Drive');
 				this.attrLastMove('[still]');
 				return null;
 			}
