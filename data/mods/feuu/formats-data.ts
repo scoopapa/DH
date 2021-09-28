@@ -150,8 +150,8 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		randomDoubleBattleLevel: 100,
 	},
 	tapulopmega: {
-		tier: "FEUUber",
-		doublesTier: "FEUUber",
+		tier: "FEUU",
+		doublesTier: "DUU",
 	},
 	dragontler: {
 		tier: "FEUU",
@@ -420,8 +420,8 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		doublesTier: "DUU",
 	},
 	kyottlerprimal: {
-		tier: "FEUU",
-		doublesTier: "DUU",
+		tier: "FEUUber",
+		doublesTier: "DUUber",
 	},
 	clawliwrath: {
 		tier: "FEUU",
@@ -668,8 +668,68 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		doublesTier: "DUU",
 	},
 	zerclef: {
+		tier: "FEUU",
+		doublesTier: "DUU",
+	},
+	
+// Slate 20
+	golisotops: {
+		tier: "FEUU",
+		doublesTier: "DUU",
+	},
+	porygrigus: {
+		tier: "FEUU",
+		doublesTier: "DUU",
+	},
+	exeggutorprime: {
+		tier: "FEUU",
+		doublesTier: "DUU",
+	},
+	
+// Slate 21
+	avarupt: {
 		tier: "Uncoded",
 		doublesTier: "DUU",
+	},
+	avaruptmega: {
+		tier: "FEUU",
+		doublesTier: "DUU",
+	},
+	goatitar: {
+		tier: "FEUU",
+		doublesTier: "DUU",
+	},
+	goatitarmega: {
+		tier: "FEUU",
+		doublesTier: "DUU",
+	},
+	fraxshadow: {
+		tier: "FEUU",
+		doublesTier: "DUU",
+	},
+	pherogonga: {
+		tier: "Uncoded",
+		doublesTier: "DUU",
+	},
+	crawmise: {
+		tier: "FEUU",
+		doublesTier: "DUU",
+	},
+	wishirupti: {
+		tier: "FEUU",
+		doublesTier: "DUU",
+	},
+	wishiruptischool: {
+		tier: "FEUU",
+		doublesTier: "DUU",
+	},
+	wishiruptimega: {
+		tier: "FEUUber",
+		doublesTier: "DUUber",
+	},
+	wishiruptischoolmega: {
+		tier: "FEUUber",
+		doublesTier: "DUUber",
 	},
 	
 	

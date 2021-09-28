@@ -344,7 +344,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		},
 		onAfterMoveSecondarySelf(source, target, move) {
 			if (source && source !== target && move && move.category !== 'Status') {
-				this.damage(source.baseMaxhp / 10, source, source, this.dex.getItem('lifeorb'));
+				this.damage(source.baseMaxhp / 10, source, source, this.dex.getAbility('lifegem'));
 			}
 		},
 		name: "Life Gem",
@@ -405,5 +405,78 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		shortDesc: "When this Ability is active, Ghost & Dark moves have 1.2x power. Psychic & Fairy have 0.8x power.",
 		rating: 3,
 		num: 1010,
+	},
+	burnheal: {
+		onDamagePriority: 1,
+		onDamage(damage, target, source, effect) {
+			if (effect.id === 'brn') {
+				this.heal(target.baseMaxhp / 8);
+				return false;
+			}
+		},
+		name: "Burn Heal",
+		shortDesc: "This Pokemon is healed by 1/8 of its max HP each turn when burned; no HP loss or damage reduction.",
+		rating: 4,
+		num: 1011,
+	},
+	sharpshooter: {
+		onStart(source) {
+			this.useMove('lockon', source);
+		},
+		name: "Sharpshooter",
+		shortDesc: "On switch-in, this Pokemon activates the Lock-On effect.",
+		rating: 2,
+		num: 1012,
+	},
+	forecast: {
+		onSwitchIn(pokemon) {
+			this.effectData.switchingIn = true;
+		},
+		onStart(pokemon) {
+			if (this.effectData.switchingIn) {
+				if (this.field.isWeather('raindance')) {
+					this.field.clearWeather();
+					this.field.setWeather('raindance');
+				}
+				if (this.field.isWeather('sunnyday')) {
+					this.field.clearWeather();
+					this.field.setWeather('sunnyday');
+				}
+				if (this.field.isWeather('sandstorm')) {
+					this.field.clearWeather();
+					this.field.setWeather('sandstorm');
+				}
+				if (this.field.isWeather('hail')) {
+					this.field.clearWeather();
+					this.field.setWeather('hail');
+				}
+			}
+		},
+		onUpdate(pokemon) {
+			if (pokemon.species.id !== 'catastroform') return;
+			switch (pokemon.effectiveWeather()) {
+			case 'sunnyday':
+			case 'desolateland':
+				if (pokemon.species.id === 'catastroform') pokemon.types[1] = 'Fire';
+				break;
+			case 'raindance':
+			case 'primordialsea':
+				if (pokemon.species.id === 'catastroform') pokemon.types[1] = 'Water';
+				break;
+			case 'hail':
+				if (pokemon.species.id === 'catastroform') pokemon.types[1] = 'Ice';
+				break;
+			case 'sandstorm':
+				if (pokemon.species.id === 'catastroform') pokemon.types[1] = 'Rock';
+				break;
+			default:
+				if (pokemon.species.id === 'catastroform') return;
+				break;
+			}
+		},
+		name: "Forecast",
+		shortDesc: "Upon Entry, resets any regular weather. Gets secondary typing matching weather.",
+		rating: 2,
+		num: 59,
 	},
 };

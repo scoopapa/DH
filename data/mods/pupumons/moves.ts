@@ -906,7 +906,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 	ballroomtwirl: {
 		num: 827,
 		accuracy: 100,
-		basePower: 110,
+		basePower: 95,
 		category: "Special",
 		name: "Ballroom Twirl",
 		shortDesc: "Type varies based on the user's secondary type. Transforms Ooreina between formes.",
@@ -918,13 +918,15 @@ export const Moves: {[moveid: string]: MoveData} = {
 			if (type === "Bird") type = "???";
 			move.type = type;
 		},
-		onTryMove(attacker, defender, move) {
-			if (attacker.species.name === 'Ooreina' && !attacker.transformed) {
+		onAfterMove(pokemon, target, move) {
+			if (pokemon.species.id === 'ooreina') {
 				const forme = 'Ooreina-Flare';
-				attacker.formeChange(forme, move);
-			} else if (attacker.species.name === 'Ooreina-Flare') {
+				pokemon.formeChange(forme);
+				this.hint("Ooreina twirled into Flare Forme!");
+			} else if (pokemon.species.id === 'ooreinaflare') {
 				const forme1 = 'Ooreina';
-				attacker.formeChange(forme1, move);
+				pokemon.formeChange(forme1);
+				this.hint("Ooreina twirled into Romance Forme!");
 			}
 			return;
 		},
@@ -1185,6 +1187,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 0,
 		category: "Status",
 		name: "Bellow",
+		shortDesc: "Raises the user's SpAtk by 3, lowers Def and SpDef by 1.",
 		pp: 20,
 		priority: 0,
 		flags: {snatch: 1},
@@ -1196,7 +1199,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		secondary: null,
 		target: "self",
 		type: "Fighting",
-		zMove: {boost: {atk: 1}},
+		zMove: {effect: 'clearnegativeboost'},
 		contestType: "Cool",
 	},
 	bestow: {
@@ -2952,7 +2955,6 @@ export const Moves: {[moveid: string]: MoveData} = {
 		name: "Cryosleep",
 		desc: "This move charges on the first turn and heals 1/2 of the user's maximum HP, rounded half up, on the second. Raises the user's Defense by 1 stage on the first turn. If the user is holding a Power Herb, the move completes in one turn.",
 		shortDesc: "Raises user's Defense by 1 on turn 1. Heals the user by 50% of its max HP turn 2.",
-
 		prepare: "[POKEMON] is absorbing power!",
 		pp: 10,
 		priority: 0,
@@ -12712,10 +12714,11 @@ export const Moves: {[moveid: string]: MoveData} = {
 	},
 	planetarycrash: {
 		num: 1002,
-		accuracy: 70,
+		accuracy: 80,
 		basePower: 120,
 		category: "Special",
 		name: "Planetary Crash",
+		shortDesc: "User takes 50% of max HP if it misses. Phys if Atk > Sp. Atk",
 		pp: 5,
 		priority: 0,
 		flags: {protect: 1, mirror: 1, contact: 1},
@@ -19886,6 +19889,279 @@ export const Moves: {[moveid: string]: MoveData} = {
 		},
 		target: "normal",
 		type: "Electric",
+		contestType: "Cool",
+	},
+	terrifyingthunderstomp: {
+		num: 1004,
+		accuracy: true,
+		basePower: 210,
+		category: "Physical",
+		name: "Terrifying Thunderstomp",
+		shortDesc: "Ignores abilities.",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		isZ: "doderriumz",
+		ignoreAbility: true,
+		secondary: null,
+		target: "normal",
+		type: "Electric",
+		contestType: "Cool",
+	},
+	legendarylandslide: {
+		num: 1005,
+		accuracy: true,
+		basePower: 185,
+		category: "Physical",
+		name: "Legendary Landslide",
+		shortDesc: "Sets Grassy Terrain.",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		isZ: "kingphaniumz",
+		secondary: null,
+		self: {
+			onHit(source) {
+				this.field.setTerrain('grassyterrain');
+			},
+		},
+		secondary: null,
+		target: "normal",
+		type: "Grass",
+		contestType: "Cool",
+	},
+	meltdownmetamorphosis: {
+		num: 1006,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		name: "Meltdown Metamorphosis",
+		shortDesc: "Toxics and heals completely.",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		status: 'tox',
+		self: {
+			onHit(target, source, move) {
+				for (const pokemon of source.side.active) {
+					this.heal(pokemon.maxhp, pokemon, source, move);
+				}
+			},
+		},
+		isZ: "skuntoniumz",
+		secondary: null,
+		target: "normal",
+		type: "Poison",
+		contestType: "Cool",
+	},
+	searingstomachacid: {
+		num: 1007,
+		accuracy: true,
+		basePower: 170,
+		category: "Physical",
+		name: "Searing Stomach Acid",
+		shortDesc: "Raises Atk by 2 stages and Spe by 1 stage.",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		isZ: "croantagiumz",
+		secondary: {
+			chance: 100,
+			self: {
+				boosts: {
+					atk: 2,
+					spe: 1,
+				},
+			},
+		},
+		target: "normal",
+		type: "Fire",
+		contestType: "Cool",
+	},
+	menacingmindbreak: {
+		num: 1008,
+		accuracy: true,
+		basePower: 150,
+		category: "Special",
+		defensiveCategory: "Physical",
+		name: "Menacing Mindbreak",
+		shortDesc: "Sets a Light Screen.",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		isZ: "strigniumz",
+		self: {
+			sideCondition: 'lightscreen',
+		},
+		secondary: null,
+		target: "normal",
+		type: "Psychic",
+		contestType: "Cool",
+	},
+	satellitesmash: {
+		num: 1009,
+		accuracy: true,
+		basePower: 170,
+		category: "Physical",
+		name: "Satellite Smash",
+		shortDesc: "Ignores Ground immunities; sets gravity.",
+		pp: 1,
+		priority: 0,
+		flags: {contact: 1},
+		isZ: "solrockiumz",
+		self: {
+			pseudoWeather: 'gravity',
+		},
+		onEffectiveness(typeMod, target, type, move) {
+			if (move.type !== 'Ground') return;
+			if (!target) return; // avoid crashing when called from a chat plugin
+			// ignore effectiveness if the target is Flying type and immune to Ground
+			if (!target.runImmunity('Ground')) {
+				if (target.hasType('Flying')) return 0;
+			}
+		},
+		ignoreImmunity: {'Ground': true},
+		secondary: null,
+		target: "normal",
+		type: "Ground",
+		contestType: "Cool",
+	},
+	lunarlaserbeam: {
+		num: 1010,
+		accuracy: true,
+		basePower: 210,
+		category: "Special",
+		name: "Lunar Laserbeam",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		isZ: "lunatoniumz",
+		secondary: null,
+		target: "normal",
+		type: "Psychic",
+		contestType: "Cool",
+	},
+	brainiacbeatdown: {
+		num: 1011,
+		accuracy: true,
+		basePower: 150,
+		category: "Physical",
+		name: "Brainiac Beatdown",
+		shortDesc: "Sets Trick Room.",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		isZ: "hippothagoriumz",
+		self: {
+			pseudoWeather: 'trickroom',
+		},
+		selfSwitch: true,
+		secondary: null,
+		target: "normal",
+		type: "Water",
+		contestType: "Cool",
+	},
+	smolderingstampede: {
+		num: 1012,
+		accuracy: true,
+		basePower: 185,
+		category: "Physical",
+		name: "Smoldering Stampede",
+		shortDesc: "Sets Wildfire.",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		isZ: "stampyriumz",
+		self: {
+			onHit(source) {
+				source.side.foe.addSideCondition('gmaxwildfire');
+			},
+		},
+		condition: {
+			duration: 4,
+			onStart(targetSide) {
+				this.add('-sidestart', targetSide, 'G-Max Wildfire');
+			},
+			onResidualOrder: 5,
+			onResidualSubOrder: 1.1,
+			onResidual(targetSide) {
+				for (const pokemon of targetSide.active) {
+					if (!pokemon.hasType('Fire')) this.damage(pokemon.baseMaxhp / 6, pokemon);
+				}
+			},
+			onEnd(targetSide) {
+				for (const pokemon of targetSide.active) {
+					if (!pokemon.hasType('Fire')) this.damage(pokemon.baseMaxhp / 6, pokemon);
+				}
+				this.add('-sideend', targetSide, 'G-Max Wildfire');
+			},
+		},
+		secondary: null,
+		target: "normal",
+		type: "Fire",
+		contestType: "Cool",
+	},
+	hypnotichysteria: {
+		num: 1013,
+		accuracy: true,
+		basePower: 150,
+		category: "Physical",
+		name: "Hypnotic Hysteria",
+		shortDesc: "Replaces target's item with Sticky Barb.",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		isZ: "grizzealiumz",
+		onTryImmunity(target) {
+			return !target.hasAbility('stickyhold');
+		},
+		onHit(target, source, move) {
+			const hItem = "stickybarb";
+			if (target.takeItem() && hItem) {
+				target.setItem(hItem);
+				this.add('-item', target, hItem.name, '[from] move: Hypnotic Hysteria');
+			}
+			else {
+				return
+			}
+		},
+		secondary: null,
+		target: "normal",
+		type: "Dark",
+		contestType: "Cool",
+	},
+	banefulbladedance: {
+		num: 1014,
+		accuracy: true,
+		basePower: 160,
+		category: "Special",
+		name: "Baneful Blade Dance",
+		shortDesc: "Guarantees critical hits.",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		isZ: "odonagiumz",
+		self: {
+			onHit(source) {
+				for (const pokemon of source.side.active) {
+					pokemon.addVolatile('banefulbladedance');
+				}
+			},
+		},
+		condition: {
+			noCopy: true,
+			onStart(target, source, effect) {
+				if (!['imposter', 'psychup', 'transform'].includes(effect?.id)) {
+					this.add('-start', target, 'move: Baneful Blade Dance');
+				}
+			},
+			onModifyCritRatio(critRatio) {
+				return critRatio + 3;
+			},
+		},
+		secondary: null,
+		target: "normal",
+		type: "Bug",
 		contestType: "Cool",
 	},
 };
