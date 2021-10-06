@@ -697,22 +697,15 @@ export const Moves: {[moveid: string]: MoveData} = {
 	},
 	aurasphere: {
 		num: 396,
-		accuracy: 95,
-		basePower: 75,
+		accuracy: true,
+		basePower: 80,
 		category: "Special",
 		name: "Aura Sphere",
-		pp: 10,
+		pp: 20,
 		priority: 0,
-		flags: {protect: 1, mirror: 1},
-		onBasePower(basePower, pokemon, target, typeMod) {
-			const move = pokemon.moveLastTurnResult;
-			if (pokemon.getMoveData(move).typeMod < 0) {
-				this.debug('double power');
-				return this.chainModify(2);
-			}
-		},
+		flags: {bullet: 1, protect: 1, pulse: 1, mirror: 1, distance: 1},
 		secondary: null,
-		target: "normal",
+		target: "any",
 		type: "Fighting",
 		contestType: "Beautiful",
 	},
@@ -5820,36 +5813,19 @@ export const Moves: {[moveid: string]: MoveData} = {
 	fusionbolt: {
 		num: 559,
 		accuracy: 100,
-		basePower: 85,
+		basePower: 100,
 		category: "Physical",
 		name: "Fusion Bolt",
-		pp: 10,
+		pp: 5,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
-		onBasePower(basePower, pokemon, move) {
-			for (const ally of pokemon.side.pokemon) {
-				if (!ally || ally.fainted) continue;
-				for (const moveSlot of ally.moveSlots) {
-					const move = this.dex.getMove(moveSlot.move);
-					if (move.id === 'fusionflare') continue;
-					this.debug('double power');
-					return this.chainModify(1.3);
-				}
+		onBasePower(basePower, pokemon) {
+			if (this.lastSuccessfulMoveThisTurn === 'fusionflare') {
+				this.debug('double power');
+				return this.chainModify(2);
 			}
 		},
-		secondary: {
-			chance: 20,
-			onHit(target, pokemon, move) {
-				for (const ally of pokemon.side.pokemon) {
-					if (!ally || ally.fainted) continue;
-					for (const moveSlot of ally.moveSlots) {
-						const move = this.dex.getMove(moveSlot.move);
-						if (move.id === 'fusionflare') continue;
-						target.trySetStatus('brn');
-					}
-				}
-			},
-		},
+		secondary: null,
 		target: "normal",
 		type: "Electric",
 		contestType: "Cool",
@@ -5857,36 +5833,19 @@ export const Moves: {[moveid: string]: MoveData} = {
 	fusionflare: {
 		num: 558,
 		accuracy: 100,
-		basePower: 85,
+		basePower: 100,
 		category: "Special",
 		name: "Fusion Flare",
-		pp: 10,
+		pp: 5,
 		priority: 0,
 		flags: {protect: 1, mirror: 1, defrost: 1},
-		onBasePower(basePower, pokemon, move) {
-			for (const ally of pokemon.side.pokemon) {
-				if (!ally || ally.fainted) continue;
-				for (const moveSlot of ally.moveSlots) {
-					const move = this.dex.getMove(moveSlot.move);
-					if (move.id === 'fusionbolt') continue;
-					this.debug('double power');
-					return this.chainModify(1.3);
-				}
+		onBasePower(basePower, pokemon) {
+			if (this.lastSuccessfulMoveThisTurn === 'fusionbolt') {
+				this.debug('double power');
+				return this.chainModify(2);
 			}
 		},
-		secondary: {
-			chance: 20,
-			onHit(target, pokemon, move) {
-				for (const ally of pokemon.side.pokemon) {
-					if (!ally || ally.fainted) continue;
-					for (const moveSlot of ally.moveSlots) {
-						const move = this.dex.getMove(moveSlot.move);
-						if (move.id === 'fusionbolt') continue;
-						target.trySetStatus('par');
-					}
-				}
-			},
-		},
+		secondary: null,
 		target: "normal",
 		type: "Fire",
 		contestType: "Beautiful",
@@ -13148,39 +13107,16 @@ export const Moves: {[moveid: string]: MoveData} = {
 		num: 94,
 		accuracy: 100,
 		basePower: 90,
-		category: "Physical",
+		category: "Special",
 		name: "Psychic",
 		pp: 10,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
-		onModifyMove(move, pokemon, target, category) {
-			let attackStat: StatNameExceptHP = category === 'Physical' ? 'atk' : 'spa';
-			let atkBoosts = move.useTargetOffensive ? target.boosts[attackStat] : pokemon.boosts[attackStat];
-			const atk = pokemon.getStat('atk', false, true);
-			const def = pokemon.getStat('def', false, true);
-			const spa = pokemon.getStat('spa', false, true);
-			const spd = pokemon.getStat('spd', false, true);
-			const spe = pokemon.getStat('spd', false, true);
-			if (atk > def && spa && spd && spe) {
-				attackStat === 'atk';
-				atkBoosts = pokemon.boosts['atk'];
-			}
-			else if (def > atk && spa && spd && spe) {
-				attackStat === 'def';
-				atkBoosts = pokemon.boosts['def'];
-			}
-			else if (spa > atk && def && spd && spe) {
-				attackStat === 'spa';
-				atkBoosts = pokemon.boosts['spa'];
-			}
-			else if (spd > atk && def && spa && spe) {
-				attackStat === 'spd';
-				atkBoosts = pokemon.boosts['spd'];
-			}
-			else if (spe > atk && def && spa && spd) {
-				attackStat === 'spe';
-				atkBoosts = pokemon.boosts['spe'];
-			}
+		secondary: {
+			chance: 10,
+			boosts: {
+				spd: -1,
+			},
 		},
 		target: "normal",
 		type: "Psychic",
@@ -18692,47 +18628,16 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Dragon",
 		contestType: "Cool",
 	},
-	hivemind: {
-		num: 369,
-		accuracy: 100,
-		basePower: 0,
-		category: "Special",
-		shortDesc: "User switches out. Replacement uses a 70 power move.",
-		name: "Hive Mind",
-		pp: 15,
-		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1},
-		slotCondition: 'hivemind',
-		condition: { 
-			onSwap(target) {
-				if (!target.fainted) {
-					this.useMove('hivemindattack', target);
-				}
-			},
-		},
-		onPrepareHit: function(target, source, move) {
-			this.attrLastMove('[still]');
-			this.add('-anim', source, "Defend Order", target);
-		},
-		selfSwitch: true,
-		secondary: null,
-		target: "self",
-		type: "Bug",
-		contestType: "Cute",
-	},
-	hivemind: {
+	uturn: {
 		num: 369,
 		accuracy: 100,
 		basePower: 70,
-		category: "Special",
-		name: "Hive Mind",
-		pp: 15,
+		category: "Physical",
+		name: "U-turn",
+		pp: 20,
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1},
-		onPrepareHit: function(target, source, move) {
-			this.attrLastMove('[still]');
-			this.add('-anim', source, "Attack Order", target);
-		},
+		selfSwitch: true,
 		secondary: null,
 		target: "normal",
 		type: "Bug",

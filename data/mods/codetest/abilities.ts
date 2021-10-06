@@ -330,7 +330,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		num: 145,
 	},
 	blaze: {
-		/*onModifyAtkPriority: 5,
+		onModifyAtkPriority: 5,
 		onModifyAtk(atk, attacker, defender, move) {
 			if (move.type === 'Fire' && attacker.hp <= attacker.maxhp / 3) {
 				this.debug('Blaze boost');
@@ -342,22 +342,6 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 			if (move.type === 'Fire' && attacker.hp <= attacker.maxhp / 3) {
 				this.debug('Blaze boost');
 				return this.chainModify(1.5);
-			}
-		},*/
-		onPrepareHit(attacker, source, target, move) {
-			if (attacker.hasAbility('Blaze') {
-				if (move.category !== 'Status') {
-					this.boost({atk: 1}, target);
-					this.boost({def: 1}, source);
-				}
-			}
-		},
-		onAfterMoveSecondary(attacker, target, source, move) {
-			if (attacker.hasAbility('Blaze') {
-				if (move.category !== 'Status') {
-					this.boost({atk: -1}, target);
-					this.boost({def: -1}, source);
-				}
 			}
 		},
 		name: "Blaze",
@@ -2939,11 +2923,11 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		num: 222,
 	},
 	reckless: {
-		onDamagePriority: 23,
-		onDamage(damage, target, source, effect) {
-			const recoilDamage = (this.damage(this.actions.calcRecoilDamage(damage, move), source, target, 'recoil'));
-			if (target.hp <= recoilDamage) {
-				return target.hp - 1;
+		onBasePowerPriority: 23,
+		onBasePower(basePower, attacker, defender, move) {
+			if (move.recoil || move.hasCrashDamage) {
+				this.debug('Reckless boost');
+				return this.chainModify([0x1333, 0x1000]);
 			}
 		},
 		name: "Reckless",
