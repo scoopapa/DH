@@ -2886,7 +2886,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 	},	
 */
 	electrolytes: {
-		onSetStatus(status, length, target, source, effect) {
+		/*onSetStatus(status, target, source, effect) { 
 			let statName = 'atk';
 			let bestStat = 0;
 			let s: StatNameExceptHP;
@@ -2896,13 +2896,31 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 					bestStat = source.storedStats[s];
 				}
 			}
-			this.boost({[statName]: length}, source);
+			if (status.id === ['slp', 'brn', 'tox', 'psn', 'frz', 'par']) {
+				this.boost({[statName]: 1}, this.effectData.source);
+			}
 		},
 		onEnd(pokemon) {
 			if (pokemon.status) {
 				this.debug('electrolytes');
 				this.add('-activate', pokemon, 'ability: Electrolytes');
 				pokemon.cureStatus();
+			}
+		},*/
+		onUpdate(pokemon) {
+			if (pokemon.status && !pokemon.m.orbItemStatus) {
+				this.add('-activate', pokemon, 'Electrolytes');
+				pokemon.cureStatus();
+				let statName = 'atk';
+				let bestStat = 0;
+				let s: StatNameExceptHP;
+				for (s in source.storedStats) {
+					if (source.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = source.storedStats[s];
+					}
+				}
+				this.boost({[statName]: length}, source);
 			}
 		},
 		name: "Electrolytes",
