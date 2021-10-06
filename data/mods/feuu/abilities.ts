@@ -2909,8 +2909,6 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		},*/
 		onUpdate(length, target, source, effect) {
 			if (source.status && !source.m.orbItemStatus) {
-				if (status.id !== ['slp', 'brn', 'tox', 'psn', 'frz', 'par']) return;
-				this.add('-activate', source, 'Electrolytes');
 				let statName = 'atk';
 				let bestStat = 0;
 				let s: StatNameExceptHP;
@@ -2921,6 +2919,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 					}
 				}
 				this.boost({[statName]: length}, source);
+				this.add('-activate', source, 'Electrolytes');
 			}
 		},
 		onResidualOrder: 5,
