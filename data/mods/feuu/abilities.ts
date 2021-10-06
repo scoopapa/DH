@@ -2907,14 +2907,14 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 				pokemon.cureStatus();
 			}
 		},*/
-		onUpdate(source, length, target, effect) {
+		onUpdate(length, target, source, effect) {
 			if (source.status && !source.m.orbItemStatus) {
 				this.add('-activate', source, 'Electrolytes');
 				let statName = 'atk';
 				let bestStat = 0;
 				let s: StatNameExceptHP;
 				for (s in source.storedStats) {
-					if (pokemon.storedStats[s] > bestStat) {
+					if (source.storedStats[s] > bestStat) {
 						statName = s;
 						bestStat = source.storedStats[s];
 					}
