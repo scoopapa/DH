@@ -2907,19 +2907,19 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 				pokemon.cureStatus();
 			}
 		},*/
-		onUpdate(pokemon, source) {
+		onUpdate(pokemon, length, target, effect) {
 			if (pokemon.status && !pokemon.m.orbItemStatus) {
 				this.add('-activate', pokemon, 'Electrolytes');
 				let statName = 'atk';
 				let bestStat = 0;
 				let s: StatNameExceptHP;
-				for (s in source.storedStats) {
-					if (source.storedStats[s] > bestStat) {
+				for (s in pokemon.storedStats) {
+					if (pokemon.storedStats[s] > bestStat) {
 						statName = s;
-						bestStat = source.storedStats[s];
+						bestStat = pokemon.storedStats[s];
 					}
 				}
-				this.boost({[statName]: length}, source);
+				this.boost({[statName]: length}, pokemon);
 			}
 		},
 		onResidualOrder: 5,
