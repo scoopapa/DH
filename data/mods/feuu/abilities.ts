@@ -2886,23 +2886,19 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 	},	
 */
 	electrolytes: {
-		onSetStatus(status, target, source, effect) { 
-				let statName = 'atk';
-				let bestStat = 0;
-				let s: StatNameExceptHP;
-				for (s in source.storedStats) {
-					if (source.storedStats[s] > bestStat) {
-						statName = s;
-						bestStat = source.storedStats[s];
-					}
+		onSetStatus(status, target, source, effect) {
+			let statName = 'atk';
+			let bestStat = 0;
+			let s: StatNameExceptHP;
+			for (s in source.storedStats) {
+				if (source.storedStats[s] > bestStat) {
+					statName = s;
+					bestStat = source.storedStats[s];
+				}
 			}
-			if (status.id === ['slp', 'brn', 'tox', 'psn', 'frz', 'par']) {
-				this.boost({[statName]: 1}, this.effectData.source);
-			}
+			this.boost({[statName]: length}, source);
 		},
-		onResidualOrder: 5,
-		onResidualSubOrder: 4,
-		onResidual(pokemon) {
+		onEnd(pokemon) {
 			if (pokemon.status) {
 				this.debug('electrolytes');
 				this.add('-activate', pokemon, 'ability: Electrolytes');
