@@ -2886,7 +2886,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 	},	
 */
 	electrolytes: {
-		onSetStatus(status, target, source, effect) {
+		onSetStatus(status, length, target, source, effect) {
 			let statName = 'atk';
 			let bestStat = 0;
 			let s: StatNameExceptHP;
