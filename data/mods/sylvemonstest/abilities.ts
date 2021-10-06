@@ -1126,6 +1126,6 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		},
 		id: "insider",
 		name: "Insider",
-		rating: 3,
+		rating: 4,
 	},
 };
