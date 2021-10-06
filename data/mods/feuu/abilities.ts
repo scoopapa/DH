@@ -2907,7 +2907,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 				pokemon.cureStatus();
 			}
 		},*/
-		onSetStatus(length, target, source, effect) {
+		onBoost(length, target, source, effect) {
 			if (source.status && !source.m.orbItemStatus) {
 				let statName = 'atk';
 				let bestStat = 0;
