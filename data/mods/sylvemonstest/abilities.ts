@@ -1101,4 +1101,35 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		rating: 5,
 		num: 23,
 	},
+	insider: {
+		desc: "",
+		shortDesc: "Changes Deoxys' form and sets up a Room in base of the Stone it is holding.",
+		onStart(pokemon) {
+			if (pokemon.baseSpecies.baseSpecies === 'Deoxys' || !pokemon.transformed) {
+				if (pokemon.hasItem('moonstone')) {
+					pokemon.formeChange('Deoxys');
+					this.field.addPseudoWeather('inverseroom');
+					this.add('-formechange', pokemon, 'Deoxys', '[from] ability: Insider');
+				}
+				else if (pokemon.hasItem('shinystone')) {
+					pokemon.formeChange('Deoxys-Attack');
+					this.field.addPseudoWeather('wonderroom');
+					this.add('-formechange', pokemon, 'Deoxys-Attack', '[from] ability: Insider');
+				}
+				else if (pokemon.hasItem('dawnstone')) {
+					pokemon.formeChange('Deoxys-Defense');
+					this.field.addPseudoWeather('trickroom');
+					this.add('-formechange', pokemon, 'Deoxys-Defense', '[from] ability: Insider');
+				}
+				else if (pokemon.hasItem('duskstone')) {
+					pokemon.formeChange('Deoxys-Speed');
+					this.field.addPseudoWeather('magicroom');
+					this.add('-formechange', pokemon, 'Deoxys-Speed', '[from] ability: Insider');
+				}
+			} 
+		},
+		id: "insider",
+		name: "Insider",
+		rating: 3,
+	},
 };
