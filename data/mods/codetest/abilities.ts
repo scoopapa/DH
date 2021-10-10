@@ -68,11 +68,15 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 	},
 	aftermath: {
 		name: "Aftermath",
-		onDamagingHitOrder: 1,
-		onDamagingHit(damage, target, source, move) {
-			if (move.flags['contact'] && !target.hp) {
-				this.damage(source.baseMaxhp / 4, source, target);
-			}
+		onFaint(pokemon) {
+			pokemon.selfsacrifise = true;
+		},
+		onSwap(pokemon, target) { 
+			if (pokemon.selfsacrifise = true) {
+				if (!target.fainted) {
+					this.heal(pokemon.baseMaxhp / 4);
+				}
+			},
 		},
 		rating: 2.5,
 		num: 106,
