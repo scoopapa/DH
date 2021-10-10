@@ -69,7 +69,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 	aftermath: {
 		name: "Aftermath",
 		onFaint(pokemon) {
-			this.field.pseudoWeather('selfsacrifise');
+			this.field.addPseudoWeather('selfsacrifise');
 		},
 		condition: {
 			duration: 1,
