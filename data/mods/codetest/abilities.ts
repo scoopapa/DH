@@ -68,16 +68,18 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 	},
 	aftermath: {
 		name: "Aftermath",
+		onFaint(pokemon) {
+			this.field.pseudoWeather('selfsacrifise');
+		},
 		condition: {
-			onFaint(pokemon) {
-				this.selfsacrifise = true;
+			duration: 1,
+				onSwitchIn(pokemon) {
+				this.effectData.switchingIn = true;
 			},
-			onSwap(target) { 
-				if (this.selfsacrifise) {
-					if (!target.fainted) {
-						this.heal(target.baseMaxhp / 4);
-					}
-				}
+			onStart(pokemon) {
+				if (!this.effectData.switchingIn) return;
+				this.heal(pokemon.baseMaxhp / 4);
+				this.effectData.switchingIn = false;
 			},
 		},
 		rating: 2.5,
