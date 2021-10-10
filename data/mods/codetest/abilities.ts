@@ -69,7 +69,10 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 	aftermath: {
 		name: "Aftermath",
 		onFaint(pokemon) {
-			side.addSideCondition('aftermath', pokemon);
+			for (const side of this.sides) {
+				if (side === pokemon.side) continue;
+				side.addSideCondition('aftermath', pokemon);
+			}
 		},
 		condition: {
 			duration: 1,
