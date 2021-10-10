@@ -68,13 +68,15 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 	},
 	aftermath: {
 		name: "Aftermath",
-		onFaint(pokemon) {
-			pokemon.selfsacrifise = true;
-		},
-		onSwap(pokemon, target) { 
-			if (pokemon.selfsacrifise = true) {
-				if (!target.fainted) {
-					this.heal(pokemon.baseMaxhp / 4);
+		condition: {
+			onFaint(pokemon) {
+				this.selfsacrifise = true;
+			},
+			onSwap(target) { 
+				if (this.selfsacrifise) {
+					if (!target.fainted) {
+						this.heal(target.baseMaxhp / 4);
+					}
 				}
 			},
 		},
