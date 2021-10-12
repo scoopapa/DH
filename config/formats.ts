@@ -1921,7 +1921,7 @@ export const Formats: FormatList = [
 			'Eelektrossite', 'Dragalgite', 'Dhelmite', 'Typhlosionite', 'Registeel ++ Reginite', 'Magcargonite', 'Bastiodite', 'Leavannite', 'Parasite', 'Samurite',
 			'Meowstic-F ++ Meowsticite', 'Starminite', 'Flygonite', 'Drapionite', 'Lurantisite', 'Exploudite', 'Noivernite', 'Toxtricity-Low-Key ++ Toxtricitite',
 			'Hawluchanite', 'Araquanite', 'Zoroarkite', 'Wishiwashinite', 'Falinksite', 'Krookodilite', 'Infernite', 'Empoleonite', 'Mudsdalite', 'Golurkite', 'RKS Megamemory',
-			'Porygonite-Z', 'Sirfetch\u2019dite', 'Deciduite', 'Incinerite', 'Primarinite',
+			'Porygonite-Z', 'Sirfetch\u2019dite', 'Deciduite', 'Incinerite', 'Primarinite', 'Jynxite', 'Electivirite', 'Magmortarite', 'Granbite', 'Mightyenite', 'Stoutlandite',
 			// Abilities
 			'Drizzle', 'Drought',
 		],
@@ -2285,7 +2285,7 @@ export const Formats: FormatList = [
 			'Blastoisinite', 'Damp Rock', 'Gengarite', 'Kangaskhanite', 'Lucarionite', 'Mawilite', 'Medichamite', 'Metagrossite', 'Salamencite', 'Smooth Rock', 'Terrain Extender',
 			'Bright Powder', 'Lax Incense', 'King\'s Rock', 'Quick Claw', 'Razor Fang',
 			//Banned MfA Stones
-			'Butterfrite', 'Dragalgite',
+			'Butterfrite', 'Dragalgite', 'Cinderite',
 		],
 		mod: 'm4av6',
 	},
