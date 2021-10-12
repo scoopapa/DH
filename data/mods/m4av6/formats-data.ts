@@ -1478,11 +1478,12 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "(PU)",
 		doublesTier: "(DUU)",
 	},
-	/*
 	granbullmega: {
-		
-	},	
-	*/
+		randomBattleMoves: ["thunderwave", "playrough", "crunch", "earthquake", "milkdrink", "healbell"],
+		randomDoubleBattleMoves: ["thunderwave", "playrough", "stompingtantrum", "snarl", "protect"],
+		tier: "OU",
+		doublesTier: "(DUU)",
+	},
 	qwilfish: {
 		randomBattleMoves: ["toxicspikes", "liquidation", "spikes", "painsplit", "thunderwave", "taunt", "destinybond"],
 		randomDoubleBattleMoves: ["poisonjab", "liquidation", "swordsdance", "protect", "thunderwave", "taunt", "destinybond"],
@@ -1797,11 +1798,12 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "(PU)",
 		doublesTier: "(DUU)",
 	},
-	/*
 	mightyenamega: {
-		
-	},	
-	*/
+		randomBattleMoves: ["crunch", "suckerpunch", "playrough", "firefang", "irontail"],
+		randomDoubleBattleMoves: ["suckerpunch", "crunch", "playrough", "firefang", "taunt", "protect"],
+		tier: "OU",
+		doublesTier: "(DUU)",
+	},
 	linoone: {
 		randomBattleMoves: ["bellydrum", "extremespeed", "stompingtantrum", "shadowclaw"],
 		randomDoubleBattleMoves: ["bellydrum", "extremespeed", "stompingtantrum", "protect", "shadowclaw"],
@@ -3380,11 +3382,12 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "PU",
 		doublesTier: "(DUU)",
 	},
-	/*
 	stoutlandmega: {
-		
-	},	
-	*/
+		randomBattleMoves: ["return", "bodyslam", "ironhead", "wish", "uturn", "earthquake"],
+		randomDoubleBattleMoves: ["return", "wildcharge", "superpower", "crunch", "protect"],
+		tier: "OU",
+		doublesTier: "(DUU)",
+	},
 	liepard: {
 		randomBattleMoves: ["knockoff", "playrough", "uturn", "copycat", "encore", "thunderwave", "nastyplot", "darkpulse", "substitute"],
 		randomDoubleBattleMoves: ["encore", "thunderwave", "knockoff", "playrough", "uturn", "suckerpunch", "fakeout", "protect"],
