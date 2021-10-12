@@ -96,6 +96,9 @@ export const Scripts: ModdedBattleScriptsData = {
 		newMoves("jynx", ["barrier", "bodypress"]);
 		newMoves("electivire", ["bulkup", "drainpunch"]);
 		newMoves("magmortar", ["recover", "scald"]);
+		newMoves("granbull", ["knockoff", "milkdrink"]);
+		newMoves("mightyena", ["moonlight", "pursuit", "stompingtantrum"]);
+		newMoves("stoutland", ["bodyslam", "earthquake", "uturn", "wish"]);
 	},
 	canMegaEvo(pokemon) {
 		const altForme = pokemon.baseSpecies.otherFormes && this.dex.getSpecies(pokemon.baseSpecies.otherFormes[0]);
