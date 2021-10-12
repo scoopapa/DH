@@ -2671,13 +2671,13 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	},
 	comedian: {
 		desc: "This Pokémon is immune to Fairy-type moves. When hit by a Fairy-type move, it raises its Attack and its adjacent allies' Attack by 1 stage each.",
-		shortDesc: "Fairy immunity; Attack and allies' Attack are both raised 1 stage if hit by one.",
+		shortDesc: "Fairy immunity; user's Attack and allies' Attack are both raised 1 stage if user is hit by a Fairy move.",
 		onTryHitPriority: 1,
 		onTryHit(target, source, move) {
 			if (target !== source && move.type === 'Fairy') {
 				let activated = false;
 				for (const ally of target.side.active) {
-					if (!ally || !this.isAdjacent(ally, target)) continue;
+					if (!ally || (!this.isAdjacent(ally, target) && ally !== target)) continue;
 					if (!activated) {
 						this.add('-ability', target, 'Comedian', 'boost');
 						this.add('-message', `${target.name} is howling with laughter!`);
@@ -2697,7 +2697,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			if (move.type === 'Fairy') {
 				let activated = false;
 				for (const ally of target.side.active) {
-					if (!ally || !this.isAdjacent(ally, target)) continue;
+					if (!ally || (!this.isAdjacent(ally, target) && ally !== target)) continue;
 					if (!activated) {
 						this.add('-ability', target, 'Comedian', 'boost');
 						this.add('-message', `${target.name} is howling with laughter!`);
