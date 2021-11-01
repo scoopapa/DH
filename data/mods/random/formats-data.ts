@@ -1698,7 +1698,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	artificialpheasant: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	innocentboar: {
 		tier: "Rand",
