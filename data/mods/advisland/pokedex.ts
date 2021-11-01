@@ -4534,7 +4534,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		heightm: 1.5,
 		weightkg: 46.8,
 		color: "Pink",
-		prevo: "Chansey",
+		prevo: "Chansey-Oneira",
 		evoType: "levelFriendship",
 		eggGroups: ["Fairy"],
 	},
