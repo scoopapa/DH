@@ -16944,7 +16944,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		eggGroups: ["Undiscovered"],
 		gen: 5,
 	},
-	favourableswan: {
+	favourableswanrandom: {
 		num: -1000,
 		name: "Favourable Swan-Random",
 		types: ["Dragon", "Normal"],
