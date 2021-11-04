@@ -3837,11 +3837,11 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 			if (source.status && !source.m.orbItemStatus) {
 				if (!source.status) return false;
 				target.status = source.status;
-				vengefulshift.activated = true
+				pokemon.vengefulshift = true;
 			}
 		},
 		onResidual(pokemon) {
-			if (vengefulshift.activated) {
+			if (pokemon.vengefulshift) {
 				pokemon.cureStatus();
 			}
 		},
