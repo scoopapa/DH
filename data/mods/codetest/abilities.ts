@@ -3834,12 +3834,12 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 	},
 	synchronize: {
 		onUpdate(source, target, status, effect) {
-			const id = source.status.id;
+			//const id = source.status.id;
 			if (source.status) {
 				if (status.id === 'slp' || status.id === 'frz') return;
 				this.add('-activate', source, 'ability: Synchronize');
-				source.trySetStatus(id, target);
-				//target.status = source.status;
+				//source.trySetStatus(id, target);
+				target.status = source.status;
 				source.cureStatus();
 			}
 		},
