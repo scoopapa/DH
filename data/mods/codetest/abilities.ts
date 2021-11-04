@@ -3821,14 +3821,13 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		num: 180,
 	},
 	synchronize: {
-		onAfterSetStatus(status, target, source, effect) {
-			if (!source || source === target) return;
-			if (effect && effect.id === 'toxicspikes') return;
-			if (status.id === 'slp' || status.id === 'frz') return;
-			this.add('-activate', target, 'ability: Synchronize');
-			// Hack to make status-prevention abilities think Synchronize is a status move
-			// and show messages when activating against it.
-			source.trySetStatus(status, target, {status: status.id, id: 'synchronize'} as Effect);
+		onEnd(status, target, source, effect) {
+			if (pokemon.hp && pokemon.status) {
+                if (!pokemon.statusData.source || !pokemon.statusData.source.side || pokemon.statusData.source.side === pokemon.side) return;
+				if (!source.status) return false;
+				move.status = source.status;
+				source.cureStatus();
+			},
 		},
 		name: "Synchronize",
 		rating: 2,
