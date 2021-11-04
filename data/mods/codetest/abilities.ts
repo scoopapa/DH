@@ -3833,7 +3833,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		num: 180,
 	},
 	synchronize: {
-		onUpdate(source, target, status) {
+		onUpdate(status, target, source, effect) {
 			if (source.status) {
 				if (!source || source === target) return;
 				if (effect && effect.id === 'toxicspikes') return;
