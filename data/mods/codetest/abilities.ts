@@ -3834,15 +3834,10 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 	},
 	synchronize: {
 		onEnd(status, target, source, effect) {
-			if (source.status && !source.m.orbItemStatus) {
-				if (!source.status) return false;
-				target.status = source.status;
-				pokemon.vengefulshift = true;
-			}
-		},
-		onResidual(pokemon) {
-			if (pokemon.vengefulshift) {
-				pokemon.cureStatus();
+			if (source.status) {
+				this.add('-activate', source, 'ability: Synchronize');
+				source.trySetStatus(target);
+				source.cureStatus();
 			}
 		},
 		name: "Synchronize",
