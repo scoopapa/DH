@@ -3839,7 +3839,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 				if (!source.status) return false;
 				move.status = source.status;
 				source.cureStatus();
-			},
+			}
 		},
 		name: "Synchronize",
 		rating: 2,
