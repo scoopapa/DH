@@ -162,7 +162,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 			if (!this.isAdjacent(pokemon, this.effectData.target)) return;
 			if (pokemon.isGrounded() || !pokemon.hasAbility('feelnopain') || !pokemon.hasAbility('magneticwaves') || 
 			!pokemon.hasAbility('stickyfloat') || !pokemon.hasAbility('etativel') || !pokemon.hasAbility('lighthearted') 
-			|| !pokemon.hasAbility('leviflame') || !pokemon.hasAbility('levitability')) {
+			|| !pokemon.hasAbility('leviflame') || !pokemon.hasAbility('levitability') || !pokemon.hasAbility('feelsomepain')) {
 				pokemon.tryTrap(true);
 			}
 		},
@@ -171,7 +171,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 			if (!source || !this.isAdjacent(pokemon, source)) return;
 			if (pokemon.isGrounded(!pokemon.knownType) || !pokemon.hasAbility('feelnopain') || !pokemon.hasAbility('magneticwaves') || 
 			!pokemon.hasAbility('stickyfloat') || !pokemon.hasAbility('etativel') || !pokemon.hasAbility('lighthearted') 
-			|| !pokemon.hasAbility('leviflame') || !pokemon.hasAbility('levitability')) { // Negate immunity if the type is unknown
+			|| !pokemon.hasAbility('leviflame') || !pokemon.hasAbility('levitability') || !pokemon.hasAbility('feelsomepain')) { // Negate immunity if the type is unknown
 				pokemon.maybeTrapped = true;
 			}
 		},
@@ -179,7 +179,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		onSourceModifyAccuracy(accuracy, target, source, move) {
 			if (!target.isGrounded() || target.hasAbility('feelnopain') || target.hasAbility('magneticwaves') || 
 			target.hasAbility('stickyfloat') || target.hasAbility('etativel') || target.hasAbility('lighthearted') || 
-			target.hasAbility('leviflame') || target.hasAbility('levitability')) {
+			target.hasAbility('leviflame') || target.hasAbility('levitability') || !pokemon.hasAbility('feelsomepain')) {
 				return accuracy * 0.8;
 			}
 		},
@@ -3834,8 +3834,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 	},
 	synchronize: {
 		onEnd(status, target, source, effect) {
-			if (pokemon.hp && pokemon.status) {
-                if (!pokemon.statusData.source || !pokemon.statusData.source.side || pokemon.statusData.source.side === pokemon.side) return;
+			if (source.status && !source.m.orbItemStatus) {
 				if (!source.status) return false;
 				move.status = source.status;
 				source.cureStatus();
