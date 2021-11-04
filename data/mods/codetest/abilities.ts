@@ -3833,7 +3833,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		num: 180,
 	},
 	synchronize: {
-		onEnd(status, target, source, effect) {
+		onUpdate(source, target) {
 			if (source.status) {
 				this.add('-activate', source, 'ability: Synchronize');
 				source.trySetStatus(target);
