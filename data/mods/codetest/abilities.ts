@@ -3833,13 +3833,13 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		num: 180,
 	},
 	synchronize: {
-		onUpdate(source, target, status, effect) {
+		onUpdate(source, target, status, move) {
 			//const id = source.status.id;
 			if (source.status) {
 				if (status.id === 'slp' || status.id === 'frz') return;
 				this.add('-activate', source, 'ability: Synchronize');
 				//source.trySetStatus(id, target);
-				target.status = source.status;
+				move.status = source.status;
 				source.cureStatus();
 			}
 		},
