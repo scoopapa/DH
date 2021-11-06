@@ -129,7 +129,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand Duo",
 	},
 	powerfulcapybara: {
-		tier: "Rand Duo",
+		tier: "Rand Duo Uber",
 	},
 	medicaltoad: {
 		tier: "Rand Duo",
@@ -285,7 +285,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand Duo",
 	},
 	thirstypartridge: {
-		tier: "Rand Duo",
+		tier: "Rand Duo Uber",
 	},
 	linguistictarsier: {
 		tier: "Rand Duo",
