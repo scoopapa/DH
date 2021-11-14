@@ -3886,6 +3886,13 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 				return this.chainModify(1.5);
 			}
 		},
+		onResidual(attacker, defender, move) {
+			const basePowerAfterMultiplier = this.modify(basePower, this.event.modifier);
+			this.debug('Base Power: ' + basePowerAfterMultiplier);
+			if (basePowerAfterMultiplier <= 60) {
+				this.heal(attacker.baseMaxhp / 8);
+			}
+		},
 		name: "Technician",
 		rating: 3.5,
 		num: 101,
