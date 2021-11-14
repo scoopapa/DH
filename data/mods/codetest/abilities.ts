@@ -3882,13 +3882,16 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 			const basePowerAfterMultiplier = this.modify(basePower, this.event.modifier);
 			this.debug('Base Power: ' + basePowerAfterMultiplier);
 			if (basePowerAfterMultiplier <= 60) {
-				this.debug('Life Drain boost');
-				move.lifeDrain = true;
+				this.debug('Technician boost');
 				return this.chainModify(1.5);
 			}
 		},
-		onAfterHit(target, source, move){
-			if (move.lifeDrain) this.heal(source.baseMaxhp / 8);
+		onAfterMove(source, move) {
+			const basePowerAfterMultiplier = this.modify(basePower, this.event.modifier);
+			this.debug('Base Power: ' + basePowerAfterMultiplier);
+			if (basePowerAfterMultiplier <= 60) {
+				this.heal(source.baseMaxhp / 8);
+			}
 		},
 		name: "Technician",
 		rating: 3.5,
