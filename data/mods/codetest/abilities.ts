@@ -3887,7 +3887,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 				return this.chainModify(1.5);
 			}
 		},
-		onAfterMove(source, move) {
+		onAfterMove(basePower, source, move) {
 			if (move.lifeDrain) {
 				this.heal(source.baseMaxhp / 8);
 			}
