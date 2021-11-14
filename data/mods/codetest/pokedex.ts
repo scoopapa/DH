@@ -4049,7 +4049,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		name: "Scizor",
 		types: ["Bug", "Steel"],
 		baseStats: {hp: 70, atk: 130, def: 100, spa: 55, spd: 80, spe: 65},
-		abilities: {0: "Swarm", 1: "Technician", H: "Light Metal"},
+		abilities: {0: "Life Drain", 1: "Technician", H: "Light Metal"},
 		heightm: 1.8,
 		weightkg: 118,
 		color: "Red",
