@@ -3887,9 +3887,9 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 				return this.chainModify(1.5);
 			}
 		},
-		onAfterMove(basePower, target, move) {
+		onAfterMove(basePower, source, target, move) {
 			if (move.technician) {
-				this.heal(target.baseMaxhp / 8);
+				this.heal(source.baseMaxhp / 8);
 			}
 		},
 		name: "Technician",
