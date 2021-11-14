@@ -3876,13 +3876,13 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		rating: 2,
 		num: 221,
 	},
-	technician: {
+	lifedrain: {
 		onBasePowerPriority: 30,
 		onBasePower(basePower, attacker, defender, move) {
 			const basePowerAfterMultiplier = this.modify(basePower, this.event.modifier);
 			this.debug('Base Power: ' + basePowerAfterMultiplier);
 			if (basePowerAfterMultiplier <= 60) {
-				this.debug('Technician boost');
+				this.debug('Life Drain boost');
 				move.lifeDrain = true;
 				return this.chainModify(1.5);
 			}
@@ -3892,7 +3892,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 				this.heal(source.baseMaxhp / 8);
 			}
 		},
-		name: "Technician",
+		name: "Life Drain",
 		rating: 3.5,
 		num: 101,
 	},
