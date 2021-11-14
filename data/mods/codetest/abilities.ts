@@ -3889,7 +3889,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		},
 		onAfterMove(basePower, source, move) {
 			if (move.technician) {
-				this.heal(source.baseMaxhp / 4);
+				this.heal(source.baseMaxhp / 12);
 			}
 		},
 		name: "Technician",
