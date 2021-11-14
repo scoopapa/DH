@@ -1737,7 +1737,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 				return this.chainModify([0x1333, 0x1000]);
 			}
 		},
-		onAfterMoveSecondary(target, source, move) {
+		onAfterMove(target, source, move) {
 			if (move.flags['punch']) {
 				this.boost({def: -1, spe: 2});
 			}
