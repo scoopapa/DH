@@ -3883,13 +3883,12 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 			this.debug('Base Power: ' + basePowerAfterMultiplier);
 			if (basePowerAfterMultiplier <= 60) {
 				this.debug('Technician boost');
+				move.technician = true;
 				return this.chainModify(1.5);
 			}
 		},
 		onAfterMove(basePower, source, move) {
-			const basePowerAfterMultiplier = this.modify(basePower, this.event.modifier);
-			this.debug('Base Power: ' + basePowerAfterMultiplier);
-			if (basePowerAfterMultiplier <= 60) {
+			if (move.technician) {
 				this.heal(source.baseMaxhp / 8);
 			}
 		},
