@@ -426,7 +426,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	amateurlimpet: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	psychiatricquail: {
 		tier: "Rand",
@@ -639,7 +639,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	inherentrook: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	endlesslandfowl: {
 		tier: "Rand",
@@ -780,7 +780,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	viciouspanther: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	contentpheasant: {
 		tier: "Rand",
@@ -2142,7 +2142,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	coolperch: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	worthwhiledog: {
 		tier: "Rand",
