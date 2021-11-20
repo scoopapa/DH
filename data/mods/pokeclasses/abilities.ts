@@ -158,4 +158,16 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		rating: 5,
 		num: 37,
 	},
+	barbarian: {
+		onModifyAtk(stat) {
+			return this.chainModify(1.4);
+		},
+		onBoost(boost, target, source, effect) {
+			if (effect.id === 'intimidate') {
+				delete boost.atk;
+				this.add('-immune', target, '[from] ability: Barbarian');
+			}
+		},
+		name: "barbarian",
+	},
 };
