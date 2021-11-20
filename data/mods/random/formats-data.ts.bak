@@ -618,7 +618,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand Sus",
 	},
 	competitivelion: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	quixoticturtle: {
 		tier: "Rand",
@@ -1332,7 +1332,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	psychologicalbug: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	heavyjellyfish: {
 		tier: "Rand",

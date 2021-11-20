@@ -429,7 +429,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand Sus",
 	},
 	psychiatricquail: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	specifiedcrocodile: {
 		tier: "Rand",
@@ -1608,7 +1608,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	unacceptablepartridge: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	smoothtermite: {
 		tier: "Rand",
@@ -2106,7 +2106,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	inevitableantlion: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	urgentbison: {
 		tier: "Rand",
@@ -2997,6 +2997,6 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand Sus",
 	},
 	clumsypiranha: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 };
