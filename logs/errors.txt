@@ -3637,3 +3637,20 @@ Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
     at ChildProcess.emit (domain.js:470:12)
     at finish (internal/child_process.js:895:14)
     at processTicksAndRejections (internal/process/task_queues.js:77:11)
+
+Error: Nothing matches "Rand Sus"
+    at ModdedDex.validateBanRule (C:\Users\Owner\Downloads\DH\.sim-dist\dex.js:1016:10)
+    at ModdedDex.validateRule (C:\Users\Owner\Downloads\DH\.sim-dist\dex.js:943:33)
+    at ModdedDex.getRuleTable (C:\Users\Owner\Downloads\DH\.sim-dist\dex.js:821:26)
+    at new TeamValidator (C:\Users\Owner\Downloads\DH\.sim-dist\team-validator.js:199:29)
+    at Function.get (C:\Users\Owner\Downloads\DH\.sim-dist\team-validator.js:2099:10)
+    at QueryProcessManager._query (C:\Users\Owner\Downloads\DH\.server-dist\team-validator-async.js:51:43)
+    at process.<anonymous> (C:\Users\Owner\Downloads\DH\.lib-dist\process-manager.js:540:30)
+    at process.emit (node:events:390:28)
+    at process.emit (node:domain:475:12)
+    at emit (node:internal/child_process:917:12)
+
+Additional information:
+  formatid = gen8randommonsnosus
+  team = Urgent Wallaby||flameorb|prankster|moonblast,heartswap,trick,psychoshift|Modest|4,,252,252,,||,0,,,,|||]Agreed Caterpillar||leftovers|solarpower|quiverdance,coreenforcer,moonblast,expandingforce|Modest|,,,252,4,252||,0,,,,|||]Lucky Platypus||leftovers|merciless|psychic,psyshock,psychicterrain,calmmind|Modest|4,,,252,252,||,0,,,,|||]Lively Galliform||leftovers|wanderingspirit|swordsdance,iceshard,dragondarts,brickbreak|Adamant|4,252,,,252,|||||]Exciting Bee||leftovers|mirrorarmor|lightscreen,reflect,blazekick,willowisp|Jolly|4,252,,,,252|||||]Glad Monkey||leftovers|raindish|stealthrock,spikes,bonemerang,dragondance|Jolly|,252,4,,,252|||||
+
