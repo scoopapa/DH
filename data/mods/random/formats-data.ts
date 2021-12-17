@@ -246,7 +246,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand Sus",
 	},
 	magnetictoucan: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	civiliankoala: {
 		tier: "Rand",
@@ -282,7 +282,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	developingduck: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	proudbee: {
 		tier: "Rand",
