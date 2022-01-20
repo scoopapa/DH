@@ -3530,7 +3530,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		onResidualOrder: 26,
 		onResidualSubOrder: 1,
 		onResidual(pokemon) {
-			if (pokemon.activeTurns) {
+			if (pokemon.activeTurns && !pokemon.negativeBoosts()) {
 				this.boost({spe: 1});
 			}
 		},
