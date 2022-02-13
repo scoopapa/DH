@@ -88,7 +88,7 @@ export const Pokedex: {[speciesid: string]: ModdedSpeciesData} = {
 		inherit: true,
 		otherFormes: ["Clefable-Mega"],
 		formeOrder: ["Clefable", "Clefable-Mega"],
-		movepoolAdditions: ["hex", "nastyplot", "shadowsneak", "willowisp"],
+		movepoolAdditions: ["hex", "nastyplot", "shadowsneak"],
 	},
 	clefablemega: {
 		num: 36,
@@ -727,7 +727,7 @@ export const Pokedex: {[speciesid: string]: ModdedSpeciesData} = {
 		inherit: true,
 		otherFormes: ["Walrein-Mega"],
 		formeOrder: ["Walrein", "Walrein-Mega"],
-		movepoolAdditions: ["darkpulse", "flipturn", "focusblast", "freezedry", "slackoff"],
+		movepoolAdditions: ["darkpulse", "flipturn", "freezedry", "slackoff"],
 	},
 	walreinmega: {
 		num: 365,
