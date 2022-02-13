@@ -363,7 +363,7 @@ export const Formats: {[k: string]: FormatData} = {
 				const oMegaSpecies = this.dex.getSpecies(pokemon.illusion.species.originalMega);
 				if (oMegaSpecies.exists) {
 					// Place volatiles on the Pokémon to show its mega-evolved condition and details
-					this.add('-start', pokemon, oMegaSpecies.requiredItem || oMegaSpecies.requiredMove, '[silent]');
+					if (oMegaSpecies.requiredItem || oMegaSpecies.requiredMove) this.add('-start', pokemon, oMegaSpecies.requiredItem || oMegaSpecies.requiredMove, '[silent]');
 					const oSpecies = this.dex.getSpecies(pokemon.illusion.m.originalSpecies);
 					if (oSpecies.types.length !== pokemon.illusion.species.types.length || oSpecies.types[1] !== pokemon.species.types[1]) {
 						this.add('-start', pokemon, 'typechange', pokemon.illusion.species.types.join('/'), '[silent]');
@@ -373,14 +373,14 @@ export const Formats: {[k: string]: FormatData} = {
 				const oMegaSpecies = this.dex.getSpecies(pokemon.species.originalMega);
 				if (oMegaSpecies.exists) {
 					// Place volatiles on the Pokémon to show its mega-evolved condition and details
-					this.add('-start', pokemon, oMegaSpecies.requiredItem || oMegaSpecies.requiredMove, '[silent]');
+					if (oMegaSpecies.requiredItem || oMegaSpecies.requiredMove) this.add('-start', pokemon, oMegaSpecies.requiredItem || oMegaSpecies.requiredMove, '[silent]');
 					const oSpecies = this.dex.getSpecies(pokemon.m.originalSpecies);
 					if (oSpecies.types.length !== pokemon.species.types.length || oSpecies.types[1] !== pokemon.species.types[1]) {
 						this.add('-start', pokemon, 'typechange', pokemon.species.types.join('/'), '[silent]');
 					}
 				}
 			}
-			// sandbox
+			// Sandbox
 			let species = pokemon.species;
 			let switchedIn = pokemon.switchedIn;
 			if (pokemon.illusion) {
