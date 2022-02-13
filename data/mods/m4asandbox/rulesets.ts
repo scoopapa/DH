@@ -5,7 +5,7 @@ export const Formats: {[k: string]: FormatData} = {
 		desc: "Allows customization of a Pokémon's types and stats based on its nickname.",
 		onBegin() {
 			for (const pokemon of this.getAllPokemon()) {
-				pokemon.m.originalSpecies = pokemon.baseSpecies.name; // MnM4A
+				pokemon.m.originalSpecies = pokemon.species.name; // MnM4A
 				if (!pokemon.set.name) return;
 				if (pokemon.set.name.substr(0, 1) === "*") {
 					if (['Mega Stone 1', 'Mega Stone 2', 'Mega Stone H'].includes(pokemon.getItem().name)) {
