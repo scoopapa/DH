@@ -1291,4 +1291,10 @@ export const Formats: {[k: string]: FormatData} = {
 			pokemon.switchedIn = true;
 		},
 	},
+	'sketchgen8moves': {
+		effectType: 'ValidatorRule',
+		name: 'Sketch Gen 8 Moves',
+		desc: "Allows Pokémon who learn Sketch to learn any Gen 8 move (normally, Sketch is not usable in Gen 8).",
+		// Implemented in sim/team-validator.ts
+	},
 };

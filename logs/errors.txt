@@ -3302,12 +3302,89 @@ Error: Process sockets.js 29588 crashed and had to be restarted
     at finish (internal/child_process.js:888:14)
     at processTicksAndRejections (internal/process/task_queues.js:75:11)
 
+<<<<<<< HEAD
 Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
     at ChildProcess.target.disconnect (internal/child_process.js:865:26)
     at QueryProcessWrapper.destroy (C:\Users\james\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
     at QueryProcessWrapper.release (C:\Users\james\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
     at QueryProcessManager.releaseCrashed (C:\Users\james\Documents\GitHub\DH\.lib-dist\process-manager.js:423:16)
     at ChildProcess.<anonymous> (C:\Users\james\Documents\GitHub\DH\.lib-dist\process-manager.js:470:48)
+=======
+Error: Nothing matches ""
+    at ModdedDex.validateBanRule (C:\Users\pswan\Downloads\DH\.sim-dist\dex.js:1016:10)
+    at C:\Users\pswan\Downloads\DH\.sim-dist\dex.js:933:41
+    at Array.map (<anonymous>)
+    at ModdedDex.validateRule (C:\Users\pswan\Downloads\DH\.sim-dist\dex.js:933:27)
+    at ModdedDex.getRuleTable (C:\Users\pswan\Downloads\DH\.sim-dist\dex.js:821:26)
+    at new TeamValidator (C:\Users\pswan\Downloads\DH\.sim-dist\team-validator.js:199:29)
+    at Function.get (C:\Users\pswan\Downloads\DH\.sim-dist\team-validator.js:2098:10)
+    at QueryProcessManager._query (C:\Users\pswan\Downloads\DH\.server-dist\team-validator-async.js:51:43)
+    at process.<anonymous> (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:540:30)
+    at process.emit (events.js:400:28)
+
+Additional information:
+  formatid = gen8randommons
+  team = Barraskewda|||swiftswim|||||,0,,,,|||
+
+
+Error: Nothing matches "Rand"
+    at ModdedDex.validateBanRule (C:\Users\pswan\Downloads\DH\.sim-dist\dex.js:1016:10)
+    at ModdedDex.validateRule (C:\Users\pswan\Downloads\DH\.sim-dist\dex.js:943:33)
+    at ModdedDex.getRuleTable (C:\Users\pswan\Downloads\DH\.sim-dist\dex.js:821:26)
+    at new TeamValidator (C:\Users\pswan\Downloads\DH\.sim-dist\team-validator.js:199:29)
+    at Function.get (C:\Users\pswan\Downloads\DH\.sim-dist\team-validator.js:2098:10)
+    at QueryProcessManager._query (C:\Users\pswan\Downloads\DH\.server-dist\team-validator-async.js:51:43)
+    at process.<anonymous> (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:540:30)
+    at process.emit (events.js:400:28)
+    at process.emit (domain.js:470:12)
+    at emit (internal/child_process.js:910:12)
+
+Additional information:
+  formatid = gen8randommons
+  team = Barraskewda|||swiftswim|||||,0,,,,|||
+
+
+Error: Nothing matches "Rand"
+    at ModdedDex.validateBanRule (C:\Users\pswan\Downloads\DH\.sim-dist\dex.js:1016:10)
+    at ModdedDex.validateRule (C:\Users\pswan\Downloads\DH\.sim-dist\dex.js:943:33)
+    at ModdedDex.getRuleTable (C:\Users\pswan\Downloads\DH\.sim-dist\dex.js:821:26)
+    at new TeamValidator (C:\Users\pswan\Downloads\DH\.sim-dist\team-validator.js:199:29)
+    at Function.get (C:\Users\pswan\Downloads\DH\.sim-dist\team-validator.js:2098:10)
+    at QueryProcessManager._query (C:\Users\pswan\Downloads\DH\.server-dist\team-validator-async.js:51:43)
+    at process.<anonymous> (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:540:30)
+    at process.emit (events.js:400:28)
+    at process.emit (domain.js:470:12)
+    at emit (internal/child_process.js:910:12)
+
+Additional information:
+  formatid = gen8randommons
+  team = Favourable Swan|||cloudnine|||||,0,,,,|||
+
+
+Error: Nothing matches ""
+    at ModdedDex.validateBanRule (C:\Users\pswan\Downloads\DH\.sim-dist\dex.js:1016:10)
+    at C:\Users\pswan\Downloads\DH\.sim-dist\dex.js:933:41
+    at Array.map (<anonymous>)
+    at ModdedDex.validateRule (C:\Users\pswan\Downloads\DH\.sim-dist\dex.js:933:27)
+    at ModdedDex.getRuleTable (C:\Users\pswan\Downloads\DH\.sim-dist\dex.js:821:26)
+    at new TeamValidator (C:\Users\pswan\Downloads\DH\.sim-dist\team-validator.js:199:29)
+    at Function.get (C:\Users\pswan\Downloads\DH\.sim-dist\team-validator.js:2098:10)
+    at QueryProcessManager._query (C:\Users\pswan\Downloads\DH\.server-dist\team-validator-async.js:51:43)
+    at process.<anonymous> (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:540:30)
+    at process.emit (events.js:400:28)
+
+Additional information:
+  formatid = gen8randommons
+  team = Favourable Swan|||cloudnine|||||,0,,,,|||
+
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:865:26)
+    at QueryProcessWrapper.destroy (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:423:16)
+    at ChildProcess.<anonymous> (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:470:48)
+>>>>>>> ee355955b848a02dbbd73cc04be61105594a2299
     at ChildProcess.emit (events.js:400:28)
     at ChildProcess.emit (domain.js:470:12)
     at finish (internal/child_process.js:895:14)
@@ -3315,10 +3392,17 @@ Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
 
 Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
     at ChildProcess.target.disconnect (internal/child_process.js:865:26)
+<<<<<<< HEAD
     at QueryProcessWrapper.destroy (C:\Users\james\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
     at QueryProcessWrapper.release (C:\Users\james\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
     at QueryProcessManager.releaseCrashed (C:\Users\james\Documents\GitHub\DH\.lib-dist\process-manager.js:423:16)
     at ChildProcess.<anonymous> (C:\Users\james\Documents\GitHub\DH\.lib-dist\process-manager.js:470:48)
+=======
+    at QueryProcessWrapper.destroy (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:423:16)
+    at ChildProcess.<anonymous> (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:470:48)
+>>>>>>> ee355955b848a02dbbd73cc04be61105594a2299
     at ChildProcess.emit (events.js:400:28)
     at ChildProcess.emit (domain.js:470:12)
     at finish (internal/child_process.js:895:14)
@@ -3326,10 +3410,17 @@ Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
 
 Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
     at ChildProcess.target.disconnect (internal/child_process.js:865:26)
+<<<<<<< HEAD
     at QueryProcessWrapper.destroy (C:\Users\james\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
     at QueryProcessWrapper.release (C:\Users\james\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
     at QueryProcessManager.releaseCrashed (C:\Users\james\Documents\GitHub\DH\.lib-dist\process-manager.js:423:16)
     at ChildProcess.<anonymous> (C:\Users\james\Documents\GitHub\DH\.lib-dist\process-manager.js:470:48)
+=======
+    at QueryProcessWrapper.destroy (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:423:16)
+    at ChildProcess.<anonymous> (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:470:48)
+>>>>>>> ee355955b848a02dbbd73cc04be61105594a2299
     at ChildProcess.emit (events.js:400:28)
     at ChildProcess.emit (domain.js:470:12)
     at finish (internal/child_process.js:895:14)
@@ -3337,18 +3428,41 @@ Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
 
 Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
     at ChildProcess.target.disconnect (internal/child_process.js:865:26)
+<<<<<<< HEAD
     at QueryProcessWrapper.destroy (C:\Users\james\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
     at QueryProcessWrapper.release (C:\Users\james\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
     at QueryProcessManager.releaseCrashed (C:\Users\james\Documents\GitHub\DH\.lib-dist\process-manager.js:423:16)
     at ChildProcess.<anonymous> (C:\Users\james\Documents\GitHub\DH\.lib-dist\process-manager.js:470:48)
+=======
+    at QueryProcessWrapper.destroy (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:423:16)
+    at ChildProcess.<anonymous> (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:470:48)
+    at ChildProcess.emit (events.js:400:28)
+    at ChildProcess.emit (domain.js:470:12)
+    at finish (internal/child_process.js:895:14)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:865:26)
+    at QueryProcessWrapper.destroy (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:423:16)
+    at ChildProcess.<anonymous> (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:470:48)
+>>>>>>> ee355955b848a02dbbd73cc04be61105594a2299
     at ChildProcess.emit (events.js:400:28)
     at ChildProcess.emit (domain.js:470:12)
     at finish (internal/child_process.js:895:14)
     at processTicksAndRejections (internal/process/task_queues.js:77:11)
 
 TypeError: Cannot read property 'then' of null
+<<<<<<< HEAD
     at RawProcessManager.releaseCrashed (C:\Users\james\Documents\GitHub\DH\.lib-dist\process-manager.js:423:25)
     at Worker.<anonymous> (C:\Users\james\Documents\GitHub\DH\.lib-dist\process-manager.js:470:48)
+=======
+    at RawProcessManager.releaseCrashed (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:423:25)
+    at Worker.<anonymous> (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:470:48)
+>>>>>>> ee355955b848a02dbbd73cc04be61105594a2299
     at Worker.emit (events.js:400:28)
     at Worker.emit (domain.js:470:12)
     at ChildProcess.<anonymous> (internal/cluster/master.js:220:12)
@@ -3360,10 +3474,17 @@ TypeError: Cannot read property 'then' of null
 
 Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
     at ChildProcess.target.disconnect (internal/child_process.js:865:26)
+<<<<<<< HEAD
     at QueryProcessWrapper.destroy (C:\Users\james\Documents\GitHub\DH\.lib-dist\process-manager.js:178:16)
     at QueryProcessWrapper.release (C:\Users\james\Documents\GitHub\DH\.lib-dist\process-manager.js:164:9)
     at QueryProcessManager.releaseCrashed (C:\Users\james\Documents\GitHub\DH\.lib-dist\process-manager.js:423:16)
     at ChildProcess.<anonymous> (C:\Users\james\Documents\GitHub\DH\.lib-dist\process-manager.js:470:48)
+=======
+    at QueryProcessWrapper.destroy (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:423:16)
+    at ChildProcess.<anonymous> (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:470:48)
+>>>>>>> ee355955b848a02dbbd73cc04be61105594a2299
     at ChildProcess.emit (events.js:400:28)
     at ChildProcess.emit (domain.js:470:12)
     at finish (internal/child_process.js:895:14)
@@ -3371,11 +3492,331 @@ Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
 
 Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
     at ChildProcess.target.disconnect (internal/child_process.js:865:26)
+<<<<<<< HEAD
     at StreamProcessWrapper.destroy (C:\Users\james\Documents\GitHub\DH\.lib-dist\process-manager.js:290:16)
     at StreamProcessWrapper.release (C:\Users\james\Documents\GitHub\DH\.lib-dist\process-manager.js:274:14)
     at StreamProcessManager.releaseCrashed (C:\Users\james\Documents\GitHub\DH\.lib-dist\process-manager.js:423:16)
     at ChildProcess.<anonymous> (C:\Users\james\Documents\GitHub\DH\.lib-dist\process-manager.js:470:48)
+=======
+    at QueryProcessWrapper.destroy (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:423:16)
+    at ChildProcess.<anonymous> (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:470:48)
+>>>>>>> ee355955b848a02dbbd73cc04be61105594a2299
     at ChildProcess.emit (events.js:400:28)
     at ChildProcess.emit (domain.js:470:12)
     at finish (internal/child_process.js:895:14)
     at processTicksAndRejections (internal/process/task_queues.js:77:11)
+<<<<<<< HEAD
+=======
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:865:26)
+    at QueryProcessWrapper.destroy (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:423:16)
+    at ChildProcess.<anonymous> (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:470:48)
+    at ChildProcess.emit (events.js:400:28)
+    at ChildProcess.emit (domain.js:470:12)
+    at finish (internal/child_process.js:895:14)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:865:26)
+    at QueryProcessWrapper.destroy (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:423:16)
+    at ChildProcess.<anonymous> (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:470:48)
+    at ChildProcess.emit (events.js:400:28)
+    at ChildProcess.emit (domain.js:470:12)
+    at finish (internal/child_process.js:895:14)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:865:26)
+    at QueryProcessWrapper.destroy (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:423:16)
+    at ChildProcess.<anonymous> (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:470:48)
+    at ChildProcess.emit (events.js:400:28)
+    at ChildProcess.emit (domain.js:470:12)
+    at finish (internal/child_process.js:895:14)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:865:26)
+    at QueryProcessWrapper.destroy (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:423:16)
+    at ChildProcess.<anonymous> (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:470:48)
+    at ChildProcess.emit (events.js:400:28)
+    at ChildProcess.emit (domain.js:470:12)
+    at finish (internal/child_process.js:895:14)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11)
+
+TypeError: Cannot read property 'then' of null
+    at RawProcessManager.releaseCrashed (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:423:25)
+    at Worker.<anonymous> (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:470:48)
+    at Worker.emit (events.js:400:28)
+    at Worker.emit (domain.js:470:12)
+    at ChildProcess.<anonymous> (internal/cluster/master.js:220:12)
+    at Object.onceWrapper (events.js:519:28)
+    at ChildProcess.emit (events.js:400:28)
+    at ChildProcess.emit (domain.js:470:12)
+    at finish (internal/child_process.js:895:14)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:865:26)
+    at QueryProcessWrapper.destroy (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:423:16)
+    at ChildProcess.<anonymous> (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:470:48)
+    at ChildProcess.emit (events.js:400:28)
+    at ChildProcess.emit (domain.js:470:12)
+    at finish (internal/child_process.js:895:14)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:865:26)
+    at QueryProcessWrapper.destroy (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:423:16)
+    at ChildProcess.<anonymous> (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:470:48)
+    at ChildProcess.emit (events.js:400:28)
+    at ChildProcess.emit (domain.js:470:12)
+    at finish (internal/child_process.js:895:14)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:865:26)
+    at QueryProcessWrapper.destroy (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:423:16)
+    at ChildProcess.<anonymous> (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:470:48)
+    at ChildProcess.emit (events.js:400:28)
+    at ChildProcess.emit (domain.js:470:12)
+    at finish (internal/child_process.js:895:14)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:865:26)
+    at QueryProcessWrapper.destroy (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:423:16)
+    at ChildProcess.<anonymous> (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:470:48)
+    at ChildProcess.emit (events.js:400:28)
+    at ChildProcess.emit (domain.js:470:12)
+    at finish (internal/child_process.js:895:14)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11)
+
+TypeError: Cannot read property 'then' of null
+    at RawProcessManager.releaseCrashed (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:423:25)
+    at Worker.<anonymous> (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:470:48)
+    at Worker.emit (events.js:400:28)
+    at Worker.emit (domain.js:470:12)
+    at ChildProcess.<anonymous> (internal/cluster/master.js:220:12)
+    at Object.onceWrapper (events.js:519:28)
+    at ChildProcess.emit (events.js:400:28)
+    at ChildProcess.emit (domain.js:470:12)
+    at finish (internal/child_process.js:895:14)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:865:26)
+    at QueryProcessWrapper.destroy (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:423:16)
+    at ChildProcess.<anonymous> (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:470:48)
+    at ChildProcess.emit (events.js:400:28)
+    at ChildProcess.emit (domain.js:470:12)
+    at finish (internal/child_process.js:895:14)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:865:26)
+    at QueryProcessWrapper.destroy (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:423:16)
+    at ChildProcess.<anonymous> (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:470:48)
+    at ChildProcess.emit (events.js:400:28)
+    at ChildProcess.emit (domain.js:470:12)
+    at finish (internal/child_process.js:895:14)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:865:26)
+    at QueryProcessWrapper.destroy (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:423:16)
+    at ChildProcess.<anonymous> (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:470:48)
+    at ChildProcess.emit (events.js:400:28)
+    at ChildProcess.emit (domain.js:470:12)
+    at finish (internal/child_process.js:895:14)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11)
+
+TypeError: Cannot read property 'then' of null
+    at RawProcessManager.releaseCrashed (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:423:25)
+    at Worker.<anonymous> (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:470:48)
+    at Worker.emit (events.js:400:28)
+    at Worker.emit (domain.js:470:12)
+    at ChildProcess.<anonymous> (internal/cluster/master.js:220:12)
+    at Object.onceWrapper (events.js:519:28)
+    at ChildProcess.emit (events.js:400:28)
+    at ChildProcess.emit (domain.js:470:12)
+    at finish (internal/child_process.js:895:14)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:865:26)
+    at QueryProcessWrapper.destroy (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:423:16)
+    at ChildProcess.<anonymous> (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:470:48)
+    at ChildProcess.emit (events.js:400:28)
+    at ChildProcess.emit (domain.js:470:12)
+    at finish (internal/child_process.js:895:14)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11)
+
+Error [ERR_IPC_DISCONNECTED]: IPC channel is already disconnected
+    at ChildProcess.target.disconnect (internal/child_process.js:865:26)
+    at QueryProcessWrapper.destroy (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:178:16)
+    at QueryProcessWrapper.release (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:164:9)
+    at QueryProcessManager.releaseCrashed (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:423:16)
+    at ChildProcess.<anonymous> (C:\Users\pswan\Downloads\DH\.lib-dist\process-manager.js:470:48)
+    at ChildProcess.emit (events.js:400:28)
+    at ChildProcess.emit (domain.js:470:12)
+    at finish (internal/child_process.js:895:14)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11)
+
+Error: Nothing matches "Rand Sus"
+    at ModdedDex.validateBanRule (C:\Users\Owner\Downloads\DH\.sim-dist\dex.js:1016:10)
+    at ModdedDex.validateRule (C:\Users\Owner\Downloads\DH\.sim-dist\dex.js:943:33)
+    at ModdedDex.getRuleTable (C:\Users\Owner\Downloads\DH\.sim-dist\dex.js:821:26)
+    at new TeamValidator (C:\Users\Owner\Downloads\DH\.sim-dist\team-validator.js:199:29)
+    at Function.get (C:\Users\Owner\Downloads\DH\.sim-dist\team-validator.js:2099:10)
+    at QueryProcessManager._query (C:\Users\Owner\Downloads\DH\.server-dist\team-validator-async.js:51:43)
+    at process.<anonymous> (C:\Users\Owner\Downloads\DH\.lib-dist\process-manager.js:540:30)
+    at process.emit (node:events:390:28)
+    at process.emit (node:domain:475:12)
+    at emit (node:internal/child_process:917:12)
+
+Additional information:
+  formatid = gen8randommonsnosus
+  team = Urgent Wallaby||flameorb|prankster|moonblast,heartswap,trick,psychoshift|Modest|4,,252,252,,||,0,,,,|||]Agreed Caterpillar||leftovers|solarpower|quiverdance,coreenforcer,moonblast,expandingforce|Modest|,,,252,4,252||,0,,,,|||]Lucky Platypus||leftovers|merciless|psychic,psyshock,psychicterrain,calmmind|Modest|4,,,252,252,||,0,,,,|||]Lively Galliform||leftovers|wanderingspirit|swordsdance,iceshard,dragondarts,brickbreak|Adamant|4,252,,,252,|||||]Exciting Bee||leftovers|mirrorarmor|lightscreen,reflect,blazekick,willowisp|Jolly|4,252,,,,252|||||]Glad Monkey||leftovers|raindish|stealthrock,spikes,bonemerang,dragondance|Jolly|,252,4,,,252|||||
+
+>>>>>>> ee355955b848a02dbbd73cc04be61105594a2299
+
+C:\Users\Owner\Downloads\DH\.sim-dist\team-validator.js:1846
+		const canSketchGen8Moves = ruleTable.has('sketchgen8moves');
+		      ^
+
+SyntaxError: Identifier 'canSketchGen8Moves' has already been declared
+    at Object.compileFunction (node:vm:352:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1031:15)
+    at Module._compile (node:internal/modules/cjs/loader:1065:27)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1153:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (C:\Users\Owner\Downloads\DH\.server-dist\team-validator-async.js:11:22)
+    at Module._compile (node:internal/modules/cjs/loader:1101:14)
+
+Error: Format #148 has a duplicate ID: 'gen8randommons'
+    at ModdedDex.includeFormats (C:\Users\Owner\Downloads\DH\.sim-dist\dex.js:1539:37)
+    at ModdedDex.get formats [as formats] (C:\Users\Owner\Downloads\DH\.sim-dist\dex.js:172:8)
+    at GlobalRoomState.get formatListText [as formatListText] (C:\Users\Owner\Downloads\DH\.server-dist\rooms.js:1142:23)
+    at GlobalRoomState.handleConnect (C:\Users\Owner\Downloads\DH\.server-dist\rooms.js:1394:80)
+    at Object.socketConnect (C:\Users\Owner\Downloads\DH\.server-dist\users.js:1607:15)
+    at Object.onSpawn (C:\Users\Owner\Downloads\DH\.server-dist\sockets.js:36:11)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+C:\Users\Owner\Downloads\DH\.sim-dist\team-validator.js:1846
+		const canSketchGen8Moves = ruleTable.has('sketchgen8moves');
+		      ^
+
+SyntaxError: Identifier 'canSketchGen8Moves' has already been declared
+    at Object.compileFunction (node:vm:352:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1031:15)
+    at Module._compile (node:internal/modules/cjs/loader:1065:27)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1153:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (C:\Users\Owner\Downloads\DH\.server-dist\team-validator-async.js:11:22)
+    at Module._compile (node:internal/modules/cjs/loader:1101:14)
+
+Error: Format #159 has a duplicate ID: 'gen8randommons'
+    at ModdedDex.includeFormats (C:\Users\Owner\Downloads\DH\.sim-dist\dex.js:1539:37)
+    at ModdedDex.get formats [as formats] (C:\Users\Owner\Downloads\DH\.sim-dist\dex.js:172:8)
+    at GlobalRoomState.get formatListText [as formatListText] (C:\Users\Owner\Downloads\DH\.server-dist\rooms.js:1142:23)
+    at GlobalRoomState.handleConnect (C:\Users\Owner\Downloads\DH\.server-dist\rooms.js:1394:80)
+    at Object.socketConnect (C:\Users\Owner\Downloads\DH\.server-dist\users.js:1607:15)
+    at Object.onSpawn (C:\Users\Owner\Downloads\DH\.server-dist\sockets.js:36:11)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+C:\Users\Owner\Downloads\DH\.sim-dist\team-validator.js:1846
+		const canSketchGen8Moves = ruleTable.has('sketchgen8moves');
+		      ^
+
+SyntaxError: Identifier 'canSketchGen8Moves' has already been declared
+    at Object.compileFunction (node:vm:352:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1031:15)
+    at Module._compile (node:internal/modules/cjs/loader:1065:27)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1153:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (C:\Users\Owner\Downloads\DH\.server-dist\team-validator-async.js:11:22)
+    at Module._compile (node:internal/modules/cjs/loader:1101:14)
+
+C:\Users\Owner\Downloads\DH\.sim-dist\team-validator.js:1846
+		const canSketchGen8Moves = ruleTable.has('sketchgen8moves');
+		      ^
+
+SyntaxError: Identifier 'canSketchGen8Moves' has already been declared
+    at Object.compileFunction (node:vm:352:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1031:15)
+    at Module._compile (node:internal/modules/cjs/loader:1065:27)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1153:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (C:\Users\Owner\Downloads\DH\.server-dist\chat-plugins\datasearch.js:13:22)
+    at Module._compile (node:internal/modules/cjs/loader:1101:14)
+
+C:\Users\Owner\Downloads\DH\.sim-dist\team-validator.js:1846
+		const canSketchGen8Moves = ruleTable.has('sketchgen8moves');
+		      ^
+
+SyntaxError: Identifier 'canSketchGen8Moves' has already been declared
+    at Object.compileFunction (node:vm:352:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1031:15)
+    at Module._compile (node:internal/modules/cjs/loader:1065:27)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1153:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (C:\Users\Owner\Downloads\DH\.server-dist\team-validator-async.js:11:22)
+    at Module._compile (node:internal/modules/cjs/loader:1101:14)
+
+C:\Users\Owner\Downloads\DH\.sim-dist\team-validator.js:1846
+		const canSketchGen8Moves = ruleTable.has('sketchgen8moves');
+		      ^
+
+SyntaxError: Identifier 'canSketchGen8Moves' has already been declared
+    at Object.compileFunction (node:vm:352:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1031:15)
+    at Module._compile (node:internal/modules/cjs/loader:1065:27)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1153:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (C:\Users\Owner\Downloads\DH\.server-dist\chat-plugins\datasearch.js:13:22)
+    at Module._compile (node:internal/modules/cjs/loader:1101:14)
