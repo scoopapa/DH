@@ -3368,77 +3368,6 @@ export const Formats: FormatList = [
 		teambuilderFormat: 'LC',
 	},
 	{
-		name: "[Gen 8] Randommons",
-		desc: `<b>Randommons</b>: In this Solomod, I have coded 1000 randomly generated Fakemon, complete with randomly assigned types, stats, abilities, weights, and learnsets!`,
-		threads: [
-			`&bullet; <a href="https://www.smogon.com/forums/threads/solomods-megathread.3660004/page-4#post-9002827">Randommons Metagame Forum Post</a>`,
-		],
-		mod: 'random',
-		ruleset: ['Standard NatDex', 'OHKO Clause', 'Evasion Moves Clause', 'Species Clause', 'Dynamax Clause', 'Sleep Clause Mod', 'Data Mod'],
-		banlist: [
-			'Arena Trap', 'Moody', 'Power Construct', 'Shadow Tag', 'Baton Pass', 'Wonder Guard', 'Anxious Roadrunner',
-		],
-		onValidateTeam(team, format) {
-			let speciesTable = {};
-			let allowedTiers = ['Rand Sus', 'Rand'];
-			for (const set of team) {
-				let template = this.dex.getSpecies(set.species);
-				if ( !allowedTiers.includes(template.tier) ) {
-					return [set.species + ' is not useable in Randommons.'];
-				}
-			}
-		},
-		teambuilderFormat: "Rand",
-	},
-	{
-		name: "[Gen 8] Randommons No Sus",
-		desc: `<b>Randommons</b>: In this Solomod, I have coded 1000 randomly generated Fakemon, complete with randomly assigned types, stats, abilities, weights, and learnsets!`,
-		threads: [
-			`&bullet; <a href="https://www.smogon.com/forums/threads/solomods-megathread.3660004/page-4#post-9002827">Randommons Metagame Forum Post</a>`,
-		],
-
-		mod: 'random',
-		ruleset: ['Standard NatDex', 'OHKO Clause', 'Evasion Moves Clause', 'Species Clause', 'Dynamax Clause', 'Sleep Clause Mod', 'Data Mod'],
-		banlist: [
-			'Arena Trap', 'Moody', 'Power Construct', 'Shadow Tag', 'Baton Pass', 'Wonder Guard', 'Anxious Roadrunner',
-		],
-		onValidateTeam(team, format) {
-			let speciesTable = {};
-			let allowedTiers = ['Rand'];
-			for (const set of team) {
-				let template = this.dex.getSpecies(set.species);
-				if ( !allowedTiers.includes(template.tier) ) {
-					return [set.species + ' is not useable in Randommons No Sus.'];
-				}
-			}
-		},
-		teambuilderFormat: "Rand",
-	},
-	{
-		name: "[Gen 8] Randuomons",
-		desc: `<b>Randommons</b>: In this Solomod, I have coded 1000 randomly generated Fakemon, complete with randomly assigned types, stats, abilities, weights, and learnsets!`,
-		threads: [
-			`&bullet; <a href="https://www.smogon.com/forums/threads/solomods-megathread.3660004/page-4#post-9002827">Randommons Metagame Forum Post</a>`,
-		],
-
-		mod: 'randomduo',
-		ruleset: ['Standard NatDex', 'OHKO Clause', 'Evasion Moves Clause', 'Species Clause', 'Dynamax Clause', 'Sleep Clause Mod', 'Data Mod', '+LGPE'],
-		banlist: [
-			'Arena Trap', 'Moody', 'Power Construct', 'Shadow Tag', 'Baton Pass', 'Imperial Rabbit', 'Given Jaguar', 'Powerful Capybara', 'Thirsty Partridge',
-		],
-		onValidateTeam(team, format) {
-			let speciesTable = {};
-			let allowedTiers = ['Rand Duo'];
-			for (const set of team) {
-				let template = this.dex.getSpecies(set.species);
-				if ( !allowedTiers.includes(template.tier) ) {
-					return [set.species + ' is not useable in Randuomons.'];
-				}
-			}
-		},
-		teambuilderFormat: "Rand Duo",
-	},
-	{
 		name: "[Gen 8] PKMN YB OU",
 		desc: [
 			"PKMN YB",
@@ -3678,27 +3607,6 @@ export const Formats: FormatList = [
 			}
 		},
 		teambuilderFormat: "Rand Duo",
-	},
-	{
-		name: "[Gen 3] Yakmons",
-		threads: [
-			`&bullet; <a href="https://www.smogon.com/forums/posts/8133789/">ADV Sample Teams</a>`,
-			`&bullet; <a href="https://www.smogon.com/forums/threads/3503019/">ADV OU Viability Rankings</a>`,
-		],
-
-		mod: 'yakmons',
-		ruleset: ['Standard', '3 Baton Pass Clause', 'Data Mod'],
-		banlist: ['Uber', 'Smeargle + Baton Pass'],
-		onValidateTeam(team, format) {
-			let speciesTable = {};
-			let allowedTiers = ['Yak'];
-			for (const set of team) {
-				let template = this.dex.getSpecies(set.species);
-				if ( !allowedTiers.includes(template.tier) ) {
-					return [set.species + ' is not useable in Randuomons.'];
-				}
-			}
-		},
 	},
 	// Past Gens OU
 	///////////////////////////////////////////////////////////////////
