@@ -1843,6 +1843,7 @@ export class TeamValidator {
 		 */
 		const canSketchGen8Moves = ruleTable.has('sketchgen8moves');
 
+		const canSketchGen8Moves = ruleTable.has('sketchgen8moves');
 		let tradebackEligible = false;
 		while (species?.name && !alreadyChecked[species.id]) {
 			alreadyChecked[species.id] = true;

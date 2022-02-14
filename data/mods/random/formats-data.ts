@@ -1,12 +1,12 @@
 export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	favourableswan: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	sunnylark: {
 		tier: "Rand",
 	},
 	curiousfelidae: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	retiredbeetle: {
 		tier: "Rand",
@@ -141,7 +141,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	convenientblackbird: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	cooperativesparrow: {
 		tier: "Rand",
@@ -162,13 +162,13 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	chemicalcrab: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	availablepenguin: {
 		tier: "Rand",
 	},
 	importantmoose: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	bizarrehawk: {
 		tier: "Rand",
@@ -198,7 +198,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	parallelfox: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	limitedurial: {
 		tier: "Rand",
@@ -228,7 +228,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	commongoldfish: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	readytakin: {
 		tier: "Rand",
@@ -243,10 +243,10 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	comparativedingo: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	magnetictoucan: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	civiliankoala: {
 		tier: "Rand",
@@ -282,13 +282,13 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	developingduck: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	proudbee: {
 		tier: "Rand",
 	},
 	conservationcatshark: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	existingjackal: {
 		tier: "Rand",
@@ -369,7 +369,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	regulatorymonkey: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	adverserodent: {
 		tier: "Rand",
@@ -381,13 +381,13 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	rudesquirrel: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	changingdinosaur: {
 		tier: "Rand",
 	},
 	livelycatshark: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	sadiguana: {
 		tier: "Rand",
@@ -414,7 +414,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	onlyplanarian: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	jealoustoucan: {
 		tier: "Rand",
@@ -426,10 +426,10 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	amateurlimpet: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	psychiatricquail: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	specifiedcrocodile: {
 		tier: "Rand",
@@ -570,13 +570,13 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	autonomouswolf: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	naturalthrush: {
 		tier: "Rand",
 	},
 	injuredbear: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	militarymite: {
 		tier: "Rand",
@@ -615,10 +615,10 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	variableguppy: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	competitivelion: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	quixoticturtle: {
 		tier: "Rand",
@@ -630,7 +630,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	livelylobster: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	scaredpinniped: {
 		tier: "Rand",
@@ -639,7 +639,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	inherentrook: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	endlesslandfowl: {
 		tier: "Rand",
@@ -759,7 +759,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	certainbasilisk: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	obligedalligator: {
 		tier: "Rand",
@@ -780,7 +780,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	viciouspanther: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	contentpheasant: {
 		tier: "Rand",
@@ -945,7 +945,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	priornarwhal: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	woodengrouse: {
 		tier: "Rand",
@@ -1011,19 +1011,19 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	greasymink: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	selectprawn: {
 		tier: "Rand",
 	},
 	fortunatelion: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	entirecardinal: {
 		tier: "Rand",
 	},
 	developedleopard: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	freshthrush: {
 		tier: "Rand",
@@ -1056,7 +1056,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	federalhummingbird: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	nakedbonobo: {
 		tier: "Rand",
@@ -1074,7 +1074,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	probableweasel: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	impressedshark: {
 		tier: "Rand",
@@ -1095,7 +1095,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	influentialcaterpillar: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	severerat: {
 		tier: "Rand",
@@ -1170,7 +1170,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	internalgopher: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	respectivemagpie: {
 		tier: "Rand",
@@ -1218,7 +1218,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	stablebat: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	superiorgoat: {
 		tier: "Rand",
@@ -1311,7 +1311,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	integralkiwi: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	defensivesailfish: {
 		tier: "Rand",
@@ -1332,7 +1332,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	psychologicalbug: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	heavyjellyfish: {
 		tier: "Rand",
@@ -1377,7 +1377,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	reasonablesole: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	defeatedfly: {
 		tier: "Rand",
@@ -1392,7 +1392,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	increaseddeer: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	scientificnewt: {
 		tier: "Rand",
@@ -1443,7 +1443,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	supportingmongoose: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	navalroundworm: {
 		tier: "Rand",
@@ -1575,7 +1575,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	modestpenguin: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	vitalchipmunk: {
 		tier: "Rand",
@@ -1599,7 +1599,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	surprisingbeaver: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	significantmonkey: {
 		tier: "Rand",
@@ -1608,7 +1608,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	unacceptablepartridge: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	smoothtermite: {
 		tier: "Rand",
@@ -1698,7 +1698,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	artificialpheasant: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	innocentboar: {
 		tier: "Rand",
@@ -1755,7 +1755,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	extendedjunglefowl: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	dullclam: {
 		tier: "Rand",
@@ -1809,7 +1809,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	distinguishedmarmot: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	costlysmelt: {
 		tier: "Rand",
@@ -1827,7 +1827,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	sufficientbandicoot: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	yieldingtarsier: {
 		tier: "Rand",
@@ -1842,7 +1842,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	accusedtiger: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	developingbonobo: {
 		tier: "Rand",
@@ -1869,7 +1869,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	dirtyjay: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	consistentswordtail: {
 		tier: "Rand",
@@ -1947,10 +1947,10 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	juniornarwhal: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	fluffytyrannosaurus: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	psychologicalgalliform: {
 		tier: "Rand",
@@ -1998,7 +1998,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	convincedcrawdad: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	ripecuckoo: {
 		tier: "Rand",
@@ -2037,7 +2037,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	heavylark: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	devotedcockroach: {
 		tier: "Rand",
@@ -2052,7 +2052,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	quixoticlungfish: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	developedspider: {
 		tier: "Rand",
@@ -2094,7 +2094,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	entitledbuzzard: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	ashamedcrawdad: {
 		tier: "Rand",
@@ -2106,7 +2106,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	inevitableantlion: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	urgentbison: {
 		tier: "Rand",
@@ -2142,7 +2142,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	coolperch: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	worthwhiledog: {
 		tier: "Rand",
@@ -2166,7 +2166,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	mixedgrasshopper: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	controlledbeetle: {
 		tier: "Rand",
@@ -2340,7 +2340,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	anxiousroadrunner: {
-		tier: "Rand",
+		tier: "Rand Uber",
 	},
 	revolutionarypig: {
 		tier: "Rand",
@@ -2367,7 +2367,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	convincedbee: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	unpleasantharrier: {
 		tier: "Rand",
@@ -2397,7 +2397,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	molecularscallop: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	sleepymule: {
 		tier: "Rand",
@@ -2427,13 +2427,13 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	helplessparakeet: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	uncomfortablebedbug: {
 		tier: "Rand",
 	},
 	yearningtoucan: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	fashionablesnake: {
 		tier: "Rand",
@@ -2532,7 +2532,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	individualgoose: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	westerngamefowl: {
 		tier: "Rand",
@@ -2556,7 +2556,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	musicaldragon: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	ethnicroadrunner: {
 		tier: "Rand",
@@ -2649,7 +2649,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	difficultjaguar: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	passivetiger: {
 		tier: "Rand",
@@ -2715,7 +2715,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	middleperch: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	rivalchipmunk: {
 		tier: "Rand",
@@ -2805,7 +2805,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	betterpossum: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	filthyanteater: {
 		tier: "Rand",
@@ -2859,7 +2859,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	tensecricket: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	ethicalpiranha: {
 		tier: "Rand",
@@ -2946,7 +2946,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	generalparakeet: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	zygomorphicmacaw: {
 		tier: "Rand",
@@ -2979,7 +2979,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	unawaresnipe: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	chubbybison: {
 		tier: "Rand",
@@ -2994,9 +2994,9 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Rand",
 	},
 	considerablegayal: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 	clumsypiranha: {
-		tier: "Rand",
+		tier: "Rand Sus",
 	},
 };
