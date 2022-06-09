@@ -1008,7 +1008,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "OU",
 	},
 	blazikenmega: {
-		tier: "OU",
+		tier: "Uber",
 	},
 	mudkip: {
 		tier: "LC",
@@ -1464,22 +1464,22 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Uber",
 	},
 	rayquazamega: {
-		tier: "OU",
+		tier: "Uber",
 	},
 	jirachi: {
 		tier: "OU",
 	},
 	deoxys: {
-		tier: "OU",
+		tier: "Uber",
 	},
 	deoxysattack: {
-		tier: "OU",
+		tier: "Uber",
 	},
 	deoxysdefense: {
-		tier: "OU",
+		tier: "Uber",
 	},
 	deoxysspeed: {
-		tier: "OU",
+		tier: "Uber",
 	},
 	turtwig: {
 		tier: "LC",
@@ -1812,13 +1812,13 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Uber",
 	},
 	dialgaorigin: {
-		tier: "OU",
+		tier: "Uber",
 	},
 	palkia: {
 		tier: "Uber",
 	},
 	palkiaorigin: {
-		tier: "OU",
+		tier: "Uber",
 	},
 	heatran: {
 		tier: "OU",
@@ -1851,58 +1851,58 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "OU",
 	},
 	arceus: {
-		tier: "OU",
+		tier: "Uber",
 	},
 	arceusbug: {
-		tier: "OU",
+		tier: "Uber",
 	},
 	arceusdark: {
-		tier: "OU",
+		tier: "Uber",
 	},
 	arceusdragon: {
-		tier: "OU",
+		tier: "Uber",
 	},
 	arceuselectric: {
-		tier: "OU",
+		tier: "Uber",
 	},
 	arceusfairy: {
-		tier: "OU",
+		tier: "Uber",
 	},
 	arceusfighting: {
-		tier: "OU",
+		tier: "Uber",
 	},
 	arceusfire: {
-		tier: "OU",
+		tier: "Uber",
 	},
 	arceusflying: {
-		tier: "OU",
+		tier: "Uber",
 	},
 	arceusghost: {
-		tier: "OU",
+		tier: "Uber",
 	},
 	arceusgrass: {
-		tier: "OU",
+		tier: "Uber",
 	},
 	arceusground: {
-		tier: "OU",
+		tier: "Uber",
 	},
 	arceusice: {
-		tier: "OU",
+		tier: "Uber",
 	},
 	arceuspoison: {
-		tier: "OU",
+		tier: "Uber",
 	},
 	arceuspsychic: {
-		tier: "OU",
+		tier: "Uber",
 	},
 	arceusrock: {
-		tier: "OU",
+		tier: "Uber",
 	},
 	arceussteel: {
-		tier: "OU",
+		tier: "Uber",
 	},
 	arceuswater: {
-		tier: "OU",
+		tier: "Uber",
 	},
 	victini: {
 		tier: "OU",
@@ -2694,7 +2694,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Uber",
 	},
 	xerneasneutral: {
-		tier: "OU",
+		tier: "Uber",
 	},
 	yveltal: {
 		tier: "Uber",
@@ -3384,7 +3384,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Uber",
 	},
 	eternatuseternamax: {
-		tier: "OU",
+		tier: "Illegal",
 	},
 	kubfu: {
 		tier: "LC",
