@@ -642,10 +642,10 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Uber",
 	},
 	mewtwomegax: {
-		tier: "OU",
+		tier: "Uber",
 	},
 	mewtwomegay: {
-		tier: "OU",
+		tier: "Uber",
 	},
 	mew: {
 		tier: "OU",
@@ -3369,10 +3369,10 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "OU",
 	},
 	zacian: {
-		tier: "OU",
+		tier: "Uber",
 	},
 	zaciancrowned: {
-		tier: "OU",
+		tier: "Uber",
 	},
 	zamazenta: {
 		tier: "Uber",
