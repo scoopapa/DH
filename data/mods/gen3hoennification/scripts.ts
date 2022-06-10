@@ -5,6 +5,10 @@ export const Scripts: ModdedBattleScriptsData = {
 		for (const i in this.data.Pokedex) {
 			delete this.data.Pokedex[i].abilities['H'];
             if (this.data.Pokedex[i].abilities[1] == 'Illuminate' && i != 'Chinchou' && i != 'Lanturn') delete this.data.Pokedex[i].abilities[1];
+            if (this.data.Pokedex[i].abilities[0] == 'Illuminate' && this.data.Pokedex[i].abilities[1] && i != 'Shiinotic' && i != 'Morelull' && i != 'Staryu' && i != 'Starmie' && i != 'Volbeat' && i != 'Watchog') {
+                this.data.Pokedex[i].abilities[1] = this.data.Pokedex[i].abilities[0];
+                delete this.data.Pokedex[i].abilities[1];
+            }
             this.data.Pokedex[i].num = -this.data.Pokedex[i].num;
 		}
 		const specialTypes = ['Fire', 'Water', 'Grass', 'Ice', 'Electric', 'Dark', 'Psychic', 'Dragon'];
