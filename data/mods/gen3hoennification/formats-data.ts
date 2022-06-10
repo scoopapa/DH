@@ -2112,7 +2112,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "OU",
 	},
 	darmanitangalar: {
-		tier: "Uber",
+		tier: "OU",
 	},
 	darmanitangalarzen: {
 		tier: "OU",
@@ -2700,7 +2700,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Uber",
 	},
 	zygarde: {
-		tier: "Uber",
+		tier: "OU",
 	},
 	zygarde10: {
 		tier: "OU",
