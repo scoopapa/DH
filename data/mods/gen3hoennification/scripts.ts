@@ -4,6 +4,7 @@ export const Scripts: ModdedBattleScriptsData = {
 	init() {
 		for (const i in this.data.Pokedex) {
 			delete this.data.Pokedex[i].abilities['H'];
+            if (this.data.Pokedex[i].abilities[1] == 'Illuminate' && i != 'Chinchou' && i != 'Lanturn') delete this.data.Pokedex[i].abilities[1];
             this.data.Pokedex[i].num = -this.data.Pokedex[i].num;
 		}
 		const specialTypes = ['Fire', 'Water', 'Grass', 'Ice', 'Electric', 'Dark', 'Psychic', 'Dragon'];
