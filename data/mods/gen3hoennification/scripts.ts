@@ -6,7 +6,7 @@ export const Scripts: ModdedBattleScriptsData = {
 			delete this.data.Pokedex[i].abilities['H'];
             if (this.data.Pokedex[i].abilities[1] == 'Illuminate' && i != 'Chinchou' && i != 'Lanturn') delete this.data.Pokedex[i].abilities[1];
             if (this.data.Pokedex[i].abilities[0] == 'Illuminate' && this.data.Pokedex[i].abilities[1] && i != 'Shiinotic' && i != 'Morelull' && i != 'Staryu' && i != 'Starmie' && i != 'Volbeat' && i != 'Watchog') {
-                this.data.Pokedex[i].abilities[1] = this.data.Pokedex[i].abilities[0];
+                this.data.Pokedex[i].abilities[0] = this.data.Pokedex[i].abilities[1];
                 delete this.data.Pokedex[i].abilities[1];
             }
             this.data.Pokedex[i].num = -this.data.Pokedex[i].num;
