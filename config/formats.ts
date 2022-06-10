@@ -3056,8 +3056,7 @@ export const Formats: FormatList = [
     {
 		name: "[Gen 3] Hoennification",
 		threads: [
-			`&bullet; <a href="https://www.smogon.com/forums/posts/8133789/">Hoennification</a>`,
-			`&bullet; <a href="https://www.smogon.com/forums/threads/3503019/">ADV OU Viability Rankings</a>`,
+			`&bullet; <a href="https://www.smogon.com/forums/threads/solomods-megathread.3660004/page-6#post-9240115">Post in Solomods Megathread</a>`,
 		],
 
 		mod: 'gen3hoennification',
