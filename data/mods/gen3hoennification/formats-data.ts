@@ -1452,13 +1452,13 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Uber",
 	},
 	kyogreprimal: {
-		tier: "OU",
+		tier: "Uber",
 	},
 	groudon: {
 		tier: "Uber",
 	},
 	groudonprimal: {
-		tier: "OU",
+		tier: "Uber",
 	},
 	rayquaza: {
 		tier: "Uber",
@@ -1824,7 +1824,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "OU",
 	},
 	regigigas: {
-		tier: "OU",
+		tier: "Uber",
 	},
 	giratina: {
 		tier: "Uber",
@@ -3075,7 +3075,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Uber",
 	},
 	necrozmaultra: {
-		tier: "OU",
+		tier: "Uber",
 	},
 	magearna: {
 		tier: "Uber",
