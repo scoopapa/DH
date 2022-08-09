@@ -4547,6 +4547,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		types: ["Electric", "Ghost"],
 		baseStats: { hp: 50, atk: 50, def: 77, spa: 95, spd: 77, spe: 91 },
 		abilities: { '0': 'Levitate' },
+        otherFormes: ["Rotom-Heat", "Rotom-Wash", "Rotom-Frost", "Rotom-Fan", "Rotom-Mow"],
 	},
 	rotomheat: {
 		num: 479,
@@ -4555,6 +4556,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		types: ["Electric", "Fire"],
 		baseStats: { hp: 50, atk: 65, def: 107, spa: 105, spd: 107, spe: 86 },
 		abilities: { '0': 'Levitate' },
+        changesFrom: "Rotom",
 	},
 	rotomwash: {
 		num: 479,
@@ -4563,6 +4565,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		types: ["Electric", "Water"],
 		baseStats: { hp: 50, atk: 65, def: 107, spa: 105, spd: 107, spe: 86 },
 		abilities: { '0': 'Levitate' },
+        changesFrom: "Rotom",
 	},
 	rotomfrost: {
 		num: 479,
@@ -4571,6 +4574,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		types: ["Electric", "Ice"],
 		baseStats: { hp: 50, atk: 65, def: 107, spa: 105, spd: 107, spe: 86 },
 		abilities: { '0': 'Levitate' },
+        changesFrom: "Rotom",
 	},
 	rotomfan: {
 		num: 479,
@@ -4579,6 +4583,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		types: ["Electric", "Flying"],
 		baseStats: { hp: 50, atk: 65, def: 107, spa: 105, spd: 107, spe: 86 },
 		abilities: { '0': 'Levitate' },
+        changesFrom: "Rotom",
 	},
 	rotommow: {
 		num: 479,
@@ -4587,6 +4592,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		types: ["Electric", "Grass"],
 		baseStats: { hp: 50, atk: 65, def: 107, spa: 105, spd: 107, spe: 86 },
 		abilities: { '0': 'Levitate' },
+        changesFrom: "Rotom",
 	},
 	uxie: {
 		num: 480,

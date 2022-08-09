@@ -426,7 +426,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "OU",
 	},
 	gengarmega: {
-		tier: "OU",
+		tier: "Uber",
 	},
 	onix: {
 		tier: "LC",
