@@ -529,7 +529,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 	jigglypuff: {
 		num: 39,
 		name: "Jigglypuff",
-		types: ["Normal", "Normal"],
+		types: ["Normal"],
 		baseStats: { hp: 115, atk: 45, def: 20, spa: 45, spd: 25, spe: 20 },
 		abilities: { '0': 'Cute Charm', '1': 'Illuminate' },
 		prevo: "Igglybuff",
@@ -537,7 +537,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 	wigglytuff: {
 		num: 40,
 		name: "Wigglytuff",
-		types: ["Normal", "Normal"],
+		types: ["Normal"],
 		baseStats: { hp: 140, atk: 70, def: 45, spa: 85, spd: 50, spe: 45 },
 		abilities: { '0': 'Cute Charm', '1': 'Illuminate' },
 		prevo: "Jigglypuff",
@@ -1107,7 +1107,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		name: "Gengar",
 		types: ["Ghost", "Poison"],
 		baseStats: { hp: 60, atk: 65, def: 60, spa: 130, spd: 75, spe: 110 },
-		abilities: { '0': 'Illuminate' },
+		abilities: { '0': 'Levitate' },
 		prevo: "Haunter",
 	},
 	gengarmega: {
@@ -1870,7 +1870,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 	igglybuff: {
 		num: 174,
 		name: "Igglybuff",
-		types: ["Normal", "Normal"],
+		types: ["Normal"],
 		baseStats: { hp: 90, atk: 30, def: 15, spa: 40, spd: 20, spe: 15 },
 		abilities: { '0': 'Cute Charm', '1': 'Illuminate' },
 	},
@@ -2931,7 +2931,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 	azurill: {
 		num: 298,
 		name: "Azurill",
-		types: ["Normal", "Normal"],
+		types: ["Normal"],
 		baseStats: { hp: 50, atk: 20, def: 40, spa: 20, spd: 40, spe: 20 },
 		abilities: { '0': 'Thick Fat', '1': 'Huge Power' },
 	},
@@ -3759,6 +3759,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		types: ["Psychic"],
 		baseStats: { hp: 50, atk: 180, def: 20, spa: 180, spd: 20, spe: 150 },
 		abilities: { '0': 'Pressure' },
+        changesFrom: "Deoxys",
 	},
 	deoxysdefense: {
 		num: 386,
@@ -3767,6 +3768,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		types: ["Psychic"],
 		baseStats: { hp: 50, atk: 70, def: 160, spa: 70, spd: 160, spe: 90 },
 		abilities: { '0': 'Pressure' },
+        changesFrom: "Deoxys",
 	},
 	deoxysspeed: {
 		num: 386,
@@ -3775,6 +3777,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		types: ["Psychic"],
 		baseStats: { hp: 50, atk: 95, def: 90, spa: 95, spd: 90, spe: 180 },
 		abilities: { '0': 'Pressure' },
+        changesFrom: "Deoxys",
 	},
 	turtwig: {
 		num: 387,
@@ -4555,6 +4558,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		types: ["Electric", "Fire"],
 		baseStats: { hp: 50, atk: 65, def: 107, spa: 105, spd: 107, spe: 86 },
 		abilities: { '0': 'Levitate' },
+        changesFrom: "Rotom",
 	},
 	rotomwash: {
 		num: 479,
@@ -4563,6 +4567,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		types: ["Electric", "Water"],
 		baseStats: { hp: 50, atk: 65, def: 107, spa: 105, spd: 107, spe: 86 },
 		abilities: { '0': 'Levitate' },
+        changesFrom: "Rotom",
 	},
 	rotomfrost: {
 		num: 479,
@@ -4571,6 +4576,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		types: ["Electric", "Ice"],
 		baseStats: { hp: 50, atk: 65, def: 107, spa: 105, spd: 107, spe: 86 },
 		abilities: { '0': 'Levitate' },
+        changesFrom: "Rotom",
 	},
 	rotomfan: {
 		num: 479,
@@ -4579,6 +4585,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		types: ["Electric", "Flying"],
 		baseStats: { hp: 50, atk: 65, def: 107, spa: 105, spd: 107, spe: 86 },
 		abilities: { '0': 'Levitate' },
+        changesFrom: "Rotom",
 	},
 	rotommow: {
 		num: 479,
@@ -4587,6 +4594,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		types: ["Electric", "Grass"],
 		baseStats: { hp: 50, atk: 65, def: 107, spa: 105, spd: 107, spe: 86 },
 		abilities: { '0': 'Levitate' },
+        changesFrom: "Rotom",
 	},
 	uxie: {
 		num: 480,
@@ -4710,6 +4718,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		types: ["Grass", "Flying"],
 		baseStats: { hp: 100, atk: 103, def: 75, spa: 120, spd: 75, spe: 127 },
 		abilities: { '0': 'Serene Grace' },
+        changesFrom: "Shaymin",
 	},
 	arceus: {
 		num: 493,
@@ -5154,7 +5163,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		num: 531,
 		name: "Audino-Mega",
 		baseSpecies: "Audino",
-		types: ["Normal", "Normal"],
+		types: ["Normal"],
 		baseStats: { hp: 103, atk: 60, def: 106, spa: 70, spd: 106, spe: 50 },
 		abilities: { '0': 'Illuminate' },
 	},
@@ -6088,6 +6097,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		types: ["Flying"],
 		baseStats: { hp: 79, atk: 100, def: 80, spa: 110, spd: 90, spe: 121 },
 		abilities: { '0': 'Illuminate' },
+        changesFrom: "Tornadus",
 	},
 	thundurus: {
 		num: 642,
@@ -6103,6 +6113,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		types: ["Electric", "Flying"],
 		baseStats: { hp: 79, atk: 105, def: 70, spa: 145, spd: 80, spe: 101 },
 		abilities: { '0': 'Volt Absorb' },
+        changesFrom: "Thundurus",
 	},
 	reshiram: {
 		num: 643,
@@ -6132,6 +6143,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		types: ["Ground", "Flying"],
 		baseStats: { hp: 89, atk: 145, def: 90, spa: 105, spd: 80, spe: 91 },
 		abilities: { '0': 'Intimidate' },
+        changesFrom: "Landorus",
 	},
 	kyurem: {
 		num: 646,
@@ -6885,6 +6897,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		types: ["Dragon", "Ground"],
 		baseStats: { hp: 54, atk: 100, def: 71, spa: 61, spd: 85, spe: 115 },
 		abilities: { '0': 'Illuminate' },
+        changesFrom: "Zygarde",
 	},
 	zygardecomplete: {
 		num: 718,
@@ -6923,6 +6936,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		types: ["Psychic", "Dark"],
 		baseStats: { hp: 80, atk: 160, def: 60, spa: 170, spd: 130, spe: 80 },
 		abilities: { '0': 'Illuminate' },
+        changesFrom: "Hoopa",
 	},
 	volcanion: {
 		num: 721,
@@ -7115,6 +7129,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		types: ["Electric", "Flying"],
 		baseStats: { hp: 75, atk: 70, def: 70, spa: 98, spd: 70, spe: 93 },
 		abilities: { '0': 'Illuminate' },
+        changesFrom: "Oricorio",
 	},
 	oricoriopau: {
 		num: 741,
@@ -7123,6 +7138,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		types: ["Psychic", "Flying"],
 		baseStats: { hp: 75, atk: 70, def: 70, spa: 98, spd: 70, spe: 93 },
 		abilities: { '0': 'Illuminate' },
+        changesFrom: "Oricorio",
 	},
 	oricoriosensu: {
 		num: 741,
@@ -7131,6 +7147,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		types: ["Ghost", "Flying"],
 		baseStats: { hp: 75, atk: 70, def: 70, spa: 98, spd: 70, spe: 93 },
 		abilities: { '0': 'Illuminate' },
+        changesFrom: "Oricorio",
 	},
 	cutiefly: {
 		num: 742,
@@ -7435,6 +7452,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		types: ["Bug"],
 		baseStats: { hp: 95, atk: 95, def: 95, spa: 95, spd: 95, spe: 95 },
 		abilities: { '0': 'Illuminate' },
+        changesFrom: "Silvally",
 	},
 	silvallydark: {
 		num: 773,
@@ -7443,6 +7461,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		types: ["Dark"],
 		baseStats: { hp: 95, atk: 95, def: 95, spa: 95, spd: 95, spe: 95 },
 		abilities: { '0': 'Illuminate' },
+        changesFrom: "Silvally",
 	},
 	silvallydragon: {
 		num: 773,
@@ -7451,6 +7470,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		types: ["Dragon"],
 		baseStats: { hp: 95, atk: 95, def: 95, spa: 95, spd: 95, spe: 95 },
 		abilities: { '0': 'Illuminate' },
+        changesFrom: "Silvally",
 	},
 	silvallyelectric: {
 		num: 773,
@@ -7459,6 +7479,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		types: ["Electric"],
 		baseStats: { hp: 95, atk: 95, def: 95, spa: 95, spd: 95, spe: 95 },
 		abilities: { '0': 'Illuminate' },
+        changesFrom: "Silvally",
 	},
 	silvallyfairy: {
 		num: 773,
@@ -7467,6 +7488,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		types: ["Normal"],
 		baseStats: { hp: 95, atk: 95, def: 95, spa: 95, spd: 95, spe: 95 },
 		abilities: { '0': 'Illuminate' },
+        changesFrom: "Silvally",
 	},
 	silvallyfighting: {
 		num: 773,
@@ -7475,6 +7497,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		types: ["Fighting"],
 		baseStats: { hp: 95, atk: 95, def: 95, spa: 95, spd: 95, spe: 95 },
 		abilities: { '0': 'Illuminate' },
+        changesFrom: "Silvally",
 	},
 	silvallyfire: {
 		num: 773,
@@ -7483,6 +7506,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		types: ["Fire"],
 		baseStats: { hp: 95, atk: 95, def: 95, spa: 95, spd: 95, spe: 95 },
 		abilities: { '0': 'Illuminate' },
+        changesFrom: "Silvally",
 	},
 	silvallyflying: {
 		num: 773,
@@ -7491,6 +7515,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		types: ["Flying"],
 		baseStats: { hp: 95, atk: 95, def: 95, spa: 95, spd: 95, spe: 95 },
 		abilities: { '0': 'Illuminate' },
+        changesFrom: "Silvally",
 	},
 	silvallyghost: {
 		num: 773,
@@ -7499,6 +7524,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		types: ["Ghost"],
 		baseStats: { hp: 95, atk: 95, def: 95, spa: 95, spd: 95, spe: 95 },
 		abilities: { '0': 'Illuminate' },
+        changesFrom: "Silvally",
 	},
 	silvallygrass: {
 		num: 773,
@@ -7507,6 +7533,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		types: ["Grass"],
 		baseStats: { hp: 95, atk: 95, def: 95, spa: 95, spd: 95, spe: 95 },
 		abilities: { '0': 'Illuminate' },
+        changesFrom: "Silvally",
 	},
 	silvallyground: {
 		num: 773,
@@ -7515,6 +7542,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		types: ["Ground"],
 		baseStats: { hp: 95, atk: 95, def: 95, spa: 95, spd: 95, spe: 95 },
 		abilities: { '0': 'Illuminate' },
+        changesFrom: "Silvally",
 	},
 	silvallyice: {
 		num: 773,
@@ -7523,6 +7551,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		types: ["Ice"],
 		baseStats: { hp: 95, atk: 95, def: 95, spa: 95, spd: 95, spe: 95 },
 		abilities: { '0': 'Illuminate' },
+        changesFrom: "Silvally",
 	},
 	silvallypoison: {
 		num: 773,
@@ -7531,6 +7560,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		types: ["Poison"],
 		baseStats: { hp: 95, atk: 95, def: 95, spa: 95, spd: 95, spe: 95 },
 		abilities: { '0': 'Illuminate' },
+        changesFrom: "Silvally",
 	},
 	silvallypsychic: {
 		num: 773,
@@ -7539,6 +7569,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		types: ["Psychic"],
 		baseStats: { hp: 95, atk: 95, def: 95, spa: 95, spd: 95, spe: 95 },
 		abilities: { '0': 'Illuminate' },
+        changesFrom: "Silvally",
 	},
 	silvallyrock: {
 		num: 773,
@@ -7547,6 +7578,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		types: ["Rock"],
 		baseStats: { hp: 95, atk: 95, def: 95, spa: 95, spd: 95, spe: 95 },
 		abilities: { '0': 'Illuminate' },
+        changesFrom: "Silvally",
 	},
 	silvallysteel: {
 		num: 773,
@@ -7555,6 +7587,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		types: ["Steel"],
 		baseStats: { hp: 95, atk: 95, def: 95, spa: 95, spd: 95, spe: 95 },
 		abilities: { '0': 'Illuminate' },
+        changesFrom: "Silvally",
 	},
 	silvallywater: {
 		num: 773,
@@ -7563,6 +7596,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		types: ["Water"],
 		baseStats: { hp: 95, atk: 95, def: 95, spa: 95, spd: 95, spe: 95 },
 		abilities: { '0': 'Illuminate' },
+        changesFrom: "Silvally",
 	},
 	minior: {
 		num: 774,
@@ -8777,5 +8811,6 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		types: ["Normal", "Flying"],
 		baseStats: { hp: 74, atk: 115, def: 110, spa: 135, spd: 100, spe: 46 },
 		abilities: { '0': 'Illuminate' },
+        changesFrom: "Enamorus",
 	},
 };
