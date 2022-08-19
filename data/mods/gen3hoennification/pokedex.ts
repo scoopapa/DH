@@ -1107,7 +1107,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		name: "Gengar",
 		types: ["Ghost", "Poison"],
 		baseStats: { hp: 60, atk: 65, def: 60, spa: 130, spd: 75, spe: 110 },
-		abilities: { '0': 'Illuminate' },
+		abilities: { '0': 'Levitate' },
 		prevo: "Haunter",
 	},
 	gengarmega: {
