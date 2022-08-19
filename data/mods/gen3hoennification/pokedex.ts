@@ -405,7 +405,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		name: "Sandshrew",
 		types: ["Ground"],
 		baseStats: { hp: 50, atk: 75, def: 85, spa: 20, spd: 30, spe: 40 },
-		abilities: { '0': 'Sand Veil', '1': 'Illuminate' },
+		abilities: { '0': 'Illuminate' },
 	},
 	sandshrewalola: {
 		num: 27,
@@ -420,7 +420,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		name: "Sandslash",
 		types: ["Ground"],
 		baseStats: { hp: 75, atk: 100, def: 110, spa: 45, spd: 55, spe: 65 },
-		abilities: { '0': 'Sand Veil', '1': 'Illuminate' },
+		abilities: { '0': 'Illuminate' },
 		prevo: "Sandshrew",
 	},
 	sandslashalola: {
@@ -615,7 +615,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		name: "Diglett",
 		types: ["Ground"],
 		baseStats: { hp: 10, atk: 55, def: 25, spa: 35, spd: 45, spe: 95 },
-		abilities: { '0': 'Sand Veil', '1': 'Arena Trap' },
+		abilities: { '0': 'Illuminate', '1': 'Arena Trap' },
 	},
 	diglettalola: {
 		num: 50,
@@ -623,14 +623,14 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		baseSpecies: "Diglett",
 		types: ["Ground", "Steel"],
 		baseStats: { hp: 10, atk: 55, def: 30, spa: 35, spd: 45, spe: 90 },
-		abilities: { '0': 'Sand Veil', '1': 'Illuminate' },
+		abilities: { '0': 'Illuminate' },
 	},
 	dugtrio: {
 		num: 51,
 		name: "Dugtrio",
 		types: ["Ground"],
 		baseStats: { hp: 35, atk: 100, def: 50, spa: 50, spd: 70, spe: 120 },
-		abilities: { '0': 'Sand Veil', '1': 'Arena Trap' },
+		abilities: { '0': 'Illuminate', '1': 'Arena Trap' },
 		prevo: "Diglett",
 	},
 	dugtrioalola: {
@@ -639,7 +639,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		baseSpecies: "Dugtrio",
 		types: ["Ground", "Steel"],
 		baseStats: { hp: 35, atk: 100, def: 60, spa: 50, spd: 70, spe: 110 },
-		abilities: { '0': 'Sand Veil', '1': 'Illuminate' },
+		abilities: { '0': 'Illuminate' },
 		prevo: "Diglett-Alola",
 	},
 	meowth: {
@@ -2138,7 +2138,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		name: "Gligar",
 		types: ["Ground", "Flying"],
 		baseStats: { hp: 65, atk: 75, def: 105, spa: 35, spd: 65, spe: 85 },
-		abilities: { '0': 'Hyper Cutter', '1': 'Sand Veil' },
+		abilities: { '0': 'Hyper Cutter', '1': 'Illuminate' },
 	},
 	steelix: {
 		num: 208,
@@ -2372,14 +2372,14 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		name: "Phanpy",
 		types: ["Ground"],
 		baseStats: { hp: 90, atk: 60, def: 60, spa: 40, spd: 40, spe: 40 },
-		abilities: { '0': 'Pickup', '1': 'Sand Veil' },
+		abilities: { '0': 'Pickup', '1': 'Illuminate' },
 	},
 	donphan: {
 		num: 232,
 		name: "Donphan",
 		types: ["Ground"],
 		baseStats: { hp: 90, atk: 120, def: 120, spa: 60, spd: 60, spe: 50 },
-		abilities: { '0': 'Sturdy', '1': 'Sand Veil' },
+		abilities: { '0': 'Sturdy', '1': 'Illuminate' },
 		prevo: "Phanpy",
 	},
 	porygon2: {
@@ -2481,7 +2481,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		name: "Larvitar",
 		types: ["Rock", "Ground"],
 		baseStats: { hp: 50, atk: 64, def: 50, spa: 45, spd: 50, spe: 41 },
-		abilities: { '0': 'Guts', '1': 'Sand Veil' },
+		abilities: { '0': 'Guts', '1': 'Illuminate' },
 	},
 	pupitar: {
 		num: 247,
@@ -3233,14 +3233,14 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		name: "Cacnea",
 		types: ["Grass"],
 		baseStats: { hp: 50, atk: 85, def: 40, spa: 85, spd: 40, spe: 35 },
-		abilities: { '0': 'Sand Veil', '1': 'Water Absorb' },
+		abilities: { '0': 'Illuminate', '1': 'Water Absorb' },
 	},
 	cacturne: {
 		num: 332,
 		name: "Cacturne",
 		types: ["Grass", "Dark"],
 		baseStats: { hp: 70, atk: 115, def: 60, spa: 115, spd: 60, spe: 55 },
-		abilities: { '0': 'Sand Veil', '1': 'Water Absorb' },
+		abilities: { '0': 'Illuminate', '1': 'Water Absorb' },
 		prevo: "Cacnea",
 	},
 	swablu: {
@@ -4239,14 +4239,14 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		name: "Gible",
 		types: ["Dragon", "Ground"],
 		baseStats: { hp: 58, atk: 70, def: 45, spa: 40, spd: 45, spe: 42 },
-		abilities: { '0': 'Sand Veil', '1': 'Rough Skin' },
+		abilities: { '0': 'Illuminate', '1': 'Rough Skin' },
 	},
 	gabite: {
 		num: 444,
 		name: "Gabite",
 		types: ["Dragon", "Ground"],
 		baseStats: { hp: 68, atk: 90, def: 65, spa: 50, spd: 55, spe: 82 },
-		abilities: { '0': 'Sand Veil', '1': 'Rough Skin' },
+		abilities: { '0': 'Illuminate', '1': 'Rough Skin' },
 		prevo: "Gible",
 	},
 	garchomp: {
@@ -4254,7 +4254,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		name: "Garchomp",
 		types: ["Dragon", "Ground"],
 		baseStats: { hp: 108, atk: 130, def: 95, spa: 80, spd: 85, spe: 102 },
-		abilities: { '0': 'Sand Veil', '1': 'Rough Skin' },
+		abilities: { '0': 'Illuminate', '1': 'Rough Skin' },
 		prevo: "Gabite",
 	},
 	garchompmega: {
@@ -4485,7 +4485,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		name: "Gliscor",
 		types: ["Ground", "Flying"],
 		baseStats: { hp: 75, atk: 95, def: 125, spa: 45, spd: 75, spe: 95 },
-		abilities: { '0': 'Hyper Cutter', '1': 'Sand Veil' },
+		abilities: { '0': 'Hyper Cutter', '1': 'Illuminate' },
 		prevo: "Gligar",
 	},
 	mamoswine: {
@@ -6624,14 +6624,14 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		name: "Helioptile",
 		types: ["Electric", "Normal"],
 		baseStats: { hp: 44, atk: 38, def: 33, spa: 61, spd: 43, spe: 70 },
-		abilities: { '0': 'Illuminate', '1': 'Sand Veil' },
+		abilities: { '0': 'Illuminate' },
 	},
 	heliolisk: {
 		num: 695,
 		name: "Heliolisk",
 		types: ["Electric", "Normal"],
 		baseStats: { hp: 62, atk: 55, def: 52, spa: 109, spd: 94, spe: 109 },
-		abilities: { '0': 'Illuminate', '1': 'Sand Veil' },
+		abilities: { '0': 'Illuminate' },
 		prevo: "Helioptile",
 	},
 	tyrunt: {
@@ -7413,14 +7413,14 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		name: "Sandygast",
 		types: ["Ghost", "Ground"],
 		baseStats: { hp: 55, atk: 55, def: 80, spa: 70, spd: 45, spe: 15 },
-		abilities: { '0': 'Illuminate', '1': 'Sand Veil' },
+		abilities: { '0': 'Illuminate' },
 	},
 	palossand: {
 		num: 770,
 		name: "Palossand",
 		types: ["Ghost", "Ground"],
 		baseStats: { hp: 85, atk: 75, def: 110, spa: 100, spd: 75, spe: 35 },
-		abilities: { '0': 'Illuminate', '1': 'Sand Veil' },
+		abilities: { '0': 'Illuminate' },
 		prevo: "Sandygast",
 	},
 	pyukumuku: {

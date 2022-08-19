@@ -303,7 +303,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "OU",
 	},
 	alakazammega: {
-		tier: "OU",
+		tier: "Uber",
 	},
 	machop: {
 		tier: "LC",
