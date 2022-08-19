@@ -529,7 +529,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 	jigglypuff: {
 		num: 39,
 		name: "Jigglypuff",
-		types: ["Normal", "Normal"],
+		types: ["Normal"],
 		baseStats: { hp: 115, atk: 45, def: 20, spa: 45, spd: 25, spe: 20 },
 		abilities: { '0': 'Cute Charm', '1': 'Illuminate' },
 		prevo: "Igglybuff",
@@ -537,7 +537,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 	wigglytuff: {
 		num: 40,
 		name: "Wigglytuff",
-		types: ["Normal", "Normal"],
+		types: ["Normal"],
 		baseStats: { hp: 140, atk: 70, def: 45, spa: 85, spd: 50, spe: 45 },
 		abilities: { '0': 'Cute Charm', '1': 'Illuminate' },
 		prevo: "Jigglypuff",
@@ -1870,7 +1870,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 	igglybuff: {
 		num: 174,
 		name: "Igglybuff",
-		types: ["Normal", "Normal"],
+		types: ["Normal"],
 		baseStats: { hp: 90, atk: 30, def: 15, spa: 40, spd: 20, spe: 15 },
 		abilities: { '0': 'Cute Charm', '1': 'Illuminate' },
 	},
@@ -2931,7 +2931,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 	azurill: {
 		num: 298,
 		name: "Azurill",
-		types: ["Normal", "Normal"],
+		types: ["Normal"],
 		baseStats: { hp: 50, atk: 20, def: 40, spa: 20, spd: 40, spe: 20 },
 		abilities: { '0': 'Thick Fat', '1': 'Huge Power' },
 	},
@@ -5163,7 +5163,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		num: 531,
 		name: "Audino-Mega",
 		baseSpecies: "Audino",
-		types: ["Normal", "Normal"],
+		types: ["Normal"],
 		baseStats: { hp: 103, atk: 60, def: 106, spa: 70, spd: 106, spe: 50 },
 		abilities: { '0': 'Illuminate' },
 	},
