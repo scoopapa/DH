@@ -3574,14 +3574,14 @@ export const Formats: FormatList = [
 	},
     {
 		name: "[Gen 3] Hoennification",
-        desc: 'This is a Solomod that adds Gen 4-8 Pokemon to the Gen 3 format. It takes away their Gen 4-8 abilities and replaces them with Illuminate (I will be changing them later). As for existing Gen 1-3 Pokemon, I have updated their stats, typing and learnsets to match National Dex (minus Gen 4-8 moves). Megas do not require a Mega Stone, and they have been nerfed to 50% of their original stats (for example, if a Mega usually gains +20 in a stat, it now only gains +10). If a Pokemon has Fairy type, I have converted that to Normal. I have also given them their Hidden Abilities if they have no ability in their second ability slot. Pokemon who were Ubers in [Gen 8] OU are Ubers here, while Pokemon who were OU in [Gen 8] OU are OU here, meaning some Pokemon may deserve a quickban',
+        desc: "In this Gen 3 Pet Mod, use Gen 4-8 mons in a modified [Gen 3] OU format. Fairy type becomes Normal type. All Pokemon inherit their Hidden Abilities if they have no Ability in Slot 2. If the Ability doesn't exist in Gen 3, it is Illuminate. Gen 1-3 mons inherit moves from Gens 1-2 and Gens 4-8 that exist in Gen 3 (no Gen 4-8 moves are added). Megas get 50% of their stat boosts, i.e. a usual 20 point increase is nerfed to 10 points. Certain Pokemon are banned/unbanned depending on their expected viability. All fully evolved Pokemon are OU, NFEs are NFE, and LCs are LC.",
 		threads: [
 			`&bullet; <a href="https://www.smogon.com/forums/threads/solomods-megathread.3660004/page-6#post-9240115">Post in Solomods Megathread</a>`,
 		],
 
 		mod: 'gen3hoennification',
-		ruleset: ['Standard', '3 Baton Pass Clause'],
-		banlist: ['Uber', 'Smeargle + Baton Pass'],
+		ruleset: ['Standard', 'One Boost Passer Clause', 'Freeze Clause Mod'],
+		banlist: ['Uber', 'Sand Veil', 'Soundproof', 'Assist', 'Baton Pass + Block', 'Baton Pass + Mean Look', 'Baton Pass + Spider Web', 'Smeargle + Ingrain'],
 	},
 	{    
        name: "[Gen 8] i forgor OU",
