@@ -1082,8 +1082,7 @@ ekans: {
 	},
 	"abilities": {
 		"0": "Intimidate",
-		"1": "Shed Skin",
-		"H": "Illuminate"
+		"1": "Shed Skin"
 	},
 	"weightkg": 6.9,
 	"evos": [
@@ -1110,8 +1109,7 @@ arbok: {
 	},
 	"abilities": {
 		"0": "Intimidate",
-		"1": "Shed Skin",
-		"H": "Illuminate"
+		"1": "Shed Skin"
 	},
 	"weightkg": 65,
 	"prevo": "Ekans",
@@ -2910,8 +2908,7 @@ growlithe: {
 	},
 	"abilities": {
 		"0": "Intimidate",
-		"1": "Flash Fire",
-		"H": "Illuminate"
+		"1": "Flash Fire"
 	},
 	"weightkg": 19,
 	"evos": [
@@ -2951,8 +2948,7 @@ growlithehisui: {
 	},
 	"abilities": {
 		"0": "Intimidate",
-		"1": "Flash Fire",
-		"H": "Illuminate"
+		"1": "Flash Fire"
 	},
 	"weightkg": 22.7,
 	"evos": [
@@ -2982,8 +2978,7 @@ arcanine: {
 	},
 	"abilities": {
 		"0": "Intimidate",
-		"1": "Flash Fire",
-		"H": "Illuminate"
+		"1": "Flash Fire"
 	},
 	"weightkg": 155,
 	"prevo": "Growlithe",
@@ -3023,8 +3018,7 @@ arcaninehisui: {
 	},
 	"abilities": {
 		"0": "Intimidate",
-		"1": "Flash Fire",
-		"H": "Illuminate"
+		"1": "Flash Fire"
 	},
 	"weightkg": 168,
 	"prevo": "Growlithe-Hisui",
@@ -3139,8 +3133,7 @@ abra: {
 	},
 	"abilities": {
 		"0": "Synchronize",
-		"1": "Inner Focus",
-		"H": "Illuminate"
+		"1": "Inner Focus"
 	},
 	"weightkg": 19.5,
 	"evos": [
@@ -3170,8 +3163,7 @@ kadabra: {
 	},
 	"abilities": {
 		"0": "Synchronize",
-		"1": "Inner Focus",
-		"H": "Illuminate"
+		"1": "Inner Focus"
 	},
 	"weightkg": 56.5,
 	"prevo": "Abra",
@@ -3203,8 +3195,7 @@ alakazam: {
 	},
 	"abilities": {
 		"0": "Synchronize",
-		"1": "Inner Focus",
-		"H": "Illuminate"
+		"1": "Inner Focus"
 	},
 	"weightkg": 48,
 	"prevo": "Kadabra",
@@ -3525,8 +3516,7 @@ geodude: {
 	},
 	"abilities": {
 		"0": "Rock Head",
-		"1": "Sturdy",
-		"H": "Illuminate"
+		"1": "Sturdy"
 	},
 	"weightkg": 20,
 	"evos": [
@@ -3562,8 +3552,7 @@ geodudealola: {
 	},
 	"abilities": {
 		"0": "Magnet Pull",
-		"1": "Sturdy",
-		"H": "Illuminate"
+		"1": "Sturdy"
 	},
 	"weightkg": 20.3,
 	"evos": [
@@ -3590,8 +3579,7 @@ graveler: {
 	},
 	"abilities": {
 		"0": "Rock Head",
-		"1": "Sturdy",
-		"H": "Illuminate"
+		"1": "Sturdy"
 	},
 	"weightkg": 105,
 	"prevo": "Geodude",
@@ -3629,8 +3617,7 @@ graveleralola: {
 	},
 	"abilities": {
 		"0": "Magnet Pull",
-		"1": "Sturdy",
-		"H": "Illuminate"
+		"1": "Sturdy"
 	},
 	"weightkg": 110,
 	"prevo": "Geodude-Alola",
@@ -3659,8 +3646,7 @@ golem: {
 	},
 	"abilities": {
 		"0": "Rock Head",
-		"1": "Sturdy",
-		"H": "Illuminate"
+		"1": "Sturdy"
 	},
 	"weightkg": 300,
 	"prevo": "Graveler",
@@ -3695,8 +3681,7 @@ golemalola: {
 	},
 	"abilities": {
 		"0": "Magnet Pull",
-		"1": "Sturdy",
-		"H": "Illuminate"
+		"1": "Sturdy"
 	},
 	"weightkg": 316,
 	"prevo": "Graveler-Alola",
@@ -3845,8 +3830,7 @@ slowpoke: {
 	},
 	"abilities": {
 		"0": "Oblivious",
-		"1": "Own Tempo",
-		"H": "Illuminate"
+		"1": "Own Tempo"
 	},
 	"weightkg": 36,
 	"evos": [
@@ -3912,8 +3896,7 @@ slowbro: {
 	},
 	"abilities": {
 		"0": "Oblivious",
-		"1": "Own Tempo",
-		"H": "Illuminate"
+		"1": "Own Tempo"
 	},
 	"weightkg": 78.5,
 	"prevo": "Slowpoke",
@@ -4006,8 +3989,7 @@ magnemite: {
 	},
 	"abilities": {
 		"0": "Magnet Pull",
-		"1": "Sturdy",
-		"H": "Illuminate"
+		"1": "Sturdy"
 	},
 	"weightkg": 6,
 	"evos": [
@@ -4035,8 +4017,7 @@ magneton: {
 	},
 	"abilities": {
 		"0": "Magnet Pull",
-		"1": "Sturdy",
-		"H": "Illuminate"
+		"1": "Sturdy"
 	},
 	"weightkg": 60,
 	"prevo": "Magnemite",
@@ -4065,8 +4046,7 @@ farfetchd: {
 	},
 	"abilities": {
 		"0": "Keen Eye",
-		"1": "Inner Focus",
-		"H": "Illuminate"
+		"1": "Inner Focus"
 	},
 	"weightkg": 15,
 	"eggGroups": [
@@ -4126,8 +4106,7 @@ doduo: {
 	},
 	"abilities": {
 		"0": "Run Away",
-		"1": "Early Bird",
-		"H": "Illuminate"
+		"1": "Early Bird"
 	},
 	"weightkg": 39.2,
 	"evos": [
@@ -4154,8 +4133,7 @@ dodrio: {
 	},
 	"abilities": {
 		"0": "Run Away",
-		"1": "Early Bird",
-		"H": "Illuminate"
+		"1": "Early Bird"
 	},
 	"weightkg": 85.2,
 	"prevo": "Doduo",
@@ -4234,8 +4212,7 @@ grimer: {
 	},
 	"abilities": {
 		"0": "Stench",
-		"1": "Sticky Hold",
-		"H": "Illuminate"
+		"1": "Sticky Hold"
 	},
 	"weightkg": 30,
 	"evos": [
@@ -4296,8 +4273,7 @@ muk: {
 	},
 	"abilities": {
 		"0": "Stench",
-		"1": "Sticky Hold",
-		"H": "Illuminate"
+		"1": "Sticky Hold"
 	},
 	"weightkg": 30,
 	"prevo": "Grimer",
@@ -4548,8 +4524,7 @@ onix: {
 	},
 	"abilities": {
 		"0": "Rock Head",
-		"1": "Sturdy",
-		"H": "Illuminate"
+		"1": "Sturdy"
 	},
 	"weightkg": 210,
 	"evos": [
@@ -4628,8 +4603,7 @@ krabby: {
 	},
 	"abilities": {
 		"0": "Hyper Cutter",
-		"1": "Shell Armor",
-		"H": "Illuminate"
+		"1": "Shell Armor"
 	},
 	"weightkg": 6.5,
 	"evos": [
@@ -4655,8 +4629,7 @@ kingler: {
 	},
 	"abilities": {
 		"0": "Hyper Cutter",
-		"1": "Shell Armor",
-		"H": "Illuminate"
+		"1": "Shell Armor"
 	},
 	"weightkg": 60,
 	"prevo": "Krabby",
@@ -4684,8 +4657,7 @@ kinglergmax: {
 	},
 	"abilities": {
 		"0": "Hyper Cutter",
-		"1": "Shell Armor",
-		"H": "Illuminate"
+		"1": "Shell Armor"
 	},
 	"weightkg": 0,
 	"eggGroups": [
@@ -4710,8 +4682,7 @@ voltorb: {
 	},
 	"abilities": {
 		"0": "Soundproof",
-		"1": "Static",
-		"H": "Illuminate"
+		"1": "Static"
 	},
 	"weightkg": 10.4,
 	"evos": [
@@ -4748,8 +4719,7 @@ voltorbhisui: {
 	},
 	"abilities": {
 		"0": "Soundproof",
-		"1": "Static",
-		"H": "Illuminate"
+		"1": "Static"
 	},
 	"weightkg": 13,
 	"evos": [
@@ -4776,8 +4746,7 @@ electrode: {
 	},
 	"abilities": {
 		"0": "Soundproof",
-		"1": "Static",
-		"H": "Illuminate"
+		"1": "Static"
 	},
 	"weightkg": 66.6,
 	"prevo": "Voltorb",
@@ -4813,8 +4782,7 @@ electrodehisui: {
 	},
 	"abilities": {
 		"0": "Soundproof",
-		"1": "Static",
-		"H": "Illuminate"
+		"1": "Static"
 	},
 	"weightkg": 71,
 	"prevo": "Voltorb-Hisui",
@@ -5220,8 +5188,7 @@ rhyhorn: {
 	},
 	"abilities": {
 		"0": "Lightning Rod",
-		"1": "Rock Head",
-		"H": "Illuminate"
+		"1": "Rock Head"
 	},
 	"weightkg": 115,
 	"evos": [
@@ -5249,8 +5216,7 @@ rhydon: {
 	},
 	"abilities": {
 		"0": "Lightning Rod",
-		"1": "Rock Head",
-		"H": "Illuminate"
+		"1": "Rock Head"
 	},
 	"weightkg": 120,
 	"prevo": "Rhyhorn",
@@ -5280,8 +5246,7 @@ chansey: {
 	},
 	"abilities": {
 		"0": "Natural Cure",
-		"1": "Serene Grace",
-		"H": "Illuminate"
+		"1": "Serene Grace"
 	},
 	"weightkg": 34.6,
 	"prevo": "Happiny",
@@ -5915,8 +5880,7 @@ lapras: {
 	},
 	"abilities": {
 		"0": "Water Absorb",
-		"1": "Shell Armor",
-		"H": "Illuminate"
+		"1": "Shell Armor"
 	},
 	"weightkg": 220,
 	"eggGroups": [
@@ -5944,8 +5908,7 @@ laprasgmax: {
 	},
 	"abilities": {
 		"0": "Water Absorb",
-		"1": "Shell Armor",
-		"H": "Illuminate"
+		"1": "Shell Armor"
 	},
 	"weightkg": 0,
 	"eggGroups": [
@@ -6220,8 +6183,7 @@ omanyte: {
 	},
 	"abilities": {
 		"0": "Swift Swim",
-		"1": "Shell Armor",
-		"H": "Illuminate"
+		"1": "Shell Armor"
 	},
 	"weightkg": 7.5,
 	"evos": [
@@ -6253,8 +6215,7 @@ omastar: {
 	},
 	"abilities": {
 		"0": "Swift Swim",
-		"1": "Shell Armor",
-		"H": "Illuminate"
+		"1": "Shell Armor"
 	},
 	"weightkg": 35,
 	"prevo": "Omanyte",
@@ -6285,8 +6246,7 @@ kabuto: {
 	},
 	"abilities": {
 		"0": "Swift Swim",
-		"1": "Battle Armor",
-		"H": "Illuminate"
+		"1": "Battle Armor"
 	},
 	"weightkg": 11.5,
 	"evos": [
@@ -6318,8 +6278,7 @@ kabutops: {
 	},
 	"abilities": {
 		"0": "Swift Swim",
-		"1": "Battle Armor",
-		"H": "Illuminate"
+		"1": "Battle Armor"
 	},
 	"weightkg": 40.5,
 	"prevo": "Kabuto",
@@ -6350,8 +6309,7 @@ aerodactyl: {
 	},
 	"abilities": {
 		"0": "Rock Head",
-		"1": "Pressure",
-		"H": "Illuminate"
+		"1": "Pressure"
 	},
 	"weightkg": 59,
 	"eggGroups": [
@@ -6414,8 +6372,7 @@ snorlax: {
 	},
 	"abilities": {
 		"0": "Immunity",
-		"1": "Thick Fat",
-		"H": "Illuminate"
+		"1": "Thick Fat"
 	},
 	"weightkg": 460,
 	"prevo": "Munchlax",
@@ -6448,8 +6405,7 @@ snorlaxgmax: {
 	},
 	"abilities": {
 		"0": "Immunity",
-		"1": "Thick Fat",
-		"H": "Illuminate"
+		"1": "Thick Fat"
 	},
 	"weightkg": 0,
 	"eggGroups": [
@@ -7171,8 +7127,7 @@ sentret: {
 	},
 	"abilities": {
 		"0": "Run Away",
-		"1": "Keen Eye",
-		"H": "Illuminate"
+		"1": "Keen Eye"
 	},
 	"weightkg": 6,
 	"evos": [
@@ -7198,8 +7153,7 @@ furret: {
 	},
 	"abilities": {
 		"0": "Run Away",
-		"1": "Keen Eye",
-		"H": "Illuminate"
+		"1": "Keen Eye"
 	},
 	"weightkg": 32.5,
 	"prevo": "Sentret",
@@ -7225,8 +7179,7 @@ hoothoot: {
 	},
 	"abilities": {
 		"0": "Insomnia",
-		"1": "Keen Eye",
-		"H": "Illuminate"
+		"1": "Keen Eye"
 	},
 	"weightkg": 21.2,
 	"evos": [
@@ -7253,8 +7206,7 @@ noctowl: {
 	},
 	"abilities": {
 		"0": "Insomnia",
-		"1": "Keen Eye",
-		"H": "Illuminate"
+		"1": "Keen Eye"
 	},
 	"weightkg": 40.8,
 	"prevo": "Hoothoot",
@@ -7280,8 +7232,7 @@ ledyba: {
 	},
 	"abilities": {
 		"0": "Swarm",
-		"1": "Early Bird",
-		"H": "Illuminate"
+		"1": "Early Bird"
 	},
 	"weightkg": 10.8,
 	"evos": [
@@ -7308,8 +7259,7 @@ ledian: {
 	},
 	"abilities": {
 		"0": "Swarm",
-		"1": "Early Bird",
-		"H": "Illuminate"
+		"1": "Early Bird"
 	},
 	"weightkg": 35.6,
 	"prevo": "Ledyba",
@@ -7335,8 +7285,7 @@ spinarak: {
 	},
 	"abilities": {
 		"0": "Swarm",
-		"1": "Insomnia",
-		"H": "Illuminate"
+		"1": "Insomnia"
 	},
 	"weightkg": 8.5,
 	"evos": [
@@ -7363,8 +7312,7 @@ ariados: {
 	},
 	"abilities": {
 		"0": "Swarm",
-		"1": "Insomnia",
-		"H": "Illuminate"
+		"1": "Insomnia"
 	},
 	"weightkg": 33.5,
 	"prevo": "Spinarak",
@@ -7596,8 +7544,7 @@ togepi: {
 	},
 	"abilities": {
 		"0": "Hustle",
-		"1": "Serene Grace",
-		"H": "Illuminate"
+		"1": "Serene Grace"
 	},
 	"weightkg": 1.5,
 	"evos": [
@@ -7629,8 +7576,7 @@ togetic: {
 	},
 	"abilities": {
 		"0": "Hustle",
-		"1": "Serene Grace",
-		"H": "Illuminate"
+		"1": "Serene Grace"
 	},
 	"weightkg": 3.2,
 	"prevo": "Togepi",
@@ -7660,8 +7606,7 @@ natu: {
 	},
 	"abilities": {
 		"0": "Synchronize",
-		"1": "Early Bird",
-		"H": "Illuminate"
+		"1": "Early Bird"
 	},
 	"weightkg": 2,
 	"evos": [
@@ -7688,8 +7633,7 @@ xatu: {
 	},
 	"abilities": {
 		"0": "Synchronize",
-		"1": "Early Bird",
-		"H": "Illuminate"
+		"1": "Early Bird"
 	},
 	"weightkg": 15,
 	"prevo": "Natu",
@@ -7856,8 +7800,7 @@ marill: {
 	},
 	"abilities": {
 		"0": "Thick Fat",
-		"1": "Huge Power",
-		"H": "Illuminate"
+		"1": "Huge Power"
 	},
 	"weightkg": 8.5,
 	"prevo": "Azurill",
@@ -7888,8 +7831,7 @@ azumarill: {
 	},
 	"abilities": {
 		"0": "Thick Fat",
-		"1": "Huge Power",
-		"H": "Illuminate"
+		"1": "Huge Power"
 	},
 	"weightkg": 28.5,
 	"prevo": "Marill",
@@ -7915,8 +7857,7 @@ sudowoodo: {
 	},
 	"abilities": {
 		"0": "Sturdy",
-		"1": "Rock Head",
-		"H": "Illuminate"
+		"1": "Rock Head"
 	},
 	"weightkg": 38,
 	"prevo": "Bonsly",
@@ -8055,8 +7996,7 @@ aipom: {
 	},
 	"abilities": {
 		"0": "Run Away",
-		"1": "Pickup",
-		"H": "Illuminate"
+		"1": "Pickup"
 	},
 	"weightkg": 11.5,
 	"evos": [
@@ -8137,8 +8077,7 @@ yanma: {
 	},
 	"abilities": {
 		"0": "Speed Boost",
-		"1": "Compound Eyes",
-		"H": "Illuminate"
+		"1": "Compound Eyes"
 	},
 	"weightkg": 38,
 	"evos": [
@@ -8165,8 +8104,7 @@ wooper: {
 	},
 	"abilities": {
 		"0": "Damp",
-		"1": "Water Absorb",
-		"H": "Illuminate"
+		"1": "Water Absorb"
 	},
 	"weightkg": 8.5,
 	"evos": [
@@ -8194,8 +8132,7 @@ quagsire: {
 	},
 	"abilities": {
 		"0": "Damp",
-		"1": "Water Absorb",
-		"H": "Illuminate"
+		"1": "Water Absorb"
 	},
 	"weightkg": 75,
 	"prevo": "Wooper",
@@ -8309,8 +8246,7 @@ slowking: {
 	},
 	"abilities": {
 		"0": "Oblivious",
-		"1": "Own Tempo",
-		"H": "Illuminate"
+		"1": "Own Tempo"
 	},
 	"weightkg": 79.5,
 	"prevo": "Slowpoke",
@@ -8509,8 +8445,7 @@ girafarig: {
 	},
 	"abilities": {
 		"0": "Inner Focus",
-		"1": "Early Bird",
-		"H": "Illuminate"
+		"1": "Early Bird"
 	},
 	"weightkg": 41.5,
 	"eggGroups": [
@@ -8585,8 +8520,7 @@ dunsparce: {
 	},
 	"abilities": {
 		"0": "Serene Grace",
-		"1": "Run Away",
-		"H": "Illuminate"
+		"1": "Run Away"
 	},
 	"weightkg": 14,
 	"eggGroups": [
@@ -8638,8 +8572,7 @@ steelix: {
 	},
 	"abilities": {
 		"0": "Rock Head",
-		"1": "Sturdy",
-		"H": "Illuminate"
+		"1": "Sturdy"
 	},
 	"weightkg": 400,
 	"prevo": "Onix",
@@ -8701,8 +8634,7 @@ snubbull: {
 	},
 	"abilities": {
 		"0": "Intimidate",
-		"1": "Run Away",
-		"H": "Illuminate"
+		"1": "Run Away"
 	},
 	"weightkg": 7.8,
 	"evos": [
@@ -8905,8 +8837,7 @@ heracross: {
 	},
 	"abilities": {
 		"0": "Swarm",
-		"1": "Guts",
-		"H": "Illuminate"
+		"1": "Guts"
 	},
 	"weightkg": 54,
 	"eggGroups": [
@@ -8962,8 +8893,7 @@ sneasel: {
 	},
 	"abilities": {
 		"0": "Inner Focus",
-		"1": "Keen Eye",
-		"H": "Illuminate"
+		"1": "Keen Eye"
 	},
 	"weightkg": 28,
 	"evos": [
@@ -8999,8 +8929,7 @@ sneaselhisui: {
 	},
 	"abilities": {
 		"0": "Inner Focus",
-		"1": "Keen Eye",
-		"H": "Illuminate"
+		"1": "Keen Eye"
 	},
 	"weightkg": 27,
 	"evos": [
@@ -9080,8 +9009,7 @@ slugma: {
 	},
 	"abilities": {
 		"0": "Magma Armor",
-		"1": "Flame Body",
-		"H": "Illuminate"
+		"1": "Flame Body"
 	},
 	"weightkg": 35,
 	"evos": [
@@ -9108,8 +9036,7 @@ magcargo: {
 	},
 	"abilities": {
 		"0": "Magma Armor",
-		"1": "Flame Body",
-		"H": "Illuminate"
+		"1": "Flame Body"
 	},
 	"weightkg": 55,
 	"prevo": "Slugma",
@@ -9197,8 +9124,7 @@ corsola: {
 	},
 	"abilities": {
 		"0": "Hustle",
-		"1": "Natural Cure",
-		"H": "Illuminate"
+		"1": "Natural Cure"
 	},
 	"weightkg": 5,
 	"eggGroups": [
@@ -9370,8 +9296,7 @@ skarmory: {
 	},
 	"abilities": {
 		"0": "Keen Eye",
-		"1": "Sturdy",
-		"H": "Illuminate"
+		"1": "Sturdy"
 	},
 	"weightkg": 50.5,
 	"eggGroups": [
@@ -9395,8 +9320,7 @@ houndour: {
 	},
 	"abilities": {
 		"0": "Early Bird",
-		"1": "Flash Fire",
-		"H": "Illuminate"
+		"1": "Flash Fire"
 	},
 	"weightkg": 10.8,
 	"evos": [
@@ -9423,8 +9347,7 @@ houndoom: {
 	},
 	"abilities": {
 		"0": "Early Bird",
-		"1": "Flash Fire",
-		"H": "Illuminate"
+		"1": "Flash Fire"
 	},
 	"weightkg": 35,
 	"prevo": "Houndour",
@@ -9814,8 +9737,7 @@ blissey: {
 	},
 	"abilities": {
 		"0": "Natural Cure",
-		"1": "Serene Grace",
-		"H": "Illuminate"
+		"1": "Serene Grace"
 	},
 	"weightkg": 46.8,
 	"prevo": "Chansey",
@@ -10908,8 +10830,7 @@ seedot: {
 	},
 	"abilities": {
 		"0": "Chlorophyll",
-		"1": "Early Bird",
-		"H": "Illuminate"
+		"1": "Early Bird"
 	},
 	"weightkg": 4,
 	"evos": [
@@ -10937,8 +10858,7 @@ nuzleaf: {
 	},
 	"abilities": {
 		"0": "Chlorophyll",
-		"1": "Early Bird",
-		"H": "Illuminate"
+		"1": "Early Bird"
 	},
 	"weightkg": 28,
 	"prevo": "Seedot",
@@ -10968,8 +10888,7 @@ shiftry: {
 	},
 	"abilities": {
 		"0": "Chlorophyll",
-		"1": "Early Bird",
-		"H": "Illuminate"
+		"1": "Early Bird"
 	},
 	"weightkg": 59.6,
 	"prevo": "Nuzleaf",
@@ -11107,8 +11026,7 @@ ralts: {
 	},
 	"abilities": {
 		"0": "Synchronize",
-		"1": "Trace",
-		"H": "Illuminate"
+		"1": "Trace"
 	},
 	"weightkg": 6.6,
 	"evos": [
@@ -11136,8 +11054,7 @@ kirlia: {
 	},
 	"abilities": {
 		"0": "Synchronize",
-		"1": "Trace",
-		"H": "Illuminate"
+		"1": "Trace"
 	},
 	"weightkg": 20.2,
 	"prevo": "Ralts",
@@ -11168,8 +11085,7 @@ gardevoir: {
 	},
 	"abilities": {
 		"0": "Synchronize",
-		"1": "Trace",
-		"H": "Illuminate"
+		"1": "Trace"
 	},
 	"weightkg": 48.4,
 	"prevo": "Kirlia",
@@ -11579,8 +11495,7 @@ makuhita: {
 	},
 	"abilities": {
 		"0": "Thick Fat",
-		"1": "Guts",
-		"H": "Illuminate"
+		"1": "Guts"
 	},
 	"weightkg": 86.4,
 	"evos": [
@@ -11610,8 +11525,7 @@ hariyama: {
 	},
 	"abilities": {
 		"0": "Thick Fat",
-		"1": "Guts",
-		"H": "Illuminate"
+		"1": "Guts"
 	},
 	"weightkg": 253.8,
 	"prevo": "Makuhita",
@@ -11641,8 +11555,7 @@ azurill: {
 	},
 	"abilities": {
 		"0": "Thick Fat",
-		"1": "Huge Power",
-		"H": "Illuminate"
+		"1": "Huge Power"
 	},
 	"weightkg": 2,
 	"evos": [
@@ -11669,8 +11582,7 @@ nosepass: {
 	},
 	"abilities": {
 		"0": "Sturdy",
-		"1": "Magnet Pull",
-		"H": "Illuminate"
+		"1": "Magnet Pull"
 	},
 	"weightkg": 97,
 	"evos": [
@@ -11815,8 +11727,7 @@ mawile: {
 	},
 	"abilities": {
 		"0": "Hyper Cutter",
-		"1": "Intimidate",
-		"H": "Illuminate"
+		"1": "Intimidate"
 	},
 	"weightkg": 11.5,
 	"eggGroups": [
@@ -11874,8 +11785,7 @@ aron: {
 	},
 	"abilities": {
 		"0": "Sturdy",
-		"1": "Rock Head",
-		"H": "Illuminate"
+		"1": "Rock Head"
 	},
 	"weightkg": 60,
 	"evos": [
@@ -11902,8 +11812,7 @@ lairon: {
 	},
 	"abilities": {
 		"0": "Sturdy",
-		"1": "Rock Head",
-		"H": "Illuminate"
+		"1": "Rock Head"
 	},
 	"weightkg": 120,
 	"prevo": "Aron",
@@ -11932,8 +11841,7 @@ aggron: {
 	},
 	"abilities": {
 		"0": "Sturdy",
-		"1": "Rock Head",
-		"H": "Illuminate"
+		"1": "Rock Head"
 	},
 	"weightkg": 360,
 	"prevo": "Lairon",
@@ -12255,8 +12163,7 @@ roselia: {
 	},
 	"abilities": {
 		"0": "Natural Cure",
-		"1": "Poison Point",
-		"H": "Illuminate"
+		"1": "Poison Point"
 	},
 	"weightkg": 2,
 	"prevo": "Budew",
@@ -12287,8 +12194,7 @@ gulpin: {
 	},
 	"abilities": {
 		"0": "Liquid Ooze",
-		"1": "Sticky Hold",
-		"H": "Illuminate"
+		"1": "Sticky Hold"
 	},
 	"weightkg": 10.3,
 	"evos": [
@@ -12314,8 +12220,7 @@ swalot: {
 	},
 	"abilities": {
 		"0": "Liquid Ooze",
-		"1": "Sticky Hold",
-		"H": "Illuminate"
+		"1": "Sticky Hold"
 	},
 	"weightkg": 80,
 	"prevo": "Gulpin",
@@ -12590,8 +12495,7 @@ spoink: {
 	},
 	"abilities": {
 		"0": "Thick Fat",
-		"1": "Own Tempo",
-		"H": "Illuminate"
+		"1": "Own Tempo"
 	},
 	"weightkg": 30.6,
 	"evos": [
@@ -12617,8 +12521,7 @@ grumpig: {
 	},
 	"abilities": {
 		"0": "Thick Fat",
-		"1": "Own Tempo",
-		"H": "Illuminate"
+		"1": "Own Tempo"
 	},
 	"weightkg": 71.5,
 	"prevo": "Spoink",
@@ -12667,8 +12570,7 @@ trapinch: {
 	},
 	"abilities": {
 		"0": "Hyper Cutter",
-		"1": "Arena Trap",
-		"H": "Illuminate"
+		"1": "Arena Trap"
 	},
 	"weightkg": 15,
 	"evos": [
@@ -13040,8 +12942,7 @@ corphish: {
 	},
 	"abilities": {
 		"0": "Hyper Cutter",
-		"1": "Shell Armor",
-		"H": "Illuminate"
+		"1": "Shell Armor"
 	},
 	"weightkg": 11.5,
 	"evos": [
@@ -13069,8 +12970,7 @@ crawdaunt: {
 	},
 	"abilities": {
 		"0": "Hyper Cutter",
-		"1": "Shell Armor",
-		"H": "Illuminate"
+		"1": "Shell Armor"
 	},
 	"weightkg": 32.8,
 	"prevo": "Corphish",
@@ -13271,8 +13171,7 @@ feebas: {
 	},
 	"abilities": {
 		"0": "Swift Swim",
-		"1": "Oblivious",
-		"H": "Illuminate"
+		"1": "Oblivious"
 	},
 	"weightkg": 7.4,
 	"evos": [
@@ -15345,8 +15244,7 @@ budew: {
 	},
 	"abilities": {
 		"0": "Natural Cure",
-		"1": "Poison Point",
-		"H": "Illuminate"
+		"1": "Poison Point"
 	},
 	"weightkg": 1.2,
 	"evos": [
@@ -15374,8 +15272,7 @@ roserade: {
 	},
 	"abilities": {
 		"0": "Natural Cure",
-		"1": "Poison Point",
-		"H": "Illuminate"
+		"1": "Poison Point"
 	},
 	"weightkg": 14.5,
 	"prevo": "Roselia",
@@ -16221,8 +16118,7 @@ purugly: {
 	},
 	"abilities": {
 		"0": "Thick Fat",
-		"1": "Own Tempo",
-		"H": "Illuminate"
+		"1": "Own Tempo"
 	},
 	"weightkg": 43.8,
 	"prevo": "Glameow",
@@ -16383,8 +16279,7 @@ bonsly: {
 	},
 	"abilities": {
 		"0": "Sturdy",
-		"1": "Rock Head",
-		"H": "Illuminate"
+		"1": "Rock Head"
 	},
 	"weightkg": 15,
 	"evos": [
@@ -16441,8 +16336,7 @@ happiny: {
 	},
 	"abilities": {
 		"0": "Natural Cure",
-		"1": "Serene Grace",
-		"H": "Illuminate"
+		"1": "Serene Grace"
 	},
 	"weightkg": 24.4,
 	"evos": [
@@ -16639,8 +16533,7 @@ munchlax: {
 	},
 	"abilities": {
 		"0": "Pickup",
-		"1": "Thick Fat",
-		"H": "Illuminate"
+		"1": "Thick Fat"
 	},
 	"weightkg": 105,
 	"evos": [
@@ -17148,8 +17041,7 @@ magnezone: {
 	},
 	"abilities": {
 		"0": "Magnet Pull",
-		"1": "Sturdy",
-		"H": "Illuminate"
+		"1": "Sturdy"
 	},
 	"weightkg": 180,
 	"prevo": "Magneton",
@@ -17321,8 +17213,7 @@ togekiss: {
 	},
 	"abilities": {
 		"0": "Hustle",
-		"1": "Serene Grace",
-		"H": "Illuminate"
+		"1": "Serene Grace"
 	},
 	"weightkg": 38,
 	"prevo": "Togetic",
@@ -17579,8 +17470,7 @@ probopass: {
 	},
 	"abilities": {
 		"0": "Sturdy",
-		"1": "Magnet Pull",
-		"H": "Illuminate"
+		"1": "Magnet Pull"
 	},
 	"weightkg": 340,
 	"prevo": "Nosepass",
@@ -19175,8 +19065,7 @@ patrat: {
 	},
 	"abilities": {
 		"0": "Run Away",
-		"1": "Keen Eye",
-		"H": "Illuminate"
+		"1": "Keen Eye"
 	},
 	"weightkg": 11.6,
 	"evos": [
@@ -19774,8 +19663,7 @@ gigalith: {
 	},
 	"abilities": {
 		"0": "Sturdy",
-		"1": "Sand Stream",
-		"H": "Illuminate"
+		"1": "Sand Stream"
 	},
 	"weightkg": 260,
 	"prevo": "Boldore",
@@ -20133,8 +20021,7 @@ throh: {
 	},
 	"abilities": {
 		"0": "Guts",
-		"1": "Inner Focus",
-		"H": "Illuminate"
+		"1": "Inner Focus"
 	},
 	"weightkg": 55.5,
 	"eggGroups": [
@@ -20158,8 +20045,7 @@ sawk: {
 	},
 	"abilities": {
 		"0": "Sturdy",
-		"1": "Inner Focus",
-		"H": "Illuminate"
+		"1": "Inner Focus"
 	},
 	"weightkg": 51,
 	"eggGroups": [
@@ -20183,8 +20069,7 @@ sewaddle: {
 	},
 	"abilities": {
 		"0": "Swarm",
-		"1": "Chlorophyll",
-		"H": "Illuminate"
+		"1": "Chlorophyll"
 	},
 	"weightkg": 2.5,
 	"evos": [
@@ -20240,8 +20125,7 @@ leavanny: {
 	},
 	"abilities": {
 		"0": "Swarm",
-		"1": "Chlorophyll",
-		"H": "Illuminate"
+		"1": "Chlorophyll"
 	},
 	"weightkg": 20.5,
 	"prevo": "Swadloon",
@@ -20408,8 +20292,7 @@ petilil: {
 	},
 	"abilities": {
 		"0": "Chlorophyll",
-		"1": "Own Tempo",
-		"H": "Illuminate"
+		"1": "Own Tempo"
 	},
 	"weightkg": 6.6,
 	"evos": [
@@ -20437,8 +20320,7 @@ lilligant: {
 	},
 	"abilities": {
 		"0": "Chlorophyll",
-		"1": "Own Tempo",
-		"H": "Illuminate"
+		"1": "Own Tempo"
 	},
 	"weightkg": 16.3,
 	"prevo": "Petilil",
@@ -20475,8 +20357,7 @@ lilliganthisui: {
 	},
 	"abilities": {
 		"0": "Chlorophyll",
-		"1": "Hustle",
-		"H": "Illuminate"
+		"1": "Hustle"
 	},
 	"weightkg": 19.2,
 	"prevo": "Petilil",
@@ -20846,8 +20727,7 @@ maractus: {
 	},
 	"abilities": {
 		"0": "Water Absorb",
-		"1": "Chlorophyll",
-		"H": "Illuminate"
+		"1": "Chlorophyll"
 	},
 	"weightkg": 28,
 	"eggGroups": [
@@ -20871,8 +20751,7 @@ dwebble: {
 	},
 	"abilities": {
 		"0": "Sturdy",
-		"1": "Shell Armor",
-		"H": "Illuminate"
+		"1": "Shell Armor"
 	},
 	"weightkg": 14.5,
 	"evos": [
@@ -20900,8 +20779,7 @@ crustle: {
 	},
 	"abilities": {
 		"0": "Sturdy",
-		"1": "Shell Armor",
-		"H": "Illuminate"
+		"1": "Shell Armor"
 	},
 	"weightkg": 200,
 	"prevo": "Dwebble",
@@ -21220,8 +21098,7 @@ trubbish: {
 	},
 	"abilities": {
 		"0": "Stench",
-		"1": "Sticky Hold",
-		"H": "Illuminate"
+		"1": "Sticky Hold"
 	},
 	"weightkg": 31,
 	"evos": [
@@ -21894,8 +21771,7 @@ karrablast: {
 	},
 	"abilities": {
 		"0": "Swarm",
-		"1": "Shed Skin",
-		"H": "Illuminate"
+		"1": "Shed Skin"
 	},
 	"weightkg": 5.9,
 	"evos": [
@@ -21922,8 +21798,7 @@ escavalier: {
 	},
 	"abilities": {
 		"0": "Swarm",
-		"1": "Shell Armor",
-		"H": "Illuminate"
+		"1": "Shell Armor"
 	},
 	"weightkg": 33,
 	"prevo": "Karrablast",
@@ -22402,8 +22277,7 @@ litwick: {
 	},
 	"abilities": {
 		"0": "Flash Fire",
-		"1": "Flame Body",
-		"H": "Illuminate"
+		"1": "Flame Body"
 	},
 	"weightkg": 3.1,
 	"evos": [
@@ -22430,8 +22304,7 @@ lampent: {
 	},
 	"abilities": {
 		"0": "Flash Fire",
-		"1": "Flame Body",
-		"H": "Illuminate"
+		"1": "Flame Body"
 	},
 	"weightkg": 13,
 	"prevo": "Litwick",
@@ -22460,8 +22333,7 @@ chandelure: {
 	},
 	"abilities": {
 		"0": "Flash Fire",
-		"1": "Flame Body",
-		"H": "Illuminate"
+		"1": "Flame Body"
 	},
 	"weightkg": 34.3,
 	"prevo": "Lampent",
@@ -22692,8 +22564,7 @@ stunfisk: {
 	},
 	"abilities": {
 		"0": "Static",
-		"1": "Limber",
-		"H": "Illuminate"
+		"1": "Limber"
 	},
 	"weightkg": 11,
 	"eggGroups": [
@@ -24413,8 +24284,7 @@ scatterbug: {
 	},
 	"abilities": {
 		"0": "Shield Dust",
-		"1": "Compound Eyes",
-		"H": "Illuminate"
+		"1": "Compound Eyes"
 	},
 	"weightkg": 2.5,
 	"evos": [
@@ -24470,8 +24340,7 @@ vivillon: {
 	},
 	"abilities": {
 		"0": "Shield Dust",
-		"1": "Compound Eyes",
-		"H": "Illuminate"
+		"1": "Compound Eyes"
 	},
 	"weightkg": 17,
 	"prevo": "Spewpa",
@@ -27585,8 +27454,7 @@ rockruff: {
 	},
 	"abilities": {
 		"0": "Keen Eye",
-		"1": "Vital Spirit",
-		"H": "Illuminate"
+		"1": "Vital Spirit"
 	},
 	"weightkg": 9.2,
 	"evos": [
@@ -27656,8 +27524,7 @@ lycanrocmidnight: {
 	},
 	"abilities": {
 		"0": "Keen Eye",
-		"1": "Vital Spirit",
-		"H": "Illuminate"
+		"1": "Vital Spirit"
 	},
 	"weightkg": 25,
 	"prevo": "Rockruff",
@@ -30917,8 +30784,7 @@ blipbug: {
 	},
 	"abilities": {
 		"0": "Swarm",
-		"1": "Compound Eyes",
-		"H": "Illuminate"
+		"1": "Compound Eyes"
 	},
 	"weightkg": 8,
 	"evos": [
@@ -30945,8 +30811,7 @@ dottler: {
 	},
 	"abilities": {
 		"0": "Swarm",
-		"1": "Compound Eyes",
-		"H": "Illuminate"
+		"1": "Compound Eyes"
 	},
 	"weightkg": 19.5,
 	"prevo": "Blipbug",
@@ -32869,8 +32734,7 @@ indeedee: {
 	},
 	"abilities": {
 		"0": "Inner Focus",
-		"1": "Synchronize",
-		"H": "Illuminate"
+		"1": "Synchronize"
 	},
 	"weightkg": 28,
 	"eggGroups": [
@@ -32904,8 +32768,7 @@ indeedeef: {
 	},
 	"abilities": {
 		"0": "Own Tempo",
-		"1": "Synchronize",
-		"H": "Illuminate"
+		"1": "Synchronize"
 	},
 	"weightkg": 28,
 	"eggGroups": [
@@ -33066,8 +32929,7 @@ dracozolt: {
 	},
 	"abilities": {
 		"0": "Volt Absorb",
-		"1": "Hustle",
-		"H": "Illuminate"
+		"1": "Hustle"
 	},
 	"weightkg": 190,
 	"eggGroups": [
@@ -33092,8 +32954,7 @@ arctozolt: {
 	},
 	"abilities": {
 		"0": "Volt Absorb",
-		"1": "Static",
-		"H": "Illuminate"
+		"1": "Static"
 	},
 	"weightkg": 150,
 	"eggGroups": [
