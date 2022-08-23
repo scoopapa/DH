@@ -1707,7 +1707,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "OU",
 	},
 	garchompmega: {
-		tier: "OU",
+		tier: "Uber",
 	},
 	munchlax: {
 		tier: "LC",
