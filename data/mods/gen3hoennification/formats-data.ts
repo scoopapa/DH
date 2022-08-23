@@ -2472,19 +2472,19 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "OU",
 	},
 	genesect: {
-		tier: "OU",
+		tier: "Uber",
 	},
 	genesectdouse: {
-		tier: "OU",
+		tier: "Uber",
 	},
 	genesectshock: {
-		tier: "OU",
+		tier: "Uber",
 	},
 	genesectburn: {
-		tier: "OU",
+		tier: "Uber",
 	},
 	genesectchill: {
-		tier: "OU",
+		tier: "Uber",
 	},
 	chespin: {
 		tier: "LC",
