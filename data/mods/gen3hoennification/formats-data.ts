@@ -2448,7 +2448,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "OU",
 	},
 	landorustherian: {
-		tier: "OU",
+		tier: "Uber",
 	},
 	kyurem: {
 		tier: "OU",
