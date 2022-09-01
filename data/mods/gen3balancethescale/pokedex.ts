@@ -1,11 +1,11 @@
 export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	bulbasaur: {
 		inherit: true,
-		baseStats: { hp: 81, atk: 88, def: 88, spa: 117, spd: 117, spe: 81 },
+		baseStats: { hp: 72, atk: 78, def: 78, spa: 104, spd: 104, spe: 72 },
 	},
 	ivysaur: {
 		inherit: true,
-		baseStats: { hp: 96, atk: 99, def: 100, spa: 128, spd: 128, spe: 96 },
+		baseStats: { hp: 90, atk: 93, def: 94, spa: 120, spd: 120, spe: 90 },
 	},
 	venusaur: {
 		inherit: true,
@@ -13,19 +13,19 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	charmander: {
 		inherit: true,
-		baseStats: { hp: 70, atk: 93, def: 77, spa: 108, spd: 90, spe: 117 },
+		baseStats: { hp: 62, atk: 83, def: 68, spa: 96, spd: 80, spe: 104 },
 	},
 	charmeleon: {
 		inherit: true,
-		baseStats: { hp: 92, atk: 102, def: 92, spa: 128, spd: 104, spe: 128 },
+		baseStats: { hp: 87, atk: 96, def: 87, spa: 120, spd: 97, spe: 120 },
 	},
 	squirtle: {
 		inherit: true,
-		baseStats: { hp: 79, atk: 86, def: 117, spa: 90, spd: 115, spe: 77 },
+		baseStats: { hp: 70, atk: 76, def: 104, spa: 80, spd: 102, spe: 68 },
 	},
 	wartortle: {
 		inherit: true,
-		baseStats: { hp: 94, atk: 100, def: 128, spa: 104, spd: 128, spe: 92 },
+		baseStats: { hp: 88, atk: 94, def: 120, spa: 97, spd: 120, spe: 87 },
 	},
 	blastoise: {
 		inherit: true,
@@ -33,11 +33,11 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	caterpie: {
 		inherit: true,
-		baseStats: { hp: 81, atk: 54, def: 63, spa: 36, spd: 36, spe: 81 },
+		baseStats: { hp: 72, atk: 48, def: 56, spa: 32, spd: 32, spe: 72 },
 	},
 	metapod: {
 		inherit: true,
-		baseStats: { hp: 80, atk: 32, def: 88, spa: 40, spd: 40, spe: 48 },
+		baseStats: { hp: 75, atk: 30, def: 82, spa: 37, spd: 37, spe: 45 },
 	},
 	butterfree: {
 		inherit: true,
@@ -45,11 +45,11 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	weedle: {
 		inherit: true,
-		baseStats: { hp: 72, atk: 63, def: 54, spa: 36, spd: 36, spe: 90 },
+		baseStats: { hp: 64, atk: 56, def: 48, spa: 32, spd: 32, spe: 80 },
 	},
 	kakuna: {
 		inherit: true,
-		baseStats: { hp: 72, atk: 40, def: 80, spa: 40, spd: 40, spe: 56 },
+		baseStats: { hp: 67, atk: 37, def: 75, spa: 37, spd: 37, spe: 52 },
 	},
 	beedrill: {
 		inherit: true,
@@ -57,11 +57,11 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	pidgey: {
 		inherit: true,
-		baseStats: { hp: 72, atk: 81, def: 72, spa: 63, spd: 63, spe: 100 },
+		baseStats: { hp: 64, atk: 72, def: 64, spa: 56, spd: 56, spe: 89 },
 	},
 	pidgeotto: {
 		inherit: true,
-		baseStats: { hp: 100, atk: 96, def: 88, spa: 80, spd: 80, spe: 113 },
+		baseStats: { hp: 94, atk: 90, def: 82, spa: 75, spd: 75, spe: 106 },
 	},
 	pidgeot: {
 		inherit: true,
@@ -69,7 +69,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	rattata: {
 		inherit: true,
-		baseStats: { hp: 54, atk: 100, def: 63, spa: 45, spd: 63, spe: 129 },
+		baseStats: { hp: 48, atk: 89, def: 56, spa: 40, spd: 56, spe: 115 },
 	},
 	raticate: {
 		inherit: true,
@@ -77,7 +77,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	spearow: {
 		inherit: true,
-		baseStats: { hp: 72, atk: 108, def: 54, spa: 55, spd: 55, spe: 126 },
+		baseStats: { hp: 64, atk: 96, def: 48, spa: 49, spd: 49, spe: 112 },
 	},
 	fearow: {
 		inherit: true,
@@ -85,7 +85,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	ekans: {
 		inherit: true,
-		baseStats: { hp: 63, atk: 108, def: 79, spa: 72, spd: 97, spe: 99 },
+		baseStats: { hp: 56, atk: 96, def: 70, spa: 64, spd: 86, spe: 88 },
 	},
 	arbok: {
 		inherit: true,
@@ -101,7 +101,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	sandshrew: {
 		inherit: true,
-		baseStats: { hp: 90, atk: 135, def: 153, spa: 36, spd: 54, spe: 72 },
+		baseStats: { hp: 80, atk: 120, def: 136, spa: 32, spd: 48, spe: 64 },
 	},
 	sandslash: {
 		inherit: true,
@@ -109,11 +109,11 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	nidoranf: {
 		inherit: true,
-		baseStats: { hp: 99, atk: 84, def: 93, spa: 72, spd: 72, spe: 73 },
+		baseStats: { hp: 88, atk: 75, def: 83, spa: 64, spd: 64, spe: 65 },
 	},
 	nidorina: {
 		inherit: true,
-		baseStats: { hp: 112, atk: 99, def: 107, spa: 88, spd: 88, spe: 89 },
+		baseStats: { hp: 105, atk: 93, def: 100, spa: 82, spd: 82, spe: 84 },
 	},
 	nidoqueen: {
 		inherit: true,
@@ -121,11 +121,11 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	nidoranm: {
 		inherit: true,
-		baseStats: { hp: 82, atk: 102, def: 72, spa: 72, spd: 72, spe: 90 },
+		baseStats: { hp: 73, atk: 91, def: 64, spa: 64, spd: 64, spe: 80 },
 	},
 	nidorino: {
 		inherit: true,
-		baseStats: { hp: 97, atk: 115, def: 91, spa: 88, spd: 88, spe: 104 },
+		baseStats: { hp: 91, atk: 108, def: 85, spa: 82, spd: 82, spe: 97 },
 	},
 	nidoking: {
 		inherit: true,
@@ -133,7 +133,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	clefairy: {
 		inherit: true,
-		baseStats: { hp: 112, atk: 72, def: 76, spa: 96, spd: 104, spe: 56 },
+		baseStats: { hp: 105, atk: 67, def: 72, spa: 90, spd: 97, spe: 52 },
 	},
 	clefable: {
 		inherit: true,
@@ -141,7 +141,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	vulpix: {
 		inherit: true,
-		baseStats: { hp: 68, atk: 73, def: 72, spa: 90, spd: 117, spe: 117 },
+		baseStats: { hp: 60, atk: 65, def: 64, spa: 80, spd: 104, spe: 104 },
 	},
 	ninetales: {
 		inherit: true,
@@ -149,7 +149,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	jigglypuff: {
 		inherit: true,
-		baseStats: { hp: 184, atk: 72, def: 32, spa: 72, spd: 40, spe: 32 },
+		baseStats: { hp: 172, atk: 67, def: 30, spa: 67, spd: 37, spe: 30 },
 	},
 	wigglytuff: {
 		inherit: true,
@@ -157,7 +157,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	zubat: {
 		inherit: true,
-		baseStats: { hp: 72, atk: 81, def: 63, spa: 54, spd: 72, spe: 99 },
+		baseStats: { hp: 64, atk: 72, def: 56, spa: 48, spd: 64, spe: 88 },
 	},
 	golbat: {
 		inherit: true,
@@ -165,11 +165,11 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	oddish: {
 		inherit: true,
-		baseStats: { hp: 81, atk: 90, def: 99, spa: 135, spd: 117, spe: 54 },
+		baseStats: { hp: 72, atk: 80, def: 88, spa: 120, spd: 104, spe: 48 },
 	},
 	gloom: {
 		inherit: true,
-		baseStats: { hp: 96, atk: 104, def: 112, spa: 136, spd: 120, spe: 64 },
+		baseStats: { hp: 90, atk: 97, def: 105, spa: 127, spd: 112, spe: 60 },
 	},
 	vileplume: {
 		inherit: true,
@@ -177,7 +177,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	paras: {
 		inherit: true,
-		baseStats: { hp: 63, atk: 126, def: 99, spa: 81, spd: 99, spe: 45 },
+		baseStats: { hp: 56, atk: 112, def: 88, spa: 72, spd: 88, spe: 40 },
 	},
 	parasect: {
 		inherit: true,
@@ -185,7 +185,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	venonat: {
 		inherit: true,
-		baseStats: { hp: 108, atk: 99, def: 90, spa: 72, spd: 99, spe: 81 },
+		baseStats: { hp: 96, atk: 88, def: 80, spa: 64, spd: 88, spe: 72 },
 	},
 	venomoth: {
 		inherit: true,
@@ -197,7 +197,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	meowth: {
 		inherit: true,
-		baseStats: { hp: 72, atk: 81, def: 63, spa: 72, spd: 72, spe: 162 },
+		baseStats: { hp: 64, atk: 72, def: 56, spa: 64, spd: 64, spe: 144 },
 	},
 	persian: {
 		inherit: true,
@@ -205,7 +205,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	psyduck: {
 		inherit: true,
-		baseStats: { hp: 90, atk: 93, def: 86, spa: 117, spd: 90, spe: 99 },
+		baseStats: { hp: 80, atk: 83, def: 76, spa: 104, spd: 80, spe: 88 },
 	},
 	golduck: {
 		inherit: true,
@@ -213,7 +213,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	mankey: {
 		inherit: true,
-		baseStats: { hp: 72, atk: 144, def: 63, spa: 63, spd: 81, spe: 126 },
+		baseStats: { hp: 64, atk: 128, def: 56, spa: 56, spd: 72, spe: 112 },
 	},
 	primeape: {
 		inherit: true,
@@ -221,7 +221,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	growlithe: {
 		inherit: true,
-		baseStats: { hp: 99, atk: 126, def: 81, spa: 126, spd: 90, spe: 108 },
+		baseStats: { hp: 88, atk: 112, def: 72, spa: 112, spd: 80, spe: 96 },
 	},
 	arcanine: {
 		inherit: true,
@@ -229,11 +229,11 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	poliwag: {
 		inherit: true,
-		baseStats: { hp: 72, atk: 90, def: 72, spa: 72, spd: 72, spe: 162 },
+		baseStats: { hp: 64, atk: 80, def: 64, spa: 64, spd: 64, spe: 144 },
 	},
 	poliwhirl: {
 		inherit: true,
-		baseStats: { hp: 104, atk: 104, def: 104, spa: 80, spd: 80, spe: 144 },
+		baseStats: { hp: 97, atk: 97, def: 97, spa: 75, spd: 75, spe: 135 },
 	},
 	poliwrath: {
 		inherit: true,
@@ -253,11 +253,11 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	machop: {
 		inherit: true,
-		baseStats: { hp: 126, atk: 144, def: 90, spa: 63, spd: 63, spe: 63 },
+		baseStats: { hp: 112, atk: 128, def: 80, spa: 56, spd: 56, spe: 56 },
 	},
 	machoke: {
 		inherit: true,
-		baseStats: { hp: 128, atk: 160, def: 112, spa: 80, spd: 96, spe: 72 },
+		baseStats: { hp: 120, atk: 150, def: 105, spa: 75, spd: 90, spe: 67 },
 	},
 	machamp: {
 		inherit: true,
@@ -265,11 +265,11 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	bellsprout: {
 		inherit: true,
-		baseStats: { hp: 90, atk: 135, def: 63, spa: 126, spd: 54, spe: 72 },
+		baseStats: { hp: 80, atk: 120, def: 56, spa: 112, spd: 48, spe: 64 },
 	},
 	weepinbell: {
 		inherit: true,
-		baseStats: { hp: 104, atk: 144, def: 80, spa: 136, spd: 72, spe: 88 },
+		baseStats: { hp: 97, atk: 135, def: 75, spa: 127, spd: 67, spe: 82 },
 	},
 	victreebel: {
 		inherit: true,
@@ -277,7 +277,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	tentacool: {
 		inherit: true,
-		baseStats: { hp: 72, atk: 72, def: 63, spa: 90, spd: 180, spe: 126 },
+		baseStats: { hp: 64, atk: 64, def: 56, spa: 80, spd: 160, spe: 112 },
 	},
 	tentacruel: {
 		inherit: true,
@@ -285,7 +285,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	geodude: {
 		inherit: true,
-		baseStats: { hp: 72, atk: 144, def: 180, spa: 54, spd: 54, spe: 36 },
+		baseStats: { hp: 64, atk: 128, def: 160, spa: 48, spd: 48, spe: 32 },
 	},
 	graveler: {
 		inherit: true,
@@ -297,7 +297,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	ponyta: {
 		inherit: true,
-		baseStats: { hp: 90, atk: 153, def: 99, spa: 117, spd: 117, spe: 162 },
+		baseStats: { hp: 80, atk: 136, def: 88, spa: 104, spd: 104, spe: 144 },
 	},
 	rapidash: {
 		inherit: true,
@@ -305,7 +305,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	slowpoke: {
 		inherit: true,
-		baseStats: { hp: 162, atk: 117, def: 117, spa: 72, spd: 72, spe: 27 },
+		baseStats: { hp: 144, atk: 104, def: 104, spa: 64, spd: 64, spe: 24 },
 	},
 	slowbro: {
 		inherit: true,
@@ -313,7 +313,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	magnemite: {
 		inherit: true,
-		baseStats: { hp: 45, atk: 63, def: 126, spa: 171, spd: 99, spe: 81 },
+		baseStats: { hp: 40, atk: 56, def: 112, spa: 152, spd: 88, spe: 72 },
 	},
 	farfetchd: {
 		inherit: true,
@@ -321,7 +321,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	doduo: {
 		inherit: true,
-		baseStats: { hp: 63, atk: 153, def: 81, spa: 63, spd: 63, spe: 135 },
+		baseStats: { hp: 56, atk: 136, def: 72, spa: 56, spd: 56, spe: 120 },
 	},
 	dodrio: {
 		inherit: true,
@@ -329,7 +329,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	seel: {
 		inherit: true,
-		baseStats: { hp: 117, atk: 81, def: 99, spa: 81, spd: 126, spe: 81 },
+		baseStats: { hp: 104, atk: 72, def: 88, spa: 72, spd: 112, spe: 72 },
 	},
 	dewgong: {
 		inherit: true,
@@ -337,7 +337,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	grimer: {
 		inherit: true,
-		baseStats: { hp: 144, atk: 144, def: 90, spa: 72, spd: 90, spe: 45 },
+		baseStats: { hp: 128, atk: 128, def: 80, spa: 64, spd: 80, spe: 40 },
 	},
 	muk: {
 		inherit: true,
@@ -345,11 +345,11 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	shellder: {
 		inherit: true,
-		baseStats: { hp: 54, atk: 117, def: 180, spa: 81, spd: 45, spe: 72 },
+		baseStats: { hp: 48, atk: 104, def: 160, spa: 72, spd: 40, spe: 64 },
 	},
 	gastly: {
 		inherit: true,
-		baseStats: { hp: 54, atk: 63, def: 54, spa: 180, spd: 63, spe: 144 },
+		baseStats: { hp: 48, atk: 56, def: 48, spa: 160, spd: 56, spe: 128 },
 	},
 	haunter: {
 		inherit: true,
@@ -357,11 +357,11 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	onix: {
 		inherit: true,
-		baseStats: { hp: 63, atk: 81, def: 288, spa: 54, spd: 81, spe: 126 },
+		baseStats: { hp: 56, atk: 72, def: 256, spa: 48, spd: 72, spe: 112 },
 	},
 	drowzee: {
 		inherit: true,
-		baseStats: { hp: 108, atk: 86, def: 81, spa: 77, spd: 162, spe: 75 },
+		baseStats: { hp: 96, atk: 76, def: 72, spa: 68, spd: 144, spe: 67 },
 	},
 	hypno: {
 		inherit: true,
@@ -369,7 +369,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	krabby: {
 		inherit: true,
-		baseStats: { hp: 54, atk: 189, def: 162, spa: 45, spd: 45, spe: 90 },
+		baseStats: { hp: 48, atk: 168, def: 144, spa: 40, spd: 40, spe: 80 },
 	},
 	kingler: {
 		inherit: true,
@@ -377,7 +377,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	voltorb: {
 		inherit: true,
-		baseStats: { hp: 72, atk: 54, def: 90, spa: 99, spd: 99, spe: 180 },
+		baseStats: { hp: 64, atk: 48, def: 80, spa: 88, spd: 88, spe: 160 },
 	},
 	electrode: {
 		inherit: true,
@@ -385,7 +385,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	exeggcute: {
 		inherit: true,
-		baseStats: { hp: 108, atk: 72, def: 144, spa: 108, spd: 81, spe: 72 },
+		baseStats: { hp: 96, atk: 64, def: 128, spa: 96, spd: 72, spe: 64 },
 	},
 	exeggutor: {
 		inherit: true,
@@ -393,7 +393,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	cubone: {
 		inherit: true,
-		baseStats: { hp: 90, atk: 90, def: 171, spa: 72, spd: 90, spe: 63 },
+		baseStats: { hp: 80, atk: 80, def: 152, spa: 64, spd: 80, spe: 56 },
 	},
 	marowak: {
 		inherit: true,
@@ -413,7 +413,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	koffing: {
 		inherit: true,
-		baseStats: { hp: 72, atk: 117, def: 171, spa: 108, spd: 81, spe: 63 },
+		baseStats: { hp: 64, atk: 104, def: 152, spa: 96, spd: 72, spe: 56 },
 	},
 	weezing: {
 		inherit: true,
@@ -421,7 +421,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	rhyhorn: {
 		inherit: true,
-		baseStats: { hp: 144, atk: 153, def: 171, spa: 54, spd: 54, spe: 45 },
+		baseStats: { hp: 128, atk: 136, def: 152, spa: 48, spd: 48, spe: 40 },
 	},
 	rhydon: {
 		inherit: true,
@@ -441,7 +441,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	horsea: {
 		inherit: true,
-		baseStats: { hp: 54, atk: 72, def: 126, spa: 126, spd: 45, spe: 108 },
+		baseStats: { hp: 48, atk: 64, def: 112, spa: 112, spd: 40, spe: 96 },
 	},
 	seadra: {
 		inherit: true,
@@ -449,7 +449,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	goldeen: {
 		inherit: true,
-		baseStats: { hp: 81, atk: 120, def: 108, spa: 63, spd: 90, spe: 113 },
+		baseStats: { hp: 72, atk: 107, def: 96, spa: 56, spd: 80, spe: 100 },
 	},
 	seaking: {
 		inherit: true,
@@ -457,7 +457,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	staryu: {
 		inherit: true,
-		baseStats: { hp: 54, atk: 81, def: 99, spa: 126, spd: 99, spe: 153 },
+		baseStats: { hp: 48, atk: 72, def: 88, spa: 112, spd: 88, spe: 136 },
 	},
 	mrmime: {
 		inherit: true,
@@ -489,7 +489,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	magikarp: {
 		inherit: true,
-		baseStats: { hp: 36, atk: 18, def: 99, spa: 27, spd: 36, spe: 144 },
+		baseStats: { hp: 32, atk: 16, def: 88, spa: 24, spd: 32, spe: 128 },
 	},
 	lapras: {
 		inherit: true,
@@ -501,7 +501,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	eevee: {
 		inherit: true,
-		baseStats: { hp: 99, atk: 99, def: 90, spa: 81, spd: 117, spe: 99 },
+		baseStats: { hp: 88, atk: 88, def: 80, spa: 72, spd: 104, spe: 88 },
 	},
 	vaporeon: {
 		inherit: true,
@@ -513,11 +513,11 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	porygon: {
 		inherit: true,
-		baseStats: { hp: 117, atk: 108, def: 126, spa: 153, spd: 135, spe: 72 },
+		baseStats: { hp: 104, atk: 96, def: 112, spa: 136, spd: 120, spe: 64 },
 	},
 	omanyte: {
 		inherit: true,
-		baseStats: { hp: 63, atk: 72, def: 180, spa: 162, spd: 99, spe: 63 },
+		baseStats: { hp: 56, atk: 64, def: 160, spa: 144, spd: 88, spe: 56 },
 	},
 	omastar: {
 		inherit: true,
@@ -525,7 +525,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	kabuto: {
 		inherit: true,
-		baseStats: { hp: 54, atk: 144, def: 162, spa: 99, spd: 81, spe: 99 },
+		baseStats: { hp: 48, atk: 128, def: 144, spa: 88, spd: 72, spe: 88 },
 	},
 	kabutops: {
 		inherit: true,
@@ -537,11 +537,11 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	dratini: {
 		inherit: true,
-		baseStats: { hp: 73, atk: 115, def: 81, spa: 90, spd: 90, spe: 90 },
+		baseStats: { hp: 65, atk: 102, def: 72, spa: 80, spd: 80, spe: 80 },
 	},
 	dragonair: {
 		inherit: true,
-		baseStats: { hp: 97, atk: 134, def: 104, spa: 112, spd: 112, spe: 112 },
+		baseStats: { hp: 91, atk: 126, def: 97, spa: 105, spd: 105, spe: 105 },
 	},
 	dragonite: {
 		inherit: true,
@@ -557,11 +557,11 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	chikorita: {
 		inherit: true,
-		baseStats: { hp: 81, atk: 88, def: 117, spa: 88, spd: 117, spe: 81 },
+		baseStats: { hp: 72, atk: 78, def: 104, spa: 78, spd: 104, spe: 72 },
 	},
 	bayleef: {
 		inherit: true,
-		baseStats: { hp: 96, atk: 99, def: 128, spa: 100, spd: 128, spe: 96 },
+		baseStats: { hp: 90, atk: 93, def: 120, spa: 94, spd: 120, spe: 90 },
 	},
 	meganium: {
 		inherit: true,
@@ -569,11 +569,11 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	cyndaquil: {
 		inherit: true,
-		baseStats: { hp: 70, atk: 93, def: 77, spa: 108, spd: 90, spe: 117 },
+		baseStats: { hp: 62, atk: 83, def: 68, spa: 96, spd: 80, spe: 104 },
 	},
 	quilava: {
 		inherit: true,
-		baseStats: { hp: 92, atk: 102, def: 92, spa: 128, spd: 104, spe: 128 },
+		baseStats: { hp: 87, atk: 96, def: 87, spa: 120, spd: 97, spe: 120 },
 	},
 	typhlosion: {
 		inherit: true,
@@ -581,11 +581,11 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	totodile: {
 		inherit: true,
-		baseStats: { hp: 90, atk: 117, def: 115, spa: 79, spd: 86, spe: 77 },
+		baseStats: { hp: 80, atk: 104, def: 102, spa: 70, spd: 76, spe: 68 },
 	},
 	croconaw: {
 		inherit: true,
-		baseStats: { hp: 104, atk: 128, def: 128, spa: 94, spd: 100, spe: 92 },
+		baseStats: { hp: 97, atk: 120, def: 120, spa: 88, spd: 94, spe: 87 },
 	},
 	feraligatr: {
 		inherit: true,
@@ -593,7 +593,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	sentret: {
 		inherit: true,
-		baseStats: { hp: 63, atk: 82, def: 61, spa: 63, spd: 81, spe: 36 },
+		baseStats: { hp: 56, atk: 73, def: 54, spa: 56, spd: 72, spe: 32 },
 	},
 	furret: {
 		inherit: true,
@@ -601,7 +601,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	hoothoot: {
 		inherit: true,
-		baseStats: { hp: 108, atk: 54, def: 54, spa: 64, spd: 100, spe: 90 },
+		baseStats: { hp: 96, atk: 48, def: 48, spa: 57, spd: 89, spe: 80 },
 	},
 	noctowl: {
 		inherit: true,
@@ -609,7 +609,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	ledyba: {
 		inherit: true,
-		baseStats: { hp: 72, atk: 36, def: 54, spa: 72, spd: 144, spe: 99 },
+		baseStats: { hp: 64, atk: 32, def: 48, spa: 64, spd: 128, spe: 88 },
 	},
 	ledian: {
 		inherit: true,
@@ -617,7 +617,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	spinarak: {
 		inherit: true,
-		baseStats: { hp: 72, atk: 108, def: 72, spa: 72, spd: 72, spe: 54 },
+		baseStats: { hp: 64, atk: 96, def: 64, spa: 64, spd: 64, spe: 48 },
 	},
 	ariados: {
 		inherit: true,
@@ -629,7 +629,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	chinchou: {
 		inherit: true,
-		baseStats: { hp: 135, atk: 68, def: 68, spa: 100, spd: 100, spe: 120 },
+		baseStats: { hp: 120, atk: 60, def: 60, spa: 89, spd: 89, spe: 107 },
 	},
 	lanturn: {
 		inherit: true,
@@ -637,19 +637,19 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	pichu: {
 		inherit: true,
-		baseStats: { hp: 36, atk: 72, def: 27, spa: 63, spd: 63, spe: 108 },
+		baseStats: { hp: 32, atk: 64, def: 24, spa: 56, spd: 56, spe: 96 },
 	},
 	cleffa: {
 		inherit: true,
-		baseStats: { hp: 90, atk: 45, def: 50, spa: 81, spd: 99, spe: 27 },
+		baseStats: { hp: 80, atk: 40, def: 44, spa: 72, spd: 88, spe: 24 },
 	},
 	igglybuff: {
 		inherit: true,
-		baseStats: { hp: 162, atk: 54, def: 27, spa: 72, spd: 36, spe: 27 },
+		baseStats: { hp: 144, atk: 48, def: 24, spa: 64, spd: 32, spe: 24 },
 	},
 	togepi: {
 		inherit: true,
-		baseStats: { hp: 63, atk: 36, def: 117, spa: 72, spd: 117, spe: 36 },
+		baseStats: { hp: 56, atk: 32, def: 104, spa: 64, spd: 104, spe: 32 },
 	},
 	togetic: {
 		inherit: true,
@@ -657,7 +657,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	natu: {
 		inherit: true,
-		baseStats: { hp: 72, atk: 90, def: 81, spa: 126, spd: 81, spe: 126 },
+		baseStats: { hp: 64, atk: 80, def: 72, spa: 112, spd: 72, spe: 112 },
 	},
 	xatu: {
 		inherit: true,
@@ -665,11 +665,11 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	mareep: {
 		inherit: true,
-		baseStats: { hp: 99, atk: 72, def: 72, spa: 117, spd: 81, spe: 63 },
+		baseStats: { hp: 88, atk: 64, def: 64, spa: 104, spd: 72, spe: 56 },
 	},
 	flaaffy: {
 		inherit: true,
-		baseStats: { hp: 112, atk: 88, def: 88, spa: 128, spd: 96, spe: 72 },
+		baseStats: { hp: 105, atk: 82, def: 82, spa: 120, spd: 90, spe: 67 },
 	},
 	ampharos: {
 		inherit: true,
@@ -681,7 +681,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	marill: {
 		inherit: true,
-		baseStats: { hp: 112, atk: 32, def: 80, spa: 32, spd: 80, spe: 64 },
+		baseStats: { hp: 105, atk: 30, def: 75, spa: 30, spd: 75, spe: 60 },
 	},
 	azumarill: {
 		inherit: true,
@@ -697,11 +697,11 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	hoppip: {
 		inherit: true,
-		baseStats: { hp: 63, atk: 63, def: 72, spa: 63, spd: 99, spe: 90 },
+		baseStats: { hp: 56, atk: 56, def: 64, spa: 56, spd: 88, spe: 80 },
 	},
 	skiploom: {
 		inherit: true,
-		baseStats: { hp: 88, atk: 72, def: 80, spa: 72, spd: 104, spe: 128 },
+		baseStats: { hp: 82, atk: 67, def: 75, spa: 67, spd: 97, spe: 120 },
 	},
 	jumpluff: {
 		inherit: true,
@@ -713,7 +713,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	sunkern: {
 		inherit: true,
-		baseStats: { hp: 54, atk: 54, def: 54, spa: 54, spd: 54, spe: 54 },
+		baseStats: { hp: 48, atk: 48, def: 48, spa: 48, spd: 48, spe: 48 },
 	},
 	sunflora: {
 		inherit: true,
@@ -725,7 +725,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	wooper: {
 		inherit: true,
-		baseStats: { hp: 99, atk: 81, def: 81, spa: 45, spd: 45, spe: 27 },
+		baseStats: { hp: 88, atk: 72, def: 72, spa: 40, spd: 40, spe: 24 },
 	},
 	quagsire: {
 		inherit: true,
@@ -765,7 +765,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	pineco: {
 		inherit: true,
-		baseStats: { hp: 90, atk: 117, def: 162, spa: 63, spd: 63, spe: 27 },
+		baseStats: { hp: 80, atk: 104, def: 144, spa: 56, spd: 56, spe: 24 },
 	},
 	dunsparce: {
 		inherit: true,
@@ -781,7 +781,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	snubbull: {
 		inherit: true,
-		baseStats: { hp: 108, atk: 144, def: 90, spa: 72, spd: 72, spe: 54 },
+		baseStats: { hp: 96, atk: 128, def: 80, spa: 64, spd: 64, spe: 48 },
 	},
 	granbull: {
 		inherit: true,
@@ -805,7 +805,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	teddiursa: {
 		inherit: true,
-		baseStats: { hp: 108, atk: 144, def: 90, spa: 90, spd: 90, spe: 72 },
+		baseStats: { hp: 96, atk: 128, def: 80, spa: 80, spd: 80, spe: 64 },
 	},
 	ursaring: {
 		inherit: true,
@@ -813,7 +813,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	slugma: {
 		inherit: true,
-		baseStats: { hp: 72, atk: 72, def: 72, spa: 126, spd: 72, spe: 36 },
+		baseStats: { hp: 64, atk: 64, def: 64, spa: 112, spd: 64, spe: 32 },
 	},
 	magcargo: {
 		inherit: true,
@@ -821,7 +821,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	swinub: {
 		inherit: true,
-		baseStats: { hp: 90, atk: 90, def: 72, spa: 54, spd: 54, spe: 90 },
+		baseStats: { hp: 80, atk: 80, def: 64, spa: 48, spd: 48, spe: 80 },
 	},
 	piloswine: {
 		inherit: true,
@@ -833,7 +833,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	remoraid: {
 		inherit: true,
-		baseStats: { hp: 63, atk: 117, def: 63, spa: 117, spd: 63, spe: 117 },
+		baseStats: { hp: 56, atk: 104, def: 56, spa: 104, spd: 56, spe: 104 },
 	},
 	octillery: {
 		inherit: true,
@@ -849,7 +849,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	houndour: {
 		inherit: true,
-		baseStats: { hp: 81, atk: 108, def: 54, spa: 144, spd: 90, spe: 117 },
+		baseStats: { hp: 72, atk: 96, def: 48, spa: 128, spd: 80, spe: 104 },
 	},
 	houndoom: {
 		inherit: true,
@@ -861,7 +861,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	phanpy: {
 		inherit: true,
-		baseStats: { hp: 162, atk: 108, def: 108, spa: 72, spd: 72, spe: 72 },
+		baseStats: { hp: 144, atk: 96, def: 96, spa: 64, spd: 64, spe: 64 },
 	},
 	donphan: {
 		inherit: true,
@@ -881,7 +881,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	tyrogue: {
 		inherit: true,
-		baseStats: { hp: 63, atk: 63, def: 63, spa: 63, spd: 63, spe: 63 },
+		baseStats: { hp: 56, atk: 56, def: 56, spa: 56, spd: 56, spe: 56 },
 	},
 	hitmontop: {
 		inherit: true,
@@ -889,11 +889,11 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	smoochum: {
 		inherit: true,
-		baseStats: { hp: 81, atk: 54, def: 27, spa: 153, spd: 117, spe: 117 },
+		baseStats: { hp: 72, atk: 48, def: 24, spa: 136, spd: 104, spe: 104 },
 	},
 	elekid: {
 		inherit: true,
-		baseStats: { hp: 81, atk: 113, def: 66, spa: 117, spd: 99, spe: 171 },
+		baseStats: { hp: 72, atk: 100, def: 59, spa: 104, spd: 88, spe: 152 },
 	},
 	magby: {
 		inherit: true,
@@ -913,7 +913,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	larvitar: {
 		inherit: true,
-		baseStats: { hp: 90, atk: 115, def: 90, spa: 81, spd: 90, spe: 73 },
+		baseStats: { hp: 80, atk: 102, def: 80, spa: 72, spd: 80, spe: 65 },
 	},
 	pupitar: {
 		inherit: true,
@@ -929,11 +929,11 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	treecko: {
 		inherit: true,
-		baseStats: { hp: 72, atk: 81, def: 63, spa: 117, spd: 99, spe: 126 },
+		baseStats: { hp: 64, atk: 72, def: 56, spa: 104, spd: 88, spe: 112 },
 	},
 	grovyle: {
 		inherit: true,
-		baseStats: { hp: 80, atk: 104, def: 72, spa: 136, spd: 104, spe: 152 },
+		baseStats: { hp: 75, atk: 97, def: 67, spa: 127, spd: 97, spe: 142 },
 	},
 	sceptile: {
 		inherit: true,
@@ -941,11 +941,11 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	torchic: {
 		inherit: true,
-		baseStats: { hp: 81, atk: 108, def: 72, spa: 126, spd: 90, spe: 81 },
+		baseStats: { hp: 72, atk: 96, def: 64, spa: 112, spd: 80, spe: 72 },
 	},
 	combusken: {
 		inherit: true,
-		baseStats: { hp: 96, atk: 136, def: 96, spa: 136, spd: 96, spe: 88 },
+		baseStats: { hp: 90, atk: 127, def: 90, spa: 127, spd: 90, spe: 82 },
 	},
 	blaziken: {
 		inherit: true,
@@ -953,15 +953,15 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	mudkip: {
 		inherit: true,
-		baseStats: { hp: 90, atk: 126, def: 90, spa: 90, spd: 90, spe: 72 },
+		baseStats: { hp: 80, atk: 112, def: 80, spa: 80, spd: 80, spe: 64 },
 	},
 	marshtomp: {
 		inherit: true,
-		baseStats: { hp: 112, atk: 136, def: 112, spa: 96, spd: 112, spe: 80 },
+		baseStats: { hp: 105, atk: 127, def: 105, spa: 90, spd: 105, spe: 75 },
 	},
 	poochyena: {
 		inherit: true,
-		baseStats: { hp: 63, atk: 99, def: 63, spa: 54, spd: 54, spe: 63 },
+		baseStats: { hp: 56, atk: 88, def: 56, spa: 48, spd: 48, spe: 56 },
 	},
 	mightyena: {
 		inherit: true,
@@ -969,7 +969,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	zigzagoon: {
 		inherit: true,
-		baseStats: { hp: 68, atk: 54, def: 73, spa: 54, spd: 73, spe: 108 },
+		baseStats: { hp: 60, atk: 48, def: 65, spa: 48, spd: 65, spe: 96 },
 	},
 	linoone: {
 		inherit: true,
@@ -977,11 +977,11 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	wurmple: {
 		inherit: true,
-		baseStats: { hp: 81, atk: 81, def: 63, spa: 36, spd: 54, spe: 36 },
+		baseStats: { hp: 72, atk: 72, def: 56, spa: 32, spd: 48, spe: 32 },
 	},
 	silcoon: {
 		inherit: true,
-		baseStats: { hp: 80, atk: 56, def: 88, spa: 40, spd: 40, spe: 24 },
+		baseStats: { hp: 75, atk: 52, def: 82, spa: 37, spd: 37, spe: 22 },
 	},
 	beautifly: {
 		inherit: true,
@@ -989,7 +989,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	cascoon: {
 		inherit: true,
-		baseStats: { hp: 80, atk: 56, def: 88, spa: 40, spd: 40, spe: 24 },
+		baseStats: { hp: 75, atk: 52, def: 82, spa: 37, spd: 37, spe: 22 },
 	},
 	dustox: {
 		inherit: true,
@@ -997,11 +997,11 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	lotad: {
 		inherit: true,
-		baseStats: { hp: 72, atk: 54, def: 54, spa: 72, spd: 90, spe: 54 },
+		baseStats: { hp: 64, atk: 48, def: 48, spa: 64, spd: 80, spe: 48 },
 	},
 	lombre: {
 		inherit: true,
-		baseStats: { hp: 96, atk: 80, def: 80, spa: 96, spd: 112, spe: 80 },
+		baseStats: { hp: 90, atk: 75, def: 75, spa: 90, spd: 105, spe: 75 },
 	},
 	ludicolo: {
 		inherit: true,
@@ -1009,11 +1009,11 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	seedot: {
 		inherit: true,
-		baseStats: { hp: 72, atk: 72, def: 90, spa: 54, spd: 54, spe: 54 },
+		baseStats: { hp: 64, atk: 64, def: 80, spa: 48, spd: 48, spe: 48 },
 	},
 	nuzleaf: {
 		inherit: true,
-		baseStats: { hp: 112, atk: 112, def: 64, spa: 96, spd: 64, spe: 96 },
+		baseStats: { hp: 105, atk: 105, def: 60, spa: 90, spd: 60, spe: 90 },
 	},
 	shiftry: {
 		inherit: true,
@@ -1021,7 +1021,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	taillow: {
 		inherit: true,
-		baseStats: { hp: 72, atk: 99, def: 54, spa: 54, spd: 54, spe: 153 },
+		baseStats: { hp: 64, atk: 88, def: 48, spa: 48, spd: 48, spe: 136 },
 	},
 	swellow: {
 		inherit: true,
@@ -1029,7 +1029,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	wingull: {
 		inherit: true,
-		baseStats: { hp: 72, atk: 54, def: 54, spa: 99, spd: 54, spe: 153 },
+		baseStats: { hp: 64, atk: 48, def: 48, spa: 88, spd: 48, spe: 136 },
 	},
 	pelipper: {
 		inherit: true,
@@ -1037,11 +1037,11 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	ralts: {
 		inherit: true,
-		baseStats: { hp: 50, atk: 45, def: 45, spa: 81, spd: 63, spe: 72 },
+		baseStats: { hp: 44, atk: 40, def: 40, spa: 72, spd: 56, spe: 64 },
 	},
 	kirlia: {
 		inherit: true,
-		baseStats: { hp: 60, atk: 56, def: 56, spa: 104, spd: 88, spe: 80 },
+		baseStats: { hp: 57, atk: 52, def: 52, spa: 97, spd: 82, spe: 75 },
 	},
 	gardevoir: {
 		inherit: true,
@@ -1049,7 +1049,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	surskit: {
 		inherit: true,
-		baseStats: { hp: 72, atk: 54, def: 57, spa: 90, spd: 93, spe: 117 },
+		baseStats: { hp: 64, atk: 48, def: 51, spa: 80, spd: 83, spe: 104 },
 	},
 	masquerain: {
 		inherit: true,
@@ -1057,11 +1057,11 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	shroomish: {
 		inherit: true,
-		baseStats: { hp: 108, atk: 72, def: 108, spa: 72, spd: 108, spe: 63 },
+		baseStats: { hp: 96, atk: 64, def: 96, spa: 64, spd: 96, spe: 56 },
 	},
 	slakoth: {
 		inherit: true,
-		baseStats: { hp: 108, atk: 108, def: 108, spa: 63, spd: 63, spe: 54 },
+		baseStats: { hp: 96, atk: 96, def: 96, spa: 56, spd: 56, spe: 48 },
 	},
 	vigoroth: {
 		inherit: true,
@@ -1073,7 +1073,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	nincada: {
 		inherit: true,
-		baseStats: { hp: 55, atk: 81, def: 162, spa: 54, spd: 54, spe: 72 },
+		baseStats: { hp: 49, atk: 72, def: 144, spa: 48, spd: 48, spe: 64 },
 	},
 	ninjask: {
 		inherit: true,
@@ -1085,11 +1085,11 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	whismur: {
 		inherit: true,
-		baseStats: { hp: 115, atk: 91, def: 41, spa: 91, spd: 41, spe: 50 },
+		baseStats: { hp: 102, atk: 81, def: 36, spa: 81, spd: 36, spe: 44 },
 	},
 	loudred: {
 		inherit: true,
-		baseStats: { hp: 134, atk: 113, def: 68, spa: 113, spd: 68, spe: 76 },
+		baseStats: { hp: 126, atk: 106, def: 64, spa: 106, spd: 64, spe: 72 },
 	},
 	exploud: {
 		inherit: true,
@@ -1097,7 +1097,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	makuhita: {
 		inherit: true,
-		baseStats: { hp: 129, atk: 108, def: 54, spa: 36, spd: 54, spe: 45 },
+		baseStats: { hp: 115, atk: 96, def: 48, spa: 32, spd: 48, spe: 40 },
 	},
 	hariyama: {
 		inherit: true,
@@ -1105,7 +1105,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	azurill: {
 		inherit: true,
-		baseStats: { hp: 90, atk: 36, def: 72, spa: 36, spd: 72, spe: 36 },
+		baseStats: { hp: 80, atk: 32, def: 64, spa: 32, spd: 64, spe: 32 },
 	},
 	nosepass: {
 		inherit: true,
@@ -1113,7 +1113,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	skitty: {
 		inherit: true,
-		baseStats: { hp: 90, atk: 81, def: 81, spa: 63, spd: 63, spe: 90 },
+		baseStats: { hp: 80, atk: 72, def: 72, spa: 56, spd: 56, spe: 80 },
 	},
 	delcatty: {
 		inherit: true,
@@ -1129,11 +1129,11 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	aron: {
 		inherit: true,
-		baseStats: { hp: 90, atk: 126, def: 180, spa: 72, spd: 72, spe: 54 },
+		baseStats: { hp: 80, atk: 112, def: 160, spa: 64, spd: 64, spe: 48 },
 	},
 	lairon: {
 		inherit: true,
-		baseStats: { hp: 96, atk: 144, def: 224, spa: 80, spd: 80, spe: 64 },
+		baseStats: { hp: 90, atk: 135, def: 210, spa: 75, spd: 75, spe: 60 },
 	},
 	aggron: {
 		inherit: true,
@@ -1141,7 +1141,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	meditite: {
 		inherit: true,
-		baseStats: { hp: 54, atk: 72, def: 99, spa: 72, spd: 99, spe: 108 },
+		baseStats: { hp: 48, atk: 64, def: 88, spa: 64, spd: 88, spe: 96 },
 	},
 	medicham: {
 		inherit: true,
@@ -1149,7 +1149,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	electrike: {
 		inherit: true,
-		baseStats: { hp: 72, atk: 81, def: 72, spa: 117, spd: 72, spe: 117 },
+		baseStats: { hp: 64, atk: 72, def: 64, spa: 104, spd: 64, spe: 104 },
 	},
 	manectric: {
 		inherit: true,
@@ -1177,7 +1177,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	gulpin: {
 		inherit: true,
-		baseStats: { hp: 126, atk: 77, def: 95, spa: 77, spd: 95, spe: 72 },
+		baseStats: { hp: 112, atk: 68, def: 84, spa: 68, spd: 84, spe: 64 },
 	},
 	swalot: {
 		inherit: true,
@@ -1185,7 +1185,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	carvanha: {
 		inherit: true,
-		baseStats: { hp: 81, atk: 162, def: 36, spa: 117, spd: 36, spe: 117 },
+		baseStats: { hp: 72, atk: 144, def: 32, spa: 104, spd: 32, spe: 104 },
 	},
 	sharpedo: {
 		inherit: true,
@@ -1193,7 +1193,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	wailmer: {
 		inherit: true,
-		baseStats: { hp: 234, atk: 126, def: 63, spa: 126, spd: 63, spe: 108 },
+		baseStats: { hp: 208, atk: 112, def: 56, spa: 112, spd: 56, spe: 96 },
 	},
 	wailord: {
 		inherit: true,
@@ -1201,7 +1201,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	numel: {
 		inherit: true,
-		baseStats: { hp: 108, atk: 108, def: 72, spa: 117, spd: 81, spe: 63 },
+		baseStats: { hp: 96, atk: 96, def: 64, spa: 104, spd: 72, spe: 56 },
 	},
 	camerupt: {
 		inherit: true,
@@ -1213,7 +1213,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	spoink: {
 		inherit: true,
-		baseStats: { hp: 108, atk: 45, def: 63, spa: 126, spd: 144, spe: 108 },
+		baseStats: { hp: 96, atk: 40, def: 56, spa: 112, spd: 128, spe: 96 },
 	},
 	grumpig: {
 		inherit: true,
@@ -1225,15 +1225,15 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	trapinch: {
 		inherit: true,
-		baseStats: { hp: 81, atk: 180, def: 81, spa: 81, spd: 81, spe: 18 },
+		baseStats: { hp: 72, atk: 160, def: 72, spa: 72, spd: 72, spe: 16 },
 	},
 	vibrava: {
 		inherit: true,
-		baseStats: { hp: 80, atk: 112, def: 80, spa: 80, spd: 80, spe: 112 },
+		baseStats: { hp: 75, atk: 105, def: 75, spa: 75, spd: 75, spe: 105 },
 	},
 	cacnea: {
 		inherit: true,
-		baseStats: { hp: 90, atk: 153, def: 72, spa: 153, spd: 72, spe: 63 },
+		baseStats: { hp: 80, atk: 136, def: 64, spa: 136, spd: 64, spe: 56 },
 	},
 	cacturne: {
 		inherit: true,
@@ -1241,7 +1241,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	swablu: {
 		inherit: true,
-		baseStats: { hp: 81, atk: 72, def: 108, spa: 72, spd: 135, spe: 90 },
+		baseStats: { hp: 72, atk: 64, def: 96, spa: 64, spd: 120, spe: 80 },
 	},
 	altaria: {
 		inherit: true,
@@ -1265,7 +1265,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	barboach: {
 		inherit: true,
-		baseStats: { hp: 90, atk: 86, def: 77, spa: 82, spd: 73, spe: 108 },
+		baseStats: { hp: 80, atk: 76, def: 68, spa: 73, spd: 65, spe: 96 },
 	},
 	whiscash: {
 		inherit: true,
@@ -1273,7 +1273,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	corphish: {
 		inherit: true,
-		baseStats: { hp: 77, atk: 144, def: 117, spa: 90, spd: 63, spe: 63 },
+		baseStats: { hp: 68, atk: 128, def: 104, spa: 80, spd: 56, spe: 56 },
 	},
 	crawdaunt: {
 		inherit: true,
@@ -1281,11 +1281,11 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	baltoy: {
 		inherit: true,
-		baseStats: { hp: 72, atk: 72, def: 99, spa: 72, spd: 126, spe: 99 },
+		baseStats: { hp: 64, atk: 64, def: 88, spa: 64, spd: 112, spe: 88 },
 	},
 	lileep: {
 		inherit: true,
-		baseStats: { hp: 118, atk: 73, def: 138, spa: 109, spd: 156, spe: 41 },
+		baseStats: { hp: 105, atk: 65, def: 123, spa: 97, spd: 139, spe: 36 },
 	},
 	cradily: {
 		inherit: true,
@@ -1293,7 +1293,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	anorith: {
 		inherit: true,
-		baseStats: { hp: 81, atk: 171, def: 90, spa: 72, spd: 90, spe: 135 },
+		baseStats: { hp: 72, atk: 152, def: 80, spa: 64, spd: 80, spe: 120 },
 	},
 	armaldo: {
 		inherit: true,
@@ -1301,7 +1301,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	feebas: {
 		inherit: true,
-		baseStats: { hp: 36, atk: 27, def: 36, spa: 18, spd: 99, spe: 144 },
+		baseStats: { hp: 32, atk: 24, def: 32, spa: 16, spd: 88, spe: 128 },
 	},
 	castform: {
 		inherit: true,
@@ -1325,7 +1325,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	shuppet: {
 		inherit: true,
-		baseStats: { hp: 79, atk: 135, def: 63, spa: 113, spd: 59, spe: 81 },
+		baseStats: { hp: 70, atk: 120, def: 56, spa: 100, spd: 52, spe: 72 },
 	},
 	banette: {
 		inherit: true,
@@ -1333,7 +1333,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	duskull: {
 		inherit: true,
-		baseStats: { hp: 36, atk: 72, def: 162, spa: 54, spd: 162, spe: 45 },
+		baseStats: { hp: 32, atk: 64, def: 144, spa: 48, spd: 144, spe: 40 },
 	},
 	dusclops: {
 		inherit: true,
@@ -1357,7 +1357,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	snorunt: {
 		inherit: true,
-		baseStats: { hp: 90, atk: 90, def: 90, spa: 90, spd: 90, spe: 90 },
+		baseStats: { hp: 80, atk: 80, def: 80, spa: 80, spd: 80, spe: 80 },
 	},
 	glalie: {
 		inherit: true,
@@ -1365,11 +1365,11 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	spheal: {
 		inherit: true,
-		baseStats: { hp: 126, atk: 72, def: 90, spa: 99, spd: 90, spe: 45 },
+		baseStats: { hp: 112, atk: 64, def: 80, spa: 88, spd: 80, spe: 40 },
 	},
 	sealeo: {
 		inherit: true,
-		baseStats: { hp: 144, atk: 96, def: 112, spa: 120, spd: 112, spe: 72 },
+		baseStats: { hp: 135, atk: 90, def: 105, spa: 112, spd: 105, spe: 67 },
 	},
 	walrein: {
 		inherit: true,
@@ -1377,7 +1377,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	clamperl: {
 		inherit: true,
-		baseStats: { hp: 63, atk: 115, def: 153, spa: 133, spd: 99, spe: 57 },
+		baseStats: { hp: 56, atk: 102, def: 136, spa: 118, spd: 88, spe: 51 },
 	},
 	huntail: {
 		inherit: true,
@@ -1397,7 +1397,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	bagon: {
 		inherit: true,
-		baseStats: { hp: 81, atk: 135, def: 108, spa: 72, spd: 54, spe: 90 },
+		baseStats: { hp: 72, atk: 120, def: 96, spa: 64, spd: 48, spe: 80 },
 	},
 	shelgon: {
 		inherit: true,
@@ -1405,7 +1405,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	beldum: {
 		inherit: true,
-		baseStats: { hp: 72, atk: 99, def: 144, spa: 63, spd: 108, spe: 54 },
+		baseStats: { hp: 64, atk: 88, def: 128, spa: 56, spd: 96, spe: 48 },
 	},
 	metang: {
 		inherit: true,
