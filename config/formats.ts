@@ -3404,7 +3404,7 @@ export const Formats: FormatList = [
 		name: "[Gen 3] Balance the Scale",
 		mod: 'gen3balancethescale',
 		ruleset: ['Standard', 'One Boost Passer Clause', 'Freeze Clause Mod', 'Data Mod'],
-		banlist: ['Uber', 'Soundproof', 'Assist', 'Baton Pass + Block', 'Baton Pass + Mean Look', 'Baton Pass + Spider Web', 'Smeargle + Ingrain'],
+		banlist: ['Uber', 'Soundproof', 'Assist', 'Baton Pass + Block', 'Baton Pass + Mean Look', 'Baton Pass + Spider Web', 'Smeargle + Ingrain', 'Drizzle', 'Drought'],
 	},
 	{
 		name: "[Gen 8] Blindstrictions",
