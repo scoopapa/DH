@@ -3,72 +3,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 	
 	
 // Future Mons	
-	armaldo: {
-		tier: "OU",
-		randomBattleMoves: ["swordsdance", "lowkick", "rockslide", "earthquake"],
-		isNonstandard: null,
-		gen: 1,
-	},
-	anorith: {
-		tier: "UU",
-		randomBattleMoves: ["swordsdance", "slash", "rockslide", "bodyslam"],
-		isNonstandard: null,
-		gen: 1,
-	},
-	abomasnow: {
-		tier: "OU",
-		randomBattleMoves: ["razorleaf", "blizzard", "rockslide", "earthquake"],
-		isNonstandard: null,
-		gen: 1,
-	},
-	snover: {
-		tier: "UU",
-		randomBattleMoves: ["razorleaf", "blizzard", "rockslide", "rest"],
-		isNonstandard: null,
-		gen: 1,
-	},
-	medicham: {
-		tier: "OU",
-		randomBattleMoves: ["recover", "highjumpkick", "psychic", "icepunch"],
-		isNonstandard: null,
-		gen: 1,
-	},
-	meditite: {
-		tier: "UU",
-		randomBattleMoves: ["recover", "highjumpkick", "psychic", "thunderpunch"],
-		isNonstandard: null,
-		gen: 1,
-	},
-	sneasler: {
-		tier: "OU",
-		randomBattleMoves: ["swordsdance", "sludge", "hyperbeam", "submission"],
-		isNonstandard: null,
-		gen: 1,
-	},
-	sneaselhisui: {
-		tier: "UU",
-		randomBattleMoves: ["swordsdance", "sludge", "slash", "submission"],
-		isNonstandard: null,
-		gen: 1,
-	},
-	talonflame: {
-		tier: "OU",
-		randomBattleMoves: ["swordsdance", "fireblast", "hyperbeam", "drillpeck"],
-		isNonstandard: null,
-		gen: 1,
-	},
-	fletchinder: {
-		tier: "UU",
-		randomBattleMoves: ["swordsdance", "fireblast", "quickattack", "drillpeck"],
-		isNonstandard: null,
-		gen: 1,
-	},
-	fletchling: {
-		tier: "NU",
-		randomBattleMoves: ["swordsdance", "doubleedge", "quickattack", "drillpeck"],
-		isNonstandard: null,
-		gen: 1,
-	},
+	
 	
 // Old Mons	
 	bulbasaur: {

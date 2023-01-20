@@ -864,4 +864,13 @@ export const Scripts: ModdedBattleScriptsData = {
 		// And we are done.
 		return Math.floor(damage);
 	},
+	init: function () {
+		this.modData('Learnsets', 'dragonite').learnset.outrage = ['1L1'];
+		this.modData('Learnsets', 'arcanine').learnset.extremespeed = ['1L1'];
+		this.modData('Learnsets', 'hitmonchan').learnset.machpunch = ['1L1'];
+		this.modData('Learnsets', 'machamp').learnset.vitalthrow = ['1L1'];
+		this.modData('Learnsets', 'dragonair').learnset.outrage = ['1L1'];
+		this.modData('Learnsets', 'dratini').learnset.outrage = ['1L1'];
+		this.modData('Learnsets', 'machoke').learnset.vitalthrow = ['1L1'];
+		this.modData('Learnsets', 'machop').learnset.vitalthrow = ['1L1'];
 };
