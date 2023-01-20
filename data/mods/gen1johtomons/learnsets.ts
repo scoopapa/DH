@@ -2490,8 +2490,3 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 		},
 	},
 };
-
-exports.BattleLearnsets = BattleLearnsets;
-		},
-	},
-};
