@@ -1513,8 +1513,8 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	steelixcrystalmega: {
 		num: -199,
 		name: "Steelix-Crystal-Mega",
-		baseSpecies: "Steelix-Crystal",
-		forme: "Mega",
+		baseSpecies: "Steelix",
+		forme: "Crystal-Mega",
 		types: ["Ice", "Water"],
 		baseStats: {hp: 70, atk: 135, def: 210, spa: 50, spd: 95, spe: 50},
 		abilities: {0: "Polar Ice"},

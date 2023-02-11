@@ -146,33 +146,6 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Ice",
 		contestType: "Beautiful",
 	},
-	batonpass: {
-		num: 226,
-		accuracy: true,
-		basePower: 0,
-		category: "Status",
-		shortDesc: "Switches out. Incoming Ally: +1 Speed",
-		name: "Baton Pass",
-		pp: 20,
-		priority: 0,
-		flags: {},
-		slotCondition: 'batonpass',
-		condition: {
-			onSwap(target) {
-				if (!target.fainted) {
-					this.add('-message', target.name + " received the baton!");
-					const boost = this.boost({spe: 1}, target, target);
-				}
-				target.side.removeSlotCondition(target, 'batonpass');
-			},
-		},
-		selfSwitch: true,
-		secondary: null,
-		target: "self",
-		type: "Normal",
-		zMove: {effect: 'clearnegativeboost'},
-		contestType: "Cute",
-	},
 	beakblast: {
 		num: 690,
 		accuracy: 100,
@@ -699,26 +672,6 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Fire",
 		contestType: "Cute",
 	},
-	eternabeam: {
-		num: 795,
-		accuracy: 90,
-		basePower: 110,
-		category: "Special",
-		shortDesc: "User loses 10% of their max hp.",
-		name: "Eternabeam",
-		pp: 5,
-		priority: 0,
-		flags: {protect: 1, mirror: 1},
-		mindBlownRecoil: true,
-		onAfterMove(pokemon, target, move) {
-			if (move.mindBlownRecoil && !move.multihit) {
-				this.damage(Math.round(pokemon.maxhp / 10), pokemon, pokemon, this.dex.getEffect('Eternabeam'), true);
-			}
-		},
-		secondary: null,
-		target: "normal",
-		type: "Dragon",
-	},
 	extrasensory: {
 		num: 326,
 		accuracy: 100,
@@ -830,7 +783,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				this.debug('Flame Wheel start');
 				let alreadyAdded = false;
 				pokemon.removeVolatile('destinybond');
-				for (const source of this.effectData.sources) {
+				for (const source of this.effectState.sources) {
 					if (!this.queue.cancelMove(source) || !source.hp) continue;
 					if (!alreadyAdded) {
 						this.add('-activate', pokemon, 'move: Flame Wheel');
@@ -978,24 +931,6 @@ export const Moves: {[moveid: string]: MoveData} = {
 		zMove: {boost: {atk: 1, def: 1, spa: 1, spd: 1, spe: 1}},
 		contestType: "Clever",
 	},
-	freezeshock: {
-		num: 553,
-		accuracy: 85,
-		basePower: 100,
-		category: "Physical",
-		shortDesc: "20% chance to Paralyze target.",
-		name: "Freeze Shock",
-		pp: 5,
-		priority: 0,
-		flags: {protect: 1, mirror: 1},
-		secondary: {
-			chance: 20,
-			status: 'par',
-		},
-		target: "normal",
-		type: "Ice",
-		contestType: "Beautiful",
-	},
 	gearup: {
 		num: 674,
 		accuracy: true,
@@ -1085,7 +1020,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				}
 			},
 			onEnd() {
-				if (!this.effectData.duration) this.eachEvent('Terrain');
+				if (!this.effectState.duration) this.eachEvent('Terrain');
 				this.add('-fieldend', 'move: Grassy Terrain');
 			},
 		},
@@ -1180,24 +1115,6 @@ export const Moves: {[moveid: string]: MoveData} = {
 					spe: 1,
 				},
 			},
-		},
-		target: "normal",
-		type: "Ice",
-		contestType: "Beautiful",
-	},
-	iceburn: {
-		num: 554,
-		accuracy: 100,
-		basePower: 75,
-		category: "Special",
-		shortDesc: "30% chance to Burn target.",
-		name: "Ice Burn",
-		pp: 10,
-		priority: 0,
-		flags: {protect: 1, mirror: 1},
-		secondary: {
-			chance: 30,
-			status: 'brn',
 		},
 		target: "normal",
 		type: "Ice",
@@ -1722,7 +1639,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			},
 			onResidualOrder: 11,
 			onResidual(pokemon) {
-				const source = this.effectData.source;
+				const source = this.effectState.source;
 				if (source && (!source.isActive || source.hp <= 0 || !source.activeTurns)) {
 					delete pokemon.volatiles['scaryface'];
 					this.add('-end', pokemon, 'Scary Face', '[partiallytrapped]', '[silent]');
@@ -1731,7 +1648,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				this.boost({spe: -1}, pokemon, source, this.dex.getActiveMove('scaryface'));
 			},
 			onTrapPokemon(pokemon) {
-				if (this.effectData.source && this.effectData.source.isActive) pokemon.tryTrap();
+				if (this.effectState.source && this.effectState.source.isActive) pokemon.tryTrap();
 			},
 		},
 		secondary: null,
@@ -2107,7 +2024,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			},
 			onResidualOrder: 11,
 			onResidual(pokemon) {
-				const source = this.effectData.source;
+				const source = this.effectState.source;
 				if (source && (!source.isActive || source.hp <= 0 || !source.activeTurns)) {
 					delete pokemon.volatiles['tarshot'];
 					this.add('-end', pokemon, 'Tar Shot', '[partiallytrapped]', '[silent]');
@@ -2116,7 +2033,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				this.boost({spe: -1}, pokemon, source, this.dex.getActiveMove('tarshot'));
 			},
 			onTrapPokemon(pokemon) {
-				if (this.effectData.source && this.effectData.source.isActive) pokemon.tryTrap();
+				if (this.effectState.source && this.effectState.source.isActive) pokemon.tryTrap();
 			},
 		},
 		secondary: null,

@@ -3267,7 +3267,7 @@ export const Pokedex: {[speciesid: string]: ModdedSpeciesData} = {
 		baseSpecies: "Sneasel",
 		forme: "Hisui",
 		copyData: "Sneasel",
-		types: ["Poison", "Fighting"],
+		types: ["Dark", "Poison"],
 		abilities: {0: "Inner Focus", 1: "Keen Eye", H: "Poison Touch"},
 		heightm: 0.9,
 		weightkg: 27,

@@ -737,7 +737,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				//if (!target.isGrounded()) return;
 				if (target.hasItem('heavydutyboots')) return;
 				const damageAmounts = [0, 3, 4, 6]; // 1/8, 1/6, 1/4
-				this.damage(damageAmounts[this.effectData.layers] * target.maxhp / 24);
+				this.damage(damageAmounts[this.effectState.layers] * target.maxhp / 24);
 				this.add('-message', `${target.name} was hurt by the spikes!`);
 			}
 		},
@@ -872,7 +872,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 	hyperspacefury: {
 		inherit: true,
 		onTry(pokemon) {
-			if (pokemon.species.name === 'Hoopa-Ifrit' || pokemon.species.name === 'Archronos') {
+			if (pokemon.species.name === 'Hoopa-Unbound' || pokemon.species.name === 'Archronos') {
 				return;
 			}
 			this.hint("Only a Pokemon whose form is Hoopa Unbound or Archronos can use this move.");
@@ -911,17 +911,29 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Water",
 	},
 	venoshock: {
-		inherit: true,
+		num: 474,
+		accuracy: 100,
+		basePower: 65,
 		basePowerCallback(pokemon, target, move) {
 			if (target.status || target.hasAbility('comatose')) return move.basePower * 2;
 			return move.basePower;
 		},
+		category: "Special",
+		name: "Venoshock",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		secondary: null,
+		target: "normal",
+		type: "Poison",
+		zMove: {basePower: 160},
+		contestType: "Clever",
 	},
 	barbbarrage: {
 		num: -19,
 		accuracy: 100,
 		basePower: 25,
-		category: "Physical",
+		category: "Special",
 		name: "Barb Barrage",
 		shortDesc: "Hits 2-5 times in one turn. Each hit has 10% to poison.",
 		pp: 30,
@@ -970,8 +982,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 0,
 		category: "Status",
 		name: "Shelter",
-		shortDesc: "Protects from damaging attacks. Contact: Infestation.",
-		description: "Protects from damaging attacks. If the attacker makes contact, they are afflicted with Infestation.",
+		shortDesc: "Protects from damaging attacks. If the attacker makes contact, they are afflicted with Infestation.",
 		pp: 10,
 		priority: 4,
 		flags: {},
@@ -1027,306 +1038,5 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Ground",
 		zMove: {effect: 'clearnegativeboost'},
 		contestType: "Cool",
-	},
-	wonderdrill: {
-		num: -22,
-		accuracy: 100,
-		basePower: 100,
-		category: "Special",
-		name: "Wonder Drill",
-		shortDesc: "Summons Wonder Room.",
-		pp: 5,
-		priority: 0,
-		flags: {protect: 1, mirror: 1},
-		onPrepareHit: function(target, source, move) {
-			this.attrLastMove('[still]');
-			this.add('-anim', source, "Guillotine", target);
-		},
-		onHit(){
-			if (!this.field.getPseudoWeather('wonderroom')) this.field.addPseudoWeather('wonderroom');
-		},
-		secondary: null,
-		target: "normal",
-		type: "Psychic",
-		contestType: "Clever",
-	},
-	watershuriken: {
-		inherit: true,
-		shortDesc: "Hits 3 times in one turn.",
-		flags: {protect: 1, mirror: 1, slicing: 1},
-		multihit: 3,
-	},
-	shadowclaw: {
-		inherit: true,
-		flags: {contact: 1, protect: 1, mirror: 1, slicing: 1},
-	},
-	hyperspacehole: {
-		inherit: true,
-		basePower: 40,
-		shortDesc: "User recovers 75% of the damage dealt.",
-		priority: 1,
-		flags: {mirror: 1, bypasssub: 1, heal: 1},
-		drain: [3, 4],
-	},
-	aerialace: {
-		inherit: true,
-		flags: {contact: 1, protect: 1, mirror: 1, slicing: 1},
-	},
-	aircutter: {
-		inherit: true,
-		flags: {protect: 1, mirror: 1, slicing: 1},
-	},
-	behemothblade: {
-		inherit: true,
-		flags: {contact: 1, protect: 1, mirror: 1, slicing: 1},
-	},
-	crosspoison: {
-		inherit: true,
-		flags: {contact: 1, protect: 1, mirror: 1, slicing: 1},
-	},
-	cut: {
-		inherit: true,
-		flags: {contact: 1, protect: 1, mirror: 1, slicing: 1},
-	},
-	furycutter: {
-		inherit: true,
-		flags: {contact: 1, protect: 1, mirror: 1, slicing: 1},
-	},
-	leafblade: {
-		inherit: true,
-		flags: {contact: 1, protect: 1, mirror: 1, slicing: 1},
-	},
-	nightslash: {
-		inherit: true,
-		flags: {contact: 1, protect: 1, mirror: 1, slicing: 1},
-	},
-	psychocut: {
-		inherit: true,
-		flags: {contact: 1, protect: 1, mirror: 1, slicing: 1},
-	},
-	razorleaf: {
-		inherit: true,
-		flags: {contact: 1, protect: 1, mirror: 1, slicing: 1},
-	},
-	razorshell: {
-		inherit: true,
-		flags: {contact: 1, protect: 1, mirror: 1, slicing: 1},
-	},
-	sacredsword: {
-		inherit: true,
-		flags: {contact: 1, protect: 1, mirror: 1, slicing: 1},
-	},
-	slash: {
-		inherit: true,
-		flags: {contact: 1, protect: 1, mirror: 1, slicing: 1},
-	},
-	solarblade: {
-		inherit: true,
-		flags: {contact: 1, protect: 1, mirror: 1, slicing: 1},
-	},
-	xscissor: {
-		inherit: true,
-		flags: {contact: 1, protect: 1, mirror: 1, slicing: 1},
-	},
-	populationbomb: {
-		num: 860,
-		accuracy: 90,
-		basePower: 20,
-		category: "Physical",
-		name: "Population Bomb",
-		shortDesc: "Hits 10 times. Each hit can miss.",
-		pp: 10,
-		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1, slicing: 1},
-		multihit: 10,
-		multiaccuracy: true,
-		secondary: null,
-		target: "normal",
-		type: "Normal",
-	},
-	chillingwater: {
-		num: 886,
-		accuracy: 100,
-		basePower: 50,
-		category: "Special",
-		name: "Chilling Water",
-		shortDesc: "100% chance to lower the target's Attack by 1.",
-		pp: 20,
-		priority: 0,
-		flags: {protect: 1, mirror: 1},
-		secondary: {
-			chance: 100,
-			boosts: {
-				atk: -1,
-			},
-		},
-		target: "normal",
-		type: "Water",
-		contestType: "Beautiful",
-	},
-	trailblaze: {
-		num: 885,
-		accuracy: 100,
-		basePower: 50,
-		category: "Physical",
-		name: "Trailblaze",
-		shortDesc: "100% chance to raise the user's Speed by 1.",
-		pp: 20,
-		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1},
-		secondary: {
-			chance: 100,
-			self: {
-				boosts: {
-					spe: 1,
-				},
-			},
-		},
-		target: "normal",
-		type: "Grass",
-		contestType: "Cool",
-	},
-	aquacutter: {
-		num: 895,
-		accuracy: 100,
-		basePower: 70,
-		category: "Physical",
-		name: "Aqua Cutter",
-		shortDesc: "High critical hit ratio.",
-		pp: 20,
-		priority: 0,
-		flags: {protect: 1, mirror: 1, slicing: 1},
-		critRatio: 2,
-		secondary: null,
-		target: "normal",
-		type: "Water",
-		contestType: "Cool",
-	},
-	luminacrash: {
-		num: 855,
-		accuracy: 100,
-		basePower: 80,
-		category: "Special",
-		name: "Lumina Crash",
-		shortDesc: "100% chance to lower the target's Sp. Def by 2.",
-		pp: 10,
-		priority: 0,
-		flags: {protect: 1, mirror: 1},
-		secondary: {
-			chance: 100,
-			boosts: {
-				spd: -2,
-			},
-		},
-		target: "normal",
-		type: "Psychic",
-	},
-	glaiverush: {
-		num: 862,
-		accuracy: 100,
-		basePower: 120,
-		category: "Physical",
-		name: "Glaive Rush",
-		shortDesc: "User takes sure-hit 2x damage until its next turn.",
-		pp: 5,
-		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1},
-		self: {
-			volatileStatus: 'glaiverush',
-		},
-		condition: {
-			noCopy: true,
-			onStart(pokemon) {
-				this.add('-singlemove', pokemon, 'Glaive Rush', '[silent]');
-			},
-			onAccuracy() {
-				return true;
-			},
-			onSourceModifyDamage() {
-				return this.chainModify(2);
-			},
-			onBeforeMovePriority: 100,
-			onBeforeMove(pokemon) {
-				this.debug('removing Glaive Rush drawback before attack');
-				pokemon.removeVolatile('glaiverush');
-			},
-		},
-		secondary: null,
-		target: "normal",
-		type: "Dragon",
-	},
-	icespinner: {
-		num: 861,
-		accuracy: 100,
-		basePower: 80,
-		category: "Physical",
-		name: "Ice Spinner",
-		shortDesc: "Ends the effects of terrain.",
-		pp: 15,
-		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1},
-		onHit() {
-			this.field.clearTerrain();
-		},
-		onAfterSubDamage() {
-			this.field.clearTerrain();
-		},
-		secondary: null,
-		target: "normal",
-		type: "Ice",
-	},
-	freezeshock: {
-		num: 553,
-		accuracy: 100,
-		basePower: 100,
-		category: "Physical",
-		name: "Freeze Shock",
-		shortDesc: "30% chance to paralyze the target.",
-		pp: 5,
-		priority: 0,
-		flags: {protect: 1, mirror: 1},
-		secondary: {
-			chance: 30,
-			status: 'par',
-		},
-		target: "normal",
-		type: "Ice",
-		contestType: "Beautiful",
-	},
-	iceburn: {
-		num: 554,
-		accuracy: 100,
-		basePower: 80,
-		category: "Special",
-		name: "Ice Burn",
-		shortDesc: "30% chance to burn the target.",
-		pp: 15,
-		priority: 0,
-		flags: {protect: 1, mirror: 1},
-		secondary: {
-			chance: 30,
-			status: 'brn',
-		},
-		target: "normal",
-		type: "Ice",
-		contestType: "Beautiful",
-	},
-	terablast: {
-		num: 851,
-		accuracy: 100,
-		basePower: 80,
-		category: "Special",
-		name: "Tera Blast",
-		pp: 10,
-		priority: 0,
-		flags: {protect: 1, mirror: 1},
-		onModifyMove(move, pokemon) {
-			if (pokemon.getStat('atk', false, true) > pokemon.getStat('spa', false, true)) {
-				move.category = 'Physical';
-			}
-		},
-		secondary: null,
-		target: "normal",
-		type: "Normal",
 	},
 };

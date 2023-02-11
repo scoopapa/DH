@@ -1114,7 +1114,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 	},
 	entei: {
 		randomBattleMoves: ["bodyslam", "calmmind", "fireblast", "flamethrower", "hiddenpowergrass", "hiddenpowerice", "solarbeam", "substitute", "sunnyday"],
-		tier: "OU",
+		tier: "UU",
 		rank: "C2",
 	},
 	suicune: {
@@ -2558,23 +2558,19 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "OU",
 	},
 	scrafty: {
-		rank: "New",
-		gen: 3,
-		tier: "OU",
+		isNonstandard: "Future",
+		tier: "Illegal",
 	},
 	yanmega: {
-		rank: "New",
-		gen: 3,
-		tier: "OU",
+		isNonstandard: "Future",
+		tier: "Illegal",
 	},
 	weavile: {
-		rank: "New",
-		gen: 3,
-		tier: "OU",
+		isNonstandard: "Future",
+		tier: "Illegal",
 	},
 	simipour: {
-		rank: "New",
-		gen: 3,
-		tier: "OU",
+		isNonstandard: "Future",
+		tier: "Illegal",
 	},
 };

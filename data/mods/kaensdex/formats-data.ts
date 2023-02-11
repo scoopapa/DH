@@ -52,10 +52,6 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "KaensDex",
 		doublesTier: "KDD",
 	},
-	porcusquillmega: {
-		tier: "KaensDex",
-		doublesTier: "KDD",
-	},
 	mop: {
 		tier: "LC",
 		doublesTier: "KDD",
@@ -264,10 +260,6 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "KaensDex",
 		doublesTier: "KDD",
 	},
-	grussgumega: {
-		tier: "KaensDex",
-		doublesTier: "KDD",
-	},
 	orvenom: {
 		tier: "KaensDex",
 		doublesTier: "KDD",
@@ -440,10 +432,6 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "KaensDex",
 		doublesTier: "KDD",
 	},
-	vizcachumega: {
-		tier: "KaensDex",
-		doublesTier: "KDD",
-	},
 	paramer: {
 		tier: "LC",
 		doublesTier: "KDD",
@@ -564,10 +552,6 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "KaensDex",
 		doublesTier: "KDD",
 	},
-	abomigomega: {
-		tier: "KaensDex",
-		doublesTier: "KDD",
-	},
 	chillma: {
 		tier: "LC",
 		doublesTier: "KDD",
@@ -662,66 +646,6 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	},
 	skyradise: {
 		tier: "KaensDexUber",
-		doublesTier: "KDD",
-	},
-	ironsun: {
-		tier: "KaensDex",
-		doublesTier: "KDD",
-	},
-	crazymoon: {
-		tier: "KaensDex",
-		doublesTier: "KDD",
-	},
-	jumpfurr: {
-		tier: "KaensDex",
-		doublesTier: "KDD",
-	},
-	surivexe: {
-		tier: "KaensDex",
-		doublesTier: "KDD",
-	},
-	eeveecile: {
-		tier: "LC",
-		doublesTier: "KDD",
-	},
-	vaporeoncile: {
-		tier: "KaensDex",
-		doublesTier: "KDD",
-	},
-	jolteoncile: {
-		tier: "KaensDex",
-		doublesTier: "KDD",
-	},
-	flareoncile: {
-		tier: "KaensDex",
-		doublesTier: "KDD",
-	},
-	espeoncile: {
-		tier: "KaensDex",
-		doublesTier: "KDD",
-	},
-	umbreoncile: {
-		tier: "KaensDex",
-		doublesTier: "KDD",
-	},
-	leafeoncile: {
-		tier: "KaensDex",
-		doublesTier: "KDD",
-	},
-	glaceoncile: {
-		tier: "KaensDex",
-		doublesTier: "KDD",
-	},
-	sylveoncile: {
-		tier: "KaensDex",
-		doublesTier: "KDD",
-	},
-	qilineon: {
-		tier: "KaensDex",
-		doublesTier: "KDD",
-	},
-	fossileon: {
-		tier: "KaensDex",
 		doublesTier: "KDD",
 	},
 };

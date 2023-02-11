@@ -126,7 +126,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		num: -6,
 		accuracy: 100,
 		basePower: 60,
-		category: "Physical",
+		category: "Special",
 		name: "Toxic Sting",
 		pp: 10,
 		priority: 0,
@@ -305,7 +305,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				this.debug('Nectack start');
 				let alreadyAdded = false;
 				pokemon.removeVolatile('destinybond');
-				for (const source of this.effectData.sources) {
+				for (const source of this.effectState.sources) {
 					if (!this.queue.cancelMove(source) || !source.hp) continue;
 					if (!alreadyAdded) {
 						this.add('-activate', pokemon, 'move: Nectack');
@@ -505,20 +505,20 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		volatileStatus: 'frostbite',
 		condition: {
 			onStart(target) {
-			  this.effectData.stage = 0;
+			  this.effectState.stage = 0;
 				this.add('-start', target, 'move: Frostbite');
 			},
 			onResidualOrder: 8,
 			onResidual(pokemon) {
-	  		if (this.effectData.stage < 15) {
-		  		this.effectData.stage++;
+	  		if (this.effectState.stage < 15) {
+		  		this.effectState.stage++;
 		  	}
-				const target = this.effectData.source.side.active[pokemon.volatiles['frostbite'].sourcePosition];
+				const target = this.effectState.source.side.active[pokemon.volatiles['frostbite'].sourcePosition];
 				if (!target || target.fainted || target.hp <= 0) {
 					this.debug('Nothing to leech into');
 					return;
 				}
-				const damage = this.damage(this.clampIntRange(pokemon.baseMaxhp / 16, 1) * this.effectData.stage, pokemon, target,); //'[silent]'); //looking at that soon
+				const damage = this.damage(this.clampIntRange(pokemon.baseMaxhp / 16, 1) * this.effectState.stage, pokemon, target,); //'[silent]'); //looking at that soon
 				if (damage) {
 					this.heal(damage, target, pokemon);
 				}
@@ -639,12 +639,12 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		condition: {
 			duration: 2,
 			onStart() {
-				this.effectData.hitCount = 1;
+				this.effectState.hitCount = 1;
 			},
 			onRestart() {
-				this.effectData.hitCount++;
-				if (this.effectData.hitCount < 5) {
-					this.effectData.duration = 2;
+				this.effectState.hitCount++;
+				if (this.effectState.hitCount < 5) {
+					this.effectState.duration = 2;
 				}
 			},
 		},
@@ -760,15 +760,15 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		condition: { // this is *not* meant to be set as part of the move; partially defined in scripts.ts!
 			onModifyDamage(damage, source, target, move) {
 				if (target.getMoveHitData(move).typeMod < 0) {
-					this.effectData.boost = 'thisMoveResisted';
+					this.effectState.boost = 'thisMoveResisted';
 					this.debug('set Indomitable Spirit boost');
 				}
 			},
 			onBeforeMove(pokemon) {
-				if (this.effectData.boost === 'thisMoveResisted') {
-					this.effectData.boost = 'lastMoveResisted';
+				if (this.effectState.boost === 'thisMoveResisted') {
+					this.effectState.boost = 'lastMoveResisted';
 				} else {
-					this.effectData.boost = null;
+					this.effectState.boost = null;
 				}
 			},
 		},
@@ -848,6 +848,12 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				}
 			}
 			return success;
+		},
+		secondary: {
+			chance: 100,
+			boosts: {
+				spe: -1,
+			},
 		},
 		target: "normal",
 		type: "Ground",
@@ -1123,7 +1129,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				}
 			},
 			onAnyAccuracy(accuracy, target, source, move) {
-				if (move.type === 'Fighting' && (source === this.effectData.target || target === this.effectData.target) && (target.isGrounded() && !target.isSemiInvulnerable())) {
+				if (move.type === 'Fighting' && (source === this.effectState.target || target === this.effectState.target) && (target.isGrounded() && !target.isSemiInvulnerable())) {
 					return true;
 				}
 				return accuracy;
@@ -1864,7 +1870,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		zMove: {basePower: 160},
 		contestType: "Clever",
 	},
-	/*ceaselessedge: {
+	ceaselessedge: {
 		num: -1463,
 		accuracy: 90,
 		basePower: 80,
@@ -1879,26 +1885,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		target: "normal",
 		type: "Dark",
 		contestType: "Tough",
-	},*/
-	ceaselessedge: {
-		shortDesc: "Sets Spikes after damage.",
-		num: -1006,
-		accuracy: 90,
-		basePower: 65,
-		category: "Physical",
-		name: "Ceaseless Edge",
-		pp: 15,
-		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1},
-		onPrepareHit(target, source, move) {
-			this.attrLastMove('[still]');
-			this.add('-anim', source, "Night Slash", target);
-		},
-		sideCondition: 'spikes',
-		secondary: null,
-		target: "adjacentFoe",
-		type: "Dark",
-		contestType: "Cool",
 	},
 	victorydance: {
 		num: -1483,
@@ -1944,7 +1930,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		zMove: {basePower: 160},
 		contestType: "Clever",
 	},
-	/*esperwing: {
+	esperwing: {
 		num: -1094,
 		accuracy: 100,
 		basePower: 95,
@@ -1983,45 +1969,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		target: "normal",
 		type: "Ice",
 		contestType: "Beautiful",
-	},*/
-	esperwing: {
-		num: 840,
-		accuracy: 100,
-		basePower: 80,
-		category: "Special",
-		name: "Esper Wing",
-		shortDesc: "100% chance to raise user Speed by 1. High crit.",
-		pp: 10,
-		priority: 0,
-		flags: {protect: 1, mirror: 1},
-		critRatio: 2,
-		secondary: {
-			chance: 100,
-			self: {
-				boosts: {
-					spe: 1,
-				},
-			},
-		},
-		target: "normal",
-		type: "Psychic",
-	},
-	mountaingale: {
-		num: 836,
-		accuracy: 85,
-		basePower: 100,
-		category: "Physical",
-		name: "Mountain Gale",
-		shortDesc: "30% chance to make the target flinch.",
-		pp: 10,
-		priority: 0,
-		flags: {protect: 1, mirror: 1},
-		secondary: {
-			chance: 30,
-			volatileStatus: 'flinch',
-		},
-		target: "normal",
-		type: "Ice",
 	},
 	shelter: {
 		num: -1661,
@@ -2081,7 +2028,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		contestType: "Tough",
 		shortDesc: "Protects from moves. Contact: resets opponent's stat boosts.",
 	},
-	/*triplearrows: {
+	triplearrows: {
 		num: -1612,
 		accuracy: 100,
 		basePower: 50,
@@ -2106,33 +2053,8 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		target: "normal",
 		type: "Fighting",
 		contestType: "Tough",
-	},*/
-	triplearrows: {
-		num: 843,
-		accuracy: 100,
-		basePower: 90,
-		category: "Physical",
-		shortDesc: "High crit. Target: 50% -1 Defense, 30% flinch.",
-		name: "Triple Arrows",
-		pp: 10,
-		priority: 0,
-		flags: {protect: 1, mirror: 1},
-		critRatio: 2,
-		secondaries: [
-			{
-				chance: 50,
-				boosts: {
-					def: -1,
-				},
-			}, {
-				chance: 30,
-				volatileStatus: 'flinch',
-			},
-		],
-		target: "normal",
-		type: "Fighting",
 	},
-	/*psyshieldbash: {
+	psyshieldbash: {
 		num: -1776,
 		accuracy: 100,
 		basePower: 70,
@@ -2166,52 +2088,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		target: "normal",
 		type: "Rock",
 		contestType: "Clever",
-	},*/
-	psyshieldbash: {
-		shortDesc: "100% chance to raise the user's Defense by 1.",
-		num: -1013,
-		accuracy: 90,
-		basePower: 70,
-		category: "Physical",
-		name: "Psyshield Bash",
-		pp: 10,
-		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1},
-		onPrepareHit(target, source, move) {
-			this.attrLastMove('[still]');
-			this.add('-anim', source, "Zen Headbutt", target);
-		},
-		secondary: {
-			chance: 100,
-			self: {
-				boosts: {
-					def: 1,
-				},
-			},
-		},
-		target: "normal",
-		type: "Psychic",
-		contestType: "Clever",
-	},
-	stoneaxe: {
-		shortDesc: "Sets Stealth Rock after damage.",
-		num: -1014,
-		accuracy: 90,
-		basePower: 65,
-		category: "Physical",
-		name: "Stone Axe",
-		pp: 15,
-		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1},
-		onPrepareHit(target, source, move) {
-			this.attrLastMove('[still]');
-			this.add('-anim', source, "Stone Edge", target);
-		},
-		sideCondition: 'stealthrock',
-		secondary: null,
-		target: "adjacentFoe",
-		type: "Rock",
-		contestType: "Tough",
 	},
 	headlongrush: {
 		num: -1370,
@@ -2290,11 +2166,13 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
 		secondary: {
-			chance: 50,
+			chance: 30,
 			status: 'psn',
 		},
 		target: "normal",
 		type: "Poison",
+		zMove: {basePower: 160},
+		contestType: "Clever",
 	},
 	hiddenpower: {
 		num: 237,
@@ -2595,7 +2473,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			delete move.boosts;
 		},
 		onHit(target) {
-			const type = this.dex.getMove(target.moveSlots[2].id).type;
+			const type = this.dex.moves.get(target.moveSlots[2].id).type;
 			if (target.hasType(type) || !target.setType(type)) return false;
 			this.add('-start', target, 'typechange', type);
 		},
@@ -2610,12 +2488,12 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		target: "self",
 		type: "Normal",
 	},
-	zawall: {
+	weneedawall: {
 		num: -1800,
 		accuracy: 90,
 		basePower: 120,
 		category: "Physical",
-		name: "Za Wall",
+		name: "We Need A Wall",
 		shortDesc: "Raises user's Atk by 1 on turn 1. Hits turn 2.",
 		pp: 10,
 		priority: 0,
@@ -2663,7 +2541,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
                 for (const moveSlot of target.moveSlots) {
                     if (moveSlot.revealed) continue;
                     if (r === 0) {
-                        this.add('-message', `${(target.illusion ? target.illusion.name : target.name)} knows the move ${this.dex.getMove(moveSlot.move).name}!`);
+                        this.add('-message', `${(target.illusion ? target.illusion.name : target.name)} knows the move ${this.dex.moves.get(moveSlot.move).name}!`);
                     }
                     r--;
                     moveSlot.revealed = true;
@@ -2694,13 +2572,13 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		condition: {
 			duration: 1,
 			onStart(target, source) {
-				this.effectData.multiplier = 1.5;
+				this.effectState.multiplier = 1.5;
 				this.add('-singleturn', target, 'Full Devotion', '[of] ' + source);
 			},
 			onBasePowerPriority: 10,
 			onBasePower(basePower) {
-				this.debug('Boosting from Full Devotion: ' + this.effectData.multiplier);
-				return this.chainModify(this.effectData.multiplier);
+				this.debug('Boosting from Full Devotion: ' + this.effectState.multiplier);
+				return this.chainModify(this.effectState.multiplier);
 			},
 			onDamagingHit(damage, target, source, move){
 				if (source.side !== target.side){

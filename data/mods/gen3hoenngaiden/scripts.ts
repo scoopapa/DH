@@ -128,7 +128,7 @@ export const Scripts: ModdedBattleScriptsData = {
 			let lacksTarget = !target || target.fainted;
 			if (!lacksTarget) {
 				if (['adjacentFoe', 'adjacentAlly', 'normal', 'randomNormal'].includes(move.target)) {
-					lacksTarget = !this.isAdjacent(target, pokemon);
+					lacksTarget = !target.isAdjacent(pokemon);
 				}
 			}
 			if (lacksTarget && !move.isFutureMove) {
@@ -158,8 +158,8 @@ export const Scripts: ModdedBattleScriptsData = {
 	},
 	init: function () {
 
-		for (const i in this.data.Pokedex) {
-			delete this.data.Pokedex[i].abilities['H'];
+		for (const i in this.species.all()) {
+			delete this.species.all()[i].abilities['H'];
 		}
 
 		// list Pokemon by VR rank
@@ -780,7 +780,6 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData("Learnsets", "cramorant").learnset.mimic = ["3L1"];
 		this.modData("Learnsets", "cramorant").learnset.return = ["3L1"];
 		this.modData("Learnsets", "cramorant").learnset.frustration = ["3L1"];
-		this.modData("Learnsets", "cramorant").learnset.doubleedge = ["3L1"];
 
 		this.modData("Learnsets", "jellicent").learnset.hydropump = ["3L1"];
 		this.modData("Learnsets", "jellicent").learnset.waterpulse = ["3L1"];
@@ -1019,7 +1018,6 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData("Learnsets", "sirfetchd").learnset.skyattack = ["3L1"];
 		this.modData("Learnsets", "sirfetchd").learnset.rocksmash = ["3L1"];
 		this.modData("Learnsets", "sirfetchd").learnset.knockoff = ["3L1"];
-		this.modData("Learnsets", "sirfetchd").learnset.bulkup = ["3L1"];
 
 		this.modData("Learnsets", "talonflame").learnset.skyattack = ["3L1"];	
 		this.modData("Learnsets", "talonflame").learnset.doubleedge = ["3L1"];
@@ -1055,12 +1053,10 @@ export const Scripts: ModdedBattleScriptsData = {
 		delete this.modData('Learnsets', 'dugtrioalola').learnset.headbutt;
 		delete this.modData('Learnsets', 'dugtrioalola').learnset.reversal;
 
-		delete this.modData('Learnsets', 'weavile').learnset.calmmind;
-
 		// Keep this at the bottom of the init function
 		// for (const species in this.data.pokedex) {
-		// 	if (this.data.Pokedex[species].learnset.batonpass) {
-		// 		this.modData('Learnsets', species).learnset.batonpassgaiden = this.data.Pokedex[species].learnset.batonpass;
+		// 	if (this.species.all()[species].learnset.batonpass) {
+		// 		this.modData('Learnsets', species).learnset.batonpassgaiden = this.species.all()[species].learnset.batonpass;
 		// 		delete this.modData('Learnsets', species).learnset.batonpass;
 		// 	}
 		// }

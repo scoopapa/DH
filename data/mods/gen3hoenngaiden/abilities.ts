@@ -63,7 +63,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		onStart(pokemon) {
 			let activated = false;
 			for (const target of pokemon.side.foe.active) {
-				if (target && this.isAdjacent(target, pokemon) && !target.volatiles['substitute']) {
+				if (target && target.isAdjacent(pokemon) && !target.volatiles['substitute']) {
 					activated = true;
 					break;
 				}
@@ -76,7 +76,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			this.add('-ability', pokemon, 'Intimidate', 'boost');
 
 			for (const target of pokemon.side.foe.active) {
-				if (!target || !this.isAdjacent(target, pokemon)) continue;
+				if (!target || !target.isAdjacent(pokemon)) continue;
 
 				if (target.volatiles['substitute']) {
 					this.add('-immune', target);
@@ -91,8 +91,8 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		shortDesc: "This Pokemon draws single-target Electric moves used by opponents to itself.",
 		onFoeRedirectTarget(target, source, source2, move) {
 			if (move.type !== 'Electric') return;
-			if (this.validTarget(this.effectData.target, source, move.target)) {
-				return this.effectData.target;
+			if (this.validTarget(this.effectState.target, source, move.target)) {
+				return this.effectState.target;
 			}
 		},
 		name: "Lightning Rod",
@@ -302,6 +302,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		onBasePower(basePower, pokemon, target, move) {
 			if (move.galvanizeBoosted) return this.chainModify(1.2);
 		},
+		inherit: true,
 		isNonstandard: null,
 		gen: 3,
 		name: "Galvanize",
@@ -443,7 +444,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			pokemon.abilityData.ending = false;
 			for (const target of this.getAllActive()) {
 				if (target.illusion) {
-					this.singleEvent('End', this.dex.getAbility('Illusion'), target.abilityData, target, pokemon, 'neutralizinggas');
+					this.singleEvent('End', this.dex.abilities.get('Illusion'), target.abilityData, target, pokemon, 'neutralizinggas');
 				}
 				if (target.volatiles['slowstart']) {
 					delete target.volatiles['slowstart'];
