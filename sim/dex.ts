@@ -123,11 +123,21 @@ export class ModdedDex {
 	readonly speciesCache = new Map<ID, Species>();
 	readonly natureCache = new Map<ID, Nature>();
 	readonly typeCache = new Map<string, TypeInfo>();
-
+	// Update Hack
+	readonly formats: DexFormats;
+	readonly abilities: DexAbilities;
+	readonly items: DexItems;
+	readonly moves: DexMoves;
+	readonly species: DexSpecies;
+	readonly conditions: DexConditions;
+	readonly natures: Data.DexNatures;
+	readonly types: Data.DexTypes;
+	readonly stats: Data.DexStats;
+	//----------------------------------
 	gen = 0;
 	parentMod = '';
 	modsLoaded = false;
-
+	this.dataDir = (this.isBase ? DATA_DIR : MODS_DIR + '/' + this.currentMod);
 	dataCache: DexTableData | null;
 	textCache: TextTableData | null;
 	formatsCache: DexTable<Format> | null;
@@ -158,6 +168,17 @@ export class ModdedDex {
 			this.dataCache = original.dataCache;
 			this.formatsCache = original.formatsCache;
 		}
+		//Update Hack Stuff
+		this.formats = new DexFormats(this);
+		this.abilities = new DexAbilities(this);
+		this.items = new DexItems(this);
+		this.moves = new DexMoves(this);
+		this.species = new DexSpecies(this);
+		this.conditions = new DexConditions(this);
+		this.natures = new Data.DexNatures(this);
+		this.types = new Data.DexTypes(this);
+		this.stats = new Data.DexStats(this);
+		//
 	}
 
 	get dataDir(): string {
@@ -190,7 +211,7 @@ export class ModdedDex {
 
 	forFormat(format: Format | string): ModdedDex {
 		if (!this.modsLoaded) this.includeMods();
-		const mod = this.getFormat(format).mod;
+		const mod = this.formats.get(format).mod;
 		return dexes[mod || BASE_MOD].includeData();
 	}
 
@@ -269,7 +290,7 @@ export class ModdedDex {
 			}
 			return true;
 		}
-		const typeData = this.data.TypeChart[targetTyping];
+		const typeData = this.types.get(targetTyping);
 		if (typeData && typeData.damageTaken[sourceType] === 3) return false;
 		return true;
 	}
