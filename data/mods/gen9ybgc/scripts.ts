@@ -1,0 +1,63 @@
+export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
+    inherit: 'gen9',
+
+  init() {
+    this.modData("Learnsets", "sneasel").learnset.throatchop = ["9L1"];
+		this.modData("Learnsets", "veluza").learnset.brine = ["9L1"];
+		this.modData("Learnsets", "riolu").learnset.coaching = ["9L1"];
+		this.modData("Learnsets", "hypno").learnset.followme = ["9L1"];
+		this.modData("Learnsets", "hypno").learnset.fakeout = ["9L1"];
+		this.modData("Learnsets", "hypno").learnset.clearsmog = ["9L1"];
+		this.modData("Learnsets", "banette").learnset.polteageist = ["9L1"];
+		this.modData("Learnsets", "banette").learnset.brickbreak = ["9L1"];
+		this.modData("Learnsets", "honchkrow").learnset.superpower = ["9L1"];
+		this.modData("Learnsets", "honchkrow").learnset.lashout = ["9L1"];
+		this.modData("Learnsets", "delibird").learnset.uturn = ["9L1"];
+		this.modData("Learnsets", "coalossal").learnset.meteorbeam = ["9L1"];
+		this.modData("Learnsets", "beartic").learnset.tripleaxel = ["9L1"];
+		this.modData("Learnsets", "lurantis").learnset.superpower = ["9L1"];
+		this.modData("Learnsets", "lurantis").learnset.grassyglide = ["9L1"];
+		this.modData("Learnsets", "lurantis").learnset.knockoff = ["9L1"];
+		this.modData("Learnsets", "revavroom").learnset.corrosivegas = ["9L1"];
+		this.modData("Learnsets", "revavroom").learnset.heatcrash = ["9L1"];
+		this.modData("Learnsets", "revavroom").learnset.flamecharge = ["9L1"];
+		this.modData("Learnsets", "revavroom").learnset.explosion = ["9L1"];
+		this.modData("Learnsets", "spiritomb").learnset.burningjealousy = ["9L1"];
+		this.modData("Learnsets", "scyther").learnset.dualwingbeat = ["9L1"];
+		this.modData("Learnsets", "gogoat").learnset.powerwhip = ["9L1"];
+		this.modData("Learnsets", "oinkologne").learnset.snarl = ["9L1"];
+		this.modData("Learnsets", "oinkologne").learnset.mistyterrain = ["9L1"];
+		this.modData("Learnsets", "oinkologne").learnset.dazzlinggleam = ["9L1"];
+		this.modData("Learnsets", "oinkologne").learnset.mistyexplosion = ["9L1"];
+		this.modData("Learnsets", "oinkologne").learnset.charm = ["9L1"];
+		this.modData("Learnsets", "oinkolognef").learnset.snarl = ["9L1"];
+		this.modData("Learnsets", "oinkolognef").learnset.mistyterrain = ["9L1"];
+		this.modData("Learnsets", "oinkolognef").learnset.dazzlinggleam = ["9L1"];
+		this.modData("Learnsets", "oinkolognef").learnset.mistyexplosion = ["9L1"];
+		this.modData("Learnsets", "oinkolognef").learnset.charm = ["9L1"];
+		this.modData("Learnsets", "palossand").learnset.scorchingsands = ["9L1"];
+		this.modData("Learnsets", "palossand").learnset.trickroom = ["9L1"];
+		this.modData("Learnsets", "eelektross").learnset.risingvoltage = ["9L1"];
+		this.modData("Learnsets", "hawlucha").learnset.tailwind = ["9L1"];
+		this.modData("Learnsets", "drifblim").learnset.nastyplot = ["9L1"];
+		this.modData("Learnsets", "drifblim").learnset.quash = ["9L1"];
+		this.modData("Learnsets", "dreepy").learnset.detect = ["9L1"];
+		this.modData("Learnsets", "qwilfish").learnset.flipturn = ["9L1"];
+		this.modData("Learnsets", "qwilfish").learnset.barbbarrage = ["9L1"];
+		this.modData("Learnsets", "electrode").learnset.electroweb = ["9L1"];
+		this.modData("Learnsets", "electrode").learnset.energyball = ["9L1"];
+		this.modData("Learnsets", "dedenne").learnset.electroweb = ["9L1"];
+		this.modData("Learnsets", "dedenne").learnset.fakeout = ["9L1"];
+		this.modData("Learnsets", "dedenne").learnset.taunt = ["9L1"];
+		this.modData("Learnsets", "pachirisu").learnset.electroweb = ["9L1"];
+		this.modData("Learnsets", "luxray").learnset.electroweb = ["9L1"];
+		this.modData("Learnsets", "luxray").learnset.morningsun = ["9L1"];
+		this.modData("Learnsets", "luxray").learnset.suckerpunch = ["9L1"];
+		this.modData("Learnsets", "wugtrio").learnset.icywind = ["9L1"];
+		this.modData("Learnsets", "wugtrio").learnset.swordsdance = ["9L1"];
+		this.modData("Learnsets", "wugtrio").learnset.gunkshot = ["9L1"];
+		this.modData("Learnsets", "wugtrio").learnset.earthquake = ["9L1"];
+		this.modData("Learnsets", "wugtrio").learnset.feint = ["9L1"];
+		this.modData("Learnsets", "dugtrio").learnset.feint = ["9L1"];
+	},
+};
