@@ -15,7 +15,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		name: "Veluza",
 		types: ["Water", "Psychic"],
 		baseStats: {hp: 90, atk: 102, def: 73, spa: 97, spd: 65, spe: 70},
-		abilities: {0: "Mold Breaker", H: "Sharpness"},
+		abilities: {0: "Mold Breaker", 1: "Regenerator", H: "Sharpness"},
 		heightm: 2.5,
 		weightkg: 90,
 		color: "Gray",
