@@ -1326,7 +1326,6 @@ export const Formats: FormatList = [
 			battle: 4,
 		},
 		ruleset: ['Gen 9 GBU', 'Paldea Pokedex', 'VGC Timer', 'Dynamax Clause', 'Data Mod'],
-		banlist: ['Sub-Legendary'],
 	},
 	// Randomized Metas
 	///////////////////////////////////////////////////////////////////
