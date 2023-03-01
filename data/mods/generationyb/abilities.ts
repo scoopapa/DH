@@ -885,7 +885,7 @@ coldcut: {
 			move.secondaries.push({
 				chance: 30,
 				status: 'frz',
-				ability: this.dex.abilities.get('coldcut'),
+				ability: this.dex.getAbility('coldcut'),
 			});
 		},
 		name: "Cold Cut",
@@ -946,7 +946,7 @@ coldcut: {
 		onResidualOrder: 5,
 		onResidualSubOrder: 2,
 		onResidual(pokemon) {
-			this.heal(pokemon.maxhp / 16);
+			this.heal(pokemon.baseMaxhp / 16);
 		},
 		name: "Filter Feed",
 		shortDesc: "Heals 6.25% of user's max HP at the end of each turn.",
@@ -1180,22 +1180,22 @@ coldcut: {
 	},
 	silkstream: {
 		onStart(pokemon) {
-			pokemon.abilityState.choiceLock = "";
+			pokemon.abilityData.choiceLock = "";
 		},
 		onBeforeMove(pokemon, target, move) {
 			if (move.isZOrMaxPowered || move.id === 'struggle') return;
-			if (pokemon.abilityState.choiceLock && pokemon.abilityState.choiceLock !== move.id) {
+			if (pokemon.abilityData.choiceLock && pokemon.abilityData.choiceLock !== move.id) {
 				// Fails unless ability is being ignored (these events will not run), no PP lost.
 				this.addMove('move', pokemon, move.name);
 				this.attrLastMove('[still]');
-				this.debug("Disabled by Gorilla Tactics");
+				this.debug("Disabled by Silk Stream");
 				this.add('-fail', pokemon);
 				return false;
 			}
 		},
 		onModifyMove(move, pokemon) {
-			if (pokemon.abilityState.choiceLock || move.isZOrMaxPowered || move.id === 'struggle') return;
-			pokemon.abilityState.choiceLock = move.id;
+			if (pokemon.abilityData.choiceLock || move.isZOrMaxPowered || move.id === 'struggle') return;
+			pokemon.abilityData.choiceLock = move.id;
 		},
 		onModifySpePriority: 1,
 		onModifySpe(spe, pokemon) {
@@ -1205,16 +1205,16 @@ coldcut: {
 			return this.chainModify(1.5);
 		},
 		onDisableMove(pokemon) {
-			if (!pokemon.abilityState.choiceLock) return;
+			if (!pokemon.abilityData.choiceLock) return;
 			if (pokemon.volatiles['dynamax']) return;
 			for (const moveSlot of pokemon.moveSlots) {
-				if (moveSlot.id !== pokemon.abilityState.choiceLock) {
+				if (moveSlot.id !== pokemon.abilityData.choiceLock) {
 					pokemon.disableMove(moveSlot.id, false, this.effectData.sourceEffect);
 				}
 			}
 		},
 		onEnd(pokemon) {
-			pokemon.abilityState.choiceLock = "";
+			pokemon.abilityData.choiceLock = "";
 		},
 		name: "Silk Stream",
 		shortDesc: "This Pokemon's Speed is 1.5x, but it can only select the first move it executes.",
