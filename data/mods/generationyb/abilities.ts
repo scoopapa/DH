@@ -934,7 +934,7 @@ coldcut: {
 	crowdpleaser: {
 		onUpdate(pokemon) {
 			if (!pokemon.side.getSideCondition('luckychant')) {
-				this.actions.useMove("Lucky Chant", pokemon);
+				this.useMove("Lucky Chant", pokemon);
 			}
 		},
 		name: "Crowd Pleaser",
@@ -1040,16 +1040,16 @@ coldcut: {
 		onDamagingHitOrder: 1,
 		onDamagingHit(damage, target, source, move) {
 			if (!target.hp && target.species.id === 'gbonawola') {
-				this.actions.useMove("Future Flames", target);
+				this.useMove("Future Flames", target);
 			}
 			if (!target.hp && target.species.id === 'gbonanene') {
-				this.actions.useMove("Future Harvest", target);
+				this.useMove("Future Harvest", target);
 			}
 			if (!target.hp && target.species.id === 'gbonablanu') {
-				this.actions.useMove("Future Laments", target);
+				this.useMove("Future Laments", target);
 			}
 			if (!target.hp && target.species.id === 'gbonazito') {
-				this.actions.useMove("Future Shock", target);
+				this.useMove("Future Shock", target);
 			}
 		},
 		shortDesc: "When this Pokemon faints due to another Pokemon's move, it uses its signature future move if it's not already active.",
