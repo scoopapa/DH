@@ -1,4 +1,4 @@
-export const Pokedex: {[speciesid: string]: SpeciesData} = {
+export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 // Gen 9 Data	
 	wyrdeer: {
 		num: 899,
