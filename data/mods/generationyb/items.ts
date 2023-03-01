@@ -226,7 +226,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		},
 		onAllyTryHitSide(target, source, move) {
 			if (move.flags['sound']) {
-				this.add('-immune', this.effectState.target, '[from] item: Headphones');
+				this.add('-immune', this.effectData.target, '[from] item: Headphones');
 			}
 		},
 		desc: "Holder's sound-based attacks have 1.1x power and the user is immune to sound moves.",
@@ -297,7 +297,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		onSwitchIn(pokemon) {
 			this.add('-item', pokemon, 'Link Brace');
 			this.add('-anim', pokemon, "Cosmic Power", pokemon);
-			this.actions.useMove("Conversion", pokemon);
+			this.useMove("Conversion", pokemon);
 			this.add('-message', `${pokemon.name}'s Link Brace changed its type!`);
 		},
 		onBasePowerPriority: 15,
