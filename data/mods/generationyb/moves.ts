@@ -2137,7 +2137,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		priority: 0,
 		flags: {snatch: 1},
 		onHit(target) {
-			const type = this.dex.moves.get(target.moveSlots[0].id).type;
+			const type = this.dex.getMove(target.moveSlots[0].id).type;
 			if (!target.setType(type)) return false;
 			this.add('-start', target, 'typechange', type);
 		},
