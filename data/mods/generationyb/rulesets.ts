@@ -1,4 +1,4 @@
-export const Formats: {[k: string]: FormatData} = {
+ export const Formats: {[k: string]: ModdedFormatsData} = {
 	onelinkbracelimit: {
 		effectType: 'ValidatorRule',
 		name: 'One Link Brace Limit',
