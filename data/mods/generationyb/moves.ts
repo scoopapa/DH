@@ -2393,16 +2393,13 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			},
 			onHit(pokemon, source, move) {
 				if (move.category !== 'Status') {
-					this.effectState.lostFocus = true;
+					pokemon.volatiles['poprocks'].lostFocus = true;
 					for (const side of pokemon.side.foeSidesWithConditions()) {
 						side.addSideCondition('stealthrock');
 					}
 				}
 			},
-			onTryAddVolatile(status, pokemon) {
-				if (status.id === 'flinch') return null;
-			},
-		},
+		},	
 		secondary: null,
 		target: "normal",
 		type: "Rock",
