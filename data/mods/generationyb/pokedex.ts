@@ -2482,7 +2482,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 53, atk: 68, def: 47, spa: 63, spd: 57, spe: 92},
 		abilities: {0: "Glider", 1: "Marvel Scale", H: "Magician"},
 		weightkg: 10,
-		evos: ["Mystidraco"],
+		evos: ["Dracalistico"],
 	},
 	dracalistico: {
 		num: 1091,
@@ -2491,7 +2491,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 73, atk: 108, def: 67, spa: 93, spd: 67, spe: 117},
 		abilities: {0: "Glider", 1: "Marvel Scale", H: "Magician"},
 		weightkg: 25,
-		prevo: "Magidraco",
+		prevo: "Mystidraco",
 	},
 	petradum: {
 		num: 1092,
