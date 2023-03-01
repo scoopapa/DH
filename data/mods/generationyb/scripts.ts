@@ -1,5 +1,6 @@
 export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
-	init: function(){
+	init: function() {
+		/*
 		this.modData('Moves', 'aerialace').flags.slicing = 1;
 		this.modData('Moves', 'aircutter').flags.slicing = 1;
 		this.modData('Moves', 'airslash').flags.slicing = 1;
@@ -44,5 +45,8 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 		this.modData('Moves', 'knittingneedle').flags.slicing = 1;
 		this.modData('Moves', 'vacuumcut').flags.slicing = 1;
 		this.modData('Moves', 'vacuumcut').flags.wind = 1;
+		*/
+		this.modData('Learnsets', 'masquerain').learnset.hurricane = ['5L100'];
+
   }
 };
