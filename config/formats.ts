@@ -1329,7 +1329,7 @@ export const Formats: FormatList = [
 		mod: 'evolutionproject',
 	},
 	{
-		name: "[Gen 9] Generation YB",
+		name: "[Gen 8] Generation YB",
 
 		mod: 'generationyb',
 		ruleset: ['Standard', 'One Link Brace Limit', 'Data Mod'],
