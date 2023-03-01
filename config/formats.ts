@@ -1329,6 +1329,13 @@ export const Formats: FormatList = [
 		mod: 'evolutionproject',
 	},
 	{
+		name: "[Gen 8] Generation YB",
+
+		mod: 'generationyb',
+		ruleset: ['Standard', 'One Link Brace Limit', 'Data Mod', 'Dynamax Clause'],
+		banlist: ['Uber', 'AG', 'Arena Trap', 'Moody', 'Sand Veil', 'Snow Cloak', 'King\'s Rock', 'Baton Pass', 'Power Construct', 'Clangorous Soul'],
+	},
+	{
 		name: "[Gen 2] GSC Doubles",
 		threads: [
 			`&bullet; <a href="https://www.smogon.com/forums/threads/solomods-megathread.3660004/post-9132049">Post in Solomods Megathread</a>`,
