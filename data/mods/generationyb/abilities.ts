@@ -913,8 +913,8 @@ coldcut: {
 		onAnyBasePowerPriority: 20,
 		onAnyBasePower(basePower, source, target, move) {
 			if (target === source || move.category === 'Status' || !move?.flags['sound']) return;
-			if (!move.auraBooster?.hasAbility('Alarm Clock')) move.auraBooster = this.effectState.target;
-			if (move.auraBooster !== this.effectState.target) return;
+			if (!move.auraBooster?.hasAbility('Alarm Clock')) move.auraBooster = this.effectData.target;
+			if (move.auraBooster !== this.effectData.target) return;
 			return this.chainModify([5325, 4096]);
 		},
 		onTryHit(target) {
@@ -986,7 +986,7 @@ coldcut: {
 			}
 		},
 		onAllySideConditionStart(target, source, sideCondition) {
-			const pokemon = this.effectState.target;
+			const pokemon = this.effectData.target;
 			if (sideCondition.id === 'tailwind') {
 				this.boost({spe: 1}, pokemon, pokemon);
 			}
@@ -1090,8 +1090,8 @@ coldcut: {
 		},
 		condition: {
 			onStart(pokemon) {
-				this.effectState.lastMove = '';
-				this.effectState.numConsecutive = 0;
+				this.effectData.lastMove = '';
+				this.effectData.numConsecutive = 0;
 			},
 			onTryMovePriority: -2,
 			onTryMove(pokemon, target, move) {
@@ -1103,22 +1103,22 @@ coldcut: {
 					pokemon.addVolatile('nevermore');
 					return;
 				}
-				if (this.effectState.lastMove === move.id && pokemon.moveLastTurnResult) {
-					this.effectState.numConsecutive++;
+				if (this.effectData.lastMove === move.id && pokemon.moveLastTurnResult) {
+					this.effectData.numConsecutive++;
 				} else if (pokemon.volatiles['twoturnmove']) {
-					if (this.effectState.lastMove !== move.id) {
-						this.effectState.numConsecutive = 1;
+					if (this.effectData.lastMove !== move.id) {
+						this.effectData.numConsecutive = 1;
 					} else {
-						this.effectState.numConsecutive++;
+						this.effectData.numConsecutive++;
 					}
 				} else {
-					this.effectState.numConsecutive = 0;
+					this.effectData.numConsecutive = 0;
 				}
-				this.effectState.lastMove = move.id;
+				this.effectData.lastMove = move.id;
 			},
 			onModifyDamage(damage, source, target, move) {
 				const dmgMod = [4096, 4915, 5734, 6553, 7372, 8192];
-				const numConsecutive = this.effectState.numConsecutive > 5 ? 5 : this.effectState.numConsecutive;
+				const numConsecutive = this.effectData.numConsecutive > 5 ? 5 : this.effectData.numConsecutive;
 				this.debug(`Current Metronome boost: ${dmgMod[numConsecutive]}/4096`);
 				return this.chainModify([dmgMod[numConsecutive], 4096]);
 			},
@@ -1209,7 +1209,7 @@ coldcut: {
 			if (pokemon.volatiles['dynamax']) return;
 			for (const moveSlot of pokemon.moveSlots) {
 				if (moveSlot.id !== pokemon.abilityState.choiceLock) {
-					pokemon.disableMove(moveSlot.id, false, this.effectState.sourceEffect);
+					pokemon.disableMove(moveSlot.id, false, this.effectData.sourceEffect);
 				}
 			}
 		},
@@ -1253,7 +1253,7 @@ coldcut: {
 				}
 			}
 			if (showMsg && !(effect as ActiveMove).secondaries) {
-				const effectHolder = this.effectState.target;
+				const effectHolder = this.effectData.target;
 				this.add('-block', target, 'ability: Good as Gold', '[of] ' + effectHolder);
 			}
 		},
@@ -1261,7 +1261,7 @@ coldcut: {
 			if (target.hasType('Steel') && source && target !== source && effect && effect.id !== 'yawn') {
 				this.debug('interrupting setStatus with Good as Gold');
 				if (effect.id === 'synchronize' || (effect.effectType === 'Move' && !effect.secondaries)) {
-					const effectHolder = this.effectState.target;
+					const effectHolder = this.effectData.target;
 					this.add('-block', target, 'ability: Good as Gold', '[of] ' + effectHolder);
 				}
 				return null;
@@ -1270,7 +1270,7 @@ coldcut: {
 		onAllyTryAddVolatile(status, target) {
 			if (target.hasType('Steel') && status.id === 'yawn') {
 				this.debug('Good as Gold blocking yawn');
-				const effectHolder = this.effectState.target;
+				const effectHolder = this.effectData.target;
 				this.add('-block', target, 'ability: Good as Gold', '[of] ' + effectHolder);
 				return null;
 			}
