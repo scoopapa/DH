@@ -1,6 +1,5 @@
 export const Moves: {[k: string]: ModdedMoveData} = {
 // gen 9 moves
-export const Moves: {[k: string]: ModdedMoveData} = {
 	hail: {
 		inherit: true,
 		isNonstandard: true,
@@ -1467,7 +1466,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		target: "normal",
 		type: "Fairy",
 	},
-};
 
 // Changed Moves
 	facade: {
