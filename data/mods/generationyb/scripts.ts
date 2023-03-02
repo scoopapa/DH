@@ -1,6 +1,5 @@
 export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 	init: function() {
-		/*
 		this.modData('Moves', 'aerialace').flags.slicing = 1;
 		this.modData('Moves', 'aircutter').flags.slicing = 1;
 		this.modData('Moves', 'airslash').flags.slicing = 1;
@@ -22,7 +21,6 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 		this.modData('Moves', 'solarblade').flags.slicing = 1;
 		this.modData('Moves', 'stoneaxe').flags.slicing = 1;
 		this.modData('Moves', 'xscissor').flags.slicing = 1;
-		
 		this.modData('Moves', 'aircutter').flags.wind = 1;
 		this.modData('Moves', 'bleakwindstorm').flags.wind = 1;
 		this.modData('Moves', 'blizzard').flags.wind = 1;
@@ -39,13 +37,11 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 		this.modData('Moves', 'twister').flags.wind = 1;
 		this.modData('Moves', 'whirlwind').flags.wind = 1;
 		this.modData('Moves', 'wildboltstorm').flags.wind = 1;
-
 		this.modData('Moves', 'bladebullet').flags.slicing = 1;
 		this.modData('Moves', 'charcoalchakram').flags.slicing = 1;
 		this.modData('Moves', 'knittingneedle').flags.slicing = 1;
 		this.modData('Moves', 'vacuumcut').flags.slicing = 1;
 		this.modData('Moves', 'vacuumcut').flags.wind = 1;
-		*/
 		this.modData('Learnsets', 'masquerain').learnset.hurricane = ['5L100'];
 
   }
