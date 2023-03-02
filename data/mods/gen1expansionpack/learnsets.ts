@@ -1062,7 +1062,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			//tradeback moves | plant
 			headbutt: ["2M"],
 			defensecurl: ["2M"],
-			swordsdance: ["2E"] // chikorita
+			swordsdance: ["2E"], // chikorita
 			leechseed: ["2E"], // oddish
 			
 		},
