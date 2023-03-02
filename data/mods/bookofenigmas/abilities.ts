@@ -1,12 +1,12 @@
 import { consoleips } from "../../../config/config-example";
 
-/*const slicing = [
+const slicing = [
 	'cut', 'razorleaf', 'slash', 'furycutter', 'aircutter', 'aerialace',
 	'leafblade', 'nightslash', 'airslash', 'xscissor', 'psychocutter',
 	'crosspoison', 'sacredsword', 'razorshell', 'solarblade', 'behemothblade',
 	'stoneaxe', 'ceaselessedge', 'populationbomb', 'kowtowcleave', 'bitterblade',
 	'aquacutter'
-];*/
+];
 export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	//Paradoxes abilities
 	cleansingfire: {
@@ -38,7 +38,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 
 
 	//Gen 9 abilities
-	/*sharpness: {
+	sharpness: {
 		onBasePowerPriority: 19,
 		onBasePower(basePower, attacker, defender, move) {
 			if (move.flags['slicing']) {

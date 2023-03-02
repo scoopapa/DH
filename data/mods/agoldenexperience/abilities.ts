@@ -2593,4 +2593,4 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		rating: 2.5,
 		num: 269,
 	},
-}
+};

@@ -618,13 +618,13 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	tauros: {
 		tier: "BoE OU",
 	},
-	taurospaldea: {
+	taurospaldeacombat: {
 		tier: "BoE OU",
 	},
-	taurospaldeafire: {
+	taurospaldeablaze: {
 		tier: "BoE OU",
 	},
-	taurospaldeawater: {
+	taurospaldeaaqua: {
 		tier: "BoE OU",
 	},
 	magikarp: {

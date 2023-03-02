@@ -123,7 +123,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	},
 	
 	//Gen 9 moves
-	/*spicyextract: {
+	spicyextract: {
 		num: 858,
 		accuracy: true,
 		basePower: 0,
@@ -497,8 +497,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		accuracy: 100,
 		basePower: 80,
 		category: "Physical",
-		desc: "",
-		shortDesc: "",
 		name: "Ice Spinner",
 		desc: "Ends the effects of Electric Terrain, Grassy Terrain, Misty Terrain, and Psychic Terrain.",
 		shortDesc: "Ends the effects of terrain.",

@@ -1,3 +1,6 @@
+// Tradeback content by Ema Skye; currently a WIP. Takes a lot to go through Egg Moves.
+// Some Tradeback moves come from prototype versions of GSC (SW97 etc). 
+
 export const Learnsets: {[k: string]: ModdedLearnsetData} = { 
 	///.d8888.  .o88b. d8888b.  .d8b.  d8888b. d8888b. d88888b d8888b.   d8888b.  .d88b.  db   dD d88888b .88b  d88.  .d88b.  d8b   db 
 	///88'  YP d8P  Y8 88  `8D d8' `8b 88  `8D 88  `8D 88'     88  `8D   88  `8D .8P  Y8. 88 ,8P' 88'     88'YbdP`88 .8P  Y8. 888o  88 
@@ -320,6 +323,18 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			mimic: ["1M"],
 			bide: ["1M"],
 			rest: ["1M"],
+			
+			// tradeback moves | water 1 / human-like
+			icepunch: ["2M"],
+			headbutt: ["2M"],
+			defensecurl: ["2M"],
+			waterfall: ["2M"],
+			barrier: ["2E"], // mr. mime 
+			amnesia: ["2E"], // poliwag
+			splash: ["2E"], // poliwag
+			haze: ["2E"], // wooper
+			stomp: ["2E"], // slowpoke
+			
 		},
 		encounters: [
 			{generation: 1, level: 5},
@@ -392,6 +407,14 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			bide: ["1M"],
 			rest: ["1M"],
 			substitute: ["1M"],
+			
+			// tradeback moves | dragon 
+			headbutt: ["2M"],
+			waterfall: ["2M"],
+			haze: ["2E"], // arbok
+			mist: ["2E"], // dratini
+			supersonic: ["2E"], // dratini
+			
 		},
 		encounters: [
 			{generation: 1, level: 5},
@@ -529,6 +552,15 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			doubleteam: ["1M"],
 			bide: ["1M"],
 			rest: ["1M"],
+			
+			// tradeback moves | monster
+			icepunch: ["2M"],
+			firepunch: ["2M"],
+			thunderpunch: ["2M"],
+			headbutt: ["2M"],
+			roar: ["2M"],
+			lick: ["2E"], // lickitung
+			thrash: ["2E"], // cubone 
 		},
 		encounters: [
 			{generation: 1, level: 30}, //assuming ressurected from a fossil
@@ -613,6 +645,15 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			bide: ["1M"],
 			rest: ["1M"],
 			substitute: ["1M"],
+			
+			//tradeback moves | undiscovered
+			icepunch: ["2M"],
+			firepunch: ["2M"],
+			thunderpunch: ["2M"],
+			headbutt: ["2M"],
+			defensecurl: ["2M"],
+			roar: ["2M"],
+			
 		},
 		encounters: [
 			{generation: 1, level: 45}, //I'm imagining a Silph Co. superboss encounter.
@@ -659,6 +700,17 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			bide: ["1M"],
 			rest: ["1M"],
 			substitute: ["1M"],
+			
+			//tradeback moves | monster
+			firepunch: ["2M"],
+			icepunch: ["2M"],
+			thunderpunch: ["2M"],
+			headbutt: ["2M"],
+			flamethrower: ["2M"],
+			roar: ["2M"],
+			thrash: ["2E"], // cubone
+			focusenergy: ["2E"], // cubone
+			
 		},
 		encounters: [
 			{generation: 1, level: 21}, //Safari Zone 1%er
@@ -696,6 +748,16 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			bide: ["1M"],
 			rest: ["1M"],
 			substitute: ["1M"],
+			
+			//tradeback moves | water 2
+			headbutt: ["2M"],
+			waterfall: ["2M"],
+			agility: ["2E"], // goldeen
+			thrash: ["2E"], // gyarados
+			psybeam: ["2E"], // goldeen
+			supersonic: ["2E"], // goldeen
+			splash: ["2E"], // magikarp
+			
 		},
 		encounters: [
 			{generation: 1, level: 20}, //Fishing or near Seafoam
@@ -731,8 +793,18 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			rest: ["1M"],
 			substitute: ["1M"],
 			
+			// tradeback moves | water 3 / fairy | smog & poison gas are legacy additions
 			poisongas: ["2L19"],
 			smog: ["2L39"],
+			defensecurl: ["2M"],
+			waterfall: ["2M"],
+			aurorabeam: ["2E"], // tentacool
+			disable: ["2E"], // jigglypuff
+			haze: ["2E"], // tentacool
+			mist: ["2E"], // corsola
+			lightscreen: ["2E"], // clefairy
+			thunderwave: ["2E"], // pikachu jumpscare
+
 		},
 		encounters: [
 			{generation: 1, level: 5},
@@ -812,6 +884,14 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			rest: ["1M"],
 			substitute: ["1M"],
 			hyperbeam: ["1M"],
+			
+			//tradeback moves | field
+			headbutt: ["2M"],
+			roar: ["2M"],
+			psybeam: ["2E"], // girafarig
+			hypnosis: ["2E"], // stantler
+			confuseray: ["2E"], // stantler
+			
 		},
 		encounters: [
 			{generation: 1, level: 18}, //no clue just validate the movepool and do what tajiri said
@@ -853,6 +933,13 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			bide: ["1M"],
 			rest: ["1M"],
 			substitute: ["1M"],
+			
+			//tradeback moves | fairy / amorphous
+			defensecurl: ["2M"],
+			headbutt: ["2M"],
+			haze: ["2E"], // koffing
+			splash: ["2E"], // clefairy
+			
 		},
 		encounters: [
 			{generation: 1, level: 30}, //idk stationary encounter?
@@ -888,6 +975,14 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			bide: ["1M"],
 			rest: ["1M"],
 			substitute: ["1M"],
+			
+			//tradeback moves | water 2
+			defensecurl: ["2M"],
+			headbutt: ["2M"],
+			waterfall: ["2M"],
+			aurorabeam: ["2E"], // remoraid
+			agility: ["2E"], // goldeen
+			
 		},
 		encounters: [
 			{generation: 1, level: 15}, //super rod
@@ -924,6 +1019,9 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			bide: ["1M"],
 			rest: ["1M"],
 			substitute: ["1M"],
+			
+			// tradeback moves not already from cheep
+			icepunch: ["2M"],
 		},
 	},
 	cactus: {
@@ -960,6 +1058,13 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			bide: ["1M"],
 			rest: ["1M"],
 			substitute: ["1M"],
+			
+			//tradeback moves | plant
+			headbutt: ["2M"],
+			defensecurl: ["2M"],
+			swordsdance: ["2E"] // chikorita
+			leechseed: ["2E"], // oddish
+			
 		},
 		encounters: [
 			{generation: 1, level: 17}, //safari zone?
@@ -989,6 +1094,15 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			bide: ["1M"],
 			rest: ["1M"],
 			substitute: ["1M"],
+			
+			// tradebacks | field
+			defensecurl: ["2M"],
+			headbutt: ["2M"],
+			doublekick: ["2E"], // smeargle
+			thrash: ["2E"], // smeargle
+			charm: ["2E"], // smeargle
+			focusenergy: ["2E"], // smeargle
+			
 		},
 		encounters: [
 			{generation: 1, level: 12},
@@ -1088,13 +1202,22 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			bide: ["1M"],
 			rest: ["1M"],
 			substitute: ["1M"],
+			
+			//tradeback moves | dragon 
+			headbutt: ["2M"],
+			icepunch: ["2M"],
+			thunderpunch: ["2M"],
+			firepunch: ["2M"],
+			flamethrower: ["2M"],
+			swordsdance: ["2E"], // charmander
+			
 		},
 		encounters: [
 			{generation: 1, level: 17},
 		],
 	},
 	gorochu: {
-		learnset: { //TEST: Do the Pikachu moves come up?
+		learnset: {
 			thundershock: ["1L1"],
 			growl: ["1L1"],
 			thunderwave: ["1L1", "1M"],
@@ -1124,7 +1247,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			rest: ["1M"],
 			substitute: ["1M"],
 			
-			surf: ["1S0"], //doesn't show in builder otherwise...
+			surf: ["1S0"], //didn't show in the builder once so keeping here
 		},
 	},
 	guardia: {
@@ -1243,6 +1366,16 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			bide: ["1M"],
 			rest: ["1M"],
 			substitute: ["1M"],
+			
+			// tradeback moves | human-like
+			thunderpunch: ["2M"],
+			firepunch: ["2M"], // unsure - will vet
+			headbutt: ["2M"],
+			barrier: ["2E"], // mr. mime 
+			karatechop: ["2E"], // machop
+			rollingkick: ["2E"], // hitmonlee
+			meditate: ["2E"], // hitmonlee
+			
 		},
 		encounters: [
 			{generation: 1, level: 32}, //seafoam rare encounter

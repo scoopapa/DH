@@ -158,7 +158,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 
 	// canon pokemon start here
 
-	/*gallade: {
+	gallade: {
 		inherit: true,
 		abilities: {0: "Steadfast", 1: "Sharpness", H: "Justified"},
 	},
@@ -761,5 +761,5 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		prevo: "Wiglett",
 		evoLevel: 26,
 		eggGroups: ["Water 3"],
-	},*/
+	},
 };

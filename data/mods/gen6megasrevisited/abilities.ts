@@ -287,6 +287,24 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		rating: 4,
 		gen: 6,
 	},	
+	armortail: {
+		onFoeTryMove(target, source, move) {
+			const targetAllExceptions = ['perishsong', 'flowershield', 'rototiller'];
+			if (move.target === 'foeSide' || (move.target === 'all' && !targetAllExceptions.includes(move.id))) {
+				return;
+			}
+
+			const armortailHolder = this.effectData.target;
+			if ((source.side === armortailHolder.side || move.target === 'all') && move.priority > 0.1) {
+				this.attrLastMove('[still]');
+				this.add('cant', armortailHolder, 'ability: Armor Tail', move, '[of] ' + target);
+				return false;
+			}
+		},
+		name: "Armor Tail",
+		rating: 2.5,
+		gen: 6,
+	},
 	
 /*	
 // ngas is so cringe

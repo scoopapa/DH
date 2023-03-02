@@ -1,5 +1,5 @@
 export const Conditions: {[k: string]: ConditionData} = {
-	/*hail: {
+	hail: {
 		name: 'Hail',
 		effectType: 'Weather',
 		duration: 5,
@@ -29,7 +29,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 		onEnd() {
 			this.add('-weather', 'none');
 		},
-	},*/
+	},
 	storm: {
 		name: 'storm',
 		onStart(pokemon) {

@@ -65,7 +65,7 @@ export const Formats: FormatList = [
 		},
 	},
 	{
-		name: "[Gen 9] Book of Enigmas",
+		name: "[Gen 8] Book of Enigmas",
 		mod: 'bookofenigmas',
 		desc: [
 			"<b>Book of Enigmas</b>: A Pet Mod that aims to create new Paradox Pokemon based on Ho-oh and Lugia - the sky and the sea, respectively.",
@@ -759,9 +759,9 @@ export const Formats: FormatList = [
 		mod: 'gen6megasrevisited',
 		ruleset: ['Standard', 'Swagger Clause', 'Mega Data Mod'],
 		banlist: ['Uber', 'Arena Trap', 'Shadow Tag', 'Soul Dew', 'Baton Pass',
-					"Charizardite X", "Beedrillite", "Pidgeotite", "Slowbronite", 
+					"Beedrillite", "Pidgeotite", "Slowbronite", 
 					"Kangaskhanite", "Gyaradosite", "Mewtwonite X", "Mewtwonite Y", "Ampharosite", "Scizorite",
-					"Heracronite", "Tyranitarite", "Sceptilite", "Blazikenite", "Swampertite", "Gardevoirite", "Sablenite", "Mawilite",
+					"Heracronite", "Tyranitarite", "Blazikenite", "Gardevoirite", "Sablenite", "Mawilite",
 					"Aggronite", "Medichamite", "Manectite", "Sharpedonite", "Cameruptite", "Absolite", "Salamencite",
 					"Metagrossite", "Latiasite", "Latiosite", "Garchompite", "Abomasite", "Galladite", "Diancite"
 					],
@@ -1350,7 +1350,7 @@ export const Formats: FormatList = [
 		name: "[Gen 1] Glitch OU",
 		mod: 'gen1glitch',
 		ruleset: ['Standard', 'Data Mod'],
-		banlist: ['Uber'],
+		banlist: ['Uber', 'Wrap'],
 	},
 	{
 	name: "[Gen 1] JohtoMons",

@@ -1,6 +1,6 @@
 export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
-	inherit: 'gen9',
-	gen: 9,
+	inherit: 'gen8',
+	gen: 8,
 	
 	teambuilderConfig: {
 		excludeStandardTiers: true,
@@ -20,7 +20,7 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 				this.modData('Learnsets', this.toID(id)).learnset.terablast = ["8M"];
 			}
 		};
-		/*addNewMoves('azumarill',['icespinner']);
+		addNewMoves('azumarill',['icespinner']);
 		addNewMoves('cloyster',['icespinner']);
 		addNewMoves('delibird',['icespinner']);
 		addNewMoves('donphan',['icespinner']);
@@ -115,7 +115,7 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 		addNewMoves('weavile', ['icespinner']);
 		addNewMoves('leafeon', ['calmmind']);
 		addNewMoves('weavile', ['calmmind']);
-		addNewMoves('gallade', ['agility', 'sacredsword']);*/
+		addNewMoves('gallade', ['agility', 'sacredsword']);
 	},
 
 	hitStepBreakProtect(targets, pokemon, move) {

@@ -85,6 +85,18 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 75, atk: 70, def: 95, spa: 140, spd: 115, spe: 95},
 		abilities: {0: "Weather Report"},
 	},	
+	sceptilemega: {
+		inherit: true,
+		types: ["Grass", "Dragon"],
+		baseStats: {hp: 75, atk: 95, def: 79, spa: 145, spd: 99, spe: 142},
+		abilities: {0: "Armor Tail"},
+	},	
+	swampertmega: {
+		inherit: true,
+		types: ["Water", "Poison"],
+		baseStats: {hp: 100, atk: 145, def: 120, spa: 85, spd: 115, spe: 70},
+		abilities: {0: "Poison Touch"},
+	},	
 	
 // Gen 6 Stuff
 	arbok: {
