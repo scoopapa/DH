@@ -668,6 +668,65 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		zMove: {basePower: 160},
 		contestType: "Clever",
 	},
+	ceaselessedge: {
+		num: 845,
+		accuracy: 90,
+		basePower: 65,
+		category: "Physical",
+		shortDesc: "Sets a layer of Spikes on the opposing side.",
+		name: "Ceaseless Edge",
+		pp: 15,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1, slicing: 1},
+		self: {
+			onHit(source) {
+				for (const side of source.side.foeSidesWithConditions()) {
+					side.addSideCondition('spikes');
+				}
+			},
+		},
+		secondary: {}, // allows sheer force to trigger
+		target: "normal",
+		type: "Dark",
+	},
+	bittermalice: {
+		num: 841,
+		accuracy: 100,
+		basePower: 75,
+		category: "Special",
+		shortDesc: "100% chance to lower the target's Attack by 1.",
+		name: "Bitter Malice",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		secondary: {
+			chance: 100,
+			boosts: {
+				atk: -1,
+			},
+		},
+		target: "normal",
+		type: "Ghost",
+	},
+	victorydance: {
+		num: 837,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		shortDesc: "Raises the user's Attack, Defense, Speed by 1.",
+		name: "Victory Dance",
+		pp: 10,
+		priority: 0,
+		flags: {snatch: 1, dance: 1},
+		boosts: {
+			atk: 1,
+			def: 1,
+			spe: 1,
+		},
+		secondary: null,
+		target: "self",
+		type: "Fighting",
+	},
 	//SV
 	spicyextract: {
 		num: 858,
@@ -2984,10 +3043,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		isNonstandard: null,
 	},
-	barbbarrage: {
-		inherit: true,
-		isNonstandard: null,
-	},
 	aeroblast: {
 		inherit: true,
 		isNonstandard: null,
@@ -3009,10 +3064,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		isNonstandard: null,
 	},
 	barrier: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	bittermalice: {
 		inherit: true,
 		isNonstandard: null,
 	},
@@ -3279,10 +3330,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		isNonstandard: null,
 	},
-	ragingfury: {
-		inherit: true,
-		isNonstandard: null,
-	},
 	return: {
 		inherit: true,
 		isNonstandard: null,
@@ -3371,10 +3418,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		isNonstandard: null,
 	},
-	stoneaxe: {
-		inherit: true,
-		isNonstandard: null,
-	},
 	stormthrow: {
 		inherit: true,
 		isNonstandard: null,
@@ -3437,9 +3480,144 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		isNonstandard: null,
 	},
+	ragingfury: {
+		num: -1001,
+		accuracy: 100,
+		basePower: 120,
+		category: "Physical",
+		name: "Raging Fury",
+		desc: "The user spends two or three turns locked into this move and becomes confused immediately after its move on the last turn of the effect if it is not already. This move targets an opposing Pokemon at random on each turn. If the user is prevented from moving, is asleep at the beginning of a turn, or the attack is not successful against the target on the first turn of the effect or the second turn of a three-turn effect, the effect ends without causing confusion. If this move is called by Sleep Talk and the user is asleep, the move is used for one turn and does not confuse the user.",
+		shortDesc: "Lasts 2-3 turns. Confuses the user afterwards.",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Inferno Overdrive", target);
+		},
+		self: {
+			volatileStatus: 'lockedmove',
+		},
+		onAfterMove(pokemon) {
+			if (pokemon.volatiles['lockedmove'] && pokemon.volatiles['lockedmove'].duration === 1) {
+				pokemon.removeVolatile('lockedmove');
+			}
+		},
+		secondary: null,
+		target: "randomNormal",
+		type: "Fire",
+		contestType: "Cool",
+	},
+	stoneaxe: {
+		shortDesc: "Sets Stealth Rock after damage. High critical hit ratio.",
+		num: -1014,
+		accuracy: 90,
+		basePower: 65,
+		category: "Physical",
+		name: "Stone Axe",
+		desc: "Has a higher chance for a critical hit. If this move is successful, it sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in. Foes lose 1/32, 1/16, 1/8, 1/4, or 1/2 of their maximum HP, rounded down, based on their weakness to the Rock type; 0.25x, 0.5x, neutral, 2x, or 4x, respectively. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin or Defog successfully, or is hit by Defog.",
+		shortDesc: "High critical hit ratio. Foes: Stealth Rock.",
+		pp: 15,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Stone Edge", target);
+		},
+		critRatio: 2,
+		sideCondition: 'stealthrock',
+		secondary: null,
+		target: "adjacentFoe",
+		type: "Rock",
+		contestType: "Tough",
+	},
+	barbbarrage: {
+		shortDesc: "Power doubles if the target has a status ailment; 30% chance to poison.",
+		num: -1004,
+		accuracy: 100,
+		basePower: 60,
+		basePowerCallback(pokemon, target, move) {
+			if (target.status || target.hasAbility('comatose')) return move.basePower * 2;
+			return move.basePower;
+		},
+		category: "Physical",
+		name: "Barb Barrage",
+		desc: "Has a 30% chance to poison the target. Power doubles if the target is poisoned.",
+		shortDesc: "30% chance to psn. 2x power if target is poisoned.",
+		pp: 15,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Poison Sting", target);
+		},
+		secondary: {
+			chance: 30,
+			status: 'psn',
+		},
+		target: "normal",
+		type: "Poison",
+		zMove: {basePower: 160},
+		contestType: "Clever",
+	},
+	ceaselessedge: {
+		num: 845,
+		accuracy: 90,
+		basePower: 65,
+		category: "Physical",
+		shortDesc: "Sets a layer of Spikes on the opposing side.",
+		name: "Ceaseless Edge",
+		pp: 15,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1, slicing: 1},
+		self: {
+			onHit(source) {
+				for (const side of source.side.foeSidesWithConditions()) {
+					side.addSideCondition('spikes');
+				}
+			},
+		},
+		secondary: {}, // allows sheer force to trigger
+		target: "normal",
+		type: "Dark",
+	},
+	bittermalice: {
+		num: 841,
+		accuracy: 100,
+		basePower: 75,
+		category: "Special",
+		shortDesc: "100% chance to lower the target's Attack by 1.",
+		name: "Bitter Malice",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		secondary: {
+			chance: 100,
+			boosts: {
+				atk: -1,
+			},
+		},
+		target: "normal",
+		type: "Ghost",
+	},
 	victorydance: {
-		inherit: true,
-		isNonstandard: null,
+		num: 837,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		shortDesc: "Raises the user's Attack, Defense, Speed by 1.",
+		name: "Victory Dance",
+		pp: 10,
+		priority: 0,
+		flags: {snatch: 1, dance: 1},
+		boosts: {
+			atk: 1,
+			def: 1,
+			spe: 1,
+		},
+		secondary: null,
+		target: "self",
+		type: "Fighting",
 	},
 	vitalthrow: {
 		inherit: true,
