@@ -2608,7 +2608,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 65, atk: 135, def: 55, spa: 40, spd: 45, spe: 30},
 		abilities: {0: "Magic Guard", 1: "Chlorophyll", H: "Regenerator"},
 		weightkg: 4,
-		prevo: "Solosi",
+		prevo: "Solosis-YB",
 		evos: ["Reuniplast"],
 	},
 	reuniplast: {
