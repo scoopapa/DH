@@ -38107,6 +38107,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			signalbeam: ["8L1"],
 			wildcharge: ["8L1"],
 			forcepalm: ["8L1"],
+			healingwish: ["8L1"],
 		},
 	},
 	pawmo: {
@@ -39786,6 +39787,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			shadowball: ["8L1"],
 			calmmind: ["8L1"],
 			sludgebomb: ["8L1"],
+			healingwish: ["8L1"],
 		},
 	},
 	tinkatink: {
