@@ -8684,7 +8684,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			zenheadbutt: ["8L1"],
 		},
 	},
-	tauroswaterpaldeaaqua: {
+	taurospaldeaaqua: {
 		learnset: {
 			tackle: ["8L1"],
 			tailwhip: ["8L1"],
