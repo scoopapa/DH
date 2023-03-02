@@ -2277,7 +2277,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		num: 1067,
 		name: "Pterovine",
 		types: ["Flying"],
-		baseStats: {hp: 94, atk: 130, def: 82, spa: 90, spd: 82, spe: 86},
+		baseStats: {hp: 94, atk: 130, def: 82, spa: 70, spd: 82, spe: 86},
 		abilities: {0: "Strong Jaw", 1: "Rough Skin", H: "Hyper Cutter"},
 		weightkg: 108,
 	},
