@@ -1,5 +1,13 @@
 export const Pokedex: {[k: string]: ModdedSpeciesData} = {
-// Gen 9 Data	
+// Gen 9 Data
+	gallade: {
+		inherit: true,
+		abilities: {0: "Steadfast", 1: "Sharpness", H: "Justified"},
+	},	
+	samurotthisui: {
+		inherit: true,
+		abilities: {0: "Torrent", H: "Sharpness"},
+	},	
 	wyrdeer: {
 		num: 899,
 		name: "Wyrdeer",
@@ -2793,7 +2801,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseSpecies: "Lumineon",
 		forme: "YB",
 		types: ["Bug", "Fairy"],
-		baseStats: {hp: 69, atk: 69, def: 76, spa: 69, spd: 96, spe: 99},
+		baseStats: {hp: 69, atk: 69, def: 76, spa: 69, spd: 96, spe: 91},
 		abilities: {0: "Shield Dust", 1: "Illuminate", H: "Regenerator"},
 		weightkg: 2.4,
 		prevo: "Finneon-YB",
