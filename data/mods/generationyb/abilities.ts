@@ -891,7 +891,6 @@ coldcut: {
 		name: "Cold Cut",
 		shortDesc: "This Pokemon's slicing moves have a 30% chance of freezing the foe.",
 		rating: 2,
-		num: 143,
 	},
 	additivearmor: {
 		onSourceAfterFaint(length, target, source, effect) {
@@ -902,7 +901,6 @@ coldcut: {
 		name: "Additive Armor",
 		shortDesc: "This Pokemon's Defense is raised by 1 stage if it attacks and KOes another Pokemon.",
 		rating: 3,
-		num: 153,
 	},
 	alarmclock: {
 		onStart(pokemon) {
@@ -917,17 +915,25 @@ coldcut: {
 			if (move.auraBooster !== this.effectData.target) return;
 			return this.chainModify([5325, 4096]);
 		},
-		onTryHit(target) {
-			for (const [i, allyActive] of target.side.active.entries()) {
-				if (allyActive && allyActive.status === 'slp') allyActive.cureStatus();
-				const foeActive = target.side.foe.active[i];
-				if (foeActive && foeActive.status === 'slp') foeActive.cureStatus();
+		onAllySetStatus(status, target, source, effect) {
+			if (status.id === 'slp') {
+				this.debug('Alarm Clock interrupts sleep');
+				const effectHolder = this.effectData.target;
+				this.add('-block', target, 'ability: Alarm Clock', '[of] ' + effectHolder);
+				return null;
+			}
+		},
+		onAllyTryAddVolatile(status, target) {
+			if (status.id === 'yawn') {
+				this.debug('Alarm Clock blocking yawn');
+				const effectHolder = this.effectData.target;
+				this.add('-block', target, 'ability: Alarm Clock', '[of] ' + effectHolder);
+				return null;
 			}
 		},
 		name: "Alarm Clock",
 		shortDesc: "While this Pokemon is active, sound moves deal 1.3x damage and no Pokemon can fall asleep.",
 		rating: 3,
-		num: 186,
 	},
 	crowdpleaser: {
 		onUpdate(pokemon) {
