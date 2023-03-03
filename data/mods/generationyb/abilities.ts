@@ -918,11 +918,9 @@ coldcut: {
 			return this.chainModify([5325, 4096]);
 		},
 		onTryHit(target) {
-			const activeTeam = target.side.activeTeam();
-			const foeActiveTeam = target.side.foe.activeTeam();
-			for (const [i, allyActive] of activeTeam.entries()) {
+			for (const [i, allyActive] of target.side.active.entries()) {
 				if (allyActive && allyActive.status === 'slp') allyActive.cureStatus();
-				const foeActive = foeActiveTeam[i];
+				const foeActive = target.side.foe.active[i];
 				if (foeActive && foeActive.status === 'slp') foeActive.cureStatus();
 			}
 		},
