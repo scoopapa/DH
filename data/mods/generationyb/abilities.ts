@@ -929,7 +929,7 @@ coldcut: {
 				const effectHolder = this.effectData.target;
 				this.add('-block', target, 'ability: Alarming', '[of] ' + effectHolder);
 				return null;
-			},
+			}
 		},
 		name: "Alarming",
 		shortDesc: "While this Pokemon is active, sound moves deal 1.3x damage and no Pokemon can fall asleep.",
