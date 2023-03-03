@@ -932,7 +932,7 @@ coldcut: {
 			}
 		},
 		name: "Alarming",
-		shortDesc: "While this Pokemon is active, sound moves deal 1.3x damage and no Pokemon can fall asleep.",
+		shortDesc: "While this Pokemon is active, sound moves deal 1.3x damage and no Pokemon can fall asleep..",
 		rating: 3,
 	},
 	crowdpleaser: {
