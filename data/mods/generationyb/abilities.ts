@@ -903,6 +903,7 @@ coldcut: {
 		rating: 3,
 	},
 	alarmclock: {
+		/*
 		onStart(pokemon) {
 			if (this.suppressingAbility(pokemon)) return;
 			this.add('-ability', pokemon, 'Alarm Clock');
@@ -930,7 +931,7 @@ coldcut: {
 				this.add('-block', target, 'ability: Alarm Clock', '[of] ' + effectHolder);
 				return null;
 			}
-		},
+		}*/
 		name: "Alarm Clock",
 		shortDesc: "While this Pokemon is active, sound moves deal 1.3x damage and no Pokemon can fall asleep.",
 		rating: 3,
