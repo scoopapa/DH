@@ -902,37 +902,27 @@ coldcut: {
 		shortDesc: "This Pokemon's Defense is raised by 1 stage if it attacks and KOes another Pokemon.",
 		rating: 3,
 	},
-	alarming: {
+	alarmclock: {
 		onStart(pokemon) {
 			if (this.suppressingAbility(pokemon)) return;
-			this.add('-ability', pokemon, 'Alarming');
+			this.add('-ability', pokemon, 'Alarm Clock');
 			this.add('-message', `An alarm clock began ringing!`);
 		},
-		onAnyBasePowerPriority: 20,
-		onAnyBasePower(basePower, source, target, move) {
-			if (target === source || move.category === 'Status' || !move?.flags['sound']) return;
-			if (!move.auraBooster?.hasAbility('Alarming')) move.auraBooster = this.effectData.target;
-			if (move.auraBooster !== this.effectData.target) return;
-			return this.chainModify([5325, 4096]);
-		},
-		onAllySetStatus(status, target, source, effect) {
-			if (status.id === 'slp') {
-				this.debug('Alarming interrupts sleep');
-				const effectHolder = this.effectData.target;
-				this.add('-block', target, 'ability: Alarming', '[of] ' + effectHolder);
-				return null;
+		onBasePowerPriority: 7,
+		onBasePower(basePower, attacker, defender, move) {
+			if (move.flags['sound']) {
+				this.debug('Alarm Clock boost');
+				return this.chainModify([0x14CD, 0x1000]);
 			}
 		},
-		onAllyTryAddVolatile(status, target) {
-			if (status.id === 'yawn') {
-				this.debug('Alarming blocking yawn');
-				const effectHolder = this.effectData.target;
-				this.add('-block', target, 'ability: Alarming', '[of] ' + effectHolder);
-				return null;
+		onSourceModifyDamage(damage, source, target, move) {
+			if (move.flags['sound']) {
+				this.debug('Alarm Clock weaken');
+				return this.chainModify(0.5);
 			}
 		},
-		name: "Alarming",
-		shortDesc: "While this Pokemon is active, sound moves deal 1.3x damage and no Pokemon can fall asleep..",
+		name: "Alarm Clock",
+		shortDesc: "This Pokemon's sound moves deal 1.3x damage and it takes 50% damage from opposing sound moves.",
 		rating: 3,
 	},
 	crowdpleaser: {
