@@ -903,6 +903,7 @@ coldcut: {
 		rating: 3,
 	},
 	alarming: {
+		/*
 		onStart(pokemon) {
 			if (this.suppressingAbility(pokemon)) return;
 			this.add('-ability', pokemon, 'Alarming');
@@ -931,6 +932,7 @@ coldcut: {
 				return null;
 			}
 		},
+		*/
 		name: "Alarming",
 		shortDesc: "While this Pokemon is active, sound moves deal 1.3x damage and no Pokemon can fall asleep.",
 		rating: 3,
