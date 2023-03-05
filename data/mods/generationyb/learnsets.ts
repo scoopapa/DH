@@ -19439,6 +19439,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			zenheadbutt: ["8L1"],
 			blizzard: ["8L1"],
 			weatherball: ["8L1"],
+			fireblast: ["8L1"],
 		},
 	},
 	clamperl: {
@@ -36332,6 +36333,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			doubleedge: ["8L1"],
 			zenheadbutt: ["8L1"],
 			sacredsword: ["8L1"],
+			suckerpunch: ["8L1"],
 		},
 	},
 	snom: {
