@@ -2618,7 +2618,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		onMoveFail(target, source, move) {
 			if (!this.canSwitch(source.side)) return;
 			this.damage(source.baseMaxhp / 3, source, source);
-			move.selfSwitch = true;
+			source.switchFlag = true
 		},
 		secondary: null,
 		target: "allAdjacentFoes",
