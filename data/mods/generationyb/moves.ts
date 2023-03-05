@@ -1245,7 +1245,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		name: "Torch Song",
 		pp: 10,
 		priority: 0,
-		flags: {protect: 1, mirror: 1, sound: 1, bypasssub: 1},
+		flags: {protect: 1, mirror: 1, sound: 1, authentic: 1},
 		secondary: {
 			chance: 100,
 			self: {
@@ -2012,7 +2012,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		name: "Defog",
 		pp: 15,
 		priority: 0,
-		flags: {protect: 1, reflectable: 1, mirror: 1, bypasssub: 1, wind: 1},
+		flags: {protect: 1, reflectable: 1, mirror: 1, authentic: 1, wind: 1},
 		onHit(target, source, move) {
 			let success = false;
 			if (!target.volatiles['substitute'] || move.infiltrates) success = !!this.boost({evasion: -1});
@@ -2025,13 +2025,13 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			for (const targetCondition of removeTarget) {
 				if (target.side.removeSideCondition(targetCondition)) {
 					if (!removeAll.includes(targetCondition)) continue;
-					this.add('-sideend', target.side, this.dex.conditions.get(targetCondition).name, '[from] move: Defog', '[of] ' + source);
+					this.add('-sideend', target.side, this.dex.getEffect(targetCondition).name, '[from] move: Defog', '[of] ' + source);
 					success = true;
 				}
 			}
 			for (const sideCondition of removeAll) {
 				if (source.side.removeSideCondition(sideCondition)) {
-					this.add('-sideend', source.side, this.dex.conditions.get(sideCondition).name, '[from] move: Defog', '[of] ' + source);
+					this.add('-sideend', source.side, this.dex.getEffect(sideCondition).name, '[from] move: Defog', '[of] ' + source);
 					success = true;
 				}
 			}
@@ -2315,7 +2315,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		name: "Dark Narrative",
 		pp: 10,
 		priority: 0,
-		flags: {protect: 1, mirror: 1, sound: 1, bypasssub: 1},
+		flags: {protect: 1, mirror: 1, sound: 1, authentic: 1},
 		onPrepareHit(target, source, move) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Snarl", target);
@@ -2338,7 +2338,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		name: "Deafening Shriek",
 		pp: 5,
 		priority: 0,
-		flags: {protect: 1, mirror: 1, sound: 1, bypasssub: 1},
+		flags: {protect: 1, mirror: 1, sound: 1, authentic: 1},
 		onPrepareHit(target, source, move) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Hyper Voice", target);
@@ -2381,7 +2381,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		name: "Heartbeat",
 		pp: 30,
 		priority: 0,
-		flags: {protect: 1, mirror: 1, sound: 1, bypasssub: 1},
+		flags: {protect: 1, mirror: 1, sound: 1, authentic: 1},
 		multihit: [2, 5],
 		onPrepareHit(target, source, move) {
 			this.attrLastMove('[still]');
@@ -2767,7 +2767,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		name: "Rattle",
 		pp: 20,
 		priority: 0,
-		flags: {reflectable: 1, mirror: 1, sound: 1, bypasssub: 1},
+		flags: {reflectable: 1, mirror: 1, sound: 1, authentic: 1},
 		onPrepareHit(target, source, move) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Confide", target);
