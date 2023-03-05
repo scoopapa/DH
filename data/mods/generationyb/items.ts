@@ -169,7 +169,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 				return damage / 2;
 			}
 		},
-		gen: 9,
+		gen: 8,
 		desc: "Halves damage taken from burn and poison.",
 	},
 	ruthlessribbon: {
