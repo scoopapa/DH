@@ -165,7 +165,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 			basePower: 80,
 		},
 		onDamage(damage, target, source, effect) {
-			if (effect && (effect.id === 'brn' || effect.id === 'tox' || effect.id === 'psn')) {
+			if (effect && (effect.id === 'brn' || effect.id === 'tox' || effect.id === 'psn' || effect.id === 'frz')) {
 				return damage / 2;
 			}
 		},
