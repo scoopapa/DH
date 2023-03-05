@@ -164,13 +164,13 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		fling: {
 			basePower: 80,
 		},
-		onSwitchOut(pokemon) {
-			if (pokemon.status) this.add('-curestatus', pokemon, pokemon.status, '[from] item: First-Aid Kit');
-			pokemon.clearStatus();
-			pokemon.useItem();
+		onDamage(damage, target, source, effect) {
+			if (effect && (effect.id === 'brn' || effect.id === 'tox' || effect.id === 'psn')) {
+				return damage / 2;
+			}
 		},
 		gen: 9,
-		desc: "Heals the user's status condition on switch-out. One time use.",
+		desc: "Halves damage taken from burn and poison.",
 	},
 	ruthlessribbon: {
 		name: "Ruthless Ribbon",
