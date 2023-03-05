@@ -2603,25 +2603,23 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		contestType: "Clever",
 	},
 	jugglingflames: {
-		accuracy: 90,
-		basePower: 35,
+		accuracy: 75,
+		basePower: 130,
 		category: "Special",
-		shortDesc: "Hits 3 times, but each hit can miss. If it misses: -33% max HP, switch out.",
+		shortDesc: "If it misses: -33% max HP, switch out.",
 		name: "Juggling Flames",
 		pp: 10,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
 		onPrepareHit(target, source, move) {
 			this.attrLastMove('[still]');
-			this.add('-anim', source, "Fire Blast", target);
+			this.add('-anim', source, "Mind Blown", target);
 		},
 		onMoveFail(target, source, move) {
 			if (!this.canSwitch(source.side)) return;
 			this.damage(source.baseMaxhp / 3, source, source);
 			move.selfSwitch = true;
 		},
-		multihit: 3,
-		multiaccuracy: true,
 		secondary: null,
 		target: "allAdjacentFoes",
 		type: "Fire",
