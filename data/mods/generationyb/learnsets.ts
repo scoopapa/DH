@@ -843,6 +843,9 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			psychicfangs: ["8L1"],
 			throatchop: ["8L1"],
 			corrosivegas: ["8L1"],
+			firefang: ["8L1"],
+			icefang: ["8L1"],
+			thunderfang: ["8L1"],
 		},
 	},
 	pichu: {
