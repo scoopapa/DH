@@ -1330,10 +1330,9 @@ export const Formats: FormatList = [
 	},
 	{
 		name: "[Gen 8] Generation YB",
-
 		mod: 'generationyb',
 		ruleset: ['Standard', 'One Link Brace Limit', 'Data Mod', 'Dynamax Clause'],
-		banlist: ['Uber', 'AG', 'Arena Trap', 'Moody', 'Sand Veil', 'Snow Cloak', 'King\'s Rock', 'Baton Pass', 'Power Construct', 'Clangorous Soul'],
+		banlist: ['Uber', 'AG', 'Moody', 'Sand Veil', 'Snow Cloak', 'King\'s Rock', 'Baton Pass', 'Power Construct', 'Clangorous Soul'],
 	},
 	{
 		name: "[Gen 2] GSC Doubles",
