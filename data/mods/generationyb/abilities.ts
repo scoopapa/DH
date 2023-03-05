@@ -1169,7 +1169,7 @@ coldcut: {
 			if (move.flags['contact'] || move.flags['bullet']) { 
 				delete move.flags['protect'];
 				move.infiltrates = true;
-			},
+			}
 		},
 		name: "Siege Engine",
 		shortDesc: "This Pokemon's bullet and contact moves ignore protection and ignore Reflect/Light Screen/Aurora Veil.",
