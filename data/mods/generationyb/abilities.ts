@@ -246,7 +246,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 
 			const armorTailHolder = this.effectData.target;
-			if ((source.isAlly(armorTailHolder) || move.target === 'all') && move.priority > 0.1) {
+			if ((source.side(armorTailHolder) || move.target === 'all') && move.priority > 0.1) {
 				this.attrLastMove('[still]');
 				this.add('cant', armorTailHolder, 'ability: Armor Tail', move, '[of] ' + target);
 				return false;
