@@ -2733,7 +2733,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Stealth Rock", target);
 		},
-		priorityChargeCallback(pokemon) {
+		beforeTurnCallback(pokemon) {
 			pokemon.addVolatile('poprocks');
 		},
 		beforeMoveCallback(pokemon) {
