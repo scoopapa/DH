@@ -1166,10 +1166,13 @@ coldcut: {
 	},
 	siegeengine: {
 		onModifyMove(move) {
-			move.infiltrates = true;
+			if (move.flags['contact'] || move.flags['bullet']) { 
+				delete move.flags['protect'];
+				move.infiltrates = true;
+			},
 		},
 		name: "Siege Engine",
-		shortDesc: "(Placeholder) This Pokemon's moves break the Reflect/Light Screen/Aurora Veil before dealing damage and ignore Wide Guard and Quick Guard.",
+		shortDesc: "This Pokemon's bullet and contact moves ignore protection and ignore Reflect/Light Screen/Aurora Veil.",
 		rating: 4,
 	},
 	silkstream: {
