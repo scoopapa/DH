@@ -2062,9 +2062,9 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	ragefist: {
 		num: 889,
 		accuracy: 100,
-		basePower: 25,
+		basePower: 50,
 		basePowerCallback(pokemon) {
-			return Math.min(150, 25 + 25 * pokemon.timesAttacked);
+			return Math.min(150, 50 + 25 * pokemon.timesAttacked);
 		},
 		category: "Physical",
 		shortDesc: "+25 power for each time user was hit. Max 5 hits.",
@@ -2079,12 +2079,12 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	lastrespects: {
 		num: 854,
 		accuracy: 100,
-		basePower: 25,
+		basePower: 50,
 		basePowerCallback(pokemon, target, move) {
-			return 25 + 25 * pokemon.side.totalFainted;
+			return 50 + 15 * pokemon.side.totalFainted;
 		},
 		category: "Physical",
-		shortDesc: "+25 power for each time a party member fainted.",
+		shortDesc: "+15 power for each time a party member fainted.",
 		name: "Last Respects",
 		pp: 10,
 		priority: 0,
@@ -2376,6 +2376,9 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				this.hint("Hero's Welcome only works on your first turn out.");
 				return false;
 			}
+		},
+		self: {
+			sideCondition: 'luckychant',
 		},
 		secondary: null,
 		target: "normal",
