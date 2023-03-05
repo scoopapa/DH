@@ -16,6 +16,9 @@ export const Conditions: {[k: string]: ConditionData} = {
 		onResidual(pokemon) {
 			this.damage(pokemon.baseMaxhp / 8);
 		},
+		onSourceModifyDamage(damage, source, target, move) {
+			return this.chainModify(1.2);
+		},
 		onBeforeMovePriority: 10,
 		onBeforeMove(pokemon, target, move) {
 			if (move.flags['defrost']) return;
