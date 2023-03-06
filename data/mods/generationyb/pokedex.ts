@@ -8,6 +8,14 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		inherit: true,
 		abilities: {0: "Torrent", H: "Sharpness"},
 	},	
+	arcaninehisui: {
+		inherit: true,
+		abilities: {0: "Intimidate", 1: "Flash Fire", H: "Rock Head"},
+	},	
+	growlithehisui: {
+		inherit: true,
+		abilities: {0: "Intimidate", 1: "Flash Fire", H: "Rock Head"},
+	},	
 	tauros: {
 		inherit: true,
 		otherFormes: ["Tauros-Paldea-Combat", "Tauros-Paldea-Blaze", "Tauros-Paldea-Aqua"],
