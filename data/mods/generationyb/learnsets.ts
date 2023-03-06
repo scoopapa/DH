@@ -34854,6 +34854,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			signalbeam: ["8L1"],
 			snarl: ["8L1"],
 			zenheadbutt: ["8L1"],
+			icefang: ["8L1"],
 		},
 	},
 	dhelmise: {
