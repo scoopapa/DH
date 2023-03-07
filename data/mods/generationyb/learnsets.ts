@@ -9264,6 +9264,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			zenheadbutt: ["8L1"],
 			magiccoat: ["8L1"],
 			solarbeam: ["8L1"],
+			psyshock: ["8L1"],
 		},
 	},
 	umbreon: {
@@ -16642,6 +16643,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			hyperbeam: ["8L1"],
 			moonblast: ["8L1"],
 			chargebeam: ["8L1"],
+			icebeam: ["8L1"],
 		},
 	},
 	electrike: {
@@ -23239,6 +23241,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			earthquake: ["8L1"],
 			shadowball: ["8L1"],
 			snarl: ["8L1"],
+			stoneedge: ["8L1"],
 		},
 	},
 	carnivine: {
@@ -26082,6 +26085,8 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			irondefense: ["8L1"],
 			flashcannon: ["8L1"],
 			horndrill: ["8L1"],
+			pounce: ["8L1"],
+			xscissor: ["8L1"],
 		},
 	},
 	sewaddle: {
