@@ -2651,6 +2651,8 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			round: ["8L1"],
 			snore: ["8L1"],
 			steelwing: ["8L1"],
+			superfang: ["8L1"],
+			crunch: ["8L1"],
 		},
 	},
 	golbat: {
@@ -2722,6 +2724,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			round: ["8L1"],
 			snore: ["8L1"],
 			steelwing: ["8L1"],
+			superfang: ["8L1"],
 		},
 	},
 	crobat: {
@@ -2798,6 +2801,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			snore: ["8L1"],
 			steelwing: ["8L1"],
 			xscissor: ["8L1"],
+			superfang: ["8L1"],
 		},
 	},
 	oddish: {
@@ -10076,7 +10080,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			reversal: ["8L1"],
 			hypervoice: ["8L1"],
 			aquatail: ["8L1"],
-			babydollyeyes: ["8L1"],
+			babydolleyes: ["8L1"],
 			charm: ["8L1"],
 			covet: ["8L1"],
 			doubleedge: ["8L1"],
@@ -10152,7 +10156,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			reversal: ["8L1"],
 			hypervoice: ["8L1"],
 			aquatail: ["8L1"],
-			babydollyeyes: ["8L1"],
+			babydolleyes: ["8L1"],
 			charm: ["8L1"],
 			covet: ["8L1"],
 			doubleedge: ["8L1"],
@@ -34353,6 +34357,8 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			skillswap: ["8L1"],
 			solarbeam: ["8L1"],
 			synthesis: ["8L1"],
+			trick: ["8L1"],
+			moonblast: ["8L1"],
 		},
 	},
 	sandygast: {
@@ -35729,6 +35735,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			icywind: ["8L1"],
 			liquidation: ["8L1"],
 			steelwing: ["8L1"],
+			hurricane: ["8L1"],
 		},
 	},
 	toxel: {
@@ -37062,6 +37069,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			skillswap: ["8L1"],
 			solarbeam: ["8L1"],
 			zenheadbutt: ["8L1"],
+			seedbomb: ["8L1"],
 		},
 	},
 	calyrexice: {
@@ -37183,6 +37191,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			skillswap: ["8L1"],
 			solarbeam: ["8L1"],
 			zenheadbutt: ["8L1"],
+			seedbomb: ["8L1"],
 		},
 	},
 	calyrexshadow: {
@@ -37304,6 +37313,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			skillswap: ["8L1"],
 			solarbeam: ["8L1"],
 			zenheadbutt: ["8L1"],
+			seedbomb: ["8L1"],
 		},
 	},
 	sprigatito: {
@@ -43492,6 +43502,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			gigaimpact: ["8L1"],
 			hyperbeam: ["8L1"],
 			rockslide: ["8L1"],
+			scald: ["8L1"],
 		},
 	},
 	casseclock: {
@@ -46447,7 +46458,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			reversal: ["8L1"],
 			hypervoice: ["8L1"],
 			aquatail: ["8L1"],
-			babydollyeyes: ["8L1"],
+			babydolleyes: ["8L1"],
 			charm: ["8L1"],
 			covet: ["8L1"],
 			doubleedge: ["8L1"],
