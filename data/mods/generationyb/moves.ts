@@ -3596,4 +3596,16 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		isNonstandard: null,
 	},
+	icehammer: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	revelationdance: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	relicsong: {
+		inherit: true,
+		isNonstandard: null,
+	},
 };
