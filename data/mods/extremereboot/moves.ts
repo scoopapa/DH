@@ -194,7 +194,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			for (b in pokemon.boosts) {
 				if (pokemon.boosts[b] < 0) negBoosts[b] = pokemon.boosts[b] * -1;
 			}
-			if (negBoosts !== {}) this.boost(pokemon, negBoosts);
+			if (negBoosts !== {}) this.boost(negBoosts, pokemon);
 			this.heal(source.baseMaxhp - source.hp, source, source);
 			source.cureStatus();
 			source.addVolatile('mustrecharge');
@@ -806,7 +806,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			for (b in pokemon.boosts) {
 				if (pokemon.boosts[b] < 0) negBoosts[b] = pokemon.boosts[b] * -1;
 			}
-			if (negBoosts !== {}) this.boost(pokemon, negBoosts);
+			if (negBoosts !== {}) this.boost(negBoosts, pokemon);
 		},
 		priority: 0,
 		heal: [1,2],
@@ -2625,7 +2625,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			for (b in pokemon.boosts) {
 				if (pokemon.boosts[b] < 0) negBoosts[b] = pokemon.boosts[b] * -1;
 			}
-			if (negBoosts !== {}) this.boost(pokemon, negBoosts);
+			if (negBoosts !== {}) this.boost(negBoosts, pokemon);
 			source.cureStatus();
 		},
 		priority: 0,
@@ -4085,7 +4085,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			for (b in pokemon.boosts) {
 				if (pokemon.boosts[b] < 0) negBoosts[b] = pokemon.boosts[b] * -1;
 			}
-			if (negBoosts !== {}) this.boost(pokemon, negBoosts);
+			if (negBoosts !== {}) this.boost(negBoosts, pokemon);
 			return pokemon.cureStatus() || success;
 		},
 		secondary: null,
@@ -6400,7 +6400,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			for (b in pokemon.boosts) {
 				if (pokemon.boosts[b] < 0) negBoosts[b] = pokemon.boosts[b] * -1;
 			}
-			if (negBoosts !== {}) this.boost(pokemon, negBoosts);
+			if (negBoosts !== {}) this.boost(negBoosts, pokemon);
 			source.cureStatus();
 			const negativeVolatiles = ['energysiphon', 'tantalize', 'shroomspores', 'partiallytrapped', 'rabidmaw', 'pollinate', 'pheromonalgas', 
 										'moonblade', 'mindcleansing', 'torment', 'Deafened', 'hypnotize', 'blasphemy', 'void', 'technocut', 

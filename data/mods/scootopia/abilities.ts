@@ -259,6 +259,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			}
 		},
 		name: "Crystalline",
+		shortDesc: "Reduces damage from Rock and Crystal by 50%.",
 		rating: 3.5,
 	},
 	wildroots: {
@@ -276,6 +277,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 				return this.chainModify(0.5);
 			}
 		},
+		shortDesc: "Reduces damage from Fairy and Feral by 50%.",
 		name: "Wild Roots",
 		rating: 3.5,
 	},

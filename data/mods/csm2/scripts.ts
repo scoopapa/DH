@@ -1,5 +1,8 @@
 export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 	inherit: 'gen9',
+	teambuilderConfig: {
+        excludeStandardTiers: true,
+	},
 	init: function () {
 		// Solrock
 		this.modData("Learnsets", "solrock").learnset.shoreup = ["9L1"];

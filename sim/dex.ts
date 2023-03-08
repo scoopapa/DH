@@ -609,9 +609,10 @@ export class ModdedDex {
 
 	getFormat(name?: string | Format, isTrusted = false): Format {
 		if (name && typeof name !== 'string') return name;
-
+		
 		name = (name || '').trim();
 		let id = toID(name);
+		
 		if (this.data.Aliases.hasOwnProperty(id)) {
 			name = this.data.Aliases[id];
 			id = toID(name);

@@ -1439,18 +1439,18 @@ export const Formats: FormatList = [
 	},
 	{
 		name: "[Gen 9] Scootopia",
-		desc: "A solomod consisting of Scoopapa's first 30 sprited fakemons!",
+		desc: "A solomod consisting of Scoopapa's fakemons!",
 		threads: [
 			`&bullet; <a href="https://docs.google.com/spreadsheets/d/1khgnzqe3xldhLw1LbfjyYDcsltZrgyo8by4Y8EDE4vQ/edit?usp=sharing">Spreadsheet</a>`,
 		],
 		mod: "scootopia",
 		gen: 9,
 		ruleset: ['Standard NatDex', 'Dynamax Clause', 'Evasion Moves Clause', 'Species Clause', 'Z-Move Clause', 'Data Mod'],
-		banlist: ['All Pokemon'],
+		banlist: ['All Pokemon', "Crystal Heart", "Wild Heart"],
 		unbanlist: ['Orchile', 'Dolphena', 'Scalaron', 'Rantler', 'Cobracotta', 'Albatrygon', 'Electangle', 'Torgeist', 'Platypad', 'Soleron', 'Nunopod', 'Zeploom', 'Brawnkey', 'Salamalix', 
 			'Cinnastar', "Muab'Boa", 'Volvolpa', 'Harzodia', 'Cyllindrake', 'Kodokai', 'Jaegorm', 'Jaegorm-Collective', 'Faerenheit', 'Cellsius', 'Kelven', 'Salaos', 'Morndos', 'Pythos', 
 			'Quadringo', 'Corundell', 'Flocura', 'Arbrella', 'Woolora', 'Embuck', 'Cindoe', 'Minillow', 'Crossont', 'Lumoth', 'Aurorowl', 'Carapex', 'Dojodo', 'Elemadillo', 'Axolacred', 
-			'Roscenti', 'Blunderbusk', 'Jamborai', 'Dracoil', 'Celespirit', 'Noxtrice', 'Saphor', 'Wolf', 'Barracoth',
+			'Roscenti', 'Blunderbusk', 'Jamborai', 'Dracoil', 'Celespirit', 'Noxtrice', 'Saphor', 'Wolf', 'Barracoth', 'Krachiten'
 		],
 		onBeforeMove(pokemon, target, move) {
 			move = Dex.mod("scootopia").getMove(move);
