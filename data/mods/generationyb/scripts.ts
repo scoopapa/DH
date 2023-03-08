@@ -179,9 +179,10 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 
 		for (const [i, target] of targetsCopy.entries()) {
 			if (target && pokemon !== target) {
-				target.gotAttacked(move, moveDamage[i] as number | false | undefined, pokemon);
-				if (typeof moveDamage[i] === 'number') {
-					target.timesAttacked += hit - 1;
+				target.gotAttacked(move, damage[i] as number | false | undefined, pokemon);
+				if (typeof damage[i] === 'number') {
+					if (!target.m.timesAttacked) target.m.timesAttacked = 0;
+					target.m.timesAttacked += hit - 1;
 				}
 			}
 		}
