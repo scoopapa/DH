@@ -3087,6 +3087,10 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		pp: 15,
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1},
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Dragon Claw", target);
+		},
 		secondary: {
 			chance: 50,
 			onHit(target, source) {
@@ -3488,6 +3492,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		onPrepareHit(target, source, move) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Stone Edge", target);
+			this.add('-anim', source, "Stealth Rock", target);
 		},
 		critRatio: 2,
 		sideCondition: 'stealthrock',
@@ -3535,6 +3540,11 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		pp: 15,
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1, slicing: 1},
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Night Slash", target);
+			this.add('-anim', source, "Spikes", target);
+		},
 		self: {
 			onHit(source) {
 				for (const side of source.side.foeSidesWithConditions()) {
@@ -3556,6 +3566,10 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		pp: 10,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Fiery Wrath", target);
+		},
 		secondary: {
 			chance: 100,
 			boosts: {
@@ -3575,6 +3589,10 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		pp: 10,
 		priority: 0,
 		flags: {snatch: 1, dance: 1},
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Quiver Dance", target);
+		},
 		boosts: {
 			atk: 1,
 			def: 1,
@@ -3607,5 +3625,54 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	relicsong: {
 		inherit: true,
 		isNonstandard: null,
+	},
+	mortalspin: {
+		num: 866,
+		accuracy: 100,
+		basePower: 30,
+		category: "Physical",
+		name: "Mortal Spin",
+		pp: 15,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Rapid Spin", target);
+		},
+		onAfterHit(target, pokemon) {
+			if (pokemon.hp && pokemon.removeVolatile('leechseed')) {
+				this.add('-end', pokemon, 'Leech Seed', '[from] move: Mortal Spin', '[of] ' + pokemon);
+			}
+			const sideConditions = ['spikes', 'toxicspikes', 'stealthrock', 'stickyweb', 'gmaxsteelsurge'];
+			for (const condition of sideConditions) {
+				if (pokemon.hp && pokemon.side.removeSideCondition(condition)) {
+					this.add('-sideend', pokemon.side, this.dex.getEffect(condition).name, '[from] move: Mortal Spin', '[of] ' + pokemon);
+				}
+			}
+			if (pokemon.hp && pokemon.volatiles['partiallytrapped']) {
+				pokemon.removeVolatile('partiallytrapped');
+			}
+		},
+		onAfterSubDamage(damage, target, pokemon) {
+			if (pokemon.hp && pokemon.removeVolatile('leechseed')) {
+				this.add('-end', pokemon, 'Leech Seed', '[from] move: Mortal Spin', '[of] ' + pokemon);
+			}
+			const sideConditions = ['spikes', 'toxicspikes', 'stealthrock', 'stickyweb', 'gmaxsteelsurge'];
+			for (const condition of sideConditions) {
+				if (pokemon.hp && pokemon.side.removeSideCondition(condition)) {
+					this.add('-sideend', pokemon.side, this.dex.getEffect(condition).name, '[from] move: Mortal Spin', '[of] ' + pokemon);
+				}
+			}
+			if (pokemon.hp && pokemon.volatiles['partiallytrapped']) {
+				pokemon.removeVolatile('partiallytrapped');
+			}
+		},
+		secondary: {
+			chance: 100,
+			status: 'psn',
+		},
+		target: "allAdjacentFoes",
+		type: "Poison",
+		contestType: "Cool",
 	},
 };
