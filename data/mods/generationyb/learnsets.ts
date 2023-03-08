@@ -48511,7 +48511,6 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 	},
 	remoraid: {
 		learnset: {
-			inherit: true,
 			watergun: ["8L1"],
 			helpinghand: ["8L1"],
 			waterpulse: ["8L1"],
@@ -48589,7 +48588,6 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 	},
 	octillery: {
 		learnset: {
-			inherit: true,
 			watergun: ["8L1"],
 			helpinghand: ["8L1"],
 			waterpulse: ["8L1"],
