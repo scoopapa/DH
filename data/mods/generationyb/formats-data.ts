@@ -8636,4 +8636,12 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "LC",
 		doublesTier: "DOU",
 	},
+	remoraid: {
+		tier: "LC",
+		isNonstandard: null,
+	},
+	octillery: {
+		tier: "OU",
+		isNonstandard: null,
+	},
 };
