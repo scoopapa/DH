@@ -297,6 +297,35 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	},
 	
 // gen 9 moves
+	revivalblessing: {
+		num: 863,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		name: "Revival Blessing",
+		pp: 1,
+		noPPBoosts: true,
+		priority: 0,
+		flags: {},
+		onTryHit(source) {
+			if (!source.side.pokemon.filter(ally => ally.fainted).length) {
+				return false;
+			}
+		},
+		slotCondition: 'revivalblessing',
+		// No this not a real switchout move
+		// This is needed to trigger a switch protocol to choose a fainted party member
+		// Feel free to refactor
+		selfSwitch: true,
+		condition: {
+			duration: 1,
+			// reviving implemented in side.ts, kind of
+		},
+		secondary: null,
+		target: "self",
+		type: "Normal",
+	},
+
 	hail: {
 		inherit: true,
 		isNonstandard: true,
@@ -2064,7 +2093,8 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		accuracy: 100,
 		basePower: 50,
 		basePowerCallback(pokemon) {
-			return Math.min(150, 50 + 25 * pokemon.timesAttacked);
+			if (!pokemon.m.timesAttacked) pokemon.m.timesAttacked = 0;
+			return Math.min(150, 50 + 25 * pokemon.m.timesAttacked);
 		},
 		category: "Physical",
 		shortDesc: "+25 power for each time user was hit. Max 5 hits.",
