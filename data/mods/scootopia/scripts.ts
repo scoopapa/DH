@@ -1,8 +1,15 @@
 export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
+	inherit: "gen9",
 	teambuilderConfig: {
         // for micrometas to only show custom tiers
         excludeStandardTiers: true,
         // only to specify the order of custom tiers
+	},
+	init() {
+		for (const side in this.sides) {
+			this.sides[side].usedSuperType = false;
+			this.sides[side].superTypeUser = "";
+		}
 	},
 	pokemon: {
 		isGrounded(negateImmunity = false) {
@@ -19,6 +26,7 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 			) return null;
 			if ('magnetrise' in this.volatiles) return false;
 			if ('telekinesis' in this.volatiles) return false;
+			if ('lodestone' in this.volatiles) return false;
 			return item !== 'airballoon';
 		}
 	}

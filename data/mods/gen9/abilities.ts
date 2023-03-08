@@ -353,12 +353,16 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		onStart(pokemon) {
 			this.singleEvent('WeatherChange', this.effect, this.effectData, pokemon);
 		},
-		onWeatherChange(pokemon) {
-			if (pokemon.transformed) return;
+		onUpdate(pokemon) {
+			// if (pokemon.transformed) return;
 			// Protosynthesis is not affected by Utility Umbrella
-			if (this.field.isWeather('sunnyday')) {
+			if (this.field.isWeather('sunnyday') && !pokemon.volatiles['protosynthesis']) {
 				pokemon.addVolatile('protosynthesis');
-			} else if (!pokemon.volatiles['protosynthesis']?.fromBooster) {
+			} else if (pokemon.hasItem('boosterenergy') && !this.field.isWeather('sunnyday') && pokemon.useItem()) {
+				pokemon.removeVolatile('protosynthesis');
+				pokemon.addVolatile('protosynthesis', pokemon, Dex.getItem('boosterenergy'));
+				pokemon.volatiles['protosynthesis'].fromBooster = true;
+			} else if (!pokemon.volatiles['protosynthesis']?.fromBooster && !this.field.isWeather('sunnyday')) {
 				pokemon.removeVolatile('protosynthesis');
 			}
 		},
@@ -452,11 +456,16 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		onStart(pokemon) {
 			this.singleEvent('TerrainChange', this.effect, this.effectData, pokemon);
 		},
-		onTerrainChange(pokemon) {
-			if (pokemon.transformed) return;
-			if (this.field.isTerrain('electricterrain')) {
+		onUpdate(pokemon) {
+			// if (pokemon.transformed) return;
+			// Protosynthesis is not affected by Utility Umbrella
+			if (this.field.isTerrain('electricterrain') && !pokemon.volatiles['quarkdrive']) {
 				pokemon.addVolatile('quarkdrive');
-			} else if (!pokemon.volatiles['quarkdrive']?.fromBooster) {
+			} else if (pokemon.hasItem('quarkdrive') && !this.field.isTerrain('electricterrain') && pokemon.useItem()) {
+				pokemon.removeVolatile('quarkdrive');
+				pokemon.addVolatile('quarkdrive', pokemon, Dex.getItem('boosterenergy'));
+				pokemon.volatiles['quarkdrive'].fromBooster = true;
+			} else if (!pokemon.volatiles['quarkdrive']?.fromBooster && !this.field.isTerrain('electricterrain')) {
 				pokemon.removeVolatile('quarkdrive');
 			}
 		},

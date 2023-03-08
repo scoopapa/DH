@@ -1034,7 +1034,7 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 			healingwish: ["8L1"],
 		},
 	},
-	whiscash: {
+	wittykitty: {
 		learnset: {
 			aquatail: ["8L24", "7T", "7L28", "6T", "6L28", "5T", "5L39", "4T", "4L39", "4S0"],
 			attract: ["8M", "7M", "6M", "5M", "4M", "3M"],
@@ -1120,7 +1120,7 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 
 
 	//Gen 9 mons
-	/*annihilape: {
+	annihilape: {
 		learnset: {
 			acrobatics: ["8M"],
 			assurance: ["8L26"],
@@ -2505,5 +2505,5 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 			waterpulse: ["8M", "8L20"],
 			wrap: ["8L1"],
 		},
-	},*/
+	},
 };

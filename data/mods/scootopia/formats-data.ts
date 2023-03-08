@@ -1,9 +1,9 @@
 export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
-	orchile: {
+	arbrella: {
 		tier: "Scoo",
 		doublesTier: "Scoo",
 	},
-	dolphena: {
+	krachiten: {
 		tier: "Scoo",
 		doublesTier: "Scoo",
 	},
@@ -15,7 +15,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "Scoo",
 		doublesTier: "Scoo",
 	},
-	cobracotta: {
+	woolora: {
 		tier: "Scoo",
 		doublesTier: "Scoo",
 	},
@@ -23,7 +23,27 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "Scoo",
 		doublesTier: "Scoo",
 	},
-	electangle: {
+	orchile: {
+		tier: "Scoo",
+		doublesTier: "Scoo",
+	},
+	embuck: {
+		tier: "Scoo",
+		doublesTier: "Scoo",
+	},
+	cindoe: {
+		tier: "Scoo",
+		doublesTier: "Scoo",
+	},
+	cobracotta: {
+		tier: "Scoo",
+		doublesTier: "Scoo",
+	},
+	minillow: {
+		tier: "Scoo",
+		doublesTier: "Scoo",
+	},
+	crossont: {
 		tier: "Scoo",
 		doublesTier: "Scoo",
 	},
@@ -35,11 +55,19 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "Scoo",
 		doublesTier: "Scoo",
 	},
-	soleron: {
+	lumoth: {
 		tier: "Scoo",
 		doublesTier: "Scoo",
 	},
-	soleronawakened: {
+	aurorowl: {
+		tier: "Scoo",
+		doublesTier: "Scoo",
+	},
+	carapex: {
+		tier: "Scoo",
+		doublesTier: "Scoo",
+	},
+	dojodo: {
 		tier: "Scoo",
 		doublesTier: "Scoo",
 	},
@@ -83,11 +111,63 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "Scoo",
 		doublesTier: "Scoo",
 	},
+	electangle: {
+		tier: "Scoo",
+		doublesTier: "Scoo",
+	},
+	dolphena: {
+		tier: "Scoo",
+		doublesTier: "Scoo",
+	},
+	soleron: {
+		tier: "Scoo",
+		doublesTier: "Scoo",
+	},
+	soleronawakened: {
+		tier: "Illegal",
+		doublesTier: "Illegal",
+	},
 	jaegorm: {
 		tier: "Scoo",
 		doublesTier: "Scoo",
 	},
 	jaegormcollective: {
+		tier: "Illegal",
+		doublesTier: "Illegal",
+	},
+	elemadillo: {
+		tier: "Scoo",
+		doublesTier: "Scoo",
+	},
+	axolacred: {
+		tier: "Scoo",
+		doublesTier: "Scoo",
+	},
+	roscenti: {
+		tier: "Scoo",
+		doublesTier: "Scoo",
+	},
+	blunderbusk: {
+		tier: "Scoo",
+		doublesTier: "Scoo",
+	},
+	barracoth: {
+		tier: "Scoo",
+		doublesTier: "Scoo",
+	},
+	jamborai: {
+		tier: "Scoo",
+		doublesTier: "Scoo",
+	},
+	dracoil: {
+		tier: "Scoo",
+		doublesTier: "Scoo",
+	},
+	celespirit: {
+		tier: "Scoo",
+		doublesTier: "Scoo",
+	},
+	noxtrice: {
 		tier: "Scoo",
 		doublesTier: "Scoo",
 	},
@@ -115,21 +195,29 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "Scoo",
 		doublesTier: "Scoo",
 	},
-	quadringo: {
-		tier: "Scoo",
-		doublesTier: "Scoo",
-	},
 	corundell: {
 		tier: "Scoo",
 		doublesTier: "Scoo",
 	},
+	quadringo: {
+		tier: "Scoo",
+		doublesTier: "Scoo",
+	},
+	saphor: {
+		tier: "Scoo",
+		doublesTier: "Scoo",
+	},
+	wolf: {
+		tier: "Scoo",
+		doublesTier: "Scoo",
+	},
+
 	flocura: {
 		tier: "Scoo",
 		doublesTier: "Scoo",
 	},
 	flocuranexus: {
-		tier: "Scoo",
-		doublesTier: "Scoo",
+		tier: "Illegal",
+		doublesTier: "Illegal",
 	},
-
 };

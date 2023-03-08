@@ -190,9 +190,11 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		},
 		onHit(target, source) {
 			let b: BoostName;
-			for (b in source.boosts) {
-				if (source.boosts[b] < 0) source.boosts[b] = 0;
+			let negBoosts = {};
+			for (b in pokemon.boosts) {
+				if (pokemon.boosts[b] < 0) negBoosts[b] = pokemon.boosts[b] * -1;
 			}
+			if (negBoosts !== {}) this.boost(pokemon, negBoosts);
 			this.heal(source.baseMaxhp - source.hp, source, source);
 			source.cureStatus();
 			source.addVolatile('mustrecharge');
@@ -800,9 +802,11 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		shortDesc: "Heals the user by 50% of its max HP. Resets the user's lowered stat changes.",
 		onHit(target, source, move){
 			let b: BoostName;
-			for (b in source.boosts) {
-				if (source.boosts[b] < 0) source.boosts[b] = 0;
+			let negBoosts = {};
+			for (b in pokemon.boosts) {
+				if (pokemon.boosts[b] < 0) negBoosts[b] = pokemon.boosts[b] * -1;
 			}
+			if (negBoosts !== {}) this.boost(pokemon, negBoosts);
 		},
 		priority: 0,
 		heal: [1,2],
@@ -2617,9 +2621,11 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		shortDesc: "User has their status cured and their lowered stat stages reset.",
 		onHit(target, source, move) {
 			let b: BoostName;
-			for (b in source.boosts) {
-				if (source.boosts[b] < 0) source.boosts[b] = 0;
+			let negBoosts = {};
+			for (b in pokemon.boosts) {
+				if (pokemon.boosts[b] < 0) negBoosts[b] = pokemon.boosts[b] * -1;
 			}
+			if (negBoosts !== {}) this.boost(pokemon, negBoosts);
 			source.cureStatus();
 		},
 		priority: 0,
@@ -4075,9 +4081,11 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		onHit(pokemon) {
 			const success = !!this.heal(this.modify(pokemon.maxhp, 0.25));
 			let b: BoostName;
+			let negBoosts = {};
 			for (b in pokemon.boosts) {
-				if (pokemon.boosts[b] < 0) pokemon.boosts[b] = 0;
+				if (pokemon.boosts[b] < 0) negBoosts[b] = pokemon.boosts[b] * -1;
 			}
+			if (negBoosts !== {}) this.boost(pokemon, negBoosts);
 			return pokemon.cureStatus() || success;
 		},
 		secondary: null,
@@ -6388,9 +6396,11 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		type: "Manmade",
 		onHit(target, source) {
 			let b: BoostName;
-			for (b in source.boosts) {
-				if (source.boosts[b] < 0) source.boosts[b] = 0;
+			let negBoosts = {};
+			for (b in pokemon.boosts) {
+				if (pokemon.boosts[b] < 0) negBoosts[b] = pokemon.boosts[b] * -1;
 			}
+			if (negBoosts !== {}) this.boost(pokemon, negBoosts);
 			source.cureStatus();
 			const negativeVolatiles = ['energysiphon', 'tantalize', 'shroomspores', 'partiallytrapped', 'rabidmaw', 'pollinate', 'pheromonalgas', 
 										'moonblade', 'mindcleansing', 'torment', 'Deafened', 'hypnotize', 'blasphemy', 'void', 'technocut', 

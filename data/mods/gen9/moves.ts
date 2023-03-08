@@ -43,6 +43,34 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		basePower: 120,
 	},
+	batonpass: {
+		num: 226,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		name: "Baton Pass",
+		pp: 40,
+		priority: 0,
+		flags: {},
+		onHit(target) {
+			if (!this.canSwitch(target.side)) {
+				this.attrLastMove('[still]');
+				this.add('-fail', target);
+				return this.NOT_FAIL;
+			}
+		},
+		self: {
+			onHit(source) {
+				source.skipBeforeSwitchOutEventFlag = true;
+			},
+		},
+		selfSwitch: 'copyvolatile',
+		secondary: null,
+		target: "self",
+		type: "Normal",
+		zMove: {effect: 'clearnegativeboost'},
+		contestType: "Cute",
+	},
 	//---------------Gen 9 Moves-----------------//
 	//PL:A
 	ragingfury: {
@@ -1225,7 +1253,8 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		accuracy: 100,
 		basePower: 50,
 		basePowerCallback(pokemon) {
-			return Math.min(350, 50 + 50 * pokemon.timesAttacked);
+			if (!pokemon.m.timesAttacked) pokemon.m.timesAttacked = 0;
+			return Math.min(350, 50 + 50 * pokemon.m.timesAttacked);
 		},
 		category: "Physical",
 		name: "Rage Fist",
@@ -1304,18 +1333,22 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		pp: 5,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
-		onDisableMove(pokemon) {
-			if (pokemon.lastMove?.id === 'gigatonhammer') pokemon.disableMove('gigatonhammer');
+		self: { 
+			volatileStatus: "gigatonhammer",
+		},
+		condition: {
+			onDisableMove(pokemon) {
+				if (pokemon.lastMove?.id === 'gigatonhammer') pokemon.disableMove('gigatonhammer');
+			},
 		},
 		beforeMoveCallback(pokemon) {
 			if (pokemon.lastMove?.id === 'gigatonhammer') pokemon.addVolatile('gigatonhammer');
 		},
-		onAfterMove(pokemon) {
-			if (pokemon.removeVolatile('gigatonhammer')) {
-				this.add('-hint', "Some effects can force a Pokemon to use Gigaton Hammer again in a row.");
-			}
-		},
-		condition: {},
+		// onAfterMove(pokemon) {
+			// if (pokemon.removeVolatile('gigatonhammer')) {
+				// this.add('-hint', "Some effects can force a Pokemon to use Gigaton Hammer again in a row.");
+			// }
+		// },
 		secondary: null,
 		target: "normal",
 		type: "Steel",
@@ -1464,5 +1497,33 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		},
 		target: "normal",
 		type: "Fairy",
+	},
+	revivalblessing: {
+		num: 863,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		name: "Revival Blessing",
+		pp: 1,
+		noPPBoosts: true,
+		priority: 0,
+		flags: {},
+		onTryHit(source) {
+			if (!source.side.pokemon.filter(ally => ally.fainted).length) {
+				return false;
+			}
+		},
+		slotCondition: 'revivalblessing',
+		// No this not a real switchout move
+		// This is needed to trigger a switch protocol to choose a fainted party member
+		// Feel free to refactor
+		selfSwitch: true,
+		condition: {
+			duration: 1,
+			// reviving implemented in side.ts, kind of
+		},
+		secondary: null,
+		target: "self",
+		type: "Normal",
 	},
 };

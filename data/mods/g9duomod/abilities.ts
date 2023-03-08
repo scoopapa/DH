@@ -558,4 +558,23 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		rating: 2.5,
 		num: 219,
 	},
+	
+	opportunist: {
+		onFoeAfterBoost(boost, target, source, effect) {
+			if (effect?.name === 'Opportunist' || effect?.name === 'Mirror Herb') return;
+			const pokemon = this.effectData.target;
+			const positiveBoosts: Partial<BoostsTable> = {};
+			let i: BoostName;
+			for (i in boost) {
+				if (boost[i]! > 0) {
+					positiveBoosts[i] = boost[i];
+				}
+			}
+			if (Object.keys(positiveBoosts).length < 1) return;
+			this.boost(positiveBoosts, pokemon);
+		},
+		name: "Opportunist",
+		rating: 3,
+		num: 290,
+	},
 };

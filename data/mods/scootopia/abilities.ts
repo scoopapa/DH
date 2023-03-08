@@ -32,18 +32,6 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			},
 		},
 	},
-	retaliation: {
-		shortDesc: "On opponent making contact: -1 Atk.",
-		onDamagingHitOrder: 1,
-		onDamagingHit(damage, target, source, move) {
-			if (move.flags['contact']) {
-				this.boost({atk: -1}, source, target);
-			}
-		},
-		name: "Retaliation",
-		rating: 2.5,
-		num: 24,
-	},
 	mythicalpresence: {
 		name: "Mythical Presence",
 		shortDesc: "Lowers opposing Pokemon Special Attack by 1 stage when switching in.",
@@ -184,6 +172,42 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		rating: 5,
 		num: 211,
 	},
+	crystalheart: {
+		shortDesc: "User becomes Crystal type. While Crystal type, 33% boost to Def and SpD",
+		onStart(pokemon) {
+			if (pokemon.hasType('Crystal')) return false;
+			if (!pokemon.addType('Crystal')) return false;
+			pokemon.setType(["Crystal"]);
+			this.add('-start', pokemon, 'typechange', 'Crystal', '[from] ability: Crystal Heart');
+		},
+		onModifyDefPriority: 6,
+		onModifyDef(def, pokemon) {
+			if (pokemon.hasType('Crystal')) return this.chainModify(1 + (1/3));
+		},
+		onModifySpDPriority: 6,
+		onModifySpD(spd, pokemon) {
+			if (pokemon.hasType('Crystal')) return this.chainModify(1 + (1/3));
+		},
+		name: "Crystal Heart",
+	},
+	wildheart: {
+		onStart(pokemon) {
+			if (pokemon.hasType('Feral')) return false;
+			if (!pokemon.addType('Feral')) return false;
+			pokemon.setType(["Feral"]);
+			this.add('-start', pokemon, 'typechange', "Feral", '[from] ability: Wild Heart');
+		},
+		onModifyAtkPriority: 6,
+		onModifyAtk(atk, pokemon) {
+			if (pokemon.hasType('Feral')) return this.chainModify(1 + (1/3));
+		},
+		onModifySpAPriority: 6,
+		onModifySpA(spa, pokemon) {
+			if (pokemon.hasType('Feral')) return this.chainModify(1 + (1/3));
+		},
+		name: "Wild Heart",
+		shortDesc: "User becomes Feral type. While Feral type, 33% boost to Atk and SpA",
+	},
 	schooling: {
 		onStart(pokemon) {
 			if (pokemon.baseSpecies.baseSpecies !== 'Jaegorm' || pokemon.transformed) return;
@@ -218,5 +242,41 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		shortDesc: "If user is Jaegorm, changes to Collective Form if it has > 1/4 max HP, else Solo Form.",
 		rating: 3,
 		num: 208,
+	},
+	crystalline: {
+		onSourceModifyAtkPriority: 6,
+		onSourceModifyAtk(atk, attacker, defender, move) {
+			if (move.type === 'Crystal' || move.type === 'Rock') {
+				this.debug('Crystalline weaken');
+				return this.chainModify(0.5);
+			}
+		},
+		onSourceModifySpAPriority: 5,
+		onSourceModifySpA(atk, attacker, defender, move) {
+			if (move.type === 'Crystal' || move.type === 'Rock') {
+				this.debug('Crystalline weaken');
+				return this.chainModify(0.5);
+			}
+		},
+		name: "Crystalline",
+		rating: 3.5,
+	},
+	wildroots: {
+		onSourceModifyAtkPriority: 6,
+		onSourceModifyAtk(atk, attacker, defender, move) {
+			if (move.type === 'Fairy' || move.type === 'Feral') {
+				this.debug('Wild Roots weaken');
+				return this.chainModify(0.5);
+			}
+		},
+		onSourceModifySpAPriority: 5,
+		onSourceModifySpA(atk, attacker, defender, move) {
+			if (move.type === 'Fairy' || move.type === 'Feral') {
+				this.debug('Wild Roots weaken');
+				return this.chainModify(0.5);
+			}
+		},
+		name: "Wild Roots",
+		rating: 3.5,
 	},
 };

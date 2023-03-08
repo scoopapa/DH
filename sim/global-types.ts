@@ -319,6 +319,10 @@ interface BattleScriptsData {
 		this: Battle, move: Move, pokemon: Pokemon, target?: Pokemon | null,
 		sourceEffect?: Effect | null, zMove?: string, maxMove?: string
 	) => boolean;
+	switchIn?: (
+		this: Battle, pokemon: Pokemon, pos: number, 
+		sourceEffect: Effect | null = null, isDrag?: boolean
+	) => boolean;
 }
 
 interface ModdedBattleSide {

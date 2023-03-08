@@ -57,7 +57,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	pinsirmega: {
 		inherit: true,
 		types: ["Bug", "Ice"],
-		baseStats: {hp: 65, atk: 160, def: 110, spa: 55, spd: 85, spe: 125},
+		baseStats: {hp: 65, atk: 150, def: 110, spa: 80, spd: 85, spe: 110},
 		abilities: {0: "Mountaineer"},
 	},	
 	gengarmega: {

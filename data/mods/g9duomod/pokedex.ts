@@ -1,16 +1,4 @@
 export const Pokedex: {[k: string]: ModdedSpeciesData} = {
-
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////// THE POKEMON BELOW IS TEMPORARY FOR THE DUOMOD TOURNAMENT. IT WILL BE REMOVED AFTER ROUND 1. ////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
-// nothing here rn lmao
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
     baloon: {
       num: 1.5,
       species: "Baloon",
@@ -293,6 +281,68 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
       abilities: {0: "Unstable Claws"},
       weightkg: 13,
     },
+	ironvessel: {
+		num: 32.5,
+		species: "Iron Vessel",
+		types: ["Psychic", "Dragon"],
+		baseStats: {hp: 96, atk: 76, def: 76, spa: 96, spd: 108, spe: 118},
+		abilities: {0: "Regenerator"},
+		weightkg: 5,
+		otherFormes: ["Modded Vessel"],
+		formeOrder: ["Iron Vessel", "Modded Vessel"],
+	},
+	cadbunny: {
+		num: 33.5,
+		species: "Cadbunny",
+		types: ["Normal"],
+		baseStats: {hp: 104, atk: 60, def: 96, spa: 70, spd: 96, spe: 91},
+		abilities: {0: "Opportunist"},
+		weightkg: 5,
+	},
+	feralynx: {
+		num: 34.5,
+		species: "Feralynx",
+		types: ["Dark", "Ice"],
+		baseStats: {hp: 54, atk: 122, def: 84, spa: 60, spd: 92, spe: 115},
+		abilities: {0: "Moxie"},
+		weightkg: 5,
+	},
+	aquadamia: {
+		num: 35.5,
+		species: "Aquadamia",
+		types: ["Grass", "Water"],
+		baseStats: {hp: 80, atk: 120, def: 70, spa: 40, spd: 70, spe: 125},
+		abilities: {0: "Dancer"},
+		weightkg: 5,
+	},
+	neuralurk: {
+		num: 36.5,
+		species: "Neuralurk",
+		types: ["Dark", "Fairy"],
+		baseStats: {hp: 181, atk: 101, def: 43, spa: 113, spd: 43, spe: 89},
+		abilities: {0: "Beast Boost"},
+		weightkg: 5,
+	},
+	blockodile: {
+		num: 37.5,
+		species: "Blockodile",
+		types: ["Ice", "Dragon"],
+		baseStats: {hp: 105, atk: 125, def: 115, spa: 65, spd: 55, spe: 25},
+		abilities: {0: "Dragons Maw"},
+		weightkg: 5,
+	},
+	moddedvessel: {
+		num: 32.5,
+		species: "Modded Vessel",
+		baseSpecies: "Iron Vessel",
+		forme: "Mega",
+		types: ["Psychic", "Dragon"],
+		baseStats: {hp: 96, atk: 76, def: 106, spa: 96, spd: 128, spe: 68},
+		abilities: {0: "Shed Skin"},
+		weightkg: 5,
+		battleOnly: "Iron Vessel",
+		requiredMove: "Core Enforcer",
+	},
     gelsiussubzero: {
       num: 19.5,
       name: "Gelsius-Subzero",

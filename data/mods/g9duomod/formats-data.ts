@@ -1,7 +1,7 @@
 export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////// THE POKEMON BELOW IS TEMPORARY FOR THE DUOMOD TOURNAMENT. IT WILL BE REMOVED AFTER ROUND 1. ////////
+//////// THE POKEMON BELOW ARE TEMPORARY FOR THE DUOMOD TOURNAMENT. THEY WILL BE REMOVED AFTERWARDS. ////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 // nothing here yet lmao
@@ -196,6 +196,46 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
       tier: "Duomod",
       doublesTier: "Duomod",
     },
+	ironvessel: {
+		randomBattleMoves: ["futuresight", "rapidspin", "coreenforcer", "teleport", "recover"],
+		randomBattleLevel: 100,
+		tier: "Duomod",
+		doublesTier: "Duomod",
+	},
+	cadbunny: {
+		randomBattleMoves: ["boomburst", "slackoff", "focusblast", "knockoff", "chillyreception", "nuzzle"],
+		randomBattleLevel: 100,
+		tier: "Duomod",
+		doublesTier: "Duomod",
+	},
+	feralynx: {
+		randomBattleMoves: ["impostorblade", "inkbrush", "polarpounce", "swordsdance"],
+		randomBattleLevel: 100,
+		tier: "Duomod",
+		doublesTier: "Duomod",
+	},
+	aquadamia: {
+		randomBattleMoves: ["liquidation", "powerwhip", "tripleaxel", "poisonjab"],
+		randomBattleLevel: 100,
+		tier: "Duomod",
+		doublesTier: "Duomod",
+	},
+	neuralurk: {
+		randomBattleMoves: ["knockoff", "playrough", "swordsdance", "suckerpunch", "nastyplot", "darkpulse", "moonblast", "flamethrower", "trick"],
+		randomBattleLevel: 100,
+		tier: "Duomod",
+		doublesTier: "Duomod",
+	},
+	blockodile: {
+		randomBattleMoves: ["iciclecrash", "dragonclaw", "earthquake", "bulkup", "liquidation"],
+		randomBattleLevel: 100,
+		tier: "Duomod",
+		doublesTier: "Duomod",
+	},
+	moddedvessel: {
+		tier: "Illegal",
+		doublesTier: "Illegal",
+	},
     gelsiussubzero: {
       tier: "Illegal",
       doublesTier: "Illegal",
