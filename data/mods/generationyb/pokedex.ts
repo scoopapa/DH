@@ -1735,6 +1735,10 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		otherFormes: ["Kingler-YB"],
 		formeOrder: ["Kingler", "Kingler-YB"],
 	},
+	octillery: {
+		inherit: true,
+		baseStats: {hp: 75, atk: 115, def: 75, spa: 115, spd: 75, spe: 45},
+	},
 	solrock: {
 		inherit: true,
 		otherFormes: ["Solrock-YB"],
