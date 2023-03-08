@@ -297,6 +297,34 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	},
 	
 // gen 9 moves
+	batonpass: {
+		num: 226,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		name: "Baton Pass",
+		pp: 40,
+		priority: 0,
+		flags: {},
+		onHit(target) {
+			if (!this.canSwitch(target.side)) {
+				this.attrLastMove('[still]');
+				this.add('-fail', target);
+				return this.NOT_FAIL;
+			}
+		},
+		self: {
+			onHit(source) {
+				source.skipBeforeSwitchOutEventFlag = true;
+			},
+		},
+		selfSwitch: 'copyvolatile',
+		secondary: null,
+		target: "self",
+		type: "Normal",
+		zMove: {effect: 'clearnegativeboost'},
+		contestType: "Cute",
+	},
 	revivalblessing: {
 		num: 863,
 		accuracy: true,
@@ -1690,18 +1718,22 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		pp: 5,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
-		onDisableMove(pokemon) {
-			if (pokemon.lastMove?.id === 'gigatonhammer') pokemon.disableMove('gigatonhammer');
+		self: { 
+			volatileStatus: "gigatonhammer",
+		},
+		condition: {
+			onDisableMove(pokemon) {
+				if (pokemon.lastMove?.id === 'gigatonhammer') pokemon.disableMove('gigatonhammer');
+			},
 		},
 		beforeMoveCallback(pokemon) {
 			if (pokemon.lastMove?.id === 'gigatonhammer') pokemon.addVolatile('gigatonhammer');
 		},
-		onAfterMove(pokemon) {
-			if (pokemon.removeVolatile('gigatonhammer')) {
-				this.add('-hint', "Some effects can force a Pokemon to use Gigaton Hammer again in a row.");
-			}
-		},
-		condition: {},
+		// onAfterMove(pokemon) {
+			// if (pokemon.removeVolatile('gigatonhammer')) {
+				// this.add('-hint', "Some effects can force a Pokemon to use Gigaton Hammer again in a row.");
+			// }
+		// },
 		secondary: null,
 		target: "normal",
 		type: "Steel",
