@@ -9090,6 +9090,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			thunder: ["8L1"],
 			magnetrise: ["8L1"],
 			wildcharge: ["8L1"],
+			voltswitch: ["8L1"],
 		},
 	},
 	flareon: {
@@ -20882,6 +20883,8 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			drainpunch: ["8L1"],
 			feint: ["8L1"],
 			ragingfury: ["8L1"],
+			aurasphere: ["8L1"],
+			focusblast: ["8L1"],
 		},
 	},
 	piplup: {
