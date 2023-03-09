@@ -6466,7 +6466,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 	},
 	kingler: {
 		learnset: {
-
+			stompingtantrum: ["8L1"],
 			watergun: ["8L1"],
 			leer: ["8L1"],
 			harden: ["8L1"],
@@ -12329,6 +12329,8 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			signalbeam: ["8L1"],
 			skillswap: ["8L1"],
 			trickroom: ["8L1"],
+			thunderbolt: ["8L1"],
+			energyball: ["8L1"],
 		},
 	},
 	mismagius: {
@@ -12412,6 +12414,8 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			powergem: ["8L1"],
 			thunder: ["8L1"],
 			trickroom: ["8L1"],
+			thunderbolt: ["8L1"],
+			energyball: ["8L1"],
 		},
 	},
 	girafarig: {
@@ -14191,6 +14195,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			stompingtantrum: ["8L1"],
 			wildcharge: ["8L1"],
 			zenheadbutt: ["8L1"],
+			stealthrock: ["8L1"],
 		},
 	},
 	raikou: {
@@ -14911,6 +14916,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			snarl: ["8L1"],
 			wildcharge: ["8L1"],
 			zenheadbutt: ["8L1"],
+			pursuit: ["8L1"],
 		},
 	},
 	mightyena: {
@@ -14986,6 +14992,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			zenheadbutt: ["8L1"],
 			gigaimpact: ["8L1"],
 			hyperbeam: ["8L1"],
+			pursuit: ["8L1"],
 		},
 	},
 	wurmple: {
@@ -19174,7 +19181,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			thief: ["8L1"],
 			trick: ["8L1"],
 			poisonjab: ["8L1"],
-			iorntail: ["8L1"],
+			irontail: ["8L1"],
 			earthquake: ["8L1"],
 			trickroom: ["8L1"],
 			fireblast: ["8L1"],
@@ -25650,6 +25657,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			rockslide: ["8L1"],
 			hyperbeam: ["8L1"],
 			gigaimpact: ["8L1"],
+			psyshock: ["8L1"],
 		},
 	},
 	blitzle: {
@@ -26099,7 +26107,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 	},
 	sewaddle: {
 		learnset: {
-
+			pounce: ["8L1"],
 			tackle: ["8L1"],
 			stringshot: ["8L1"],
 			bugbite: ["8L1"],
@@ -26158,7 +26166,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 	},
 	swadloon: {
 		learnset: {
-
+			pounce: ["8L1"],
 			tackle: ["8L1"],
 			stringshot: ["8L1"],
 			bugbite: ["8L1"],
@@ -26293,6 +26301,8 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			throatchop: ["8L1"],
 			healbell: ["8L1"],
 			shadowclaw: ["8L1"],
+			xscissor: ["8L1"],
+			pounce: ["8L1"],
 		},
 	},
 	venipede: {
@@ -29873,7 +29883,8 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			honeclaws: ["8L1"],
 			aurasphere: ["8L1"],
 			bounce: ["8L1"],
-			calmmindhighjumpkick: ["8L1"],
+			calmmind: ["8L1"],
+			highjumpkick: ["8L1"],
 			jumpkick: ["8L1"],
 			feint: ["8L1"],
 			focuspunch: ["8L1"],
@@ -29944,7 +29955,8 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			honeclaws: ["8L1"],
 			aurasphere: ["8L1"],
 			bounce: ["8L1"],
-			calmmindhighjumpkick: ["8L1"],
+			calmmind: ["8L1"],
+			highjumpkick: ["8L1"],
 			jumpkick: ["8L1"],
 			feint: ["8L1"],
 			focuspunch: ["8L1"],
@@ -30092,6 +30104,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			steelwing: ["8L1"],
 			stompingtantrum: ["8L1"],
 			zenheadbutt: ["8L1"],
+			dracometeor: ["8L1"],
 		},
 	},
 	golett: {
@@ -30483,6 +30496,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			skillswap: ["8L1"],
 			solarbeam: ["8L1"],
 			zenheadbutt: ["8L1"],
+			psyshock: ["8L1"],
 		},
 	},
 	bunnelby: {
@@ -34803,6 +34817,8 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			icywind: ["8L1"],
 			metronome: ["8L1"],
 			playrough: ["8L1"],
+			drainpunch: ["8L1"],
+			trickroom: ["8L1"],
 		},
 	},
 	bruxish: {
@@ -35191,6 +35207,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			shockwave: ["8L1"],
 			earthquake: ["8L1"],
 			stoneedge: ["8L1"],
+			dracometeor: ["8L1"],
 		},
 	},
 	magearna: {
@@ -35260,11 +35277,12 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			metronome: ["8L1"],
 			signalbeam: ["8L1"],
 			solarbeam: ["8L1"],
+			heartswap: ["8L1"],
 		},
 	},
 	magearnaoriginal: {
 		learnset: {
-
+			heartswap: ["8L1"],
 			gyroball: ["8L1"],
 			helpinghand: ["8L1"],
 			defensecurl: ["8L1"],
@@ -38419,6 +38437,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			tidyup: ["8L1"],
 			followme: ["8L1"],
 			shadowclaw: ["8L1"],
+			taunt: ["8L1"],
 		},
 	},
 	fidough: {
@@ -39202,6 +39221,8 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			stompingtantrum: ["8L1"],
 			wildcharge: ["8L1"],
 			comeuppance: ["8L1"],
+			gigaimpact: ["8L1"],
+			hyperbeam: ["8L1"],
 		},
 	},
 	shroodle: {
@@ -44992,6 +45013,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			skyuppercut: ["8L1"],
 			dynamicpunch: ["8L1"],
 			megapunch: ["8L1"],
+			rockpolish: ["8L1"],
 		},
 	},
 	mercurie: {
@@ -46288,6 +46310,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			haze: ["8L1"],
 			mysticalfire: ["8L1"],
 			outrage: ["8L1"],
+			dracometeor: ["8L1"],
 		},
 	},
 	geareon: {
@@ -46820,6 +46843,8 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			aromaticmist: ["8L1"],
 			hurricane: ["8L1"],
 			craftyshield: ["8L1"],
+			stunspore: ["8L1"],
+			ragepowder: ["8L1"],
 		},
 	},
 	duochondrion: {
@@ -47974,6 +47999,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			mistyterrain: ["8L1"],
 			mist: ["8L1"],
 			mistyexplosion: ["8L1"],
+			hydropump: ["8L1"],
 		},
 	},
 	lunatoneyb: {
@@ -48208,6 +48234,8 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			skillswap: ["8L1"],
 			solarbeam: ["8L1"],
 			steelwing: ["8L1"],
+			stunspore: ["8L1"],
+			ragepowder: ["8L1"],
 		},
 	},
 	lumineonyb: {
@@ -48286,6 +48314,8 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			solarbeam: ["8L1"],
 			steelwing: ["8L1"],
 			spotlight: ["8L1"],
+			stunspore: ["8L1"],
+			ragepowder: ["8L1"],
 		},
 	},
 	minccinoyb: {
