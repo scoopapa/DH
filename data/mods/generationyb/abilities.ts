@@ -1278,4 +1278,12 @@ coldcut: {
 		shortDesc: "This side's Steel-types can't have stats lowered or status inflicted by other Pokemon.",
 		num: 283,
 	},
+	galewings: {
+		onModifyPriority(priority, pokemon, target, move) {
+			if (move?.type === 'Flying' && pokemon.hp >= pokemon.maxhp / 2) return priority + 1;
+		},
+		name: "Gale Wings",
+		rating: 3,
+		num: 177,
+	},
 };
