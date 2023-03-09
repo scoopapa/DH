@@ -3688,6 +3688,10 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		isNonstandard: null,
 	},
+	heartswap: {
+		inherit: true,
+		isNonstandard: null,
+	},
 	mortalspin: {
 		num: 866,
 		accuracy: 100,
