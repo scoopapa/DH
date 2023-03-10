@@ -1283,6 +1283,7 @@ coldcut: {
 			if (move?.type === 'Flying' && pokemon.hp >= pokemon.maxhp / 2) return priority + 1;
 		},
 		name: "Gale Wings",
+		shortDesc: "If this Pokemon has 50% of its max HP or more, its Flying-type moves have their priority increased by 1.",
 		rating: 3,
 		num: 177,
 	},
