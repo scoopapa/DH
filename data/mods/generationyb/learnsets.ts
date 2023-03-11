@@ -38307,6 +38307,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			hyperbeam: ["8L1"],
 			forcepalm: ["8L1"],
 			bodypress: ["8L1"],
+			doubleshock: ["8L1"],
 		},
 	},
 	tandemaus: {
