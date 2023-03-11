@@ -369,6 +369,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			if (!source.side.pokemon.filter(ally => ally.fainted).length) {
 				return false;
 			}
+			this.add("-message","Warning: this move is bugged. You can use the \"/switch\" command to pick which pokemon you want to revive. Syntax: /switch [number], where [number] is the position of the pokemon in your party that you want to revive.");
 		},
 		slotCondition: 'revivalblessing',
 		// No this not a real switchout move
