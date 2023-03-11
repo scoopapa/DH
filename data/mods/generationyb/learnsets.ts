@@ -40272,6 +40272,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			hyperbeam: ["8L1"],
 			zenheadbutt: ["8L1"],
 			steelbeam: ["8L1"],
+			highhorsepower: ["8L1"],
 		},
 	},
 	cyclizar: {
