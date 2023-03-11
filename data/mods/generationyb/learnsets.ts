@@ -21572,6 +21572,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			metronome: ["8L1"],
 			stompingtantrum: ["8L1"],
 			zenheadbutt: ["8L1"],
+			stoneedge: ["8L1"],
 		},
 	},
 	rampardos: {
@@ -21664,6 +21665,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			focusblast: ["8L1"],
 			hyperbeam: ["8L1"],
 			superpower: ["8L1"],
+			stoneedge: ["8L1"],
 		},
 	},
 	shieldon: {
@@ -33375,6 +33377,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			icywind: ["8L1"],
 			steelwing: ["8L1"],
 			detect: ["8L1"],
+			taunt: ["8L1"],
 		},
 	},
 	rockruff: {
@@ -39843,6 +39846,8 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			calmmind: ["8L1"],
 			sludgebomb: ["8L1"],
 			healingwish: ["8L1"],
+			trickroom: ["8L1"],
+			psyshock: ["8L1"],
 		},
 	},
 	tinkatink: {
@@ -40410,6 +40415,8 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			hypervoice: ["8L1"],
 			metronome: ["8L1"],
 			stompingtantrum: ["8L1"],
+			rockslide: ["8L1"],
+			poweruppunch: ["8L1"],
 		},
 	},
 	glimmet: {
@@ -45909,7 +45916,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			mudbath: ["8L1"],
 			brickbreak: ["8L1"],
 			drainpunch: ["8L1"],
-			heartbeart: ["8L1"],
+			heartbeat: ["8L1"],
 			ironhead: ["8L1"],
 			rockslide: ["8L1"],
 			bulldoze: ["8L1"],
@@ -45974,7 +45981,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			mudbath: ["8L1"],
 			brickbreak: ["8L1"],
 			drainpunch: ["8L1"],
-			heartbeart: ["8L1"],
+			heartbeat: ["8L1"],
 			ironhead: ["8L1"],
 			rockslide: ["8L1"],
 			bulldoze: ["8L1"],
