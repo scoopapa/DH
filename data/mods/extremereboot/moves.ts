@@ -191,10 +191,10 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		onHit(target, source) {
 			let b: BoostName;
 			let negBoosts = {};
-			for (b in pokemon.boosts) {
-				if (pokemon.boosts[b] < 0) negBoosts[b] = pokemon.boosts[b] * -1;
+			for (b in source.boosts) {
+				if (source.boosts[b] < 0) negBoosts[b] = source.boosts[b] * -1;
 			}
-			if (negBoosts !== {}) this.boost(negBoosts, pokemon);
+			if (negBoosts !== {}) this.boost(negBoosts, source);
 			this.heal(source.baseMaxhp - source.hp, source, source);
 			source.cureStatus();
 			source.addVolatile('mustrecharge');
@@ -803,10 +803,10 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		onHit(target, source, move){
 			let b: BoostName;
 			let negBoosts = {};
-			for (b in pokemon.boosts) {
-				if (pokemon.boosts[b] < 0) negBoosts[b] = pokemon.boosts[b] * -1;
+			for (b in source.boosts) {
+				if (source.boosts[b] < 0) negBoosts[b] = source.boosts[b] * -1;
 			}
-			if (negBoosts !== {}) this.boost(negBoosts, pokemon);
+			if (negBoosts !== {}) this.boost(negBoosts, source);
 		},
 		priority: 0,
 		heal: [1,2],
@@ -1132,7 +1132,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		category: "Status",
 		pp: 10,
 		type: "Storm",
-		shortDesc: "Protects the user for the turn. If a special attack is blocked, this Pokémon's Attack and Special Attack are boosted 1 stage.",
+		shortDesc: "Protects user. If hit by a special attack, +1 Atk and SpA.",
 		priority: 4,
 		flags: {},
 		stallingMove: true,
@@ -1881,7 +1881,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		flags: {protect: 1, mirror: 1},
 		target: "normal",
 		secondary: {
-			boost: {
+			boosts: {
 				def: -1,
 			},
 			chance: 10,
@@ -1947,7 +1947,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		flags: {protect: 1, mirror: 1},
 		target: "normal",
 		secondary: {
-			boost: {
+			boosts: {
 				spe: -1,
 			},
 			chance: 100,
@@ -2622,10 +2622,10 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		onHit(target, source, move) {
 			let b: BoostName;
 			let negBoosts = {};
-			for (b in pokemon.boosts) {
-				if (pokemon.boosts[b] < 0) negBoosts[b] = pokemon.boosts[b] * -1;
+			for (b in source.boosts) {
+				if (source.boosts[b] < 0) negBoosts[b] = source.boosts[b] * -1;
 			}
-			if (negBoosts !== {}) this.boost(negBoosts, pokemon);
+			if (negBoosts !== {}) this.boost(negBoosts, source);
 			source.cureStatus();
 		},
 		priority: 0,
@@ -4195,8 +4195,10 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 						pokemon.m.fieldTurns++;
 						if (pokemon.m.fieldTurns > pokemon.activeTurns) pokemon.m.fieldTurns = pokemon.activeTurns;
 						if (pokemon.m.fieldTurns === 3) {
-							if (pokemon.hasType("Serenity") || pokemon.hasType("Sea")) pokemon.heal(pokemon.baseMaxhp / 2);
-							else pokemon.heal(pokemon.baseMaxhp / 4);
+							console.log("rice field");
+							console.log(pokemon.name);
+							if (pokemon.hasType("Serenity") || pokemon.hasType("Sea")) this.heal(pokemon.baseMaxhp / 2, pokemon);
+							else this.heal(pokemon.baseMaxhp / 4,pokemon);
 						}
 					}
 				}
@@ -4204,7 +4206,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			},
 			onEnd() {
 				if (!this.effectData.duration) this.eachEvent('Terrain');
-				this.add('-fieldend', 'move: Pumpkin Field');
+				this.add('-fieldend', 'move: Rice Field');
 			},
 		},
 		target: "all",
@@ -4640,11 +4642,12 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		shortDesc: "This Pokémon heals 25% of its Max HP after a turn when it uses this move. Contact",
 		onHit(target, source) {
 			source.addVolatile('sereneslice');
+			source.volatiles['sereneslice'].turn = this.turn;
 		},
 		condition: {
 			duration: 1,
 			onEnd(pokemon) {
-				this.heal(Math.ceil(pokemon.maxhp * 0.25), pokemon);
+				if (this.effectData.turn = pokemon.battle.turn) this.heal(Math.ceil(pokemon.maxhp * 0.25), pokemon);
 			}
 		},
 		priority: 0,
@@ -4847,7 +4850,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		secondary: null,
 		onHit(target, source, move) {
 			let switched = false;
-			for (const foe of source.side.foe.pokemon) {
+			for (const foe of source.side.foe.active) {
 				if (foe.newlySwitched) switched = true;
 			}
 			if (switched) this.boost(move.boosts);
@@ -6161,17 +6164,19 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		pp: 15,
 		type: "Earth",
 		shortDesc: "If user's stats are raised, lowers the foe's corresponding stat by one for each boost.",
-		onHit(target, source) {
-			let boosts = source.positiveBoosts();
-			for (boost in this.boosts) {
-				boosts[boost] = -1;
-			}
-			this.boost(boosts, target, source, null, true, false);
+		secondary: {
+			chance: 100,
+			onHit(target, source) {
+				let targetBoost = {};
+				for (const boost in source.boosts) {
+					if (source.boosts[boost] > 0) targetBoost[boost] = -1;
+				}
+				this.boost(targetBoost, target, source, null, true, false);
+			},
 		},
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
 		target: "normal",
-		secondary: null,
 	},
 	// Coded
 	twister: {
@@ -6215,7 +6220,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		target: "normal",
 		secondary: null,
 	},
-	// Coded
+	// Coded and Tested
 	typhoon: {
 		name: "Typhoon",
 		accuracy: 100,
@@ -6342,7 +6347,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		pp: 1,
+		pp: .625,
 		type: "Manmade",
 		shortDesc: "The user's Attack, Defense, Sp. Atk, Sp. Def, and Speed rise by 1 stage.",
 		boosts: {
@@ -6397,10 +6402,10 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		onHit(target, source) {
 			let b: BoostName;
 			let negBoosts = {};
-			for (b in pokemon.boosts) {
-				if (pokemon.boosts[b] < 0) negBoosts[b] = pokemon.boosts[b] * -1;
+			for (b in source.boosts) {
+				if (source.boosts[b] < 0) negBoosts[b] = source.boosts[b] * -1;
 			}
-			if (negBoosts !== {}) this.boost(negBoosts, pokemon);
+			if (negBoosts !== {}) this.boost(negBoosts, source);
 			source.cureStatus();
 			const negativeVolatiles = ['energysiphon', 'tantalize', 'shroomspores', 'partiallytrapped', 'rabidmaw', 'pollinate', 'pheromonalgas', 
 										'moonblade', 'mindcleansing', 'torment', 'Deafened', 'hypnotize', 'blasphemy', 'void', 'technocut', 

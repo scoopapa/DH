@@ -305,6 +305,38 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		rating: 2.5,
 		gen: 6,
 	},
+	brainpower: {
+		onModifySpAPriority: 5,
+		onModifySpA(spa) {
+			return this.chainModify(2);
+		},
+		name: "Brain Power",
+    	shortDesc: "This Pokemon's Special Attack is doubled.",
+		rating: 5,
+	},
+	neuroforce: {
+		onModifyDamage(damage, source, target, move) {
+			if (move && target.getMoveHitData(move).typeMod > 0) {
+				return this.chainModify([0x1400, 0x1000]);
+			}
+		},
+		name: "Neuroforce",
+		rating: 2.5,
+		num: 233,
+		gen: 6,
+	},
+	bugzapper: {
+		onTryHit(target, source, move) {
+			if (target !== source && move.type === 'Bug') {
+				if (!source.addVolatile('trapped', target, move, 'trapper')) {
+					this.add('-immune', target, '[from] ability: Bug Zapper');
+				}
+				return null;
+			}
+		},
+		name: "Bug Zapper",
+		rating: 5,
+	},
 	
 /*	
 // ngas is so cringe

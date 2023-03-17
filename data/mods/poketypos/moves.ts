@@ -349,6 +349,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			return this.clampIntRange(Math.floor(target.getUndynamaxedHP() / 2), 1);
 		},
 		category: "Special",
+      shortDesc: "Does damage equal to 1/2 target's current HP.",
 		name: "Ruination",
 		pp: 10,
 		priority: 0,
@@ -357,6 +358,23 @@ export const Moves: {[moveid: string]: MoveData} = {
 		target: "normal",
 		type: "Dark",
 		contestType: "Tough",
+	},
+	icespinner: {
+		num: 314,
+		accuracy: 100,
+		basePower: 80,
+		category: "Physical",
+		shortDesc: "Ends the effects of terrains.",
+		name: "Ice Spinner",
+		pp: 15,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		onHit() {
+			this.field.clearTerrain();
+		},
+		secondary: null,
+		target: "normal",
+		type: "Ice",
 	},
 	
 	/*Old move changes*/
@@ -974,5 +992,67 @@ export const Moves: {[moveid: string]: MoveData} = {
 		secondary: null,
 		target: "normal",
 		type: "Ground",
+	},
+	runicrebellion: {
+		num: 287,
+		accuracy: 100,
+		basePower: 80,
+		category: "Physical",
+		name: "Runic Rebellion",
+		shortDesc: "Cures user’s non-volatile status conditions",
+		pp: 20,
+		priority: 0,
+		flags: {snatch: 1},
+		self: {
+			onHit(source) {
+				for (const ally of source.side.pokemon) {
+					ally.cureStatus();
+				}
+			},
+		},
+		secondary: null,
+		target: "normal",
+		type: "Psychic",
+		zMove: {effect: 'heal'},
+		contestType: "Cute",
+	},
+	tripledive: {
+		num: 813,
+		accuracy: 95,
+		basePower: 30,
+		category: "Physical",
+		name: "Triple Dive",
+		shortDesc: "Hits 3 times.",
+		pp: 10,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		multihit: 3,
+		secondary: null,
+		target: "normal",
+		type: "Water",
+		zMove: {basePower: 120},
+		maxMove: {basePower: 140},
+	},
+	trailblaze: {
+		num: 488,
+		accuracy: 100,
+		basePower: 50,
+		category: "Physical",
+		name: "Trailblaze",
+		shortDesc: "100% chance to raise the user's Speed by 1.",
+		pp: 20,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		secondary: {
+			chance: 100,
+			self: {
+				boosts: {
+					spe: 1,
+				},
+			},
+		},
+		target: "normal",
+		type: "Grass",
+		contestType: "Cool",
 	},
 };

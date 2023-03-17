@@ -87,4 +87,24 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
       tier: "Poketypos",
       doublesTier: "Poketypos", 
 	},
+   zarune: {
+      tier: "Poketypos",
+      doublesTier: "Poketypos", 
+	},
+	fetagross: {
+      tier: "Poketypos",
+      doublesTier: "Poketypos", 
+	},
+	ironthreads: {
+      tier: "Poketypos",
+      doublesTier: "Poketypos", 
+	},
+	toedscruel: {
+      tier: "Poketypos",
+      doublesTier: "Poketypos", 
+	},
+	wugtrio: {
+      tier: "Poketypos",
+      doublesTier: "Poketypos", 
+	},
 };

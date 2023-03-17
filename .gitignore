@@ -25,3 +25,4 @@ logs/errors.txt
 data/mods/bookofenigmas/scripts.ts
 logs/errors.txt
 logs/.gitindex
+*.m

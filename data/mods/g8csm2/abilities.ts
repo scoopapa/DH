@@ -17,9 +17,9 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 	},
 	dauntlessshield: {
 		onStart(pokemon) {
-			if (this.effectData.shieldBoost) return;
+			// if (this.effectData.shieldBoost) return;
 			if (this.boost({def: 1}, pokemon)) {
-				this.effectData.shieldBoost = true;
+				// this.effectData.shieldBoost = true;
 			}
 		},
 		name: "Dauntless Shield",

@@ -68,6 +68,14 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData("Learnsets", "swampert").learnset.aquajet = ["6L1"];
 		this.modData("Learnsets", "swampert").learnset.gunkshot = ["6L1"];
 		this.modData("Learnsets", "swampert").learnset.poisonjab = ["6L1"];
-
+		this.modData("Learnsets", "pidgeot").learnset.focusblast = ["6L1"];
+		this.modData("Learnsets", "absol").learnset.closecombat = ["6L1"];
+		this.modData("Learnsets", "absol").learnset.moonblast = ["6L1"];
+		this.modData("Learnsets", "absol").learnset.moonlight = ["6L1"];
+		this.modData("Learnsets", "medicham").learnset.aurasphere = ["6L1"];
+		this.modData("Learnsets", "medicham").learnset.thunderbolt = ["6L1"];
+		this.modData("Learnsets", "medicham").learnset.closecombat = ["6L1"];
+		this.modData("Learnsets", "medicham").learnset.gunkshot = ["6L1"];
+		this.modData("Learnsets", "medicham").learnset.healingwish = ["6L1"];
 	},
 };

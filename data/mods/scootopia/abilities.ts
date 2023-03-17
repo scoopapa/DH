@@ -69,9 +69,9 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		num: 210,
 	},
 	firmfooting: {
-		shortDesc: "Immune to Special Flying moves, +1 SpD if hit by one.",
+		shortDesc: "Immune to Wind moves, +1 SpD if hit by one.",
 		onTryHit(target, source, move) {
-			if (target !== source && move.type === 'Flying' && move.category === "Special") {
+			if (target !== source && move.flags["wind"]) {
 				if (!this.boost({spd: 1})) {
 					this.add('-immune', target, '[from] ability: Firm Footing');
 				}
@@ -212,7 +212,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		onStart(pokemon) {
 			if (pokemon.baseSpecies.baseSpecies !== 'Jaegorm' || pokemon.transformed) return;
 			if (pokemon.hp > pokemon.maxhp / 4) {
-				if (pokemon.species.id === 'Jaegorm') {
+				if (pokemon.species.id === 'jaegorm') {
 					pokemon.formeChange('Jaegorm-Collective');
 				}
 			} else {
@@ -228,7 +228,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 				pokemon.transformed || !pokemon.hp
 			) return;
 			if (pokemon.hp > pokemon.maxhp / 4) {
-				if (pokemon.species.id === 'Jaegorm') {
+				if (pokemon.species.id === 'jaegorm') {
 					pokemon.formeChange('Jaegorm-Collective');
 				}
 			} else {
@@ -242,6 +242,14 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		shortDesc: "If user is Jaegorm, changes to Collective Form if it has > 1/4 max HP, else Solo Form.",
 		rating: 3,
 		num: 208,
+	},
+	shellbunker: {
+		onDamage(damage, target, source, effect) {
+			if (effect.effectType !== 'Move' || !target.hurtThisTurn) return damage;
+			return damage / 2;
+		},
+		name: "Shell Bunker",
+		shortDesc: "After taking damage, Def and SpD are doubled for the rest of the turn.",
 	},
 	crystalline: {
 		onSourceModifyAtkPriority: 6,
@@ -280,5 +288,36 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		shortDesc: "Reduces damage from Fairy and Feral by 50%.",
 		name: "Wild Roots",
 		rating: 3.5,
+	},
+	growthpower: {
+		onTryHitPriority: 1,
+		onTryHit(target, source, move) {
+			if (target !== source && move.type === 'Grass') {
+				this.field.setTerrain('grassyterrain');
+				this.add('-immune', target, '[from] ability: Growth Power');
+				return null;
+			}
+		},
+		onAllyTryHitSide(target, source, move) {
+			if (target === this.effectData.target || target.side !== source.side) return;
+			if (move.type === 'Grass') {
+				this.field.setTerrain('grassyterrain');
+			}
+		},
+		onSwitchIn(pokemon) {
+			if (pokemon.hp > pokemon.maxhp / 2) target.m.growthPower = false;
+		},
+		onResidual(pokemon) {
+			if (pokemon.hp > pokemon.maxhp / 2) target.m.growthPower = false;
+		},
+		onDamage(damage, target, source, move) {
+			if (!move || move.effectType !== 'Move' || !source) return;
+			if (!target.m.growthPower) {
+				target.m.growthPower = true
+				this.field.setTerrain('grassyterrain');
+			}
+		},
+		shortDesc: "If knocked below 50% or hit by a Grass move, sets Grassy Terrain. Immune to Grass moves.",
+		name: "Growth Power",
 	},
 };

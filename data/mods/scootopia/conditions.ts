@@ -20,7 +20,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 		onResidual(pokemon) {
 			this.damage(pokemon.baseMaxhp / 16);
 		},
-		onModifySpA(spe, pokemon) {
+		onModifySpA(spa, pokemon) {
 			return this.chainModify(0.5);
 		},
 	},
@@ -58,6 +58,9 @@ export const Conditions: {[k: string]: ConditionData} = {
 				return;
 			}
 			return false;
+		},
+		onModifySpe(spe, pokemon) {
+			return this.chainModify(0.5);
 		},
 	},
 };

@@ -20,8 +20,14 @@ export const Items: {[itemid: string]: ItemData} = {
 				this.add('-start', pokemon, 'typechange', pokemon.getTypes(true).join('/'), '[silent]');
 			}
 		},
+		onUpdate(pokemon) {
+			if (pokemon.side.usedSuperType && pokemon.side.superTypeUser === pokemon.fullname && !pokemon.hasType('Crystal')) {
+				pokemon.setType([pokemon.types[0],"Crystal"]);
+				this.add('-start', pokemon, 'typechange', pokemon.getTypes(true).join('/'), '[silent]');
+			}
+		},
 		onTakeItem(item, pokemon, source) {
-			if ((source && source.baseSpecies.num === 1130) || pokemon.baseSpecies.num === 1130) {
+			if (source && source.hasType("Crystal")) {
 				return false;
 			}
 			return true;
@@ -56,8 +62,14 @@ export const Items: {[itemid: string]: ItemData} = {
 				this.add('-start', pokemon, 'typechange', pokemon.getTypes(true).join('/'), '[silent]');
 			}
 		},
+		onUpdate(pokemon) {
+			if (pokemon.side.usedSuperType && pokemon.side.superTypeUser === pokemon.fullname && !pokemon.hasType('Feral')) {
+				pokemon.setType([pokemon.types[0],"Feral"]);
+				this.add('-start', pokemon, 'typechange', pokemon.getTypes(true).join('/'), '[silent]');
+			}
+		},
 		onTakeItem(item, pokemon, source) {
-			if ((source && source.baseSpecies.num === 1130) || pokemon.baseSpecies.num === 1130) {
+			if (source && source.hasType("Feral")) {
 				return false;
 			}
 			return true;
