@@ -1,131 +1,33 @@
 export const Items: {[itemid: string]: ModdedItemData} = {
-// Gen 9 Items
-	abilityshield: {
-		name: "Ability Shield",
-		spritenum: 0, // TODO
-		ignoreKlutz: true,
-		// Neutralizing Gas protection implemented in Pokemon.ignoringAbility() within sim/pokemon.ts
-		// and in Neutralizing Gas itself within data/abilities.ts
-		onSetAbility(ability, target, source, effect) {
-			if (effect && effect.effectType === 'Ability' && effect.name !== 'Trace') {
-				this.add('-ability', source, effect);
-			}
-			this.add('-block', target, 'item: Ability Shield');
-			return null;
+// Link Brace	
+	linkbrace: {
+		name: "Link Brace",
+		spritenum: 658,
+		onTakeItem: false,
+		onSwitchIn(pokemon) {
+			this.add('-item', pokemon, 'Link Brace');
+			this.add('-anim', pokemon, "Cosmic Power", pokemon);
+			this.useMove("Conversion", pokemon);
+			this.add('-message', `${pokemon.name}'s Link Brace changed its type!`);
 		},
-		// Mold Breaker protection implemented in Battle.suppressingAbility() within sim/battle.ts
-		num: 1881,
+		onBasePowerPriority: 15,
+		onBasePower(basePower, user, target, move) {
+			if (user.hasType(move.type) && !move.priority > 0.1) {
+				return this.chainModify(1.2);
+			}
+		},
+		onTryHit(pokemon, target, move) {
+			if (move.id === 'soak' || move.id === 'magicpowder') {
+				this.add('-immune', pokemon, '[from] item: Link Brace');
+				return null;
+			}
+		},
+		num: -1000,
 		gen: 8,
-	},
-	clearamulet: {
-		name: "Clear Amulet",
-		spritenum: 0, // TODO
-		onTryBoost(boost, target, source, effect) {
-			if (source && target === source) return;
-			let showMsg = false;
-			let i: BoostID;
-			for (i in boost) {
-				if (boost[i]! < 0) {
-					delete boost[i];
-					showMsg = true;
-				}
-			}
-			if (showMsg && !(effect as ActiveMove).secondaries && effect.id !== 'octolock') {
-				this.add('-fail', target, 'unboost', '[from] item: Clear Amulet', '[of] ' + target);
-			}
-		},
-		num: 1882,
-		gen: 8,
-	},
-	mirrorherb: {
-		name: "Mirror Herb",
-		fling: {
-			basePower: 10,
-		},
-		spritenum: 0, // TODO
-		onFoeAfterBoost(boost, target, source, effect) {
-			if (effect?.name === 'Opportunist' || effect?.name === 'Mirror Herb') return;
-			const boostPlus: SparseBoostsTable = {};
-			let statsRaised = false;
-			let i: BoostID;
-			for (i in boost) {
-				if (boost[i]! > 0) {
-					boostPlus[i] = boost[i];
-					statsRaised = true;
-				}
-			}
-			if (!statsRaised) return;
-			const pokemon: Pokemon = this.effectData.target;
-			pokemon.useItem();
-			this.boost(boostPlus, pokemon);
-		},
-		num: 1883,
-		gen: 8,
-	},
-	punchingglove: {
-		name: "Punching Glove",
-		spritenum: 0, // TODO
-		onBasePowerPriority: 23,
-		onBasePower(basePower, attacker, defender, move) {
-			if (move.flags['punch']) {
-				this.debug('Punching Glove boost');
-				return this.chainModify([4506, 4096]);
-			}
-		},
-		onModifyMovePriority: 1,
-		onModifyMove(move) {
-			if (move.flags['punch']) delete move.flags['contact'];
-		},
-		num: 1884,
-		gen: 8,
-	},
-	covertcloak: {
-		name: "Covert Cloak",
-		fling: {
-			basePower: 10,
-		},
-		spritenum: 0, // TODO
-		onModifySecondaries(secondaries) {
-			this.debug('Covert Cloak prevent secondary');
-			return secondaries.filter(effect => !!(effect.self || effect.dustproof));
-		},
-		num: 1885,
-		gen: 8,
-	},
-	loadeddice: {
-		name: "Loaded Dice",
-		spritenum: 0, // TODO
-		// partially implemented in sim/battle-actions.ts:BattleActions#hitStepMoveHitLoop
-		onModifyMove(move) {
-			if (move.multiaccuracy) {
-				delete move.multiaccuracy;
-			}
-		},
-		num: 1886,
-		gen: 8,
-	},
-	boosterenergy: {
-		name: "Booster Energy",
-		spritenum: 0, // TODO
-		onUpdate(pokemon) {
-			if (pokemon.transformed) return;
-			if (this.queue.peek(true)?.choice === 'runSwitch') return;
-
-			if (pokemon.hasAbility('protosynthesis') && !this.field.isWeather('sunnyday') && pokemon.useItem()) {
-				pokemon.addVolatile('protosynthesis');
-			}
-			if (pokemon.hasAbility('quarkdrive') && !this.field.isTerrain('electricterrain') && pokemon.useItem()) {
-				pokemon.addVolatile('quarkdrive');
-			}
-		},
-		onTakeItem(item, source) {
-			if (source.baseSpecies.tags.includes("Paradox")) return false;
-			return true;
-		},
-		num: 1880,
-		gen: 9,
-	},
-
+		desc: "Changes the user's type to that of its first move. 1.2x power on STAB moves.",
+	},	
+// Will add Signature Link Braces after testing
+	
 // Regular Items
 	blunderpolicy: {
 		name: "Blunder Policy",
@@ -290,33 +192,131 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		desc: "Changes the user's type to that of its first move. 1.2x power on STAB moves.",
 	},	
 */
-	linkbrace: {
-		name: "Link Brace",
-		spritenum: 658,
-		onTakeItem: false,
-		onSwitchIn(pokemon) {
-			this.add('-item', pokemon, 'Link Brace');
-			this.add('-anim', pokemon, "Cosmic Power", pokemon);
-			this.useMove("Conversion", pokemon);
-			this.add('-message', `${pokemon.name}'s Link Brace changed its type!`);
-		},
-		onBasePowerPriority: 15,
-		onBasePower(basePower, user, target, move) {
-			if (user.hasType(move.type) && !move.priority > 0.1) {
-				return this.chainModify(1.2);
+	
+// Gen 9 Items
+	abilityshield: {
+		name: "Ability Shield",
+		spritenum: 0, // TODO
+		ignoreKlutz: true,
+		// Neutralizing Gas protection implemented in Pokemon.ignoringAbility() within sim/pokemon.ts
+		// and in Neutralizing Gas itself within data/abilities.ts
+		onSetAbility(ability, target, source, effect) {
+			if (effect && effect.effectType === 'Ability' && effect.name !== 'Trace') {
+				this.add('-ability', source, effect);
 			}
+			this.add('-block', target, 'item: Ability Shield');
+			return null;
 		},
-		onTryHit(pokemon, target, move) {
-			if (move.id === 'soak' || move.id === 'magicpowder') {
-				this.add('-immune', pokemon, '[from] item: Link Brace');
-				return null;
-			}
-		},
-		num: -1000,
+		// Mold Breaker protection implemented in Battle.suppressingAbility() within sim/battle.ts
+		num: 1881,
 		gen: 8,
-		desc: "Changes the user's type to that of its first move. 1.2x power on STAB moves.",
+	},
+	clearamulet: {
+		name: "Clear Amulet",
+		spritenum: 0, // TODO
+		onTryBoost(boost, target, source, effect) {
+			if (source && target === source) return;
+			let showMsg = false;
+			let i: BoostID;
+			for (i in boost) {
+				if (boost[i]! < 0) {
+					delete boost[i];
+					showMsg = true;
+				}
+			}
+			if (showMsg && !(effect as ActiveMove).secondaries && effect.id !== 'octolock') {
+				this.add('-fail', target, 'unboost', '[from] item: Clear Amulet', '[of] ' + target);
+			}
+		},
+		num: 1882,
+		gen: 8,
+	},
+	mirrorherb: {
+		name: "Mirror Herb",
+		fling: {
+			basePower: 10,
+		},
+		spritenum: 0, // TODO
+		onFoeAfterBoost(boost, target, source, effect) {
+			if (effect?.name === 'Opportunist' || effect?.name === 'Mirror Herb') return;
+			const boostPlus: SparseBoostsTable = {};
+			let statsRaised = false;
+			let i: BoostID;
+			for (i in boost) {
+				if (boost[i]! > 0) {
+					boostPlus[i] = boost[i];
+					statsRaised = true;
+				}
+			}
+			if (!statsRaised) return;
+			const pokemon: Pokemon = this.effectData.target;
+			pokemon.useItem();
+			this.boost(boostPlus, pokemon);
+		},
+		num: 1883,
+		gen: 8,
+	},
+	punchingglove: {
+		name: "Punching Glove",
+		spritenum: 0, // TODO
+		onBasePowerPriority: 23,
+		onBasePower(basePower, attacker, defender, move) {
+			if (move.flags['punch']) {
+				this.debug('Punching Glove boost');
+				return this.chainModify([4506, 4096]);
+			}
+		},
+		onModifyMovePriority: 1,
+		onModifyMove(move) {
+			if (move.flags['punch']) delete move.flags['contact'];
+		},
+		num: 1884,
+		gen: 8,
+	},
+	covertcloak: {
+		name: "Covert Cloak",
+		fling: {
+			basePower: 10,
+		},
+		spritenum: 0, // TODO
+		onModifySecondaries(secondaries) {
+			this.debug('Covert Cloak prevent secondary');
+			return secondaries.filter(effect => !!(effect.self || effect.dustproof));
+		},
+		num: 1885,
+		gen: 8,
+	},
+	loadeddice: {
+		name: "Loaded Dice",
+		spritenum: 0, // TODO
+		// partially implemented in sim/battle-actions.ts:BattleActions#hitStepMoveHitLoop
+		onModifyMove(move) {
+			if (move.multiaccuracy) {
+				delete move.multiaccuracy;
+			}
+		},
+		num: 1886,
+		gen: 8,
+	},
+	boosterenergy: {
+		name: "Booster Energy",
+		spritenum: 0, // TODO
+		onUpdate(pokemon) {
+			if (pokemon.transformed) return;
+			if (this.queue.peek(true)?.choice === 'runSwitch') return;
+
+			if (pokemon.hasAbility('protosynthesis') && !this.field.isWeather('sunnyday') && pokemon.useItem()) {
+				pokemon.addVolatile('protosynthesis');
+			}
+			if (pokemon.hasAbility('quarkdrive') && !this.field.isTerrain('electricterrain') && pokemon.useItem()) {
+				pokemon.addVolatile('quarkdrive');
+			}
+		},
+		onTakeItem(item, source) {
+			if (source.baseSpecies.tags.includes("Paradox")) return false;
+			return true;
+		},
+		num: 1880,
+		gen: 9,
 	},	
-// Will add Signature Link Braces after testing
-	
-	
 };
