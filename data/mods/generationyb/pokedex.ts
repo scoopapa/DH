@@ -1925,6 +1925,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 41, atk: 46, def: 47, spa: 64, spd: 47, spe: 65},
 		abilities: {0: "Blaze", H: "Last Stand"},
 		weightkg: 5,
+		evos: ["Exploat"],
 	},
 	exploat: {
 		num: 1018,
@@ -1933,6 +1934,8 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 66, atk: 71, def: 57, spa: 94, spd: 57, spe: 75},
 		abilities: {0: "Blaze", H: "Last Stand"},
 		weightkg: 10,
+		prevo: "Fyermine",
+		evos: ["Ancillarine"],
 	},
 	ancillarine: {
 		num: 1019,
@@ -1941,6 +1944,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 81, atk: 111, def: 72, spa: 109, spd: 72, spe: 85},
 		abilities: {0: "Blaze", H: "Last Stand"},
 		weightkg: 100,
+		prevo: "Exploat",
 	},
 	hydrattler: {
 		num: 1020,
@@ -2175,6 +2179,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 40, atk: 75, def: 85, spa: 30, spd: 35, spe: 45},
 		abilities: {0: "Additive Armor", 1: "Battle Armor", H: "Weak Armor"},
 		weightkg: 10,
+		evos: ["Myrmikos"],
 	},
 	myrmikos: {
 		num: 1046,
@@ -2183,6 +2188,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 60, atk: 85, def: 130, spa: 50, spd: 95, spe: 80},
 		abilities: {0: "Additive Armor", 1: "Battle Armor", H: "Weak Armor"},
 		weightkg: 50,
+		prevo: "Myrmur",
 	},
 	vismas: {
 		num: 1047,
@@ -2234,7 +2240,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		num: 1052,
 		name: "Superina",
 		types: ["Fairy", "Fire"],
-		baseStats: {hp: 67, atk: 62, def: 60, spa: 95, spd: 112, spe: 124},
+		baseStats: {hp: 67, atk: 62, def: 61, spa: 103, spd: 103, spe: 124},
 		abilities: {0: "Solar Power", 1: "Early Bird", H: "Misty Surge"},
 		weightkg: 10,
 		prevo: "Solarina",
@@ -2318,6 +2324,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 40, atk: 50, def: 30, spa: 60, spd: 30, spe: 90},
 		abilities: {0: "Slush Rush", 1: "Limber", H: "Fluffy"},
 		weightkg: 5,
+		evos: ["Frizzillina"],
 	},
 	frizzillina: {
 		num: 1062,
@@ -2326,6 +2333,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 75, atk: 85, def: 65, spa: 90, spd: 65, spe: 120},
 		abilities: {0: "Slush Rush", 1: "Limber", H: "Fluffy"},
 		weightkg: 25,
+		prevo: "Sablizz",
 	},
 	wanderou: {
 		num: 1063,
@@ -2342,6 +2350,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 50, atk: 50, def: 70, spa: 30, spd: 50, spe: 50},
 		abilities: {0: "Sweet Veil", 1: "Hyper Cutter", H: "Leaf Guard"},
 		weightkg: 50,
+		evos: ["Undahaya"],
 	},
 	undahaya: {
 		num: 1065,
@@ -2350,6 +2359,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 70, atk: 100, def: 110, spa: 60, spd: 95, spe: 85},
 		abilities: {0: "Insult to Injury", 1: "Hyper Cutter", H: "Leaf Guard"},
 		weightkg: 100,
+		prevo: "Sweetaya",
 	},
 	tarnivine: {
 		num: 1066,
@@ -2358,6 +2368,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 74, atk: 100, def: 72, spa: 90, spd: 72, spe: 46},
 		abilities: {0: "Strong Jaw", 1: "Rough Skin", H: "Hyper Cutter"},
 		weightkg: 54,
+		evos: ["Pterovine"],
 	},
 	pterovine: {
 		num: 1067,
@@ -2366,6 +2377,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 94, atk: 130, def: 82, spa: 70, spd: 82, spe: 86},
 		abilities: {0: "Strong Jaw", 1: "Rough Skin", H: "Hyper Cutter"},
 		weightkg: 108,
+		prevo: "Tarnivine",
 	},
 	chanal: {
 		num: 1068,
@@ -2446,6 +2458,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 50, atk: 65, def: 40, spa: 55, spd: 40, spe: 65},
 		abilities: {0: "Refrigerate", 1: "Aerilate", H: "Glider"},
 		weightkg: 10,
+		evos: ["Shivola"],
 	},
 	shivola: {
 		num: 1077,
@@ -2454,6 +2467,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 75, atk: 105, def: 75, spa: 105, spd: 75, spe: 80},
 		abilities: {0: "Refrigerate", 1: "Aerilate", H: "Glider"},
 		weightkg: 25,
+		prevo: "Colderium",
 	},
 	launchem: {
 		num: 1078,
@@ -2514,6 +2528,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 40, atk: 75, def: 55, spa: 50, spd: 30, spe: 65},
 		abilities: {0: "Earth Eater", 1: "Sand Force", H: "Shield Dust"},
 		weightkg: 10,
+		evos: ["Termonde"],
 	},
 	termonde: {
 		num: 1085,
@@ -2522,6 +2537,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 90, atk: 95, def: 115, spa: 70, spd: 85, spe: 65},
 		abilities: {0: "Earth Eater", 1: "Sand Force", H: "Shield Dust"},
 		weightkg: 50,
+		prevo: "Terramite",
 	},
 	immolyco: {
 		num: 1086,
@@ -2664,7 +2680,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		num: 1101,
 		name: "Trampline",
 		types: ["Psychic", "Ground"],
-		baseStats: {hp: 100, atk: 55, def: 80, spa: 110, spd: 125, spe: 70},
+		baseStats: {hp: 100, atk: 55, def: 90, spa: 110, spd: 125, spe: 60},
 		abilities: {0: "Thick Fat", 1: "Dazzling", H: "Gluttony"},
 		weightkg: 131.5,
 		prevo: "Grumpig",
