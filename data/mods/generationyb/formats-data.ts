@@ -5777,9 +5777,9 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		natDexTier: "RU",
 	},
 	fluttermane: {
-		tier: "Uber",
-		doublesTier: "DUber",
-		natDexTier: "Uber",
+		isNonstandard: "Past",
+		doublesTier: "(DUU)",
+		natDexTier: "RU",
 	},
 	slitherwing: {
 		isNonstandard: "Past",
@@ -5824,9 +5824,9 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		natDexTier: "RU",
 	},
 	ironbundle: {
-		tier: "Uber",
-		doublesTier: "DOU",
-		natDexTier: "Uber",
+		isNonstandard: "Past",
+		doublesTier: "(DUU)",
+		natDexTier: "RU",
 	},
 	ironvaliant: {
 		isNonstandard: "Past",
