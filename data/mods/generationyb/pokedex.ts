@@ -1074,7 +1074,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseSpecies: "Palafin",
 		forme: "Hero",
 		types: ["Water"],
-		baseStats: {hp: 100, atk: 160, def: 97, spa: 106, spd: 87, spe: 100},
+		baseStats: {hp: 100, atk: 130, def: 97, spa: 106, spd: 87, spe: 100},
 		abilities: {0: "Zero to Hero"},
 		heightm: 1.8,
 		weightkg: 97.4,
@@ -1863,6 +1863,14 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	falinks: {
 		inherit: true,
 		abilities: {0: "Battle Armor", 1: "Siege Engine", H: "Defiant"},
+	},
+	typhlosionhisui: {
+		inherit: true,
+		abilities: {0: "Blaze", H: "Frisk"},
+	},
+	garbodor: {
+		inherit: true,
+		baseStats: {hp: 80, atk: 95, def: 92, spa: 60, spd: 92, spe: 75},
 	},
 	fearow: {
 		inherit: true,
