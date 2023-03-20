@@ -8906,7 +8906,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "RU",
 		isNonstandard: null,
 	},
-	clawizter: {
+	clawitzer: {
 		tier: "RU",
 		isNonstandard: null,
 	},
