@@ -7937,7 +7937,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		isNonstandard: null,
 	},
 	zarudedada: {
-		tier: "OU",
+		tier: "UU",
 		isNonstandard: null,
 	},
 	glastrier: {
