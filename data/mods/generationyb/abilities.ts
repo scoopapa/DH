@@ -1287,4 +1287,20 @@ coldcut: {
 		rating: 3,
 		num: 177,
 	},
+	baddreams: {
+		onResidualOrder: 26,
+		onResidualSubOrder: 1,
+		onResidual(pokemon) {
+			if (!pokemon.hp) return;
+			for (const target of pokemon.side.foe.active) {
+				if (!target || !target.hp) continue;
+				if (target.status === 'slp' || target.hasAbility('comatose') || target.hasItem('musharnityprism')) {
+					this.damage(target.baseMaxhp / 8, target, pokemon);
+				}
+			}
+		},
+		name: "Bad Dreams",
+		rating: 1.5,
+		num: 123,
+	},
 };
