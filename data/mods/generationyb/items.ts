@@ -486,4 +486,459 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		num: 1880,
 		gen: 9,
 	},	
+
+// Ability Prisms
+	kaledityprism: {
+		name: "Kaledity Prism",
+		spritenum: 634,
+		onTakeItem: false,
+		zMove: "Sky-Piercing Slash",
+		zMoveType: "Fighting",
+		itemUser: ["Kaledzi"],
+		onModifyDamage(damage, source, target, move) {
+			if (move && target.getMoveHitData(move).typeMod > 0) {
+				return this.chainModify([0x1400, 0x1000]);
+			}
+		},
+		gen: 8,
+		desc: "(Select Ability Prism to use) Gives Kaledzi the effects of Neuroforce.",
+	},
+	menthapillityprism: {
+		name: "Menthapillity Prism",
+		spritenum: 634,
+		onTakeItem: false,
+		zMove: "Blade of Courage",
+		zMoveType: "Grass",
+		itemUser: ["Mintarin", "Sagicuta", "Menthapilli"],
+		onModifyAtkPriority: 5,
+		onModifyAtk(atk, attacker, defender, move) {
+			if (attacker.hasType(move.type) && attacker.hp <= attacker.maxhp / 3) {
+				this.debug('Heart of Courage boost');
+				return this.chainModify(1.5);
+			}
+		},
+		onModifySpAPriority: 5,
+		onModifySpA(atk, attacker, defender, move) {
+			if (attacker.hasType(move.type) && attacker.hp <= attacker.maxhp / 3) {
+				this.debug('Heart of Courage boost');
+				return this.chainModify(1.5);
+			}
+		},
+		gen: 8,
+		desc: "(Select Ability Prism to use) Gives the Mintarin line the effects of Heart of Courage.",
+	},	
+	ancillityprism: {
+		name: "Ancillity Prism",
+		spritenum: 634,
+		onTakeItem: false,
+		zMove: "Cannon of Courage",
+		zMoveType: "Fire",
+		itemUser: ["Fyermine", "Exploat", "Ancillarine"],
+		onModifyAtkPriority: 5,
+		onModifyAtk(atk, attacker, defender, move) {
+			if (attacker.hasType(move.type) && attacker.hp <= attacker.maxhp / 3) {
+				this.debug('Heart of Courage boost');
+				return this.chainModify(1.5);
+			}
+		},
+		onModifySpAPriority: 5,
+		onModifySpA(atk, attacker, defender, move) {
+			if (attacker.hasType(move.type) && attacker.hp <= attacker.maxhp / 3) {
+				this.debug('Heart of Courage boost');
+				return this.chainModify(1.5);
+			}
+		},
+		gen: 8,
+		desc: "(Select Ability Prism to use) Gives the Fyermine line the effects of Heart of Courage.",
+	},	
+	trebutalityprism: {
+		name: "Trebutality Prism",
+		spritenum: 634,
+		onTakeItem: false,
+		zMove: "Blast of Courage",
+		zMoveType: "Water",
+		itemUser: ["Hydrattler", "Zingshot", "Trebutalus"],
+		onModifyAtkPriority: 5,
+		onModifyAtk(atk, attacker, defender, move) {
+			if (attacker.hasType(move.type) && attacker.hp <= attacker.maxhp / 3) {
+				this.debug('Heart of Courage boost');
+				return this.chainModify(1.5);
+			}
+		},
+		onModifySpAPriority: 5,
+		onModifySpA(atk, attacker, defender, move) {
+			if (attacker.hasType(move.type) && attacker.hp <= attacker.maxhp / 3) {
+				this.debug('Heart of Courage boost');
+				return this.chainModify(1.5);
+			}
+		},
+		gen: 8,
+		desc: "(Select Ability Prism to use) Gives the Hydrattler line the effects of Heart of Courage.",
+	},	
+	tuamanityprism: {
+		name: "Tuamanity Prism",
+		spritenum: 634,
+		onTakeItem: false,
+		zMove: "Lost Guardian's Wrath",
+		zMoveType: "Fairy",
+		itemUser: ["Tuatoxa", "Tuakahu", "Tuamana"],
+		onModifyMove(move) {
+			if (!move || !move.flags['contact'] || move.target === 'self') return;
+			if (!move.secondaries) {
+				move.secondaries = [];
+			}
+			move.secondaries.push({
+				chance: 30,
+				status: 'psn',
+				ability: this.dex.getAbility('poisontouch'),
+			});
+		},
+		gen: 8,
+		desc: "(Select Ability Prism to use) Gives the Tuatoxa line the effects of Poison Touch.",
+	},
+	eevityprism: {
+		name: "Eevity Prism",
+		spritenum: 634,
+		onTakeItem: false,
+		zMove: "Evoblast",
+		zMoveType: "Normal",
+		itemUser: ["Eevee", "Vaporeon", "Jolteon", "Flareon", "Espeon", "Umbreon", "Glaceon", "Leafeon", "Sylveon", "Mytheon", "Geareon"],
+		onModifyMove(move) {
+			move.stab = 2;
+		},
+		gen: 8,
+		desc: "(Select Ability Prism to use) Gives the Eevee line the effects of Adaptability.",
+	},
+	accelityprism: {
+		name: "Accelity Prism",
+		spritenum: 634,
+		onTakeItem: false,
+		zMove: "Hidden Leaf Strike",
+		zMoveType: "Bug",
+		itemUser: ["Shelmet", "Accelgor"],
+		onPrepareHit(source, target, move) {
+			if (this.effectData.protean) return;
+			if (move.hasBounced || move.isFutureMove || move.sourceEffect === 'snatch') return;
+			const type = move.type;
+			if (type && type !== '???' && source.getTypes().join() !== type) {
+				if (!source.setType(type)) return;
+				this.effectData.protean = true;
+				this.add('-start', source, 'typechange', type, '[from] ability: Protean');
+			}
+		},
+		onStart(pokemon) {
+			delete this.effectData.protean;
+		},
+		gen: 8,
+		desc: "(Select Ability Prism to use) Gives the Shelmet line the effects of Protean.",
+	},
+	spirityprism: {
+		name: "Spirity Prism",
+		spritenum: 634,
+		onTakeItem: false,
+		zMove: "Fury of the 108",
+		zMoveType: "Dark",
+		itemUser: ["Spiritomb"],
+		onStart(pokemon) {
+			if (pokemon.side.totalFainted) {
+				this.add('-activate', pokemon, 'ability: Supreme Overlord');
+				const fallen = Math.min(pokemon.side.totalFainted, 5);
+				this.add('-start', pokemon, `fallen${fallen}`, '[silent]');
+				this.effectData.fallen = fallen;
+			}
+		},
+		onEnd(pokemon) {
+			this.add('-end', pokemon, `fallen${this.effectData.fallen}`, '[silent]');
+		},
+		onBasePowerPriority: 21,
+		onBasePower(basePower, attacker, defender, move) {
+			if (this.effectData.fallen) {
+				const powMod = [4096, 4506, 4915, 5325, 5734, 6144];
+				this.debug(`Supreme Overlord boost: ${powMod[this.effectData.fallen]}/4096`);
+				return this.chainModify([powMod[this.effectData.fallen], 4096]);
+			}
+		},
+		gen: 8,
+		desc: "(Select Ability Prism to use) Gives Spiritomb the effects of Supreme Overlord.",
+	},
+	druddityprism: {
+		name: "Druddity Prism",
+		spritenum: 634,
+		onTakeItem: false,
+		zMove: "Crimson Crash",
+		zMoveType: "Dragon",
+		itemUser: ["Druddigon"],
+		onBasePowerPriority: 19,
+		onBasePower(basePower, attacker, defender, move) {
+			if (defender.hurtThisTurn) {
+				this.debug('BP multiplied on damaged target');
+				return this.chainModify(1.5);
+			}
+		},
+		gen: 8,
+		desc: "(Select Ability Prism to use) Gives Druddigon the effects of Insult to Injury.",
+	},
+	eelektrityprism: {
+		name: "Eelektrity Prism",
+		spritenum: 634,
+		onTakeItem: false,
+		zMove: "Corrosive Circuit",
+		zMoveType: "Electric",
+		itemUser: ["Tynamo", "Eelektrik", "Eelektross"],
+		onSwitchOut(pokemon) {
+			pokemon.heal(pokemon.baseMaxhp / 3);
+		},
+		gen: 8,
+		desc: "(Select Ability Prism to use) Gives the Tynamo line the effects of Regenerator.",
+	},
+	tinkityprism: {
+		name: "Tinkity Prism",
+		spritenum: 634,
+		onTakeItem: false,
+		zMove: "Pixie Rust",
+		zMoveType: "Fairy",
+		itemUser: ["Tinkatink", "Tinkatuff", "Tinkaton"],
+		onModifyPriority(priority, pokemon, target, move) {
+			if (move?.category === 'Status') {
+				move.pranksterBoosted = true;
+				return priority + 1;
+			}
+		},
+		gen: 8,
+		desc: "(Select Ability Prism to use) Gives the Tinkatink line the effects of Prankster.",
+	},
+	hitmonityprism: {
+		name: "Hitmonity Prism",
+		spritenum: 634,
+		onTakeItem: false,
+		zMove: "Corkscrew Cross",
+		zMoveType: "Fighting",
+		itemUser: ["Tyrogue", "Hitmonchan", "Hitmonlee", "Hitmontop"],
+		onModifyMovePriority: -5,
+		onModifyMove(move) {
+			if (!move.ignoreImmunity) move.ignoreImmunity = {};
+			if (move.ignoreImmunity !== true) {
+				move.ignoreImmunity['Fighting'] = true;
+				move.ignoreImmunity['Normal'] = true;
+			}
+		},
+		onBoost(boost, target, source, effect) {
+			if (effect.id === 'intimidate') {
+				delete boost.atk;
+				this.add('-immune', target, '[from] ability: Scrappy');
+			}
+		},
+		gen: 8,
+		desc: "(Select Ability Prism to use) Gives the Tyrogue line the effects of Scrappy.",
+	},
+	chandelurityprism: {
+		name: "Chandelurity Prism",
+		spritenum: 634,
+		onTakeItem: false,
+		zMove: "Final Flicker",
+		zMoveType: "Fire",
+		itemUser: ["Litwick", "Lampent", "Chandelure"],
+		onBasePowerPriority: 21,
+		onBasePower(basePower, pokemon) {
+			let boosted = true;
+			for (const target of this.getAllActive()) {
+				if (target === pokemon) continue;
+				if (this.queue.willMove(target)) {
+					boosted = false;
+					break;
+				}
+			}
+			if (boosted) {
+				this.debug('Analytic boost');
+				return this.chainModify([0x14CD, 0x1000]);
+			}
+		},
+		gen: 8,
+		desc: "(Select Ability Prism to use) Gives the Litwick line the effects of Analytic.",
+	},
+	crobityprism: {
+		name: "Crobity Prism",
+		spritenum: 634,
+		onTakeItem: false,
+		zMove: "Wings of the Night",
+		zMoveType: "Flying",
+		itemUser: ["Zubat", "Golbat", "Crobat"],
+		onDamage(damage, target, source, effect) {
+			if (effect.effectType !== 'Move') {
+				if (effect.effectType === 'Ability') this.add('-activate', source, 'ability: ' + effect.name);
+				return false;
+			}
+		},
+		gen: 8,
+		desc: "(Select Ability Prism to use) Gives the Zubat line the effects of Magic Guard.",
+	},
+	dhelmisityprism: {
+		name: "Dhelmisity Prism",
+		spritenum: 634,
+		onTakeItem: false,
+		zMove: "Sunken Spirits",
+		zMoveType: "Ghost",
+		itemUser: ["Dhelmise"],
+		onStart(pokemon) {
+			let activated = false;
+			for (const target of pokemon.side.foe.active) {
+				if (!target || !this.isAdjacent(target, pokemon)) continue;
+				if (!activated) {
+					this.add('-ability', pokemon, 'Intimidate', 'boost');
+					activated = true;
+				}
+				if (target.volatiles['substitute']) {
+					this.add('-immune', target);
+				} else {
+					this.boost({atk: -1}, target, pokemon, null, true);
+				}
+			}
+		},
+		gen: 8,
+		desc: "(Select Ability Prism to use) Gives Dhelmise the effects of Intimidate.",
+	},
+	gogoatinityprism: {
+		name: "Gogoatinity Prism",
+		spritenum: 634,
+		onTakeItem: false,
+		zMove: "Go-Go Charge",
+		zMoveType: "Grass",
+		itemUser: ["Skiddo", "Gogoat"],
+		onDamagingHit(damage, target, source, move) {
+			this.field.setTerrain('grassyterrain');
+		},
+		gen: 8,
+		desc: "(Select Ability Prism to use) Gives the Skiddo line the effects of Seed Sower.",
+	},
+	flygonityprism: {
+		name: "Flygonity Prism",
+		spritenum: 634,
+		onTakeItem: false,
+		zMove: "Granular Vortex",
+		zMoveType: "Ground",
+		itemUser: ["Trapinch", "Vibrava", "Flygon"],
+		onModifyDamage(damage, source, target, move) {
+			if (target.getMoveHitData(move).typeMod < 0) {
+				this.debug('Tinted Lens boost');
+				return this.chainModify(2);
+			}
+		},
+		gen: 8,
+		desc: "(Select Ability Prism to use) Gives the Trapinch line the effects of Tinted Lens.",
+	},
+	crabominityprism: {
+		name: "Crabominity Prism",
+		spritenum: 634,
+		onTakeItem: false,
+		zMove: "Summit's Pressure",
+		zMoveType: "Ice",
+		itemUser: ["Crabrawler", "Crabominable"],
+		onSourceModifyDamage(damage, source, target, move) {
+			let mod = 1;
+			if (move.type === 'Fire') mod *= 2;
+			if (move.flags['contact']) mod /= 2;
+			return this.chainModify(mod);
+		},
+		gen: 8,
+		desc: "(Select Ability Prism to use) Gives the Crabrawler line the effects of Fluffy.",
+	},
+	meloettinityprism: {
+		name: "Meloettinity Prism",
+		spritenum: 634,
+		onTakeItem: false,
+		zMove: "Song for the World",
+		zMoveType: "Normal",
+		itemUser: ["Meloetta"],
+		onStart(pokemon) {
+			this.add('-ability', pokemon, 'Mold Breaker');
+		},
+		onModifyMove(move) {
+			move.ignoreAbility = true;
+		},
+		gen: 8,
+		desc: "(Select Ability Prism to use) Gives Meloetta the effects of Mold Breaker.",
+	},
+	drapionityprism: {
+		name: "Drapionity Prism",
+		spritenum: 634,
+		onTakeItem: false,
+		zMove: "Venomous Vice",
+		zMoveType: "Poison",
+		itemUser: ["Skorupi", "Drapion"],
+		onModifyCritRatio(critRatio, source, target) {
+			if (target && ['psn', 'tox'].includes(target.status)) return 5;
+		},
+		gen: 8,
+		desc: "(Select Ability Prism to use) Gives the Skorupi line the effects of Merciless.",
+	},
+	musharnityprism: {
+		name: "Musharnity Prism",
+		spritenum: 634,
+		onTakeItem: false,
+		zMove: "Warped Dreams",
+		zMoveType: "Psychic",
+		itemUser: ["Munna", "Musharna"],
+		onStart(pokemon) {
+			this.add('-ability', pokemon, 'Comatose');
+		},
+		onSetStatus(status, target, source, effect) {
+			if ((effect as Move)?.status) {
+				this.add('-immune', target, '[from] ability: Comatose');
+			}
+			return false;
+		},
+		gen: 8,
+		desc: "(Select Ability Prism to use) Gives the Munna line the effects of Comatose.",
+	},
+	probosityprism: {
+		name: "Probosity Prism",
+		spritenum: 634,
+		onTakeItem: false,
+		zMove: "Disturbed Ions",
+		zMoveType: "Rock",
+		itemUser: ["Nosepass", "Probopass"],
+		onTryHit(target, source, move) {
+			if (target !== source && move.type === 'Ground') {
+				if (!this.heal(target.baseMaxhp / 4)) {
+					this.add('-immune', target, '[from] ability: Earth Eater');
+				}
+				return null;
+			}
+		},
+		gen: 8,
+		desc: "(Select Ability Prism to use) Gives the Nosepass line the effects of Earth Eater.",
+	},
+	escavityprism: {
+		name: "Escavity Prism",
+		spritenum: 634,
+		onTakeItem: false,
+		zMove: "Joust of Justice",
+		zMoveType: "Steel",
+		itemUser: ["Karrablast", "Escavalier"],
+		onBasePowerPriority: 19,
+		onBasePower(basePower, attacker, defender, move) {
+			if (move.flags['slicing']) {
+				this.debug('Shapness boost');
+				return this.chainModify(1.5);
+			}
+		},
+		gen: 8,
+		desc: "(Select Ability Prism to use) Gives the Karrablast line the effects of Sharpness.",
+	},
+	wishinityprism: {
+		name: "Wishinity Prism",
+		spritenum: 634,
+		onTakeItem: false,
+		zMove: "Emergency Assembly",
+		zMoveType: "Water",
+		itemUser: ["Wishiwashi"],
+		onResidualOrder: 5,
+		onResidualSubOrder: 2,
+		onResidual(pokemon) {
+			this.add('-ability', pokemon, 'Filter Feed');
+			this.heal(pokemon.baseMaxhp / 16);
+		},
+		gen: 8,
+		desc: "(Select Ability Prism to use) Gives Wishiwash the effects of Filter Feed.",
+	},	
 };
