@@ -1,5 +1,6 @@
 export const Items: {[itemid: string]: ModdedItemData} = {
-// Link Brace	
+/*
+	// Link Brace	
 	linkbrace: {
 		name: "Link Brace",
 		spritenum: 658,
@@ -26,7 +27,203 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		gen: 8,
 		desc: "Changes the user's type to that of its first move. 1.2x power on STAB moves.",
 	},	
-// Will add Signature Link Braces after testing
+*/
+	
+	abilityprism: {
+		name: "Ability Prism",
+		spritenum: 297,
+		onTakeItem: false,
+		onSwitchIn(pokemon) {
+			this.add('-item', pokemon, 'Ability Prism');
+			if (pokemon.baseSpecies.baseSpecies === 'Kaledzi') {
+				this.add('-activate', pokemon, 'item: Ability Prism'); 
+				this.add('-anim', pokemon, "Conversion", pokemon);
+				pokemon.setItem('kaledityprism');
+				this.add('-item', pokemon, pokemon.getItem(), '[from] item: Ability Prism');
+				this.add('-message', `${pokemon.name}'s Ability Prism gives it the effects of Neuroforce!`);
+			}
+			if (pokemon.baseSpecies.baseSpecies === 'Mintarin' || pokemon.baseSpecies.baseSpecies === 'Sagicuta' || pokemon.baseSpecies.baseSpecies === 'Menthapilli') {
+				this.add('-activate', pokemon, 'item: Ability Prism'); 
+				this.add('-anim', pokemon, "Conversion", pokemon);
+				pokemon.setItem('menthapillityprism');
+				this.add('-item', pokemon, pokemon.getItem(), '[from] item: Ability Prism');
+				this.add('-message', `${pokemon.name}'s Ability Prism gives it the effects of Heart of Courage!`);
+			}
+			if (pokemon.baseSpecies.baseSpecies === 'Hydrattler' || pokemon.baseSpecies.baseSpecies === 'Zingshot' || pokemon.baseSpecies.baseSpecies === 'Trebutalus') {
+				this.add('-activate', pokemon, 'item: Ability Prism'); 
+				this.add('-anim', pokemon, "Conversion", pokemon);
+				pokemon.setItem('trebutalityprism');
+				this.add('-item', pokemon, pokemon.getItem(), '[from] item: Ability Prism');
+				this.add('-message', `${pokemon.name}'s Ability Prism gives it the effects of Heart of Courage!`);
+			}
+			if (pokemon.baseSpecies.baseSpecies === 'Fyermine' || pokemon.baseSpecies.baseSpecies === 'Exploat' || pokemon.baseSpecies.baseSpecies === 'Ancillarine') {
+				this.add('-activate', pokemon, 'item: Ability Prism'); 
+				this.add('-anim', pokemon, "Conversion", pokemon);
+				pokemon.setItem('ancillityprism');
+				this.add('-item', pokemon, pokemon.getItem(), '[from] item: Ability Prism');
+				this.add('-message', `${pokemon.name}'s Ability Prism gives it the effects of Heart of Courage!`);
+			}
+			if (pokemon.baseSpecies.baseSpecies === 'Tuatoxa' || pokemon.baseSpecies.baseSpecies === 'Tuakahu' || pokemon.baseSpecies.baseSpecies === 'Tuamana') {
+				this.add('-activate', pokemon, 'item: Ability Prism'); 
+				this.add('-anim', pokemon, "Conversion", pokemon);
+				pokemon.setItem('tuamanityprism');
+				this.add('-item', pokemon, pokemon.getItem(), '[from] item: Ability Prism');
+				this.add('-message', `${pokemon.name}'s Ability Prism gives it the effects of Poison Touch!`);
+			}
+			if (pokemon.baseSpecies.baseSpecies === 'Eevee' || pokemon.baseSpecies.baseSpecies === 'Vaporeon' || 
+				 pokemon.baseSpecies.baseSpecies === 'Jolteon' || pokemon.baseSpecies.baseSpecies === 'Flareon' || pokemon.baseSpecies.baseSpecies === 'Umbreon' || 
+				 pokemon.baseSpecies.baseSpecies === 'Espeon' || pokemon.baseSpecies.baseSpecies === 'Leafeon' || pokemon.baseSpecies.baseSpecies === 'Glaceon' || 
+				 pokemon.baseSpecies.baseSpecies === 'Sylveon' || pokemon.baseSpecies.baseSpecies === 'Mytheon' || pokemon.baseSpecies.baseSpecies === 'Geareon') {
+				this.add('-activate', pokemon, 'item: Ability Prism'); 
+				this.add('-anim', pokemon, "Conversion", pokemon);
+				pokemon.setItem('eevityprism');
+				this.add('-item', pokemon, pokemon.getItem(), '[from] item: Ability Prism');
+				this.add('-message', `${pokemon.name}'s Ability Prism gives it the effects of Adaptability!`);
+			}
+			if (pokemon.baseSpecies.baseSpecies === 'Shelmet' || pokemon.baseSpecies.baseSpecies === 'Accelgor') {
+				this.add('-activate', pokemon, 'item: Ability Prism'); 
+				this.add('-anim', pokemon, "Conversion", pokemon);
+				pokemon.setItem('accelityprism');
+				this.add('-item', pokemon, pokemon.getItem(), '[from] item: Ability Prism');
+				this.add('-message', `${pokemon.name}'s Ability Prism gives it the effects of Protean!`);
+			}
+			if (pokemon.baseSpecies.baseSpecies === 'Spiritomb') {
+				this.add('-activate', pokemon, 'item: Ability Prism'); 
+				this.add('-anim', pokemon, "Conversion", pokemon);
+				pokemon.setItem('spirityprism');
+				this.add('-item', pokemon, pokemon.getItem(), '[from] item: Ability Prism');
+				this.add('-message', `${pokemon.name}'s Ability Prism gives it the effects of Supreme Overlord!`);
+			}
+			if (pokemon.baseSpecies.baseSpecies === 'Druddigon') {
+				this.add('-activate', pokemon, 'item: Ability Prism'); 
+				this.add('-anim', pokemon, "Conversion", pokemon);
+				pokemon.setItem('druddityprism');
+				this.add('-item', pokemon, pokemon.getItem(), '[from] item: Ability Prism');
+				this.add('-message', `${pokemon.name}'s Ability Prism gives it the effects of Insult to Injury!`);
+			}
+			if (pokemon.baseSpecies.baseSpecies === 'Tynamo' || pokemon.baseSpecies.baseSpecies === 'Eelektrik' || pokemon.baseSpecies.baseSpecies === 'Eelektross') {
+				this.add('-activate', pokemon, 'item: Ability Prism'); 
+				this.add('-anim', pokemon, "Conversion", pokemon);
+				pokemon.setItem('eelektrityprism');
+				this.add('-item', pokemon, pokemon.getItem(), '[from] item: Ability Prism');
+				this.add('-message', `${pokemon.name}'s Ability Prism gives it the effects of Regenerator!`);
+			}
+			if (pokemon.baseSpecies.baseSpecies === 'Tinkatink' || pokemon.baseSpecies.baseSpecies === 'Tinkatuff' || pokemon.baseSpecies.baseSpecies === 'Tinkaton') {
+				this.add('-activate', pokemon, 'item: Ability Prism'); 
+				this.add('-anim', pokemon, "Conversion", pokemon);
+				pokemon.setItem('tinkityprism');
+				this.add('-item', pokemon, pokemon.getItem(), '[from] item: Ability Prism');
+				this.add('-message', `${pokemon.name}'s Ability Prism gives it the effects of Prankster!`);
+			}
+			if (pokemon.baseSpecies.baseSpecies === 'Tyrogue' || pokemon.baseSpecies.baseSpecies === 'Hitmonchan' || pokemon.baseSpecies.baseSpecies === 'Hitmonlee'|| pokemon.baseSpecies.baseSpecies === 'Hitmontop') {
+				this.add('-activate', pokemon, 'item: Ability Prism'); 
+				this.add('-anim', pokemon, "Conversion", pokemon);
+				pokemon.setItem('hitmonityprism');
+				this.add('-item', pokemon, pokemon.getItem(), '[from] item: Ability Prism');
+				this.add('-message', `${pokemon.name}'s Ability Prism gives it the effects of Scrappy!`);
+			}
+			if (pokemon.baseSpecies.baseSpecies === 'Litwick' || pokemon.baseSpecies.baseSpecies === 'Lampent' || pokemon.baseSpecies.baseSpecies === 'Chandelure') {
+				this.add('-activate', pokemon, 'item: Ability Prism'); 
+				this.add('-anim', pokemon, "Conversion", pokemon);
+				pokemon.setItem('chandelurityprism');
+				this.add('-item', pokemon, pokemon.getItem(), '[from] item: Ability Prism');
+				this.add('-message', `${pokemon.name}'s Ability Prism gives it the effects of Analytic!`);
+			}
+			if (pokemon.baseSpecies.baseSpecies === 'Zubat' || pokemon.baseSpecies.baseSpecies === 'Golbat' || pokemon.baseSpecies.baseSpecies === 'Crobat') {
+				this.add('-activate', pokemon, 'item: Ability Prism'); 
+				this.add('-anim', pokemon, "Conversion", pokemon);
+				pokemon.setItem('crobityprism');
+				this.add('-item', pokemon, pokemon.getItem(), '[from] item: Ability Prism');
+				this.add('-message', `${pokemon.name}'s Ability Prism gives it the effects of Magic Guard!`);
+			}
+			if (pokemon.baseSpecies.baseSpecies === 'Dhelmise') {
+				this.add('-activate', pokemon, 'item: Ability Prism'); 
+				this.add('-anim', pokemon, "Conversion", pokemon);
+				pokemon.setItem('dhelmisityprism');
+				this.add('-item', pokemon, pokemon.getItem(), '[from] item: Ability Prism');
+				this.add('-message', `${pokemon.name}'s Ability Prism gives it the effects of Intimidate!`);
+			}
+			if (pokemon.baseSpecies.baseSpecies === 'Skiddo' || pokemon.baseSpecies.baseSpecies === 'Gogoat') {
+				this.add('-activate', pokemon, 'item: Ability Prism'); 
+				this.add('-anim', pokemon, "Conversion", pokemon);
+				pokemon.setItem('gogoatinityprism');
+				this.add('-item', pokemon, pokemon.getItem(), '[from] item: Ability Prism');
+				this.add('-message', `${pokemon.name}'s Ability Prism gives it the effects of Seed Sower!`);
+			}
+			if (pokemon.baseSpecies.baseSpecies === 'Trapinch' || pokemon.baseSpecies.baseSpecies === 'Vibrava' || pokemon.baseSpecies.baseSpecies === 'Flygon') {
+				this.add('-activate', pokemon, 'item: Ability Prism'); 
+				this.add('-anim', pokemon, "Conversion", pokemon);
+				pokemon.setItem('flygonityprism');
+				this.add('-item', pokemon, pokemon.getItem(), '[from] item: Ability Prism');
+				this.add('-message', `${pokemon.name}'s Ability Prism gives it the effects of Tinted Lens!`);
+			}
+			if (pokemon.baseSpecies.baseSpecies === 'Crabrawler' || pokemon.baseSpecies.baseSpecies === 'Crabominable') {
+				this.add('-activate', pokemon, 'item: Ability Prism'); 
+				this.add('-anim', pokemon, "Conversion", pokemon);
+				pokemon.setItem('crabominityprism');
+				this.add('-item', pokemon, pokemon.getItem(), '[from] item: Ability Prism');
+				this.add('-message', `${pokemon.name}'s Ability Prism gives it the effects of Fluffy!`);
+			}
+			if (pokemon.baseSpecies.baseSpecies === 'Meloetta') {
+				this.add('-activate', pokemon, 'item: Ability Prism'); 
+				this.add('-anim', pokemon, "Conversion", pokemon);
+				pokemon.setItem('meloettinityprism');
+				this.add('-item', pokemon, pokemon.getItem(), '[from] item: Ability Prism');
+				this.add('-message', `${pokemon.name}'s Ability Prism gives it the effects of Mold Breaker!`);
+			}
+			if (pokemon.baseSpecies.baseSpecies === 'Skorupi' || pokemon.baseSpecies.baseSpecies === 'Drapion') {
+				this.add('-activate', pokemon, 'item: Ability Prism'); 
+				this.add('-anim', pokemon, "Conversion", pokemon);
+				pokemon.setItem('drapionityprism');
+				this.add('-item', pokemon, pokemon.getItem(), '[from] item: Ability Prism');
+				this.add('-message', `${pokemon.name}'s Ability Prism gives it the effects of Merciless!`);
+			}
+			if (pokemon.baseSpecies.baseSpecies === 'Wishiwashi') {
+				this.add('-activate', pokemon, 'item: Ability Prism'); 
+				this.add('-anim', pokemon, "Conversion", pokemon);
+				pokemon.setItem('wishinityprism');
+				this.add('-item', pokemon, pokemon.getItem(), '[from] item: Ability Prism');
+				this.add('-message', `${pokemon.name}'s Ability Prism gives it the effects of Filter Feed!`);
+			}
+			if (pokemon.baseSpecies.baseSpecies === 'Munna' || pokemon.baseSpecies.baseSpecies === 'Musharna') {
+				this.add('-activate', pokemon, 'item: Ability Prism'); 
+				this.add('-anim', pokemon, "Conversion", pokemon);
+				pokemon.setItem('musharnityprism');
+				this.add('-item', pokemon, pokemon.getItem(), '[from] item: Ability Prism');
+				this.add('-message', `${pokemon.name}'s Ability Prism gives it the effects of Comatose!`);
+			}
+			if (pokemon.baseSpecies.baseSpecies === 'Nosepass' || pokemon.baseSpecies.baseSpecies === 'Probopass') {
+				this.add('-activate', pokemon, 'item: Ability Prism'); 
+				this.add('-anim', pokemon, "Conversion", pokemon);
+				pokemon.setItem('probosityprism');
+				this.add('-item', pokemon, pokemon.getItem(), '[from] item: Ability Prism');
+				this.add('-message', `${pokemon.name}'s Ability Prism gives it the effects of Levitate!`);
+			}
+			if (pokemon.baseSpecies.baseSpecies === 'Karrablast' || pokemon.baseSpecies.baseSpecies === 'Escavalier') {
+				this.add('-activate', pokemon, 'item: Ability Prism'); 
+				this.add('-anim', pokemon, "Conversion", pokemon);
+				pokemon.setItem('escavityprism');
+				this.add('-item', pokemon, pokemon.getItem(), '[from] item: Ability Prism');
+				this.add('-message', `${pokemon.name}'s Ability Prism gives it the effects of Sharpness!`);
+			}
+		},
+		onTryBoost(boost, target, source, effect) {
+			if (source && target === source) return;
+			let showMsg = false;
+			let i: BoostID;
+			for (i in boost) {
+				if (boost[i]! < 0) {
+					delete boost[i];
+					showMsg = true;
+				}
+			}
+			if (showMsg && !(effect as ActiveMove).secondaries && effect.id !== 'octolock') {
+				this.add('-fail', target, 'unboost', '[from] item: Ability Prism', '[of] ' + target);
+			}
+		},
+		gen: 8,
+		desc: "Turns into the holder's signature Ability Prism on switch-in.",
+	},
 	
 // Regular Items
 	blunderpolicy: {
@@ -158,40 +355,10 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		gen: 8,
 		desc: "On switch-in, this Pokemon removes screens from both sides of the field and the item is consumed.",
 	},
+	
+// Ability Prisms
 
 
-// Link Braces
-/*
-	linkbrace: {
-		name: "Link Brace",
-		spritenum: 658,
-		onTakeItem: false,
-		onStart(pokemon) {
-			this.add('-item', pokemon, 'Link Brace');
-			this.add('-anim', pokemon, "Cosmic Power", pokemon);
-			this.add('-message', `${pokemon.name}'s Link Brace turned it into a ${species.types[0]}-type!`);
-		},
-		onModifySpeciesPriority: 2,
-		onModifySpecies(species, target, source, effect) {
-			if (!target) return; // Chat command
-			if (effect && ['imposter', 'transform'].includes(effect.id)) return;
-			const types = [...new Set(target.baseMoveSlots.slice(0, 1).map(move => this.dex.moves.get(move.id).type))];
-			return {...species, types: types};
-		},
-		onSwitchIn(pokemon) {
-			this.add('-start', pokemon, 'typechange', (pokemon.illusion || pokemon).getTypes(true).join('/'), '[silent]');
-		},
-		onTryHit(pokemon, target, move) {
-			if (move.id === 'soak' || move.id === 'magicpowder') {
-				this.add('-immune', pokemon, '[from] ability: Oblivious');
-				return null;
-			}
-		},
-		num: -1000,
-		gen: 9,
-		desc: "Changes the user's type to that of its first move. 1.2x power on STAB moves.",
-	},	
-*/
 	
 // Gen 9 Items
 	abilityshield: {
