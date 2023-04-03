@@ -614,7 +614,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		spritenum: 634,
 		onTakeItem: false,
 		zMove: "Hidden Leaf Strike",
-		zMoveFrom: "U-Turn",
+		zMoveFrom: "Bug Buzz",
 		itemUser: ["Shelmet", "Accelgor"],
 		onPrepareHit(source, target, move) {
 			if (this.effectData.protean) return;
