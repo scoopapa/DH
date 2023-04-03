@@ -780,22 +780,11 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		zMoveType: "Ghost",
 		itemUser: ["Dhelmise"],
 		onStart(pokemon) {
-			let activated = false;
-			for (const target of pokemon.side.foe.active) {
-				if (!target || !this.isAdjacent(target, pokemon)) continue;
-				if (!activated) {
-					this.add('-ability', pokemon, 'Intimidate', 'boost');
-					activated = true;
-				}
-				if (target.volatiles['substitute']) {
-					this.add('-immune', target);
-				} else {
-					this.boost({atk: -1}, target, pokemon, null, true);
-				}
-			}
+			this.add('-ability', pokemon, 'Dauntless Shield');
+			this.boost({def: 1}, pokemon);
 		},
 		gen: 8,
-		desc: "(Select Ability Prism to use) Gives Dhelmise the effects of Intimidate.",
+		desc: "(Select Ability Prism to use) Gives Dhelmise the effects of Gen 8's Dauntless Shield.",
 	},
 	gogoatinityprism: {
 		name: "Gogoatinity Prism",
