@@ -936,7 +936,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		onTakeItem: false,
 		zMove: "Emergency Assembly",
 		zMoveFrom: "Scald",
-		itemUser: ["Wishiwashi"],
+		itemUser: ["Wishiwashi", "Wishiwashi-School"],
 		onResidualOrder: 5,
 		onResidualSubOrder: 2,
 		onResidual(pokemon) {
@@ -944,6 +944,6 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 			this.heal(pokemon.baseMaxhp / 16);
 		},
 		gen: 8,
-		desc: "(Select Ability Prism to use) Gives Wishiwash the effects of Filter Feed.",
+		desc: "(Select Ability Prism to use) Gives Wishiwashi the effects of Filter Feed.",
 	},	
 };
