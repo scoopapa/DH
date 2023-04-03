@@ -141,7 +141,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 				this.add('-anim', pokemon, "Conversion", pokemon);
 				pokemon.setItem('dhelmisityprism');
 				this.add('-item', pokemon, pokemon.getItem(), '[from] item: Ability Prism');
-				this.add('-message', `${pokemon.name}'s Ability Prism gives it the effects of Dauntless Shield!`);
+				this.add('-message', `${pokemon.name}'s Ability Prism gives it the effects of Thick Fat!`);
 			}
 			if (pokemon.baseSpecies.baseSpecies === 'Skiddo' || pokemon.baseSpecies.baseSpecies === 'Gogoat') {
 				this.add('-activate', pokemon, 'item: Ability Prism'); 
@@ -779,12 +779,22 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		zMove: "Sunken Spirits",
 		zMoveType: "Ghost",
 		itemUser: ["Dhelmise"],
-		onStart(pokemon) {
-			this.add('-ability', pokemon, 'Dauntless Shield');
-			this.boost({def: 1}, pokemon);
+		onSourceModifyAtkPriority: 6,
+		onSourceModifyAtk(atk, attacker, defender, move) {
+			if (move.type === 'Ice' || move.type === 'Fire') {
+				this.debug('Thick Fat weaken');
+				return this.chainModify(0.5);
+			}
+		},
+		onSourceModifySpAPriority: 5,
+		onSourceModifySpA(atk, attacker, defender, move) {
+			if (move.type === 'Ice' || move.type === 'Fire') {
+				this.debug('Thick Fat weaken');
+				return this.chainModify(0.5);
+			}
 		},
 		gen: 8,
-		desc: "(Select Ability Prism to use) Gives Dhelmise the effects of Gen 8's Dauntless Shield.",
+		desc: "(Select Ability Prism to use) Gives Dhelmise the effects of Thick Fat.",
 	},
 	gogoatinityprism: {
 		name: "Gogoatinity Prism",
@@ -804,7 +814,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		spritenum: 634,
 		onTakeItem: false,
 		zMove: "Granular Vortex",
-		zMoveFrom: ["Earthquake", "Earth Power"],
+		zMoveFrom: "Earthquake",
 		itemUser: ["Trapinch", "Vibrava", "Flygon"],
 		onModifyDamage(damage, source, target, move) {
 			if (target.getMoveHitData(move).typeMod < 0) {
