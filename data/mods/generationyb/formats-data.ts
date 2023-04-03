@@ -7844,6 +7844,10 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "OU",
 		isNonstandard: null,
 	},
+	magearnaoriginal: {
+		tier: "OU",
+		isNonstandard: null,
+	},
 	marshadow: {
 		tier: "Uber",
 		isNonstandard: null,
