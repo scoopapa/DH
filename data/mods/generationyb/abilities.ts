@@ -1062,20 +1062,22 @@ coldcut: {
 		rating: 3.5,
 	},
 	laststand: {
-		onBasePowerPriority: 19,
-		onBasePower(basePower, attacker, defender, move) {
-			if (attacker.hp <= attacker.maxhp / 1.33333333) {
-				return this.chainModify(1.1);
+		onAfterMoveSecondary(target, source, move) {
+			if (!source || source === target || !target.hp || !move.totalDamage) return;
+			const lastAttackedBy = target.getLastAttackedBy();
+			if (!lastAttackedBy) return;
+			const damage = move.multihit ? move.totalDamage : lastAttackedBy.damage;
+			if (target.hp <= target.maxhp / 2 && target.hp + damage > target.maxhp / 2) {
+				this.boost({atk: 1});
 			}
-			else if (attacker.hp <= attacker.maxhp / 2) {
-				return this.chainModify(1.3);
-			}
-			else if (attacker.hp <= attacker.maxhp / 4) {
-				return this.chainModify(1.5);
+		},
+		onModifyMove(move, pokemon) {
+			if (pokemon.hp <= pokemon.maxhp / 2 && move.category !== 'Status') {
+ 				move.category = 'Physical';
 			}
 		},
 		name: "Last Stand",
-		shortDesc: "This Pokemon's moves deal more damage when this Pokemon has less HP.",
+		shortDesc: "Special moves becomes physical and contact under 50% HP. +1 Attack after being hit under 50% HP.",
 		rating: 3.5,
 	},
 	nevermore: {
