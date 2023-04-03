@@ -6433,7 +6433,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		isNonstandard: null,
 	},
 	mew: {
-		tier: "Uber",
+		tier: "OU",
 		isNonstandard: null,
 	},
 	sentret: {
@@ -9727,7 +9727,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		isNonstandard: null,
 	},
 	roserade: {
-		tier: "OU",
+		tier: "RU",
 		isNonstandard: null,
 	},
 	rotom: {
