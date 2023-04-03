@@ -3772,4 +3772,715 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		type: "Poison",
 		contestType: "Cool",
 	},
+	
+// Prism Moves
+	skypiercingslash: {
+		accuracy: true,
+		basePower: 90,
+		category: "Physical",
+		shortDesc: "Super Effective against Poison and Flying.",
+		name: "Sky-Piercing Slash",
+		pp: 1,
+		priority: 0,
+		flags: {contact: 1, slicing: 1},
+		isZ: "kaledityprism",
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Smart Strike", target);
+			this.add('-anim', source, "Psyshock", target);
+		},
+		onModifyMove(move, pokemon) {
+			if (pokemon.getStat('spa', false, true) > pokemon.getStat('atk', false, true)) move.category = 'Special';
+		},
+		onEffectiveness(typeMod, target, type) {
+			if (type === 'Poison' || type === 'Flying') return 1;
+		},
+		secondary: null,
+		target: "normal",
+		type: "Fighting",
+		contestType: "Cool",
+	},
+	bladeofcourage: {
+		accuracy: true,
+		basePower: 90,
+		category: "Physical",
+		shortDesc: "Damages non-Grass-types by 1/6 of their max HP for 4 turns.",
+		name: "Blade of Courage",
+		pp: 1,
+		priority: 0,
+		flags: {slicing: 1},
+		isZ: "menthapillityprism",
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Morning Sun", target);
+			this.add('-anim', source, "Leaf Blade", target);
+		},
+		onModifyMove(move, pokemon) {
+			if (pokemon.getStat('spa', false, true) > pokemon.getStat('atk', false, true)) move.category = 'Special';
+		},
+		self: {
+			onHit(source) {
+				source.side.foe.addSideCondition('gmaxvinelash');
+			},
+		},
+		secondary: null,
+		target: "normal",
+		type: "Grass",
+		contestType: "Cool",
+	},
+	blastofcourage: {
+		accuracy: true,
+		basePower: 90,
+		category: "Physical",
+		shortDesc: "Damages non-Water-types by 1/6 of their max HP for 4 turns.",
+		name: "Blast of Courage",
+		pp: 1,
+		priority: 0,
+		flags: {bullet: 1},
+		isZ: "trebutalityprism",
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Morning Sun", target);
+			this.add('-anim', source, "Hydro Pump", target);
+		},
+		onModifyMove(move, pokemon) {
+			if (pokemon.getStat('spa', false, true) > pokemon.getStat('atk', false, true)) move.category = 'Special';
+		},
+		self: {
+			onHit(source) {
+				source.side.foe.addSideCondition('gmaxcannonade');
+			},
+		},
+		secondary: null,
+		target: "normal",
+		type: "Water",
+		contestType: "Cool",
+	},
+	cannonofcourage: {
+		accuracy: true,
+		basePower: 90,
+		category: "Physical",
+		shortDesc: "Damages non-Fire-types by 1/6 of their max HP for 4 turns.",
+		name: "Cannon of Courage",
+		pp: 1,
+		priority: 0,
+		flags: {pulse: 1},
+		isZ: "ancillityprism",
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Morning Sun", target);
+			this.add('-anim', source, "Armor Cannon", target);
+		},
+		onModifyMove(move, pokemon) {
+			if (pokemon.getStat('spa', false, true) > pokemon.getStat('atk', false, true)) move.category = 'Special';
+		},
+		self: {
+			onHit(source) {
+				source.side.foe.addSideCondition('gmaxwildfire');
+			},
+		},
+		secondary: null,
+		target: "normal",
+		type: "Fire",
+		contestType: "Cool",
+	},
+	lostguardianswrath: {
+		accuracy: true,
+		basePower: 0,
+		damageCallback(pokemon, target) {
+			const hp75 = Math.floor(target.getUndynamaxedHP() * 3 / 4);
+			if (
+				target.volatiles['protect'] || target.volatiles['banefulbunker'] || target.volatiles['kingsshield'] ||
+				target.volatiles['spikyshield'] || target.side.getSideCondition('matblock')
+			) {
+				this.add('-zbroken', target);
+				return this.clampIntRange(Math.ceil(hp75 / 4 - 0.5), 1);
+			}
+			return this.clampIntRange(hp75, 1);
+		},
+		category: "Physical",
+		shortDesc: "Deals 75% of the foe's current HP in damage.",
+		name: "Lost Guardian's Wrath",
+		pp: 1,
+		priority: 0,
+		flags: {contact: 1},
+		isZ: "tuamanityprism",
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Glare", source);
+			this.add('-anim', source, "Guardian of Alola", target);
+		},
+		onModifyMove(move, pokemon) {
+			if (pokemon.getStat('spa', false, true) > pokemon.getStat('atk', false, true)) move.category = 'Special';
+		},
+		secondary: null,
+		target: "normal",
+		type: "Fairy",
+		contestType: "Cool",
+	},
+	evoblast: {
+		accuracy: true,
+		basePower: 90,
+		category: "Physical",
+		shortDesc: "Type matches the user's primary type. Boosts the user's Atk and SpA by 1 stage.",
+		name: "Evoblast",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		isZ: "eevityprism",
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Extreme Evoboost", target);
+			this.add('-anim', source, "Hyper Beam", target);
+		},
+		onModifyMove(move, pokemon) {
+			if (pokemon.getStat('spa', false, true) > pokemon.getStat('atk', false, true)) move.category = 'Special';
+		},
+		onModifyType(move, pokemon) {
+			let type = pokemon.types[0];
+			if (type === "Bird") type = "???";
+			move.type = type;
+		},
+		secondary: {
+			chance: 100,
+			self: {
+				boosts: {
+					atk: 1,
+					spa: 1,
+				},
+			},
+		},
+		target: "normal",
+		type: "Normal",
+		contestType: "Cool",
+	},
+	hiddenleafstrike: {
+		accuracy: true,
+		basePower: 90,
+		category: "Physical",
+		shortDesc: "Super effective on Steel, sets of layer of Spikes.",
+		name: "Hidden Leaf Strike",
+		pp: 1,
+		priority: 0,
+		flags: {contact: 1},
+		isZ: "accelityprism",
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Haze", target);
+			this.add('-anim', source, "Wicked Blow", target);
+		},
+		onModifyMove(move, pokemon) {
+			if (pokemon.getStat('spa', false, true) > pokemon.getStat('atk', false, true)) move.category = 'Special';
+		},
+		onEffectiveness(typeMod, target, type) {
+			if (type === 'Steel') return 1;
+		},
+		self: {
+			onHit(source) {
+				for (const side of source.side.foeSidesWithConditions()) {
+					side.addSideCondition('spikes');
+				}
+			},
+		},
+		secondary: {},
+		target: "normal",
+		type: "Bug",
+		contestType: "Cool",
+	},
+	furyofthe108: {
+		accuracy: true,
+		basePower: 90,
+		basePowerCallback(pokemon, target, move) {
+			return 90 + 10 * pokemon.side.totalFainted;
+		},
+		category: "Physical",
+		shortDesc: "+10 BP for every fainted ally.",
+		name: "Fury of the 108",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		isZ: "spirityprism",
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Spite", source);
+			this.add('-anim', source, "Spectral Thief", target);
+		},
+		onModifyMove(move, pokemon) {
+			if (pokemon.getStat('spa', false, true) > pokemon.getStat('atk', false, true)) move.category = 'Special';
+		},
+		secondary: null,
+		target: "normal",
+		type: "Dark",
+		contestType: "Cool",
+	},
+	crimsoncrash: {
+		accuracy: true,
+		basePower: 90,
+		category: "Physical",
+		shortDesc: "Sets 2 layers of Spikes.",
+		name: "Crimson Crash",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		isZ: "druddityprism",
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Heat Crash", target);
+			this.add('-anim', source, "Spikes", target);
+		},
+		onModifyMove(move, pokemon) {
+			if (pokemon.getStat('spa', false, true) > pokemon.getStat('atk', false, true)) move.category = 'Special';
+		},
+		self: {
+			onHit(source) {
+				for (const side of source.side.foeSidesWithConditions()) {
+					side.addSideCondition('spikes');
+					side.addSideCondition('spikes');
+				}
+			},
+		},
+		secondary: {},
+		target: "normal",
+		type: "Dragon",
+		contestType: "Cool",
+	},
+	corrosivecircuit: {
+		accuracy: true,
+		basePower: 90,
+		category: "Physical",
+		shortDesc: "Suppresses the foe's ability.",
+		name: "Corrosive Circuit",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		isZ: "eelektrityprism",
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Zap Cannon", target);
+			this.add('-anim', source, "Corrosive Gas", target);
+		},
+		onModifyMove(move, pokemon) {
+			if (pokemon.getStat('spa', false, true) > pokemon.getStat('atk', false, true)) move.category = 'Special';
+		},
+		onHit(target) {
+			target.addVolatile('gastroacid');
+		},
+		secondary: null,
+		target: "normal",
+		type: "Electric",
+		contestType: "Cool",
+	},
+	pixierust: {
+		accuracy: true,
+		basePower: 90,
+		category: "Physical",
+		shortDesc: "Taunts the foe.",
+		name: "Pixie Rust",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		isZ: "tinkityprism",
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Twinkle Tackle", target);
+			this.add('-anim', source, "Taunt", target);
+		},
+		onModifyMove(move, pokemon) {
+			if (pokemon.getStat('spa', false, true) > pokemon.getStat('atk', false, true)) move.category = 'Special';
+		},
+		onHit(target) {
+			target.addVolatile('taunt');
+		},
+		secondary: null,
+		target: "normal",
+		type: "Fairy",
+		contestType: "Cool",
+	},
+	corkscrewcross: {
+		accuracy: true,
+		basePower: 90,
+		category: "Physical",
+		shortDesc: "Removes hazards and Leech Seed.",
+		name: "Corkscrew Cross",
+		pp: 1,
+		priority: 0,
+		flags: {contact: 1, punch: 1},
+		isZ: "hitmonityprism",
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Aeroblast", target);
+			this.add('-anim', source, "Close Combat", target);
+		},
+		onModifyMove(move, pokemon) {
+			if (pokemon.getStat('spa', false, true) > pokemon.getStat('atk', false, true)) move.category = 'Special';
+		},
+		onAfterHit(target, pokemon) {
+			if (pokemon.hp && pokemon.removeVolatile('leechseed')) {
+				this.add('-end', pokemon, 'Leech Seed', '[from] move: Corkscrew Cross', '[of] ' + pokemon);
+			}
+			const sideConditions = ['spikes', 'toxicspikes', 'stealthrock', 'stickyweb', 'gmaxsteelsurge'];
+			for (const condition of sideConditions) {
+				if (pokemon.hp && pokemon.side.removeSideCondition(condition)) {
+					this.add('-sideend', pokemon.side, this.dex.getEffect(condition).name, '[from] move: Corkscrew Cross', '[of] ' + pokemon);
+				}
+			}
+			if (pokemon.hp && pokemon.volatiles['partiallytrapped']) {
+				pokemon.removeVolatile('partiallytrapped');
+			}
+		},
+		onAfterSubDamage(damage, target, pokemon) {
+			if (pokemon.hp && pokemon.removeVolatile('leechseed')) {
+				this.add('-end', pokemon, 'Leech Seed', '[from] move: Corkscrew Cross', '[of] ' + pokemon);
+			}
+			const sideConditions = ['spikes', 'toxicspikes', 'stealthrock', 'stickyweb', 'gmaxsteelsurge'];
+			for (const condition of sideConditions) {
+				if (pokemon.hp && pokemon.side.removeSideCondition(condition)) {
+					this.add('-sideend', pokemon.side, this.dex.getEffect(condition).name, '[from] move: Corkscrew Cross', '[of] ' + pokemon);
+				}
+			}
+			if (pokemon.hp && pokemon.volatiles['partiallytrapped']) {
+				pokemon.removeVolatile('partiallytrapped');
+			}
+		},
+		secondary: null,
+		target: "normal",
+		type: "Fighting",
+		contestType: "Cool",
+	},
+	finalflicker: {
+		accuracy: true,
+		basePower: 90,
+		category: "Physical",
+		shortDesc: "Disables the foe's last move.",
+		name: "Final Flicker",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		isZ: "chandelurityprism",
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Blue Flare", target);
+			this.add('-anim', source, "Will-O-Wisp", target);
+		},
+		onModifyMove(move, pokemon) {
+			if (pokemon.getStat('spa', false, true) > pokemon.getStat('atk', false, true)) move.category = 'Special';
+		},
+		onHit(target) {
+			target.addVolatile('disable');
+		},
+		secondary: null,
+		target: "normal",
+		type: "Fire",
+		contestType: "Cool",
+	},
+	wingsofthenight: {
+		accuracy: true,
+		basePower: 90,
+		category: "Physical",
+		shortDesc: "Removes the foe's item.",
+		name: "Wings of the Night",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		isZ: "crobityprism",
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Roost", target);
+			this.add('-anim', source, "Sucker Punch", target);
+		},
+		onModifyMove(move, pokemon) {
+			if (pokemon.getStat('spa', false, true) > pokemon.getStat('atk', false, true)) move.category = 'Special';
+		},
+		onAfterHit(target, source) {
+			if (source.hp) {
+				const item = target.takeItem();
+				if (item) {
+					this.add('-enditem', target, item.name, '[from] move: Wings of the Night', '[of] ' + source);
+				}
+			}
+		},
+		secondary: null,
+		target: "normal",
+		type: "Flying",
+		contestType: "Cool",
+	},
+	sunkenspirits: {
+		accuracy: true,
+		basePower: 90,
+		category: "Physical",
+		shortDesc: "Salt Cures the foe.",
+		name: "Sunken Spirits",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		isZ: "dhelmisityprism",
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Phantom Force", target);
+			this.add('-anim', source, "Salt Cure", target);
+		},
+		onModifyMove(move, pokemon) {
+			if (pokemon.getStat('spa', false, true) > pokemon.getStat('atk', false, true)) move.category = 'Special';
+		},
+		onHit(target) {
+			target.addVolatile('saltcure');
+		},
+		secondary: null,
+		target: "normal",
+		type: "Ghost",
+		contestType: "Cool",
+	},
+	gogocharge: {
+		accuracy: true,
+		basePower: 90,
+		category: "Physical",
+		shortDesc: "Throws the foe in the air.",
+		name: "Go-Go Charge",
+		pp: 1,
+		priority: 0,
+		flags: {contact: 1},
+		isZ: "gogoatinityprism",
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Bulk Up", target);
+			this.add('-anim', source, "Head Smash", target);
+		},
+		onModifyMove(move, pokemon) {
+			if (pokemon.getStat('spa', false, true) > pokemon.getStat('atk', false, true)) move.category = 'Special';
+		},
+		onHit(target) {
+			target.addVolatile('telekinesis');
+		},
+		secondary: null,
+		target: "normal",
+		type: "Grass",
+		contestType: "Cool",
+	},
+	granularvortex: {
+		accuracy: true,
+		basePower: 90,
+		category: "Physical",
+		shortDesc: "Ignores immunities.",
+		name: "Granular Vortex",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		isZ: "flygonityprism",
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Sand Tomb", target);
+			this.add('-anim', source, "Earthquake", target);
+		},
+		onModifyMove(move, pokemon) {
+			if (pokemon.getStat('spa', false, true) > pokemon.getStat('atk', false, true)) move.category = 'Special';
+		},
+		ignoreImmunity: true,
+		secondary: null,
+		target: "normal",
+		type: "Ground",
+		contestType: "Cool",
+	},
+	summitspressure: {
+		accuracy: true,
+		basePower: 90,
+		category: "Physical",
+		shortDesc: "Lowers the foe's Atk and Def by 1 stage.",
+		name: "Summit's Pressure",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		isZ: "crabominityprism",
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Sheer Cold", target);
+			this.add('-anim', source, "Rock Climb", target);
+		},
+		onModifyMove(move, pokemon) {
+			if (pokemon.getStat('spa', false, true) > pokemon.getStat('atk', false, true)) move.category = 'Special';
+		},
+		boosts: {
+			atk: -1,
+			spa: -1,
+		},
+		secondary: null,
+		target: "normal",
+		type: "Ice",
+		contestType: "Cool",
+	},
+	songfortheworld: {
+		accuracy: true,
+		basePower: 90,
+		category: "Physical",
+		shortDesc: "Heals the team's status conditions.",
+		name: "Song for the World",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		isZ: "meloettinityprism",
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Sing", target);
+			this.add('-anim', source, "Boomburst", target);
+		},
+		onModifyMove(move, pokemon) {
+			if (pokemon.getStat('spa', false, true) > pokemon.getStat('atk', false, true)) move.category = 'Special';
+		},
+		self: {
+			onHit(pokemon, source, move) {
+				this.add('-activate', source, 'move: Aromatherapy');
+				for (const ally of source.side.pokemon) {
+					if (ally !== source && (ally.volatiles['substitute'] && !move.infiltrates)) {
+						continue;
+					}
+					ally.cureStatus();
+				}
+			},
+		},
+		secondary: null,
+		target: "normal",
+		type: "Normal",
+		contestType: "Cool",
+	},
+	venomousvice: {
+		accuracy: true,
+		basePower: 90,
+		category: "Physical",
+		shortDesc: "Poisons the foe and sets a layer of Toxic Spikes.",
+		name: "Venomous Vice",
+		pp: 1,
+		priority: 0,
+		flags: {contact: 1},
+		isZ: "drapionityprism",
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Cross Poison", target);
+			this.add('-anim', source, "Corrosive Gas", target);
+		},
+		onModifyMove(move, pokemon) {
+			if (pokemon.getStat('spa', false, true) > pokemon.getStat('atk', false, true)) move.category = 'Special';
+		},
+		onHit(target) {
+			target.trySetStatus('psn');
+		},
+		self: {
+			onHit(source) {
+				for (const side of source.side.foeSidesWithConditions()) {
+					side.addSideCondition('toxicspikes');
+				}
+			},
+		},
+		secondary: {},
+		target: "normal",
+		type: "Poison",
+		contestType: "Cool",
+	},
+	warpeddreams: {
+		accuracy: true,
+		basePower: 90,
+		category: "Physical",
+		shortDesc: "Sets Trick Room.",
+		name: "Warped Dreams",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		isZ: "musharnityprism",
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Yawn", target);
+			this.add('-anim', source, "Extrasensory", target);
+		},
+		onModifyMove(move, pokemon) {
+			if (pokemon.getStat('spa', false, true) > pokemon.getStat('atk', false, true)) move.category = 'Special';
+		},
+		self: {
+			pseudoWeather: 'trickroom',
+		},
+		secondary: null,
+		target: "normal",
+		type: "Psychic",
+		contestType: "Cool",
+	},
+	disturbedions: {
+		accuracy: true,
+		basePower: 90,
+		category: "Physical",
+		shortDesc: "Super Effective against Steel-types.",
+		name: "Disturbed Ions",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		isZ: "probosityprism",
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Discharge", target);
+			this.add('-anim', source, "Rock Wrecker", target);
+		},
+		onModifyMove(move, pokemon) {
+			if (pokemon.getStat('spa', false, true) > pokemon.getStat('atk', false, true)) move.category = 'Special';
+		},
+		onEffectiveness(typeMod, target, type) {
+			if (type === 'Steel') return 1;
+		},
+		secondary: null,
+		target: "normal",
+		type: "Rock",
+		contestType: "Cool",
+	},
+	joustofjustice: {
+		accuracy: true,
+		basePower: 90,
+		category: "Physical",
+		shortDesc: "Super effective on Bug, sets of layer of Spikes.",
+		name: "Joust of Justice",
+		pp: 1,
+		priority: 0,
+		flags: {contact: 1, slicing: 1},
+		isZ: "escavityprism",
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Swords Dance", target);
+			this.add('-anim', source, "Behemoth Blade", target);
+		},
+		onModifyMove(move, pokemon) {
+			if (pokemon.getStat('spa', false, true) > pokemon.getStat('atk', false, true)) move.category = 'Special';
+		},
+		onEffectiveness(typeMod, target, type) {
+			if (type === 'Bug') return 1;
+		},
+		self: {
+			onHit(source) {
+				for (const side of source.side.foeSidesWithConditions()) {
+					side.addSideCondition('spikes');
+				}
+			},
+		},
+		secondary: {},
+		target: "normal",
+		type: "Steel",
+		contestType: "Cool",
+	},
+	emergencyassembly: {
+		accuracy: true,
+		basePower: 90,
+		category: "Physical",
+		shortDesc: "Heals the user by 75% of the damage dealt.",
+		name: "Emergency Assembly",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		isZ: "wishinityprism",
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Recover", target);
+			this.add('-anim', source, "Oceanic Operetta", target);
+		},
+		onModifyMove(move, pokemon) {
+			if (pokemon.getStat('spa', false, true) > pokemon.getStat('atk', false, true)) move.category = 'Special';
+		},
+		drain: [3, 4],
+		secondary: null,
+		target: "normal",
+		type: "Water",
+		contestType: "Cool",
+	},
 };
