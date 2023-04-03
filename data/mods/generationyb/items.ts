@@ -141,7 +141,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 				this.add('-anim', pokemon, "Conversion", pokemon);
 				pokemon.setItem('dhelmisityprism');
 				this.add('-item', pokemon, pokemon.getItem(), '[from] item: Ability Prism');
-				this.add('-message', `${pokemon.name}'s Ability Prism gives it the effects of Intimidate!`);
+				this.add('-message', `${pokemon.name}'s Ability Prism gives it the effects of Dauntless Shield!`);
 			}
 			if (pokemon.baseSpecies.baseSpecies === 'Skiddo' || pokemon.baseSpecies.baseSpecies === 'Gogoat') {
 				this.add('-activate', pokemon, 'item: Ability Prism'); 
@@ -197,7 +197,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 				this.add('-anim', pokemon, "Conversion", pokemon);
 				pokemon.setItem('probosityprism');
 				this.add('-item', pokemon, pokemon.getItem(), '[from] item: Ability Prism');
-				this.add('-message', `${pokemon.name}'s Ability Prism gives it the effects of Levitate!`);
+				this.add('-message', `${pokemon.name}'s Ability Prism gives it the effects of Earth Eater!`);
 			}
 			if (pokemon.baseSpecies.baseSpecies === 'Karrablast' || pokemon.baseSpecies.baseSpecies === 'Escavalier') {
 				this.add('-activate', pokemon, 'item: Ability Prism'); 
