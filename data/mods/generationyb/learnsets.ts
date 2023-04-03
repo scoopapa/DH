@@ -5336,6 +5336,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			snowscape: ["8L1"],
 			rocktomb: ["8L1"],
 			fireblast: ["8L1"],
+			toxicspikes: ["8L1"],
 		},
 	},
 	slowbro: {
@@ -14345,6 +14346,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			stompingtantrum: ["8L1"],
 			weatherball: ["8L1"],
 			zenheadbutt: ["8L1"],
+			howl: ["8L1"],
 		},
 	},
 	suicune: {
@@ -28986,6 +28988,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			signalbeam: ["8L1"],
 			solarbeam: ["8L1"],
 			wildcharge: ["8L1"],
+			paraboliccharge: ["8L1"],
 		},
 	},
 	galvantula: {
@@ -29257,6 +29260,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			acrobatics: ["8L1"],
 			signalbeam: ["8L1"],
 			wildcharge: ["8L1"],
+			paraboliccharge: ["8L1"],
 		},
 	},
 	eelektross: {
@@ -30520,6 +30524,8 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			solarbeam: ["8L1"],
 			zenheadbutt: ["8L1"],
 			psyshock: ["8L1"],
+			taunt: ["8L1"],
+			drainingkiss: ["8L1"],
 		},
 	},
 	bunnelby: {
@@ -36508,6 +36514,8 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			steelwing: ["8L1"],
 			weatherball: ["8L1"],
 			playrough: ["8L1"],
+			moonlight: ["8L1"],
+			roost: ["8L1"],
 		},
 	},
 	indeedee: {
@@ -47426,6 +47434,10 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			zenheadbutt: ["8L1"],
 			seedbomb: ["8L1"],
 			gigadrain: ["8L1"],
+			foresight: ["8L1"],
+			solarbeam: ["8L1"],
+			extrasensory: ["8L1"],
+			futuresight: ["8L1"],
 		},
 	},
 	tuakahu: {
@@ -49966,6 +49978,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			liquidation: ["8L1"],
 			aquatail: ["8L1"],
 			charm: ["8L1"],
+			boomburst: ["8L1"],
 		},
 	},
 	palafin: {
