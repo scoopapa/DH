@@ -804,7 +804,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		spritenum: 634,
 		onTakeItem: false,
 		zMove: "Granular Vortex",
-		zMoveType: "Ground",
+		zMoveFrom: ["Earthquake", "Earth Power"],
 		itemUser: ["Trapinch", "Vibrava", "Flygon"],
 		onModifyDamage(damage, source, target, move) {
 			if (target.getMoveHitData(move).typeMod < 0) {
