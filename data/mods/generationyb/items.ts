@@ -887,6 +887,12 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 			}
 			return false;
 		},
+		onBasePowerPriority: 23,
+		onBasePower(basePower, attacker, defender, move) {
+			if (move.id === 'facade') {
+				return this.chainModify(2);
+			}
+		},
 		gen: 8,
 		desc: "(Select Ability Prism to use) Gives the Munna line the effects of Comatose.",
 	},
