@@ -1377,7 +1377,11 @@ export const Formats: FormatList = [
 		name: "[Gen 8] Generation YB",
 		mod: 'generationyb',
 		ruleset: ['Standard', 'One Ability Prism Limit', 'Data Mod', 'Dynamax Clause'],
-		banlist: ['Uber', 'AG', 'Moody', 'Sand Veil', 'Snow Cloak', 'King\'s Rock', 'Baton Pass', 'Power Construct'],
+		banlist: ['Uber', 'AG', 'Moody', 'Sand Veil', 'Snow Cloak', 'King\'s Rock', 'Baton Pass', 'Power Construct',
+					 "Kaledity Prism", "Menthapillity Prism", "Ancillity Prism", "Trebutality Prism", "Tuamanity Prism", "Eevity Prism",
+					 "Accelity Prism", "Spirity Prism", "Druddity Prism", "Eelektrity Prism", "Tinkity Prism", "Hitmonity Prism", 
+					 "Chandelurity Prism", "Crobity Prism", "Dhelmisity Prism", "Gogoatinity Prism", "Flygonity Prism", "Crabominity Prism",
+					 "Meloettinity Prism", "Drapionity Prism", "Musharnity Prism", "Probosity Prism", "Escavity Prism", "Wishinity Prism"],
 	},
 	{
 		name: "[Gen 2] GSC Doubles",
