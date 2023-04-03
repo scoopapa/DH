@@ -1,4 +1,5 @@
 export const Formats: {[k: string]: ModdedFormatsData} = {
+	/*
 	onelinkbracelimit: {
 		effectType: 'ValidatorRule',
 		name: 'One Link Brace Limit',
@@ -8,6 +9,7 @@ export const Formats: {[k: string]: ModdedFormatsData} = {
 			this.add('rule', 'One Link Brace Limit: Limit to one Link Brace');
 		},
 	},
+	*/
 	oneabilityprismlimit: {
 		effectType: 'ValidatorRule',
 		name: 'One Ability Prism Limit',
