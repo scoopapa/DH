@@ -3923,18 +3923,43 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		contestType: "Cool",
 	},
 	evoblast: {
+		accuracy: 100,
+		basePower: 90,
+		category: "Physical",
+		shortDesc: "Type matches the user's primary type. Special if SpA > Atk.",
+		name: "Evoblast",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Extreme Evoboost", target);
+		},
+		onModifyMove(move, pokemon) {
+			if (pokemon.getStat('spa', false, true) > pokemon.getStat('atk', false, true)) move.category = 'Special';
+		},
+		onModifyType(move, pokemon) {
+			let type = pokemon.types[0];
+			if (type === "Bird") type = "???";
+			move.type = type;
+		},
+		target: "normal",
+		type: "Normal",
+		contestType: "Cool",
+	},
+	extremeevoblast: {
 		accuracy: true,
 		basePower: 90,
 		category: "Physical",
 		shortDesc: "Type matches the user's primary type. Boosts the user's Atk and SpA by 1 stage.",
-		name: "Evoblast",
+		name: "Extreme Evoblast",
 		pp: 1,
 		priority: 0,
 		flags: {},
 		isZ: "eevityprism",
 		onPrepareHit(target, source, move) {
 			this.attrLastMove('[still]');
-			this.add('-anim', source, "Extreme Evoboost", target);
+			this.add('-anim', source, "Extreme Evoboost", source);
 			this.add('-anim', source, "Hyper Beam", target);
 		},
 		onModifyMove(move, pokemon) {
@@ -4486,6 +4511,31 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		target: "normal",
 		type: "Water",
 		contestType: "Cool",
+	},
+	prismburst: {
+		accuracy: true,
+		basePower: 90,
+		category: "Physical",
+    	shortDesc: "Deals typeless damage.",
+		isViable: true,
+		name: "Prism Burst",
+		pp: 1,
+		priority: 0,
+		flags: {},
+		isZ: "abilityprism",
+		onPrepareHit: function(target, source, move) {
+		  this.attrLastMove('[still]');
+		  this.add('-anim', source, "Rock Polish", target);
+		  this.add('-anim', source, "Power Gem", target);
+		},
+		onModifyMove(move, pokemon, target) {
+			move.type = '???';
+			if (pokemon.getStat('spa', false, true) > pokemon.getStat('atk', false, true)) move.category = 'Special';
+		},
+		secondary: null,
+		target: "normal",
+		type: "Normal",
+		contestType: "Cute",
 	},
 
 // some prism stuff
