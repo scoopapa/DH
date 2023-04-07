@@ -1,4 +1,74 @@
 export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
+	zMoveTable: {
+		Poison: "Venomous Vice",
+		Fighting: "Corkscrew Cross",
+		Dark: "Fury of the 108",
+		Grass: "Go-Go Charge",
+		Normal: "Prism Burst",
+		Rock: "Disturbed Ions",
+		Steel: "Joust of Justice",
+		Dragon: "Crimson Crash",
+		Electric: "Corrosive Circuit",
+		Water: "Emergency Assembly",
+		Fire: "Final Flicker",
+		Ghost: "Sunken Spirits",
+		Bug: "Hidden Leaf Strike",
+		Psychic: "Warped Dreams",
+		Ice: "Summit's Pressure",
+		Flying: "Wings of the Night",
+		Ground: "Granular Vortex",
+		Fairy: "Pixie Rust",
+	},
+
+	getZMove(move, pokemon, skipChecks) {
+		const item = pokemon.getItem();
+		if (!skipChecks) {
+			if (pokemon.side.zMoveUsed) return;
+			if (!item.zMove) return;
+			if (item.itemUser && !item.itemUser.includes(pokemon.species.name)) return;
+			const moveData = pokemon.getMoveData(move);
+			// Draining the PP of the base move prevents the corresponding Z-move from being used.
+			if (!moveData || !moveData.pp) return;
+		}
+
+		if (item.zMoveFrom) {
+			if (move.name === item.zMoveFrom) return item.zMove as string;
+		} else if (item.zMove === true) {
+			if (move.type === item.zMoveType) {
+				 if (move.zMove?.basePower) {
+					return this.zMoveTable[move.type];
+				}
+			}
+		}
+	},
+
+	getActiveZMove(move, pokemon) {
+		if (pokemon) {
+			const item = pokemon.getItem();
+			if (move.name === item.zMoveFrom) {
+				const zMove = this.dex.getActiveMove(item.zMove as string);
+				zMove.isZOrMaxPowered = true;
+				return zMove;
+			}
+		}
+
+		if (move.category === 'Status') {
+			const item = pokemon.getItem();
+			if (move.name === item.zMoveFrom) {
+				const zMove = this.dex.getActiveMove(item.zMove as string);
+				zMove.isZOrMaxPowered = true;
+				return zMove;
+			}
+		}
+		const zMove = this.dex.getActiveMove(this.zMoveTable[move.type]);
+		zMove.basePower = move.zMove!.basePower!;
+		zMove.category = move.category;
+		// copy the priority for Quick Guard
+		zMove.priority = move.priority;
+		zMove.isZOrMaxPowered = true;
+		return zMove;
+	},	
+	
 	init: function() {
 		this.modData('Moves', 'aerialace').flags.slicing = 1;
 		this.modData('Moves', 'aircutter').flags.slicing = 1;
