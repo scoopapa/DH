@@ -656,7 +656,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		spritenum: 634,
 		onTakeItem: false,
 		zMove: "Extreme Evoblast",
-		zMoveFrom: "Hyper Voice",
+		zMoveFrom: "Evoblast",
 		itemUser: ["Eevee", "Vaporeon", "Jolteon", "Flareon", "Espeon", "Umbreon", "Glaceon", "Leafeon", "Sylveon", "Mytheon", "Geareon"],
 		onModifyMove(move) {
 			move.stab = 2;
