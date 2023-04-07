@@ -33,6 +33,8 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		name: "Ability Prism",
 		spritenum: 297,
 		onTakeItem: false,
+		zMove: "Prism Burst",
+		zMoveType: "Normal",
 		onSwitchIn(pokemon) {
 			this.add('-item', pokemon, 'Ability Prism');
 			if (pokemon.baseSpecies.baseSpecies === 'Kaledzi') {
@@ -169,7 +171,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 				this.add('-anim', pokemon, "Conversion", pokemon);
 				pokemon.setItem('meloettinityprism');
 				this.add('-item', pokemon, pokemon.getItem(), '[from] item: Ability Prism');
-				this.add('-message', `${pokemon.name}'s Ability Prism gives it the effects of Mold Breaker!`);
+				this.add('-message', `${pokemon.name}'s Ability Prism gives it the effects of Magic Bounce!`);
 			}
 			if (pokemon.baseSpecies.baseSpecies === 'Skorupi' || pokemon.baseSpecies.baseSpecies === 'Drapion') {
 				this.add('-activate', pokemon, 'item: Ability Prism'); 
@@ -207,22 +209,25 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 				this.add('-message', `${pokemon.name}'s Ability Prism gives it the effects of Sharpness!`);
 			}
 		},
-		onTryBoost(boost, target, source, effect) {
-			if (source && target === source) return;
-			let showMsg = false;
-			let i: BoostID;
-			for (i in boost) {
-				if (boost[i]! < 0) {
-					delete boost[i];
-					showMsg = true;
-				}
-			}
-			if (showMsg && !(effect as ActiveMove).secondaries && effect.id !== 'octolock') {
-				this.add('-fail', target, 'unboost', '[from] item: Ability Prism', '[of] ' + target);
-			}
+		onStart(pokemon) {
+			this.add('-ability', pokemon, 'Mold Breaker');
+			this.add('-message', `${pokemon.name}'s Ability Prism gives it the effects of Mold Breaker!`);
+		},
+		onModifyMove(move) {
+			move.ignoreAbility = true;
+		},
+		onResidualOrder: 5,
+		onResidualSubOrder: 5,
+		onResidual(pokemon) {
+			if (this.field.isTerrain('grassyterrain')) return;
+			this.heal(pokemon.baseMaxhp / 16);
+		},
+		onTerrain(pokemon) {
+			if (!this.field.isTerrain('grassyterrain')) return;
+			this.heal(pokemon.baseMaxhp / 16);
 		},
 		gen: 8,
-		desc: "Turns into the holder's signature Ability Prism on switch-in.",
+		desc: "If signature: turns into signature prism. If non-signature: Mold Breaker.",
 	},
 	
 // Regular Items
@@ -500,6 +505,16 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 				return this.chainModify([0x1400, 0x1000]);
 			}
 		},
+		onResidualOrder: 5,
+		onResidualSubOrder: 5,
+		onResidual(pokemon) {
+			if (this.field.isTerrain('grassyterrain')) return;
+			this.heal(pokemon.baseMaxhp / 16);
+		},
+		onTerrain(pokemon) {
+			if (!this.field.isTerrain('grassyterrain')) return;
+			this.heal(pokemon.baseMaxhp / 16);
+		},
 		gen: 8,
 		desc: "(Select Ability Prism to use) Gives Kaledzi the effects of Neuroforce.",
 	},
@@ -523,6 +538,16 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 				this.debug('Heart of Courage boost');
 				return this.chainModify(1.5);
 			}
+		},
+		onResidualOrder: 5,
+		onResidualSubOrder: 5,
+		onResidual(pokemon) {
+			if (this.field.isTerrain('grassyterrain')) return;
+			this.heal(pokemon.baseMaxhp / 16);
+		},
+		onTerrain(pokemon) {
+			if (!this.field.isTerrain('grassyterrain')) return;
+			this.heal(pokemon.baseMaxhp / 16);
 		},
 		gen: 8,
 		desc: "(Select Ability Prism to use) Gives the Mintarin line the effects of Heart of Courage.",
@@ -548,6 +573,16 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 				return this.chainModify(1.5);
 			}
 		},
+		onResidualOrder: 5,
+		onResidualSubOrder: 5,
+		onResidual(pokemon) {
+			if (this.field.isTerrain('grassyterrain')) return;
+			this.heal(pokemon.baseMaxhp / 16);
+		},
+		onTerrain(pokemon) {
+			if (!this.field.isTerrain('grassyterrain')) return;
+			this.heal(pokemon.baseMaxhp / 16);
+		},
 		gen: 8,
 		desc: "(Select Ability Prism to use) Gives the Fyermine line the effects of Heart of Courage.",
 	},	
@@ -572,6 +607,16 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 				return this.chainModify(1.5);
 			}
 		},
+		onResidualOrder: 5,
+		onResidualSubOrder: 5,
+		onResidual(pokemon) {
+			if (this.field.isTerrain('grassyterrain')) return;
+			this.heal(pokemon.baseMaxhp / 16);
+		},
+		onTerrain(pokemon) {
+			if (!this.field.isTerrain('grassyterrain')) return;
+			this.heal(pokemon.baseMaxhp / 16);
+		},
 		gen: 8,
 		desc: "(Select Ability Prism to use) Gives the Hydrattler line the effects of Heart of Courage.",
 	},	
@@ -593,6 +638,16 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 				ability: this.dex.getAbility('poisontouch'),
 			});
 		},
+		onResidualOrder: 5,
+		onResidualSubOrder: 5,
+		onResidual(pokemon) {
+			if (this.field.isTerrain('grassyterrain')) return;
+			this.heal(pokemon.baseMaxhp / 16);
+		},
+		onTerrain(pokemon) {
+			if (!this.field.isTerrain('grassyterrain')) return;
+			this.heal(pokemon.baseMaxhp / 16);
+		},
 		gen: 8,
 		desc: "(Select Ability Prism to use) Gives the Tuatoxa line the effects of Poison Touch.",
 	},
@@ -600,11 +655,21 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		name: "Eevity Prism",
 		spritenum: 634,
 		onTakeItem: false,
-		zMove: "Evoblast",
+		zMove: "Extreme Evoblast",
 		zMoveFrom: "Hyper Voice",
 		itemUser: ["Eevee", "Vaporeon", "Jolteon", "Flareon", "Espeon", "Umbreon", "Glaceon", "Leafeon", "Sylveon", "Mytheon", "Geareon"],
 		onModifyMove(move) {
 			move.stab = 2;
+		},
+		onResidualOrder: 5,
+		onResidualSubOrder: 5,
+		onResidual(pokemon) {
+			if (this.field.isTerrain('grassyterrain')) return;
+			this.heal(pokemon.baseMaxhp / 16);
+		},
+		onTerrain(pokemon) {
+			if (!this.field.isTerrain('grassyterrain')) return;
+			this.heal(pokemon.baseMaxhp / 16);
 		},
 		gen: 8,
 		desc: "(Select Ability Prism to use) Gives the Eevee line the effects of Adaptability.",
@@ -614,7 +679,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		spritenum: 634,
 		onTakeItem: false,
 		zMove: "Hidden Leaf Strike",
-		zMoveFrom: "Bug Buzz",
+		zMoveType: "Bug",
 		itemUser: ["Shelmet", "Accelgor"],
 		onPrepareHit(source, target, move) {
 			if (this.effectData.protean) return;
@@ -629,6 +694,16 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		onStart(pokemon) {
 			delete this.effectData.protean;
 		},
+		onResidualOrder: 5,
+		onResidualSubOrder: 5,
+		onResidual(pokemon) {
+			if (this.field.isTerrain('grassyterrain')) return;
+			this.heal(pokemon.baseMaxhp / 16);
+		},
+		onTerrain(pokemon) {
+			if (!this.field.isTerrain('grassyterrain')) return;
+			this.heal(pokemon.baseMaxhp / 16);
+		},
 		gen: 8,
 		desc: "(Select Ability Prism to use) Gives the Shelmet line the effects of Protean.",
 	},
@@ -637,7 +712,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		spritenum: 634,
 		onTakeItem: false,
 		zMove: "Fury of the 108",
-		zMoveFrom: "Sucker Punch",
+		zMoveType: "Dark",
 		itemUser: ["Spiritomb"],
 		onStart(pokemon) {
 			if (pokemon.side.totalFainted) {
@@ -658,6 +733,16 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 				return this.chainModify([powMod[this.effectData.fallen], 4096]);
 			}
 		},
+		onResidualOrder: 5,
+		onResidualSubOrder: 5,
+		onResidual(pokemon) {
+			if (this.field.isTerrain('grassyterrain')) return;
+			this.heal(pokemon.baseMaxhp / 16);
+		},
+		onTerrain(pokemon) {
+			if (!this.field.isTerrain('grassyterrain')) return;
+			this.heal(pokemon.baseMaxhp / 16);
+		},
 		gen: 8,
 		desc: "(Select Ability Prism to use) Gives Spiritomb the effects of Supreme Overlord.",
 	},
@@ -666,7 +751,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		spritenum: 634,
 		onTakeItem: false,
 		zMove: "Crimson Crash",
-		zMoveFrom: "Dragon Claw",
+		zMoveType: "Dragon",
 		itemUser: ["Druddigon"],
 		onBasePowerPriority: 19,
 		onBasePower(basePower, attacker, defender, move) {
@@ -674,6 +759,16 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 				this.debug('BP multiplied on damaged target');
 				return this.chainModify(1.5);
 			}
+		},
+		onResidualOrder: 5,
+		onResidualSubOrder: 5,
+		onResidual(pokemon) {
+			if (this.field.isTerrain('grassyterrain')) return;
+			this.heal(pokemon.baseMaxhp / 16);
+		},
+		onTerrain(pokemon) {
+			if (!this.field.isTerrain('grassyterrain')) return;
+			this.heal(pokemon.baseMaxhp / 16);
 		},
 		gen: 8,
 		desc: "(Select Ability Prism to use) Gives Druddigon the effects of Insult to Injury.",
@@ -683,10 +778,20 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		spritenum: 634,
 		onTakeItem: false,
 		zMove: "Corrosive Circuit",
-		zMoveFrom: "Volt Switch",
+		zMoveType: "Electric",
 		itemUser: ["Tynamo", "Eelektrik", "Eelektross"],
 		onSwitchOut(pokemon) {
 			pokemon.heal(pokemon.baseMaxhp / 3);
+		},
+		onResidualOrder: 5,
+		onResidualSubOrder: 5,
+		onResidual(pokemon) {
+			if (this.field.isTerrain('grassyterrain')) return;
+			this.heal(pokemon.baseMaxhp / 16);
+		},
+		onTerrain(pokemon) {
+			if (!this.field.isTerrain('grassyterrain')) return;
+			this.heal(pokemon.baseMaxhp / 16);
 		},
 		gen: 8,
 		desc: "(Select Ability Prism to use) Gives the Tynamo line the effects of Regenerator.",
@@ -696,13 +801,23 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		spritenum: 634,
 		onTakeItem: false,
 		zMove: "Pixie Rust",
-		zMoveFrom: "Play Rough",
+		zMoveType: "Fairy",
 		itemUser: ["Tinkatink", "Tinkatuff", "Tinkaton"],
 		onModifyPriority(priority, pokemon, target, move) {
 			if (move?.category === 'Status') {
 				move.pranksterBoosted = true;
 				return priority + 1;
 			}
+		},
+		onResidualOrder: 5,
+		onResidualSubOrder: 5,
+		onResidual(pokemon) {
+			if (this.field.isTerrain('grassyterrain')) return;
+			this.heal(pokemon.baseMaxhp / 16);
+		},
+		onTerrain(pokemon) {
+			if (!this.field.isTerrain('grassyterrain')) return;
+			this.heal(pokemon.baseMaxhp / 16);
 		},
 		gen: 8,
 		desc: "(Select Ability Prism to use) Gives the Tinkatink line the effects of Prankster.",
@@ -712,7 +827,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		spritenum: 634,
 		onTakeItem: false,
 		zMove: "Corkscrew Cross",
-		zMoveFrom: "Close Combat",
+		zMoveType: "Fighting",
 		itemUser: ["Tyrogue", "Hitmonchan", "Hitmonlee", "Hitmontop"],
 		onModifyMovePriority: -5,
 		onModifyMove(move) {
@@ -728,6 +843,16 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 				this.add('-immune', target, '[from] ability: Scrappy');
 			}
 		},
+		onResidualOrder: 5,
+		onResidualSubOrder: 5,
+		onResidual(pokemon) {
+			if (this.field.isTerrain('grassyterrain')) return;
+			this.heal(pokemon.baseMaxhp / 16);
+		},
+		onTerrain(pokemon) {
+			if (!this.field.isTerrain('grassyterrain')) return;
+			this.heal(pokemon.baseMaxhp / 16);
+		},
 		gen: 8,
 		desc: "(Select Ability Prism to use) Gives the Tyrogue line the effects of Scrappy.",
 	},
@@ -736,7 +861,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		spritenum: 634,
 		onTakeItem: false,
 		zMove: "Final Flicker",
-		zMoveFrom: "Flamethrower",
+		zMoveType: "Fire",
 		itemUser: ["Litwick", "Lampent", "Chandelure"],
 		onBasePowerPriority: 21,
 		onBasePower(basePower, pokemon) {
@@ -753,6 +878,16 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 				return this.chainModify([0x14CD, 0x1000]);
 			}
 		},
+		onResidualOrder: 5,
+		onResidualSubOrder: 5,
+		onResidual(pokemon) {
+			if (this.field.isTerrain('grassyterrain')) return;
+			this.heal(pokemon.baseMaxhp / 16);
+		},
+		onTerrain(pokemon) {
+			if (!this.field.isTerrain('grassyterrain')) return;
+			this.heal(pokemon.baseMaxhp / 16);
+		},
 		gen: 8,
 		desc: "(Select Ability Prism to use) Gives the Litwick line the effects of Analytic.",
 	},
@@ -761,13 +896,23 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		spritenum: 634,
 		onTakeItem: false,
 		zMove: "Wings of the Night",
-		zMoveFrom: "Brave Bird",
+		zMoveType: "Flying",
 		itemUser: ["Zubat", "Golbat", "Crobat"],
 		onDamage(damage, target, source, effect) {
 			if (effect.effectType !== 'Move') {
 				if (effect.effectType === 'Ability') this.add('-activate', source, 'ability: ' + effect.name);
 				return false;
 			}
+		},
+		onResidualOrder: 5,
+		onResidualSubOrder: 5,
+		onResidual(pokemon) {
+			if (this.field.isTerrain('grassyterrain')) return;
+			this.heal(pokemon.baseMaxhp / 16);
+		},
+		onTerrain(pokemon) {
+			if (!this.field.isTerrain('grassyterrain')) return;
+			this.heal(pokemon.baseMaxhp / 16);
 		},
 		gen: 8,
 		desc: "(Select Ability Prism to use) Gives the Zubat line the effects of Magic Guard.",
@@ -777,7 +922,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		spritenum: 634,
 		onTakeItem: false,
 		zMove: "Sunken Spirits",
-		zMoveFrom: "Poltergeist",
+		zMoveType: "Ghost",
 		itemUser: ["Dhelmise"],
 		onSourceModifyAtkPriority: 6,
 		onSourceModifyAtk(atk, attacker, defender, move) {
@@ -793,6 +938,16 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 				return this.chainModify(0.5);
 			}
 		},
+		onResidualOrder: 5,
+		onResidualSubOrder: 5,
+		onResidual(pokemon) {
+			if (this.field.isTerrain('grassyterrain')) return;
+			this.heal(pokemon.baseMaxhp / 16);
+		},
+		onTerrain(pokemon) {
+			if (!this.field.isTerrain('grassyterrain')) return;
+			this.heal(pokemon.baseMaxhp / 16);
+		},
 		gen: 8,
 		desc: "(Select Ability Prism to use) Gives Dhelmise the effects of Thick Fat.",
 	},
@@ -801,10 +956,20 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		spritenum: 634,
 		onTakeItem: false,
 		zMove: "Go-Go Charge",
-		zMoveFrom: "Horn Leech",
+		zMoveType: "Grass",
 		itemUser: ["Skiddo", "Gogoat"],
 		onDamagingHit(damage, target, source, move) {
 			this.field.setTerrain('grassyterrain');
+		},
+		onResidualOrder: 5,
+		onResidualSubOrder: 5,
+		onResidual(pokemon) {
+			if (this.field.isTerrain('grassyterrain')) return;
+			this.heal(pokemon.baseMaxhp / 16);
+		},
+		onTerrain(pokemon) {
+			if (!this.field.isTerrain('grassyterrain')) return;
+			this.heal(pokemon.baseMaxhp / 16);
 		},
 		gen: 8,
 		desc: "(Select Ability Prism to use) Gives the Skiddo line the effects of Seed Sower.",
@@ -814,13 +979,23 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		spritenum: 634,
 		onTakeItem: false,
 		zMove: "Granular Vortex",
-		zMoveFrom: "Earthquake",
+		zMoveType: "Ground",
 		itemUser: ["Trapinch", "Vibrava", "Flygon"],
 		onModifyDamage(damage, source, target, move) {
 			if (target.getMoveHitData(move).typeMod < 0) {
 				this.debug('Tinted Lens boost');
 				return this.chainModify(2);
 			}
+		},
+		onResidualOrder: 5,
+		onResidualSubOrder: 5,
+		onResidual(pokemon) {
+			if (this.field.isTerrain('grassyterrain')) return;
+			this.heal(pokemon.baseMaxhp / 16);
+		},
+		onTerrain(pokemon) {
+			if (!this.field.isTerrain('grassyterrain')) return;
+			this.heal(pokemon.baseMaxhp / 16);
 		},
 		gen: 8,
 		desc: "(Select Ability Prism to use) Gives the Trapinch line the effects of Tinted Lens.",
@@ -830,13 +1005,23 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		spritenum: 634,
 		onTakeItem: false,
 		zMove: "Summit's Pressure",
-		zMoveFrom: "Ice Hammer",
+		zMoveType: "Ice",
 		itemUser: ["Crabrawler", "Crabominable"],
 		onSourceModifyDamage(damage, source, target, move) {
 			let mod = 1;
 			if (move.type === 'Fire') mod *= 2;
 			if (move.flags['contact']) mod /= 2;
 			return this.chainModify(mod);
+		},
+		onResidualOrder: 5,
+		onResidualSubOrder: 5,
+		onResidual(pokemon) {
+			if (this.field.isTerrain('grassyterrain')) return;
+			this.heal(pokemon.baseMaxhp / 16);
+		},
+		onTerrain(pokemon) {
+			if (!this.field.isTerrain('grassyterrain')) return;
+			this.heal(pokemon.baseMaxhp / 16);
 		},
 		gen: 8,
 		desc: "(Select Ability Prism to use) Gives the Crabrawler line the effects of Fluffy.",
@@ -848,24 +1033,62 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		zMove: "Song for the World",
 		zMoveFrom: "Hyper Voice",
 		itemUser: ["Meloetta"],
-		onStart(pokemon) {
-			this.add('-ability', pokemon, 'Mold Breaker');
+		onTryHitPriority: 1,
+		onTryHit(target, source, move) {
+			if (target === source || move.hasBounced || !move.flags['reflectable']) {
+				return;
+			}
+			const newMove = this.dex.getActiveMove(move.id);
+			newMove.hasBounced = true;
+			newMove.pranksterBoosted = false;
+			this.useMove(newMove, target, source);
+			return null;
 		},
-		onModifyMove(move) {
-			move.ignoreAbility = true;
+		onAllyTryHitSide(target, source, move) {
+			if (target.side === source.side || move.hasBounced || !move.flags['reflectable']) {
+				return;
+			}
+			const newMove = this.dex.getActiveMove(move.id);
+			newMove.hasBounced = true;
+			newMove.pranksterBoosted = false;
+			this.useMove(newMove, this.effectData.target, source);
+			return null;
+		},
+		condition: {
+			duration: 1,
+		},
+		onResidualOrder: 5,
+		onResidualSubOrder: 5,
+		onResidual(pokemon) {
+			if (this.field.isTerrain('grassyterrain')) return;
+			this.heal(pokemon.baseMaxhp / 16);
+		},
+		onTerrain(pokemon) {
+			if (!this.field.isTerrain('grassyterrain')) return;
+			this.heal(pokemon.baseMaxhp / 16);
 		},
 		gen: 8,
-		desc: "(Select Ability Prism to use) Gives Meloetta the effects of Mold Breaker.",
+		desc: "(Select Ability Prism to use) Gives Meloetta the effects of Magic Bounce.",
 	},
 	drapionityprism: {
 		name: "Drapionity Prism",
 		spritenum: 634,
 		onTakeItem: false,
 		zMove: "Venomous Vice",
-		zMoveFrom: "Poison Jab",
+		zMoveType: "Poison",
 		itemUser: ["Skorupi", "Drapion"],
 		onModifyCritRatio(critRatio, source, target) {
 			if (target && ['psn', 'tox'].includes(target.status)) return 5;
+		},
+		onResidualOrder: 5,
+		onResidualSubOrder: 5,
+		onResidual(pokemon) {
+			if (this.field.isTerrain('grassyterrain')) return;
+			this.heal(pokemon.baseMaxhp / 16);
+		},
+		onTerrain(pokemon) {
+			if (!this.field.isTerrain('grassyterrain')) return;
+			this.heal(pokemon.baseMaxhp / 16);
 		},
 		gen: 8,
 		desc: "(Select Ability Prism to use) Gives the Skorupi line the effects of Merciless.",
@@ -875,7 +1098,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		spritenum: 634,
 		onTakeItem: false,
 		zMove: "Warped Dreams",
-		zMoveFrom: "Psychic",
+		zMoveType: "Psychic",
 		itemUser: ["Munna", "Musharna"],
 		onStart(pokemon) {
 			this.add('-ability', pokemon, 'Comatose');
@@ -892,6 +1115,16 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 				return this.chainModify(2);
 			}
 		},
+		onResidualOrder: 5,
+		onResidualSubOrder: 5,
+		onResidual(pokemon) {
+			if (this.field.isTerrain('grassyterrain')) return;
+			this.heal(pokemon.baseMaxhp / 16);
+		},
+		onTerrain(pokemon) {
+			if (!this.field.isTerrain('grassyterrain')) return;
+			this.heal(pokemon.baseMaxhp / 16);
+		},
 		gen: 8,
 		desc: "(Select Ability Prism to use) Gives the Munna line the effects of Comatose.",
 	},
@@ -900,7 +1133,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		spritenum: 634,
 		onTakeItem: false,
 		zMove: "Disturbed Ions",
-		zMoveFrom: "Power Gem",
+		zMoveType: "Rock",
 		itemUser: ["Nosepass", "Probopass"],
 		onTryHit(target, source, move) {
 			if (target !== source && move.type === 'Ground') {
@@ -910,6 +1143,16 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 				return null;
 			}
 		},
+		onResidualOrder: 5,
+		onResidualSubOrder: 5,
+		onResidual(pokemon) {
+			if (this.field.isTerrain('grassyterrain')) return;
+			this.heal(pokemon.baseMaxhp / 16);
+		},
+		onTerrain(pokemon) {
+			if (!this.field.isTerrain('grassyterrain')) return;
+			this.heal(pokemon.baseMaxhp / 16);
+		},
 		gen: 8,
 		desc: "(Select Ability Prism to use) Gives the Nosepass line the effects of Earth Eater.",
 	},
@@ -918,7 +1161,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		spritenum: 634,
 		onTakeItem: false,
 		zMove: "Joust of Justice",
-		zMoveFrom: "Iron Head",
+		zMoveType: "Steel",
 		itemUser: ["Karrablast", "Escavalier"],
 		onBasePowerPriority: 19,
 		onBasePower(basePower, attacker, defender, move) {
@@ -926,6 +1169,16 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 				this.debug('Shapness boost');
 				return this.chainModify(1.5);
 			}
+		},
+		onResidualOrder: 5,
+		onResidualSubOrder: 5,
+		onResidual(pokemon) {
+			if (this.field.isTerrain('grassyterrain')) return;
+			this.heal(pokemon.baseMaxhp / 16);
+		},
+		onTerrain(pokemon) {
+			if (!this.field.isTerrain('grassyterrain')) return;
+			this.heal(pokemon.baseMaxhp / 16);
 		},
 		gen: 8,
 		desc: "(Select Ability Prism to use) Gives the Karrablast line the effects of Sharpness.",
@@ -935,11 +1188,12 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		spritenum: 634,
 		onTakeItem: false,
 		zMove: "Emergency Assembly",
-		zMoveFrom: "Scald",
+		zMoveType: "Water",
 		itemUser: ["Wishiwashi", "Wishiwashi-School"],
 		onResidualOrder: 5,
 		onResidualSubOrder: 2,
 		onResidual(pokemon) {
+			this.heal(pokemon.baseMaxhp / 16);
 			this.add('-ability', pokemon, 'Filter Feed');
 			this.heal(pokemon.baseMaxhp / 16);
 		},
