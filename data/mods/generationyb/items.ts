@@ -499,7 +499,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		onTakeItem: false,
 		zMove: "Sky-Piercing Slash",
 		zMoveFrom: "Sacred Sword",
-		itemUser: ["Kaledzi"],
+		//itemUser: ["Kaledzi"],
 		onModifyDamage(damage, source, target, move) {
 			if (move && target.getMoveHitData(move).typeMod > 0) {
 				return this.chainModify([0x1400, 0x1000]);
@@ -524,7 +524,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		onTakeItem: false,
 		zMove: "Blade of Courage",
 		zMoveFrom: "Leaf Blade",
-		itemUser: ["Mintarin", "Sagicuta", "Menthapilli"],
+		//itemUser: ["Mintarin", "Sagicuta", "Menthapilli"],
 		onModifyAtkPriority: 5,
 		onModifyAtk(atk, attacker, defender, move) {
 			if (attacker.hasType(move.type) && attacker.hp <= attacker.maxhp / 3) {
@@ -558,7 +558,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		onTakeItem: false,
 		zMove: "Cannon of Courage",
 		zMoveFrom: "Fire Blast",
-		itemUser: ["Fyermine", "Exploat", "Ancillarine"],
+		//itemUser: ["Fyermine", "Exploat", "Ancillarine"],
 		onModifyAtkPriority: 5,
 		onModifyAtk(atk, attacker, defender, move) {
 			if (attacker.hasType(move.type) && attacker.hp <= attacker.maxhp / 3) {
@@ -592,7 +592,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		onTakeItem: false,
 		zMove: "Blast of Courage",
 		zMoveFrom: "Scald",
-		itemUser: ["Hydrattler", "Zingshot", "Trebutalus"],
+		//itemUser: ["Hydrattler", "Zingshot", "Trebutalus"],
 		onModifyAtkPriority: 5,
 		onModifyAtk(atk, attacker, defender, move) {
 			if (attacker.hasType(move.type) && attacker.hp <= attacker.maxhp / 3) {
@@ -626,7 +626,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		onTakeItem: false,
 		zMove: "Lost Guardian's Wrath",
 		zMoveFrom: "Play Rough",
-		itemUser: ["Tuatoxa", "Tuakahu", "Tuamana"],
+		//itemUser: ["Tuatoxa", "Tuakahu", "Tuamana"],
 		onModifyMove(move) {
 			if (!move || !move.flags['contact'] || move.target === 'self') return;
 			if (!move.secondaries) {
@@ -657,7 +657,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		onTakeItem: false,
 		zMove: "Extreme Evoblast",
 		zMoveFrom: "Evoblast",
-		itemUser: ["Eevee", "Vaporeon", "Jolteon", "Flareon", "Espeon", "Umbreon", "Glaceon", "Leafeon", "Sylveon", "Mytheon", "Geareon"],
+		//itemUser: ["Eevee", "Vaporeon", "Jolteon", "Flareon", "Espeon", "Umbreon", "Glaceon", "Leafeon", "Sylveon", "Mytheon", "Geareon"],
 		onModifyMove(move) {
 			move.stab = 2;
 		},
@@ -680,7 +680,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		onTakeItem: false,
 		zMove: "Hidden Leaf Strike",
 		zMoveType: "Bug",
-		itemUser: ["Shelmet", "Accelgor"],
+		//itemUser: ["Shelmet", "Accelgor"],
 		onPrepareHit(source, target, move) {
 			if (this.effectData.protean) return;
 			if (move.hasBounced || move.isFutureMove || move.sourceEffect === 'snatch') return;
@@ -713,7 +713,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		onTakeItem: false,
 		zMove: "Fury of the 108",
 		zMoveType: "Dark",
-		itemUser: ["Spiritomb"],
+		//itemUser: ["Spiritomb"],
 		onStart(pokemon) {
 			if (pokemon.side.totalFainted) {
 				this.add('-activate', pokemon, 'ability: Supreme Overlord');
@@ -752,7 +752,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		onTakeItem: false,
 		zMove: "Crimson Crash",
 		zMoveType: "Dragon",
-		itemUser: ["Druddigon"],
+		//itemUser: ["Druddigon"],
 		onBasePowerPriority: 19,
 		onBasePower(basePower, attacker, defender, move) {
 			if (defender.hurtThisTurn) {
@@ -779,7 +779,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		onTakeItem: false,
 		zMove: "Corrosive Circuit",
 		zMoveType: "Electric",
-		itemUser: ["Tynamo", "Eelektrik", "Eelektross"],
+		//itemUser: ["Tynamo", "Eelektrik", "Eelektross"],
 		onSwitchOut(pokemon) {
 			pokemon.heal(pokemon.baseMaxhp / 3);
 		},
@@ -802,7 +802,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		onTakeItem: false,
 		zMove: "Pixie Rust",
 		zMoveType: "Fairy",
-		itemUser: ["Tinkatink", "Tinkatuff", "Tinkaton"],
+		//itemUser: ["Tinkatink", "Tinkatuff", "Tinkaton"],
 		onModifyPriority(priority, pokemon, target, move) {
 			if (move?.category === 'Status') {
 				move.pranksterBoosted = true;
@@ -828,7 +828,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		onTakeItem: false,
 		zMove: "Corkscrew Cross",
 		zMoveType: "Fighting",
-		itemUser: ["Tyrogue", "Hitmonchan", "Hitmonlee", "Hitmontop"],
+		//itemUser: ["Tyrogue", "Hitmonchan", "Hitmonlee", "Hitmontop"],
 		onModifyMovePriority: -5,
 		onModifyMove(move) {
 			if (!move.ignoreImmunity) move.ignoreImmunity = {};
@@ -862,7 +862,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		onTakeItem: false,
 		zMove: "Final Flicker",
 		zMoveType: "Fire",
-		itemUser: ["Litwick", "Lampent", "Chandelure"],
+		//itemUser: ["Litwick", "Lampent", "Chandelure"],
 		onBasePowerPriority: 21,
 		onBasePower(basePower, pokemon) {
 			let boosted = true;
@@ -897,7 +897,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		onTakeItem: false,
 		zMove: "Wings of the Night",
 		zMoveType: "Flying",
-		itemUser: ["Zubat", "Golbat", "Crobat"],
+		//itemUser: ["Zubat", "Golbat", "Crobat"],
 		onDamage(damage, target, source, effect) {
 			if (effect.effectType !== 'Move') {
 				if (effect.effectType === 'Ability') this.add('-activate', source, 'ability: ' + effect.name);
@@ -923,7 +923,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		onTakeItem: false,
 		zMove: "Sunken Spirits",
 		zMoveType: "Ghost",
-		itemUser: ["Dhelmise"],
+		//itemUser: ["Dhelmise"],
 		onSourceModifyAtkPriority: 6,
 		onSourceModifyAtk(atk, attacker, defender, move) {
 			if (move.type === 'Ice' || move.type === 'Fire') {
@@ -957,7 +957,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		onTakeItem: false,
 		zMove: "Go-Go Charge",
 		zMoveType: "Grass",
-		itemUser: ["Skiddo", "Gogoat"],
+		//itemUser: ["Skiddo", "Gogoat"],
 		onDamagingHit(damage, target, source, move) {
 			this.field.setTerrain('grassyterrain');
 		},
@@ -980,7 +980,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		onTakeItem: false,
 		zMove: "Granular Vortex",
 		zMoveType: "Ground",
-		itemUser: ["Trapinch", "Vibrava", "Flygon"],
+		//itemUser: ["Trapinch", "Vibrava", "Flygon"],
 		onModifyDamage(damage, source, target, move) {
 			if (target.getMoveHitData(move).typeMod < 0) {
 				this.debug('Tinted Lens boost');
@@ -1006,7 +1006,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		onTakeItem: false,
 		zMove: "Summit's Pressure",
 		zMoveType: "Ice",
-		itemUser: ["Crabrawler", "Crabominable"],
+		//itemUser: ["Crabrawler", "Crabominable"],
 		onSourceModifyDamage(damage, source, target, move) {
 			let mod = 1;
 			if (move.type === 'Fire') mod *= 2;
@@ -1032,7 +1032,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		onTakeItem: false,
 		zMove: "Song for the World",
 		zMoveFrom: "Hyper Voice",
-		itemUser: ["Meloetta"],
+		//itemUser: ["Meloetta"],
 		onTryHitPriority: 1,
 		onTryHit(target, source, move) {
 			if (target === source || move.hasBounced || !move.flags['reflectable']) {
@@ -1076,7 +1076,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		onTakeItem: false,
 		zMove: "Venomous Vice",
 		zMoveType: "Poison",
-		itemUser: ["Skorupi", "Drapion"],
+		//itemUser: ["Skorupi", "Drapion"],
 		onModifyCritRatio(critRatio, source, target) {
 			if (target && ['psn', 'tox'].includes(target.status)) return 5;
 		},
@@ -1099,7 +1099,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		onTakeItem: false,
 		zMove: "Warped Dreams",
 		zMoveType: "Psychic",
-		itemUser: ["Munna", "Musharna"],
+		//itemUser: ["Munna", "Musharna"],
 		onStart(pokemon) {
 			this.add('-ability', pokemon, 'Comatose');
 		},
@@ -1134,7 +1134,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		onTakeItem: false,
 		zMove: "Disturbed Ions",
 		zMoveType: "Rock",
-		itemUser: ["Nosepass", "Probopass"],
+		//itemUser: ["Nosepass", "Probopass"],
 		onTryHit(target, source, move) {
 			if (target !== source && move.type === 'Ground') {
 				if (!this.heal(target.baseMaxhp / 4)) {
@@ -1162,7 +1162,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		onTakeItem: false,
 		zMove: "Joust of Justice",
 		zMoveType: "Steel",
-		itemUser: ["Karrablast", "Escavalier"],
+		//itemUser: ["Karrablast", "Escavalier"],
 		onBasePowerPriority: 19,
 		onBasePower(basePower, attacker, defender, move) {
 			if (move.flags['slicing']) {
@@ -1189,7 +1189,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		onTakeItem: false,
 		zMove: "Emergency Assembly",
 		zMoveType: "Water",
-		itemUser: ["Wishiwashi", "Wishiwashi-School"],
+		//itemUser: ["Wishiwashi", "Wishiwashi-School"],
 		onResidualOrder: 5,
 		onResidualSubOrder: 2,
 		onResidual(pokemon) {
