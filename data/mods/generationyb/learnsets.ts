@@ -8882,7 +8882,7 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 	},
 	eevee: {
 		learnset: {
-
+			evoblast: ["8L1"],
 			covet: ["8L1"],
 			helpinghand: ["8L1"],
 			tackle: ["8L1"],
