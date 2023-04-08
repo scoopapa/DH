@@ -61,9 +61,9 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 			}
 		}
 		const zMove = this.dex.getActiveMove(this.zMoveTable[move.type]);
-		zMove.basePower === 90;
+		zMove.basePower = move.zMove.basePower;
 		zMove.category = move.category;
-		zMove.priority === 0;
+		zMove.priority = move.zMove.priority;
 		zMove.isZOrMaxPowered = true;
 		return zMove;
 	},	
