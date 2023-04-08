@@ -73,7 +73,7 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 				'joustofjustice', 'emergencyassembly'].includes(zMove.id)) {
 			zMove.category = move.category;
 		}
-		zMove.priority = move.zMove.priority;
+		zMove.priority = move.priority;
 		zMove.isZOrMaxPowered = true;
 		return zMove;
 	},	
