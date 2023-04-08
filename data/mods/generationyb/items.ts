@@ -1041,6 +1041,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 			const newMove = this.dex.getActiveMove(move.id);
 			newMove.hasBounced = true;
 			newMove.pranksterBoosted = false;
+			this.add('-ability', target, 'Magic Bounce');
 			this.useMove(newMove, target, source);
 			return null;
 		},
@@ -1051,6 +1052,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 			const newMove = this.dex.getActiveMove(move.id);
 			newMove.hasBounced = true;
 			newMove.pranksterBoosted = false;
+			this.add('-ability', target, 'Magic Bounce');
 			this.useMove(newMove, this.effectData.target, source);
 			return null;
 		},
