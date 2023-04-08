@@ -61,8 +61,18 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 			}
 		}
 		const zMove = this.dex.getActiveMove(this.zMoveTable[move.type]);
-		zMove.basePower = move.zMove.basePower;
-		zMove.category = move.category;
+		if (!['hiddenleafstrike', 'furyofthe108', 'crimsoncrash', 'corrosivecircuit', 'pixierust',
+				'corkscrewcross', 'finalflicker', 'wingsofthenight', 'sunkenspirits', 'gogocharge',
+				'granularvortex', 'summitspressure', 'venomousvice', 'warpeddreams', 'disturbedions',
+				'joustofjustice', 'emergencyassembly'].includes(zMove.id)) {
+			zMove.basePower = move.zMove.basePower;
+		}
+		if (!['hiddenleafstrike', 'furyofthe108', 'crimsoncrash', 'corrosivecircuit', 'pixierust',
+				'corkscrewcross', 'finalflicker', 'wingsofthenight', 'sunkenspirits', 'gogocharge',
+				'granularvortex', 'summitspressure', 'venomousvice', 'warpeddreams', 'disturbedions',
+				'joustofjustice', 'emergencyassembly'].includes(zMove.id)) {
+			zMove.category = move.category;
+		}
 		zMove.priority = move.zMove.priority;
 		zMove.isZOrMaxPowered = true;
 		return zMove;
