@@ -61,10 +61,6 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 			}
 		}
 		const zMove = this.dex.getActiveMove(this.zMoveTable[move.type]);
-		zMove.basePower = move.basePower;
-		zMove.category = move.category;
-		// copy the priority for Quick Guard
-		zMove.priority = move.priority;
 		zMove.isZOrMaxPowered = true;
 		return zMove;
 	},	
