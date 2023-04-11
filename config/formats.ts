@@ -1381,7 +1381,7 @@ export const Formats: FormatList = [
 					 "Kaledity Prism", "Menthapillity Prism", "Ancillity Prism", "Trebutality Prism", "Tuamanity Prism", "Eevity Prism",
 					 "Accelity Prism", "Spirity Prism", "Druddity Prism", "Eelektrity Prism", "Tinkity Prism", "Hitmonity Prism", 
 					 "Chandelurity Prism", "Crobity Prism", "Dhelmisity Prism", "Gogoatinity Prism", "Flygonity Prism", "Crabominity Prism",
-					 "Meloettinity Prism", "Drapionity Prism", "Musharnity Prism", "Probosity Prism", "Escavity Prism", "Wishinity Prism"],
+					 "Meloettinity Prism", "Drapionity Prism", "Musharnity Prism", "Probosity Prism", "Escavity Prism", "Wishinity Prism"], 
 	},
 	{
 		name: "[Gen 2] GSC Doubles",
