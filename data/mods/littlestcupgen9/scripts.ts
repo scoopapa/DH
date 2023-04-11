@@ -4,7 +4,26 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 		excludeStandardTiers: true,
 		customTiers: ["LLC"],
 	},	
-
+	init: function() {
+		this.modData('Learnsets', 'pichu').learnset.terablast = ['8L1'];
+		this.modData('Learnsets', 'cleffa').learnset.terablast = ['8L1'];
+		this.modData('Learnsets', 'igglybuff').learnset.terablast = ['8L1'];
+		this.modData('Learnsets', 'togepi').learnset.terablast = ['8L1'];
+		this.modData('Learnsets', 'tyrogue').learnset.terablast = ['8L1'];
+		this.modData('Learnsets', 'smoochum').learnset.terablast = ['8L1'];
+		this.modData('Learnsets', 'elekid').learnset.terablast = ['8L1'];
+		this.modData('Learnsets', 'magby').learnset.terablast = ['8L1'];
+		this.modData('Learnsets', 'azurill').learnset.terablast = ['8L1'];
+		this.modData('Learnsets', 'budew').learnset.terablast = ['8L1'];
+		this.modData('Learnsets', 'chingling').learnset.terablast = ['8L1'];
+		this.modData('Learnsets', 'bonsly').learnset.terablast = ['8L1'];
+		this.modData('Learnsets', 'mimejr.').learnset.terablast = ['8L1'];
+		this.modData('Learnsets', 'happiny').learnset.terablast = ['8L1'];
+		this.modData('Learnsets', 'munchlax').learnset.terablast = ['8L1'];
+		this.modData('Learnsets', 'riolu').learnset.terablast = ['8L1'];
+		this.modData('Learnsets', 'mantyke').learnset.terablast = ['8L1'];
+		this.modData('Learnsets', 'toxel').learnset.terablast = ['8L1'];
+  },
   // Terastal
 	// taken from SV Speculative
 
