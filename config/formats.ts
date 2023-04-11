@@ -1559,6 +1559,34 @@ export const Formats: FormatList = [
 		ruleset: ['Standard', 'Data Mod', 'Welcome Message'],
 	},
 	{
+		name: "[Gen 8] Littlest Cup Gen 9",
+		desc: [
+			"<b>Littlest Cup</b>: A National Dex metagame where only Baby Pokemon are allowed, played at Level 1."
+		],
+		threads: [
+			`&bullet; <a href="https://pastebin.com/PtqmRUhG">Gen 8 Littlest Cup VR and Sample Sets</a>`,
+		],
+		mod: 'littlestcupgen9',
+		maxLevel: 1,
+		ruleset: ['Standard NatDex', 'OHKO Clause', 'Evasion Moves Clause', 'Species Clause', 'Dynamax Clause', 'Sleep Clause Mod'],
+		banlist: ['All Pokemon', 'Belly Drum', 'Huge Power'],
+		unbanlist: ['Shadow Tag', 'Pichu', 'Cleffa', 'Igglybuff', 'Togepi', 'Tyrogue', 'Smoochum', 'Elekid', 'Magby', 'Azurill', 'Wynaut', 'Budew', 'Chingling', 'Bonsly', 'Mime Jr.', 'Happiny', 'Munchlax', 'Riolu', 'Mantyke', 'Toxel'],
+		validateSet(set, teamHas) { // stolen from SV Specualative
+			const species = this.dex.getSpecies(set.species);
+			const ability = this.dex.getAbility(set.ability);
+			if (!set.hpType === 'Fairy' && !set.hpType === 'Normal') {
+				return this.validateSet(set, teamHas);
+			} else {
+				const terastal = set.hpType;
+				set.hpType = 'Fire';
+				const fakeValidation = this.validateSet(set, teamHas);
+				if (fakeValidation?.length) return fakeValidation;
+				set.hpType = terastal;
+				return null;
+			}
+		},
+	},
+	{
 		name: "[Gen 8] MetaMons Expanded",
 	   desc: [
 			"In this Pet Mod, we will aim to create a decently-sized micrometa that will expand in the unique niches of some Pokémon, giving them the spotlight after all the time they have been waiting.",
@@ -2075,7 +2103,7 @@ export const Formats: FormatList = [
 	// Littlest Cup
 	///////////////////////////////////////////////////////////////////
 	{
-		name: "[Gen 8] Littlest Cup",
+		name: "[Gen 8] Littlest Cup Gen 8",
 		desc: [
 			"<b>Littlest Cup</b>: A National Dex metagame where only Baby Pokemon are allowed."
 		],
