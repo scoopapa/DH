@@ -1,5 +1,5 @@
 export const Moves: {[k: string]: ModdedMoveData} = {
-  terablast: {
+	terablast: {
 		num: 851,
 		accuracy: 100,
 		basePower: 80,
@@ -14,12 +14,12 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			this.add('-anim', source, "Fairy Wind", target);
 		},
 		onModifyType(move, pokemon, target) {
-			if (pokemon.volatiles['terastal']) {
+			if (pokemon.terastallized) {
 				move.type = pokemon.teraType;
 			}
 		},
 		onModifyMove(move, pokemon) {
-			if (pokemon.volatiles['terastal'] && pokemon.getStat('atk', false, true) > pokemon.getStat('spa', false, true)) {
+			if (pokemon.terastallized && pokemon.getStat('atk', false, true) > pokemon.getStat('spa', false, true)) {
 				move.category = 'Physical';
 			}
 		},
