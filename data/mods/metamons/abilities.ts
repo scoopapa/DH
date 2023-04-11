@@ -280,4 +280,38 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		rating: 3.5,
 		num: 297,
 	},
+	refrigerate: {
+		shortDesc: "Normal moves become Ice type and 1.2x power. Ice moves 1.5x power.",
+		onModifyTypePriority: -1,
+		onModifyType(move, pokemon) {
+			const noModifyType = [
+				'judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'terrainpulse', 'weatherball',
+			];
+			if (move.type === 'Normal' && !noModifyType.includes(move.id) && !(move.isZ && move.category !== 'Status')) {
+				move.type = 'Ice';
+				move.refrigerateBoosted = true;
+			}
+		},
+		onBasePowerPriority: 23,
+		onBasePower(basePower, pokemon, target, move) {
+			if (move.refrigerateBoosted) return this.chainModify([0x1333, 0x1000]);
+		},
+		onModifyAtkPriority: 5,
+		onModifyAtk(atk, attacker, defender, move) {
+			if (move.type === 'Ice') {
+				this.debug('Refrigerate boost');
+				return this.chainModify(1.5);
+			}
+		},
+		onModifySpAPriority: 5,
+		onModifySpA(atk, attacker, defender, move) {
+			if (move.type === 'Ice') {
+				this.debug('Refrigerate boost');
+				return this.chainModify(1.5);
+			}
+		},
+		name: "Refrigerate",
+		rating: 4,
+		num: 174,
+	},
 };

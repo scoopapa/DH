@@ -1518,7 +1518,7 @@ nohtyp: {
 	prevo: "arbok",
 },
 skyradise: {
-	num: 190,
+	num: 194,
 	name: "Skyradise",
 	types: ["Flying"],
 	gender: "N",
@@ -1544,7 +1544,7 @@ shuckle: {
 	},	
 	
 	ironsun: {
-	num: 188,
+	num: 192,
 	name: "Iron Sun",
 	types: ["Rock", "Fire"],
 	gender: "N",
@@ -1554,7 +1554,7 @@ shuckle: {
 	},
 	
 	crazymoon: {
-	num: 189,
+	num: 193,
 	name: "Crazy Moon",
 	types: ["Rock", "Fairy"],
 	gender: "N",
@@ -1643,7 +1643,7 @@ shuckle: {
 		eggGroups: ["Field"],
 	},
 	flareoncile: {
-		num: 172,
+		num: 173,
 		name: "Flareon-Cile",
 		baseSpecies: "Flareon",
 		forme: "Cile",
@@ -1659,7 +1659,7 @@ shuckle: {
 		eggGroups: ["Field"],
 	},
 	espeoncile: {
-		num: 173,
+		num: 174,
 		name: "Espeon-Cile",
 		baseSpecies: "Espeon",
 		forme: "Cile",
@@ -1676,7 +1676,7 @@ shuckle: {
 		eggGroups: ["Field"],
 	},
 	umbreoncile: {
-		num: 174,
+		num: 175,
 		name: "Umbreon-Cile",
 		baseSpecies: "Umbreon",
 		forme: "Cile",
@@ -1693,7 +1693,7 @@ shuckle: {
 		eggGroups: ["Field"],
 	},
 	leafeoncile: {
-		num: 175,
+		num: 176,
 		name: "Leafeon-Cile",
 		baseSpecies: "Leafeon",
 		forme: "Cile",
@@ -1710,7 +1710,7 @@ shuckle: {
 		eggGroups: ["Field"],
 	},
 	glaceoncile: {
-		num: 176,
+		num: 177,
 		name: "Glaceon-Cile",
 		baseSpecies: "Glaceon",
 		forme: "Cile",
@@ -1728,7 +1728,7 @@ shuckle: {
 	},
 	
 	sylveoncile: {
-		num: 177,
+		num: 178,
 		name: "Sylveon-Cile",
 		baseSpecies: "Sylveon",
 		forme: "Cile",
@@ -1746,7 +1746,7 @@ shuckle: {
 	},
 	
 	qilineon: {
-		num: 178,
+		num: 179,
 		name: "Qilineon",
 		types: ["Dragon"],
 		genderRatio: {M: 0.875, F: 0.125},
@@ -1762,7 +1762,7 @@ shuckle: {
 	},
 	
 	fossileon: {
-		num: 179,
+		num: 180,
 		name: "Fossileon",
 		types: ["Ground"],
 		genderRatio: {M: 0.875, F: 0.125},
@@ -1779,13 +1779,13 @@ shuckle: {
 	
 crobat: {
 		inherit: true,
-		num: 182,
+		num: 183,
 		otherFormes: ["Crobat-Mega"],
 	formeOrder: ["Crobat", "Crobat-Mega"],
 	},	
 
 crobatmega: {
-	num: 182,
+	num: 183,
 	name: "Crobat-Mega",
 	baseSpecies: "Crobat",
 	forme: "Mega",
@@ -1797,7 +1797,7 @@ crobatmega: {
 },
 
 cupida: {
-	num: 191,
+	num: 195,
 	name: "Cupida",
 	types: ["Fairy", "Ghost"],
 	gender: "F",
@@ -1808,13 +1808,13 @@ cupida: {
 
 mightyena: {
 		inherit: true,
-		num: 184,
+		num: 185,
 		otherFormes: ["Mightyena-Mega"],
 	formeOrder: ["Mightyena", "Mightyena-Mega"],
 	},	
 
 mightyenamega: {
-		num: 184,
+		num: 185,
 		name: "Mightyena-Mega",
 		baseSpecies: "Mightyena",
 		types: ["Dark", "Fairy"],
@@ -1825,7 +1825,7 @@ mightyenamega: {
 	},
 	
 drapede: {
-	num: 185,
+	num: 189,
 	name: "Drapede",
 	types: ["Dragon", "Bug"],
 	baseStats: {hp: 140, atk: 120, def: 100, spa: 60, spd: 100, spe: 50},
@@ -1834,7 +1834,7 @@ drapede: {
 },
 
 quetzal: {
-	num: 186,
+	num: 190,
 	name: "Quetzal",
 	types: ["Flying", "Grass"],
 	baseStats: {hp: 75, atk: 95, def: 74, spa: 110, spd: 105, spe: 111},
@@ -1843,11 +1843,40 @@ quetzal: {
 },
 
 granjaguar: {
-	num: 187,
+	num: 191,
 	name: "Granjaguar",
 	types: ["Ground", "Dark"],
 	baseStats: {hp: 85, atk: 115, def: 110, spa: 100, spd: 105, spe: 55},
 	abilities: {0: "Infiltrator", 1: "Intimidate", H: "Guardian of the Ruins"},
 	weightkg: 247.9,
+},
+
+huemul: {
+	num: 186,
+	name: "Huemul",
+	types: ["Normal"],
+	baseStats: {hp: 25, atk: 35, def: 35, spa: 70, spd: 45, spe: 85},
+	abilities: {0: "Rattled", 1: "Frisk", H: "Run Away"},
+	weightkg: 40,
+	evos: ["Undeer"],
+},
+
+undeer: {
+	num: 187,
+	name: "Undeer",
+	types: ["Normal", "Ghost"],
+	baseStats: {hp: 143, atk: 85, def: 95, spa: 80, spd: 85, spe: 30},
+	abilities: {0: "Cursed Body", 1: "Frisk", H: "Dark Eater"},
+	weightkg: 521.3,
+	prevo: "Huemul",
+},
+
+dothdo: {
+	num: 188,
+	name: "Dothdo",
+	types: ["Ghost", "Flying"],
+	baseStats: {hp: 70, atk: 85, def: 75, spa: 45, spd: 100, spe: 112},
+	abilities: {0: "Cold Heart", 1: "Big Pecks", H: "Cloud Nine"},
+	weightkg: 4.2,
 },
 };

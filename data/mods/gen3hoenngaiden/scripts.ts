@@ -1044,6 +1044,8 @@ export const Scripts: ModdedBattleScriptsData = {
 		delete this.modData('Learnsets', 'roselia').learnset.sleeppowder;
 		delete this.modData('Learnsets', 'roserade').learnset.sleeppowder;
 
+		delete this.modData('Learnsets', 'voltorbhisui').learnset.headbutt;
+		delete this.modData('Learnsets', 'voltorbhisui').learnset.refresh;
 		delete this.modData('Learnsets', 'electrodehisui').learnset.headbutt;
 		delete this.modData('Learnsets', 'electrodehisui').learnset.refresh;
 

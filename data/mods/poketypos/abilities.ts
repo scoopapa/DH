@@ -25,6 +25,12 @@ Ratings and how they work:
 
 export const Abilities: {[abilityid: string]: AbilityData} = {
 	thermalexchange: {
+		onTryHit(target, source, move) {
+			if (move.type === 'Fire') {
+				this.add('-immune', pokemon, '[from] ability: Thermal Exchange');
+				return null;
+			}
+		},
 		onDamagingHit(damage, target, source, move) {
 			if (move.type === 'Fire') {
 				this.boost({atk: 1});
@@ -206,5 +212,18 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		name: "Lingering Aroma",
 		shortDesc: "Making contact with this Pokemon has the attacker's Ability become Lingering Aroma.",
 		rating: 2,
+	},
+	sharpness: {
+		shortDesc: "This Pokemon's slicing moves have their power multiplied by 1.5.",
+		onBasePowerPriority: 19,
+		onBasePower(basePower, attacker, defender, move) {
+			if (move.name === 'Aerial Ace' || move.name === 'Air Cutter' || move.name === 'Air Slash' || move.name === 'Aerial Ace' || move.name === 'Aqua Cutter' || move.name === 'Behemoth Blade' || move.name === 'Cross Poison' || move.name === 'Cut' || move.name === 'Fury Cutter' || move.name === 'Leaf Blade' || move.name === 'Night Slash' || move.name === 'Psycho Cut' || move.name === 'Razor Leaf' || move.name === 'Razor Shell' || move.name === 'Sacred Sword' || move.name === 'Slash' || move.name === 'Solar Blade' || move.name === 'X-Scissor') {
+				this.debug('Shapness boost');
+				return this.chainModify(1.5);
+			}
+		},
+		name: "Sharpness",
+		rating: 3.5,
+		num: 292,
 	},
 };

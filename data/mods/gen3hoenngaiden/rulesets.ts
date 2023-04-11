@@ -17,10 +17,6 @@ export const Formats: {[k: string]: FormatData} = {
 			this.add('-message', `https://www.smogon.com/forums/threads/hoenn-gaiden-pet-mod-of-the-season-slate-8-concept-voting.3681339/`);
 		},
 	},
-	hgouteambuilder: {
-		effectType: 'Rule',
-		name: 'HG OU Teambuilder',
-	},
 	illegalbatonpassclause: {
 		effectType: 'ValidatorRule',
 		name: 'Illegal Baton Pass Clause',
@@ -29,5 +25,27 @@ export const Formats: {[k: string]: FormatData} = {
 		onBegin() {
 			this.add('rule', 'Illegal Baton Pass Clause: Do not allow Baton Pass with the combination of Mean Look/Spider Web/Block/Ingrain');
 		},
+	},
+	standard: {
+		effectType: 'ValidatorRule',
+		name: 'Standard',
+		desc: "The standard ruleset for all offical Smogon singles tiers (Ubers, OU, etc.)",
+		ruleset: [
+				'Obtainable', 'Sleep Clause Mod', 'Switch Priority Clause Mod', 'Species Clause', 'Nickname Clause', 'OHKO Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod',
+				'Hoenn Gaiden Mod', 'Baton Pass Mod', 'Illegal Baton Pass Clause', 
+		],
+		banlist: [
+			'Armaldo ++ Rapid Spin ++ Knock Off',
+			'Kabutops ++ Rapid Spin ++ Knock Off',
+			'Skarmory ++ Whirlwind ++ Drill Peck'
+		],
+	},
+	hgouteambuilder: {
+		effectType: 'Rule',
+		name: 'HG OU Teambuilder',
+	},
+	hguuteambuilder: {
+		effectType: 'Rule',
+		name: 'HG UU Teambuilder',
 	},
 };

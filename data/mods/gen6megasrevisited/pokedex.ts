@@ -115,6 +115,57 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 60, atk: 60, def: 100, spa: 90, spd: 100, spe: 100},
 		abilities: {0: "Brain Power"},
 	},	
+	sableyemega: {
+		inherit: true,
+		types: ["Ghost", "Dark"],
+		baseStats: {hp: 50, atk: 95, def: 115, spa: 85, spd: 115, spe: 20},
+	},	
+	beedrillmega: {
+		inherit: true,
+		types: ["Bug", "Rock"],
+		baseStats: {hp: 65, atk: 140, def: 85, spa: 45, spd: 85, spe: 75},
+		abilities: {0: "Exoskeleton"},
+	},	
+	mawilemega: {
+		inherit: true,
+		types: ["Steel", "Fairy"],
+		baseStats: {hp: 50, atk: 125, def: 125, spa: 55, spd: 95, spe: 30},
+		abilities: {0: "Tough Claws"},
+	},	
+	abomasnowmega: {
+		inherit: true,
+		abilities: {0: "Ice Scales"},
+	},	
+	cameruptmega: {
+		inherit: true,
+		types: ["Fire", "Ground"],
+		baseStats: {hp: 70, atk: 110, def: 110, spa: 135, spd: 115, spe: 20},
+		abilities: {0: "Earth Eater"},
+	},	
+	slowbromega: {
+		inherit: true,
+		types: ["Water", "Psychic"],
+		baseStats: {hp: 95, atk: 75, def: 150, spa: 120, spd: 120, spe: 30},
+		abilities: {0: "Shell Ejection"},
+	},	
+	gallademega: {
+		inherit: true,
+		types: ["Psychic", "Fighting"],
+		baseStats: {hp: 68, atk: 150, def: 100, spa: 65, spd: 127, spe: 108},
+		abilities: {0: "Sharpness"},
+	},	
+	ampharosmega: {
+		inherit: true,
+		types: ["Electric", "Dragon"],
+		baseStats: {hp: 90, atk: 95, def: 95, spa: 165, spd: 115, spe: 55},
+		abilities: {0: "Mega Launcher"},
+	},
+	gyaradosmega: {
+		inherit: true,
+		types: ["Water", "Flying"],
+		baseStats: {hp: 95, atk: 145, def: 109, spa: 70, spd: 130, spe: 91},
+		abilities: {0: "Aerilate"},
+	},	
 	
 // Gen 6 Stuff
 	arbok: {

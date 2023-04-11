@@ -875,6 +875,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 	abilityshield: {
 		name: "Ability Shield",
 		spritenum: 0, // TODO
+		shortDesc: "Holder's Ability cannot be changed by any effect.",
 		ignoreKlutz: true,
 		// Neutralizing Gas protection implemented in Pokemon.ignoringAbility() within sim/pokemon.ts
 		// and in Neutralizing Gas itself within data/abilities.ts
@@ -891,6 +892,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 	},
 	clearamulet: {
 		name: "Clear Amulet",
+		shortDesc: "Prevents other Pokemon from lowering the holder's stat stages.",
 		spritenum: 0, // TODO
 		onTryBoost(boost, target, source, effect) {
 			if (source && target === source) return;
@@ -911,6 +913,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 	},
 	mirrorherb: {
 		name: "Mirror Herb",
+		shortDesc: "When an opposing Pokemon raises a stat stage, the holder copies it. Single use.",
 		fling: {
 			basePower: 10,
 		},
@@ -936,6 +939,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 	},
 	punchingglove: {
 		name: "Punching Glove",
+		shortDesc: "Holder's punch-based attacks have 1.1x power and do not make contact.",
 		spritenum: 0, // TODO
 		onBasePowerPriority: 23,
 		onBasePower(basePower, attacker, defender, move) {
@@ -953,6 +957,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 	},
 	covertcloak: {
 		name: "Covert Cloak",
+		shortDesc: "Holder is not affected by the secondary effect of another Pokemon's attack.",
 		fling: {
 			basePower: 10,
 		},
@@ -966,6 +971,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 	},
 	loadeddice: {
 		name: "Loaded Dice",
+		shortDesc: "Holder's moves that hit 2-5 times hit 4-5 times; Population Bomb hits 4-10 times.",
 		spritenum: 0, // TODO
 		// partially implemented in sim/battle-actions.ts:BattleActions#hitStepMoveHitLoop
 		onModifyMove(move) {
@@ -978,6 +984,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 	},
 	boosterenergy: {
 		name: "Booster Energy",
+		shortDesc: "Activates the Protosynthesis or Quark Drive Abilities. Single use.",
 		spritenum: 0, // TODO
 		onUpdate(pokemon) {
 			if (pokemon.transformed) return;
@@ -995,6 +1002,38 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 			return true;
 		},
 		num: 1880,
+		gen: 8,
+	},
+
+	// sandwiches
+	mightysandwichkoraidon: {
+		name: "Mighty Sandwich (Koraidon)",
+		shortDesc: "Allows Koraidon to be its strongest version.",
+		// spritenum: 699,
+		onTakeItem(item, pokemon, source) {
+			if ((source && source.baseSpecies.num === 1007) || pokemon.baseSpecies.num === 1007) {
+				return false;
+			}
+			return true;
+		},
+		forcedForme: "Koraidon",
+		itemUser: ["Koraidon"],
+		num: -1104,
+		gen: 8,
+	},
+	mightysandwichmiraidon: {
+		name: "Mighty Sandwich (Miraidon)",
+		shortDesc: "Allows Miraidon to be its strongest version.",
+		// spritenum: 699,
+		onTakeItem(item, pokemon, source) {
+			if ((source && source.baseSpecies.num === 1008) || pokemon.baseSpecies.num === 1008) {
+				return false;
+			}
+			return true;
+		},
+		forcedForme: "Miraidon",
+		itemUser: ["Miraidon"],
+		num: -1184,
 		gen: 8,
 	},
 }

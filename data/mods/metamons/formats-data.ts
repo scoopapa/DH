@@ -233,4 +233,13 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	boltund: {
 	   tier: "MetaMons",
 	},
+   sudowoodo: {
+	   tier: "MetaMons",
+	},
+	mesprit: {
+	   tier: "MetaMons",
+	},
+	froslass: {
+	   tier: "MetaMons",
+	},
 };

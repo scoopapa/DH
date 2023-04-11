@@ -219,7 +219,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		num: 1028,
 		name: "Kodokai",
 		types: ["Ghost", "Fire"],
-		baseStats: {hp: 110, atk: 65, def: 100, spa: 110, spd: 100, spe: 30},
+		baseStats: {hp: 110, atk: 65, def: 100, spa: 110, spd: 90, spe: 30},
 		abilities: {0: "White Smoke", H: "Aroma Veil"},
 		weightkg: 50,
 	},

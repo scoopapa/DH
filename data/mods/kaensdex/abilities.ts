@@ -591,6 +591,36 @@ greatshield: {
 		num: 10032,
 	},
 	
+darkeater: {
+		onTryHit(target, source, move) {
+			if (target !== source && move.type === 'Dark') {
+				if (!this.heal(target.baseMaxhp / 4)) {
+					this.add('-immune', target, '[from] ability: Dark Eater');
+				}
+				return null;
+			}
+		},
+		name: "Dark Eater",
+		desc: "This Pokemon heals 1/4 of its max HP when hit by Dark moves; Dark immunity.",
+		rating: 3.5,
+		num: 10033,
+	},
+	
+	coldheart: {
+		onTryHit(target, source, move) {
+			if (target !== source && move.type === 'Ice') {
+				if (!this.heal(target.baseMaxhp / 4)) {
+					this.add('-immune', target, '[from] ability: Cold Heart');
+				}
+				return null;
+			}
+		},
+		name: "Cold Heart",
+		desc: "This Pokemon heals 1/4 of its max HP when hit by Ice moves; Ice immunity.",
+		rating: 3.5,
+		num: 10034,
+	},	
+
 	//gen 9 stuff
 	sharpness: {
 		onBasePowerPriority: 19,

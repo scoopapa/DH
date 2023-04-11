@@ -33,14 +33,14 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		rating: 2,
 		num: -1,
 	},
-	dardevil: {
+	daredevil: {
 		onDamage(damage, target, source, effect) {
 			if (effect.id === 'recoil') {
 				if (!this.activeMove) throw new Error("Battle.activeMove is null");
 				if (this.activeMove.id !== 'struggle') return null;
 			}
 		},
-		name: "Dardevil",
+		name: "Daredevil",
 		shortDesc: "This Pokemon does not take recoil damage besides Struggle/Life Orb/crash damage.",
 		rating: 3,
 		num: -2,
@@ -260,8 +260,9 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	},
 	strangebody: {
 		onEffectiveness(typeMod, target, type, move) {
-            if (!target || move.category !== 'Physical' || target.getMoveHitData(move).typeMod < 0) return;
+            if (!target || move.category !== 'Physical') return;
             if (!target.runImmunity(move.type)) return;
+			if (this.dex.getEffectiveness(move, target) === -1) return;
             return 0;
         },
 		name: "Strange Body",
@@ -1451,6 +1452,136 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		rating: 2,
 		num: -1143,
 	},
+	virality: {
+		name: "Virality",
+		shortDesc: "Pokemon making contact with this Pokemon have their Ability changed to Mummy.",
+		onDamagingHit(damage, target, source, move) {
+			const sourceAbility = source.getAbility();
+			if (sourceAbility.isPermanent || sourceAbility.id === 'virality') {
+				return;
+			}
+			if (move.flags['contact']) {
+				const oldAbility = source.setAbility('virality', target);
+				if (oldAbility) {
+					this.add('-activate', target, 'ability: Virality', this.dex.getAbility(oldAbility).name, '[of] ' + source);
+				}
+			}
+		},
+		onBasePower(basePower, pokemon, target, move) {
+			if (move.multihitType === 'parentalbond' && move.hit > 1) return this.chainModify(0.25);
+		},
+		rating: 2,
+		num: -1152,
+	},
+	oldschool: {
+		shortDesc: "This Pokemon's high crit rate moves always crit. This Pokemon's special moves use SpD in calculation.",
+		name: "Old School",
+		onModifyMove(move, attacker) {
+			if (move.category === 'Special') {
+				move.useSourceDefensiveAsOffensive = true;
+			}
+		},
+		onModifyCritRatio(critRatio, source, target) {
+			if (critRatio >= 2) return 5;
+		},
+		rating: 3.5,
+		num: -2148,
+	},
+	justified: {
+		onTryHit(target, source, move) {
+			if (target !== source && move.type === 'Dark') {
+				if (!this.boost({atk: 1})) {
+					this.add('-immune', target, '[from] ability: Justified');
+				}
+				return null;
+			}
+		},
+		name: "Justified",
+		shortDesc: "This Pokemon's Attack is raised by 1 stage after it is damaged by a Dark-type move. Dark immunity.",
+		rating: 2.5,
+		num: 154,
+	},
+	moody: {// WIP
+		onResidualOrder: 26,
+		onResidualSubOrder: 1,
+		onResidual(pokemon) {
+			let stats: BoostName[] = [];
+			const boost: SparseBoostsTable = {};
+			let statPlus: BoostName;
+			for (statPlus in pokemon.boosts) {
+				if (statPlus === 'accuracy' || statPlus === 'evasion') continue;
+				if (pokemon.boosts[statPlus] < 6) {
+					stats.push(statPlus);
+				}
+			}
+			// console.log(statPlus);
+			let randomStat: BoostName | undefined = stats.length ? this.sample(stats) : undefined;
+			if (randomStat) boost[randomStat] = 1;
+			console.log(randomStat);
+			switch (randomStat) {
+				case 'atk':
+					pokemon.addVolatile('MoodAtk');
+					break;
+				case 'def':
+					pokemon.addVolatile('MoodDef');
+					break;
+				case 'spa':
+					pokemon.addVolatile('MoodSpA');
+					break;
+				case 'spd':
+					pokemon.addVolatile('MoodSpD');
+					break;
+				case 'spe':
+					pokemon.addVolatile('MoodSpe');
+					break;
+				default:
+					break;
+			}
+
+			this.boost(boost);
+			console.log(pokemon.volatiles['MoodAtk']);
+			console.log(pokemon.volatiles['MoodDef']);
+			console.log(pokemon.volatiles['MoodSpA']);
+			console.log(pokemon.volatiles['MoodSpD']);
+			console.log(pokemon.volatiles['MoodSpe']);
+		},
+		onEnd(pokemon) {
+			if(pokemon.volatiles['MoodAtk']) 
+			{
+				this.boost({atk: -1});
+				delete pokemon.volatiles['MoodAtk'];
+				console.log(pokemon.volatiles['MoodAtk']);
+			}
+			if(pokemon.volatiles['MoodDef'])
+			{
+				this.boost({def: -1});
+				delete pokemon.volatiles['MoodDef'];
+				console.log(pokemon.volatiles['MoodDef']);
+			} 
+			if(pokemon.volatiles['MoodSpA'])
+			{
+				this.boost({spa: -1});
+				delete pokemon.volatiles['MoodSpA'];
+				console.log(pokemon.volatiles['MoodSpA']);
+			} 
+			if(pokemon.volatiles['MoodSpD'])
+			{
+				this.boost({spd: -1});
+				delete pokemon.volatiles['MoodSpD'];
+				console.log(pokemon.volatiles['MoodSpD']);
+			} 
+			if(pokemon.volatiles['MoodSpe'])
+			{
+				this.boost({spe: -1});
+				delete pokemon.volatiles['MoodSpe'];
+				console.log(pokemon.volatiles['MoodSpe']);
+			} 
+		},
+		name: "Moody",
+		shortDesc: "Boosts a random stat (except accuracy/evasion) +1 every turn. The boost resets at the end of the turn.",
+		rating: 5,
+		num: 141,
+	},
 	colorchange: {
 		onTryHit(target, source, move) {
 			if (!target.hp) return;
@@ -2380,6 +2511,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			}
 		},
 		name: "Dauntless Shield",
+		shortDesc: "On switch-in, this Pokemon's Defense is raised by 1 stage. Once per battle.",
 		rating: 3.5,
 		num: 235,
 	},
@@ -2391,6 +2523,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			}
 		},
 		name: "Intrepid Sword",
+		shortDesc: "On switch-in, this Pokemon's Attack is raised by 1 stage. Once per battle.",
 		rating: 4,
 		num: 234,
 	},
@@ -2409,6 +2542,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			delete this.effectData.libero;
 		},
 		name: "Libero",
+		shortDesc: "This Pokemon's type changes to the type of the move it is using. Once per switch-in.",
 		rating: 4,
 		num: 236,
 	},
@@ -2428,6 +2562,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		},
 		isBreakable: true,
 		name: "Armor Tail",
+		shortDesc: "This Pokemon and its allies are protected from opposing priority moves.",
 		rating: 2.5,
 		num: 296,
 	},
@@ -2461,6 +2596,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			},
 		},
 		name: "Cud Chew",
+		shortDesc: "If this Pokemon eats a Berry, it will eat that Berry again at the end of the next turn.",
 		rating: 2,
 		num: 291,
 	},
@@ -2475,6 +2611,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		},
 		isBreakable: true,
 		name: "Earth Eater",
+		shortDesc: "This Pokemon heals 1/4 of its max HP when hit by Ground moves; Ground immunity.",
 		rating: 3.5,
 		num: 297,
 	},
@@ -2492,8 +2629,29 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			}
 		},
 		name: "Hadron Engine",
+		shortDesc: "On switch-in, summons Electric Terrain. During Electric Terrain, Sp. Atk is 1.3333x.",
 		rating: 4.5,
 		num: 289,
+	},
+	orichalcumpulse: {
+		onStart(pokemon) {
+			if (this.field.setWeather('sunnyday')) {
+				this.add('-activate', pokemon, 'Orichalcum Pulse', '[source]');
+			} else if (this.field.isWeather('sunnyday')) {
+				this.add('-activate', pokemon, 'ability: Orichalcum Pulse');
+			}
+		},
+		onModifyAtkPriority: 5,
+		onModifyAtk(atk, pokemon) {
+			if (['sunnyday', 'desolateland'].includes(pokemon.effectiveWeather())) {
+				this.debug('Orichalcum boost');
+				return this.chainModify([5461, 4096]);
+			}
+		},
+		name: "Orichalcum Pulse",
+		shortDesc: "On switch-in, summons Sunny Day. During Sunny Day, Attack is 1.3333x.",
+		rating: 4.5,
+		num: 288,
 	},
 	opportunist: {
 		onFoeAfterBoost(boost, target, source, effect) {
@@ -2510,6 +2668,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			this.boost(positiveBoosts, pokemon);
 		},
 		name: "Opportunist",
+		shortDesc: "When an opposing Pokemon has a stat stage raised, this Pokemon copies the effect.",
 		rating: 3,
 		num: 290,
 	},
@@ -2581,6 +2740,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		},
 		isPermanent: true,
 		name: "Protosynthesis",
+		shortDesc: "Sunny Day active or Booster Energy used: highest stat is 1.3x, or 1.5x if Speed.",
 		rating: 3,
 		num: 281,
 	},
@@ -2613,6 +2773,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		},
 		isBreakable: true,
 		name: "Purifying Salt",
+		shortDesc: "Ghost damage to this Pokemon dealt with a halved offensive stat; can't be statused.",
 		rating: 4,
 		num: 272,
 	},
@@ -2684,6 +2845,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		},
 		isPermanent: true,
 		name: "Quark Drive",
+		shortDesc: "Electric Terrain active or Booster Energy used: highest stat is 1.3x, or 1.5x if Speed.",
 		rating: 3,
 		num: 282,
 	},
@@ -2708,6 +2870,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			}
 		},
 		name: "Supreme Overlord",
+		shortDesc: " This Pokemon's moves have 10% more power for each fainted ally, up to 5 allies.",
 		rating: 3.5,
 		num: 293,
 	},
@@ -2725,6 +2888,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			}
 		},
 		name: "Wind Power",
+		shortDesc: "This Pokemon gains the Charge effect when hit by a wind move or Tailwind begins.",
 		rating: 1,
 		num: 277,
 	},
@@ -2749,6 +2913,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			}
 		},
 		name: "Wind Rider",
+		shortDesc: "Attack raised by 1 if hit by a wind move or Tailwind begins. Wind move immunity.",
 		rating: 3.5,
 		// We do not want Brambleghast to get Infiltrator in Randbats
 		num: 274,

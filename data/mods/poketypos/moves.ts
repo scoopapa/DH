@@ -63,18 +63,17 @@ export const Moves: {[moveid: string]: MoveData} = {
 	drainingfur: {
 		num: 302,
 		accuracy: 100,
-		basePower: 50,
-		category: "Special",
+		basePower: 90,
+		category: "Physical",
 		name: "Draining Fur",
-		shortDesc: "Uses SpD stat as SpA in damage calculation. Heals 75% of the user's max HP.",
+		shortDesc: "Heals 50% of the user's max HP.",
 		pp: 10,
 		priority: 0,
 		flags: {protect: 1, mirror: 1, distance: 1, heal: 1},
-		drain: [3, 4],
-		useSourceDefensiveAsOffensive: true,
+		drain: [1, 2],
 		secondary: null,
 		target: "any",
-		type: "Normal",
+		type: "Dragon",
 		contestType: "Cool",
 	},
 	mountaingale: {
@@ -158,9 +157,9 @@ export const Moves: {[moveid: string]: MoveData} = {
 	combustion: {
 		num: 308,
 		accuracy: 100,
-		basePower: 75,
+		basePower: 95,
 		basePowerCallback(pokemon, target, move) {
-			if (target.status || target.hasAbility('comatose') || target.volatiles['leechseed']) return move.basePower * 2;
+			if (target.status || target.hasAbility('comatose') || target.volatiles['leechseed']) return move.basePower * 1.5;
 			return move.basePower;
 		},
 		category: "Special",
@@ -376,7 +375,106 @@ export const Moves: {[moveid: string]: MoveData} = {
 		target: "normal",
 		type: "Ice",
 	},
-	
+	tarshot: {
+		num: 749,
+		accuracy: 100,
+		basePower: 60,
+		category: "Special",
+		name: "Tar Shot",
+		pp: 20,
+		priority: 0,
+		flags: {protect: 1, reflectable: 1, mirror: 1},
+		boosts: {
+			spe: -1,
+		},
+		secondary: null,
+		target: "normal",
+		type: "Ground",
+	},
+	runicrebellion: {
+		num: 287,
+		accuracy: 100,
+		basePower: 80,
+		category: "Physical",
+		name: "Runic Rebellion",
+		shortDesc: "Cures user’s non-volatile status conditions",
+		pp: 20,
+		priority: 0,
+		flags: {snatch: 1},
+		self: {
+			onHit(source) {
+				for (const ally of source.side.pokemon) {
+					ally.cureStatus();
+				}
+			},
+		},
+		secondary: null,
+		target: "normal",
+		type: "Psychic",
+		zMove: {effect: 'heal'},
+		contestType: "Cute",
+	},
+	tripledive: {
+		num: 813,
+		accuracy: 95,
+		basePower: 30,
+		category: "Physical",
+		name: "Triple Dive",
+		shortDesc: "Hits 3 times.",
+		pp: 10,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		multihit: 3,
+		secondary: null,
+		target: "normal",
+		type: "Water",
+		zMove: {basePower: 120},
+		maxMove: {basePower: 140},
+	},
+	trailblaze: {
+		num: 488,
+		accuracy: 100,
+		basePower: 50,
+		category: "Physical",
+		name: "Trailblaze",
+		shortDesc: "100% chance to raise the user's Speed by 1.",
+		pp: 20,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		secondary: {
+			chance: 100,
+			self: {
+				boosts: {
+					spe: 1,
+				},
+			},
+		},
+		target: "normal",
+		type: "Grass",
+		contestType: "Cool",
+	},
+	makeitrain: {
+		num: 488,
+		accuracy: 100,
+		basePower: 120,
+		category: "Special",
+		name: "Make It Rain",
+		shortDesc: "Lowers the user's Sp by 1. Hits foes.",
+		pp: 5,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		secondary: {
+			chance: 100,
+			self: {
+				boosts: {
+					spa: -1,
+				},
+			},
+		},
+		target: "normal",
+		type: "Steel",
+		contestType: "Cool",
+	},
 	/*Old move changes*/
 	auroraveil: {
 		num: 694,
@@ -963,96 +1061,5 @@ export const Moves: {[moveid: string]: MoveData} = {
 		},
 		target: "allAdjacentFoes",
 		type: "Electric",
-	},
-	tarshot: {
-		num: 749,
-		accuracy: 100,
-		basePower: 60,
-		category: "Special",
-		name: "Tar Shot",
-		pp: 20,
-		priority: 0,
-		flags: {protect: 1, reflectable: 1, mirror: 1},
-		volatileStatus: 'tarshot',
-		condition: {
-			onStart(pokemon) {
-				this.add('-start', pokemon, 'Tar Shot');
-			},
-			onEffectivenessPriority: -2,
-			onEffectiveness(typeMod, target, type, move) {
-				if (move.type !== 'Fire') return;
-				if (!target) return;
-				if (type !== target.getTypes()[0]) return;
-				return typeMod + 1;
-			},
-		},
-		boosts: {
-			spe: -1,
-		},
-		secondary: null,
-		target: "normal",
-		type: "Ground",
-	},
-	runicrebellion: {
-		num: 287,
-		accuracy: 100,
-		basePower: 80,
-		category: "Physical",
-		name: "Runic Rebellion",
-		shortDesc: "Cures user’s non-volatile status conditions",
-		pp: 20,
-		priority: 0,
-		flags: {snatch: 1},
-		self: {
-			onHit(source) {
-				for (const ally of source.side.pokemon) {
-					ally.cureStatus();
-				}
-			},
-		},
-		secondary: null,
-		target: "normal",
-		type: "Psychic",
-		zMove: {effect: 'heal'},
-		contestType: "Cute",
-	},
-	tripledive: {
-		num: 813,
-		accuracy: 95,
-		basePower: 30,
-		category: "Physical",
-		name: "Triple Dive",
-		shortDesc: "Hits 3 times.",
-		pp: 10,
-		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1},
-		multihit: 3,
-		secondary: null,
-		target: "normal",
-		type: "Water",
-		zMove: {basePower: 120},
-		maxMove: {basePower: 140},
-	},
-	trailblaze: {
-		num: 488,
-		accuracy: 100,
-		basePower: 50,
-		category: "Physical",
-		name: "Trailblaze",
-		shortDesc: "100% chance to raise the user's Speed by 1.",
-		pp: 20,
-		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1},
-		secondary: {
-			chance: 100,
-			self: {
-				boosts: {
-					spe: 1,
-				},
-			},
-		},
-		target: "normal",
-		type: "Grass",
-		contestType: "Cool",
 	},
 };

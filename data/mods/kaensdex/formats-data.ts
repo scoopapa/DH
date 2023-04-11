@@ -756,4 +756,16 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "KaensDex",
 		doublesTier: "KDD",
 	},
+	huemul: {
+		tier: "LC",
+		doublesTier: "KDD",
+	},
+	undeer: {
+		tier: "KaensDex",
+		doublesTier: "KDD",
+	},
+	dothdo: {
+		tier: "KaensDex",
+		doublesTier: "KDD",
+	},
 };

@@ -82,7 +82,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		rating: 3,
 	},
 	terrainpower: {
-		shortDesc: "+1 SpA/SpD in Terrain.",
+		shortDesc: "+50% SpA/SpD in Terrain.",
 		onModifyDefPriority: 6,
 		onModifyDef(pokemon) {
 			if (this.field.isTerrain('')) return;

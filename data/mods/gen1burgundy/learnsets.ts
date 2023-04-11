@@ -326,13 +326,10 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 	},
 	plucks: {
 		learnset: {
-			earthquake: ["1L1"],
 			lowkick: ["1L1"],
 			barrier: ["1L1"],
-			rockslide: ["1L1"],
 			twineedle: ["1L1"],
 			firepunch: ["1L1"],
-			icepunch: ["1L1"],
 			thunderpunch: ["1L1"],
 		},
 	},

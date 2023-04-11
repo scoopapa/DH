@@ -407,7 +407,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		name: "Spectral Fang",
 		pp: 15,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1},
+		flags: {bite: 1, contact: 1, protect: 1, mirror: 1},
 		ignoreEvasion: true,
 		ignoreDefensive: true,
 		secondary: null,

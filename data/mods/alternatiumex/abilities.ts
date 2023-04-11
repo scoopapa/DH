@@ -576,49 +576,249 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		rating: 2.5,
 		num: -23,
 	},
-	toxicdebris: {
-		onDamagingHit(damage, target, source, move) {
-			const side = source.isAlly(target) ? source.side.foe : source.side;
-			const toxicSpikes = side.sideConditions['toxicspikes'];
-			if (move.category === 'Physical' && (!toxicSpikes || toxicSpikes.layers < 2)) {
-				this.add('-activate', target, 'ability: Toxic Debris');
-				side.addSideCondition('toxicspikes', target);
+	bubblemane: {
+		onAnyTryMove(target, source, effect) {
+            if (['stealthrock', 'spikes', 'toxicspikes', 'stickyweb'].includes(effect.id)) {
+                this.attrLastMove('[still]');
+				this.boost({spa: 1}, source);
+                this.add('cant', this.effectData.target, 'ability: Bubble Mane', effect, '[of] ' + target);
+                return false;
+            }
+        },
+		name: "Bubble Mane",
+		shortDesc: "If a hazard move is used on this Pokemon, it fails and this Pokemon's Special Attack is raised by 1.",
+		rating: 3.5,
+		num: -24,
+	},
+	frenziedmight: {
+		onDamage(damage, target, source, effect) {
+			if (effect.effectType !== 'Move') {
+				if (effect.effectType === 'Ability') this.add('-activate', source, 'ability: ' + effect.name);
+				return this.chainModify(0.5);
 			}
 		},
-		name: "Toxic Debris",
-		shortDesc: "If this Pokemon is hit by a physical attack, Toxic Spikes are set on the opposing side.",
-		rating: 3.5,
-		num: 295,
+		name: "Frenzied Might",
+		shortDesc: "This Pokemon takes halved damage from residual sources.",
+		rating: 4,
+		num: -25,
 	},
-	sharpness: {
-		onBasePowerPriority: 19,
-		onBasePower(basePower, attacker, defender, move) {
-			if (move.flags['slicing']) {
-				this.debug('Shapness boost');
+	reflectivesurface: {
+		onTryHit(target, source, move) {
+			if (target !== source && move.type === 'Fire') {
+				this.add('-immune', target, '[from] ability: Reflective Surface')
+				if (this.runEvent('DragOut', source, target, move)){
+                        source.forceSwitchFlag = true;
+                    }
+				return null;
+			}
+		},
+		name: "Reflective Surface",
+		shortDesc: "This Pokemon forces the attacker out if hit by a Fire move; Fire immunity.",
+		rating: 3.5,
+		num: -26,
+	},
+	iceage: {
+		shortDesc: "This Pokemon takes halved damage from Ice-type attacks. Its own have 1.3x power.",
+		onSourceModifyAtkPriority: 5,
+		onSourceModifyAtk(atk, attacker, defender, move) {
+			if (move.type === 'Ice') {
+				return this.chainModify(0.5);
+			}
+		},
+		onSourceModifySpAPriority: 5,
+		onSourceModifySpA(atk, attacker, defender, move) {
+			if (move.type === 'Ice') {
+				return this.chainModify(0.5);
+			}
+		},
+		onModifyAtk(atk, attacker, defender, move) {
+			if (move.type === 'Ice') {
+				return this.chainModify(1.3);
+			}
+		},
+		onModifySpA(atk, attacker, defender, move) {
+			if (move.type === 'Ice') {
+				return this.chainModify(1.3);
+			}
+		},
+		isBreakable: true,
+		name: "Ice Age",
+		rating: 4.5,
+		num: -27,
+	},
+	flock: {
+        onModifyAtkPriority: 5,
+		onModifyAtk(atk, attacker, defender, move) {
+			if (move.type === 'Flying' && attacker.hp <= attacker.maxhp / 3) {
+				this.debug('Flock boost');
 				return this.chainModify(1.5);
-			}
-		},
-		name: "Sharpness",
-		shortDesc: "This Pokemon's slicing moves have their power multiplied by 1.5.",
-		rating: 3.5,
-		num: 292,
-	},
-	hadronengine: {
-		onStart(pokemon) {
-			if (!this.field.setTerrain('electricterrain') && this.field.isTerrain('electricterrain')) {
-				this.add('-activate', pokemon, 'ability: Hadron Engine');
 			}
 		},
 		onModifySpAPriority: 5,
 		onModifySpA(atk, attacker, defender, move) {
-			if (this.field.isTerrain('electricterrain')) {
-				this.debug('Hadron Engine boost');
-				return this.chainModify([5461, 4096]);
+			if (move.type === 'Flying' && attacker.hp <= attacker.maxhp / 3) {
+				this.debug('Flock boost');
+				return this.chainModify(1.5);
 			}
 		},
-		name: "Hadron Engine",
-		shortDesc: "On switch-in, summons Electric Terrain. During Electric Terrain, Sp. Atk is 1.3333x.",
-		rating: 4.5,
-		num: 289,
+		name: "Flock",
+		shortDesc: "When this Pokemon has 1/3 HP or less, its Flying-type moves have 1.5x power.",
+		num: -28,
+	},
+	costar: {
+		onStart(pokemon) {
+			let activated = false;
+			for (const target of pokemon.side.foe.active) {
+					if (!target || !this.isAdjacent(target, pokemon)) continue;
+					if (!activated) {
+						this.add('-ability', pokemon, 'Costar', 'boost');
+						activated = true;
+					}
+					pokemon.boosts[spe] = target.boosts[spe];
+			}
+		},
+		name: "Costar",
+		shortDesc: "On switch-in, this Pokemon copies the speed boosts of the opponent.",
+		num: 294,
+	},
+	overthehead: {
+		onModifyAtkPriority: 5,
+		onModifyAtk(atk, pokemon) {
+			if (pokemon.hp >= pokemon.maxhp / 4) {
+				return this.chainModify(0.8);
+			}
+		},
+		onModifyDefPriority: 5,
+		onModifyDef(atk, pokemon) {
+			if (pokemon.hp >= pokemon.maxhp / 4) {
+				return this.chainModify(0.8);
+			}
+		},
+		onModifySpAPriority: 5,
+		onModifySpA(atk, pokemon) {
+			if (pokemon.hp >= pokemon.maxhp / 4) {
+				return this.chainModify(0.8);
+			}
+		},
+		onModifySpDPriority: 5,
+		onModifySpD(atk, pokemon) {
+			if (pokemon.hp >= pokemon.maxhp / 4) {
+				return this.chainModify(0.8);
+			}
+		},
+		onModifySpe(spe, pokemon) {
+			if (pokemon.hp >= pokemon.maxhp / 4) {
+				return this.chainModify(0.8);
+			}
+		},
+		name: "Over the Head",
+		shortDesc: "When this Pokemon has more than 1/4 max HP, its stats are 0.8x.",
+		rating: -1,
+		num: -29,
+	},
+	zerotohero: {
+		onTryAddVolatile(status, pokemon) {
+			if (target.species.id !== 'palafin') return;
+            if (status.id === 'flinch' ||
+				status.id === 'trapped' ||
+				status.id === 'partiallytrapped' ||
+				status.id === 'leechseed' ||
+				status.id === 'confusion' ||
+				status.id === 'curse' ||
+				status.id === 'drowsy' ||
+				status.id === 'taunt' ||
+				status.id === 'torment' ||
+				status.id === 'encore' ||
+				status.id === 'disable' ||
+				status.id === 'embargo' ||
+				status.id === 'healblock' ||
+				status.id === 'infatuation' ||
+				status.id === 'nightmare' ||
+				status.id === 'perishsong' ||
+				status.id === 'telekinesis') return null;
+        },
+		onCheckShow(pokemon) {
+			if (target.species.id !== 'palafin') return;
+			// This is complicated
+			// For the most part, in-game, it's obvious whether or not Natural Cure activated,
+			// since you can see how many of your opponent's pokemon are statused.
+			// The only ambiguous situation happens in Doubles/Triples, where multiple pokemon
+			// that could have Natural Cure switch out, but only some of them get cured.
+			if (pokemon.side.active.length === 1) return;
+			if (pokemon.showCure === true || pokemon.showCure === false) return;
+
+			const cureList = [];
+			let noCureCount = 0;
+			for (const curPoke of pokemon.side.active) {
+				// pokemon not statused
+				if (!curPoke?.status) {
+					// this.add('-message', "" + curPoke + " skipped: not statused or doesn't exist");
+					continue;
+				}
+				if (curPoke.showCure) {
+					// this.add('-message', "" + curPoke + " skipped: Natural Cure already known");
+					continue;
+				}
+				const species = curPoke.species;
+				// pokemon can't get Natural Cure
+				if (!Object.values(species.abilities).includes('Zero to Hero')) {
+					// this.add('-message', "" + curPoke + " skipped: no Natural Cure");
+					continue;
+				}
+				// pokemon's ability is known to be Natural Cure
+				if (!species.abilities['1'] && !species.abilities['H']) {
+					// this.add('-message', "" + curPoke + " skipped: only one ability");
+					continue;
+				}
+				// pokemon isn't switching this turn
+				if (curPoke !== pokemon && !this.queue.willSwitch(curPoke)) {
+					// this.add('-message', "" + curPoke + " skipped: not switching");
+					continue;
+				}
+
+				if (curPoke.hasAbility('Zero to Hero')) {
+					// this.add('-message', "" + curPoke + " confirmed: could be Natural Cure (and is)");
+					cureList.push(curPoke);
+				} else {
+					// this.add('-message', "" + curPoke + " confirmed: could be Natural Cure (but isn't)");
+					noCureCount++;
+				}
+			}
+
+			if (!cureList.length || !noCureCount) {
+				// It's possible to know what pokemon were cured
+				for (const pkmn of cureList) {
+					pkmn.showCure = true;
+				}
+			} else {
+				// It's not possible to know what pokemon were cured
+
+				// Unlike a -hint, this is real information that battlers need, so we use a -message
+				this.add('-message', "(" + cureList.length + " of " + pokemon.side.name + "'s pokemon " + (cureList.length === 1 ? "was" : "were") + " cured by Zero to Hero.)");
+
+				for (const pkmn of cureList) {
+					pkmn.showCure = false;
+				}
+			}
+		},
+		onSwitchOut(pokemon) {
+			if (!pokemon.status) return;
+
+			// if pokemon.showCure is undefined, it was skipped because its ability
+			// is known
+			if (pokemon.showCure === undefined) pokemon.showCure = true;
+
+			if (pokemon.showCure) this.add('-curestatus', pokemon, pokemon.status, '[from] ability: Natural Cure');
+			pokemon.clearStatus();
+
+			// only reset .showCure if it's false
+			// (once you know a Pokemon has Natural Cure, its cures are always known)
+			if (!pokemon.showCure) pokemon.showCure = undefined;
+		},
+		isPermanent: true,
+		isUnbreakable: true,
+		name: "Zero to Hero",
+		rating: 3.5,
+		num: 278,
 	},
 };

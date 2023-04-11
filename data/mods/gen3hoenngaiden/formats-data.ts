@@ -5,6 +5,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 	},
 	ivysaur: {
 		tier: "NFE",
+		rank: "Unranked",
 	},
 	venusaur: {
 		randomBattleMoves: ["curse", "earthquake", "hiddenpowerrock", "leechseed", "sleeppowder", "sludgebomb", "swordsdance", "synthesis"],
@@ -604,7 +605,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 	},
 	scizor: {
 		randomBattleMoves: ["agility", "batonpass", "hiddenpowerground", "hiddenpowerrock", "morningsun", "silverwind", "steelwing", "swordsdance"],
-		tier: "UU",
+		tier: "UUBL",
 		rank: "Unranked",
 	},
 	smoochum: {
@@ -1173,7 +1174,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 	},
 	blaziken: {
 		randomBattleMoves: ["endure", "fireblast", "hiddenpowerice", "reversal", "rockslide", "skyuppercut", "swordsdance", "thunderpunch"],
-		tier: "UU",
+		tier: "UUBL",
 		rank: "Unranked",
 	},
 	mudkip: {
@@ -1315,7 +1316,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 	},
 	slaking: {
 		randomBattleMoves: ["doubleedge", "earthquake", "focuspunch", "return", "shadowball"],
-		tier: "UU",
+		tier: "UUBL",
 		rank: "Unranked",
 	},
 	nincada: {
@@ -2285,7 +2286,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 	dugtrioalola: {
 		rank: "C2",
 		gen: 3,
-		tier: "UU",
+		tier: "UUBL",
 	},
 	/*persianalola: {
 		rank: "Unranked",
@@ -2365,7 +2366,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 	zapdosgalar: {
 		rank: "E1",
 		gen: 3,
-		tier: "UU",
+		tier: "UUBL",
 	},
 	moltresgalar: {
 		rank: "E2",

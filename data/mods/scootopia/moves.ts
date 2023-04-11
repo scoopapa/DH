@@ -844,7 +844,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		type: "Feral",
 		shortDesc: "50% to lower foe's SpD by 1",
 		priority: 0,
-		flags: {protect: 1, mirror: 1, wind: 1},
+		flags: {protect: 1, mirror: 1},
 		target: "allAdjacentFoes",
 		secondary: {
 			chance: 50,

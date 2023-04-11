@@ -197,4 +197,49 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		gen: 8,
 		desc: "If held by a Solrock, this item allows it to Mega Evolve in battle.",
 	},
+
+	// crossover Megas
+
+	lanturnite: {
+		name: "Lanturnite",
+		spritenum: 578,
+		megaStone: "Lanturn-Mega",
+		megaEvolves: "Lanturn",
+		itemUser: ["Lanturn"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -111,
+		gen: 8,
+		desc: "If held by a Lanturn, this item allows it to Mega Evolve in battle.",
+	},
+	simisearite: {
+		name: "Simisearite",
+		spritenum: 578,
+		megaStone: "Simisear-Mega",
+		megaEvolves: "Simisear",
+		itemUser: ["Simisear"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -85,
+		gen: 8,
+		desc: "If held by a Simisear, this item allows it to Mega Evolve in battle.",
+	},
+	aurorite: {
+		name: "Aurorite",
+		spritenum: 578,
+		megaStone: "Aurorus-Mega",
+		megaEvolves: "Aurorus",
+		itemUser: ["Aurorus"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -48,
+		gen: 8,
+		desc: "If held by an Aurorus, this item allows it to Mega Evolve in battle.",
+	},
 };

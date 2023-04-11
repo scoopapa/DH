@@ -165,4 +165,41 @@ export const Pokedex: {[speciesid: string]: ModdedSpeciesData} = {
 		megaCreator: "Paulluxx and XtheGAMEmaster",
 	},
 
+	// crossover Megas
+
+	lanturn: {
+		inherit: true,
+		mega: "lanturnmega",
+		megaName: "Lanturn-Mega",
+		megaStats: {hp: 125, atk: 68, def: 73, spa: 111, spd: 116, spe: 67},
+		megaAbility: {0: "Alluring"},
+		megaStone: "Lanturnite",
+		megaCreator: "okispokis, and it was brought to Kalos by BlueRay",
+		movepoolAdditions: ["recover"],
+	},
+
+	simisear: {
+		inherit: true,
+		mega: "simisearmega",
+		megaName: "Simisear-Mega",
+		megaType: ["Fire", "Fairy"],
+		megaStats: {hp: 75, atk: 123, def: 68, spa: 123, spd: 88, spe: 121},
+		megaAbility: {0: "Red Licorice"},
+		megaStone: "Simisearite",
+		megaCreator: "ausma, and it was brought to Kalos by Gekokeso",
+		movepoolAdditions: ["calmmind", "dazzlinggleam", "drainingkiss", "mysticalfire", "playrough", "slackoff"],
+	},
+
+	aurorus: {
+		inherit: true,
+		mega: "aurorusmega",
+		megaName: "Aurorus-Mega",
+		megaType: ["Electric", "Ice"],
+		megaStats: {hp: 123, atk: 77, def: 102, spa: 131, spd: 122, spe: 66},
+		megaAbility: {0: "Diamond Dust"},
+		megaStone: "Aurorite",
+		megaCreator: "Hematite, and it was brought to Kalos by NANI?!",
+		movepoolAdditions: ["paraboliccharge", "voltswitch"],
+	},
+
 };
