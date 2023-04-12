@@ -1559,7 +1559,7 @@ export const Formats: FormatList = [
 		ruleset: ['Standard', 'Data Mod', 'Welcome Message'],
 	},
 	{
-		name: "[Gen 9] Littlest Cup Gen 9",
+		name: "[Gen 8] Littlest Cup Gen 9",
 		desc: [
 			"<b>Littlest Cup</b>: A National Dex metagame where only Baby Pokemon are allowed, played at Level 1."
 		],
