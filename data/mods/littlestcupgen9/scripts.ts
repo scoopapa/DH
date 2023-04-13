@@ -23,6 +23,34 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 		this.modData('Learnsets', 'riolu').learnset.terablast = ['8L1'];
 		this.modData('Learnsets', 'mantyke').learnset.terablast = ['8L1'];
 		this.modData('Learnsets', 'toxel').learnset.terablast = ['8L1'];
+		this.modData("Learnsets", "riolu").learnset.aerialace = ["8L1"];
+		this.modData("Learnsets", "riolu").learnset.closecombat = ["8L1"];
+		this.modData("Learnsets", "riolu").learnset.takedown = ["8L1"];
+		this.modData("Learnsets", "riolu").learnset.trailblaze = ["8L1"];
+		this.modData("Learnsets", "azurill").learnset.takedown = ["8L1"];
+		this.modData("Learnsets", "bonsly").learnset.bodyslam = ["8L1"];
+		this.modData("Learnsets", "bonsly").learnset.bulldoze = ["8L1"];
+		this.modData("Learnsets", "bonsly").learnset.earthquake = ["8L1"];
+		this.modData("Learnsets", "bonsly").learnset.grassknot = ["8L1"];
+		this.modData("Learnsets", "bonsly").learnset.stoneedge = ["8L1"];
+		this.modData("Learnsets", "bonsly").learnset.mudshot = ["8L1"];
+		this.modData("Learnsets", "bonsly").learnset.mudslap = ["8L1"];
+		this.modData("Learnsets", "bonsly").learnset.powergem = ["8L1"];
+		this.modData("Learnsets", "bonsly").learnset.rockblast = ["8L1"];
+		this.modData("Learnsets", "bonsly").learnset.spikes = ["8L1"];
+		this.modData("Learnsets", "bonsly").learnset.trailblaze = ["8L1"];
+		this.modData("Learnsets", "bonsly").learnset.takedown = ["8L1"];
+		this.modData("Learnsets", "happiny").learnset.snowscape = ["8L1"];
+		this.modData("Learnsets", "happiny").learnset.takedown = ["8L1"];
+		this.modData("Learnsets", "igglybuff").learnset.dazzlinggleam = ["8L1"];
+		this.modData("Learnsets", "igglybuff").learnset.encore = ["8L1"];
+		this.modData("Learnsets", "igglybuff").learnset.swift = ["8L1"];
+		this.modData("Learnsets", "igglybuff").learnset.takedown = ["8L1"];
+		this.modData("Learnsets", "igglybuff").learnset.trailblaze = ["8L1"];
+		this.modData("Learnsets", "pichu").learnset.electroball = ["8L1"];
+		this.modData("Learnsets", "pichu").learnset.takedown = ["8L1"];
+		this.modData("Learnsets", "pichu").learnset.trailblaze = ["8L1"];
+		this.modData("Learnsets", "toxel").learnset.charm = ["8L1"];
   },
   // Terastal
 	// taken from SV Speculative
