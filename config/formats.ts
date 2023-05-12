@@ -1614,7 +1614,7 @@ export const Formats: FormatList = [
 
 		mod: 'gen1kantoification',
 		ruleset: ['Standard'],
-		banlist: ['Uber', 'Wrap'],
+		banlist: ['Uber', 'Agility + Wrap', 'Agility + Fire Spin', 'Agility + Bind', 'Agility + Clamp', 'Amnesia', 'Swords Dance'],
 	},
 	{
 		name: "[Gen 8] imando Gen 9",
