@@ -746,12 +746,12 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
 		onModifyType(move, pokemon, target) {
-			if (pokemon.species.teraType) {
-				move.type = pokemon.hpType;
+			if (pokemon.terastallized) {
+				move.type = pokemon.teraType;
 			}
 		},
 		onModifyMove(move, pokemon) {
-			if (pokemon.species.teraType && pokemon.getStat('atk', false, true) > pokemon.getStat('spa', false, true)) {
+			if (pokemon.terastallized && pokemon.getStat('atk', false, true) > pokemon.getStat('spa', false, true)) {
 				move.category = 'Physical';
 			}
 		},
