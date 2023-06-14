@@ -23,6 +23,7 @@ export interface ChosenAction {
 	mega?: boolean | null; // true if megaing or ultra bursting
 	zmove?: string; // if zmoving, the name of the zmove
 	maxMove?: string; // if dynamaxed, the name of the max move
+	terastallize?: string; // if terastallizing, tera type
 	priority?: number; // priority of the action
 }
 
@@ -38,6 +39,7 @@ export interface Choice {
 	mega: boolean; // true if a mega evolution has already been selected
 	ultra: boolean; // true if an ultra burst has already been selected
 	dynamax: boolean; // true if a dynamax has already been selected
+	terastallize: boolean; // true if a terastallization has already been inputted
 }
 
 export class Side {
@@ -127,6 +129,7 @@ export class Side {
 			mega: false,
 			ultra: false,
 			dynamax: false,
+			terastallize: false,
 		};
 
 		// old-gens
@@ -156,6 +159,7 @@ export class Side {
 				if (action.mega) details += (action.pokemon!.item === 'ultranecroziumz' ? ` ultra` : ` mega`);
 				if (action.zmove) details += ` zmove`;
 				if (action.maxMove) details += ` dynamax`;
+				if (action.terastallize) details += ` terastallize`;
 				return `move ${action.moveid}${details}`;
 			case 'switch':
 			case 'instaswitch':
@@ -340,7 +344,7 @@ export class Side {
 		return this.choice.actions.length >= this.active.length;
 	}
 
-	chooseMove(moveText?: string | number, targetLoc = 0, megaDynaOrZ: 'mega' | 'zmove' | 'ultra' | 'dynamax' | '' = '') {
+	chooseMove(moveText?: string | number, targetLoc = 0, megaDynaOrZ: 'mega' | 'zmove' | 'ultra' | 'dynamax' | 'terastallize' | '' = '') {
 		if (this.requestState !== 'move') {
 			return this.emitChoiceError(`Can't move: You need a ${this.requestState} response`);
 		}
@@ -539,6 +543,18 @@ export class Side {
 				return this.emitChoiceError(`Can't move: You can only Dynamax once per battle.`);
 			}
 		}
+		const terastallize = (event === 'terastallize');
+		if (terastallize && !pokemon.canTerastallize) {
+			// Make this work properly
+			return this.emitChoiceError(`Can't move: ${pokemon.name} can't Terastallize.`);
+		}
+		if (terastallize && this.choice.terastallize) {
+			return this.emitChoiceError(`Can't move: You can only Terastallize once per battle.`);
+		}
+		if (terastallize && this.battle.gen !== 9) {
+			// Make this work properly
+			return this.emitChoiceError(`Can't move: You can only Terastallize in Gen 9.`);
+		}
 
 		this.choice.actions.push({
 			choice: 'move',
@@ -548,6 +564,7 @@ export class Side {
 			mega: mega || ultra,
 			zmove: zMove,
 			maxMove: maxMove ? maxMove.id : undefined,
+			terastallize: terastallize ? pokemon.teraType : undefined,
 		});
 
 		if (pokemon.maybeDisabled) {
@@ -558,6 +575,7 @@ export class Side {
 		if (ultra) this.choice.ultra = true;
 		if (zMove) this.choice.zMove = true;
 		if (dynamax) this.choice.dynamax = true;
+		if (terastallize) this.choice.terastallize = true;
 
 		return true;
 	}
@@ -746,6 +764,7 @@ export class Side {
 			mega: false,
 			ultra: false,
 			dynamax: false,
+			terastallize: false,
 		};
 	}
 
@@ -779,7 +798,7 @@ export class Side {
 				const original = data;
 				const error = () => this.emitChoiceError(`Conflicting arguments for "move": ${original}`);
 				let targetLoc: number | undefined;
-				let megaDynaOrZ: 'mega' | 'zmove' | 'ultra' | 'dynamax' | '' = '';
+				let megaDynaOrZ: 'mega' | 'zmove' | 'ultra' | 'dynamax' | 'terastallize' | '' = '';
 				while (true) {
 					// If data ends with a number, treat it as a target location.
 					// We need to special case 'Conversion 2' so it doesn't get
@@ -813,6 +832,14 @@ export class Side {
 						if (megaDynaOrZ) return error();
 						megaDynaOrZ = 'dynamax';
 						data = data.slice(0, -4);
+					} else if (data.endsWith(' terastal')) {
+						if (event) return error();
+						event = 'terastallize';
+						data = data.slice(0, -9);
+					} else if (data.endsWith(' terastallize')) {
+						if (event) return error();
+						event = 'terastallize';
+						data = data.slice(0, -13);
 					} else {
 						break;
 					}

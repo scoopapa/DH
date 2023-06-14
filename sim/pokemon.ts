@@ -231,6 +231,10 @@ export class Pokemon {
 	canUltraBurst: string | null | undefined;
 	canDynamax: boolean;
 	readonly canGigantamax: string | null;
+	canTerastallize: string | null;
+	teraType: string;
+	baseTypes: string[];
+	terastallized?: string;
 
 	/** A Pokemon's currently 'staleness' with respect to the Endless Battle Clause. */
 	staleness?: 'internal' | 'external';
@@ -385,6 +389,8 @@ export class Pokemon {
 		this.addedType = '';
 		this.knownType = true;
 		this.apparentType = this.baseSpecies.types.join('/');
+		// Every Pokemon has a Terastal type
+		this.teraType = this.set.teraType || this.types[0];
 
 		this.switchFlag = false;
 		this.forceSwitchFlag = false;
@@ -418,6 +424,7 @@ export class Pokemon {
 		// Normally would want to use battle.canDynamax to set this, but it references this property.
 		this.canDynamax = (this.battle.gen >= 8);
 		this.canGigantamax = this.baseSpecies.canGigantamax || null;
+		this.canTerastallize = this.battle.actions.canTerastallize(this);
 
 		// This is used in gen 1 only, here to avoid code repetition.
 		// Only declared if gen 1 to avoid declaring an object we aren't going to need.
@@ -461,6 +468,7 @@ export class Pokemon {
 				(this.illusion.gender === '' ? '' : ', ' + this.illusion.gender) + (this.illusion.set.shiny ? ', shiny' : '');
 			details = illusionDetails;
 		}
+		if (this.terastallized) details += `, tera:${this.terastallized}`;
 		return {side: health.side, secret: `${details}|${health.secret}`, shared: `${details}|${health.shared}`};
 	};
 
@@ -952,6 +960,7 @@ export class Pokemon {
 			canZMove?: AnyObject | null,
 			canDynamax?: boolean,
 			maxMoves?: DynamaxOptions,
+			canTerastallize?: string,
 		} = {
 			moves,
 		};
@@ -980,6 +989,7 @@ export class Pokemon {
 
 			if (this.getDynamaxRequest()) data.canDynamax = true;
 			if (data.canDynamax || this.volatiles['dynamax']) data.maxMoves = this.getDynamaxRequest(true);
+			if (this.canTerastallize) data.canTerastallize = this.canTerastallize;
 		}
 
 		return data;
@@ -1013,6 +1023,11 @@ export class Pokemon {
 			pokeball: this.pokeball,
 		};
 		if (this.battle.gen > 6) entry.ability = this.ability;
+		if (this.battle.dex.currentMod === 'gen9' || this.battle.dex.currentMod === 'banhammers') {
+			entry.teraType = this.teraType;
+			entry.terastallized = this.terastallized || '';
+		}
+		return entry;
 		return entry;
 	}
 
@@ -1152,6 +1167,10 @@ export class Pokemon {
 		} else {
 			this.battle.add('-transform', this, pokemon);
 		}
+		if (this.terastallized) {
+			this.knownType = true;
+			this.apparentType = this.terastallized;
+		}
 		if (this.battle.gen > 2) this.setAbility(pokemon.ability, this, true);
 
 		// Change formes based on held items (for Transform)
@@ -1241,6 +1260,7 @@ export class Pokemon {
 			this.baseSpecies = rawSpecies;
 			this.details = species.name + (this.level === 100 ? '' : ', L' + this.level) +
 				(this.gender === '' ? '' : ', ' + this.gender) + (this.set.shiny ? ', shiny' : '');
+			if (this.terastallized) details += `, tera:${this.terastallized}`;
 			this.battle.add('detailschange', this, (this.illusion || this).details);
 			if (source.effectType === 'Item') {
 				if (source.zMove) {
@@ -1274,6 +1294,10 @@ export class Pokemon {
 			}
 			this.setAbility(species.abilities['0'], null, true);
 			this.baseAbility = this.ability;
+		}
+		if (this.terastallized) {
+			this.knownType = true;
+			this.apparentType = this.terastallized;
 		}
 		return true;
 	}
@@ -1835,6 +1859,8 @@ export class Pokemon {
 				(this.battle.gen === 4 && this.hasAbility('multitype'))) {
 				return false;
 			}
+			// Terastallized Pokemon cannot have their base type changed except via forme change
+			if (this.terastallized) return false;
 		}
 
 		if (!newType) throw new Error("Must pass type to setType");
@@ -1848,11 +1874,13 @@ export class Pokemon {
 
 	/** Removes any types added previously and adds another one. */
 	addType(newType: string) {
+		if (this.terastallized) return false;
 		this.addedType = newType;
 		return true;
 	}
 
-	getTypes(excludeAdded?: boolean): string[] {
+	getTypes(excludeAdded?: boolean, preterastallized?: boolean): string[] {
+		if (!preterastallized && this.terastallized) return [this.terastallized];
 		const types = this.battle.runEvent('Type', this, null, null, this.types);
 		if (!excludeAdded && this.addedType) return types.concat(this.addedType);
 		if (types.length) return types;
