@@ -29,6 +29,48 @@ export const Formats: {[k: string]: ModdedFormatsData} = {
 			}
 		},
 	},
+	sametypeclause: {
+		effectType: 'ValidatorRule',
+		name: 'Same Type Clause',
+		desc: "Forces all Pok&eacute;mon on a team to share a type with each other",
+		onBegin() {
+			this.add('rule', 'Same Type Clause: Pokémon in a team must share a type');
+		},
+		onValidateTeam(team) {
+			let typeTable: string[] = [];
+			for (const [i, set] of team.entries()) {
+				let species = this.dex.species.get(set.species);
+				if (!species.types) return [`Invalid pokemon ${set.name || set.species}`];
+				if (i === 0) {
+					typeTable = species.types;
+				} else {
+					typeTable = typeTable.filter(type => species.types.includes(type));
+				}
+				const item = this.dex.items.get(set.item);
+				if (item.megaStone && species.baseSpecies === item.megaEvolves) {
+					species = this.dex.species.get(item.megaStone);
+					typeTable = typeTable.filter(type => species.types.includes(type));
+				}
+				if (item.id === "ultranecroziumz" && species.baseSpecies === "Necrozma") {
+					species = this.dex.species.get("Necrozma-Ultra");
+					typeTable = typeTable.filter(type => species.types.includes(type));
+				}
+				if (!typeTable.length) return [`Your team must share a type.`];
+			}
+			for (const set of team) {
+				if (set.hpType &&
+						!typeTable.includes(set.hpType) && this.ruleTable.has(`enforcesameteratype`)) {
+					return [`${set.species}'s Tera Type must match the team's type.`];
+				}
+			}
+		},
+	},
+	enforcesameteratype: {
+		effectType: 'ValidatorRule',
+		name: 'Enforce Same Tera Type',
+		desc: "Forces Pok&eacute;mon to have a Tera Type matching one of their original types.",
+		// implemented in sametypeclause
+	},
 	teratypepreview: {
 		effectType: 'Rule',
 		name: 'Tera Type Preview',
