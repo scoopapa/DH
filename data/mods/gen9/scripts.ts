@@ -729,23 +729,19 @@ export const Scripts: ModdedBattleScriptsData = {
 		baseDamage = this.randomizer(baseDamage);
 
 		// STAB
-		if (move.forceSTAB || (type !== '???' && (pokemon.hasType(type) || pokemon.species.teraBoost?.includes(type)))) {
+		if (move.forceSTAB || (type !== '???' && (pokemon.hasType(type) || (pokemon.species.teraType && pokemon.getTypes(false, true).includes(type))))) {
 			// The "???" type never gets STAB
 			// Not even if you Roost in Gen 4 and somehow manage to use
 			// Struggle in the same turn.
 			// (On second thought, it might be easier to get a MissingNo.)
-			let stabBoost = 1.5;
-			if (move.stab) stabBoost = move.stab;
-			if (pokemon.species.teraBoost?.includes(type)) {
-				if (pokemon.hasType(type)) {
-					if (!suppressMessages) this.add('-message', `Terastal boosts moves of the ${type} type!`);
-					stabBoost = 2;
-				} else {
-					this.hint(`Terastal keeps STAB on the user's original type, ${type}!`, true, pokemon.side);
-					// don't reveal to the opponent (in case of Illusion)
-				}
+			let stab = move.stab || 1.5;
+			if (type === pokemon.species.teraType && pokemon.getTypes(false, true).includes(type)) {
+				// In my defense, the game hardcodes the Adaptability check like this, too.
+				stab = stab === 2 ? 2.25 : 2;
+			} else if (pokemon.species.teraType && pokemon.getTypes(false, true).includes(type)) {
+				stab = 1.5;
 			}
-			baseDamage = this.modify(baseDamage, stabBoost);
+			baseDamage = this.modify(baseDamage, stab);
 		}
 		// types
 		let typeMod = target.runEffectiveness(move);
