@@ -1,6 +1,6 @@
 export const Abilities: {[k: string]: ModdedAbilityData} = {
 	unfiltered: {
-	  shortDesc: "Filter + Contrary",
+	  shortDesc: "Filter + Co ntrary",
 		onSourceModifyDamage(damage, source, target, move) {
 			if (target.getMoveHitData(move).typeMod > 0) {
 				this.debug('Unfiltered neutralize');
