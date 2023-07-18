@@ -14264,7 +14264,7 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 	},
 	rotomfan: {
 		learnset: {
-			airslash: ["8L1", "8L1", "7R", "6R", "5R", "4R"],
+			windbreaker: ["8L1", "8L1", "7R", "6R", "5R", "4R"],
 		},
 	},
 	rotommow: {
