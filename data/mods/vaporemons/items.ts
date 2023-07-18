@@ -983,6 +983,115 @@ export const Items: {[k: string]: ModdedItemData} = {
 		isNonstandard: null,
 	},
 // new stuff should start numbering at -1029
+	oddkeystone: {
+		name: "Odd Keystone",
+		spritenum: 390,
+		onResidualOrder: 5,
+		onResidualSubOrder: 5,
+		onResidual(pokemon) {
+			if (pokemon.baseSpecies.name === 'Spiritomb') {
+				this.heal(pokemon.baseMaxhp / 8);
+			}
+		},
+		onSourceModifyAtkPriority: 6,
+		onSourceModifyAtk(atk, attacker, defender, move) {
+			if (move.type === 'Fairy' && defender.baseSpecies.baseSpecies === 'Spiritomb') {
+				this.debug('Odd Keystone weaken');
+				return this.chainModify(0.5);
+			}
+		},
+		onSourceModifySpAPriority: 5,
+		onSourceModifySpA(atk, attacker, defender, move) {
+			if (move.type === 'Fairy' && defender.baseSpecies.baseSpecies === 'Spiritomb') {
+				this.debug('Odd Keystone weaken');
+				return this.chainModify(0.5);
+			}
+		},
+		onUpdate(pokemon) {
+			if (pokemon.volatiles['healblock'] && pokemon.baseSpecies.baseSpecies === 'Spiritomb') {
+				this.add('-activate', pokemon, 'ability: Oblivious');
+				pokemon.removeVolatile('healblock');
+				this.add('-end', pokemon, 'move: Heal Block', '[from] item: Odd Keystone');
+			}
+			if (pokemon.volatiles['healblock'] && pokemon.baseSpecies.baseSpecies === 'Spiritomb') {
+				this.add('-activate', pokemon, 'item: Odd Keystone');
+				pokemon.removeVolatile('healblock');
+			}
+		},
+		onHit(target, source, move) {
+			if (move?.volatileStatus === 'healblock' && target.baseSpecies.baseSpecies === 'Spiritomb') {
+				this.add('-immune', target, 'healblock', '[from] item: Odd Keystone');
+			}
+		},
+		onTryHit(pokemon, target, move) {
+			if (move.id === 'healblock' && pokemon.baseSpecies.baseSpecies === 'Spiritomb') {
+				this.add('-immune', pokemon, '[from] item: Odd Keystone');
+				return null;
+			}
+		},
+		onTakeItem(item, source) {
+			if (source.baseSpecies.baseSpecies === 'Spiritomb') return false;
+			return true;
+		},
+		itemUser: ["Spiritomb"],
+		num: -1029,
+		gen: 8,
+		desc: "If held by Spiritomb: Heal 12.5% per turn, 50% damage from Fairy attacks, immune to Heal Block.",
+	},
+	mithrilarmor: {
+		name: "Mithril Armor",
+		spritenum: 390,
+		fling: {
+			basePower: 80,
+		},
+		onModifyDefPriority: 2,
+		onModifyDef(def, pokemon) {
+			return this.chainModify(1.2);
+		},
+		onModifyDamage(damage, source, target, move) {
+			if (target.getMoveHitData(move).crit) {
+				return null;
+			}
+			if (source.getMoveHitData(move).crit) {
+				return null;
+			}
+		},
+		num: -1030,
+		gen: 8,
+		desc: "Holder is immune to critical hits and has 1.2x Defense, but its own moves can't crit.",
+	},
+	tiedyeband: {
+		name: "Tie-Dye Band",
+		spritenum: 390,
+		fling: {
+			basePower: 30,
+		},
+		onModifyAtkPriority: 1,
+		onModifyAtk(atk, pokemon) {
+			return this.chainModify(1.5);
+		},
+		onModifySpAPriority: 1,
+		onModifySpA(spa, pokemon) {
+			return this.chainModify(1.5);
+		},
+		onDisableMove(pokemon) {
+			for (const moveSlot of pokemon.moveSlots) {
+				if (pokemon.hasType(this.dex.getMove(moveSlot.move).type)) {
+					pokemon.disableMove(moveSlot.id);
+				}
+			}
+		},
+		onBeforeMovePriority: 9,
+		onBeforeMove(pokemon, target, move) {
+			if (pokemon.hasType(move.type)) {
+				this.add('cant', pokemon, 'item: Tie-Dye Band');
+				return false;
+			}
+		},
+		num: -1031,
+		gen: 8,
+		desc: "Holder's moves deal 50% more damage, but it can't select moves of its type.",
+	},
 
 // Tera Shards
 	bugterashard: {
