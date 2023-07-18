@@ -677,7 +677,7 @@ export const Formats: FormatList = [
 		mod: 'vaporemons',	
 		teambuilderFormat: 'OU',
 		ruleset: ['Standard', 'Dynamax Clause', 'Data Mod'],
-		banlist: ['Uber', 'AG', 'Arena Trap', 'Moody', 'Sand Veil', 'Shadow Tag', 'Snow Cloak', 'King\'s Rock', 'Baton Pass', 'Last Respects', 'Shed Tail'],
+		banlist: ['Uber', 'AG', 'Arena Trap', 'Moody', 'Shadow Tag', 'King\'s Rock', 'Baton Pass', 'Last Respects', 'Shed Tail'],
     },	
 	{
 		section: "Gen 8 Mods",
