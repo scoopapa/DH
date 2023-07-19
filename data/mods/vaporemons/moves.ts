@@ -3629,7 +3629,8 @@ stickyweb: {
 		accuracy: 100,
 		basePower: 50,
 		category: "Physical",
-		name: "Draining Kiss",
+		shortDesc: "Heals the user by 75% of the damage dealt.",
+		name: "Pluck",
 		pp: 10,
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1, heal: 1},
@@ -3644,6 +3645,7 @@ stickyweb: {
 		accuracy: 100,
 		basePower: 85,
 		category: "Physical",
+		shortDesc: "Foe can't use Sound moves or Yawn for 3 turns.",
 		name: "Throat Chop",
 		pp: 10,
 		priority: 0,
@@ -3686,10 +3688,15 @@ stickyweb: {
 		accuracy: 100,
 		basePower: 85,
 		category: "Special",
+		shortDesc: "Foe can't use Wind moves for 3 turns.",
 		name: "Wind Breaker",
 		pp: 10,
 		priority: 0,
 		flags: {wind: 1, protect: 1, mirror: 1},
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Gust", target);
+		},
 		condition: {
 			duration: 3,
 			onStart(target) {
@@ -3723,6 +3730,39 @@ stickyweb: {
 		target: "normal",
 		type: "Flying",
 		contestType: "Clever",
+	},
+	hazardouswaste: {
+		accuracy: 100,
+		basePower: 50,
+		basePowerCallback(pokemon, target, move) {
+			const yourSide = pokemon.side;
+			let allLayers = 0;
+			if (yourSide.getSideCondition('stealthrock')) allLayers++;
+			if (yourSide.getSideCondition('healingstones')) allLayers++;
+			if (yourSide.getSideCondition('stickyweb')) allLayers++;
+			if (targetSide.getSideCondition('spikes')) {
+				let spikesLayers = this.effectData.layers;
+			}
+			if (targetSide.getSideCondition('toxicspikes')) {
+				let tspikesLayers = this.effectData.layers;
+			}
+			this.debug('Hazardous Waste damage boost');
+			return move.basePower * [allLayers + spikesLayers + tspikesLayers];
+		},
+		category: "Physical",
+		shortDesc: "+50 power for each hazard on user's side.",
+		name: "Hazardous Waste",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Acid Downpour", target);
+		},
+		secondary: null,
+		target: "normal",
+		type: "Poison",
+		contestType: "Tough",
 	},
 
 // air freshener stuff, this better work
