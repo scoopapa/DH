@@ -1958,7 +1958,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		name: "Bellibolt",
 		types: ["Electric", "Water"],
 		baseStats: {hp: 109, atk: 64, def: 91, spa: 103, spd: 83, spe: 45},
-		abilities: {0: "Electromorphosis", 1: "Static", H: "Counteract"},
+		abilities: {0: "Electromorphosis", 1: "Static", H: "Volt Absorb"},
 		heightm: 1.2,
 		weightkg: 113,
 		color: "Green",
