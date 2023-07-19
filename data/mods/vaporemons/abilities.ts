@@ -2025,4 +2025,85 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		rating: 2,
 		num: 13,
 	},
+	counteract: {
+		name: "Counteract",
+		// new Ability suppression implemented in scripts.ts
+		onStart(pokemon) {
+			this.add('-ability', pokemon, 'Counteract');
+		},
+		// onModifyPriority implemented in relevant abilities
+		onFoeBeforeMovePriority: 13,
+		onFoeBeforeMove(attacker, defender, move) {
+			attacker.addVolatile('counteract');
+		},
+		condition: {
+			onAfterMove(pokemon) {
+				pokemon.removeVolatile('counteract');
+			},
+		},
+		desc: "While this Pokemon is active, opposing Pokemon's moves and their effects ignore its own Ability. Does not affect the As One, Battle Bond, Comatose, Disguise, Gulp Missile, Ice Face, Multitype, Power Construct, RKS System, Schooling, Shields Down, Stance Change, or Zen Mode Abilities.",
+		shortDesc: "While this Pokemon is active, opposing Pokemon's Ability has no effect when it uses moves.",
+		rating: 4,
+		gen: 8,
+	},
+	sunblock: {
+		name: "Sunblock",
+		onDamage(damage, target, source, effect) {
+			if (effect.effectType !== 'Move' && this.field.isWeather('sunnyday')) {
+				if (effect.effectType === 'Ability') this.add('-activate', source, 'ability: ' + effect.name);
+				return false;
+			}
+		},
+		onModifySecondaries(secondaries) {
+			if (this.field.isWeather('sunnyday')) {
+				this.debug('Sunblock prevent secondary');
+				return secondaries.filter(effect => !!(effect.self || effect.dustproof));
+			}
+		},
+		shortDesc: "In Sun: Immune to indirect damage and secondary effects.",
+		gen: 8,
+	},
+	sandveil: {
+		name: "Sand Veil",
+		onDamage(damage, target, source, effect) {
+			if (effect.effectType !== 'Move' && this.field.isWeather('sandstorm')) {
+				if (effect.effectType === 'Ability') this.add('-activate', source, 'ability: ' + effect.name);
+				return false;
+			}
+		},
+		onModifySecondaries(secondaries) {
+			if (this.field.isWeather('sandstorm')) {
+				this.debug('Sunblock prevent secondary');
+				return secondaries.filter(effect => !!(effect.self || effect.dustproof));
+			}
+		},
+		onImmunity(type, pokemon) {
+			if (type === 'sandstorm') return false;
+		},
+		shortDesc: "In Sandstorm: Immune to indirect damage and secondary effects.",
+		rating: 3,
+		num: 8,
+	},
+	snowcloak: {
+		name: "Snow Cloak",
+		onDamage(damage, target, source, effect) {
+			if (effect.effectType !== 'Move' && ['hail', 'snow'].includes(pokemon.effectiveWeather())) {
+				if (effect.effectType === 'Ability') this.add('-activate', source, 'ability: ' + effect.name);
+				return false;
+			}
+		},
+		onModifySecondaries(secondaries) {
+			if (['hail', 'snow'].includes(pokemon.effectiveWeather())) {
+				this.debug('Sunblock prevent secondary');
+				return secondaries.filter(effect => !!(effect.self || effect.dustproof));
+			}
+		},
+		onImmunity(type, pokemon) {
+			if (type === 'hail') return false;
+		},
+		shortDesc: "In Snow: Immune to indirect damage and secondary effects.",
+		rating: 3,
+		num: 81,
+	},
+
 };
