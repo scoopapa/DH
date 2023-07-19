@@ -330,6 +330,7 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'bombirdier').learnset.defog = ['8L1'];
 		this.modData('Learnsets', 'pawmi').learnset.chainlightning = ['8L1'];
 		this.modData('Learnsets', 'pichu').learnset.chainlightning = ['8L1'];
+		this.modData('Learnsets', 'raichualola').learnset.chainlightning = ['8L1'];
 		this.modData('Learnsets', 'shinx').learnset.chainlightning = ['8L1'];
 		this.modData('Learnsets', 'toxtricity').learnset.chainlightning = ['8L1'];
 		this.modData('Learnsets', 'toxtricitylowkey').learnset.chainlightning = ['8L1'];
