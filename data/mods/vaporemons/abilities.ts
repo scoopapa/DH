@@ -2105,5 +2105,20 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		rating: 3,
 		num: 81,
 	},
-
+	outclass: {
+		onSourceHit(target, source, move) {
+			if (!move || !target || source.types[1] || source.volatiles['outclass']) return;
+			let targetType = target.types[0]
+			if (target !== source && move.category !== 'Status' && !source.hasType(targetType) && !source.addType(targetType)) {
+					target.setType(target.getTypes(true).map(type => type === targetType ? "???" : type));
+					this.add('-start', target, 'typechange', target.types.join('/'));
+					this.add('-start', source, 'typeadd', targetType, '[from] ability: Outclass');
+					source.addVolatile('outclass');			
+				}
+		},
+		condition: {},
+		name: "Outclass",
+		shortDesc: "If this Pokemon has one type, it steals the primary typing off a Pokemon it hits with an attack.",
+		rating: 4,
+	},
 };
