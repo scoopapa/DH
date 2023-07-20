@@ -2,24 +2,26 @@ export const Scripts: ModdedBattleScriptsData = {
 	gen: 9,
 	pokemon: {
 		// for neutralizing gas
-        ignoringAbility() {
-            // Check if any active pokemon have the ability Neutralizing Gas
-            let neutralizinggas = false;
-            for (const pokemon of this.battle.getAllActive()) {
-                // can't use hasAbility because it would lead to infinite recursion
-                if (pokemon.ability === ('neutralizinggas' as ID) && !pokemon.volatiles['gastroacid'] && !pokemon.abilityData.ending) {
-                    neutralizinggas = true;
-                    break;
-                }
-            }
+		ignoringAbility() {
+			if (this.battle.gen >= 5 && !this.isActive) return true;
+			if (this.getAbility().isPermanent) return false;
+			if (this.volatiles['gastroacid']) return true;
 
-            return !!(
-                (this.battle.gen >= 5 && !this.isActive) ||
-                ((this.volatiles['gastroacid'] || this.volatiles['counteract'] || (neutralizinggas && this.ability !== ('neutralizinggas' as ID))) &&
-                !this.getAbility().isPermanent
-                )
-            );
-        },
+			if (this.hasItem('Ability Shield') || this.ability === ('neutralizinggas' as ID)) return false;
+			if (this.volatiles['neutralizinggas']) return true;
+
+			return false;
+		},
+		// for water bubble
+		ignoringItem() {
+			return !!(
+				this.itemState.knockedOff || // Gen 3-4
+				(this.battle.gen >= 5 && !this.isActive) ||
+				(!this.getItem().ignoreKlutz && this.hasAbility('klutz')) ||
+				this.volatiles['embargo'] || this.battle.field.pseudoWeather['magicroom'] ||
+				this.volatiles['magician']
+			);
+		},
 	},
 	init: function(){
 		this.modData('Moves', 'aerialace').flags.slicing = 1;
