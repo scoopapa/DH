@@ -329,4 +329,34 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		rating: 4,
 		num: -17,
 	},
+	binarysoul: {
+		onResidual(pokemon) {
+			if (pokemon.species.baseSpecies !== 'Twinrova' || pokemon.transformed) return;
+			const targetForme = pokemon.species.name === 'Twinrova' ? 'Twinrova-Fire' : 'Twinrova';
+			pokemon.formeChange(targetForme);
+		},
+		name: "Binary Soul",
+		rating: 1,
+		num: -17,
+	},
+	perplexingglare: {
+		onModifyAtkPriority: 5,
+		onModifyAtk(atk, attacker, defender, move) {
+			if (move.type === 'Psychic') {
+				this.debug('Perplexing Glare boost');
+				return this.chainModify(1.5);
+			}
+		},
+		onModifySpAPriority: 5,
+		onModifySpA(atk, attacker, defender, move) {
+			if (move.type === 'Psychic') {
+				this.debug('Perplexing Glare Boost boost');
+				return this.chainModify(1.5);
+			}
+		},
+		name: "Perplexing Glare",
+		shortDesc: "Attacking stat multiplied by 1.5 while using a Psychic-type Attack.",
+		rating: 3.5,
+		num: -18,
+	},
 };

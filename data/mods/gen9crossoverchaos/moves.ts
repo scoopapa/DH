@@ -515,6 +515,65 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		type: "Water",
 		contestType: "Beautiful",
 	},
+	shakalakamaracas: {
+		num: -20,
+		accuracy: 90,
+		basePower: 65,
+		category: "Physical",
+		shortDesc: "Sets a layer of Spikes on the opposing side.",
+		name: "Shakalaka Maracas",
+		pp: 15,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		self: {
+			onHit(source) {
+				for (const side of source.side.foeSidesWithConditions()) {
+					side.addSideCondition('spikes');
+				}
+			},
+		},
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Petal Dance", target);
+		},
+		secondary: {}, // allows sheer force to trigger
+		target: "normal",
+		type: "Grass",
+	},
+	doubledynamite: {
+		num: -21,
+		accuracy: 100,
+		basePower: 90,
+		category: "Special",
+		shortDesc: "Twinrova: Ice; Twinrova-Fire: Fire",
+		name: "Double Dynamite",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Blizzard", target);
+			this.add('-anim', source, "Mind Blown", target);
+		},
+		secondary: null,
+		onTry(pokemon) {
+			if (pokemon.species.baseSpecies === 'Twinrova') {
+				return;
+			}
+			this.hint("Only a Pokemon whose form is Twinrova or Twinrova-Fire can use this move.");
+			this.add('-fail', pokemon, 'move: Double Dynamite');
+			return null;
+		},
+		onModifyType(move, pokemon) {
+			if (pokemon.species.name === 'Twinrova-Fire') {
+				move.type = 'Fire';
+			} else {
+				move.type = 'Ice';
+			}
+		},
+		target: "normal",
+		type: "Ice",
+	},
 	
 	// Below are vanilla moves altered by custom interractions
 	bounce: {

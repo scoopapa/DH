@@ -111,5 +111,16 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "CC OU",
 		doublesTier: "DCC OU",
 	},
-
+	hestu: {
+		tier: "CC OU",
+		doublesTier: "DCC OU",
+	},
+	twinrova: {
+		tier: "CC OU",
+		doublesTier: "DCC OU",
+	},
+	snecko: {
+		tier: "CC OU",
+		doublesTier: "DCC OU",
+	},
 };
