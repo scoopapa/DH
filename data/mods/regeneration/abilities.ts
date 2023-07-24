@@ -71,10 +71,10 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 					}
 					pokemon.side.removeSideCondition(sideCondition);
             }
-			   if (target.side.getSideCondition('spikes')) {
+			   if (pokemon.side.getSideCondition('spikes')) {
 			      this.boost({def: 1}, pokemon);
             }
-			   if (target.side.getSideCondition('stealthrock')) {
+			   if (pokemon.side.getSideCondition('stealthrock')) {
 			      this.boost({def: 1}, pokemon);
             }
          }
