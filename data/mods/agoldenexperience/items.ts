@@ -484,20 +484,20 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		gen: 8,
 		desc: "If held by a Centiskorch, this item allows it to Mega Evolve in battle.",
 	},
-	frosmite: {
-		name: "Frosmite",
-		spritenum: 578,
-		megaStone: "Frosmoth-Mega",
-		megaEvolves: "Frosmoth",
-		itemUser: ["Frosmoth"],
-		onTakeItem(item, source) {
-			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
-			return true;
-		},
-		num: -36,
-		gen: 8,
-		desc: "If held by a Frosmoth, this item allows it to Mega Evolve in battle.",
-	},
+	// frosmite: { //removed
+	// 	name: "Frosmite",
+	// 	spritenum: 578,
+	// 	megaStone: "Frosmoth-Mega",
+	// 	megaEvolves: "Frosmoth",
+	// 	itemUser: ["Frosmoth"],
+	// 	onTakeItem(item, source) {
+	// 		if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+	// 		return true;
+	// 	},
+	// 	num: -36,
+	// 	gen: 8,
+	// 	desc: "If held by a Frosmoth, this item allows it to Mega Evolve in battle.",
+	// },
 	baskironite: {
 		name: "Baskironite",
 		spritenum: 578,

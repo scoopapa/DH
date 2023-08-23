@@ -64,6 +64,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			}
 		},
 		secondary: null,
+		shortDesc: "1.5x damage if foe holds an item. Removes item. Heals 1/10 of max HP.",
 		target: "normal",
 		type: "Flying",
 		contestType: "Tough",
@@ -443,27 +444,27 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		zMove: {boost: {def: 1}},
 		contestType: "Tough",
 	},*/
-	rolledballed: {
-		num: -13,
-		accuracy: 90,
-		basePower: 35,
-		category: "Physical",
-    	shortDesc: "Hits twice. Has a 10% chance to lower the target's Def after each hit.",
-		name: "Rolled Balled",
-		pp: 10,
-		priority: 0,
-		flags: {protect: 1, mirror: 1},
-		multihit: 2,
-		secondary: {
-			chance: 10,
-			boosts: {
-				def: -1,
-			},
-		},
-		target: "normal",
-		type: "Ice",
-		contestType: "Cool",
-	},
+	// rolledballed: { //removed 
+	// 	num: -13,
+	// 	accuracy: 90,
+	// 	basePower: 35,
+	// 	category: "Physical",
+    // 	shortDesc: "Hits twice. Has a 10% chance to lower the target's Def after each hit.",
+	// 	name: "Rolled Balled",
+	// 	pp: 10,
+	// 	priority: 0,
+	// 	flags: {protect: 1, mirror: 1},
+	// 	multihit: 2,
+	// 	secondary: {
+	// 		chance: 10,
+	// 		boosts: {
+	// 			def: -1,
+	// 		},
+	// 	},
+	// 	target: "normal",
+	// 	type: "Ice",
+	// 	contestType: "Cool",
+	// },
 	goldenexperience: {
 		num: -14,
 		accuracy: 100,
@@ -705,6 +706,29 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		zMove: {effect: 'clearnegativeboost'},
 		contestType: "Beautiful",
 	},
+	seajaws: {
+		num: -1706,
+		accuracy: 100,
+		basePower: 85,
+		category: "Physical",
+		name: "Sea Jaws",
+		pp: 10,
+		priority: 0,
+		flags: {bite: 1, contact: 1, protect: 1, mirror: 1},
+		onTryHit(pokemon) {
+			// will shatter screens through sub, before you hit
+			if (pokemon.runImmunity('Water')) {
+				pokemon.side.removeSideCondition('reflect');
+				pokemon.side.removeSideCondition('lightscreen');
+				pokemon.side.removeSideCondition('auroraveil');
+			}
+		},
+		secondary: null,
+		shortDesc: "Destroys screens, unless the target is immune to Water.",
+		target: "normal",
+		type: "Water",
+		contestType: "Clever",
+	},
 	parallelcircuit: {
 		num: -2242,
 		accuracy: 95,
@@ -836,6 +860,24 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		secondary: null,
 		target: "normal",
 		type: "Fighting",
+	},
+	musclecare: {
+		num: -1105,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		name: "Muscle Care",
+		pp: 10,
+		priority: 0,
+		flags: {snatch: 1, heal: 1},
+		heal: [1, 2],
+		secondary: null,
+		target: "self",
+		type: "Fighting",
+		zMove: {effect: 'clearnegativeboost'},
+		shortDesc: "Heals the user by 50% of its max HP.",
+		desc: "Heals the user by 50% of its max HP.",
+		contestType: "Clever",
 	},
 	dissolution: {
 		num: -28,
@@ -1749,7 +1791,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		category: "Special",
 		shortDesc: "-1 SpA/SpD to target.",
 		name: "Glitzy Glow",
-		pp: 24,
+		pp: 15,
 		priority: 0,
 		flags: {protect: 1},
 		boosts: {
@@ -1768,7 +1810,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		category: "Special",
 		shortDesc: "-1 Atk/Def to target.",
 		name: "Baddy Bad",
-		pp: 24,
+		pp: 15,
 		priority: 0,
 		flags: {protect: 1},
 		boosts: {
@@ -1838,28 +1880,64 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		type: "Fairy",
 		contestType: "Clever",
 	},
+	// ragingfury: {
+	// 	num: -1200,
+	// 	accuracy: 100,
+	// 	basePower: 120,
+	// 	category: "Physical",
+	// 	name: "Raging Fury",
+	// 	shortDesc: "Lasts 2-3 turns. Confuses the user afterwards.",
+	// 	pp: 10,
+	// 	priority: 0,
+	// 	flags: {contact: 1, protect: 1, mirror: 1},
+	// 	self: {
+	// 		volatileStatus: 'lockedmove',
+	// 	},
+	// 	onAfterMove(pokemon) {
+	// 		if (pokemon.volatiles['lockedmove'] && pokemon.volatiles['lockedmove'].duration === 1) {
+	// 			pokemon.removeVolatile('lockedmove');
+	// 		}
+	// 	},
+	// 	secondary: null,
+	// 	target: "randomNormal",
+	// 	type: "Fire",
+	// 	contestType: "Cool",
+	// },
 	ragingfury: {
 		num: -1200,
 		accuracy: 100,
-		basePower: 120,
+		basePower: 130,
 		category: "Physical",
 		name: "Raging Fury",
-		shortDesc: "Lasts 2-3 turns. Confuses the user afterwards.",
 		pp: 10,
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1},
-		self: {
-			volatileStatus: 'lockedmove',
-		},
-		onAfterMove(pokemon) {
-			if (pokemon.volatiles['lockedmove'] && pokemon.volatiles['lockedmove'].duration === 1) {
-				pokemon.removeVolatile('lockedmove');
+		basePowerCallback(pokemon, target, move) {
+			let bp = move.basePower;
+			if (pokemon.volatiles['ragingfury'] && pokemon.volatiles['ragingfury'].hitCount) {
+				bp -= 30*pokemon.volatiles['ragingfury'].hitCount;
 			}
+			if (pokemon.status !== 'slp') pokemon.addVolatile('ragingfury');
+			this.debug("Rollout bp: " + bp);
+			return bp;
+		},
+		condition: {
+			duration: 2,
+			onStart() {
+				this.effectData.hitCount = 1;
+			},
+			onRestart() {
+				this.effectData.hitCount++;
+				if (this.effectData.hitCount < 5) {
+					this.effectData.duration = 2;
+				}
+			},
 		},
 		secondary: null,
 		target: "randomNormal",
 		type: "Fire",
 		contestType: "Cool",
+		shortDesc: "This move lowers in power after each use (5 turns max).",
 	},
 	chloroblast: {
 		desc: "This move has 50% recoil. Hits target for at least neutral damages.",
@@ -3109,8 +3187,10 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		pp: 5,
 		priority: 0,
 		flags: {snatch: 1, dance: 1},
-		boosts: {
-			spa: 1,
+		self: {
+			boosts: {
+				spa: 1,
+			},
 		},
 		weather: 'RainDance',
 		secondary: null,
@@ -3471,7 +3551,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	ragingbull: {
 		num: 873,
 		accuracy: 100,
-		basePower: 90,
+		basePower: 120,
 		category: "Physical",
 		name: "Raging Bull",
 		shortDesc: "Destroys screens. Type depends on user's form.",

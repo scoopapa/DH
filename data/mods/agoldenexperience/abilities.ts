@@ -1,9 +1,7 @@
 import { consoleips } from "../../../config/config-example";
 
-// const bladeMoves = ['aerialace', 'airslash', 'aircutter', 'behemothblade', 'crosspoison', 'cut', 'falseswipe', 'furycutter', 'leafblade', 'nightslash', 'psychocut', 'razorshell', 'razorwind', 'sacredsword', 'secretsword', 'slash', 'xscissor', 'solarblade', 'ceaselessedge', 'sneakyassault', 'braveblade', 'bitterblade'];
 const kickMoves = ['jumpkick', 'highjumpkick', 'megakick', 'doublekick', 'blazekick', 'tropkick', 'lowkick', 'lowsweep', 'rollingkick', 'triplekick', 'stomp', 'highhorsepower', 'tripleaxel', 'stompingtantrum', 'thunderouskick', 'axekick'];
 const tailMoves = ['firelash', 'powerwhip', 'tailslap', 'wrap', 'constrict', 'irontail', 'dragontail', 'poisontail', 'aquatail', 'vinewhip', 'wringout',];
-// const windMoves = ['aircutter', 'blizzard', 'fairywind', 'gust', 'heatwave', 'hurricane', 'icywind', 'petalblizzard', 'sandstorm', 'tailwind', 'twister', 'whirlwind'];
 
 export const Abilities: { [abilityid: string]: ModdedAbilityData; } = {
 	poisonousradula: {
@@ -160,24 +158,24 @@ export const Abilities: { [abilityid: string]: ModdedAbilityData; } = {
 		rating: 4.5,
 		num: -7,
 	},
-	reflex: {
-		onFoeTryMove(target, source, move) {
-			const targetAllExceptions = ['perishsong', 'flowershield', 'rototiller'];
-			if (move.target === 'foeSide' || (move.target === 'all' && !targetAllExceptions.includes(move.id))) {
-				return;
-			}
+	// reflex: { //removed
+	// 	onFoeTryMove(target, source, move) {
+	// 		const targetAllExceptions = ['perishsong', 'flowershield', 'rototiller'];
+	// 		if (move.target === 'foeSide' || (move.target === 'all' && !targetAllExceptions.includes(move.id))) {
+	// 			return;
+	// 		}
 
-			const dazzlingHolder = this.effectData.target;
-			if ((source.side === dazzlingHolder.side || move.target === 'all') && move.priority > 0.1) {
-				this.attrLastMove('[still]');
-				this.add('cant', dazzlingHolder, 'ability: Reflex', move, '[of] ' + target);
-				return false;
-			}
-		},
-		name: "Reflex",
-		rating: 2.5,
-		num: -8,
-	},
+	// 		const dazzlingHolder = this.effectData.target;
+	// 		if ((source.side === dazzlingHolder.side || move.target === 'all') && move.priority > 0.1) {
+	// 			this.attrLastMove('[still]');
+	// 			this.add('cant', dazzlingHolder, 'ability: Reflex', move, '[of] ' + target);
+	// 			return false;
+	// 		}
+	// 	},
+	// 	name: "Reflex",
+	// 	rating: 2.5,
+	// 	num: -8,
+	// },
 	perforating: {
 		onModifyMovePriority: -5,
 		onModifyMove(move) {
@@ -316,7 +314,7 @@ export const Abilities: { [abilityid: string]: ModdedAbilityData; } = {
 		rating: 4,
 		num: -16,
 	},*/
-	mistymountain: {
+	mistymountain: { 
 		onModifyTypePriority: -1,
 		onModifyType(move, pokemon) {
 			const noModifyType = [
@@ -362,7 +360,7 @@ export const Abilities: { [abilityid: string]: ModdedAbilityData; } = {
 		onSourceHit(target, source, move) {
 			if (!move || !target) return;
 			if (move.flags['dancer']) {
-				this.boost({spe: 1}, source);
+				this.boost({ spe: 1 }, source);
 			}
 		},
 		name: "Mad Dancer",
@@ -983,7 +981,7 @@ export const Abilities: { [abilityid: string]: ModdedAbilityData; } = {
 	},
 	explosive: {
 		desc: "This Pokémon does not suffer the drawbacks of recoil moves and sacrificial moves.",
-		shortDesc: "Ignores recoil and self-KO effects of that move.",
+		shortDesc: "Ignores recoil and self-KO effects of its moves.",
 		onModifyMove(move) {
 			if (move.recoil || move.mindBlownRecoil || (move.selfdestruct && move.selfdestruct === 'always')) {
 				this.effectData.target.addVolatile('implode');
@@ -1361,6 +1359,19 @@ export const Abilities: { [abilityid: string]: ModdedAbilityData; } = {
 		rating: 2.5,
 		num: -1160,
 	},
+	sleightofhand: {
+		desc: "This Pokémon's contact moves become special attacks and do not make contact with the target.",
+		shortDesc: "This Pokémon's contact moves become special and non-contact.",
+		onModifyMove(move) {
+			if (move.flags['contact']) {
+				if (move.category !== 'Special') move.category = 'Special';
+				delete move.flags['contact'];
+			}
+		},
+		name: "Sleight of Hand",
+		rating: 3,
+		num: -52,
+	},
 	newtonslaw: {
 		onModifySpe(spe, pokemon) {
 			if (this.field.getPseudoWeather('gravity')) {
@@ -1552,7 +1563,7 @@ export const Abilities: { [abilityid: string]: ModdedAbilityData; } = {
 		onModifyDamage(damage, source, target, move) {
 			if (target.getMoveHitData(move).crit) {
 				this.debug('Old School boost');
-				return this.chainModify(2/1.5);
+				return this.chainModify(2 / 1.5);
 			}
 		},
 		rating: 3.5,
@@ -1760,8 +1771,8 @@ export const Abilities: { [abilityid: string]: ModdedAbilityData; } = {
 		num: 23,
 	},
 	sandveil: {
-		desc: "If Sandstorm is active, this Pokemon's defence is multiplied by 1.3. This Pokemon takes no damage from Sandstorm.",
-		shortDesc: "If Sandstorm is active, this Pokemon's defence is 1.3x; immunity to Sandstorm.",
+		desc: "If Sandstorm is active, this Pokemon's defense is multiplied by 1.3. This Pokemon takes no damage from Sandstorm.",
+		shortDesc: "If Sandstorm is active, this Pokemon's defense is 1.3x; immunity to Sandstorm.",
 		onImmunity(type, pokemon) {
 			if (type === 'sandstorm') return false;
 		},
@@ -1775,8 +1786,8 @@ export const Abilities: { [abilityid: string]: ModdedAbilityData; } = {
 		num: 146,
 	},
 	snowcloak: {
-		desc: "If Hail is active, this Pokemon's defence is multiplied by 1.3. This Pokemon takes no damage from Hail.",
-		shortDesc: "If Hail is active, this Pokemon's defence is 1.3x; immunity to Hail.",
+		desc: "If Hail is active, this Pokemon's defense is multiplied by 1.3. This Pokemon takes no damage from Hail.",
+		shortDesc: "If Hail is active, this Pokemon's defense is 1.3x; immunity to Hail.",
 		onImmunity(type, pokemon) {
 			if (type === 'hail') return false;
 		},
@@ -1907,41 +1918,36 @@ export const Abilities: { [abilityid: string]: ModdedAbilityData; } = {
 				pokemon.formeChange(forme, this.effect, false, '[msg]');
 			}
 		},
-		onModifyTypePriority: -1,
-		onModifyType(move, pokemon) {
-			const noModifyType = [
-				'judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'terrainpulse', 'weatherball',
-			];
-			if (move.type === 'Normal' && !noModifyType.includes(move.id) && !(move.isZ && move.category !== 'Status')) {
-				switch (pokemon.effectiveWeather()) {
-					case 'sunnyday':
-					case 'desolateland':
-						move.type = 'Fire';
-						move.forecastBoosted = true;
+		onPrepareHit(source, target, move) {
+			if (move.hasBounced) return;
+			const type = move.type;
+			if (type) {
+				switch (type) {
+					case "Water":
+						this.field.setWeather('raindance');	
+						if (!source.setType(type)) return;
+						this.add('-start', source, 'typechange', type, '[from] ability: Forecast');
 						break;
-					case 'raindance':
-					case 'primordialsea':
-						move.type = 'Water';
-						move.forecastBoosted = true;
+					case "Fire":
+						this.field.setWeather('sunnyday');	
+						if (!source.setType(type)) return;
+						this.add('-start', source, 'typechange', type, '[from] ability: Forecast');
 						break;
-					case 'hail':
-						move.type = 'Ice';
-						move.forecastBoosted = true;
+					case "Ice":
+						this.field.setWeather('hail');	
+						if (!source.setType(type)) return;
+						this.add('-start', source, 'typechange', type, '[from] ability: Forecast');
 						break;
-					default:
-						break;
+					
 				}
 			}
 		},
-		onBasePowerPriority: 23,
-		onBasePower(basePower, pokemon, target, move) {
-			if (move.forecastBoosted) return this.chainModify([0x1333, 0x1000]);
-		},
 		name: "Forecast",
-		shortDesc: "Castform's type and Normal type moves change to the current weather condition's type, except Sandstorm.",
-		rating: 2,
+		desc: "Castform's type changes to the current weather condition's type, except Sandstorm. Upon using a Water, Fire, or Ice move, this Pokemon changes to that type and sets the corresponding weather.",
+		shortDesc: "Changes type, form and weather when using Water/Fire/Ice moves.",
+		rating: 4,
 		num: 59,
-	},
+    },
 	mimicry: {
 		onStart(pokemon) {
 			if (this.field.terrain) {
@@ -2553,6 +2559,76 @@ export const Abilities: { [abilityid: string]: ModdedAbilityData; } = {
 		name: "Quick Draw",
 		rating: 3,
 		num: -46,
+	},
+	icescales: {
+		onSourceModifyDamage(damage, source, target, move) {
+			if (move.category === 'Special' || move.typeMod > 0) {
+				return this.chainModify(0.5);
+			}
+		},
+		name: "Ice Scales",
+		shortDesc: "This Pokemon receives 1/2 damage from special attacks, as well as super effective attacks.",
+		desc: "This Pokemon receives 1/2 damage from special attacks, as well as super effective attacks.",
+		rating: 4,
+		num: 246,
+	},
+	strongwill: {
+		onSourceModifyDamage(damage, source, target, move) {
+			if (move.category === 'Special') {
+				return this.chainModify(0.5);
+			}
+		},
+		name: "Strong Will",
+		shortDesc: "This Pokemon receives 1/2 damage from special attacks.",
+		desc: "This Pokemon receives 1/2 damage from special attacks.",
+		rating: 4,
+		num: -1246,
+	},
+	smartguard: {
+		desc: "On switch-in, this Pokémon's Defense or Special Defense is raised by 1 stage based on the weaker combined attacking stat of all opposing Pokémon. Special Defense is raised if their Special Attack is higher, and Defense is raised if their Attack is the same or higher.",
+		shortDesc: "On switch-in, Defense or Sp. Def is raised 1 stage based on the foes' weaker Attack.",
+		onStart(pokemon) {
+			let totalatk = 0;
+			let totalspa = 0;
+			for (const target of pokemon.side.foe.active) {
+				if (!target || target.fainted) continue;
+				totalatk += target.getStat('atk', false, true);
+				totalspa += target.getStat('spa', false, true);
+			}
+			if (totalatk && totalatk >= totalspa) {
+				this.boost({def: 1});
+			} else if (totalspa) {
+				this.boost({spd: 1});
+			}
+		},
+		name: "Smart Guard",
+		rating: 4,
+		num: -35,
+	},
+	dodge: { //tmp
+		shortDesc: "This Pokemon uses its Speed in damage calculation.",
+		name: "Dodge",
+		onFoeBeforeMovePriority: 6,
+		onFoeBeforeMove(attacker, defender, move) {
+			if (target === this.effectState.target && move.category !== "Status") {
+				move.overrideDefensiveStat = 'spe';
+			}
+		},
+		rating: 3.5,
+		num: -9148,
+	},
+	wonderskin: {
+		onTryHit(target, source, move) {
+			if (move.category === 'Status' && target !== source) {
+				this.add('-immune', target, '[from] ability: Wonder Skin');
+				return null;
+			}
+		},
+		isBreakable: true,
+		name: "Wonder Skin",
+		shortDesc: "This Pokemon is immune to Status moves.",
+		rating: 5,
+		num: 147,
 	},
 	//Gen 9 additions
 	sharpness: {

@@ -1318,9 +1318,10 @@ export const Formats: FormatList = [
 		],
 		mod: 'agoldenexperience',
 		ruleset: ['Standard NatDex', 'OHKO Clause', 'Evasion Moves Clause', 'Species Clause', 'Dynamax Clause', 'Sleep Clause Mod', 'Data Mod', 'Mega Data Mod'],
-		banlist: ['Uber', 'Power Construct', 'Arceus', 'Calyrex-Ice', 'Calyrex-Shadow', 'Darkrai', 'Deoxys-Attack', 'Deoxys-Speed', 'Dialga', 'Dialga-Origin', 'Eternatus', 'Flutter Mane', 'Gengarite', 'Giratina', 'Giratina-Origin', 'Groudon', 'Ho-Oh', /*'Iron Bundle',*/ 'Koraidon', 'Kyogre', 'Kyurem-Black', 'Kyurem-White', 'Lugia', 'Lunala', 'Marshadow', 'Mewtwo', 'Mewtwo-Mega-X', 'Mewtwo-Mega-Y', 'Miraidon', 'Necrozma-Dawn-Wings', 'Necrozma-Dusk-Mane', 'Palkia', 'Palkia-Origin', 'Parafgufa', 'Rayquaza', 'Reshiram', 'Salamencite', 'Solgaleo', 'Xerneas', 'Yveltal', 'Zacian', 'Zamazenta', 'Zekrom', 'Zygarde-Base', 'Berserk Gene', 'Eevee-Starter', 'Pikachu-Starter', 'Moody',
+		banlist: ['Uber', 'Power Construct', 'Berserk Gene', 'Eevee-Starter', 'Pikachu-Starter', 'Moody',
 					'Normalium Z', 'Fairium Z', 'Fightinium Z', 'Firium Z', 'Flyinium Z', 'Darkinium Z', 'Dragonium Z', 'Buginium Z', 'Waterium Z', 'Electrium Z', 'Ghostium Z', 'Grassium Z', 'Groundium Z', 'Icium Z', 'Poisonium Z', 'Psychium Z', 'Rockium Z', 'Steelium Z', 'Pikanium Z', 'Aloraichium Z', 'Eevium Z', 'Snorlium Z', 'Mewnium Z', 'Ultranecrozium Z', 'Pikashunium Z', 'Decidium Z', 'Incinium Z', 'Primarium Z', 'Lycanium Z', 'Mimikium Z', 'Kommonium Z', 'Tapunium Z', 'Solganium Z', 'Lunalium Z', 'Marshadium Z', 
-					'Bright Powder', 'Lax Incense', 'King\'s Rock', 'Razor Fang'],
+					'Bright Powder', 'Lax Incense', 'King\'s Rock', 'Razor Fang',
+				'Rusted Sword', 'Rusted Shield'],
 		teambuilderFormat: 'National Dex',
 		onChangeSet(set) {
 			const item = this.toID(set.item);
@@ -1416,10 +1417,11 @@ export const Formats: FormatList = [
 		],
 		mod: 'agoldenexperience',
 		ruleset: ['Standard NatDex', 'OHKO Clause', 'Evasion Moves Clause', 'Species Clause', 'Dynamax Clause', 'Sleep Clause Mod', 'Data Mod', 'Mega Data Mod'],
-		banlist: ['Uber', 'OU', 'UUBL', 'Battle Bond', 'Power Construct', 'Arceus', 'Calyrex-Ice', 'Calyrex-Shadow', 'Darkrai', 'Deoxys-Attack', 'Deoxys-Speed', 'Dialga', 'Dialga-Origin', 'Eternatus', 'Flutter Mane', 'Gengarite', 'Giratina', 'Giratina-Origin', 'Groudon', 'Ho-Oh', /*'Iron Bundle',*/ 'Koraidon', 'Kyogre', 'Kyurem-Black', 'Kyurem-White', 'Lugia', 'Lunala', 'Marshadow', 'Mewtwo', 'Mewtwo-Mega-X', 'Mewtwo-Mega-Y', 'Miraidon', 'Necrozma-Dawn-Wings', 'Necrozma-Dusk-Mane', 'Palkia', 'Palkia-Origin', 'Parafgufa', 'Rayquaza', 'Reshiram', 'Salamencite', 'Solgaleo', 'Xerneas', 'Yveltal', 'Zacian', 'Zamazenta', 'Zekrom', 'Zygarde-Base', 'Berserk Gene', 'Eevee-Starter', 'Pikachu-Starter', 'Moody',
+		banlist: ['Uber', 'OU', 'UUBL', 'Battle Bond', 'Power Construct', 'Berserk Gene', 'Eevee-Starter', 'Pikachu-Starter', 'Moody',
 					'Normalium Z', 'Fairium Z', 'Fightinium Z', 'Firium Z', 'Flyinium Z', 'Darkinium Z', 'Dragonium Z', 'Buginium Z', 'Waterium Z', 'Electrium Z', 'Ghostium Z', 'Grassium Z', 'Groundium Z', 'Icium Z', 'Poisonium Z', 'Psychium Z', 'Rockium Z', 'Steelium Z', 'Pikanium Z', 'Aloraichium Z', 'Eevium Z', 'Snorlium Z', 'Mewnium Z', 'Ultranecrozium Z', 'Pikashunium Z', 'Decidium Z', 'Incinium Z', 'Primarium Z', 'Lycanium Z', 'Mimikium Z', 'Kommonium Z', 'Tapunium Z', 'Solganium Z', 'Lunalium Z', 'Marshadium Z', 
 					'Bright Powder', 'Lax Incense', 'King\'s Rock', 'Razor Fang',
-					'Drizzle', 'Drought'],
+					'Drizzle', 'Drought', 'Aerodactylite', 'Alakazite', 'Ampharosite', 'Audinite', 'Arbokinite', 'Baskironite', 'Blazikenite', 'Butterfrite', 'Cacturnite X', 'Centiskorchite X', 'Centiskorchite Y', 'Charizardite X', 'Charizardite Y', 'Dhelmite', 'Diancite', 'Flygonite', 'Froslassite', 'Galladite', 'Gardevoirite', 'Gengarite', 'Glalitite', 'Golisopodite', 'Gyaradosite', 'Houndoominite', 'Infarmatemite', 'Krookodite', 'Latiasite', 'Lopunnite', 'Lucarionite', 'Mawilite', 'Medichamite', 'Metagrossite', 'Ribombinite', 'Salamencite', 'Sceptilite', 'Scizorite', 'Swampertite', 'Terreptilite', 'Whiscashite',
+				'Latiosite', 'Pidgeotite', 'Pinsirite', 'Sablenite', 'Darmanitan-Galar + Zen Mode'],
 		teambuilderFormat: 'National Dex UU',
 		onChangeSet(set) {
 			const item = this.toID(set.item);
@@ -1469,8 +1471,8 @@ export const Formats: FormatList = [
 		banlist: [
 			'Calyrex-Shadow', 'Eternatus-Eternamax', 'Groudon-Primal', 'Rayquaza-Mega', 'Shedinja', 'Cramorant-Gorging', 'Arcane Mastery',
 			'Water Bubble', 'Huge Power', 'Illusion', 'Innards Out', 'Magnet Pull', 'Moody', 'Never Gonna Give You Up', 'Explosive',
-			'Stakeout', 'Wonder Guard', 'Gengarite', 'Belly Drum', 'Chatter', 'Double Iron Bash', 'Electrify', 'Fishious Rend', 'Sappy Seed',
-			/*'Last Respects',*/ 'Octolock', /*'Revival Blessing', 'Shed Tail',*/ 'Shell Smash', 'Comatose + Sleep Talk', 'Imprison + Transform',
+			'Protean', 'Stakeout', 'Wonder Guard', 'Belly Drum', 'Chatter', 'Double Iron Bash', 'Electrify', 'Fishious Rend', 'Sappy Seed',
+			'Octolock', 'Shell Smash', 'Comatose + Sleep Talk', 'Imprison + Transform',
 			'Berserk Gene', 'Normalium Z', 'Fairium Z', 'Fightinium Z', 'Firium Z', 'Flyinium Z', 'Darkinium Z', 'Dragonium Z', 'Buginium Z', 'Waterium Z', 'Electrium Z', 'Ghostium Z', 'Grassium Z', 'Groundium Z', 'Icium Z', 'Poisonium Z', 'Psychium Z', 'Rockium Z', 'Steelium Z', 'Pikanium Z', 'Aloraichium Z', 'Eevium Z', 'Snorlium Z', 'Mewnium Z', 'Ultranecrozium Z', 'Pikashunium Z', 'Decidium Z', 'Incinium Z', 'Primarium Z', 'Lycanium Z', 'Mimikium Z', 'Kommonium Z', 'Tapunium Z', 'Solganium Z', 'Lunalium Z', 'Marshadium Z', 
 			'Bright Powder', 'Lax Incense', 'King\'s Rock', 'Razor Fang'
 		],
