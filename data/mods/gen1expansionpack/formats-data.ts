@@ -381,11 +381,11 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		gen: 1,
 	},
 	carapthor: { // ogasawara name
-		tier: "New",
+		tier: "UU",
 		gen: 1,
 	},
 	taaban: {
-		tier: "New",
+		tier: "UU",
 		gen: 1,
 	},
 	///d8888b. d88888b  d888b  d888888b  .d88b.  d8b   db  .d8b.  db        db    db  .d8b.  d8888b. d888888b  .d8b.  d8b   db d888888b .d8888. 
@@ -781,7 +781,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		randomBattleMoves: ["bodyslam", "megadrain"],
 		essentialMove: "spore",
 		exclusiveMoves: ["growth", "slash", "stunspore", "stunspore", "swordsdance"],
-		tier: "LC",
+		tier: "NFE",
 	},
 	parasect: {
 		randomBattleMoves: ["bodyslam", "megadrain"],
@@ -813,7 +813,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		randomBattleMoves: ["bodyslam", "bubblebeam"],
 		essentialMove: "slash",
 		exclusiveMoves: ["thunder", "thunderbolt"],
-		tier: "LC",
+		tier: "NFE",
 	},
 	persian: {
 		randomBattleMoves: ["bodyslam", "bubblebeam"],
@@ -845,7 +845,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 	},
 	growlithe: {
 		randomBattleMoves: ["bodyslam", "fireblast", "flamethrower", "reflect"],
-		tier: "LC",
+		tier: "NFE",
 	},
 	arcanine: {
 		randomBattleMoves: ["bodyslam", "fireblast", "hyperbeam"],
@@ -943,7 +943,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 	},
 	ponyta: {
 		randomBattleMoves: ["agility", "bodyslam", "fireblast", "reflect"],
-		tier: "LC",
+		tier: "NFE",
 	},
 	rapidash: {
 		randomBattleMoves: ["agility", "bodyslam", "fireblast", "hyperbeam"],
@@ -974,11 +974,11 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 	farfetchd: {
 		randomBattleMoves: ["agility", "bodyslam", "swordsdance"],
 		essentialMove: "slash",
-		tier: "PU",
+		tier: "LC",
 	},
 	doduo: {
 		randomBattleMoves: ["agility", "bodyslam", "doubleedge", "drillpeck"],
-		tier: "LC",
+		tier: "NFE",
 	},
 	dodrio: {
 		randomBattleMoves: ["agility", "bodyslam", "drillpeck", "hyperbeam"],
@@ -998,7 +998,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		randomBattleMoves: ["bodyslam", "sludge"],
 		essentialMove: "explosion",
 		exclusiveMoves: ["fireblast", "megadrain", "megadrain", "screech"],
-		tier: "LC",
+		tier: "NFE",
 	},
 	muk: {
 		randomBattleMoves: ["bodyslam", "sludge"],
@@ -1047,7 +1047,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 	},
 	onix: {
 		randomBattleMoves: ["bodyslam", "earthquake", "explosion", "rockslide"],
-		tier: "PU",
+		tier: "LC",
 	},
 	drowzee: {
 		randomBattleMoves: ["hypnosis", "psychic", "thunderwave"],
@@ -1147,7 +1147,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		randomBattleMoves: ["bodyslam", "sleeppowder", "swordsdance"],
 		essentialMove: "megadrain",
 		comboMoves: ["growth", "stunspore"],
-		tier: "LC", //lol
+		tier: "NFE", //lol
 	},
 	kangaskhan: {
 		randomBattleMoves: ["bodyslam", "earthquake", "hyperbeam"],
@@ -1212,7 +1212,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 	pinsir: {
 		randomBattleMoves: ["bodyslam", "hyperbeam", "swordsdance"],
 		exclusiveMoves: ["seismictoss", "submission", "submission"],
-		tier: "PU",
+		tier: "LC",
 	},
 	tauros: {
 		randomBattleMoves: ["bodyslam", "earthquake", "hyperbeam"],
@@ -1236,7 +1236,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 	},
 	ditto: {
 		randomBattleMoves: ["transform"],
-		tier: "PU",
+		tier: "LC",
 	},
 	eevee: {
 		randomBattleMoves: ["doubleedge", "quickattack", "reflect"],

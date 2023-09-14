@@ -1852,7 +1852,7 @@ export const Formats: FormatList = [
       	`&bullet; <a href="https://docs.google.com/spreadsheets/d/1TpTH9ksUWOOJJQK69RIcvnot_mH_JvfGfM4zra6V3Ec/edit?usp=sharing">Spreadsheet</a>`,
 		],
 		mod: 'gen1expansionpack',
-		ruleset: ['Standard', 'Data Mod', 'Welcome Message'],
+		ruleset: ['Standard', 'Allow Tradeback', 'Data Mod', 'Welcome Message'],
 		banlist: ['Uber'],
 	},
 		{
@@ -1862,7 +1862,7 @@ export const Formats: FormatList = [
       	`&bullet; <a href="https://docs.google.com/spreadsheets/d/1TpTH9ksUWOOJJQK69RIcvnot_mH_JvfGfM4zra6V3Ec/edit?usp=sharing">Spreadsheet</a>`,
 		],
 		mod: 'gen1expansionpack',
-		ruleset: ['Standard', 'Data Mod', 'Welcome Message'],
+		ruleset: ['Standard', 'Allow Tradeback', 'Data Mod', 'Welcome Message'],
 	},
 	{
 		name: "[Gen 8] Patratdex",
